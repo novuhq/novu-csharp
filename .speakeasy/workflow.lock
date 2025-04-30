@@ -2,7 +2,7 @@ speakeasyVersion: 1.540.1
 sources:
     Novu API:
         sourceNamespace: novu-api
-        sourceRevisionDigest: sha256:c03462ad32c8fc97c12d778534944ff19d781502aaf283ecaacb6a226b7adc03
+        sourceRevisionDigest: sha256:75c9d8662bde67612a61367fbee27e4e529a45808aec1d684c944471c8abf9d8
         sourceBlobDigest: sha256:f3ca679dd6299f03f28f9598ce64238c32f07280ed952998737aea630b00c1db
         tags:
             - latest
@@ -11,10 +11,10 @@ targets:
     novu:
         source: Novu API
         sourceNamespace: novu-api
-        sourceRevisionDigest: sha256:c03462ad32c8fc97c12d778534944ff19d781502aaf283ecaacb6a226b7adc03
+        sourceRevisionDigest: sha256:75c9d8662bde67612a61367fbee27e4e529a45808aec1d684c944471c8abf9d8
         sourceBlobDigest: sha256:f3ca679dd6299f03f28f9598ce64238c32f07280ed952998737aea630b00c1db
         codeSamplesNamespace: novu-api-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:7614007c97c4a8559b16798ad17e8e575211824d84923bf4ce782807c486330b
+        codeSamplesRevisionDigest: sha256:42cf65d01d17c8d0b1294e7a5589baae28554dd80c493ac8367eb5c861325812
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -30,6 +30,9 @@ workflow:
         novu:
             target: csharp
             source: Novu API
+            publish:
+                nuget:
+                    apiKey: $nuget_api_key
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/novu/novu/novu-api-csharp-code-samples

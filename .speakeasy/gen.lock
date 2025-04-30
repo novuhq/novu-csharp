@@ -5,8 +5,9 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.540.1
   generationVersion: 2.593.4
-  releaseVersion: 0.0.4
-  configChecksum: ed113e11a8ab56f779d87579d6a82352
+  releaseVersion: 1.0.0
+  configChecksum: 4790d35d2b1ac8c7c821009dd5359aa3
+  published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -31,6 +32,7 @@ features:
     unions: 0.2.2
 generatedFiles:
   - .gitattributes
+  - NUGET.md
   - Novu.sln
   - USAGE.md
   - docs/Models/Components/ActivitiesResponseDto.md
@@ -704,7 +706,7 @@ examples:
   EventsController_triggerBulk:
     speakeasy-default-events-controller-trigger-bulk:
       requestBody:
-        application/json: {"events": [{"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": {"subscriberId": "<id>"}}, {"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": {"topicKey": "<value>", "type": "Subscriber"}}, {"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": ["SUBSCRIBER_ID", "SUBSCRIBER_ID"]}]}
+        application/json: {"events": [{"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": {"subscriberId": "<id>"}}, {"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": [{"topicKey": "<value>", "type": "Subscriber"}]}, {"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": ["SUBSCRIBER_ID", "SUBSCRIBER_ID"]}]}
       responses:
         "201":
           application/json: [{"acknowledged": true, "status": "error"}, {"acknowledged": true, "status": "no_workflow_active_steps_defined"}, {"acknowledged": true, "status": "trigger_not_active"}]

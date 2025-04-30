@@ -12,6 +12,9 @@ targets:
     novu:
         target: csharp
         source: Novu API
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/novu/novu/novu-api-csharp-code-samples
