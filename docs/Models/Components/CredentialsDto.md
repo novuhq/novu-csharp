@@ -1,0 +1,49 @@
+# CredentialsDto
+
+
+## Fields
+
+| Field                                               | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `ApiKey`                                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `User`                                              | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `SecretKey`                                         | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `Domain`                                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `Password`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `Host`                                              | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `Port`                                              | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `Secure`                                            | *bool*                                              | :heavy_minus_sign:                                  | N/A                                                 |
+| `Region`                                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `AccountSid`                                        | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `MessageProfileId`                                  | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `Token`                                             | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `From`                                              | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `SenderName`                                        | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `ProjectName`                                       | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `ApplicationId`                                     | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `ClientId`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `RequireTls`                                        | *bool*                                              | :heavy_minus_sign:                                  | N/A                                                 |
+| `IgnoreTls`                                         | *bool*                                              | :heavy_minus_sign:                                  | N/A                                                 |
+| `TlsOptions`                                        | [TlsOptions](../../Models/Components/TlsOptions.md) | :heavy_minus_sign:                                  | N/A                                                 |
+| `BaseUrl`                                           | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `WebhookUrl`                                        | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `RedirectUrl`                                       | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `Hmac`                                              | *bool*                                              | :heavy_minus_sign:                                  | N/A                                                 |
+| `ServiceAccount`                                    | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `IpPoolName`                                        | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `ApiKeyRequestHeader`                               | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `SecretKeyRequestHeader`                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `IdPath`                                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `DatePath`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `ApiToken`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `AuthenticateByToken`                               | *bool*                                              | :heavy_minus_sign:                                  | N/A                                                 |
+| `AuthenticationTokenKey`                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `InstanceId`                                        | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `AlertUid`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `Title`                                             | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `ImageUrl`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `State`                                             | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `ExternalLink`                                      | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `ChannelId`                                         | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `PhoneNumberIdentification`                         | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `AccessKey`                                         | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |

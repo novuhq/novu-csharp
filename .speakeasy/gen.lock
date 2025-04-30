@@ -1,0 +1,1447 @@
+lockVersion: 2.0.0
+id: 61e876ba-f1ab-4e7f-bfcc-4f8231d25d15
+management:
+  docChecksum: e5acbbf58fd3884e78a7f63792efb0a8
+  docVersion: "1.0"
+  speakeasyVersion: 1.469.0
+  generationVersion: 2.493.21
+  releaseVersion: 0.0.3
+  configChecksum: dec65189e58f69b2e6a3d302b8dbda32
+features:
+  csharp:
+    additionalDependencies: 0.1.0
+    constsAndDefaults: 0.0.1
+    core: 3.10.11
+    deprecations: 2.81.2
+    examples: 2.81.5
+    flattening: 2.81.3
+    globalSecurity: 2.83.6
+    globalSecurityCallbacks: 0.1.0
+    globalSecurityFlattening: 0.1.0
+    globalServerURLs: 2.82.3
+    groups: 2.81.2
+    intellisenseMarkdownSupport: 0.1.0
+    methodArguments: 0.2.0
+    nameOverrides: 2.81.2
+    nullables: 0.1.0
+    pagination: 0.2.4
+    responseFormat: 0.0.4
+    retries: 0.0.1
+    sdkHooks: 0.1.0
+    unions: 0.2.2
+generatedFiles:
+  - .gitattributes
+  - Novu.sln
+  - USAGE.md
+  - docs/Models/Components/ActivitiesResponseDto.md
+  - docs/Models/Components/ActivityGraphStatesResponse.md
+  - docs/Models/Components/ActivityNotificationExecutionDetailResponseDto.md
+  - docs/Models/Components/ActivityNotificationJobResponseDto.md
+  - docs/Models/Components/ActivityNotificationJobResponseDtoPayload.md
+  - docs/Models/Components/ActivityNotificationJobResponseDtoType.md
+  - docs/Models/Components/ActivityNotificationResponseDto.md
+  - docs/Models/Components/ActivityNotificationResponseDtoPayload.md
+  - docs/Models/Components/ActivityNotificationResponseDtoTo.md
+  - docs/Models/Components/ActivityNotificationStepResponseDto.md
+  - docs/Models/Components/ActivityNotificationStepResponseDtoMetadata.md
+  - docs/Models/Components/ActivityNotificationStepResponseDtoReplyCallback.md
+  - docs/Models/Components/ActivityNotificationSubscriberResponseDto.md
+  - docs/Models/Components/ActivityNotificationTemplateResponseDto.md
+  - docs/Models/Components/ActivityStatsResponseDto.md
+  - docs/Models/Components/Actor.md
+  - docs/Models/Components/ActorFeedItemDto.md
+  - docs/Models/Components/ActorTypeEnum.md
+  - docs/Models/Components/AddSubscribersRequestDto.md
+  - docs/Models/Components/AssignSubscriberToTopicDto.md
+  - docs/Models/Components/BackoffUnit.md
+  - docs/Models/Components/BuilderFieldTypeEnum.md
+  - docs/Models/Components/BulkCreateSubscriberResponseDto.md
+  - docs/Models/Components/BulkSubscriberCreateDto.md
+  - docs/Models/Components/BulkTriggerEventDto.md
+  - docs/Models/Components/ButtonTypeEnum.md
+  - docs/Models/Components/Channel.md
+  - docs/Models/Components/ChannelCTATypeEnum.md
+  - docs/Models/Components/ChannelCredentials.md
+  - docs/Models/Components/ChannelCredentialsDto.md
+  - docs/Models/Components/ChannelSettingsDto.md
+  - docs/Models/Components/ChannelTypeEnum.md
+  - docs/Models/Components/Channels.md
+  - docs/Models/Components/ChatOrPushProviderEnum.md
+  - docs/Models/Components/ConstraintValidation.md
+  - docs/Models/Components/Content.md
+  - docs/Models/Components/ControlVariables.md
+  - docs/Models/Components/Controls.md
+  - docs/Models/Components/CreateIntegrationRequestDto.md
+  - docs/Models/Components/CreateIntegrationRequestDtoChannel.md
+  - docs/Models/Components/CreateSubscriberRequestDto.md
+  - docs/Models/Components/CreateTopicRequestDto.md
+  - docs/Models/Components/CreateTopicResponseDto.md
+  - docs/Models/Components/CreatedSubscriberDto.md
+  - docs/Models/Components/CredentialsDto.md
+  - docs/Models/Components/Data.md
+  - docs/Models/Components/DelayRegularMetadata.md
+  - docs/Models/Components/DelayRegularMetadataType.md
+  - docs/Models/Components/DelayRegularMetadataUnit.md
+  - docs/Models/Components/DelayScheduledMetadata.md
+  - docs/Models/Components/DelayScheduledMetadataType.md
+  - docs/Models/Components/DeleteMessageResponseDto.md
+  - docs/Models/Components/DeleteMessageResponseDtoStatus.md
+  - docs/Models/Components/DigestMetadataDto.md
+  - docs/Models/Components/DigestMetadataDtoUnit.md
+  - docs/Models/Components/DigestRegularMetadata.md
+  - docs/Models/Components/DigestTimedConfigDto.md
+  - docs/Models/Components/DigestTimedConfigDtoWeekDays.md
+  - docs/Models/Components/DigestTimedMetadata.md
+  - docs/Models/Components/DigestTimedMetadataType.md
+  - docs/Models/Components/DigestTimedMetadataUnit.md
+  - docs/Models/Components/DigestTypeEnum.md
+  - docs/Models/Components/DigestUnitEnum.md
+  - docs/Models/Components/EmailBlock.md
+  - docs/Models/Components/EmailBlockStyles.md
+  - docs/Models/Components/EmailBlockTypeEnum.md
+  - docs/Models/Components/ExecutionDetailsSourceEnum.md
+  - docs/Models/Components/ExecutionDetailsStatusEnum.md
+  - docs/Models/Components/FailedAssignmentsDto.md
+  - docs/Models/Components/FailedOperationDto.md
+  - docs/Models/Components/FeedIdentifier.md
+  - docs/Models/Components/FeedResponseDto.md
+  - docs/Models/Components/FieldFilterPartDto.md
+  - docs/Models/Components/FilterTopicsResponseDto.md
+  - docs/Models/Components/Five.md
+  - docs/Models/Components/Four.md
+  - docs/Models/Components/GetSubscriberPreferencesDto.md
+  - docs/Models/Components/GetTopicResponseDto.md
+  - docs/Models/Components/HTTPMetadata.md
+  - docs/Models/Components/IntegrationResponseDto.md
+  - docs/Models/Components/Issues.md
+  - docs/Models/Components/ListSubscribersResponseDto.md
+  - docs/Models/Components/MarkAllMessageAsRequestDto.md
+  - docs/Models/Components/MarkAs.md
+  - docs/Models/Components/MarkMessageActionAsSeenDto.md
+  - docs/Models/Components/MarkMessageActionAsSeenDtoPayload.md
+  - docs/Models/Components/MarkMessageActionAsSeenDtoStatus.md
+  - docs/Models/Components/MessageAction.md
+  - docs/Models/Components/MessageActionResult.md
+  - docs/Models/Components/MessageActionStatusEnum.md
+  - docs/Models/Components/MessageButton.md
+  - docs/Models/Components/MessageCTA.md
+  - docs/Models/Components/MessageCTAData.md
+  - docs/Models/Components/MessageId.md
+  - docs/Models/Components/MessageMarkAsRequestDto.md
+  - docs/Models/Components/MessageMarkAsRequestDtoMarkAs.md
+  - docs/Models/Components/MessageResponseDto.md
+  - docs/Models/Components/MessageResponseDtoOverrides.md
+  - docs/Models/Components/MessageResponseDtoPayload.md
+  - docs/Models/Components/MessageStatusEnum.md
+  - docs/Models/Components/MessageTemplate.md
+  - docs/Models/Components/MessageTemplateDto.md
+  - docs/Models/Components/MessagesResponseDto.md
+  - docs/Models/Components/Metadata.md
+  - docs/Models/Components/MonthlyType.md
+  - docs/Models/Components/MonthlyTypeEnum.md
+  - docs/Models/Components/NotificationFeedItemDto.md
+  - docs/Models/Components/NotificationFeedItemDtoStatus.md
+  - docs/Models/Components/NotificationGroup.md
+  - docs/Models/Components/NotificationStepData.md
+  - docs/Models/Components/NotificationStepDataMetadata.md
+  - docs/Models/Components/NotificationStepDto.md
+  - docs/Models/Components/NotificationTrigger.md
+  - docs/Models/Components/NotificationTriggerDto.md
+  - docs/Models/Components/NotificationTriggerDtoType.md
+  - docs/Models/Components/NotificationTriggerType.md
+  - docs/Models/Components/NotificationTriggerVariable.md
+  - docs/Models/Components/On.md
+  - docs/Models/Components/One.md
+  - docs/Models/Components/Operator.md
+  - docs/Models/Components/Ordinal.md
+  - docs/Models/Components/OrdinalEnum.md
+  - docs/Models/Components/OrdinalValue.md
+  - docs/Models/Components/OrdinalValueEnum.md
+  - docs/Models/Components/Overrides.md
+  - docs/Models/Components/PatchPreferenceChannelsDto.md
+  - docs/Models/Components/PatchSubscriberPreferencesDto.md
+  - docs/Models/Components/PatchSubscriberRequestDto.md
+  - docs/Models/Components/Payload.md
+  - docs/Models/Components/PreferenceOverrideSourceEnum.md
+  - docs/Models/Components/ProviderId.md
+  - docs/Models/Components/ProvidersIdEnum.md
+  - docs/Models/Components/RemoveSubscriberResponseDto.md
+  - docs/Models/Components/RemoveSubscribersRequestDto.md
+  - docs/Models/Components/RenameTopicRequestDto.md
+  - docs/Models/Components/RenameTopicResponseDto.md
+  - docs/Models/Components/ReplyCallback.md
+  - docs/Models/Components/Security.md
+  - docs/Models/Components/Status.md
+  - docs/Models/Components/StepFilterDto.md
+  - docs/Models/Components/StepFilterDtoValue.md
+  - docs/Models/Components/StepTypeEnum.md
+  - docs/Models/Components/SubscriberChannelDto.md
+  - docs/Models/Components/SubscriberFeedResponseDto.md
+  - docs/Models/Components/SubscriberGlobalPreferenceDto.md
+  - docs/Models/Components/SubscriberPayloadDto.md
+  - docs/Models/Components/SubscriberPayloadDtoData.md
+  - docs/Models/Components/SubscriberPreferenceChannels.md
+  - docs/Models/Components/SubscriberPreferenceOverrideDto.md
+  - docs/Models/Components/SubscriberPreferencesWorkflowInfoDto.md
+  - docs/Models/Components/SubscriberResponseDto.md
+  - docs/Models/Components/SubscriberWorkflowPreferenceDto.md
+  - docs/Models/Components/Tenant.md
+  - docs/Models/Components/TenantPayloadDto.md
+  - docs/Models/Components/TenantPayloadDtoData.md
+  - docs/Models/Components/TextAlignEnum.md
+  - docs/Models/Components/TimedConfig.md
+  - docs/Models/Components/TlsOptions.md
+  - docs/Models/Components/To.md
+  - docs/Models/Components/TopicDto.md
+  - docs/Models/Components/TopicPayloadDto.md
+  - docs/Models/Components/TopicSubscriberDto.md
+  - docs/Models/Components/TriggerEventRequestDto.md
+  - docs/Models/Components/TriggerEventResponseDto.md
+  - docs/Models/Components/TriggerEventToAllRequestDto.md
+  - docs/Models/Components/TriggerEventToAllRequestDtoActor.md
+  - docs/Models/Components/TriggerEventToAllRequestDtoTenant.md
+  - docs/Models/Components/TriggerRecipientsTypeEnum.md
+  - docs/Models/Components/Type.md
+  - docs/Models/Components/Unit.md
+  - docs/Models/Components/UnseenCountResponse.md
+  - docs/Models/Components/UpdateIntegrationRequestDto.md
+  - docs/Models/Components/UpdateSubscriberChannelRequestDto.md
+  - docs/Models/Components/UpdateSubscriberOnlineFlagRequestDto.md
+  - docs/Models/Components/UpdateSubscriberRequestDto.md
+  - docs/Models/Components/UpdatedSubscriberDto.md
+  - docs/Models/Components/Value.md
+  - docs/Models/Components/WeekDays.md
+  - docs/Models/Components/WorkflowIntegrationStatus.md
+  - docs/Models/Components/WorkflowOriginEnum.md
+  - docs/Models/Components/WorkflowResponse.md
+  - docs/Models/Components/WorkflowResponseData.md
+  - docs/Models/Errors/ErrorDto.md
+  - docs/Models/Errors/Five.md
+  - docs/Models/Errors/Four.md
+  - docs/Models/Errors/Message.md
+  - docs/Models/Errors/Message4.md
+  - docs/Models/Errors/Message5.md
+  - docs/Models/Errors/ValidationErrorDto.md
+  - docs/Models/Errors/ValidationErrorDtoMessage.md
+  - docs/Models/Requests/Channel.md
+  - docs/Models/Requests/EventsControllerBroadcastEventToAllRequest.md
+  - docs/Models/Requests/EventsControllerBroadcastEventToAllResponse.md
+  - docs/Models/Requests/EventsControllerCancelRequest.md
+  - docs/Models/Requests/EventsControllerCancelResponse.md
+  - docs/Models/Requests/EventsControllerTriggerBulkRequest.md
+  - docs/Models/Requests/EventsControllerTriggerBulkResponse.md
+  - docs/Models/Requests/EventsControllerTriggerRequest.md
+  - docs/Models/Requests/EventsControllerTriggerResponse.md
+  - docs/Models/Requests/IntegrationsControllerCreateIntegrationRequest.md
+  - docs/Models/Requests/IntegrationsControllerCreateIntegrationResponse.md
+  - docs/Models/Requests/IntegrationsControllerGetActiveIntegrationsRequest.md
+  - docs/Models/Requests/IntegrationsControllerGetActiveIntegrationsResponse.md
+  - docs/Models/Requests/IntegrationsControllerGetWebhookSupportStatusRequest.md
+  - docs/Models/Requests/IntegrationsControllerGetWebhookSupportStatusResponse.md
+  - docs/Models/Requests/IntegrationsControllerListIntegrationsRequest.md
+  - docs/Models/Requests/IntegrationsControllerListIntegrationsResponse.md
+  - docs/Models/Requests/IntegrationsControllerRemoveIntegrationRequest.md
+  - docs/Models/Requests/IntegrationsControllerRemoveIntegrationResponse.md
+  - docs/Models/Requests/IntegrationsControllerSetIntegrationAsPrimaryRequest.md
+  - docs/Models/Requests/IntegrationsControllerSetIntegrationAsPrimaryResponse.md
+  - docs/Models/Requests/IntegrationsControllerUpdateIntegrationByIdRequest.md
+  - docs/Models/Requests/IntegrationsControllerUpdateIntegrationByIdResponse.md
+  - docs/Models/Requests/MessagesControllerDeleteMessageRequest.md
+  - docs/Models/Requests/MessagesControllerDeleteMessageResponse.md
+  - docs/Models/Requests/MessagesControllerDeleteMessagesByTransactionIdRequest.md
+  - docs/Models/Requests/MessagesControllerDeleteMessagesByTransactionIdResponse.md
+  - docs/Models/Requests/MessagesControllerGetMessagesRequest.md
+  - docs/Models/Requests/MessagesControllerGetMessagesResponse.md
+  - docs/Models/Requests/NotificationsControllerGetActivityGraphStatsRequest.md
+  - docs/Models/Requests/NotificationsControllerGetActivityGraphStatsResponse.md
+  - docs/Models/Requests/NotificationsControllerGetActivityStatsRequest.md
+  - docs/Models/Requests/NotificationsControllerGetActivityStatsResponse.md
+  - docs/Models/Requests/NotificationsControllerGetNotificationRequest.md
+  - docs/Models/Requests/NotificationsControllerGetNotificationResponse.md
+  - docs/Models/Requests/NotificationsControllerListNotificationsRequest.md
+  - docs/Models/Requests/NotificationsControllerListNotificationsResponse.md
+  - docs/Models/Requests/OrderDirection.md
+  - docs/Models/Requests/SubscribersControllerCreateSubscriberRequest.md
+  - docs/Models/Requests/SubscribersControllerCreateSubscriberResponse.md
+  - docs/Models/Requests/SubscribersControllerGetSubscriberPreferencesRequest.md
+  - docs/Models/Requests/SubscribersControllerGetSubscriberPreferencesResponse.md
+  - docs/Models/Requests/SubscribersControllerGetSubscriberRequest.md
+  - docs/Models/Requests/SubscribersControllerGetSubscriberResponse.md
+  - docs/Models/Requests/SubscribersControllerPatchSubscriberRequest.md
+  - docs/Models/Requests/SubscribersControllerPatchSubscriberResponse.md
+  - docs/Models/Requests/SubscribersControllerRemoveSubscriberRequest.md
+  - docs/Models/Requests/SubscribersControllerRemoveSubscriberResponse.md
+  - docs/Models/Requests/SubscribersControllerSearchSubscribersRequest.md
+  - docs/Models/Requests/SubscribersControllerSearchSubscribersResponse.md
+  - docs/Models/Requests/SubscribersControllerUpdateSubscriberPreferencesRequest.md
+  - docs/Models/Requests/SubscribersControllerUpdateSubscriberPreferencesResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerBulkCreateSubscribersRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerBulkCreateSubscribersResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerChatAccessOauthRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerChatAccessOauthResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerChatOauthCallbackRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerChatOauthCallbackResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerDeleteSubscriberCredentialsRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerDeleteSubscriberCredentialsResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerGetNotificationsFeedRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerGetNotificationsFeedResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerGetUnseenCountRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerGetUnseenCountResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerListSubscribersRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerListSubscribersResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerListSubscribersResponseBody.md
+  - docs/Models/Requests/SubscribersV1ControllerMarkActionAsSeenRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerMarkActionAsSeenResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerMarkAllUnreadAsReadRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerMarkAllUnreadAsReadResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerMarkMessagesAsRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerMarkMessagesAsResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerModifySubscriberChannelRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerModifySubscriberChannelResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerUpdateSubscriberChannelRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerUpdateSubscriberChannelResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerUpdateSubscriberOnlineFlagRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse.md
+  - docs/Models/Requests/SubscribersV1ControllerUpdateSubscriberRequest.md
+  - docs/Models/Requests/SubscribersV1ControllerUpdateSubscriberResponse.md
+  - docs/Models/Requests/TopicsControllerAssignRequest.md
+  - docs/Models/Requests/TopicsControllerAssignResponse.md
+  - docs/Models/Requests/TopicsControllerCreateTopicRequest.md
+  - docs/Models/Requests/TopicsControllerCreateTopicResponse.md
+  - docs/Models/Requests/TopicsControllerDeleteTopicRequest.md
+  - docs/Models/Requests/TopicsControllerDeleteTopicResponse.md
+  - docs/Models/Requests/TopicsControllerGetTopicRequest.md
+  - docs/Models/Requests/TopicsControllerGetTopicResponse.md
+  - docs/Models/Requests/TopicsControllerGetTopicSubscriberRequest.md
+  - docs/Models/Requests/TopicsControllerGetTopicSubscriberResponse.md
+  - docs/Models/Requests/TopicsControllerListTopicsRequest.md
+  - docs/Models/Requests/TopicsControllerListTopicsResponse.md
+  - docs/Models/Requests/TopicsControllerRemoveSubscribersRequest.md
+  - docs/Models/Requests/TopicsControllerRemoveSubscribersResponse.md
+  - docs/Models/Requests/TopicsControllerRenameTopicRequest.md
+  - docs/Models/Requests/TopicsControllerRenameTopicResponse.md
+  - docs/sdks/integrations/README.md
+  - docs/sdks/integrationswebhooks/README.md
+  - docs/sdks/messages/README.md
+  - docs/sdks/notifications/README.md
+  - docs/sdks/novu/README.md
+  - docs/sdks/subscribers/README.md
+  - docs/sdks/subscribersauthentication/README.md
+  - docs/sdks/subscribersmessages/README.md
+  - docs/sdks/subscribersnotifications/README.md
+  - docs/sdks/subscriberspreferences/README.md
+  - docs/sdks/topics/README.md
+  - docs/sdks/topicssubscribers/README.md
+  - global.json
+  - src/Novu/Hooks/HookTypes.cs
+  - src/Novu/Hooks/SDKHooks.cs
+  - src/Novu/Integrations.cs
+  - src/Novu/IntegrationsWebhooks.cs
+  - src/Novu/Messages.cs
+  - src/Novu/Models/Components/ActivitiesResponseDto.cs
+  - src/Novu/Models/Components/ActivityGraphStatesResponse.cs
+  - src/Novu/Models/Components/ActivityNotificationExecutionDetailResponseDto.cs
+  - src/Novu/Models/Components/ActivityNotificationJobResponseDto.cs
+  - src/Novu/Models/Components/ActivityNotificationJobResponseDtoPayload.cs
+  - src/Novu/Models/Components/ActivityNotificationJobResponseDtoType.cs
+  - src/Novu/Models/Components/ActivityNotificationResponseDto.cs
+  - src/Novu/Models/Components/ActivityNotificationResponseDtoPayload.cs
+  - src/Novu/Models/Components/ActivityNotificationResponseDtoTo.cs
+  - src/Novu/Models/Components/ActivityNotificationStepResponseDto.cs
+  - src/Novu/Models/Components/ActivityNotificationStepResponseDtoMetadata.cs
+  - src/Novu/Models/Components/ActivityNotificationStepResponseDtoReplyCallback.cs
+  - src/Novu/Models/Components/ActivityNotificationSubscriberResponseDto.cs
+  - src/Novu/Models/Components/ActivityNotificationTemplateResponseDto.cs
+  - src/Novu/Models/Components/ActivityStatsResponseDto.cs
+  - src/Novu/Models/Components/Actor.cs
+  - src/Novu/Models/Components/ActorFeedItemDto.cs
+  - src/Novu/Models/Components/ActorTypeEnum.cs
+  - src/Novu/Models/Components/AddSubscribersRequestDto.cs
+  - src/Novu/Models/Components/AssignSubscriberToTopicDto.cs
+  - src/Novu/Models/Components/BackoffUnit.cs
+  - src/Novu/Models/Components/BuilderFieldTypeEnum.cs
+  - src/Novu/Models/Components/BulkCreateSubscriberResponseDto.cs
+  - src/Novu/Models/Components/BulkSubscriberCreateDto.cs
+  - src/Novu/Models/Components/BulkTriggerEventDto.cs
+  - src/Novu/Models/Components/ButtonTypeEnum.cs
+  - src/Novu/Models/Components/Channel.cs
+  - src/Novu/Models/Components/ChannelCTATypeEnum.cs
+  - src/Novu/Models/Components/ChannelCredentials.cs
+  - src/Novu/Models/Components/ChannelCredentialsDto.cs
+  - src/Novu/Models/Components/ChannelSettingsDto.cs
+  - src/Novu/Models/Components/ChannelTypeEnum.cs
+  - src/Novu/Models/Components/Channels.cs
+  - src/Novu/Models/Components/ChatOrPushProviderEnum.cs
+  - src/Novu/Models/Components/ConstraintValidation.cs
+  - src/Novu/Models/Components/Content.cs
+  - src/Novu/Models/Components/ControlVariables.cs
+  - src/Novu/Models/Components/Controls.cs
+  - src/Novu/Models/Components/CreateIntegrationRequestDto.cs
+  - src/Novu/Models/Components/CreateIntegrationRequestDtoChannel.cs
+  - src/Novu/Models/Components/CreateSubscriberRequestDto.cs
+  - src/Novu/Models/Components/CreateTopicRequestDto.cs
+  - src/Novu/Models/Components/CreateTopicResponseDto.cs
+  - src/Novu/Models/Components/CreatedSubscriberDto.cs
+  - src/Novu/Models/Components/CredentialsDto.cs
+  - src/Novu/Models/Components/Data.cs
+  - src/Novu/Models/Components/DelayRegularMetadata.cs
+  - src/Novu/Models/Components/DelayRegularMetadataType.cs
+  - src/Novu/Models/Components/DelayRegularMetadataUnit.cs
+  - src/Novu/Models/Components/DelayScheduledMetadata.cs
+  - src/Novu/Models/Components/DelayScheduledMetadataType.cs
+  - src/Novu/Models/Components/DeleteMessageResponseDto.cs
+  - src/Novu/Models/Components/DeleteMessageResponseDtoStatus.cs
+  - src/Novu/Models/Components/DigestMetadataDto.cs
+  - src/Novu/Models/Components/DigestMetadataDtoUnit.cs
+  - src/Novu/Models/Components/DigestRegularMetadata.cs
+  - src/Novu/Models/Components/DigestTimedConfigDto.cs
+  - src/Novu/Models/Components/DigestTimedConfigDtoWeekDays.cs
+  - src/Novu/Models/Components/DigestTimedMetadata.cs
+  - src/Novu/Models/Components/DigestTimedMetadataType.cs
+  - src/Novu/Models/Components/DigestTimedMetadataUnit.cs
+  - src/Novu/Models/Components/DigestTypeEnum.cs
+  - src/Novu/Models/Components/DigestUnitEnum.cs
+  - src/Novu/Models/Components/EmailBlock.cs
+  - src/Novu/Models/Components/EmailBlockStyles.cs
+  - src/Novu/Models/Components/EmailBlockTypeEnum.cs
+  - src/Novu/Models/Components/ExecutionDetailsSourceEnum.cs
+  - src/Novu/Models/Components/ExecutionDetailsStatusEnum.cs
+  - src/Novu/Models/Components/FailedAssignmentsDto.cs
+  - src/Novu/Models/Components/FailedOperationDto.cs
+  - src/Novu/Models/Components/FeedIdentifier.cs
+  - src/Novu/Models/Components/FeedResponseDto.cs
+  - src/Novu/Models/Components/FieldFilterPartDto.cs
+  - src/Novu/Models/Components/FilterTopicsResponseDto.cs
+  - src/Novu/Models/Components/Five.cs
+  - src/Novu/Models/Components/Four.cs
+  - src/Novu/Models/Components/GetSubscriberPreferencesDto.cs
+  - src/Novu/Models/Components/GetTopicResponseDto.cs
+  - src/Novu/Models/Components/HTTPMetadata.cs
+  - src/Novu/Models/Components/IntegrationResponseDto.cs
+  - src/Novu/Models/Components/Issues.cs
+  - src/Novu/Models/Components/ListSubscribersResponseDto.cs
+  - src/Novu/Models/Components/MarkAllMessageAsRequestDto.cs
+  - src/Novu/Models/Components/MarkAs.cs
+  - src/Novu/Models/Components/MarkMessageActionAsSeenDto.cs
+  - src/Novu/Models/Components/MarkMessageActionAsSeenDtoPayload.cs
+  - src/Novu/Models/Components/MarkMessageActionAsSeenDtoStatus.cs
+  - src/Novu/Models/Components/MessageAction.cs
+  - src/Novu/Models/Components/MessageActionResult.cs
+  - src/Novu/Models/Components/MessageActionStatusEnum.cs
+  - src/Novu/Models/Components/MessageButton.cs
+  - src/Novu/Models/Components/MessageCTA.cs
+  - src/Novu/Models/Components/MessageCTAData.cs
+  - src/Novu/Models/Components/MessageId.cs
+  - src/Novu/Models/Components/MessageMarkAsRequestDto.cs
+  - src/Novu/Models/Components/MessageMarkAsRequestDtoMarkAs.cs
+  - src/Novu/Models/Components/MessageResponseDto.cs
+  - src/Novu/Models/Components/MessageResponseDtoOverrides.cs
+  - src/Novu/Models/Components/MessageResponseDtoPayload.cs
+  - src/Novu/Models/Components/MessageStatusEnum.cs
+  - src/Novu/Models/Components/MessageTemplate.cs
+  - src/Novu/Models/Components/MessageTemplateDto.cs
+  - src/Novu/Models/Components/MessagesResponseDto.cs
+  - src/Novu/Models/Components/Metadata.cs
+  - src/Novu/Models/Components/MonthlyType.cs
+  - src/Novu/Models/Components/MonthlyTypeEnum.cs
+  - src/Novu/Models/Components/NotificationFeedItemDto.cs
+  - src/Novu/Models/Components/NotificationFeedItemDtoStatus.cs
+  - src/Novu/Models/Components/NotificationGroup.cs
+  - src/Novu/Models/Components/NotificationStepData.cs
+  - src/Novu/Models/Components/NotificationStepDataMetadata.cs
+  - src/Novu/Models/Components/NotificationStepDto.cs
+  - src/Novu/Models/Components/NotificationTrigger.cs
+  - src/Novu/Models/Components/NotificationTriggerDto.cs
+  - src/Novu/Models/Components/NotificationTriggerDtoType.cs
+  - src/Novu/Models/Components/NotificationTriggerType.cs
+  - src/Novu/Models/Components/NotificationTriggerVariable.cs
+  - src/Novu/Models/Components/On.cs
+  - src/Novu/Models/Components/One.cs
+  - src/Novu/Models/Components/Operator.cs
+  - src/Novu/Models/Components/Ordinal.cs
+  - src/Novu/Models/Components/OrdinalEnum.cs
+  - src/Novu/Models/Components/OrdinalValue.cs
+  - src/Novu/Models/Components/OrdinalValueEnum.cs
+  - src/Novu/Models/Components/Overrides.cs
+  - src/Novu/Models/Components/PatchPreferenceChannelsDto.cs
+  - src/Novu/Models/Components/PatchSubscriberPreferencesDto.cs
+  - src/Novu/Models/Components/PatchSubscriberRequestDto.cs
+  - src/Novu/Models/Components/Payload.cs
+  - src/Novu/Models/Components/PreferenceOverrideSourceEnum.cs
+  - src/Novu/Models/Components/ProviderId.cs
+  - src/Novu/Models/Components/ProvidersIdEnum.cs
+  - src/Novu/Models/Components/RemoveSubscriberResponseDto.cs
+  - src/Novu/Models/Components/RemoveSubscribersRequestDto.cs
+  - src/Novu/Models/Components/RenameTopicRequestDto.cs
+  - src/Novu/Models/Components/RenameTopicResponseDto.cs
+  - src/Novu/Models/Components/ReplyCallback.cs
+  - src/Novu/Models/Components/Security.cs
+  - src/Novu/Models/Components/Status.cs
+  - src/Novu/Models/Components/StepFilterDto.cs
+  - src/Novu/Models/Components/StepFilterDtoValue.cs
+  - src/Novu/Models/Components/StepTypeEnum.cs
+  - src/Novu/Models/Components/SubscriberChannelDto.cs
+  - src/Novu/Models/Components/SubscriberFeedResponseDto.cs
+  - src/Novu/Models/Components/SubscriberGlobalPreferenceDto.cs
+  - src/Novu/Models/Components/SubscriberPayloadDto.cs
+  - src/Novu/Models/Components/SubscriberPayloadDtoData.cs
+  - src/Novu/Models/Components/SubscriberPreferenceChannels.cs
+  - src/Novu/Models/Components/SubscriberPreferenceOverrideDto.cs
+  - src/Novu/Models/Components/SubscriberPreferencesWorkflowInfoDto.cs
+  - src/Novu/Models/Components/SubscriberResponseDto.cs
+  - src/Novu/Models/Components/SubscriberWorkflowPreferenceDto.cs
+  - src/Novu/Models/Components/Tenant.cs
+  - src/Novu/Models/Components/TenantPayloadDto.cs
+  - src/Novu/Models/Components/TenantPayloadDtoData.cs
+  - src/Novu/Models/Components/TextAlignEnum.cs
+  - src/Novu/Models/Components/TimedConfig.cs
+  - src/Novu/Models/Components/TlsOptions.cs
+  - src/Novu/Models/Components/To.cs
+  - src/Novu/Models/Components/TopicDto.cs
+  - src/Novu/Models/Components/TopicPayloadDto.cs
+  - src/Novu/Models/Components/TopicSubscriberDto.cs
+  - src/Novu/Models/Components/TriggerEventRequestDto.cs
+  - src/Novu/Models/Components/TriggerEventResponseDto.cs
+  - src/Novu/Models/Components/TriggerEventToAllRequestDto.cs
+  - src/Novu/Models/Components/TriggerEventToAllRequestDtoActor.cs
+  - src/Novu/Models/Components/TriggerEventToAllRequestDtoTenant.cs
+  - src/Novu/Models/Components/TriggerRecipientsTypeEnum.cs
+  - src/Novu/Models/Components/Type.cs
+  - src/Novu/Models/Components/Unit.cs
+  - src/Novu/Models/Components/UnseenCountResponse.cs
+  - src/Novu/Models/Components/UpdateIntegrationRequestDto.cs
+  - src/Novu/Models/Components/UpdateSubscriberChannelRequestDto.cs
+  - src/Novu/Models/Components/UpdateSubscriberOnlineFlagRequestDto.cs
+  - src/Novu/Models/Components/UpdateSubscriberRequestDto.cs
+  - src/Novu/Models/Components/UpdatedSubscriberDto.cs
+  - src/Novu/Models/Components/Value.cs
+  - src/Novu/Models/Components/WeekDays.cs
+  - src/Novu/Models/Components/WorkflowIntegrationStatus.cs
+  - src/Novu/Models/Components/WorkflowOriginEnum.cs
+  - src/Novu/Models/Components/WorkflowResponse.cs
+  - src/Novu/Models/Components/WorkflowResponseData.cs
+  - src/Novu/Models/Errors/APIException.cs
+  - src/Novu/Models/Errors/ErrorDto.cs
+  - src/Novu/Models/Errors/Five.cs
+  - src/Novu/Models/Errors/Four.cs
+  - src/Novu/Models/Errors/Message.cs
+  - src/Novu/Models/Errors/Message4.cs
+  - src/Novu/Models/Errors/Message5.cs
+  - src/Novu/Models/Errors/ValidationErrorDto.cs
+  - src/Novu/Models/Errors/ValidationErrorDtoMessage.cs
+  - src/Novu/Models/Requests/Channel.cs
+  - src/Novu/Models/Requests/EventsControllerBroadcastEventToAllRequest.cs
+  - src/Novu/Models/Requests/EventsControllerBroadcastEventToAllResponse.cs
+  - src/Novu/Models/Requests/EventsControllerCancelRequest.cs
+  - src/Novu/Models/Requests/EventsControllerCancelResponse.cs
+  - src/Novu/Models/Requests/EventsControllerTriggerBulkRequest.cs
+  - src/Novu/Models/Requests/EventsControllerTriggerBulkResponse.cs
+  - src/Novu/Models/Requests/EventsControllerTriggerRequest.cs
+  - src/Novu/Models/Requests/EventsControllerTriggerResponse.cs
+  - src/Novu/Models/Requests/IntegrationsControllerCreateIntegrationRequest.cs
+  - src/Novu/Models/Requests/IntegrationsControllerCreateIntegrationResponse.cs
+  - src/Novu/Models/Requests/IntegrationsControllerGetActiveIntegrationsRequest.cs
+  - src/Novu/Models/Requests/IntegrationsControllerGetActiveIntegrationsResponse.cs
+  - src/Novu/Models/Requests/IntegrationsControllerGetWebhookSupportStatusRequest.cs
+  - src/Novu/Models/Requests/IntegrationsControllerGetWebhookSupportStatusResponse.cs
+  - src/Novu/Models/Requests/IntegrationsControllerListIntegrationsRequest.cs
+  - src/Novu/Models/Requests/IntegrationsControllerListIntegrationsResponse.cs
+  - src/Novu/Models/Requests/IntegrationsControllerRemoveIntegrationRequest.cs
+  - src/Novu/Models/Requests/IntegrationsControllerRemoveIntegrationResponse.cs
+  - src/Novu/Models/Requests/IntegrationsControllerSetIntegrationAsPrimaryRequest.cs
+  - src/Novu/Models/Requests/IntegrationsControllerSetIntegrationAsPrimaryResponse.cs
+  - src/Novu/Models/Requests/IntegrationsControllerUpdateIntegrationByIdRequest.cs
+  - src/Novu/Models/Requests/IntegrationsControllerUpdateIntegrationByIdResponse.cs
+  - src/Novu/Models/Requests/MessagesControllerDeleteMessageRequest.cs
+  - src/Novu/Models/Requests/MessagesControllerDeleteMessageResponse.cs
+  - src/Novu/Models/Requests/MessagesControllerDeleteMessagesByTransactionIdRequest.cs
+  - src/Novu/Models/Requests/MessagesControllerDeleteMessagesByTransactionIdResponse.cs
+  - src/Novu/Models/Requests/MessagesControllerGetMessagesRequest.cs
+  - src/Novu/Models/Requests/MessagesControllerGetMessagesResponse.cs
+  - src/Novu/Models/Requests/NotificationsControllerGetActivityGraphStatsRequest.cs
+  - src/Novu/Models/Requests/NotificationsControllerGetActivityGraphStatsResponse.cs
+  - src/Novu/Models/Requests/NotificationsControllerGetActivityStatsRequest.cs
+  - src/Novu/Models/Requests/NotificationsControllerGetActivityStatsResponse.cs
+  - src/Novu/Models/Requests/NotificationsControllerGetNotificationRequest.cs
+  - src/Novu/Models/Requests/NotificationsControllerGetNotificationResponse.cs
+  - src/Novu/Models/Requests/NotificationsControllerListNotificationsRequest.cs
+  - src/Novu/Models/Requests/NotificationsControllerListNotificationsResponse.cs
+  - src/Novu/Models/Requests/OrderDirection.cs
+  - src/Novu/Models/Requests/SubscribersControllerCreateSubscriberRequest.cs
+  - src/Novu/Models/Requests/SubscribersControllerCreateSubscriberResponse.cs
+  - src/Novu/Models/Requests/SubscribersControllerGetSubscriberPreferencesRequest.cs
+  - src/Novu/Models/Requests/SubscribersControllerGetSubscriberPreferencesResponse.cs
+  - src/Novu/Models/Requests/SubscribersControllerGetSubscriberRequest.cs
+  - src/Novu/Models/Requests/SubscribersControllerGetSubscriberResponse.cs
+  - src/Novu/Models/Requests/SubscribersControllerPatchSubscriberRequest.cs
+  - src/Novu/Models/Requests/SubscribersControllerPatchSubscriberResponse.cs
+  - src/Novu/Models/Requests/SubscribersControllerRemoveSubscriberRequest.cs
+  - src/Novu/Models/Requests/SubscribersControllerRemoveSubscriberResponse.cs
+  - src/Novu/Models/Requests/SubscribersControllerSearchSubscribersRequest.cs
+  - src/Novu/Models/Requests/SubscribersControllerSearchSubscribersResponse.cs
+  - src/Novu/Models/Requests/SubscribersControllerUpdateSubscriberPreferencesRequest.cs
+  - src/Novu/Models/Requests/SubscribersControllerUpdateSubscriberPreferencesResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerBulkCreateSubscribersRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerBulkCreateSubscribersResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerChatAccessOauthRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerChatAccessOauthResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerChatOauthCallbackRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerChatOauthCallbackResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerDeleteSubscriberCredentialsRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerDeleteSubscriberCredentialsResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerGetNotificationsFeedRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerGetNotificationsFeedResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerGetUnseenCountRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerGetUnseenCountResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerListSubscribersRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerListSubscribersResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerListSubscribersResponseBody.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerMarkActionAsSeenRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerMarkActionAsSeenResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerMarkAllUnreadAsReadRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerMarkAllUnreadAsReadResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerMarkMessagesAsRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerMarkMessagesAsResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerModifySubscriberChannelRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerModifySubscriberChannelResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerUpdateSubscriberChannelRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerUpdateSubscriberChannelResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerUpdateSubscriberOnlineFlagRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerUpdateSubscriberRequest.cs
+  - src/Novu/Models/Requests/SubscribersV1ControllerUpdateSubscriberResponse.cs
+  - src/Novu/Models/Requests/TopicsControllerAssignRequest.cs
+  - src/Novu/Models/Requests/TopicsControllerAssignResponse.cs
+  - src/Novu/Models/Requests/TopicsControllerCreateTopicRequest.cs
+  - src/Novu/Models/Requests/TopicsControllerCreateTopicResponse.cs
+  - src/Novu/Models/Requests/TopicsControllerDeleteTopicRequest.cs
+  - src/Novu/Models/Requests/TopicsControllerDeleteTopicResponse.cs
+  - src/Novu/Models/Requests/TopicsControllerGetTopicRequest.cs
+  - src/Novu/Models/Requests/TopicsControllerGetTopicResponse.cs
+  - src/Novu/Models/Requests/TopicsControllerGetTopicSubscriberRequest.cs
+  - src/Novu/Models/Requests/TopicsControllerGetTopicSubscriberResponse.cs
+  - src/Novu/Models/Requests/TopicsControllerListTopicsRequest.cs
+  - src/Novu/Models/Requests/TopicsControllerListTopicsResponse.cs
+  - src/Novu/Models/Requests/TopicsControllerRemoveSubscribersRequest.cs
+  - src/Novu/Models/Requests/TopicsControllerRemoveSubscribersResponse.cs
+  - src/Novu/Models/Requests/TopicsControllerRenameTopicRequest.cs
+  - src/Novu/Models/Requests/TopicsControllerRenameTopicResponse.cs
+  - src/Novu/Notifications.cs
+  - src/Novu/Novu.csproj
+  - src/Novu/NovuSDK.cs
+  - src/Novu/Subscribers.cs
+  - src/Novu/SubscribersAuthentication.cs
+  - src/Novu/SubscribersMessages.cs
+  - src/Novu/SubscribersNotifications.cs
+  - src/Novu/SubscribersPreferences.cs
+  - src/Novu/Topics.cs
+  - src/Novu/TopicsSubscribers.cs
+  - src/Novu/Utils/AnyDeserializer.cs
+  - src/Novu/Utils/BigIntStrConverter.cs
+  - src/Novu/Utils/DecimalStrConverter.cs
+  - src/Novu/Utils/EnumConverter.cs
+  - src/Novu/Utils/FlexibleObjectDeserializer.cs
+  - src/Novu/Utils/HeaderSerializer.cs
+  - src/Novu/Utils/IsoDateTimeSerializer.cs
+  - src/Novu/Utils/RequestBodySerializer.cs
+  - src/Novu/Utils/ResponseBodyDeserializer.cs
+  - src/Novu/Utils/Retries/BackoffStrategy.cs
+  - src/Novu/Utils/Retries/Retries.cs
+  - src/Novu/Utils/Retries/RetryConfig.cs
+  - src/Novu/Utils/SecurityMetadata.cs
+  - src/Novu/Utils/SpeakeasyHttpClient.cs
+  - src/Novu/Utils/SpeakeasyMetadata.cs
+  - src/Novu/Utils/URLBuilder.cs
+  - src/Novu/Utils/Utilities.cs
+examples:
+  EventsController_trigger:
+    speakeasy-default-events-controller-trigger:
+      requestBody:
+        application/json: {"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": {"subscriberId": "<id>"}}
+      responses:
+        "201":
+          application/json: {"acknowledged": false, "status": "no_tenant_found"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  EventsController_cancel:
+    speakeasy-default-events-controller-cancel:
+      parameters:
+        path:
+          transactionId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: true
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  EventsController_broadcastEventToAll:
+    speakeasy-default-events-controller-broadcast-event-to-all:
+      requestBody:
+        application/json: {"name": "<value>", "payload": {"comment_id": "string", "post": {"text": "string"}}}
+      responses:
+        "200":
+          application/json: {"acknowledged": true, "status": "trigger_not_active"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  EventsController_triggerBulk:
+    speakeasy-default-events-controller-trigger-bulk:
+      requestBody:
+        application/json: {"events": [{"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": {"subscriberId": "<id>"}}, {"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": [{"topicKey": "<value>", "type": "Subscriber"}]}, {"name": "workflow_identifier", "payload": {"comment_id": "string", "post": {"text": "string"}}, "overrides": {"fcm": {"data": {"key": "value"}}}, "to": ["SUBSCRIBER_ID", "SUBSCRIBER_ID"]}]}
+      responses:
+        "201":
+          application/json: [{"acknowledged": true, "status": "error"}, {"acknowledged": true, "status": "no_workflow_active_steps_defined"}, {"acknowledged": true, "status": "trigger_not_active"}]
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersController_searchSubscribers:
+    speakeasy-default-subscribers-controller-search-subscribers:
+      responses:
+        "200":
+          application/json: {"data": [{"channels": [{"providerId": "mattermost", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1715614300599", "updatedAt": "1745938723694"}], "next": "<value>", "previous": "<value>"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersController_createSubscriber:
+    speakeasy-default-subscribers-controller-create-subscriber:
+      requestBody:
+        application/json: {"subscriberId": "<id>"}
+      responses:
+        "201":
+          application/json: {"channels": [{"providerId": "fcm", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1718705848809", "updatedAt": "1745924074833"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersController_getSubscriber:
+    speakeasy-default-subscribers-controller-get-subscriber:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: {"channels": [{"providerId": "push-webhook", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1724667330311", "updatedAt": "1745925966108"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersController_patchSubscriber:
+    speakeasy-default-subscribers-controller-patch-subscriber:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"channels": [{"providerId": "getstream", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1736290471050", "updatedAt": "1745998267038"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersController_removeSubscriber:
+    speakeasy-default-subscribers-controller-remove-subscriber:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: {"acknowledged": true, "status": "success"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_listSubscribers:
+    speakeasy-default-subscribers-v1-controller-list-subscribers:
+      responses:
+        "200":
+          application/json: {"page": 7685.78, "hasMore": false, "pageSize": 6783.17, "data": []}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_updateSubscriber:
+    speakeasy-default-subscribers-v1-controller-update-subscriber:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {"email": "john.doe@example.com", "firstName": "John", "lastName": "Doe", "phone": "+1234567890", "avatar": "https://example.com/avatar.jpg", "locale": "en-US", "data": {"preferences": {"notifications": true, "theme": "dark"}, "tags": ["premium", "newsletter"]}}
+      responses:
+        "200":
+          application/json: {"channels": [{"providerId": "getstream", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}, {"providerId": "grafana-on-call", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1721786993546", "updatedAt": "1745984373745"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_bulkCreateSubscribers:
+    speakeasy-default-subscribers-v1-controller-bulk-create-subscribers:
+      requestBody:
+        application/json: {"subscribers": [{"subscriberId": "<id>"}]}
+      responses:
+        "201":
+          application/json: {"updated": [{"subscriberId": "<id>"}, {"subscriberId": "<id>"}, {"subscriberId": "<id>"}], "created": [{"subscriberId": "<id>"}, {"subscriberId": "<id>"}, {"subscriberId": "<id>"}], "failed": [{}, {}]}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersController_getSubscriberPreferences:
+    speakeasy-default-subscribers-controller-get-subscriber-preferences:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: {"global": {"enabled": false, "channels": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}}, "workflows": [{"enabled": false, "channels": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "overrides": [], "workflow": {"slug": "<value>", "identifier": "<value>", "name": "<value>"}}, {"enabled": true, "channels": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "overrides": [], "workflow": {"slug": "<value>", "identifier": "<value>", "name": "<value>"}}]}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersController_updateSubscriberPreferences:
+    speakeasy-default-subscribers-controller-update-subscriber-preferences:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {"channels": {}}
+      responses:
+        "200":
+          application/json: {"global": {"enabled": false, "channels": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}}, "workflows": [{"enabled": true, "channels": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "overrides": [{"channel": "chat", "source": "template"}, {"channel": "push", "source": "subscriber"}, {"channel": "push", "source": "template"}], "workflow": {"slug": "<value>", "identifier": "<value>", "name": "<value>"}}, {"enabled": true, "channels": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "overrides": [], "workflow": {"slug": "<value>", "identifier": "<value>", "name": "<value>"}}]}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_updateSubscriberChannel:
+    speakeasy-default-subscribers-v1-controller-update-subscriber-channel:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {"providerId": "pushpad", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}}
+      responses:
+        "200":
+          application/json: {"channels": [{"providerId": "zulip", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}, {"providerId": "pusher-beams", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1729884957608", "updatedAt": "1746003128414"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_modifySubscriberChannel:
+    speakeasy-default-subscribers-v1-controller-modify-subscriber-channel:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {"providerId": "zulip", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}}
+      responses:
+        "200":
+          application/json: {"channels": [{"providerId": "pushpad", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}, {"providerId": "apns", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1745915964896", "updatedAt": "1745965915277"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_deleteSubscriberCredentials:
+    speakeasy-default-subscribers-v1-controller-delete-subscriber-credentials:
+      parameters:
+        path:
+          subscriberId: "<id>"
+          providerId: "<id>"
+        header: {}
+      responses:
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_chatAccessOauth:
+    speakeasy-default-subscribers-v1-controller-chat-access-oauth:
+      parameters:
+        path:
+          subscriberId: "<id>"
+          providerId: "<id>"
+        query:
+          hmacHash: "<value>"
+          environmentId: "<id>"
+        header: {}
+      responses:
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_chatOauthCallback:
+    speakeasy-default-subscribers-v1-controller-chat-oauth-callback:
+      parameters:
+        path:
+          subscriberId: "<id>"
+          providerId: "<id>"
+        query:
+          hmacHash: "<value>"
+          environmentId: "<id>"
+          code: "<value>"
+        header: {}
+      responses:
+        "200":
+          text/html: "<value>"
+        "302":
+          application/json: "<value>"
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_markActionAsSeen:
+    speakeasy-default-subscribers-v1-controller-mark-action-as-seen:
+      parameters:
+        path:
+          messageId: "<id>"
+          type: "<value>"
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {"status": "done"}
+      responses:
+        "201":
+          application/json: {"_templateId": "<id>", "_environmentId": "<id>", "_messageTemplateId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"channels": [{"providerId": "push-webhook", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1727483019286", "updatedAt": "1746001597829"}, "template": {"name": "<value>", "description": "e-mail coaxingly yellow which", "active": false, "draft": true, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": false, "tags": ["<value>"], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [], "_notificationGroupId": "<id>", "deleted": true, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1728600809362", "content": "<value>", "transactionId": "<id>", "channel": "sms", "read": true, "seen": false, "cta": {"data": {}}, "status": "sent"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_markAllUnreadAsRead:
+    speakeasy-default-subscribers-v1-controller-mark-all-unread-as-read:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {"markAs": "seen"}
+      responses:
+        "201":
+          application/json: 4603.37
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_markMessagesAs:
+    speakeasy-default-subscribers-v1-controller-mark-messages-as:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {"messageId": "<id>", "markAs": "unread"}
+      responses:
+        "201":
+          application/json: []
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_getNotificationsFeed:
+    "":
+      parameters:
+        path:
+          subscriberId: "<id>"
+        query:
+          payload: "btoa(JSON.stringify({ foo: 123 })) results in base64 encoded string like eyJmb28iOjEyM30="
+        header: {}
+      responses:
+        "200":
+          application/json: {"totalCount": 5, "hasMore": true, "data": [{"_id": "615c1f2f9b0c5b001f8e4e3b", "_templateId": "template_12345", "_environmentId": "env_67890", "_messageTemplateId": "message_template_54321", "_organizationId": "org_98765", "_notificationId": "notification_123456", "_subscriberId": "subscriber_112233", "_feedId": "feed_445566", "_jobId": "job_778899", "createdAt": "2024-12-10T10:10:59.639Z", "updatedAt": "2024-12-10T10:10:59.639Z", "actor": {"data": null, "type": "system_icon"}, "transactionId": "transaction_123456", "templateIdentifier": "template_abcdef", "providerId": "provider_xyz", "content": "This is a test notification content.", "subject": "Test Notification Subject", "channel": "push", "read": false, "seen": true, "deviceTokens": ["token1", "token2"], "cta": {"data": {}}, "status": "sent", "payload": {"key": "value"}, "overrides": {"overrideKey": "overrideValue"}}, {"_id": "615c1f2f9b0c5b001f8e4e3b", "_templateId": "template_12345", "_environmentId": "env_67890", "_messageTemplateId": "message_template_54321", "_organizationId": "org_98765", "_notificationId": "notification_123456", "_subscriberId": "subscriber_112233", "_feedId": "feed_445566", "_jobId": "job_778899", "createdAt": "2024-12-10T10:10:59.639Z", "updatedAt": "2024-12-10T10:10:59.639Z", "actor": {"data": null, "type": "system_icon"}, "transactionId": "transaction_123456", "templateIdentifier": "template_abcdef", "providerId": "provider_xyz", "content": "This is a test notification content.", "subject": "Test Notification Subject", "channel": "push", "read": false, "seen": true, "deviceTokens": ["token1", "token2"], "cta": {"data": {}}, "status": "sent", "payload": {"key": "value"}, "overrides": {"overrideKey": "overrideValue"}}, {"_id": "615c1f2f9b0c5b001f8e4e3b", "_templateId": "template_12345", "_environmentId": "env_67890", "_messageTemplateId": "message_template_54321", "_organizationId": "org_98765", "_notificationId": "notification_123456", "_subscriberId": "subscriber_112233", "_feedId": "feed_445566", "_jobId": "job_778899", "createdAt": "2024-12-10T10:10:59.639Z", "updatedAt": "2024-12-10T10:10:59.639Z", "actor": {"data": null, "type": "system_icon"}, "transactionId": "transaction_123456", "templateIdentifier": "template_abcdef", "providerId": "provider_xyz", "content": "This is a test notification content.", "subject": "Test Notification Subject", "channel": "in_app", "read": false, "seen": true, "deviceTokens": ["token1", "token2"], "cta": {"data": {}}, "status": "sent", "payload": {"key": "value"}, "overrides": {"overrideKey": "overrideValue"}}], "pageSize": 2, "page": 1}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": [{"key": "value"}]}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_getUnseenCount:
+    speakeasy-default-subscribers-v1-controller-get-unseen-count:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        query: {}
+        header: {}
+      responses:
+        "200":
+          application/json: {"count": 2166.35}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  SubscribersV1Controller_updateSubscriberOnlineFlag:
+    speakeasy-default-subscribers-v1-controller-update-subscriber-online-flag:
+      parameters:
+        path:
+          subscriberId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {"isOnline": false}
+      responses:
+        "200":
+          application/json: {"channels": [{"providerId": "one-signal", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1735537480113", "updatedAt": "1745990630664"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_listIntegrations:
+    speakeasy-default-integrations-controller-list-integrations:
+      responses:
+        "200":
+          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "sms", "credentials": {}, "active": false, "deleted": true, "primary": true}, {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "in_app", "credentials": {}, "active": false, "deleted": false, "primary": true}, {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": true, "deleted": true, "primary": false}]
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_createIntegration:
+    speakeasy-default-integrations-controller-create-integration:
+      requestBody:
+        application/json: {"providerId": "<id>", "channel": "sms"}
+      responses:
+        "201":
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": true, "deleted": true, "primary": true}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_updateIntegrationById:
+    speakeasy-default-integrations-controller-update-integration-by-id:
+      parameters:
+        path:
+          integrationId: "<id>"
+        header: {}
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "push", "credentials": {}, "active": false, "deleted": true, "primary": false}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_removeIntegration:
+    speakeasy-default-integrations-controller-remove-integration:
+      parameters:
+        path:
+          integrationId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": true, "deleted": false, "primary": false}, {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": true, "deleted": false, "primary": false}]
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_setIntegrationAsPrimary:
+    speakeasy-default-integrations-controller-set-integration-as-primary:
+      parameters:
+        path:
+          integrationId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "email", "credentials": {}, "active": false, "deleted": false, "primary": true}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_getActiveIntegrations:
+    speakeasy-default-integrations-controller-get-active-integrations:
+      responses:
+        "200":
+          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "email", "credentials": {}, "active": true, "deleted": true, "primary": true}, {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": false, "deleted": true, "primary": true}, {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": false, "deleted": true, "primary": true}]
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_getWebhookSupportStatus:
+    speakeasy-default-integrations-controller-get-webhook-support-status:
+      parameters:
+        path:
+          providerOrIntegrationId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: true
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  MessagesController_getMessages:
+    speakeasy-default-messages-controller-get-messages:
+      responses:
+        "200":
+          application/json: {"hasMore": true, "data": [{"_templateId": "<id>", "_environmentId": "<id>", "_messageTemplateId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"channels": [{"providerId": "zulip", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1731355563436", "updatedAt": "1745975956796"}, "template": {"name": "<value>", "description": "blissfully ouch pleasing serpentine", "active": false, "draft": false, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": true, "tags": [], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [{"type": "event", "identifier": "<value>", "variables": [{"name": "<value>"}, {"name": "<value>"}, {"name": "<value>"}]}], "_notificationGroupId": "<id>", "deleted": false, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1724005610385", "content": {"type": "button", "content": "<value>"}, "transactionId": "<id>", "channel": "sms", "read": true, "seen": false, "cta": {"data": {}}, "status": "warning"}, {"_templateId": "<id>", "_environmentId": "<id>", "_messageTemplateId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"channels": [], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1726854265444", "updatedAt": "1745996174805"}, "template": {"name": "<value>", "description": "coolly shoot verify rudely considering frequent brr crystallize tightly onto", "active": false, "draft": false, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": false, "tags": ["<value>"], "steps": [{}, {}], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [], "_notificationGroupId": "<id>", "deleted": true, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1722205875331", "content": {"type": "text", "content": "<value>"}, "transactionId": "<id>", "channel": "in_app", "read": false, "seen": false, "cta": {"data": {}}, "status": "sent"}, {"_templateId": "<id>", "_environmentId": "<id>", "_messageTemplateId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"channels": [{"providerId": "whatsapp-business", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}, {"providerId": "whatsapp-business", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}, {"providerId": "zulip", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1730007264533", "updatedAt": "1745954338897"}, "template": {"name": "<value>", "description": "oxidize singe regarding tensely splay aware furthermore innocently shudder", "active": true, "draft": true, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": true, "tags": ["<value>", "<value>", "<value>"], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [], "_notificationGroupId": "<id>", "deleted": true, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1743208519738", "content": {"type": "text", "content": "<value>"}, "transactionId": "<id>", "channel": "chat", "read": true, "seen": true, "cta": {"data": {}}, "status": "error"}], "pageSize": 4951.86, "page": 9312.24}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  MessagesController_deleteMessage:
+    speakeasy-default-messages-controller-delete-message:
+      parameters:
+        path:
+          messageId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: {"acknowledged": false, "status": "deleted"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  MessagesController_deleteMessagesByTransactionId:
+    speakeasy-default-messages-controller-delete-messages-by-transaction-id:
+      parameters:
+        path:
+          transactionId: "<id>"
+        query: {}
+        header: {}
+      responses:
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  NotificationsController_listNotifications:
+    speakeasy-default-notifications-controller-list-notifications:
+      responses:
+        "200":
+          application/json: {"hasMore": false, "data": [{"_environmentId": "<id>", "_organizationId": "<id>", "_subscriberId": "<id>", "transactionId": "<id>", "jobs": [{"_id": "<id>", "type": "email", "executionDetails": [], "step": {"_id": "<id>", "active": true, "filters": [{"isNegated": false, "type": "BOOLEAN", "value": "OR", "children": []}, {"isNegated": true, "type": "LIST", "value": "OR", "children": [{"field": "<value>", "value": "<value>", "operator": "LARGER", "on": "subscriber"}, {"field": "<value>", "value": "<value>", "operator": "NOT_EQUAL", "on": "subscriber"}]}], "_templateId": "<id>"}, "overrides": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "providerId": "postmark", "status": "<value>"}, {"_id": "<id>", "type": "custom", "executionDetails": [{"_id": "<id>", "status": "ReadConfirmation", "detail": "<value>", "isRetry": true, "isTest": true, "providerId": "plivo", "source": "Webhook"}, {"_id": "<id>", "status": "Success", "detail": "<value>", "isRetry": false, "isTest": true, "providerId": "mattermost", "source": "Credentials"}], "step": {"_id": "<id>", "active": true, "filters": [{"isNegated": true, "type": "NUMBER", "value": "AND", "children": [{"field": "<value>", "value": "<value>", "operator": "ALL_IN", "on": "subscriber"}]}, {"isNegated": false, "type": "MULTI_LIST", "value": "AND", "children": [{"field": "<value>", "value": "<value>", "operator": "EQUAL", "on": "subscriber"}, {"field": "<value>", "value": "<value>", "operator": "SMALLER", "on": "subscriber"}, {"field": "<value>", "value": "<value>", "operator": "NOT_LIKE", "on": "subscriber"}]}, {"isNegated": false, "type": "GROUP", "value": "OR", "children": []}], "_templateId": "<id>"}, "overrides": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "providerId": "brevo-sms", "status": "<value>"}]}, {"_environmentId": "<id>", "_organizationId": "<id>", "_subscriberId": "<id>", "transactionId": "<id>", "jobs": [{"_id": "<id>", "type": "delay", "executionDetails": [{"_id": "<id>", "status": "ReadConfirmation", "detail": "<value>", "isRetry": true, "isTest": true, "providerId": "postmark", "source": "Webhook"}, {"_id": "<id>", "status": "Queued", "detail": "<value>", "isRetry": true, "isTest": false, "providerId": "email-webhook", "source": "Webhook"}, {"_id": "<id>", "status": "Pending", "detail": "<value>", "isRetry": true, "isTest": true, "providerId": "braze", "source": "Webhook"}], "step": {"_id": "<id>", "active": false, "filters": [{"isNegated": true, "type": "BOOLEAN", "value": "OR", "children": [{"field": "<value>", "value": "<value>", "operator": "LARGER", "on": "payload"}]}], "_templateId": "<id>"}, "overrides": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "providerId": "grafana-on-call", "status": "<value>"}, {"_id": "<id>", "type": "trigger", "executionDetails": [{"_id": "<id>", "status": "ReadConfirmation", "detail": "<value>", "isRetry": false, "isTest": true, "providerId": "bulk-sms", "source": "Webhook"}, {"_id": "<id>", "status": "Queued", "detail": "<value>", "isRetry": false, "isTest": true, "providerId": "mailjet", "source": "Payload"}], "step": {"_id": "<id>", "active": false, "filters": [{"isNegated": true, "type": "BOOLEAN", "value": "OR", "children": [{"field": "<value>", "value": "<value>", "operator": "NOT_EQUAL", "on": "subscriber"}]}, {"isNegated": true, "type": "GROUP", "value": "OR", "children": [{"field": "<value>", "value": "<value>", "operator": "NOT_EQUAL", "on": "subscriber"}]}], "_templateId": "<id>"}, "overrides": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "providerId": "mailtrap", "status": "<value>"}]}], "pageSize": 9009.11, "page": 503.88}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  NotificationsController_getNotification:
+    speakeasy-default-notifications-controller-get-notification:
+      parameters:
+        path:
+          notificationId: "<id>"
+        header: {}
+      responses:
+        "200":
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "_subscriberId": "<id>", "transactionId": "<id>", "jobs": [{"_id": "<id>", "type": "custom", "executionDetails": [{"_id": "<id>", "status": "Warning", "detail": "<value>", "isRetry": true, "isTest": false, "providerId": "azure-sms", "source": "Credentials"}], "step": {"_id": "<id>", "active": false, "filters": [], "_templateId": "<id>"}, "overrides": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "providerId": "apns", "status": "<value>"}]}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  NotificationsController_getActivityGraphStats:
+    speakeasy-default-notifications-controller-get-activity-graph-stats:
+      responses:
+        "200":
+          application/json: [{"_id": "<id>", "count": 4718.99, "templates": ["<value>", "<value>", "<value>"], "channels": []}]
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  NotificationsController_getActivityStats:
+    speakeasy-default-notifications-controller-get-activity-stats:
+      responses:
+        "200":
+          application/json: {"weeklySent": 3704.56, "monthlySent": 9198.31}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  TopicsController_createTopic:
+    speakeasy-default-topics-controller-create-topic:
+      requestBody:
+        application/json: {"key": "<key>", "name": "<value>"}
+      responses:
+        "201":
+          application/json: {"key": "<key>"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  TopicsController_listTopics:
+    "":
+      parameters:
+        query:
+          page: 0
+          pageSize: 10
+          key: "exampleKey"
+        header: {}
+      responses:
+        "200":
+          application/json: {"data": [], "page": 1, "pageSize": 10, "totalCount": 10}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": [{"key": "value"}]}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  TopicsController_deleteTopic:
+    speakeasy-default-topics-controller-delete-topic:
+      parameters:
+        path:
+          topicKey: "<value>"
+        header: {}
+      responses:
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  TopicsController_getTopic:
+    speakeasy-default-topics-controller-get-topic:
+      parameters:
+        path:
+          topicKey: "<value>"
+        header: {}
+      responses:
+        "200":
+          application/json: {"_organizationId": "<id>", "_environmentId": "<id>", "key": "<key>", "name": "<value>", "subscribers": ["<value>"]}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  TopicsController_renameTopic:
+    speakeasy-default-topics-controller-rename-topic:
+      parameters:
+        path:
+          topicKey: "<value>"
+        header: {}
+      requestBody:
+        application/json: {"name": "<value>"}
+      responses:
+        "200":
+          application/json: {"_organizationId": "<id>", "_environmentId": "<id>", "key": "<key>", "name": "<value>", "subscribers": ["<value>", "<value>", "<value>"]}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  TopicsController_assign:
+    speakeasy-default-topics-controller-assign:
+      parameters:
+        path:
+          topicKey: "<value>"
+        header: {}
+      requestBody:
+        application/json: {"subscribers": ["<value>", "<value>", "<value>"]}
+      responses:
+        "200":
+          application/json: {"succeeded": []}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  TopicsController_getTopicSubscriber:
+    speakeasy-default-topics-controller-get-topic-subscriber:
+      parameters:
+        path:
+          externalSubscriberId: "<id>"
+          topicKey: "<value>"
+        header: {}
+      responses:
+        "200":
+          application/json: {"_organizationId": "org_123456789", "_environmentId": "env_123456789", "_subscriberId": "sub_123456789", "_topicId": "topic_123456789", "topicKey": "my_topic_key", "externalSubscriberId": "external_subscriber_123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  TopicsController_removeSubscribers:
+    speakeasy-default-topics-controller-remove-subscribers:
+      parameters:
+        path:
+          topicKey: "<value>"
+        header: {}
+      requestBody:
+        application/json: {"subscribers": ["<value>", "<value>"]}
+      responses:
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName2": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName3": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName4": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is required", "Invalid format"], "value": "xx xx xx "}, "fieldName6": {"messages": ["Field is required", "Invalid format"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+generatedTests: {}

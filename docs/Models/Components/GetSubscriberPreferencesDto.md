@@ -1,0 +1,9 @@
+# GetSubscriberPreferencesDto
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `Global`                                                                                            | [SubscriberGlobalPreferenceDto](../../Models/Components/SubscriberGlobalPreferenceDto.md)           | :heavy_check_mark:                                                                                  | Global preference settings                                                                          |
+| `Workflows`                                                                                         | List<[SubscriberWorkflowPreferenceDto](../../Models/Components/SubscriberWorkflowPreferenceDto.md)> | :heavy_check_mark:                                                                                  | Workflow-specific preference settings                                                               |

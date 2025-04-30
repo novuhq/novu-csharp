@@ -1,0 +1,11 @@
+# ActivityNotificationTemplateResponseDto
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `Id`                                                                              | *string*                                                                          | :heavy_minus_sign:                                                                | Unique identifier of the template                                                 |
+| `Name`                                                                            | *string*                                                                          | :heavy_check_mark:                                                                | Name of the template                                                              |
+| `Origin`                                                                          | [WorkflowOriginEnum](../../Models/Components/WorkflowOriginEnum.md)               | :heavy_minus_sign:                                                                | Origin of the workflow                                                            |
+| `Triggers`                                                                        | List<[NotificationTriggerDto](../../Models/Components/NotificationTriggerDto.md)> | :heavy_check_mark:                                                                | Triggers of the template                                                          |

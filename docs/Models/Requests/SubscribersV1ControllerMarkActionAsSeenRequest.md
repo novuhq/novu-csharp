@@ -1,0 +1,12 @@
+# SubscribersV1ControllerMarkActionAsSeenRequest
+
+
+## Fields
+
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `MessageId`                                                                         | *string*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `Type`                                                                              | *object*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `SubscriberId`                                                                      | *string*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `IdempotencyKey`                                                                    | *string*                                                                            | :heavy_minus_sign:                                                                  | A header for idempotency purposes                                                   |
+| `MarkMessageActionAsSeenDto`                                                        | [MarkMessageActionAsSeenDto](../../Models/Components/MarkMessageActionAsSeenDto.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |

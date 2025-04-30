@@ -1,0 +1,20 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Novu API:
+        inputs:
+            - location: https://api.novu.co/openapi.sdk.yaml
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+        registry:
+            location: registry.speakeasyapi.dev/novu/novu/novu-api
+targets:
+    novu:
+        target: csharp
+        source: Novu API
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/novu/novu/novu-api-csharp-code-samples
+            labelOverride:
+                fixedValue: Csharp (SDK)
+            blocking: false

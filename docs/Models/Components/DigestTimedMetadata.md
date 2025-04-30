@@ -1,0 +1,12 @@
+# DigestTimedMetadata
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `Amount`                                                                      | *double*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `Unit`                                                                        | [DigestTimedMetadataUnit](../../Models/Components/DigestTimedMetadataUnit.md) | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `DigestKey`                                                                   | *string*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `Type`                                                                        | [DigestTimedMetadataType](../../Models/Components/DigestTimedMetadataType.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| `Timed`                                                                       | [TimedConfig](../../Models/Components/TimedConfig.md)                         | :heavy_minus_sign:                                                            | N/A                                                                           |

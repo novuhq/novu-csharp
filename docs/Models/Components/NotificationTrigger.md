@@ -1,0 +1,11 @@
+# NotificationTrigger
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `Type`                                                                                      | [NotificationTriggerType](../../Models/Components/NotificationTriggerType.md)               | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `Identifier`                                                                                | *string*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `Variables`                                                                                 | List<[NotificationTriggerVariable](../../Models/Components/NotificationTriggerVariable.md)> | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `SubscriberVariables`                                                                       | List<[NotificationTriggerVariable](../../Models/Components/NotificationTriggerVariable.md)> | :heavy_minus_sign:                                                                          | N/A                                                                                         |
