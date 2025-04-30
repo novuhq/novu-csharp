@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 61e876ba-f1ab-4e7f-bfcc-4f8231d25d15
 management:
-  docChecksum: e5acbbf58fd3884e78a7f63792efb0a8
+  docChecksum: 4ac205f79baf2d34ec81cf3992496979
   docVersion: "1.0"
   speakeasyVersion: 1.540.1
   generationVersion: 2.593.4
-  releaseVersion: 1.0.0
-  configChecksum: 4790d35d2b1ac8c7c821009dd5359aa3
+  releaseVersion: 1.0.1
+  configChecksum: e3f192a57363639c5fa9b2503a3ec75b
   published: true
 features:
   csharp:

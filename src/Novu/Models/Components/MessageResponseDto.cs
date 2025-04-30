@@ -84,6 +84,12 @@ namespace Novu.Models.Components
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
+        /// Array of delivery dates for the message, if the message has multiple delivery dates, for example after being snoozed
+        /// </summary>
+        [JsonProperty("deliveredAt")]
+        public List<string>? DeliveredAt { get; set; }
+
+        /// <summary>
         /// Last seen date of the message, if available
         /// </summary>
         [JsonProperty("lastSeenDate")]
@@ -130,6 +136,12 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("seen")]
         public bool Seen { get; set; } = default!;
+
+        /// <summary>
+        /// Date when the message will be unsnoozed
+        /// </summary>
+        [JsonProperty("snoozedUntil")]
+        public string? SnoozedUntil { get; set; }
 
         /// <summary>
         /// Email address associated with the message, if applicable
