@@ -21,13 +21,13 @@ namespace Novu.Models.Requests
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=topicKey")]
         public string TopicKey { get; set; } = default!;
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public RemoveSubscribersRequestDto RemoveSubscribersRequestDto { get; set; } = default!;
-
         /// <summary>
         /// A header for idempotency purposes
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public RemoveSubscribersRequestDto RemoveSubscribersRequestDto { get; set; } = default!;
     }
 }

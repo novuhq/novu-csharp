@@ -46,8 +46,8 @@ var res = await sdk.Integrations.GetAllAsync(idempotencyKey: "<value>");
 
 | Error Type                             | Status Code                            | Content Type                           |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
 | Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
 | Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
@@ -90,8 +90,8 @@ var res = await sdk.Integrations.CreateAsync(
 
 | Error Type                             | Status Code                            | Content Type                           |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
 | Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
 | Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
@@ -133,8 +133,8 @@ var res = await sdk.Integrations.UpdateAsync(
 
 | Error Type                            | Status Code                           | Content Type                          |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| Novu.Models.Errors.ErrorDto           | 400, 401, 403, 405, 409, 413, 415     | application/json                      |
 | Novu.Models.Errors.ErrorDto           | 414                                   | application/json                      |
+| Novu.Models.Errors.ErrorDto           | 400, 401, 403, 405, 409, 413, 415     | application/json                      |
 | Novu.Models.Errors.ValidationErrorDto | 422                                   | application/json                      |
 | Novu.Models.Errors.ErrorDto           | 500                                   | application/json                      |
 | Novu.Models.Errors.APIException       | 4XX, 5XX                              | \*/\*                                 |
@@ -174,8 +174,8 @@ var res = await sdk.Integrations.DeleteAsync(
 
 | Error Type                             | Status Code                            | Content Type                           |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
 | Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
 | Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
@@ -215,8 +215,8 @@ var res = await sdk.Integrations.SetPrimaryAsync(
 
 | Error Type                            | Status Code                           | Content Type                          |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| Novu.Models.Errors.ErrorDto           | 400, 401, 403, 405, 409, 413, 415     | application/json                      |
 | Novu.Models.Errors.ErrorDto           | 414                                   | application/json                      |
+| Novu.Models.Errors.ErrorDto           | 400, 401, 403, 405, 409, 413, 415     | application/json                      |
 | Novu.Models.Errors.ValidationErrorDto | 422                                   | application/json                      |
 | Novu.Models.Errors.ErrorDto           | 500                                   | application/json                      |
 | Novu.Models.Errors.APIException       | 4XX, 5XX                              | \*/\*                                 |
@@ -252,8 +252,8 @@ var res = await sdk.Integrations.ListActiveAsync(idempotencyKey: "<value>");
 
 | Error Type                             | Status Code                            | Content Type                           |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
 | Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
 | Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |

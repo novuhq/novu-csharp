@@ -15,14 +15,14 @@ namespace Novu.Models.Requests
     public class MessagesControllerDeleteMessagesByTransactionIdRequest
     {
 
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transactionId")]
-        public string TransactionId { get; set; } = default!;
-
         /// <summary>
         /// The channel of the message to be deleted
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=channel")]
         public Models.Requests.Channel? Channel { get; set; }
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transactionId")]
+        public string TransactionId { get; set; } = default!;
 
         /// <summary>
         /// A header for idempotency purposes

@@ -15,13 +15,13 @@ namespace Novu.Models.Requests
     public class SubscribersV1ControllerBulkCreateSubscribersRequest
     {
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public BulkSubscriberCreateDto BulkSubscriberCreateDto { get; set; } = default!;
-
         /// <summary>
         /// A header for idempotency purposes
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public BulkSubscriberCreateDto BulkSubscriberCreateDto { get; set; } = default!;
     }
 }

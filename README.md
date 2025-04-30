@@ -461,8 +461,8 @@ When custom error responses are specified for an operation, the SDK may also thr
 
 | Error Type                            | Status Code                            | Content Type     |
 | ------------------------------------- | -------------------------------------- | ---------------- |
-| Novu.Models.Errors.ErrorDto           | 400, 401, 403, 404, 405, 409, 413, 415 | application/json |
 | Novu.Models.Errors.ErrorDto           | 414                                    | application/json |
+| Novu.Models.Errors.ErrorDto           | 400, 401, 403, 404, 405, 409, 413, 415 | application/json |
 | Novu.Models.Errors.ValidationErrorDto | 422                                    | application/json |
 | Novu.Models.Errors.ErrorDto           | 500                                    | application/json |
 | Novu.Models.Errors.APIException       | 4XX, 5XX                               | \*/\*            |
@@ -544,10 +544,10 @@ catch (Exception ex)
 
 You can override the default server globally by passing a server index to the `serverIndex: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                   |
-| --- | ------------------------ |
-| 0   | `https://api.novu.co`    |
-| 1   | `https://eu.api.novu.co` |
+| #   | Server                   | Description |
+| --- | ------------------------ | ----------- |
+| 0   | `https://api.novu.co`    |             |
+| 1   | `https://eu.api.novu.co` |             |
 
 #### Example
 

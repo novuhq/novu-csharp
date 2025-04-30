@@ -15,13 +15,13 @@ namespace Novu.Models.Requests
     public class EventsControllerTriggerBulkRequest
     {
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public BulkTriggerEventDto BulkTriggerEventDto { get; set; } = default!;
-
         /// <summary>
         /// A header for idempotency purposes
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public BulkTriggerEventDto BulkTriggerEventDto { get; set; } = default!;
     }
 }

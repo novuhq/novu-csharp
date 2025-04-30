@@ -15,13 +15,13 @@ namespace Novu.Models.Requests
     public class TopicsControllerCreateTopicRequest
     {
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public CreateTopicRequestDto CreateTopicRequestDto { get; set; } = default!;
-
         /// <summary>
         /// A header for idempotency purposes
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public CreateTopicRequestDto CreateTopicRequestDto { get; set; } = default!;
     }
 }
