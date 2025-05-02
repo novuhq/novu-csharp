@@ -2,31 +2,33 @@ namespace Novu.Hooks
 {
     using Novu.Utils;
     using Novu.Models.Components;
+    using System.Net.Http.Headers;
 
-    public class NovuCustomHook : ISDKInitHook, IBeforeRequestHook, IAfterSuccessHook, IAfterErrorHook
+    public class NovuCustomHook : IBeforeRequestHook
     {
-        public async Task<HttpRequestMessage> BeforeRequestAsync(BeforeRequestContext hookCtx, HttpRequestMessage request)
+        public Task<HttpRequestMessage> BeforeRequestAsync(BeforeRequestContext hookCtx, HttpRequestMessage request)
         {
-            // retreive authorization header 
+            // Retrieve authorization header
             var authHeader = request.Headers.Authorization;
-            if (authHeader != null)
+            if (authHeader != null && !string.IsNullOrEmpty(authHeader.Parameter))
             {
-                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("ApiKey", authHeader.Parameter);
+                request.Headers.Authorization = new AuthenticationHeaderValue("ApiKey", authHeader.Parameter);
             }
 
-            // Add an idempotency key to the in header if it is not already present
+            // Add an idempotency key to the header if it is not already present
             if (!request.Headers.Contains("idempotency-key"))
             {
                 request.Headers.Add("idempotency-key", Guid.NewGuid().ToString());
             }
-            return request;
+
+            return Task.FromResult(request);
         }
 
-        // public async Task<HttpResponseMessage> AfterSuccessAsync(AfterSuccessContext hookCtx, HttpResponseMessage response)
+        // TODO: Implement AfterSuccessAsync if needed
+        // public Task<HttpResponseMessage> AfterSuccessAsync(AfterSuccessContext hookCtx, HttpResponseMessage response)
         // {
-        //     // modify the response object before deserialization or throw an exception to stop the response from being returned
-        //     return response;
+        //     // Modify the response object before deserialization or throw an exception to stop the response from being returned
+        //     return Task.FromResult(response);
         // }
-
     }
 }
