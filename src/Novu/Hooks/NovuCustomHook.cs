@@ -1,6 +1,8 @@
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json; 
+using System.Text;
 using System.Threading.Tasks;
 using Novu.Utils;
 using Novu.Models.Components;
@@ -24,6 +26,7 @@ namespace Novu.Hooks
 
             return Task.FromResult(request);
         }
+
         public async Task<HttpResponseMessage> AfterSuccessAsync(AfterSuccessContext hookCtx, HttpResponseMessage response)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
@@ -42,7 +45,11 @@ namespace Novu.Hooks
                     jsonResponse.EnumerateObject().Count() == 1 &&
                     jsonResponse.TryGetProperty("data", out var dataProperty))
                 {
-                    var newContent = new StringContent(dataProperty.GetRawText(), response.Content.Headers.ContentType?.Encoding, response.Content.Headers.ContentType?.MediaType);
+                    var newContent = new StringContent(
+                        dataProperty.GetRawText(),
+                        Encoding.UTF8, // Fixed Encoding usage
+                        response.Content.Headers.ContentType?.MediaType
+                    );
                     var newResponse = new HttpResponseMessage(response.StatusCode)
                     {
                         Content = newContent,
