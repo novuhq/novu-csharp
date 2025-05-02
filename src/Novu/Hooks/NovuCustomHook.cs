@@ -42,8 +42,8 @@ namespace Novu.Hooks
                 var jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
 
                 if (jsonResponse.ValueKind == JsonValueKind.Object &&
-                    jsonResponse.EnumerateObject().MoveNext() && 
-                    jsonResponse.TryGetProperty("data", out JsonElement dataProperty)) 
+                    jsonResponse.EnumerateObject().MoveNext() &&
+                    jsonResponse.TryGetProperty("data", out JsonElement dataProperty))
                 {
                     var newContent = new StringContent(
                         dataProperty.GetRawText(),
