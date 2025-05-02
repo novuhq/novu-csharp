@@ -42,13 +42,13 @@ namespace Novu.Hooks
                 var jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
 
                 if (jsonResponse.ValueKind == JsonValueKind.Object &&
-                    jsonResponse.EnumerateObject().Any() &&
-                    jsonResponse.TryGetProperty("data", out var dataProperty))
+                    jsonResponse.EnumerateObject().MoveNext() && 
+                    jsonResponse.TryGetProperty("data", out JsonElement dataProperty)) 
                 {
                     var newContent = new StringContent(
                         dataProperty.GetRawText(),
                         Encoding.UTF8,
-                        response.Content.Headers.ContentType?.MediaType ?? "application/json" 
+                        response.Content.Headers.ContentType?.MediaType ?? "application/json"
                     );
                     var newResponse = new HttpResponseMessage(response.StatusCode)
                     {
