@@ -5,8 +5,8 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.542.0
   generationVersion: 2.596.2
-  releaseVersion: 1.0.4
-  configChecksum: a186a9655cdbdb72edf2fd9a07b2ade6
+  releaseVersion: 1.0.5
+  configChecksum: 8dcd6ac0df1c73bfdf44949df7171441
   repoURL: https://github.com/novuhq/novu-csharp.git
   published: true
 features:
