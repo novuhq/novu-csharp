@@ -2,19 +2,20 @@ speakeasyVersion: 1.542.0
 sources:
     Novu API:
         sourceNamespace: novu-api-csharp
-        sourceRevisionDigest: sha256:804a4443c1e4ec05f96a1cb087f9259022fd6d13e044dd554ad9adf1eb658054
-        sourceBlobDigest: sha256:45aad4365f4f67a8b2c14a9ff4cc5c2103831a48486abdf043bef09636d45dc8
+        sourceRevisionDigest: sha256:8eb594c182449364a6e863f1894106edd0b0d112568346990e3fbc9ec1cdbd35
+        sourceBlobDigest: sha256:4de5d60de2e4eb00ba87530056a25a50b4687f7e2aab471e34cad0d64cd25703
         tags:
             - latest
+            - speakeasy-sdk-regen-1746175255
             - "1.0"
 targets:
     novu:
         source: Novu API
         sourceNamespace: novu-api-csharp
-        sourceRevisionDigest: sha256:804a4443c1e4ec05f96a1cb087f9259022fd6d13e044dd554ad9adf1eb658054
-        sourceBlobDigest: sha256:45aad4365f4f67a8b2c14a9ff4cc5c2103831a48486abdf043bef09636d45dc8
+        sourceRevisionDigest: sha256:8eb594c182449364a6e863f1894106edd0b0d112568346990e3fbc9ec1cdbd35
+        sourceBlobDigest: sha256:4de5d60de2e4eb00ba87530056a25a50b4687f7e2aab471e34cad0d64cd25703
         codeSamplesNamespace: novu-api-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:846f1cbf32386688087cf0c6fd5f4ac8311e9d84702c586d50c18dd213395fcf
+        codeSamplesRevisionDigest: sha256:041d159a0f61eec07b18258d29392934d8b0b1fcead7feccf24dba3f3c080f34
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
