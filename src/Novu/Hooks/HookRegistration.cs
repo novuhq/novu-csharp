@@ -27,7 +27,7 @@ namespace Novu.Hooks
         {
             var myHook = new NovuCustomHook();
 
-            // hooks.RegisterSDKInitHook(myHook);
+            hooks.RegisterSDKInitHook(myHook);
             hooks.RegisterBeforeRequestHook(myHook);
             hooks.RegisterAfterSuccessHook(myHook);
             // hooks.RegisterAfterErrorHook(myHook);
