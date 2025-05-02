@@ -1,153 +1,42 @@
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text.Json;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Hooks
+namespace Novu.Hooks
 {
-    public class NovuCustomHook : 
-        IBeforeRequestHook, 
-        IAfterSuccessHook, 
-        IBeforeCreateRequestHook
+    using Novu.Utils;
+    using Novu.Models.Components;
+
+    public class ExampleHook : ISDKInitHook, IBeforeRequestHook, IAfterSuccessHook, IAfterErrorHook
     {
-        public (RequestInput requestInput, Exception error) BeforeCreateRequest(HookContext hookCtx, RequestInput input)
+        public (string, ISpeakeasyHttpClient) SDKInit(string baseURL, ISpeakeasyHttpClient client)
         {
-            const string idempotencyKey = "idempotency-key";
-            var headers = input.Options?.Headers;
-            
-            if (headers == null)
-            {
-                return (input, null);
-            }
-
-            var updatedHeaders = UpdateHeaderValue(
-                headers, 
-                idempotencyKey, 
-                GenerateIdempotencyKey
-            );
-
-            var updatedInput = new RequestInput
-            {
-                Request = input.Request,
-                Options = new RequestOptions
-                {
-                    Headers = updatedHeaders
-                }
-            };
-
-            return (updatedInput, null);
+            // modify the baseURL or wrap the client used by the SDK here and return the updated values
+            return (baseURL, client);
         }
 
-        public (HttpRequestMessage request, Exception error) BeforeRequest(BeforeRequestContext hookCtx, HttpRequestMessage request)
+        public async Task<HttpRequestMessage> BeforeRequestAsync(BeforeRequestContext hookCtx, HttpRequestMessage request)
         {
-            const string authKey = "authorization";
-            const string apiKeyPrefix = "ApiKey";
-
-            if (request.Headers.TryGetValues(authKey, out var existingValues))
-            {
-                var key = existingValues.FirstOrDefault();
-                
-                if (!string.IsNullOrEmpty(key) && !key.Contains(apiKeyPrefix))
-                {
-                    request.Headers.Remove(authKey);
-                    request.Headers.TryAddWithoutValidation(authKey, $"{apiKeyPrefix} {key}");
-                }
-            }
-
-            return (request, null);
+            // check if idempotency-key exists in the request headers and add it if not 
+        
+            return request;
         }
 
-        public async Task<(HttpResponseMessage response, Exception error)> AfterSuccess(AfterSuccessContext hookCtx, HttpResponseMessage response)
+        public async Task<HttpResponseMessage> AfterSuccessAsync(AfterSuccessContext hookCtx, HttpResponseMessage response)
         {
-            var contentType = response.Content.Headers.ContentType?.ToString() ?? string.Empty;
-            
-            // Clone the response content
-            var responseContent = await response.Content.ReadAsStringAsync();
-            
-            if (string.IsNullOrEmpty(responseContent) || contentType.Contains("text/html"))
-            {
-                return (response, null);
-            }
-
-            try
-            {
-                using var jsonDocument = JsonDocument.Parse(responseContent);
-                var root = jsonDocument.RootElement;
-
-                // Check if the response is a single 'data' property
-                if (root.ValueKind == JsonValueKind.Object && 
-                    root.EnumerateObject().Count() == 1 && 
-                    root.TryGetProperty("data", out var dataProperty))
-                {
-                    // Create a new response with just the data
-                    var newContent = new StringContent(dataProperty.GetRawText());
-                    var newResponse = new HttpResponseMessage(response.StatusCode)
-                    {
-                        Content = newContent
-                    };
-                    
-                    // Copy headers
-                    foreach (var header in response.Headers)
-                    {
-                        newResponse.Headers.TryAddWithoutValidation(header.Key, header.Value);
-                    }
-
-                    return (newResponse, null);
-                }
-            }
-            catch (JsonException)
-            {
-                // If JSON parsing fails, return original response
-                return (response, null);
-            }
-
-            return (response, null);
+            // modify the response object before deserialization or throw an exception to stop the response from being returned
+            return response;
         }
 
-        private string GenerateIdempotencyKey()
+        public async Task<(HttpResponseMessage?, Exception?)> AfterErrorAsync(AfterErrorContext hookCtx, HttpResponseMessage? response, Exception error)
         {
-            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            var randomString = Guid.NewGuid().ToString("N")[..9]; // Get first 9 characters
-            return $"{timestamp}{randomString}".Trim();
-        }
+            // modify the response before it is deserialized as a custom error
+            // return (response, null);
 
-        private Dictionary<string, string> UpdateHeaderValue(
-            Dictionary<string, string> headers, 
-            string key, 
-            Func<string> defaultValueFunction)
-        {
-            var headersRecord = new Dictionary<string, string>(headers);
+            // OR modify the exception object before it is thrown
+            // return (null, error);
 
-            if (!headersRecord.ContainsKey(key) || string.IsNullOrEmpty(headersRecord[key]))
-            {
-                headersRecord[key] = defaultValueFunction();
-            }
+            // OR abort the processing of subsequent AfterError hooks
+            // throw new FailEarlyException("return early", error);
 
-            return headersRecord;
+            // response and error cannot both be null
+            return (response, error);
         }
     }
-
-    // Supporting interfaces and classes
-    public interface IBeforeCreateRequestHook
-    {
-        (RequestInput requestInput, Exception error) BeforeCreateRequest(HookContext hookCtx, RequestInput input);
-    }
-
-    public class RequestInput
-    {
-        public HttpRequestMessage Request { get; set; }
-        public RequestOptions Options { get; set; }
-    }
-
-    public class RequestOptions
-    {
-        public Dictionary<string, string> Headers { get; set; }
-    }
-
-    // Placeholder context classes
-    public class HookContext { }
-    public class BeforeRequestContext { }
-    public class AfterSuccessContext { }
 }
