@@ -4,9 +4,11 @@ info:
   title: example overlay
   version: 0.0.0
 actions:
-  # or - adding a x-speakeasy-error-message extension
+  # changing the message field to just be a string
+  - target: $.components.schemas.ErrorDto.properties.message
+    remove: true
   - target: $.components.schemas.ErrorDto.properties
     update:
-      errorMessage:
+      message:
+        description: Value that failed validation
         type: string
-        x-speakeasy-error-message: true
