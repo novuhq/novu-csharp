@@ -61,6 +61,7 @@ namespace Novu.Models.Components
     /// 
     /// <remarks>
     /// <br/>
+    /// <br/>
     ///     If a new actor object is provided, we will create a new subscriber in our system
     /// </remarks>
     /// </summary>
