@@ -14,9 +14,9 @@ namespace Novu.Hooks
         public Task<HttpRequestMessage> BeforeRequestAsync(BeforeRequestContext hookCtx, HttpRequestMessage request)
         {
             var authHeader = request.Headers.Authorization;
-            if (authHeader != null && !string.IsNullOrEmpty(authHeader.Parameter))
+            if (authHeader != null && !string.IsNullOrEmpty(authHeader.Scheme))
             {
-                request.Headers.Authorization = new AuthenticationHeaderValue("ApiKey", authHeader.Parameter);
+                request.Headers.Authorization = new AuthenticationHeaderValue("ApiKey", authHeader.Scheme);
             }
 
             if (!request.Headers.Contains("idempotency-key"))
