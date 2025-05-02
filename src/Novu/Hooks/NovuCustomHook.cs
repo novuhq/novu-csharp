@@ -1,7 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text.Json; 
+using System.Text.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Novu.Utils;
@@ -42,13 +42,13 @@ namespace Novu.Hooks
                 var jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
 
                 if (jsonResponse.ValueKind == JsonValueKind.Object &&
-                    jsonResponse.EnumerateObject().Count() == 1 &&
+                    jsonResponse.EnumerateObject().Any() &&
                     jsonResponse.TryGetProperty("data", out var dataProperty))
                 {
                     var newContent = new StringContent(
                         dataProperty.GetRawText(),
-                        Encoding.UTF8, // Fixed Encoding usage
-                        response.Content.Headers.ContentType?.MediaType
+                        Encoding.UTF8,
+                        response.Content.Headers.ContentType?.MediaType ?? "application/json" 
                     );
                     var newResponse = new HttpResponseMessage(response.StatusCode)
                     {
