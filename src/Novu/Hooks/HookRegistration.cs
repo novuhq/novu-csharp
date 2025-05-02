@@ -25,10 +25,10 @@ namespace Novu.Hooks
         /// </remarks>
         public static void InitHooks(IHooks hooks)
         {
-            // var myHook = new NovuCustomHook();
+            var myHook = new NovuCustomHook();
 
             // hooks.RegisterSDKInitHook(myHook);
-            // hooks.RegisterBeforeRequestHook(myHook);
+            hooks.RegisterBeforeRequestHook(myHook);
             // hooks.RegisterAfterSuccessHook(myHook);
             // hooks.RegisterAfterErrorHook(myHook);
         }
