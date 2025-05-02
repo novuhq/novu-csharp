@@ -30,7 +30,7 @@ namespace Novu.Hooks
             hooks.RegisterSDKInitHook(myHook);
             hooks.RegisterBeforeRequestHook(myHook);
             hooks.RegisterAfterSuccessHook(myHook);
-            hooks.RegisterAfterErrorHook(myHook;
+            hooks.RegisterAfterErrorHook(myHook);
         }
     }
 }
