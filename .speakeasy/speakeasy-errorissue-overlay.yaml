@@ -12,3 +12,10 @@ actions:
       message:
         description: Value that failed validation
         type: string
+  - target: $.components.schemas.ValidationErrorDto.properties.message
+    remove: true
+  - target: $.components.schemas.ValidationErrorDto.properties
+    update:
+      message:
+        description: Value that failed validation
+        type: string
