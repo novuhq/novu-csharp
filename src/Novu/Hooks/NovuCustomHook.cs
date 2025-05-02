@@ -1,32 +1,16 @@
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Novu.Utils;
+using Novu.Models.Components;
 
 namespace Novu.Hooks
 {
-    public class NovuCustomHook : IBeforeRequestHook, IAfterSuccessHook, ISDKInitHook
+    public class NovuCustomHook : IBeforeRequestHook, IAfterSuccessHook
     {
-        public (string, ISpeakeasyHttpClient) SDKInit(string baseUrl, ISpeakeasyHttpClient client)
-        {
-            // Wrap the client if it doesn't support DefaultHeaders
-            var extendedClient = client as ExtendedSpeakeasyHttpClient ?? new ExtendedSpeakeasyHttpClient(client);
-
-            if (!extendedClient.DefaultHeaders.TryGetValue("Authorization", out var authHeader))
-                return (baseUrl, extendedClient);
-            if (!string.IsNullOrEmpty(authHeader) &&
-                !authHeader.StartsWith("apikey ", StringComparison.OrdinalIgnoreCase))
-            {
-                extendedClient.DefaultHeaders["Authorization"] = $"apikey {authHeader}";
-            }
-
-            return (baseUrl, extendedClient);
-        }
-
         public Task<HttpRequestMessage> BeforeRequestAsync(BeforeRequestContext hookCtx, HttpRequestMessage request)
         {
             var authHeader = request.Headers.Authorization;
@@ -43,8 +27,7 @@ namespace Novu.Hooks
             return Task.FromResult(request);
         }
 
-        public async Task<HttpResponseMessage> AfterSuccessAsync(AfterSuccessContext hookCtx,
-            HttpResponseMessage response)
+        public async Task<HttpResponseMessage> AfterSuccessAsync(AfterSuccessContext hookCtx, HttpResponseMessage response)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
             var contentType = response.Content.Headers.ContentType?.MediaType ?? string.Empty;
@@ -83,30 +66,9 @@ namespace Novu.Hooks
             }
             catch (JsonException ex)
             {
-                await Console.Error.WriteLineAsync($"JSON parsing error: {ex.Message}");
+                Console.Error.WriteLine($"JSON parsing error: {ex.Message}");
             }
-
             return response;
         }
-    }
-}
-
-internal class ExtendedSpeakeasyHttpClient(ISpeakeasyHttpClient client) : ISpeakeasyHttpClient
-{
-    public Dictionary<string, string> DefaultHeaders { get; set; } = new Dictionary<string, string>();
-
-    public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
-    {
-        // Apply DefaultHeaders to the request if needed
-        foreach (var header in DefaultHeaders)
-        {
-            request.Headers.TryAddWithoutValidation(header.Key, header.Value);
-        }
-        return await client.SendAsync(request);
-    }
-
-    public Task<HttpRequestMessage> CloneAsync(HttpRequestMessage request)
-    {
-        return client.CloneAsync(request);
     }
 }
