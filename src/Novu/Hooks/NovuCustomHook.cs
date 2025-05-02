@@ -3,7 +3,7 @@ namespace Novu.Hooks
     using Novu.Utils;
     using Novu.Models.Components;
 
-    public class ExampleHook : ISDKInitHook, IBeforeRequestHook, IAfterSuccessHook, IAfterErrorHook
+    public class NovuCustomHook : ISDKInitHook, IBeforeRequestHook, IAfterSuccessHook, IAfterErrorHook
     {
         public async Task<HttpRequestMessage> BeforeRequestAsync(BeforeRequestContext hookCtx, HttpRequestMessage request)
         {
