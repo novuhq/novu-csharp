@@ -42,7 +42,7 @@ namespace Novu.Models.Errors
         /// </summary>
         [JsonProperty("message")]
         private string? _message { get; set; }
-        public override ValidationErrorDtoMessage Message { get {return _message ?? "";} }
+        public override Message Message { get {return _message ?? "";} }
 
         /// <summary>
         /// Optional context object for additional error details.

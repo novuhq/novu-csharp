@@ -10,8 +10,6 @@
 namespace Novu.Models.Errors
 {
     using Newtonsoft.Json;
-    using Novu.Models.Components;
-    using Novu.Models.Errors;
     using Novu.Utils;
     using System;
     using System.Collections.Generic;
@@ -38,13 +36,6 @@ namespace Novu.Models.Errors
         public string Path { get; set; } = default!;
 
         /// <summary>
-        /// Value that failed validation
-        /// </summary>
-        [JsonProperty("message")]
-        private string? _message { get; set; }
-        public override Message Message { get {return _message ?? "";} }
-
-        /// <summary>
         /// Optional context object for additional error details.
         /// </summary>
         [JsonProperty("ctx")]
@@ -59,5 +50,12 @@ namespace Novu.Models.Errors
         /// </summary>
         [JsonProperty("errorId")]
         public string? ErrorId { get; set; }
+
+        /// <summary>
+        /// Value that failed validation
+        /// </summary>
+        [JsonProperty("message")]
+        private string? _message { get; set; }
+        public override string Message { get {return _message ?? "";} }
     }
 }
