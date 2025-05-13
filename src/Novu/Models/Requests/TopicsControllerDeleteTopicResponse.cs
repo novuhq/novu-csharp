@@ -20,6 +20,11 @@ namespace Novu.Models.Requests
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
+        /// <summary>
+        /// Topic deleted successfully
+        /// </summary>
+        public DeleteTopicResponseDto? DeleteTopicResponseDto { get; set; }
+
         public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }
 }

@@ -115,5 +115,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("to")]
         public ActivityNotificationResponseDtoTo? To { get; set; }
+
+        /// <summary>
+        /// Topics of the notification
+        /// </summary>
+        [JsonProperty("topics")]
+        public List<ActivityTopicDto>? Topics { get; set; }
     }
 }

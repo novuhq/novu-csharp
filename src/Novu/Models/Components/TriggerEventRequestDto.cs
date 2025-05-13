@@ -38,7 +38,7 @@ namespace Novu.Models.Components
         /// This could be used to override provider specific configurations
         /// </summary>
         [JsonProperty("overrides")]
-        public Dictionary<string, Dictionary<string, object>>? Overrides { get; set; }
+        public Overrides? Overrides { get; set; }
 
         /// <summary>
         /// The recipients list of people who will receive the notification.

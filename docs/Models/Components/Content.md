@@ -5,10 +5,10 @@ Content of the message, can be an email block or a string
 
 ## Supported Types
 
-### EmailBlock
+### ArrayOfEmailBlock
 
 ```csharp
-Content.CreateEmailBlock(/* values here */);
+Content.CreateArrayOfEmailBlock(/* values here */);
 ```
 
 ### Str

@@ -8,86 +8,37 @@ Topics are a way to group subscribers together so that they can be notified of e
 
 ### Available Operations
 
-* [Create](#create) - Topic creation
-* [List](#list) - Get topic list filtered 
-* [Delete](#delete) - Delete topic
-* [Get](#get) - Get topic
-* [Rename](#rename) - Rename a topic
-
-## Create
-
-Create a topic
-
-### Example Usage
-
-```csharp
-using Novu;
-using Novu.Models.Components;
-
-var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
-
-var res = await sdk.Topics.CreateAsync(
-    createTopicRequestDto: new CreateTopicRequestDto() {
-        Key = "<key>",
-        Name = "<value>",
-    },
-    idempotencyKey: "<value>"
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `CreateTopicRequestDto`                                                   | [CreateTopicRequestDto](../../Models/Components/CreateTopicRequestDto.md) | :heavy_check_mark:                                                        | N/A                                                                       |
-| `IdempotencyKey`                                                          | *string*                                                                  | :heavy_minus_sign:                                                        | A header for idempotency purposes                                         |
-
-### Response
-
-**[TopicsControllerCreateTopicResponse](../../Models/Requests/TopicsControllerCreateTopicResponse.md)**
-
-### Errors
-
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+* [List](#list) - Get topics list
+* [Create](#create) - Create or update a topic
+* [Get](#get) - Get topic by key
+* [Update](#update) - Update topic by key
+* [Delete](#delete) - Delete topic by key
 
 ## List
 
-Returns a list of topics that can be paginated using the `page` query parameter and filtered by the topic key with the `key` query parameter
+Get topics list
 
 ### Example Usage
 
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Topics.ListAsync(
-    page: 0,
-    pageSize: 10,
-    key: "exampleKey",
-    idempotencyKey: "<value>"
-);
+TopicsControllerListTopicsRequest req = new TopicsControllerListTopicsRequest() {};
+
+var res = await sdk.Topics.ListAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `Page`                                               | *long*                                               | :heavy_minus_sign:                                   | The page number to retrieve (starts from 0)          | 0                                                    |
-| `PageSize`                                           | *long*                                               | :heavy_minus_sign:                                   | The number of items to return per page (default: 10) | 10                                                   |
-| `Key`                                                | *string*                                             | :heavy_minus_sign:                                   | A filter key to apply to the results                 | exampleKey                                           |
-| `IdempotencyKey`                                     | *string*                                             | :heavy_minus_sign:                                   | A header for idempotency purposes                    |                                                      |
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [TopicsControllerListTopicsRequest](../../Models/Requests/TopicsControllerListTopicsRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
 
 ### Response
 
@@ -103,9 +54,9 @@ var res = await sdk.Topics.ListAsync(
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
 
-## Delete
+## Create
 
-Delete a topic by its topic key if it has no subscribers
+Creates a new topic if it does not exist, or updates an existing topic if it already exists
 
 ### Example Usage
 
@@ -115,8 +66,11 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Topics.DeleteAsync(
-    topicKey: "<value>",
+var res = await sdk.Topics.CreateAsync(
+    createUpdateTopicRequestDto: new CreateUpdateTopicRequestDto() {
+        Key = "task:12345",
+        Name = "Task Title",
+    },
     idempotencyKey: "<value>"
 );
 
@@ -125,14 +79,14 @@ var res = await sdk.Topics.DeleteAsync(
 
 ### Parameters
 
-| Parameter                         | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `TopicKey`                        | *string*                          | :heavy_check_mark:                | The topic key                     |
-| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `CreateUpdateTopicRequestDto`                                                         | [CreateUpdateTopicRequestDto](../../Models/Components/CreateUpdateTopicRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `IdempotencyKey`                                                                      | *string*                                                                              | :heavy_minus_sign:                                                                    | A header for idempotency purposes                                                     |
 
 ### Response
 
-**[TopicsControllerDeleteTopicResponse](../../Models/Requests/TopicsControllerDeleteTopicResponse.md)**
+**[TopicsControllerUpsertTopicResponse](../../Models/Requests/TopicsControllerUpsertTopicResponse.md)**
 
 ### Errors
 
@@ -146,7 +100,7 @@ var res = await sdk.Topics.DeleteAsync(
 
 ## Get
 
-Get a topic by its topic key
+Get topic by key
 
 ### Example Usage
 
@@ -168,7 +122,7 @@ var res = await sdk.Topics.GetAsync(
 
 | Parameter                         | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `TopicKey`                        | *string*                          | :heavy_check_mark:                | The topic key                     |
+| `TopicKey`                        | *string*                          | :heavy_check_mark:                | The key identifier of the topic   |
 | `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
 
 ### Response
@@ -185,9 +139,9 @@ var res = await sdk.Topics.GetAsync(
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
 
-## Rename
+## Update
 
-Rename a topic by providing a new name
+Update topic by key
 
 ### Example Usage
 
@@ -197,10 +151,10 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Topics.RenameAsync(
+var res = await sdk.Topics.UpdateAsync(
     topicKey: "<value>",
-    renameTopicRequestDto: new RenameTopicRequestDto() {
-        Name = "<value>",
+    updateTopicRequestDto: new UpdateTopicRequestDto() {
+        Name = "Updated Topic Name",
     },
     idempotencyKey: "<value>"
 );
@@ -212,13 +166,54 @@ var res = await sdk.Topics.RenameAsync(
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `TopicKey`                                                                | *string*                                                                  | :heavy_check_mark:                                                        | The topic key                                                             |
-| `RenameTopicRequestDto`                                                   | [RenameTopicRequestDto](../../Models/Components/RenameTopicRequestDto.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `TopicKey`                                                                | *string*                                                                  | :heavy_check_mark:                                                        | The key identifier of the topic                                           |
+| `UpdateTopicRequestDto`                                                   | [UpdateTopicRequestDto](../../Models/Components/UpdateTopicRequestDto.md) | :heavy_check_mark:                                                        | N/A                                                                       |
 | `IdempotencyKey`                                                          | *string*                                                                  | :heavy_minus_sign:                                                        | A header for idempotency purposes                                         |
 
 ### Response
 
-**[TopicsControllerRenameTopicResponse](../../Models/Requests/TopicsControllerRenameTopicResponse.md)**
+**[TopicsControllerUpdateTopicResponse](../../Models/Requests/TopicsControllerUpdateTopicResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
+## Delete
+
+Delete topic by key
+
+### Example Usage
+
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Topics.DeleteAsync(
+    topicKey: "<value>",
+    idempotencyKey: "<value>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                         | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `TopicKey`                        | *string*                          | :heavy_check_mark:                | The key identifier of the topic   |
+| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
+
+### Response
+
+**[TopicsControllerDeleteTopicResponse](../../Models/Requests/TopicsControllerDeleteTopicResponse.md)**
 
 ### Errors
 

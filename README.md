@@ -79,13 +79,7 @@ var res = await sdk.TriggerAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Dictionary<string, Dictionary<string, object>>() {
-            { "fcm", new Dictionary<string, object>() {
-                { "data", new Dictionary<string, object>() {
-                    { "key", "value" },
-                } },
-            } },
-        },
+        Overrides = new Overrides() {},
         To = To.CreateSubscriberPayloadDto(
             new SubscriberPayloadDto() {
                 SubscriberId = "<id>",
@@ -132,7 +126,15 @@ var res = await sdk.BroadcastAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Overrides() {},
+        Overrides = new TriggerEventToAllRequestDtoOverrides() {
+            AdditionalProperties = new Dictionary<string, Dictionary<string, object>>() {
+                { "fcm", new Dictionary<string, object>() {
+                    { "data", new Dictionary<string, object>() {
+                        { "key", "value" },
+                    } },
+                } },
+            },
+        },
     },
     idempotencyKey: "<value>"
 );
@@ -160,13 +162,7 @@ var res = await sdk.TriggerBulkAsync(
                         { "text", "string" },
                     } },
                 },
-                Overrides = new Dictionary<string, Dictionary<string, object>>() {
-                    { "fcm", new Dictionary<string, object>() {
-                        { "data", new Dictionary<string, object>() {
-                            { "key", "value" },
-                        } },
-                    } },
-                },
+                Overrides = new Overrides() {},
                 To = To.CreateTopicPayloadDto(
                     new TopicPayloadDto() {
                         TopicKey = "<value>",
@@ -211,13 +207,7 @@ var res = await sdk.TriggerAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Dictionary<string, Dictionary<string, object>>() {
-            { "fcm", new Dictionary<string, object>() {
-                { "data", new Dictionary<string, object>() {
-                    { "key", "value" },
-                } },
-            } },
-        },
+        Overrides = new Overrides() {},
         To = To.CreateSubscriberPayloadDto(
             new SubscriberPayloadDto() {
                 SubscriberId = "<id>",
@@ -286,6 +276,10 @@ var res = await sdk.TriggerAsync(
 * [GetChatAccessOauth](docs/sdks/subscribers/README.md#getchataccessoauth) - Handle chat oauth
 * [UpdateOnlineStatus](docs/sdks/subscribers/README.md#updateonlinestatus) - Update subscriber online status
 
+#### [Subscribers.Topics](docs/sdks/novutopics/README.md)
+
+* [List](docs/sdks/novutopics/README.md#list) - List topics a subscriber is subscribed to
+
 ### [SubscribersAuthentication](docs/sdks/subscribersauthentication/README.md)
 
 * [OauthCallback](docs/sdks/subscribersauthentication/README.md#oauthcallback) - Handle providers oauth redirect
@@ -293,7 +287,7 @@ var res = await sdk.TriggerAsync(
 ### [SubscribersMessages](docs/sdks/subscribersmessages/README.md)
 
 * [UpdateAction](docs/sdks/subscribersmessages/README.md#updateaction) - Mark message action as seen
-* [MarkAll](docs/sdks/subscribersmessages/README.md#markall) - Marks all the subscriber messages as read, unread, seen or unseen. Optionally you can pass feed id (or array) to mark messages of a particular feed.
+* [MarkAll](docs/sdks/subscribersmessages/README.md#markall) - Marks all the subscriber messages as read, unread, seen or unseen.
 * [MarkAllAs](docs/sdks/subscribersmessages/README.md#markallas) - Mark a subscriber messages as seen, read, unseen or unread
 
 ### [SubscribersNotifications](docs/sdks/subscribersnotifications/README.md)
@@ -308,17 +302,21 @@ var res = await sdk.TriggerAsync(
 
 ### [Topics](docs/sdks/topics/README.md)
 
-* [Create](docs/sdks/topics/README.md#create) - Topic creation
-* [List](docs/sdks/topics/README.md#list) - Get topic list filtered 
-* [Delete](docs/sdks/topics/README.md#delete) - Delete topic
-* [Get](docs/sdks/topics/README.md#get) - Get topic
-* [Rename](docs/sdks/topics/README.md#rename) - Rename a topic
+* [List](docs/sdks/topics/README.md#list) - Get topics list
+* [Create](docs/sdks/topics/README.md#create) - Create or update a topic
+* [Get](docs/sdks/topics/README.md#get) - Get topic by key
+* [Update](docs/sdks/topics/README.md#update) - Update topic by key
+* [Delete](docs/sdks/topics/README.md#delete) - Delete topic by key
+
+#### [Topics.Subscriptions](docs/sdks/subscriptions/README.md)
+
+* [List](docs/sdks/subscriptions/README.md#list) - List topic subscriptions
+* [Create](docs/sdks/subscriptions/README.md#create) - Create topic subscriptions, if the topic does not exist, it will be created.
+* [Delete](docs/sdks/subscriptions/README.md#delete) - Delete topic subscriptions
 
 ### [TopicsSubscribers](docs/sdks/topicssubscribers/README.md)
 
-* [Add](docs/sdks/topicssubscribers/README.md#add) - Subscribers addition
 * [Get](docs/sdks/topicssubscribers/README.md#get) - Check topic subscriber
-* [Remove](docs/sdks/topicssubscribers/README.md#remove) - Subscribers removal
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -385,13 +383,7 @@ var res = await sdk.TriggerAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Dictionary<string, Dictionary<string, object>>() {
-            { "fcm", new Dictionary<string, object>() {
-                { "data", new Dictionary<string, object>() {
-                    { "key", "value" },
-                } },
-            } },
-        },
+        Overrides = new Overrides() {},
         To = To.CreateSubscriberPayloadDto(
             new SubscriberPayloadDto() {
                 SubscriberId = "<id>",
@@ -433,13 +425,7 @@ var res = await sdk.TriggerAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Dictionary<string, Dictionary<string, object>>() {
-            { "fcm", new Dictionary<string, object>() {
-                { "data", new Dictionary<string, object>() {
-                    { "key", "value" },
-                } },
-            } },
-        },
+        Overrides = new Overrides() {},
         To = To.CreateSubscriberPayloadDto(
             new SubscriberPayloadDto() {
                 SubscriberId = "<id>",
@@ -497,13 +483,7 @@ try
                     { "text", "string" },
                 } },
             },
-            Overrides = new Dictionary<string, Dictionary<string, object>>() {
-                { "fcm", new Dictionary<string, object>() {
-                    { "data", new Dictionary<string, object>() {
-                        { "key", "value" },
-                    } },
-                } },
-            },
+            Overrides = new Overrides() {},
             To = To.CreateSubscriberPayloadDto(
                 new SubscriberPayloadDto() {
                     SubscriberId = "<id>",
@@ -579,13 +559,7 @@ var res = await sdk.TriggerAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Dictionary<string, Dictionary<string, object>>() {
-            { "fcm", new Dictionary<string, object>() {
-                { "data", new Dictionary<string, object>() {
-                    { "key", "value" },
-                } },
-            } },
-        },
+        Overrides = new Overrides() {},
         To = To.CreateSubscriberPayloadDto(
             new SubscriberPayloadDto() {
                 SubscriberId = "<id>",
@@ -607,7 +581,7 @@ using Novu.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new NovuSDK(
-    serverUrl: "https://api.novu.co",
+    serverUrl: "https://eu.api.novu.co",
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
@@ -620,13 +594,7 @@ var res = await sdk.TriggerAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Dictionary<string, Dictionary<string, object>>() {
-            { "fcm", new Dictionary<string, object>() {
-                { "data", new Dictionary<string, object>() {
-                    { "key", "value" },
-                } },
-            } },
-        },
+        Overrides = new Overrides() {},
         To = To.CreateSubscriberPayloadDto(
             new SubscriberPayloadDto() {
                 SubscriberId = "<id>",

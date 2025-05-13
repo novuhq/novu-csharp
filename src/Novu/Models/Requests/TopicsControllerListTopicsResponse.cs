@@ -20,7 +20,10 @@ namespace Novu.Models.Requests
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
-        public FilterTopicsResponseDto? FilterTopicsResponseDto { get; set; }
+        /// <summary>
+        /// OK
+        /// </summary>
+        public ListTopicsResponseDto? ListTopicsResponseDto { get; set; }
 
         public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }

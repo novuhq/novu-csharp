@@ -15,7 +15,7 @@ namespace Novu.Models.Requests
     {
 
         /// <summary>
-        /// The topic key
+        /// The key identifier of the topic
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=topicKey")]
         public string TopicKey { get; set; } = default!;

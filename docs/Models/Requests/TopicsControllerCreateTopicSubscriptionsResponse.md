@@ -1,0 +1,10 @@
+# TopicsControllerCreateTopicSubscriptionsResponse
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                            | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                               | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `CreateTopicSubscriptionsResponseDto`                                                                 | [CreateTopicSubscriptionsResponseDto](../../Models/Components/CreateTopicSubscriptionsResponseDto.md) | :heavy_minus_sign:                                                                                    | Subscriptions created successfully                                                                    |
+| `Headers`                                                                                             | Dictionary<String, List<*string*>>                                                                    | :heavy_check_mark:                                                                                    | N/A                                                                                                   |

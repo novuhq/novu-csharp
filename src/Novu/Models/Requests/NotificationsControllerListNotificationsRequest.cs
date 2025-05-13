@@ -67,6 +67,12 @@ namespace Novu.Models.Requests
         public string? TransactionId { get; set; }
 
         /// <summary>
+        /// Topic Key for filtering notifications by topic
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=topicKey")]
+        public string? TopicKey { get; set; }
+
+        /// <summary>
         /// Date filter for records after this timestamp. Defaults to earliest date allowed by subscription plan
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after")]
