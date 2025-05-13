@@ -23,7 +23,7 @@ namespace Novu.Models.Requests
         /// <summary>
         /// OK
         /// </summary>
-        public GetTopicResponseDto? GetTopicResponseDto { get; set; }
+        public TopicResponseDto? TopicResponseDto { get; set; }
 
         public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }

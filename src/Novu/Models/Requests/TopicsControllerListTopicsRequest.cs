@@ -9,28 +9,59 @@
 #nullable enable
 namespace Novu.Models.Requests
 {
+    using Novu.Models.Requests;
     using Novu.Utils;
     
     public class TopicsControllerListTopicsRequest
     {
 
         /// <summary>
-        /// The page number to retrieve (starts from 0)
+        /// Cursor for pagination indicating the starting point after which to fetch results.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")]
-        public long? Page { get; set; } = 0;
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after")]
+        public string? After { get; set; }
 
         /// <summary>
-        /// The number of items to return per page (default: 10)
+        /// Cursor for pagination indicating the ending point before which to fetch results.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=pageSize")]
-        public long? PageSize { get; set; } = 10;
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=before")]
+        public string? Before { get; set; }
 
         /// <summary>
-        /// A filter key to apply to the results
+        /// Limit the number of items to return (max 100)
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
+        public double? Limit { get; set; }
+
+        /// <summary>
+        /// Direction of sorting
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderDirection")]
+        public TopicsControllerListTopicsQueryParamOrderDirection? OrderDirection { get; set; }
+
+        /// <summary>
+        /// Field to order by
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderBy")]
+        public string? OrderBy { get; set; }
+
+        /// <summary>
+        /// Include cursor item in response
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeCursor")]
+        public bool? IncludeCursor { get; set; }
+
+        /// <summary>
+        /// Key of the topic to filter results.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=key")]
         public string? Key { get; set; }
+
+        /// <summary>
+        /// Name of the topic to filter results.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// A header for idempotency purposes

@@ -26,7 +26,7 @@ namespace Novu.Models.Components
         /// Data associated with the call to action
         /// </summary>
         [JsonProperty("data")]
-        public MessageCTAData Data { get; set; } = default!;
+        public MessageCTAData? Data { get; set; }
 
         /// <summary>
         /// Action associated with the call to action

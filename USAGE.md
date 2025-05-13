@@ -17,13 +17,7 @@ var res = await sdk.TriggerAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Dictionary<string, Dictionary<string, object>>() {
-            { "fcm", new Dictionary<string, object>() {
-                { "data", new Dictionary<string, object>() {
-                    { "key", "value" },
-                } },
-            } },
-        },
+        Overrides = new Overrides() {},
         To = To.CreateSubscriberPayloadDto(
             new SubscriberPayloadDto() {
                 SubscriberId = "<id>",
@@ -70,7 +64,15 @@ var res = await sdk.BroadcastAsync(
                 { "text", "string" },
             } },
         },
-        Overrides = new Overrides() {},
+        Overrides = new TriggerEventToAllRequestDtoOverrides() {
+            AdditionalProperties = new Dictionary<string, Dictionary<string, object>>() {
+                { "fcm", new Dictionary<string, object>() {
+                    { "data", new Dictionary<string, object>() {
+                        { "key", "value" },
+                    } },
+                } },
+            },
+        },
     },
     idempotencyKey: "<value>"
 );
@@ -98,13 +100,7 @@ var res = await sdk.TriggerBulkAsync(
                         { "text", "string" },
                     } },
                 },
-                Overrides = new Dictionary<string, Dictionary<string, object>>() {
-                    { "fcm", new Dictionary<string, object>() {
-                        { "data", new Dictionary<string, object>() {
-                            { "key", "value" },
-                        } },
-                    } },
-                },
+                Overrides = new Overrides() {},
                 To = To.CreateTopicPayloadDto(
                     new TopicPayloadDto() {
                         TopicKey = "<value>",

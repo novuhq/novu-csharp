@@ -24,7 +24,7 @@ namespace Novu.Models.Components
         private ContentType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        public static ContentType EmailBlock { get { return new ContentType("EmailBlock"); } }
+        public static ContentType ArrayOfEmailBlock { get { return new ContentType("arrayOfEmailBlock"); } }
         
         public static ContentType Str { get { return new ContentType("str"); } }
         
@@ -34,7 +34,7 @@ namespace Novu.Models.Components
         public static implicit operator String(ContentType v) { return v.Value; }
         public static ContentType FromString(string v) {
             switch(v) {
-                case "EmailBlock": return EmailBlock;
+                case "arrayOfEmailBlock": return ArrayOfEmailBlock;
                 case "str": return Str;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ContentType");
@@ -66,7 +66,7 @@ namespace Novu.Models.Components
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public EmailBlock? EmailBlock { get; set; }
+        public List<EmailBlock>? ArrayOfEmailBlock { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public string? Str { get; set; }
@@ -74,11 +74,11 @@ namespace Novu.Models.Components
         public ContentType Type { get; set; }
 
 
-        public static Content CreateEmailBlock(EmailBlock emailBlock) {
-            ContentType typ = ContentType.EmailBlock;
+        public static Content CreateArrayOfEmailBlock(List<EmailBlock> arrayOfEmailBlock) {
+            ContentType typ = ContentType.ArrayOfEmailBlock;
 
             Content res = new Content(typ);
-            res.EmailBlock = emailBlock;
+            res.ArrayOfEmailBlock = arrayOfEmailBlock;
             return res;
         }
 
@@ -114,14 +114,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new Content(ContentType.EmailBlock)
+                    return new Content(ContentType.ArrayOfEmailBlock)
                     {
-                        EmailBlock = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<EmailBlock>(json)
+                        ArrayOfEmailBlock = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<EmailBlock>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(EmailBlock), new Content(ContentType.EmailBlock), "EmailBlock"));
+                    fallbackCandidates.Add((typeof(List<EmailBlock>), new Content(ContentType.ArrayOfEmailBlock), "ArrayOfEmailBlock"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -174,9 +174,9 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
-                if (res.EmailBlock != null)
+                if (res.ArrayOfEmailBlock != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.EmailBlock));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfEmailBlock));
                     return;
                 }
                 if (res.Str != null)

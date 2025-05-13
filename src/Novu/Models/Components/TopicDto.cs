@@ -11,27 +11,26 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    using System.Collections.Generic;
     
     public class TopicDto
     {
 
+        /// <summary>
+        /// The internal unique identifier of the topic
+        /// </summary>
         [JsonProperty("_id")]
-        public string? Id { get; set; }
+        public string Id { get; set; } = default!;
 
-        [JsonProperty("_organizationId")]
-        public string OrganizationId { get; set; } = default!;
-
-        [JsonProperty("_environmentId")]
-        public string EnvironmentId { get; set; } = default!;
-
+        /// <summary>
+        /// The key identifier of the topic used in your application. Should be unique on the environment level.
+        /// </summary>
         [JsonProperty("key")]
         public string Key { get; set; } = default!;
 
+        /// <summary>
+        /// The name of the topic
+        /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; } = default!;
-
-        [JsonProperty("subscribers")]
-        public List<string> Subscribers { get; set; } = default!;
+        public string? Name { get; set; }
     }
 }

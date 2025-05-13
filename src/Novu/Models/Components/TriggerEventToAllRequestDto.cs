@@ -38,7 +38,7 @@ namespace Novu.Models.Components
         /// This could be used to override provider specific configurations
         /// </summary>
         [JsonProperty("overrides")]
-        public Overrides? Overrides { get; set; }
+        public TriggerEventToAllRequestDtoOverrides? Overrides { get; set; }
 
         /// <summary>
         /// A unique identifier for this transaction, we will generated a UUID if not provided.

@@ -26,6 +26,7 @@ namespace Novu
 
     public interface ISubscribers
     {
+        public INovuTopics Topics { get; }
 
         /// <summary>
         /// Search for subscribers
@@ -36,7 +37,7 @@ namespace Novu
         /// Create subscriber
         /// 
         /// <remarks>
-        /// Create subscriber with the given data
+        /// Create subscriber with the given data, if the subscriber already exists, it will be updated
         /// </remarks>
         /// </summary>
         Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(CreateSubscriberRequestDto createSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -147,13 +148,14 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.6";
-        private const string _sdkGenVersion = "2.596.2";
-        private const string _openapiDocVersion = "1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.6 2.596.2 1.0 Novu";
+        private const string _sdkVersion = "2.0.0";
+        private const string _sdkGenVersion = "2.599.0";
+        private const string _openapiDocVersion = "2.1.13";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;
+        public INovuTopics Topics { get; private set; }
 
         public Subscribers(ISpeakeasyHttpClient client, Func<Novu.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
         {
@@ -161,6 +163,7 @@ namespace Novu
             _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
+            Topics = new NovuTopics(_client, _securitySource, _serverUrl, SDKConfiguration);
         }
 
         public async Task<SubscribersControllerSearchSubscribersResponse> SearchAsync(SubscribersControllerSearchSubscribersRequest? request = null, RetryConfig? retryConfig = null)

@@ -1,0 +1,10 @@
+# DeleteTopicSubscriptionsResponseDto
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `Data`                                                                                      | List<[SubscriptionDto](../../Models/Components/SubscriptionDto.md)>                         | :heavy_check_mark:                                                                          | The list of successfully deleted subscriptions                                              |
+| `Meta`                                                                                      | [MetaDto](../../Models/Components/MetaDto.md)                                               | :heavy_check_mark:                                                                          | Metadata about the operation                                                                |
+| `Errors`                                                                                    | List<[SubscriptionsDeleteErrorDto](../../Models/Components/SubscriptionsDeleteErrorDto.md)> | :heavy_minus_sign:                                                                          | The list of errors for failed deletion attempts                                             |
