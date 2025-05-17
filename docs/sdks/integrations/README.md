@@ -67,7 +67,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.Integrations.CreateAsync(
     createIntegrationRequestDto: new CreateIntegrationRequestDto() {
         ProviderId = "<id>",
-        Channel = CreateIntegrationRequestDtoChannel.Sms,
+        Channel = CreateIntegrationRequestDtoChannel.Email,
     },
     idempotencyKey: "<value>"
 );

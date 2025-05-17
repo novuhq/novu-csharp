@@ -104,7 +104,7 @@ using Novu.Models.Components;
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Notifications.GetGraphStatsAsync(
-    days: 8832.45D,
+    days: 6559.5D,
     idempotencyKey: "<value>"
 );
 

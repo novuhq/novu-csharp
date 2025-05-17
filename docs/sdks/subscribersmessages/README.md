@@ -71,7 +71,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.SubscribersMessages.MarkAllAsync(
     subscriberId: "<id>",
     markAllMessageAsRequestDto: new MarkAllMessageAsRequestDto() {
-        MarkAs = MarkAs.Seen,
+        MarkAs = MarkAs.Read,
     },
     idempotencyKey: "<value>"
 );
@@ -110,16 +110,19 @@ Mark a subscriber messages as seen, read, unseen or unread
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.SubscribersMessages.MarkAllAsAsync(
     subscriberId: "<id>",
     messageMarkAsRequestDto: new MessageMarkAsRequestDto() {
-        MessageId = MessageId.CreateStr(
-            "<id>"
+        MessageId = MessageId.CreateArrayOfStr(
+            new List<string>() {
+                "<id>",
+            }
         ),
-        MarkAs = MessageMarkAsRequestDtoMarkAs.Unread,
+        MarkAs = MessageMarkAsRequestDtoMarkAs.Read,
     },
     idempotencyKey: "<value>"
 );

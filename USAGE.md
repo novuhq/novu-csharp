@@ -18,9 +18,14 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
+        To = To.CreateArrayOf1(
+            new List<One>() {
+                One.CreateTopicPayloadDto(
+                    new TopicPayloadDto() {
+                        TopicKey = "<value>",
+                        Type = TriggerRecipientsTypeEnum.Subscriber,
+                    }
+                ),
             }
         ),
     },

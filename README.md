@@ -80,9 +80,14 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
+        To = To.CreateArrayOf1(
+            new List<One>() {
+                One.CreateTopicPayloadDto(
+                    new TopicPayloadDto() {
+                        TopicKey = "<value>",
+                        Type = TriggerRecipientsTypeEnum.Subscriber,
+                    }
+                ),
             }
         ),
     },
@@ -208,9 +213,14 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
+        To = To.CreateArrayOf1(
+            new List<One>() {
+                One.CreateTopicPayloadDto(
+                    new TopicPayloadDto() {
+                        TopicKey = "<value>",
+                        Type = TriggerRecipientsTypeEnum.Subscriber,
+                    }
+                ),
             }
         ),
     },
@@ -337,7 +347,7 @@ using Novu.Models.Requests;
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 SubscribersV1ControllerListSubscribersResponse? res = await sdk.Subscribers.GetAllAsync(
-    page: 4610.08D,
+    page: 1980.01D,
     limit: 10D,
     idempotencyKey: "<value>"
 );
@@ -384,9 +394,14 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
+        To = To.CreateArrayOf1(
+            new List<One>() {
+                One.CreateTopicPayloadDto(
+                    new TopicPayloadDto() {
+                        TopicKey = "<value>",
+                        Type = TriggerRecipientsTypeEnum.Subscriber,
+                    }
+                ),
             }
         ),
     },
@@ -426,9 +441,14 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
+        To = To.CreateArrayOf1(
+            new List<One>() {
+                One.CreateTopicPayloadDto(
+                    new TopicPayloadDto() {
+                        TopicKey = "<value>",
+                        Type = TriggerRecipientsTypeEnum.Subscriber,
+                    }
+                ),
             }
         ),
     },
@@ -484,9 +504,14 @@ try
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateSubscriberPayloadDto(
-                new SubscriberPayloadDto() {
-                    SubscriberId = "<id>",
+            To = To.CreateArrayOf1(
+                new List<One>() {
+                    One.CreateTopicPayloadDto(
+                        new TopicPayloadDto() {
+                            TopicKey = "<value>",
+                            Type = TriggerRecipientsTypeEnum.Subscriber,
+                        }
+                    ),
                 }
             ),
         },
@@ -560,9 +585,14 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
+        To = To.CreateArrayOf1(
+            new List<One>() {
+                One.CreateTopicPayloadDto(
+                    new TopicPayloadDto() {
+                        TopicKey = "<value>",
+                        Type = TriggerRecipientsTypeEnum.Subscriber,
+                    }
+                ),
             }
         ),
     },
@@ -595,9 +625,14 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
+        To = To.CreateArrayOf1(
+            new List<One>() {
+                One.CreateTopicPayloadDto(
+                    new TopicPayloadDto() {
+                        TopicKey = "<value>",
+                        Type = TriggerRecipientsTypeEnum.Subscriber,
+                    }
+                ),
             }
         ),
     },
