@@ -241,7 +241,7 @@ using Novu.Models.Requests;
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 SubscribersV1ControllerListSubscribersResponse? res = await sdk.Subscribers.GetAllAsync(
-    page: 4610.08D,
+    page: 1980.01D,
     limit: 10D,
     idempotencyKey: "<value>"
 );
@@ -404,7 +404,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.Subscribers.UpdateCredentialsAsync(
     subscriberId: "<id>",
     updateSubscriberChannelRequestDto: new UpdateSubscriberChannelRequestDto() {
-        ProviderId = ChatOrPushProviderEnum.PushWebhook,
+        ProviderId = ChatOrPushProviderEnum.Slack,
         Credentials = new ChannelCredentials() {
             WebhookUrl = "https://example.com/webhook",
             Channel = "general",
@@ -467,7 +467,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.Subscribers.AppendCredentialsAsync(
     subscriberId: "<id>",
     updateSubscriberChannelRequestDto: new UpdateSubscriberChannelRequestDto() {
-        ProviderId = ChatOrPushProviderEnum.Slack,
+        ProviderId = ChatOrPushProviderEnum.OneSignal,
         Credentials = new ChannelCredentials() {
             WebhookUrl = "https://example.com/webhook",
             Channel = "general",

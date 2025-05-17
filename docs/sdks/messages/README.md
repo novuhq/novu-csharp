@@ -108,7 +108,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Messages.DeleteByTransactionIdAsync(
     transactionId: "<id>",
-    channel: Channel.Push,
+    channel: Channel.Sms,
     idempotencyKey: "<value>"
 );
 
