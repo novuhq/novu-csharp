@@ -6,12 +6,13 @@
 ### Available Operations
 
 * [List](#list) - List topic subscriptions
-* [Create](#create) - Create topic subscriptions, if the topic does not exist, it will be created.
+* [Create](#create) - Create topic subscriptions
 * [Delete](#delete) - Delete topic subscriptions
 
 ## List
 
-List topic subscriptions
+List all topics that a subscriber is subscribed to.
+    Checkout all available filters in the query section.
 
 ### Example Usage
 
@@ -53,7 +54,8 @@ var res = await sdk.Topics.Subscriptions.ListAsync(req);
 
 ## Create
 
-Create topic subscriptions, if the topic does not exist, it will be created.
+This api will create subscription for subscriberIds for a topic. 
+      Its like subscribing to a common interest group. if topic does not exist, it will be created.
 
 ### Example Usage
 
@@ -102,7 +104,7 @@ var res = await sdk.Topics.Subscriptions.CreateAsync(
 
 ## Delete
 
-Delete topic subscriptions
+Delete subscriptions for subscriberIds for a topic.
 
 ### Example Usage
 

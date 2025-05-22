@@ -8,16 +8,16 @@ With the help of the Integration Store, you can easily integrate your favorite d
 
 ### Available Operations
 
-* [GetAll](#getall) - Get integrations
-* [Create](#create) - Create integration
-* [Update](#update) - Update integration
-* [Delete](#delete) - Delete integration
-* [SetPrimary](#setprimary) - Set integration as primary
-* [ListActive](#listactive) - Get active integrations
+* [GetAll](#getall) - List all integrations
+* [Create](#create) - Create an integration
+* [Update](#update) - Update an integration
+* [Delete](#delete) - Delete an integration
+* [SetPrimary](#setprimary) - Update integration as primary
+* [ListActive](#listactive) - List active integrations
 
 ## GetAll
 
-Return all the integrations the user has created for that organization. Review v.0.17.0 changelog for a breaking change
+List all the channels integrations created in the organization
 
 ### Example Usage
 
@@ -54,7 +54,8 @@ var res = await sdk.Integrations.GetAllAsync(idempotencyKey: "<value>");
 
 ## Create
 
-Create an integration for the current environment the user is based on the API key provided
+Create an integration for the current environment the user is based on the API key provided. 
+    Each provider supports different credentials, check the provider documentation for more details.
 
 ### Example Usage
 
@@ -67,7 +68,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.Integrations.CreateAsync(
     createIntegrationRequestDto: new CreateIntegrationRequestDto() {
         ProviderId = "<id>",
-        Channel = CreateIntegrationRequestDtoChannel.Sms,
+        Channel = CreateIntegrationRequestDtoChannel.Email,
     },
     idempotencyKey: "<value>"
 );
@@ -98,7 +99,8 @@ var res = await sdk.Integrations.CreateAsync(
 
 ## Update
 
-Update integration
+Update an integration by its unique key identifier **integrationId**. 
+    Each provider supports different credentials, check the provider documentation for more details.
 
 ### Example Usage
 
@@ -141,7 +143,8 @@ var res = await sdk.Integrations.UpdateAsync(
 
 ## Delete
 
-Delete integration
+Delete an integration by its unique key identifier **integrationId**. 
+    This action is irreversible.
 
 ### Example Usage
 
@@ -182,7 +185,9 @@ var res = await sdk.Integrations.DeleteAsync(
 
 ## SetPrimary
 
-Set integration as primary
+Update an integration as **primary** by its unique key identifier **integrationId**. 
+    This API will set the integration as primary for that channel in the current environment. 
+    Primary integration is used to deliver notification for sms and email channels in the workflow.
 
 ### Example Usage
 
@@ -223,7 +228,7 @@ var res = await sdk.Integrations.SetPrimaryAsync(
 
 ## ListActive
 
-Return all the active integrations the user has created for that organization. Review v.0.17.0 changelog for a breaking change
+List all the active integrations created in the organization
 
 ### Example Usage
 

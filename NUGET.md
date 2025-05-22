@@ -23,10 +23,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -106,11 +104,8 @@ var res = await sdk.TriggerBulkAsync(
                     } },
                 },
                 Overrides = new Overrides() {},
-                To = To.CreateTopicPayloadDto(
-                    new TopicPayloadDto() {
-                        TopicKey = "<value>",
-                        Type = TriggerRecipientsTypeEnum.Topic,
-                    }
+                To = To.CreateStr(
+                    "SUBSCRIBER_ID"
                 ),
             },
         },
@@ -151,10 +146,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -163,36 +156,6 @@ var res = await sdk.TriggerAsync(
 // handle response
 ```
 <!-- End Authentication [security] -->
-
-<!-- Start Pagination [pagination] -->
-## Pagination
-
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `Next` method that can be called to pull down the next group of results. If the
-return value of `Next` is `null`, then there are no more pages to be fetched.
-
-Here's an example of one such pagination call:
-```csharp
-using Novu;
-using Novu.Models.Components;
-using Novu.Models.Requests;
-
-var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
-
-SubscribersV1ControllerListSubscribersResponse? res = await sdk.Subscribers.GetAllAsync(
-    page: 4610.08D,
-    limit: 10D,
-    idempotencyKey: "<value>"
-);
-
-while(res != null)
-{
-    // handle items
-
-    res = await res.Next!();
-}
-```
-<!-- End Pagination [pagination] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -227,10 +190,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -269,10 +230,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -327,10 +286,8 @@ try
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateSubscriberPayloadDto(
-                new SubscriberPayloadDto() {
-                    SubscriberId = "<id>",
-                }
+            To = To.CreateStr(
+                "SUBSCRIBER_ID"
             ),
         },
         idempotencyKey: "<value>"
@@ -403,10 +360,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -438,10 +393,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"

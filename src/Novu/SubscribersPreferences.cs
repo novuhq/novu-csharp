@@ -26,19 +26,22 @@ namespace Novu
     {
 
         /// <summary>
-        /// Get subscriber preferences
+        /// Retrieve subscriber preferences
         /// 
         /// <remarks>
-        /// Get subscriber global and workflow specific preferences
+        /// Retrieve subscriber channel preferences by its unique key identifier **subscriberId**. <br/>
+        ///     This API returns all five channels preferences for all workflows and global preferences.
         /// </remarks>
         /// </summary>
         Task<SubscribersControllerGetSubscriberPreferencesResponse> ListAsync(string subscriberId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update subscriber global or workflow specific preferences
+        /// Update subscriber preferences
         /// 
         /// <remarks>
-        /// Update subscriber global or workflow specific preferences
+        /// Update subscriber preferences by its unique key identifier **subscriberId**. <br/>
+        ///     **workflowId** is optional field, if provided, this API will update that workflow preference, <br/>
+        ///     otherwise it will update global preferences
         /// </remarks>
         /// </summary>
         Task<SubscribersControllerUpdateSubscriberPreferencesResponse> UpdateAsync(string subscriberId, PatchSubscriberPreferencesDto patchSubscriberPreferencesDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -48,10 +51,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;

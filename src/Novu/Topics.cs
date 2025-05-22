@@ -32,12 +32,18 @@ namespace Novu
         public ISubscriptions Subscriptions { get; }
 
         /// <summary>
-        /// Get topics list
+        /// List all topics
+        /// 
+        /// <remarks>
+        /// This api returns a paginated list of topics.<br/>
+        ///     Topics can be filtered by **key**, **name**, or **includeCursor** to paginate through the list. <br/>
+        ///     Checkout all available filters in the query section.
+        /// </remarks>
         /// </summary>
         Task<TopicsControllerListTopicsResponse> ListAsync(TopicsControllerListTopicsRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Create or update a topic
+        /// Create a topic
         /// 
         /// <remarks>
         /// Creates a new topic if it does not exist, or updates an existing topic if it already exists
@@ -46,17 +52,30 @@ namespace Novu
         Task<TopicsControllerUpsertTopicResponse> CreateAsync(CreateUpdateTopicRequestDto createUpdateTopicRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Get topic by key
+        /// Retrieve a topic
+        /// 
+        /// <remarks>
+        /// Retrieve a topic by its unique key identifier **topicKey**
+        /// </remarks>
         /// </summary>
         Task<TopicsControllerGetTopicResponse> GetAsync(string topicKey, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update topic by key
+        /// Update a topic
+        /// 
+        /// <remarks>
+        /// Update a topic name by its unique key identifier **topicKey**
+        /// </remarks>
         /// </summary>
         Task<TopicsControllerUpdateTopicResponse> UpdateAsync(string topicKey, UpdateTopicRequestDto updateTopicRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Delete topic by key
+        /// Delete a topic
+        /// 
+        /// <remarks>
+        /// Delete a topic by its unique key identifier **topicKey**. <br/>
+        ///     This action is irreversible and will remove all subscriptions to the topic.
+        /// </remarks>
         /// </summary>
         Task<TopicsControllerDeleteTopicResponse> DeleteAsync(string topicKey, string? idempotencyKey = null, RetryConfig? retryConfig = null);
     }
@@ -70,10 +89,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;

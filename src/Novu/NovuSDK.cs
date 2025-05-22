@@ -45,7 +45,6 @@ namespace Novu
         /// <see>https://docs.novu.co/channels-and-providers/integration-store}</see>
         /// </summary>
         public IIntegrations Integrations { get; }
-        public IIntegrationsWebhooks IntegrationsWebhooks { get; }
 
         /// <summary>
         /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.
@@ -54,7 +53,6 @@ namespace Novu
         /// </summary>
         public IMessages Messages { get; }
         public INotifications Notifications { get; }
-        public ISubscribersAuthentication SubscribersAuthentication { get; }
         public ISubscribersMessages SubscribersMessages { get; }
         public ISubscribersNotifications SubscribersNotifications { get; }
         public ITopicsSubscribers TopicsSubscribers { get; }
@@ -155,10 +153,10 @@ namespace Novu
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;
@@ -167,10 +165,8 @@ namespace Novu
         public ISubscribersPreferences SubscribersPreferences { get; private set; }
         public ITopics Topics { get; private set; }
         public IIntegrations Integrations { get; private set; }
-        public IIntegrationsWebhooks IntegrationsWebhooks { get; private set; }
         public IMessages Messages { get; private set; }
         public INotifications Notifications { get; private set; }
-        public ISubscribersAuthentication SubscribersAuthentication { get; private set; }
         public ISubscribersMessages SubscribersMessages { get; private set; }
         public ISubscribersNotifications SubscribersNotifications { get; private set; }
         public ITopicsSubscribers TopicsSubscribers { get; private set; }
@@ -232,16 +228,10 @@ namespace Novu
             Integrations = new Integrations(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            IntegrationsWebhooks = new IntegrationsWebhooks(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             Messages = new Messages(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Notifications = new Notifications(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            SubscribersAuthentication = new SubscribersAuthentication(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             SubscribersMessages = new SubscribersMessages(_client, _securitySource, _serverUrl, SDKConfiguration);

@@ -26,17 +26,31 @@ namespace Novu
     {
 
         /// <summary>
-        /// Mark message action as seen
+        /// Update notification action status
+        /// 
+        /// <remarks>
+        /// Update in-app (inbox) notification&apos;s action status by its unique key identifier **messageId** and type field **type**. <br/>
+        ///       **type** field can be **primary** or **secondary**
+        /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerMarkActionAsSeenResponse> UpdateActionAsync(SubscribersV1ControllerMarkActionAsSeenRequest request, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Marks all the subscriber messages as read, unread, seen or unseen.
+        /// Update all notifications state
+        /// 
+        /// <remarks>
+        /// Update all subscriber in-app (inbox) notifications state such as read, unread, seen or unseen by **subscriberId**.
+        /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerMarkAllUnreadAsReadResponse> MarkAllAsync(string subscriberId, MarkAllMessageAsRequestDto markAllMessageAsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Mark a subscriber messages as seen, read, unseen or unread
+        /// Update notifications state
+        /// 
+        /// <remarks>
+        /// Update subscriber&apos;s multiple in-app (inbox) notifications state such as seen, read, unseen or unread by **subscriberId**. <br/>
+        ///       **messageId** is of type mongodbId of notifications
+        /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerMarkMessagesAsResponse> MarkAllAsAsync(string subscriberId, MessageMarkAsRequestDto messageMarkAsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
     }
@@ -45,10 +59,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;

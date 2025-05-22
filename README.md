@@ -30,7 +30,6 @@ For more information about the API: [Novu Documentation](https://docs.novu.co)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
-  * [Pagination](#pagination)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -80,10 +79,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -163,11 +160,8 @@ var res = await sdk.TriggerBulkAsync(
                     } },
                 },
                 Overrides = new Overrides() {},
-                To = To.CreateTopicPayloadDto(
-                    new TopicPayloadDto() {
-                        TopicKey = "<value>",
-                        Type = TriggerRecipientsTypeEnum.Topic,
-                    }
+                To = To.CreateStr(
+                    "SUBSCRIBER_ID"
                 ),
             },
         },
@@ -208,10 +202,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -229,29 +221,23 @@ var res = await sdk.TriggerAsync(
 
 ### [Integrations](docs/sdks/integrations/README.md)
 
-* [GetAll](docs/sdks/integrations/README.md#getall) - Get integrations
-* [Create](docs/sdks/integrations/README.md#create) - Create integration
-* [Update](docs/sdks/integrations/README.md#update) - Update integration
-* [Delete](docs/sdks/integrations/README.md#delete) - Delete integration
-* [SetPrimary](docs/sdks/integrations/README.md#setprimary) - Set integration as primary
-* [ListActive](docs/sdks/integrations/README.md#listactive) - Get active integrations
-
-### [IntegrationsWebhooks](docs/sdks/integrationswebhooks/README.md)
-
-* [GetStatus](docs/sdks/integrationswebhooks/README.md#getstatus) - Get webhook support status for provider
+* [GetAll](docs/sdks/integrations/README.md#getall) - List all integrations
+* [Create](docs/sdks/integrations/README.md#create) - Create an integration
+* [Update](docs/sdks/integrations/README.md#update) - Update an integration
+* [Delete](docs/sdks/integrations/README.md#delete) - Delete an integration
+* [SetPrimary](docs/sdks/integrations/README.md#setprimary) - Update integration as primary
+* [ListActive](docs/sdks/integrations/README.md#listactive) - List active integrations
 
 ### [Messages](docs/sdks/messages/README.md)
 
-* [Get](docs/sdks/messages/README.md#get) - Get messages
-* [Delete](docs/sdks/messages/README.md#delete) - Delete message
+* [Get](docs/sdks/messages/README.md#get) - List all messages
+* [Delete](docs/sdks/messages/README.md#delete) - Delete a message
 * [DeleteByTransactionId](docs/sdks/messages/README.md#deletebytransactionid) - Delete messages by transactionId
 
 ### [Notifications](docs/sdks/notifications/README.md)
 
-* [Get](docs/sdks/notifications/README.md#get) - Get notifications
-* [Retrieve](docs/sdks/notifications/README.md#retrieve) - Get notification
-* [GetGraphStats](docs/sdks/notifications/README.md#getgraphstats) - Get notification graph statistics
-* [GetStats](docs/sdks/notifications/README.md#getstats) - Get notification statistics
+* [Get](docs/sdks/notifications/README.md#get) - List all events
+* [Retrieve](docs/sdks/notifications/README.md#retrieve) - Retrieve an event
 
 ### [Novu SDK](docs/sdks/novu/README.md)
 
@@ -262,56 +248,49 @@ var res = await sdk.TriggerAsync(
 
 ### [Subscribers](docs/sdks/subscribers/README.md)
 
-* [Search](docs/sdks/subscribers/README.md#search) - Search for subscribers
-* [Create](docs/sdks/subscribers/README.md#create) - Create subscriber
-* [Retrieve](docs/sdks/subscribers/README.md#retrieve) - Get subscriber
-* [Patch](docs/sdks/subscribers/README.md#patch) - Patch subscriber
+* [Search](docs/sdks/subscribers/README.md#search) - Search subscribers
+* [Create](docs/sdks/subscribers/README.md#create) - Create a subscriber
+* [Retrieve](docs/sdks/subscribers/README.md#retrieve) - Retrieve a subscriber
+* [Patch](docs/sdks/subscribers/README.md#patch) - Update a subscriber
 * [Delete](docs/sdks/subscribers/README.md#delete) - Delete subscriber
-* [GetAll](docs/sdks/subscribers/README.md#getall) - Get subscribers
-* [Upsert](docs/sdks/subscribers/README.md#upsert) - Upsert subscriber
 * [CreateBulk](docs/sdks/subscribers/README.md#createbulk) - Bulk create subscribers
-* [UpdateCredentials](docs/sdks/subscribers/README.md#updatecredentials) - Update subscriber credentials
-* [AppendCredentials](docs/sdks/subscribers/README.md#appendcredentials) - Modify subscriber credentials
-* [DeleteCredentials](docs/sdks/subscribers/README.md#deletecredentials) - Delete subscriber credentials by providerId
-* [GetChatAccessOauth](docs/sdks/subscribers/README.md#getchataccessoauth) - Handle chat oauth
+* [UpdateCredentials](docs/sdks/subscribers/README.md#updatecredentials) - Update provider credentials
+* [AppendCredentials](docs/sdks/subscribers/README.md#appendcredentials) - Upsert provider credentials
+* [DeleteCredentials](docs/sdks/subscribers/README.md#deletecredentials) - Delete provider credentials
 * [UpdateOnlineStatus](docs/sdks/subscribers/README.md#updateonlinestatus) - Update subscriber online status
 
 #### [Subscribers.Topics](docs/sdks/novutopics/README.md)
 
-* [List](docs/sdks/novutopics/README.md#list) - List topics a subscriber is subscribed to
-
-### [SubscribersAuthentication](docs/sdks/subscribersauthentication/README.md)
-
-* [OauthCallback](docs/sdks/subscribersauthentication/README.md#oauthcallback) - Handle providers oauth redirect
+* [List](docs/sdks/novutopics/README.md#list) - Retrieve subscriber subscriptions
 
 ### [SubscribersMessages](docs/sdks/subscribersmessages/README.md)
 
-* [UpdateAction](docs/sdks/subscribersmessages/README.md#updateaction) - Mark message action as seen
-* [MarkAll](docs/sdks/subscribersmessages/README.md#markall) - Marks all the subscriber messages as read, unread, seen or unseen.
-* [MarkAllAs](docs/sdks/subscribersmessages/README.md#markallas) - Mark a subscriber messages as seen, read, unseen or unread
+* [UpdateAction](docs/sdks/subscribersmessages/README.md#updateaction) - Update notification action status
+* [MarkAll](docs/sdks/subscribersmessages/README.md#markall) - Update all notifications state
+* [MarkAllAs](docs/sdks/subscribersmessages/README.md#markallas) - Update notifications state
 
 ### [SubscribersNotifications](docs/sdks/subscribersnotifications/README.md)
 
-* [Feed](docs/sdks/subscribersnotifications/README.md#feed) - Get in-app notification feed for a particular subscriber
-* [UnseenCount](docs/sdks/subscribersnotifications/README.md#unseencount) - Get the unseen in-app notifications count for subscribers feed
+* [Feed](docs/sdks/subscribersnotifications/README.md#feed) - Retrieve subscriber notifications
+* [UnseenCount](docs/sdks/subscribersnotifications/README.md#unseencount) - Retrieve unseen notifications count
 
 ### [SubscribersPreferences](docs/sdks/subscriberspreferences/README.md)
 
-* [List](docs/sdks/subscriberspreferences/README.md#list) - Get subscriber preferences
-* [Update](docs/sdks/subscriberspreferences/README.md#update) - Update subscriber global or workflow specific preferences
+* [List](docs/sdks/subscriberspreferences/README.md#list) - Retrieve subscriber preferences
+* [Update](docs/sdks/subscriberspreferences/README.md#update) - Update subscriber preferences
 
 ### [Topics](docs/sdks/topics/README.md)
 
-* [List](docs/sdks/topics/README.md#list) - Get topics list
-* [Create](docs/sdks/topics/README.md#create) - Create or update a topic
-* [Get](docs/sdks/topics/README.md#get) - Get topic by key
-* [Update](docs/sdks/topics/README.md#update) - Update topic by key
-* [Delete](docs/sdks/topics/README.md#delete) - Delete topic by key
+* [List](docs/sdks/topics/README.md#list) - List all topics
+* [Create](docs/sdks/topics/README.md#create) - Create a topic
+* [Get](docs/sdks/topics/README.md#get) - Retrieve a topic
+* [Update](docs/sdks/topics/README.md#update) - Update a topic
+* [Delete](docs/sdks/topics/README.md#delete) - Delete a topic
 
 #### [Topics.Subscriptions](docs/sdks/subscriptions/README.md)
 
 * [List](docs/sdks/subscriptions/README.md#list) - List topic subscriptions
-* [Create](docs/sdks/subscriptions/README.md#create) - Create topic subscriptions, if the topic does not exist, it will be created.
+* [Create](docs/sdks/subscriptions/README.md#create) - Create topic subscriptions
 * [Delete](docs/sdks/subscriptions/README.md#delete) - Delete topic subscriptions
 
 ### [TopicsSubscribers](docs/sdks/topicssubscribers/README.md)
@@ -320,36 +299,6 @@ var res = await sdk.TriggerAsync(
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
-
-<!-- Start Pagination [pagination] -->
-## Pagination
-
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `Next` method that can be called to pull down the next group of results. If the
-return value of `Next` is `null`, then there are no more pages to be fetched.
-
-Here's an example of one such pagination call:
-```csharp
-using Novu;
-using Novu.Models.Components;
-using Novu.Models.Requests;
-
-var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
-
-SubscribersV1ControllerListSubscribersResponse? res = await sdk.Subscribers.GetAllAsync(
-    page: 4610.08D,
-    limit: 10D,
-    idempotencyKey: "<value>"
-);
-
-while(res != null)
-{
-    // handle items
-
-    res = await res.Next!();
-}
-```
-<!-- End Pagination [pagination] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -384,10 +333,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -426,10 +373,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -484,10 +429,8 @@ try
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateSubscriberPayloadDto(
-                new SubscriberPayloadDto() {
-                    SubscriberId = "<id>",
-                }
+            To = To.CreateStr(
+                "SUBSCRIBER_ID"
             ),
         },
         idempotencyKey: "<value>"
@@ -560,10 +503,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -595,10 +536,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"

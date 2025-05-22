@@ -5,13 +5,14 @@
 
 ### Available Operations
 
-* [UpdateAction](#updateaction) - Mark message action as seen
-* [MarkAll](#markall) - Marks all the subscriber messages as read, unread, seen or unseen.
-* [MarkAllAs](#markallas) - Mark a subscriber messages as seen, read, unseen or unread
+* [UpdateAction](#updateaction) - Update notification action status
+* [MarkAll](#markall) - Update all notifications state
+* [MarkAllAs](#markallas) - Update notifications state
 
 ## UpdateAction
 
-Mark message action as seen
+Update in-app (inbox) notification's action status by its unique key identifier **messageId** and type field **type**. 
+      **type** field can be **primary** or **secondary**
 
 ### Example Usage
 
@@ -58,7 +59,7 @@ var res = await sdk.SubscribersMessages.UpdateActionAsync(req);
 
 ## MarkAll
 
-Marks all the subscriber messages as read, unread, seen or unseen.
+Update all subscriber in-app (inbox) notifications state such as read, unread, seen or unseen by **subscriberId**.
 
 ### Example Usage
 
@@ -71,7 +72,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.SubscribersMessages.MarkAllAsync(
     subscriberId: "<id>",
     markAllMessageAsRequestDto: new MarkAllMessageAsRequestDto() {
-        MarkAs = MarkAs.Seen,
+        MarkAs = MarkAs.Read,
     },
     idempotencyKey: "<value>"
 );
@@ -103,23 +104,27 @@ var res = await sdk.SubscribersMessages.MarkAllAsync(
 
 ## MarkAllAs
 
-Mark a subscriber messages as seen, read, unseen or unread
+Update subscriber's multiple in-app (inbox) notifications state such as seen, read, unseen or unread by **subscriberId**. 
+      **messageId** is of type mongodbId of notifications
 
 ### Example Usage
 
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.SubscribersMessages.MarkAllAsAsync(
     subscriberId: "<id>",
     messageMarkAsRequestDto: new MessageMarkAsRequestDto() {
-        MessageId = MessageId.CreateStr(
-            "<id>"
+        MessageId = MessageId.CreateArrayOfStr(
+            new List<string>() {
+                "<id>",
+            }
         ),
-        MarkAs = MessageMarkAsRequestDtoMarkAs.Unread,
+        MarkAs = MessageMarkAsRequestDtoMarkAs.Read,
     },
     idempotencyKey: "<value>"
 );

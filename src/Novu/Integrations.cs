@@ -31,43 +31,60 @@ namespace Novu
     {
 
         /// <summary>
-        /// Get integrations
+        /// List all integrations
         /// 
         /// <remarks>
-        /// Return all the integrations the user has created for that organization. Review v.0.17.0 changelog for a breaking change
+        /// List all the channels integrations created in the organization
         /// </remarks>
         /// </summary>
         Task<IntegrationsControllerListIntegrationsResponse> GetAllAsync(string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Create integration
+        /// Create an integration
         /// 
         /// <remarks>
-        /// Create an integration for the current environment the user is based on the API key provided
+        /// Create an integration for the current environment the user is based on the API key provided. <br/>
+        ///     Each provider supports different credentials, check the provider documentation for more details.
         /// </remarks>
         /// </summary>
         Task<IntegrationsControllerCreateIntegrationResponse> CreateAsync(CreateIntegrationRequestDto createIntegrationRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update integration
+        /// Update an integration
+        /// 
+        /// <remarks>
+        /// Update an integration by its unique key identifier **integrationId**. <br/>
+        ///     Each provider supports different credentials, check the provider documentation for more details.
+        /// </remarks>
         /// </summary>
         Task<IntegrationsControllerUpdateIntegrationByIdResponse> UpdateAsync(string integrationId, UpdateIntegrationRequestDto updateIntegrationRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Delete integration
+        /// Delete an integration
+        /// 
+        /// <remarks>
+        /// Delete an integration by its unique key identifier **integrationId**. <br/>
+        ///     This action is irreversible.
+        /// </remarks>
         /// </summary>
         Task<IntegrationsControllerRemoveIntegrationResponse> DeleteAsync(string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Set integration as primary
+        /// Update integration as primary
+        /// 
+        /// <remarks>
+        /// Update an integration as **primary** by its unique key identifier **integrationId**. <br/>
+        ///     This API will set the integration as primary for that channel in the current environment. <br/>
+        ///     Primary integration is used to deliver notification for sms and email channels in the workflow.
+        /// </remarks>
         /// </summary>
         Task<IntegrationsControllerSetIntegrationAsPrimaryResponse> SetPrimaryAsync(string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Get active integrations
+        /// List active integrations
         /// 
         /// <remarks>
-        /// Return all the active integrations the user has created for that organization. Review v.0.17.0 changelog for a breaking change
+        /// List all the active integrations created in the organization
         /// </remarks>
         /// </summary>
         Task<IntegrationsControllerGetActiveIntegrationsResponse> ListActiveAsync(string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -82,10 +99,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;

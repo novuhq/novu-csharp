@@ -10,7 +10,6 @@
 namespace Novu
 {
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using Novu.Hooks;
     using Novu.Models.Components;
     using Novu.Models.Errors;
@@ -19,7 +18,6 @@ namespace Novu
     using Novu.Utils.Retries;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
@@ -29,33 +27,41 @@ namespace Novu
         public INovuTopics Topics { get; }
 
         /// <summary>
-        /// Search for subscribers
+        /// Search subscribers
+        /// 
+        /// <remarks>
+        /// Search subscribers by their **email**, **phone**, **subscriberId** and **name**. <br/>
+        ///     The search is case sensitive and supports pagination.Checkout all available filters in the query section.
+        /// </remarks>
         /// </summary>
         Task<SubscribersControllerSearchSubscribersResponse> SearchAsync(SubscribersControllerSearchSubscribersRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Create subscriber
+        /// Create a subscriber
         /// 
         /// <remarks>
-        /// Create subscriber with the given data, if the subscriber already exists, it will be updated
+        /// Create a subscriber with the subscriber attributes. <br/>
+        ///       **subscriberId** is a required field, rest other fields are optional, if the subscriber already exists, it will be updated
         /// </remarks>
         /// </summary>
         Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(CreateSubscriberRequestDto createSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Get subscriber
+        /// Retrieve a subscriber
         /// 
         /// <remarks>
-        /// Get subscriber by your internal id used to identify the subscriber
+        /// Retrive a subscriber by its unique key identifier **subscriberId**. <br/>
+        ///     **subscriberId** field is required.
         /// </remarks>
         /// </summary>
         Task<SubscribersControllerGetSubscriberResponse> RetrieveAsync(string subscriberId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Patch subscriber
+        /// Update a subscriber
         /// 
         /// <remarks>
-        /// Patch subscriber by your internal id used to identify the subscriber
+        /// Update a subscriber by its unique key identifier **subscriberId**. <br/>
+        ///     **subscriberId** is a required field, rest other fields are optional
         /// </remarks>
         /// </summary>
         Task<SubscribersControllerPatchSubscriberResponse> PatchAsync(string subscriberId, PatchSubscriberRequestDto patchSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -64,81 +70,57 @@ namespace Novu
         /// Delete subscriber
         /// 
         /// <remarks>
-        /// Deletes a subscriber entity from the Novu platform
+        /// Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions
         /// </remarks>
         /// </summary>
         Task<SubscribersControllerRemoveSubscriberResponse> DeleteAsync(string subscriberId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Get subscribers
-        /// 
-        /// <remarks>
-        /// Returns a list of subscribers, could paginated using the `page` and `limit` query parameter
-        /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerListSubscribersResponse> GetAllAsync(double? page = null, double? limit = 10D, string? idempotencyKey = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Upsert subscriber
-        /// 
-        /// <remarks>
-        /// Used to upsert the subscriber entity with new information
-        /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerUpdateSubscriberResponse> UpsertAsync(string subscriberId, UpdateSubscriberRequestDto updateSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Bulk create subscribers
         /// 
         /// <remarks>
         /// <br/>
-        ///       Using this endpoint you can create multiple subscribers at once, to avoid multiple calls to the API.<br/>
-        ///       The bulk API is limited to 500 subscribers per request.<br/>
+        ///       Using this endpoint multiple subscribers can be created at once. The bulk API is limited to 500 subscribers per request.<br/>
         ///     
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(BulkSubscriberCreateDto bulkSubscriberCreateDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update subscriber credentials
+        /// Update provider credentials
         /// 
         /// <remarks>
-        /// Subscriber credentials associated to the delivery methods such as slack and push tokens.
+        /// Update credentials for a provider such as slack and push tokens. <br/>
+        ///       **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Modify subscriber credentials
+        /// Upsert provider credentials
         /// 
         /// <remarks>
-        /// Subscriber credentials associated to the delivery methods such as slack and push tokens.<br/>
-        /// <br/>
-        /// <br/>
-        ///     This endpoint appends provided credentials and deviceTokens to the existing ones.
+        /// Update credentials for a provider such as **slack** and **FCM**. <br/>
+        ///       **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Delete subscriber credentials by providerId
+        /// Delete provider credentials
         /// 
         /// <remarks>
-        /// Delete subscriber credentials such as slack and expo tokens.
+        /// Delete subscriber credentials for a provider such as **slack** and **FCM** by **providerId**. <br/>
+        ///     This action is irreversible and will remove the credentials for the provider for particular **subscriberId**.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerDeleteSubscriberCredentialsResponse> DeleteCredentialsAsync(string subscriberId, string providerId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Handle chat oauth
-        /// </summary>
-        Task<SubscribersV1ControllerChatAccessOauthResponse> GetChatAccessOauthAsync(SubscribersV1ControllerChatAccessOauthRequest request, RetryConfig? retryConfig = null);
-
-        /// <summary>
         /// Update subscriber online status
         /// 
         /// <remarks>
-        /// Used to update the subscriber isOnline flag.
+        /// Update the subscriber online status by its unique key identifier **subscriberId**
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse> UpdateOnlineStatusAsync(string subscriberId, UpdateSubscriberOnlineFlagRequestDto updateSubscriberOnlineFlagRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -148,10 +130,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;
@@ -1025,386 +1007,6 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<SubscribersV1ControllerListSubscribersResponse> GetAllAsync(double? page = null, double? limit = 10D, string? idempotencyKey = null, RetryConfig? retryConfig = null)
-        {
-            var request = new SubscribersV1ControllerListSubscribersRequest()
-            {
-                Page = page,
-                Limit = limit,
-                IdempotencyKey = idempotencyKey,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(baseUrl, "SubscribersV1Controller_listSubscribers", new List<string> {  }, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-            if (retryConfig == null)
-            {
-                if (this.SDKConfiguration.RetryConfig != null)
-                {
-                    retryConfig = this.SDKConfiguration.RetryConfig;
-                }
-                else
-                {
-                    var backoff = new BackoffStrategy(
-                        initialIntervalMs: 1000L,
-                        maxIntervalMs: 30000L,
-                        maxElapsedTimeMs: 3600000L,
-                        exponent: 1.5
-                    );
-                    retryConfig = new RetryConfig(
-                        strategy: RetryConfig.RetryStrategy.BACKOFF,
-                        backoff: backoff,
-                        retryConnectionErrors: true
-                    );
-                }
-            }
-
-            List<string> statusCodes = new List<string>
-            {
-                "408",
-                "409",
-                "429",
-                "5XX",
-            };
-
-            Func<Task<HttpResponseMessage>> retrySend = async () =>
-            {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
-            };
-            var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await retries.Run();
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            
-            Func<Task<SubscribersV1ControllerListSubscribersResponse?>> nextFunc = async delegate()
-            {
-                var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
-
-                var page = request?.Page ?? 1;
-                var newPage = page + 1;
-                var firstResult = body.SelectToken("$.data.resultArray");
-                if (firstResult == null)
-                {
-                    return null;
-                }
-
-                if (firstResult.Children().Count() == 0)
-                {
-                    return null;
-                }
-                var limit = request?.Limit ?? 10;
-                if (firstResult.Children().Count() < limit)
-                {
-                    return null;
-                }
-
-                return await GetAllAsync (
-                    page: newPage,
-                    limit: limit,
-                    idempotencyKey: idempotencyKey,
-                    retryConfig: retryConfig
-                );
-            };
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<SubscribersV1ControllerListSubscribersResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new SubscribersV1ControllerListSubscribersResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        },
-                        Next = nextFunc
-                    };
-                    response.Object = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 414)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ValidationErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 429)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 503)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<SubscribersV1ControllerUpdateSubscriberResponse> UpsertAsync(string subscriberId, UpdateSubscriberRequestDto updateSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
-        {
-            var request = new SubscribersV1ControllerUpdateSubscriberRequest()
-            {
-                SubscriberId = subscriberId,
-                UpdateSubscriberRequestDto = updateSubscriberRequestDto,
-                IdempotencyKey = idempotencyKey,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "UpdateSubscriberRequestDto", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(baseUrl, "SubscribersV1Controller_updateSubscriber", new List<string> {  }, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-            if (retryConfig == null)
-            {
-                if (this.SDKConfiguration.RetryConfig != null)
-                {
-                    retryConfig = this.SDKConfiguration.RetryConfig;
-                }
-                else
-                {
-                    var backoff = new BackoffStrategy(
-                        initialIntervalMs: 1000L,
-                        maxIntervalMs: 30000L,
-                        maxElapsedTimeMs: 3600000L,
-                        exponent: 1.5
-                    );
-                    retryConfig = new RetryConfig(
-                        strategy: RetryConfig.RetryStrategy.BACKOFF,
-                        backoff: backoff,
-                        retryConnectionErrors: true
-                    );
-                }
-            }
-
-            List<string> statusCodes = new List<string>
-            {
-                "408",
-                "409",
-                "429",
-                "5XX",
-            };
-
-            Func<Task<HttpResponseMessage>> retrySend = async () =>
-            {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
-            };
-            var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await retries.Run();
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new SubscribersV1ControllerUpdateSubscriberResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.SubscriberResponseDto = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 414)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ValidationErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 429)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 503)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
         public async Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(BulkSubscriberCreateDto bulkSubscriberCreateDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
         {
             var request = new SubscribersV1ControllerBulkCreateSubscribersRequest()
@@ -2031,163 +1633,6 @@ namespace Novu
             if(responseStatusCode == 204)
             {                
                 return new SubscribersV1ControllerDeleteSubscriberCredentialsResponse()
-                {
-                    HttpMeta = new Models.Components.HTTPMetadata()
-                    {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    }
-                };
-            }
-            else if(responseStatusCode == 414)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ValidationErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 429)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 503)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<SubscribersV1ControllerChatAccessOauthResponse> GetChatAccessOauthAsync(SubscribersV1ControllerChatAccessOauthRequest request, RetryConfig? retryConfig = null)
-        {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/credentials/{providerId}/oauth", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(baseUrl, "SubscribersV1Controller_chatAccessOauth", new List<string> {  }, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-            if (retryConfig == null)
-            {
-                if (this.SDKConfiguration.RetryConfig != null)
-                {
-                    retryConfig = this.SDKConfiguration.RetryConfig;
-                }
-                else
-                {
-                    var backoff = new BackoffStrategy(
-                        initialIntervalMs: 1000L,
-                        maxIntervalMs: 30000L,
-                        maxElapsedTimeMs: 3600000L,
-                        exponent: 1.5
-                    );
-                    retryConfig = new RetryConfig(
-                        strategy: RetryConfig.RetryStrategy.BACKOFF,
-                        backoff: backoff,
-                        retryConnectionErrors: true
-                    );
-                }
-            }
-
-            List<string> statusCodes = new List<string>
-            {
-                "408",
-                "409",
-                "429",
-                "5XX",
-            };
-
-            Func<Task<HttpResponseMessage>> retrySend = async () =>
-            {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
-            };
-            var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await retries.Run();
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {                
-                return new SubscribersV1ControllerChatAccessOauthResponse()
                 {
                     HttpMeta = new Models.Components.HTTPMetadata()
                     {

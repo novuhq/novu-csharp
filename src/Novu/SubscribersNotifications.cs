@@ -26,12 +26,20 @@ namespace Novu
     {
 
         /// <summary>
-        /// Get in-app notification feed for a particular subscriber
+        /// Retrieve subscriber notifications
+        /// 
+        /// <remarks>
+        /// Retrieve subscriber in-app (inbox) notifications by its unique key identifier **subscriberId**.
+        /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerGetNotificationsFeedResponse> FeedAsync(SubscribersV1ControllerGetNotificationsFeedRequest request, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Get the unseen in-app notifications count for subscribers feed
+        /// Retrieve unseen notifications count
+        /// 
+        /// <remarks>
+        /// Retrieve unseen in-app (inbox) notifications count for a subscriber by its unique key identifier **subscriberId**.
+        /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerGetUnseenCountResponse> UnseenCountAsync(string subscriberId, bool? seen = false, double? limit = 100D, string? idempotencyKey = null, RetryConfig? retryConfig = null);
     }
@@ -40,10 +48,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;

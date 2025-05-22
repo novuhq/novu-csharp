@@ -64,7 +64,7 @@ namespace Novu.Models.Components
         /// Identifier for the feed associated with the notification.
         /// </summary>
         [JsonProperty("_feedId")]
-        public string FeedId { get; set; } = default!;
+        public string? FeedId { get; set; } = null;
 
         /// <summary>
         /// Identifier for the job that triggered the notification.

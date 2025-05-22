@@ -41,10 +41,8 @@ var res = await sdk.TriggerAsync(
             } },
         },
         Overrides = new Overrides() {},
-        To = To.CreateSubscriberPayloadDto(
-            new SubscriberPayloadDto() {
-                SubscriberId = "<id>",
-            }
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
         ),
     },
     idempotencyKey: "<value>"
@@ -208,11 +206,8 @@ var res = await sdk.TriggerBulkAsync(
                     } },
                 },
                 Overrides = new Overrides() {},
-                To = To.CreateTopicPayloadDto(
-                    new TopicPayloadDto() {
-                        TopicKey = "<value>",
-                        Type = TriggerRecipientsTypeEnum.Topic,
-                    }
+                To = To.CreateStr(
+                    "SUBSCRIBER_ID"
                 ),
             },
         },
