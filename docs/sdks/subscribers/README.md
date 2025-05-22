@@ -5,23 +5,21 @@
 
 ### Available Operations
 
-* [Search](#search) - Search for subscribers
-* [Create](#create) - Create subscriber
-* [Retrieve](#retrieve) - Get subscriber
-* [Patch](#patch) - Patch subscriber
+* [Search](#search) - Search subscribers
+* [Create](#create) - Create a subscriber
+* [Retrieve](#retrieve) - Retrieve a subscriber
+* [Patch](#patch) - Update a subscriber
 * [Delete](#delete) - Delete subscriber
-* [GetAll](#getall) - Get subscribers
-* [Upsert](#upsert) - Upsert subscriber
 * [CreateBulk](#createbulk) - Bulk create subscribers
-* [UpdateCredentials](#updatecredentials) - Update subscriber credentials
-* [AppendCredentials](#appendcredentials) - Modify subscriber credentials
-* [DeleteCredentials](#deletecredentials) - Delete subscriber credentials by providerId
-* [GetChatAccessOauth](#getchataccessoauth) - Handle chat oauth
+* [UpdateCredentials](#updatecredentials) - Update provider credentials
+* [AppendCredentials](#appendcredentials) - Upsert provider credentials
+* [DeleteCredentials](#deletecredentials) - Delete provider credentials
 * [UpdateOnlineStatus](#updateonlinestatus) - Update subscriber online status
 
 ## Search
 
-Search for subscribers
+Search subscribers by their **email**, **phone**, **subscriberId** and **name**. 
+    The search is case sensitive and supports pagination.Checkout all available filters in the query section.
 
 ### Example Usage
 
@@ -61,7 +59,8 @@ var res = await sdk.Subscribers.SearchAsync(req);
 
 ## Create
 
-Create subscriber with the given data, if the subscriber already exists, it will be updated
+Create a subscriber with the subscriber attributes. 
+      **subscriberId** is a required field, rest other fields are optional, if the subscriber already exists, it will be updated
 
 ### Example Usage
 
@@ -104,7 +103,8 @@ var res = await sdk.Subscribers.CreateAsync(
 
 ## Retrieve
 
-Get subscriber by your internal id used to identify the subscriber
+Retrive a subscriber by its unique key identifier **subscriberId**. 
+    **subscriberId** field is required.
 
 ### Example Usage
 
@@ -145,7 +145,8 @@ var res = await sdk.Subscribers.RetrieveAsync(
 
 ## Patch
 
-Patch subscriber by your internal id used to identify the subscriber
+Update a subscriber by its unique key identifier **subscriberId**. 
+    **subscriberId** is a required field, rest other fields are optional
 
 ### Example Usage
 
@@ -188,7 +189,7 @@ var res = await sdk.Subscribers.PatchAsync(
 
 ## Delete
 
-Deletes a subscriber entity from the Novu platform
+Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions
 
 ### Example Usage
 
@@ -227,121 +228,10 @@ var res = await sdk.Subscribers.DeleteAsync(
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
 
-## GetAll
-
-Returns a list of subscribers, could paginated using the `page` and `limit` query parameter
-
-### Example Usage
-
-```csharp
-using Novu;
-using Novu.Models.Components;
-using Novu.Models.Requests;
-
-var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
-
-SubscribersV1ControllerListSubscribersResponse? res = await sdk.Subscribers.GetAllAsync(
-    page: 4610.08D,
-    limit: 10D,
-    idempotencyKey: "<value>"
-);
-
-while(res != null)
-{
-    // handle items
-
-    res = await res.Next!();
-}
-```
-
-### Parameters
-
-| Parameter                         | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `Page`                            | *double*                          | :heavy_minus_sign:                | N/A                               |
-| `Limit`                           | *double*                          | :heavy_minus_sign:                | N/A                               |
-| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
-
-### Response
-
-**[SubscribersV1ControllerListSubscribersResponse](../../Models/Requests/SubscribersV1ControllerListSubscribersResponse.md)**
-
-### Errors
-
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
-
-## Upsert
-
-Used to upsert the subscriber entity with new information
-
-### Example Usage
-
-```csharp
-using Novu;
-using Novu.Models.Components;
-using System.Collections.Generic;
-
-var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
-
-var res = await sdk.Subscribers.UpsertAsync(
-    subscriberId: "<id>",
-    updateSubscriberRequestDto: new UpdateSubscriberRequestDto() {
-        Email = "john.doe@example.com",
-        FirstName = "John",
-        LastName = "Doe",
-        Phone = "+1234567890",
-        Avatar = "https://example.com/avatar.jpg",
-        Locale = "en-US",
-        Data = new Dictionary<string, object>() {
-            { "preferences", new Dictionary<string, object>() {
-                { "notifications", true },
-                { "theme", "dark" },
-            } },
-            { "tags", new List<object>() {
-                "premium",
-                "newsletter",
-            } },
-        },
-    },
-    idempotencyKey: "<value>"
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `SubscriberId`                                                                      | *string*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
-| `UpdateSubscriberRequestDto`                                                        | [UpdateSubscriberRequestDto](../../Models/Components/UpdateSubscriberRequestDto.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
-| `IdempotencyKey`                                                                    | *string*                                                                            | :heavy_minus_sign:                                                                  | A header for idempotency purposes                                                   |
-
-### Response
-
-**[SubscribersV1ControllerUpdateSubscriberResponse](../../Models/Requests/SubscribersV1ControllerUpdateSubscriberResponse.md)**
-
-### Errors
-
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
-
 ## CreateBulk
 
 
-      Using this endpoint you can create multiple subscribers at once, to avoid multiple calls to the API.
-      The bulk API is limited to 500 subscribers per request.
+      Using this endpoint multiple subscribers can be created at once. The bulk API is limited to 500 subscribers per request.
     
 
 ### Example Usage
@@ -390,7 +280,8 @@ var res = await sdk.Subscribers.CreateBulkAsync(
 
 ## UpdateCredentials
 
-Subscriber credentials associated to the delivery methods such as slack and push tokens.
+Update credentials for a provider such as slack and push tokens. 
+      **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
 
 ### Example Usage
 
@@ -404,7 +295,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.Subscribers.UpdateCredentialsAsync(
     subscriberId: "<id>",
     updateSubscriberChannelRequestDto: new UpdateSubscriberChannelRequestDto() {
-        ProviderId = ChatOrPushProviderEnum.PushWebhook,
+        ProviderId = ChatOrPushProviderEnum.Slack,
         Credentials = new ChannelCredentials() {
             WebhookUrl = "https://example.com/webhook",
             Channel = "general",
@@ -450,10 +341,8 @@ var res = await sdk.Subscribers.UpdateCredentialsAsync(
 
 ## AppendCredentials
 
-Subscriber credentials associated to the delivery methods such as slack and push tokens.
-
-
-    This endpoint appends provided credentials and deviceTokens to the existing ones.
+Update credentials for a provider such as **slack** and **FCM**. 
+      **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
 
 ### Example Usage
 
@@ -467,7 +356,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.Subscribers.AppendCredentialsAsync(
     subscriberId: "<id>",
     updateSubscriberChannelRequestDto: new UpdateSubscriberChannelRequestDto() {
-        ProviderId = ChatOrPushProviderEnum.Slack,
+        ProviderId = ChatOrPushProviderEnum.OneSignal,
         Credentials = new ChannelCredentials() {
             WebhookUrl = "https://example.com/webhook",
             Channel = "general",
@@ -513,7 +402,8 @@ var res = await sdk.Subscribers.AppendCredentialsAsync(
 
 ## DeleteCredentials
 
-Delete subscriber credentials such as slack and expo tokens.
+Delete subscriber credentials for a provider such as **slack** and **FCM** by **providerId**. 
+    This action is irreversible and will remove the credentials for the provider for particular **subscriberId**.
 
 ### Example Usage
 
@@ -554,54 +444,9 @@ var res = await sdk.Subscribers.DeleteCredentialsAsync(
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
 
-## GetChatAccessOauth
-
-Handle chat oauth
-
-### Example Usage
-
-```csharp
-using Novu;
-using Novu.Models.Components;
-using Novu.Models.Requests;
-
-var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
-
-SubscribersV1ControllerChatAccessOauthRequest req = new SubscribersV1ControllerChatAccessOauthRequest() {
-    SubscriberId = "<id>",
-    ProviderId = "<value>",
-    HmacHash = "<value>",
-    EnvironmentId = "<id>",
-};
-
-var res = await sdk.Subscribers.GetChatAccessOauthAsync(req);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                               | [SubscribersV1ControllerChatAccessOauthRequest](../../Models/Requests/SubscribersV1ControllerChatAccessOauthRequest.md) | :heavy_check_mark:                                                                                                      | The request object to use for the request.                                                                              |
-
-### Response
-
-**[SubscribersV1ControllerChatAccessOauthResponse](../../Models/Requests/SubscribersV1ControllerChatAccessOauthResponse.md)**
-
-### Errors
-
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
-
 ## UpdateOnlineStatus
 
-Used to update the subscriber isOnline flag.
+Update the subscriber online status by its unique key identifier **subscriberId**
 
 ### Example Usage
 

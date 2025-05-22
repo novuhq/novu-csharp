@@ -39,10 +39,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;

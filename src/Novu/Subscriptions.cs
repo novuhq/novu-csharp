@@ -27,16 +27,30 @@ namespace Novu
 
         /// <summary>
         /// List topic subscriptions
+        /// 
+        /// <remarks>
+        /// List all topics that a subscriber is subscribed to.<br/>
+        ///     Checkout all available filters in the query section.
+        /// </remarks>
         /// </summary>
         Task<TopicsControllerListTopicSubscriptionsResponse> ListAsync(TopicsControllerListTopicSubscriptionsRequest request, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Create topic subscriptions, if the topic does not exist, it will be created.
+        /// Create topic subscriptions
+        /// 
+        /// <remarks>
+        /// This api will create subscription for subscriberIds for a topic. <br/>
+        ///       Its like subscribing to a common interest group. if topic does not exist, it will be created.
+        /// </remarks>
         /// </summary>
         Task<TopicsControllerCreateTopicSubscriptionsResponse> CreateAsync(string topicKey, CreateTopicSubscriptionsRequestDto createTopicSubscriptionsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Delete topic subscriptions
+        /// 
+        /// <remarks>
+        /// Delete subscriptions for subscriberIds for a topic.
+        /// </remarks>
         /// </summary>
         Task<TopicsControllerDeleteTopicSubscriptionsResponse> DeleteAsync(string topicKey, DeleteTopicSubscriptionsRequestDto deleteTopicSubscriptionsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
     }
@@ -45,10 +59,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;

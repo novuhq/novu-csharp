@@ -31,19 +31,22 @@ namespace Novu
     {
 
         /// <summary>
-        /// Get messages
+        /// List all messages
         /// 
         /// <remarks>
-        /// Returns a list of messages, could paginate using the `page` query parameter
+        /// List all messages for the current environment. <br/>
+        ///     This API supports filtering by **channel**, **subscriberId**, and **transactionId**. <br/>
+        ///     This API returns a paginated list of messages.
         /// </remarks>
         /// </summary>
         Task<MessagesControllerGetMessagesResponse> GetAsync(MessagesControllerGetMessagesRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Delete message
+        /// Delete a message
         /// 
         /// <remarks>
-        /// Deletes a message entity from the Novu platform
+        /// Delete a message entity from the Novu platform by **messageId**. <br/>
+        ///     This action is irreversible. **messageId** is required and of mongodbId type.
         /// </remarks>
         /// </summary>
         Task<MessagesControllerDeleteMessageResponse> DeleteAsync(string messageId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -52,7 +55,8 @@ namespace Novu
         /// Delete messages by transactionId
         /// 
         /// <remarks>
-        /// Deletes messages entity from the Novu platform using TransactionId of message
+        /// Delete multiple messages from the Novu platform using **transactionId** of triggered event. <br/>
+        ///     This API supports filtering by **channel** and delete all messages associated with the **transactionId**.
         /// </remarks>
         /// </summary>
         Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(string transactionId, Models.Requests.Channel? channel = null, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -67,10 +71,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.599.0";
-        private const string _openapiDocVersion = "2.1.13";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.599.0 2.1.13 Novu";
+        private const string _sdkVersion = "2.1.0";
+        private const string _sdkGenVersion = "2.605.6";
+        private const string _openapiDocVersion = "2.2.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Novu.Models.Components.Security>? _securitySource;

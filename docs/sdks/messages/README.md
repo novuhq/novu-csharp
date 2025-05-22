@@ -8,13 +8,15 @@ A message in Novu represents a notification delivered to a recipient on a partic
 
 ### Available Operations
 
-* [Get](#get) - Get messages
-* [Delete](#delete) - Delete message
+* [Get](#get) - List all messages
+* [Delete](#delete) - Delete a message
 * [DeleteByTransactionId](#deletebytransactionid) - Delete messages by transactionId
 
 ## Get
 
-Returns a list of messages, could paginate using the `page` query parameter
+List all messages for the current environment. 
+    This API supports filtering by **channel**, **subscriberId**, and **transactionId**. 
+    This API returns a paginated list of messages.
 
 ### Example Usage
 
@@ -54,7 +56,8 @@ var res = await sdk.Messages.GetAsync(req);
 
 ## Delete
 
-Deletes a message entity from the Novu platform
+Delete a message entity from the Novu platform by **messageId**. 
+    This action is irreversible. **messageId** is required and of mongodbId type.
 
 ### Example Usage
 
@@ -65,7 +68,7 @@ using Novu.Models.Components;
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Messages.DeleteAsync(
-    messageId: "<id>",
+    messageId: "507f1f77bcf86cd799439011",
     idempotencyKey: "<value>"
 );
 
@@ -74,10 +77,10 @@ var res = await sdk.Messages.DeleteAsync(
 
 ### Parameters
 
-| Parameter                         | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `MessageId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
-| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `MessageId`                       | *string*                          | :heavy_check_mark:                | N/A                               | 507f1f77bcf86cd799439011          |
+| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |                                   |
 
 ### Response
 
@@ -95,7 +98,8 @@ var res = await sdk.Messages.DeleteAsync(
 
 ## DeleteByTransactionId
 
-Deletes messages entity from the Novu platform using TransactionId of message
+Delete multiple messages from the Novu platform using **transactionId** of triggered event. 
+    This API supports filtering by **channel** and delete all messages associated with the **transactionId**.
 
 ### Example Usage
 
@@ -107,8 +111,8 @@ using Novu.Models.Requests;
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Messages.DeleteByTransactionIdAsync(
-    transactionId: "<id>",
-    channel: Channel.Push,
+    transactionId: "507f1f77bcf86cd799439011",
+    channel: Channel.Sms,
     idempotencyKey: "<value>"
 );
 
@@ -117,11 +121,11 @@ var res = await sdk.Messages.DeleteByTransactionIdAsync(
 
 ### Parameters
 
-| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `TransactionId`                                             | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         |
-| `Channel`                                                   | [Models.Requests.Channel](../../Models/Requests/Channel.md) | :heavy_minus_sign:                                          | The channel of the message to be deleted                    |
-| `IdempotencyKey`                                            | *string*                                                    | :heavy_minus_sign:                                          | A header for idempotency purposes                           |
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `TransactionId`                                             | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         | 507f1f77bcf86cd799439011                                    |
+| `Channel`                                                   | [Models.Requests.Channel](../../Models/Requests/Channel.md) | :heavy_minus_sign:                                          | The channel of the message to be deleted                    |                                                             |
+| `IdempotencyKey`                                            | *string*                                                    | :heavy_minus_sign:                                          | A header for idempotency purposes                           |                                                             |
 
 ### Response
 
