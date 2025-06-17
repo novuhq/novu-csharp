@@ -13,12 +13,13 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
     
+    /// <summary>
+    /// Type of the delay. Currently only &apos;regular&apos; is supported by the schema.
+    /// </summary>
     public enum Type
     {
         [JsonProperty("regular")]
         Regular,
-        [JsonProperty("backoff")]
-        Backoff,
     }
 
     public static class TypeExtension

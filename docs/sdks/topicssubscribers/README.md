@@ -21,8 +21,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.TopicsSubscribers.GetAsync(
     externalSubscriberId: "<id>",
-    topicKey: "<value>",
-    idempotencyKey: "<value>"
+    topicKey: "<value>"
 );
 
 // handle response

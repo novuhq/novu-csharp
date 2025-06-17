@@ -69,22 +69,19 @@ using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerAsync(
-    triggerEventRequestDto: new TriggerEventRequestDto() {
-        WorkflowId = "workflow_identifier",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
-            } },
-        },
-        Overrides = new Overrides() {},
-        To = To.CreateStr(
-            "SUBSCRIBER_ID"
-        ),
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
     },
-    idempotencyKey: "<value>"
-);
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+});
 
 // handle response
 ```
@@ -97,10 +94,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.CancelAsync(
-    transactionId: "<id>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.CancelAsync(transactionId: "<id>");
 
 // handle response
 ```
@@ -114,27 +108,24 @@ using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.BroadcastAsync(
-    triggerEventToAllRequestDto: new TriggerEventToAllRequestDto() {
-        Name = "<value>",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
+var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEventToAllRequestDto() {
+    Name = "<value>",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
+    },
+    Overrides = new TriggerEventToAllRequestDtoOverrides() {
+        AdditionalProperties = new Dictionary<string, Dictionary<string, object>>() {
+            { "fcm", new Dictionary<string, object>() {
+                { "data", new Dictionary<string, object>() {
+                    { "key", "value" },
+                } },
             } },
         },
-        Overrides = new TriggerEventToAllRequestDtoOverrides() {
-            AdditionalProperties = new Dictionary<string, Dictionary<string, object>>() {
-                { "fcm", new Dictionary<string, object>() {
-                    { "data", new Dictionary<string, object>() {
-                        { "key", "value" },
-                    } },
-                } },
-            },
-        },
     },
-    idempotencyKey: "<value>"
-);
+});
 
 // handle response
 ```
@@ -148,26 +139,49 @@ using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerBulkAsync(
-    bulkTriggerEventDto: new BulkTriggerEventDto() {
-        Events = new List<TriggerEventRequestDto>() {
-            new TriggerEventRequestDto() {
-                WorkflowId = "workflow_identifier",
-                Payload = new Dictionary<string, object>() {
-                    { "comment_id", "string" },
-                    { "post", new Dictionary<string, object>() {
-                        { "text", "string" },
-                    } },
-                },
-                Overrides = new Overrides() {},
-                To = To.CreateStr(
-                    "SUBSCRIBER_ID"
-                ),
+var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDto() {
+    Events = new List<TriggerEventRequestDto>() {
+        new TriggerEventRequestDto() {
+            WorkflowId = "workflow_identifier",
+            Payload = new Dictionary<string, object>() {
+                { "comment_id", "string" },
+                { "post", new Dictionary<string, object>() {
+                    { "text", "string" },
+                } },
             },
+            Overrides = new Overrides() {},
+            To = To.CreateStr(
+                "SUBSCRIBER_ID"
+            ),
+        },
+        new TriggerEventRequestDto() {
+            WorkflowId = "workflow_identifier",
+            Payload = new Dictionary<string, object>() {
+                { "comment_id", "string" },
+                { "post", new Dictionary<string, object>() {
+                    { "text", "string" },
+                } },
+            },
+            Overrides = new Overrides() {},
+            To = To.CreateStr(
+                "SUBSCRIBER_ID"
+            ),
+        },
+        new TriggerEventRequestDto() {
+            WorkflowId = "workflow_identifier",
+            Payload = new Dictionary<string, object>() {
+                { "comment_id", "string" },
+                { "post", new Dictionary<string, object>() {
+                    { "text", "string" },
+                } },
+            },
+            Overrides = new Overrides() {},
+            To = To.CreateStr(
+                "SUBSCRIBER_ID"
+            ),
         },
     },
-    idempotencyKey: "<value>"
-);
+});
 
 // handle response
 ```
@@ -192,22 +206,19 @@ using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerAsync(
-    triggerEventRequestDto: new TriggerEventRequestDto() {
-        WorkflowId = "workflow_identifier",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
-            } },
-        },
-        Overrides = new Overrides() {},
-        To = To.CreateStr(
-            "SUBSCRIBER_ID"
-        ),
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
     },
-    idempotencyKey: "<value>"
-);
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+});
 
 // handle response
 ```
@@ -218,6 +229,13 @@ var res = await sdk.TriggerAsync(
 
 <details open>
 <summary>Available methods</summary>
+
+### [Environments](docs/sdks/environments/README.md)
+
+* [Create](docs/sdks/environments/README.md#create) - Create an environment
+* [List](docs/sdks/environments/README.md#list) - List all environments
+* [Update](docs/sdks/environments/README.md#update) - Update an environment
+* [Delete](docs/sdks/environments/README.md#delete) - Delete an environment
 
 ### [Integrations](docs/sdks/integrations/README.md)
 
@@ -252,7 +270,7 @@ var res = await sdk.TriggerAsync(
 * [Create](docs/sdks/subscribers/README.md#create) - Create a subscriber
 * [Retrieve](docs/sdks/subscribers/README.md#retrieve) - Retrieve a subscriber
 * [Patch](docs/sdks/subscribers/README.md#patch) - Update a subscriber
-* [Delete](docs/sdks/subscribers/README.md#delete) - Delete subscriber
+* [Delete](docs/sdks/subscribers/README.md#delete) - Delete a subscriber
 * [CreateBulk](docs/sdks/subscribers/README.md#createbulk) - Bulk create subscribers
 * [UpdateCredentials](docs/sdks/subscribers/README.md#updatecredentials) - Update provider credentials
 * [AppendCredentials](docs/sdks/subscribers/README.md#appendcredentials) - Upsert provider credentials
@@ -297,6 +315,20 @@ var res = await sdk.TriggerAsync(
 
 * [Get](docs/sdks/topicssubscribers/README.md#get) - Check topic subscriber
 
+### [Workflows](docs/sdks/workflows/README.md)
+
+* [Create](docs/sdks/workflows/README.md#create) - Create a workflow
+* [List](docs/sdks/workflows/README.md#list) - List all workflows
+* [Update](docs/sdks/workflows/README.md#update) - Update a workflow
+* [Get](docs/sdks/workflows/README.md#get) - Retrieve a workflow
+* [Delete](docs/sdks/workflows/README.md#delete) - Delete a workflow
+* [Patch](docs/sdks/workflows/README.md#patch) - Update a workflow
+* [Sync](docs/sdks/workflows/README.md#sync) - Sync a workflow
+
+#### [Workflows.Steps](docs/sdks/steps/README.md)
+
+* [Retrieve](docs/sdks/steps/README.md#retrieve) - Retrieve workflow step
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -336,8 +368,7 @@ var res = await sdk.TriggerAsync(
         To = To.CreateStr(
             "SUBSCRIBER_ID"
         ),
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response
@@ -363,22 +394,19 @@ var sdk = new NovuSDK(
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(
-    triggerEventRequestDto: new TriggerEventRequestDto() {
-        WorkflowId = "workflow_identifier",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
-            } },
-        },
-        Overrides = new Overrides() {},
-        To = To.CreateStr(
-            "SUBSCRIBER_ID"
-        ),
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
     },
-    idempotencyKey: "<value>"
-);
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+});
 
 // handle response
 ```
@@ -399,13 +427,14 @@ By default, an API error will raise a `Novu.Models.Errors.APIException` exceptio
 
 When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `TriggerAsync` method throws the following exceptions:
 
-| Error Type                            | Status Code                            | Content Type     |
-| ------------------------------------- | -------------------------------------- | ---------------- |
-| Novu.Models.Errors.ErrorDto           | 414                                    | application/json |
-| Novu.Models.Errors.ErrorDto           | 400, 401, 403, 404, 405, 409, 413, 415 | application/json |
-| Novu.Models.Errors.ValidationErrorDto | 422                                    | application/json |
-| Novu.Models.Errors.ErrorDto           | 500                                    | application/json |
-| Novu.Models.Errors.APIException       | 4XX, 5XX                               | \*/\*            |
+| Error Type                                       | Status Code                       | Content Type     |
+| ------------------------------------------------ | --------------------------------- | ---------------- |
+| Novu.Models.Errors.PayloadValidationExceptionDto | 400                               | application/json |
+| Novu.Models.Errors.ErrorDto                      | 414                               | application/json |
+| Novu.Models.Errors.ErrorDto                      | 401, 403, 404, 405, 409, 413, 415 | application/json |
+| Novu.Models.Errors.ValidationErrorDto            | 422                               | application/json |
+| Novu.Models.Errors.ErrorDto                      | 500                               | application/json |
+| Novu.Models.Errors.APIException                  | 4XX, 5XX                          | \*/\*            |
 
 ### Example
 
@@ -419,28 +448,30 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 try
 {
-    var res = await sdk.TriggerAsync(
-        triggerEventRequestDto: new TriggerEventRequestDto() {
-            WorkflowId = "workflow_identifier",
-            Payload = new Dictionary<string, object>() {
-                { "comment_id", "string" },
-                { "post", new Dictionary<string, object>() {
-                    { "text", "string" },
-                } },
-            },
-            Overrides = new Overrides() {},
-            To = To.CreateStr(
-                "SUBSCRIBER_ID"
-            ),
+    var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+        WorkflowId = "workflow_identifier",
+        Payload = new Dictionary<string, object>() {
+            { "comment_id", "string" },
+            { "post", new Dictionary<string, object>() {
+                { "text", "string" },
+            } },
         },
-        idempotencyKey: "<value>"
-    );
+        Overrides = new Overrides() {},
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
+        ),
+    });
 
     // handle response
 }
 catch (Exception ex)
 {
-    if (ex is ErrorDto)
+    if (ex is PayloadValidationExceptionDto)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is ErrorDto)
     {
         // Handle exception data
         throw;
@@ -493,22 +524,19 @@ var sdk = new NovuSDK(
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(
-    triggerEventRequestDto: new TriggerEventRequestDto() {
-        WorkflowId = "workflow_identifier",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
-            } },
-        },
-        Overrides = new Overrides() {},
-        To = To.CreateStr(
-            "SUBSCRIBER_ID"
-        ),
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
     },
-    idempotencyKey: "<value>"
-);
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+});
 
 // handle response
 ```
@@ -526,22 +554,19 @@ var sdk = new NovuSDK(
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(
-    triggerEventRequestDto: new TriggerEventRequestDto() {
-        WorkflowId = "workflow_identifier",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
-            } },
-        },
-        Overrides = new Overrides() {},
-        To = To.CreateStr(
-            "SUBSCRIBER_ID"
-        ),
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
     },
-    idempotencyKey: "<value>"
-);
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+});
 
 // handle response
 ```

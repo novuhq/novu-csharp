@@ -11,7 +11,7 @@
 
 ## List
 
-List all topics that a subscriber is subscribed to.
+List all subscriptions of subscribers for a topic.
     Checkout all available filters in the query section.
 
 ### Example Usage
@@ -73,8 +73,7 @@ var res = await sdk.Topics.Subscriptions.CreateAsync(
             "subscriberId1",
             "subscriberId2",
         },
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response
@@ -122,8 +121,7 @@ var res = await sdk.Topics.Subscriptions.DeleteAsync(
             "subscriberId1",
             "subscriberId2",
         },
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response

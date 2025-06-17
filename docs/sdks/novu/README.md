@@ -31,22 +31,19 @@ using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerAsync(
-    triggerEventRequestDto: new TriggerEventRequestDto() {
-        WorkflowId = "workflow_identifier",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
-            } },
-        },
-        Overrides = new Overrides() {},
-        To = To.CreateStr(
-            "SUBSCRIBER_ID"
-        ),
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
     },
-    idempotencyKey: "<value>"
-);
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+});
 
 // handle response
 ```
@@ -64,13 +61,14 @@ var res = await sdk.TriggerAsync(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| Novu.Models.Errors.PayloadValidationExceptionDto | 400                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 414                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 401, 403, 404, 405, 409, 413, 415                | application/json                                 |
+| Novu.Models.Errors.ValidationErrorDto            | 422                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 500                                              | application/json                                 |
+| Novu.Models.Errors.APIException                  | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Cancel
 
@@ -87,10 +85,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.CancelAsync(
-    transactionId: "<id>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.CancelAsync(transactionId: "<id>");
 
 // handle response
 ```
@@ -132,27 +127,24 @@ using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.BroadcastAsync(
-    triggerEventToAllRequestDto: new TriggerEventToAllRequestDto() {
-        Name = "<value>",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
+var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEventToAllRequestDto() {
+    Name = "<value>",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
+    },
+    Overrides = new TriggerEventToAllRequestDtoOverrides() {
+        AdditionalProperties = new Dictionary<string, Dictionary<string, object>>() {
+            { "fcm", new Dictionary<string, object>() {
+                { "data", new Dictionary<string, object>() {
+                    { "key", "value" },
+                } },
             } },
         },
-        Overrides = new TriggerEventToAllRequestDtoOverrides() {
-            AdditionalProperties = new Dictionary<string, Dictionary<string, object>>() {
-                { "fcm", new Dictionary<string, object>() {
-                    { "data", new Dictionary<string, object>() {
-                        { "key", "value" },
-                    } },
-                } },
-            },
-        },
     },
-    idempotencyKey: "<value>"
-);
+});
 
 // handle response
 ```
@@ -170,13 +162,14 @@ var res = await sdk.BroadcastAsync(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| Novu.Models.Errors.PayloadValidationExceptionDto | 400                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 414                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 401, 403, 404, 405, 409, 413, 415                | application/json                                 |
+| Novu.Models.Errors.ValidationErrorDto            | 422                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 500                                              | application/json                                 |
+| Novu.Models.Errors.APIException                  | 4XX, 5XX                                         | \*/\*                                            |
 
 ## TriggerBulk
 
@@ -194,26 +187,49 @@ using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerBulkAsync(
-    bulkTriggerEventDto: new BulkTriggerEventDto() {
-        Events = new List<TriggerEventRequestDto>() {
-            new TriggerEventRequestDto() {
-                WorkflowId = "workflow_identifier",
-                Payload = new Dictionary<string, object>() {
-                    { "comment_id", "string" },
-                    { "post", new Dictionary<string, object>() {
-                        { "text", "string" },
-                    } },
-                },
-                Overrides = new Overrides() {},
-                To = To.CreateStr(
-                    "SUBSCRIBER_ID"
-                ),
+var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDto() {
+    Events = new List<TriggerEventRequestDto>() {
+        new TriggerEventRequestDto() {
+            WorkflowId = "workflow_identifier",
+            Payload = new Dictionary<string, object>() {
+                { "comment_id", "string" },
+                { "post", new Dictionary<string, object>() {
+                    { "text", "string" },
+                } },
             },
+            Overrides = new Overrides() {},
+            To = To.CreateStr(
+                "SUBSCRIBER_ID"
+            ),
+        },
+        new TriggerEventRequestDto() {
+            WorkflowId = "workflow_identifier",
+            Payload = new Dictionary<string, object>() {
+                { "comment_id", "string" },
+                { "post", new Dictionary<string, object>() {
+                    { "text", "string" },
+                } },
+            },
+            Overrides = new Overrides() {},
+            To = To.CreateStr(
+                "SUBSCRIBER_ID"
+            ),
+        },
+        new TriggerEventRequestDto() {
+            WorkflowId = "workflow_identifier",
+            Payload = new Dictionary<string, object>() {
+                { "comment_id", "string" },
+                { "post", new Dictionary<string, object>() {
+                    { "text", "string" },
+                } },
+            },
+            Overrides = new Overrides() {},
+            To = To.CreateStr(
+                "SUBSCRIBER_ID"
+            ),
         },
     },
-    idempotencyKey: "<value>"
-);
+});
 
 // handle response
 ```
@@ -231,10 +247,11 @@ var res = await sdk.TriggerBulkAsync(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| Novu.Models.Errors.PayloadValidationExceptionDto | 400                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 414                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 401, 403, 404, 405, 409, 413, 415                | application/json                                 |
+| Novu.Models.Errors.ValidationErrorDto            | 422                                              | application/json                                 |
+| Novu.Models.Errors.ErrorDto                      | 500                                              | application/json                                 |
+| Novu.Models.Errors.APIException                  | 4XX, 5XX                                         | \*/\*                                            |

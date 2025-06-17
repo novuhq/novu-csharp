@@ -27,7 +27,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Integrations.GetAllAsync(idempotencyKey: "<value>");
+var res = await sdk.Integrations.GetAllAsync();
 
 // handle response
 ```
@@ -65,13 +65,10 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Integrations.CreateAsync(
-    createIntegrationRequestDto: new CreateIntegrationRequestDto() {
-        ProviderId = "<id>",
-        Channel = CreateIntegrationRequestDtoChannel.Email,
-    },
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Integrations.CreateAsync(createIntegrationRequestDto: new CreateIntegrationRequestDto() {
+    ProviderId = "<id>",
+    Channel = CreateIntegrationRequestDtoChannel.Email,
+});
 
 // handle response
 ```
@@ -112,8 +109,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Integrations.UpdateAsync(
     integrationId: "<id>",
-    updateIntegrationRequestDto: new UpdateIntegrationRequestDto() {},
-    idempotencyKey: "<value>"
+    updateIntegrationRequestDto: new UpdateIntegrationRequestDto() {}
 );
 
 // handle response
@@ -154,10 +150,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Integrations.DeleteAsync(
-    integrationId: "<id>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Integrations.DeleteAsync(integrationId: "<id>");
 
 // handle response
 ```
@@ -197,10 +190,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Integrations.SetPrimaryAsync(
-    integrationId: "<id>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Integrations.SetPrimaryAsync(integrationId: "<id>");
 
 // handle response
 ```
@@ -238,7 +228,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Integrations.ListActiveAsync(idempotencyKey: "<value>");
+var res = await sdk.Integrations.ListActiveAsync();
 
 // handle response
 ```

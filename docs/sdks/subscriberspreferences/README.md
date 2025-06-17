@@ -21,10 +21,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.SubscribersPreferences.ListAsync(
-    subscriberId: "<id>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.SubscribersPreferences.ListAsync(subscriberId: "<id>");
 
 // handle response
 ```
@@ -68,8 +65,7 @@ var res = await sdk.SubscribersPreferences.UpdateAsync(
     subscriberId: "<id>",
     patchSubscriberPreferencesDto: new PatchSubscriberPreferencesDto() {
         Channels = new PatchPreferenceChannelsDto() {},
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response

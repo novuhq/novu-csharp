@@ -13,6 +13,9 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
     
+    /// <summary>
+    /// Unit of time for the look-back window.
+    /// </summary>
     public enum Unit
     {
         [JsonProperty("seconds")]

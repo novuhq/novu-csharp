@@ -1,0 +1,13 @@
+# UpdateEnvironmentRequestDto
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `Name`                                                                      | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Identifier`                                                                | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `ParentId`                                                                  | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Color`                                                                     | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Dns`                                                                       | [InBoundParseDomainDto](../../Models/Components/InBoundParseDomainDto.md)   | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Bridge`                                                                    | [BridgeConfigurationDto](../../Models/Components/BridgeConfigurationDto.md) | :heavy_minus_sign:                                                          | N/A                                                                         |

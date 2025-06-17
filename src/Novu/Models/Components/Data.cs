@@ -9,12 +9,245 @@
 #nullable enable
 namespace Novu.Models.Components
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using Novu.Utils;
+    using System;
+    using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
     
-    /// <summary>
-    /// Additional custom data for the subscriber
-    /// </summary>
-    public class Data
+
+    public class DataType
     {
+        private DataType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+        public static DataType Str { get { return new DataType("str"); } }
+        
+        public static DataType ArrayOfStr { get { return new DataType("arrayOfStr"); } }
+        
+        public static DataType Boolean { get { return new DataType("boolean"); } }
+        
+        public static DataType Number { get { return new DataType("number"); } }
+        
+        public static DataType Null { get { return new DataType("null"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(DataType v) { return v.Value; }
+        public static DataType FromString(string v) {
+            switch(v) {
+                case "str": return Str;
+                case "arrayOfStr": return ArrayOfStr;
+                case "boolean": return Boolean;
+                case "number": return Number;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for DataType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((DataType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
+    [JsonConverter(typeof(Data.DataConverter))]
+    public class Data {
+        public Data(DataType type) {
+            Type = type;
+        }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public string? Str { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public List<string>? ArrayOfStr { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public bool? Boolean { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public double? Number { get; set; }
+
+        public DataType Type { get; set; }
+
+
+        public static Data CreateStr(string str) {
+            DataType typ = DataType.Str;
+
+            Data res = new Data(typ);
+            res.Str = str;
+            return res;
+        }
+
+        public static Data CreateArrayOfStr(List<string> arrayOfStr) {
+            DataType typ = DataType.ArrayOfStr;
+
+            Data res = new Data(typ);
+            res.ArrayOfStr = arrayOfStr;
+            return res;
+        }
+
+        public static Data CreateBoolean(bool boolean) {
+            DataType typ = DataType.Boolean;
+
+            Data res = new Data(typ);
+            res.Boolean = boolean;
+            return res;
+        }
+
+        public static Data CreateNumber(double number) {
+            DataType typ = DataType.Number;
+
+            Data res = new Data(typ);
+            res.Number = number;
+            return res;
+        }
+
+        public static Data CreateNull() {
+            DataType typ = DataType.Null;
+            return new Data(typ);
+        }
+
+        public class DataConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(Data);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                if (json[0] == '"' && json[^1] == '"'){
+                    return new Data(DataType.Str)
+                    {
+                        Str = json[1..^1]
+                    };
+                }
+
+                try
+                {
+                    return new Data(DataType.ArrayOfStr)
+                    {
+                        ArrayOfStr = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<string>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(List<string>), new Data(DataType.ArrayOfStr), "ArrayOfStr"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    var converted = Convert.ToBoolean(json);
+                    return new Data(DataType.Boolean)
+                    {
+                        Boolean = converted
+                    };
+                }
+                catch (System.FormatException)
+                {
+                    // try next option
+                }
+
+                try
+                {
+                    var converted = Convert.ToDouble(json);
+                    return new Data(DataType.Number)
+                    {
+                        Number = converted
+                    };
+                }
+                catch (System.FormatException)
+                {
+                    // try next option
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                Data res = (Data)value;
+                if (DataType.FromString(res.Type).Equals(DataType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                if (res.Str != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
+                    return;
+                }
+                if (res.ArrayOfStr != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfStr));
+                    return;
+                }
+                if (res.Boolean != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
+                    return;
+                }
+                if (res.Number != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
+                    return;
+                }
+
+            }
+
+        }
+
     }
 }

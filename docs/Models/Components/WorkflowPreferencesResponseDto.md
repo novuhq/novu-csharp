@@ -1,0 +1,9 @@
+# WorkflowPreferencesResponseDto
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `User`                                                                                              | [WorkflowPreferencesResponseDtoUser](../../Models/Components/WorkflowPreferencesResponseDtoUser.md) | :heavy_minus_sign:                                                                                  | User-specific workflow preferences                                                                  |
+| `Default`                                                                                           | [WorkflowPreferencesDto](../../Models/Components/WorkflowPreferencesDto.md)                         | :heavy_check_mark:                                                                                  | Default workflow preferences                                                                        |

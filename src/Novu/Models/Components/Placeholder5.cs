@@ -18,31 +18,31 @@ namespace Novu.Models.Components
     using System.Reflection;
     
 
-    public class SubscriberPayloadDtoDataType
+    public class Placeholder5Type
     {
-        private SubscriberPayloadDtoDataType(string value) { Value = value; }
+        private Placeholder5Type(string value) { Value = value; }
 
         public string Value { get; private set; }
-        public static SubscriberPayloadDtoDataType Str { get { return new SubscriberPayloadDtoDataType("str"); } }
+        public static Placeholder5Type Str { get { return new Placeholder5Type("str"); } }
         
-        public static SubscriberPayloadDtoDataType ArrayOfStr { get { return new SubscriberPayloadDtoDataType("arrayOfStr"); } }
+        public static Placeholder5Type Number { get { return new Placeholder5Type("number"); } }
         
-        public static SubscriberPayloadDtoDataType Boolean { get { return new SubscriberPayloadDtoDataType("boolean"); } }
+        public static Placeholder5Type Boolean { get { return new Placeholder5Type("boolean"); } }
         
-        public static SubscriberPayloadDtoDataType Number { get { return new SubscriberPayloadDtoDataType("number"); } }
+        public static Placeholder5Type MapOfAny { get { return new Placeholder5Type("mapOfAny"); } }
         
-        public static SubscriberPayloadDtoDataType Null { get { return new SubscriberPayloadDtoDataType("null"); } }
+        public static Placeholder5Type Null { get { return new Placeholder5Type("null"); } }
 
         public override string ToString() { return Value; }
-        public static implicit operator String(SubscriberPayloadDtoDataType v) { return v.Value; }
-        public static SubscriberPayloadDtoDataType FromString(string v) {
+        public static implicit operator String(Placeholder5Type v) { return v.Value; }
+        public static Placeholder5Type FromString(string v) {
             switch(v) {
                 case "str": return Str;
-                case "arrayOfStr": return ArrayOfStr;
-                case "boolean": return Boolean;
                 case "number": return Number;
+                case "boolean": return Boolean;
+                case "mapOfAny": return MapOfAny;
                 case "null": return Null;
-                default: throw new ArgumentException("Invalid value for SubscriberPayloadDtoDataType");
+                default: throw new ArgumentException("Invalid value for Placeholder5Type");
             }
         }
         public override bool Equals(object? obj)
@@ -51,7 +51,7 @@ namespace Novu.Models.Components
             {
                 return false;
             }
-            return Value.Equals(((SubscriberPayloadDtoDataType)obj).Value);
+            return Value.Equals(((Placeholder5Type)obj).Value);
         }
 
         public override int GetHashCode()
@@ -61,9 +61,9 @@ namespace Novu.Models.Components
     }
 
 
-    [JsonConverter(typeof(SubscriberPayloadDtoData.SubscriberPayloadDtoDataConverter))]
-    public class SubscriberPayloadDtoData {
-        public SubscriberPayloadDtoData(SubscriberPayloadDtoDataType type) {
+    [JsonConverter(typeof(Placeholder5.Placeholder5Converter))]
+    public class Placeholder5 {
+        public Placeholder5(Placeholder5Type type) {
             Type = type;
         }
 
@@ -71,58 +71,58 @@ namespace Novu.Models.Components
         public string? Str { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<string>? ArrayOfStr { get; set; }
+        public double? Number { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public bool? Boolean { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public double? Number { get; set; }
+        public Dictionary<string, object>? MapOfAny { get; set; }
 
-        public SubscriberPayloadDtoDataType Type { get; set; }
+        public Placeholder5Type Type { get; set; }
 
 
-        public static SubscriberPayloadDtoData CreateStr(string str) {
-            SubscriberPayloadDtoDataType typ = SubscriberPayloadDtoDataType.Str;
+        public static Placeholder5 CreateStr(string str) {
+            Placeholder5Type typ = Placeholder5Type.Str;
 
-            SubscriberPayloadDtoData res = new SubscriberPayloadDtoData(typ);
+            Placeholder5 res = new Placeholder5(typ);
             res.Str = str;
             return res;
         }
 
-        public static SubscriberPayloadDtoData CreateArrayOfStr(List<string> arrayOfStr) {
-            SubscriberPayloadDtoDataType typ = SubscriberPayloadDtoDataType.ArrayOfStr;
+        public static Placeholder5 CreateNumber(double number) {
+            Placeholder5Type typ = Placeholder5Type.Number;
 
-            SubscriberPayloadDtoData res = new SubscriberPayloadDtoData(typ);
-            res.ArrayOfStr = arrayOfStr;
-            return res;
-        }
-
-        public static SubscriberPayloadDtoData CreateBoolean(bool boolean) {
-            SubscriberPayloadDtoDataType typ = SubscriberPayloadDtoDataType.Boolean;
-
-            SubscriberPayloadDtoData res = new SubscriberPayloadDtoData(typ);
-            res.Boolean = boolean;
-            return res;
-        }
-
-        public static SubscriberPayloadDtoData CreateNumber(double number) {
-            SubscriberPayloadDtoDataType typ = SubscriberPayloadDtoDataType.Number;
-
-            SubscriberPayloadDtoData res = new SubscriberPayloadDtoData(typ);
+            Placeholder5 res = new Placeholder5(typ);
             res.Number = number;
             return res;
         }
 
-        public static SubscriberPayloadDtoData CreateNull() {
-            SubscriberPayloadDtoDataType typ = SubscriberPayloadDtoDataType.Null;
-            return new SubscriberPayloadDtoData(typ);
+        public static Placeholder5 CreateBoolean(bool boolean) {
+            Placeholder5Type typ = Placeholder5Type.Boolean;
+
+            Placeholder5 res = new Placeholder5(typ);
+            res.Boolean = boolean;
+            return res;
         }
 
-        public class SubscriberPayloadDtoDataConverter : JsonConverter
+        public static Placeholder5 CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+            Placeholder5Type typ = Placeholder5Type.MapOfAny;
+
+            Placeholder5 res = new Placeholder5(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+
+        public static Placeholder5 CreateNull() {
+            Placeholder5Type typ = Placeholder5Type.Null;
+            return new Placeholder5(typ);
+        }
+
+        public class Placeholder5Converter : JsonConverter
         {
 
-            public override bool CanConvert(System.Type objectType) => objectType == typeof(SubscriberPayloadDtoData);
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(Placeholder5);
 
             public override bool CanRead => true;
 
@@ -137,7 +137,7 @@ namespace Novu.Models.Components
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
-                    return new SubscriberPayloadDtoData(SubscriberPayloadDtoDataType.Str)
+                    return new Placeholder5(Placeholder5Type.Str)
                     {
                         Str = json[1..^1]
                     };
@@ -145,28 +145,21 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new SubscriberPayloadDtoData(SubscriberPayloadDtoDataType.ArrayOfStr)
+                    var converted = Convert.ToDouble(json);
+                    return new Placeholder5(Placeholder5Type.Number)
                     {
-                        ArrayOfStr = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<string>>(json)
+                        Number = converted
                     };
                 }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(List<string>), new SubscriberPayloadDtoData(SubscriberPayloadDtoDataType.ArrayOfStr), "ArrayOfStr"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
+                catch (System.FormatException)
                 {
                     // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
                 }
 
                 try
                 {
                     var converted = Convert.ToBoolean(json);
-                    return new SubscriberPayloadDtoData(SubscriberPayloadDtoDataType.Boolean)
+                    return new Placeholder5(Placeholder5Type.Boolean)
                     {
                         Boolean = converted
                     };
@@ -178,15 +171,22 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    var converted = Convert.ToDouble(json);
-                    return new SubscriberPayloadDtoData(SubscriberPayloadDtoDataType.Number)
+                    return new Placeholder5(Placeholder5Type.MapOfAny)
                     {
-                        Number = converted
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
                     };
                 }
-                catch (System.FormatException)
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new Placeholder5(Placeholder5Type.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
                 {
                     // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
 
                 if (fallbackCandidates.Count > 0)
@@ -218,8 +218,8 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
-                SubscriberPayloadDtoData res = (SubscriberPayloadDtoData)value;
-                if (SubscriberPayloadDtoDataType.FromString(res.Type).Equals(SubscriberPayloadDtoDataType.Null))
+                Placeholder5 res = (Placeholder5)value;
+                if (Placeholder5Type.FromString(res.Type).Equals(Placeholder5Type.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
@@ -229,9 +229,9 @@ namespace Novu.Models.Components
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
-                if (res.ArrayOfStr != null)
+                if (res.Number != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfStr));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
                 if (res.Boolean != null)
@@ -239,9 +239,9 @@ namespace Novu.Models.Components
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
-                if (res.Number != null)
+                if (res.MapOfAny != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
 

@@ -63,7 +63,7 @@ namespace Novu.Models.Components
         /// An optional payload object that can contain any properties.
         /// </summary>
         [JsonProperty("data")]
-        public Dictionary<string, SubscriberPayloadDtoData>? Data { get; set; }
+        public Dictionary<string, Data>? Data { get; set; }
 
         /// <summary>
         /// An optional array of subscriber channels.

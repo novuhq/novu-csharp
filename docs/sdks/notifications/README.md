@@ -65,10 +65,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Notifications.RetrieveAsync(
-    notificationId: "<id>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Notifications.RetrieveAsync(notificationId: "<id>");
 
 // handle response
 ```

@@ -12,4 +12,4 @@
 | `Avatar`                                  | *string*                                  | :heavy_minus_sign:                        | Avatar URL or identifier                  |
 | `Timezone`                                | *string*                                  | :heavy_minus_sign:                        | Timezone of the subscriber                |
 | `Locale`                                  | *string*                                  | :heavy_minus_sign:                        | Locale of the subscriber                  |
-| `Data`                                    | [Data](../../Models/Components/Data.md)   | :heavy_minus_sign:                        | Additional custom data for the subscriber |
+| `Data`                                    | Dictionary<String, *object*>              | :heavy_minus_sign:                        | Additional custom data for the subscriber |

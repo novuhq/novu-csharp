@@ -84,10 +84,10 @@ namespace Novu.Models.Components
         public bool? Boolean { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public Four? Four { get; set; }
+        public Models.Components.Four? Four { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Five>? ArrayOf5 { get; set; }
+        public List<Models.Components.Five>? ArrayOf5 { get; set; }
 
         public ValueType Type { get; set; }
 
@@ -116,7 +116,7 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Value CreateFour(Four four) {
+        public static Value CreateFour(Models.Components.Four four) {
             ValueType typ = ValueType.Four;
 
             Value res = new Value(typ);
@@ -124,7 +124,7 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Value CreateArrayOf5(List<Five> arrayOf5) {
+        public static Value CreateArrayOf5(List<Models.Components.Five> arrayOf5) {
             ValueType typ = ValueType.ArrayOf5;
 
             Value res = new Value(typ);
@@ -158,12 +158,12 @@ namespace Novu.Models.Components
                 {
                     return new Value(ValueType.Four)
                     {
-                        Four = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Four>(json)
+                        Four = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Models.Components.Four>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Four), new Value(ValueType.Four), "Four"));
+                    fallbackCandidates.Add((typeof(Models.Components.Four), new Value(ValueType.Four), "Four"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -211,12 +211,12 @@ namespace Novu.Models.Components
                 {
                     return new Value(ValueType.ArrayOf5)
                     {
-                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Five>>(json)
+                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Models.Components.Five>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Five>), new Value(ValueType.ArrayOf5), "ArrayOf5"));
+                    fallbackCandidates.Add((typeof(List<Models.Components.Five>), new Value(ValueType.ArrayOf5), "ArrayOf5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {

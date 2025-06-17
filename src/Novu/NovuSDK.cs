@@ -40,6 +40,20 @@ namespace Novu
         public ITopics Topics { get; }
 
         /// <summary>
+        /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.
+        /// 
+        /// <see>https://docs.novu.co/workflows}</see>
+        /// </summary>
+        public IWorkflows Workflows { get; }
+
+        /// <summary>
+        /// Environments allow you to manage different stages of your application development lifecycle. Each environment has its own set of API keys and configurations, enabling you to separate development, staging, and production workflows.
+        /// 
+        /// <see>https://docs.novu.co/platform/environments}</see>
+        /// </summary>
+        public IEnvironments Environments { get; }
+
+        /// <summary>
         /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
         /// 
         /// <see>https://docs.novu.co/channels-and-providers/integration-store}</see>
@@ -107,41 +121,6 @@ namespace Novu
         Task<EventsControllerTriggerBulkResponse> TriggerBulkAsync(BulkTriggerEventDto bulkTriggerEventDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
     }
 
-    public class SDKConfig
-    {
-        /// <summary>
-        /// List of server URLs available to the SDK.
-        /// </summary>
-        public static readonly string[] ServerList = {
-            "https://api.novu.co",
-            "https://eu.api.novu.co",
-        };
-
-        public string ServerUrl = "";
-        public int ServerIndex = 0;
-        public SDKHooks Hooks = new SDKHooks();
-        public RetryConfig? RetryConfig = null;
-
-        public string GetTemplatedServerUrl()
-        {
-            if (!String.IsNullOrEmpty(this.ServerUrl))
-            {
-                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.ServerUrl, "/"), new Dictionary<string, string>());
-            }
-            return Utilities.TemplateUrl(SDKConfig.ServerList[this.ServerIndex], new Dictionary<string, string>());
-        }
-
-        public ISpeakeasyHttpClient InitHooks(ISpeakeasyHttpClient client)
-        {
-            string preHooksUrl = GetTemplatedServerUrl();
-            var (postHooksUrl, postHooksClient) = this.Hooks.SDKInit(preHooksUrl, client);
-            if (preHooksUrl != postHooksUrl)
-            {
-                this.ServerUrl = postHooksUrl;
-            }
-            return postHooksClient;
-        }
-    }
 
     /// <summary>
     /// Novu API: Novu REST API. Please see https://docs.novu.co/api-reference for more details.
@@ -153,23 +132,48 @@ namespace Novu
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.1.0";
-        private const string _sdkGenVersion = "2.605.6";
+        private const string _sdkVersion = "2.2.0";
+        private const string _sdkGenVersion = "2.630.6";
         private const string _openapiDocVersion = "2.2.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
-        private string _serverUrl = "";
-        private int _serverIndex = 0;
-        private ISpeakeasyHttpClient _client;
-        private Func<Novu.Models.Components.Security>? _securitySource;
         public ISubscribers Subscribers { get; private set; }
         public ISubscribersPreferences SubscribersPreferences { get; private set; }
         public ITopics Topics { get; private set; }
+        public IWorkflows Workflows { get; private set; }
+        public IEnvironments Environments { get; private set; }
         public IIntegrations Integrations { get; private set; }
         public IMessages Messages { get; private set; }
         public INotifications Notifications { get; private set; }
         public ISubscribersMessages SubscribersMessages { get; private set; }
         public ISubscribersNotifications SubscribersNotifications { get; private set; }
         public ITopicsSubscribers TopicsSubscribers { get; private set; }
+
+        public NovuSDK(SDKConfig config)
+        {
+            SDKConfiguration = config;
+            InitHooks();
+
+            Subscribers = new Subscribers(SDKConfiguration);
+
+            SubscribersPreferences = new SubscribersPreferences(SDKConfiguration);
+
+            Topics = new Topics(SDKConfiguration);
+
+            Workflows = new Workflows(SDKConfiguration);
+
+            Environments = new Environments(SDKConfiguration);
+
+            Integrations = new Integrations(SDKConfiguration);
+
+            Messages = new Messages(SDKConfiguration);
+
+            Notifications = new Notifications(SDKConfiguration);
+
+            SubscribersMessages = new SubscribersMessages(SDKConfiguration);
+
+            SubscribersNotifications = new SubscribersNotifications(SDKConfiguration);
+
+            TopicsSubscribers = new TopicsSubscribers(SDKConfiguration);
+        }
 
         public NovuSDK(string? secretKey = null, Func<string>? secretKeySource = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
@@ -179,7 +183,6 @@ namespace Novu
                 {
                     throw new Exception($"Invalid server index {serverIndex.Value}");
                 }
-                _serverIndex = serverIndex.Value;
             }
 
             if (serverUrl != null)
@@ -188,10 +191,8 @@ namespace Novu
                 {
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
-                _serverUrl = serverUrl;
             }
-
-            _client = client ?? new SpeakeasyHttpClient();
+            Func<Novu.Models.Components.Security>? _securitySource = null;
 
             if(secretKeySource != null)
             {
@@ -206,41 +207,50 @@ namespace Novu
                 throw new Exception("secretKey and secretKeySource cannot both be null");
             }
 
-            SDKConfiguration = new SDKConfig()
+            SDKConfiguration = new SDKConfig(client)
             {
-                ServerIndex = _serverIndex,
-                ServerUrl = _serverUrl,
+                ServerIndex = serverIndex == null ? 0 : serverIndex.Value,
+                ServerUrl = serverUrl == null ? "" : serverUrl,
+                SecuritySource = _securitySource,
                 RetryConfig = retryConfig
             };
 
-            _client = SDKConfiguration.InitHooks(_client);
+            InitHooks();
 
+            Subscribers = new Subscribers(SDKConfiguration);
 
-            Subscribers = new Subscribers(_client, _securitySource, _serverUrl, SDKConfiguration);
+            SubscribersPreferences = new SubscribersPreferences(SDKConfiguration);
 
+            Topics = new Topics(SDKConfiguration);
 
-            SubscribersPreferences = new SubscribersPreferences(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Workflows = new Workflows(SDKConfiguration);
 
+            Environments = new Environments(SDKConfiguration);
 
-            Topics = new Topics(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Integrations = new Integrations(SDKConfiguration);
 
+            Messages = new Messages(SDKConfiguration);
 
-            Integrations = new Integrations(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Notifications = new Notifications(SDKConfiguration);
 
+            SubscribersMessages = new SubscribersMessages(SDKConfiguration);
 
-            Messages = new Messages(_client, _securitySource, _serverUrl, SDKConfiguration);
+            SubscribersNotifications = new SubscribersNotifications(SDKConfiguration);
 
+            TopicsSubscribers = new TopicsSubscribers(SDKConfiguration);
+        }
 
-            Notifications = new Notifications(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            SubscribersMessages = new SubscribersMessages(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            SubscribersNotifications = new SubscribersNotifications(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            TopicsSubscribers = new TopicsSubscribers(_client, _securitySource, _serverUrl, SDKConfiguration);
+        private void InitHooks()
+        {
+            string preHooksUrl = SDKConfiguration.GetTemplatedServerUrl();
+            var (postHooksUrl, postHooksClient) = SDKConfiguration.Hooks.SDKInit(preHooksUrl, SDKConfiguration.Client);
+            var config = SDKConfiguration;
+            if (preHooksUrl != postHooksUrl)
+            {
+                config.ServerUrl = postHooksUrl;
+            }
+            config.Client = postHooksClient;
+            SDKConfiguration = config;
         }
 
         public async Task<EventsControllerTriggerResponse> TriggerAsync(TriggerEventRequestDto triggerEventRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
@@ -255,7 +265,7 @@ namespace Novu
             var urlString = baseUrl + "/v1/events/trigger";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "TriggerEventRequestDto", "json", false, false);
@@ -264,12 +274,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "EventsController_trigger", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "EventsController_trigger", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -304,8 +314,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -360,6 +370,16 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<PayloadValidationExceptionDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
             else if(responseStatusCode == 414)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
@@ -370,7 +390,7 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
-            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
+            else if(new List<int>{401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
@@ -431,15 +451,15 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v1/events/trigger/{transactionId}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "EventsController_cancel", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "EventsController_cancel", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -474,8 +494,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -602,7 +622,7 @@ namespace Novu
             var urlString = baseUrl + "/v1/events/trigger/broadcast";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "TriggerEventToAllRequestDto", "json", false, false);
@@ -611,12 +631,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "EventsController_broadcastEventToAll", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "EventsController_broadcastEventToAll", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -651,8 +671,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -707,6 +727,16 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<PayloadValidationExceptionDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
             else if(responseStatusCode == 414)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
@@ -717,7 +747,7 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
-            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
+            else if(new List<int>{401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
@@ -779,7 +809,7 @@ namespace Novu
             var urlString = baseUrl + "/v1/events/trigger/bulk";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "BulkTriggerEventDto", "json", false, false);
@@ -788,12 +818,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "EventsController_triggerBulk", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "EventsController_triggerBulk", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -828,8 +858,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -884,6 +914,16 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<PayloadValidationExceptionDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
             else if(responseStatusCode == 414)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
@@ -894,7 +934,7 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
-            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
+            else if(new List<int>{401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
@@ -943,5 +983,67 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
+
+        public class SDKBuilder
+        {
+            private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
+
+            public SDKBuilder() { }
+
+            public SDKBuilder WithServerIndex(int serverIndex)
+            {
+                if (serverIndex < 0 || serverIndex >= SDKConfig.ServerList.Length)
+                {
+                    throw new Exception($"Invalid server index {serverIndex}");
+                }
+                _sdkConfig.ServerIndex = serverIndex;
+                return this;
+            }
+
+            public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
+            {
+                if (serverVariables != null)
+                {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, serverVariables);
+                }
+                _sdkConfig.ServerUrl = serverUrl;
+                return this;
+            }
+
+            public SDKBuilder WithSecretKeySource(Func<string> secretKeySource)
+            {
+                _sdkConfig.SecuritySource = () => new Novu.Models.Components.Security() { SecretKey = secretKeySource() };
+                return this;
+            }
+
+            public SDKBuilder WithSecretKey(string secretKey)
+            {
+                _sdkConfig.SecuritySource = () => new Novu.Models.Components.Security() { SecretKey = secretKey };
+                return this;
+            }
+
+            public SDKBuilder WithClient(ISpeakeasyHttpClient client)
+            {
+                _sdkConfig.Client = client;
+                return this;
+            }
+
+            public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
+            {
+                _sdkConfig.RetryConfig = retryConfig;
+                return this;
+            }
+
+            public NovuSDK Build()
+            {
+              if (_sdkConfig.SecuritySource == null) {
+                  throw new Exception("securitySource cannot be null. One of `SecretKey` or `secretKeySource` needs to be defined.");
+              }
+              return new NovuSDK(_sdkConfig);
+            }
+
+        }
+
+        public static SDKBuilder Builder() => new SDKBuilder();
     }
 }

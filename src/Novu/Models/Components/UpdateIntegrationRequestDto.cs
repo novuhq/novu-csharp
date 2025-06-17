@@ -35,12 +35,6 @@ namespace Novu.Models.Components
         [JsonProperty("credentials")]
         public CredentialsDto? Credentials { get; set; }
 
-        /// <summary>
-        /// If true, the Novu branding will be removed from the Inbox component
-        /// </summary>
-        [JsonProperty("removeNovuBranding")]
-        public bool? RemoveNovuBranding { get; set; }
-
         [JsonProperty("check")]
         public bool? Check { get; set; }
 
