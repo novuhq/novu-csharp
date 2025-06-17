@@ -9,7 +9,7 @@
 * [Create](#create) - Create a subscriber
 * [Retrieve](#retrieve) - Retrieve a subscriber
 * [Patch](#patch) - Update a subscriber
-* [Delete](#delete) - Delete subscriber
+* [Delete](#delete) - Delete a subscriber
 * [CreateBulk](#createbulk) - Bulk create subscribers
 * [UpdateCredentials](#updatecredentials) - Update provider credentials
 * [AppendCredentials](#appendcredentials) - Upsert provider credentials
@@ -30,7 +30,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-SubscribersControllerSearchSubscribersRequest req = new SubscribersControllerSearchSubscribersRequest() {};
+SubscribersControllerSearchSubscribersRequest req = ;
 
 var res = await sdk.Subscribers.SearchAsync(req);
 
@@ -70,12 +70,9 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Subscribers.CreateAsync(
-    createSubscriberRequestDto: new CreateSubscriberRequestDto() {
-        SubscriberId = "<id>",
-    },
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Subscribers.CreateAsync(createSubscriberRequestDto: new CreateSubscriberRequestDto() {
+    SubscriberId = "<id>",
+});
 
 // handle response
 ```
@@ -103,7 +100,7 @@ var res = await sdk.Subscribers.CreateAsync(
 
 ## Retrieve
 
-Retrive a subscriber by its unique key identifier **subscriberId**. 
+Retrieve a subscriber by its unique key identifier **subscriberId**. 
     **subscriberId** field is required.
 
 ### Example Usage
@@ -114,10 +111,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Subscribers.RetrieveAsync(
-    subscriberId: "<id>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Subscribers.RetrieveAsync(subscriberId: "<id>");
 
 // handle response
 ```
@@ -158,8 +152,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Subscribers.PatchAsync(
     subscriberId: "<id>",
-    patchSubscriberRequestDto: new PatchSubscriberRequestDto() {},
-    idempotencyKey: "<value>"
+    patchSubscriberRequestDto: new PatchSubscriberRequestDto() {}
 );
 
 // handle response
@@ -189,7 +182,8 @@ var res = await sdk.Subscribers.PatchAsync(
 
 ## Delete
 
-Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions
+Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions. 
+      **subscriberId** is a required field.
 
 ### Example Usage
 
@@ -199,10 +193,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Subscribers.DeleteAsync(
-    subscriberId: "<id>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Subscribers.DeleteAsync(subscriberId: "<id>");
 
 // handle response
 ```
@@ -243,16 +234,13 @@ using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Subscribers.CreateBulkAsync(
-    bulkSubscriberCreateDto: new BulkSubscriberCreateDto() {
-        Subscribers = new List<CreateSubscriberRequestDto>() {
-            new CreateSubscriberRequestDto() {
-                SubscriberId = "<id>",
-            },
+var res = await sdk.Subscribers.CreateBulkAsync(bulkSubscriberCreateDto: new BulkSubscriberCreateDto() {
+    Subscribers = new List<CreateSubscriberRequestDto>() {
+        new CreateSubscriberRequestDto() {
+            SubscriberId = "<id>",
         },
     },
-    idempotencyKey: "<value>"
-);
+});
 
 // handle response
 ```
@@ -310,8 +298,7 @@ var res = await sdk.Subscribers.UpdateCredentialsAsync(
             State = "resolved",
             ExternalUrl = "https://example.com/details",
         },
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response
@@ -371,8 +358,7 @@ var res = await sdk.Subscribers.AppendCredentialsAsync(
             State = "resolved",
             ExternalUrl = "https://example.com/details",
         },
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response
@@ -415,8 +401,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Subscribers.DeleteCredentialsAsync(
     subscriberId: "<id>",
-    providerId: "<id>",
-    idempotencyKey: "<value>"
+    providerId: "<id>"
 );
 
 // handle response
@@ -460,8 +445,7 @@ var res = await sdk.Subscribers.UpdateOnlineStatusAsync(
     subscriberId: "<id>",
     updateSubscriberOnlineFlagRequestDto: new UpdateSubscriberOnlineFlagRequestDto() {
         IsOnline = false,
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response

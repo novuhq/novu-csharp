@@ -73,8 +73,7 @@ var res = await sdk.SubscribersMessages.MarkAllAsync(
     subscriberId: "<id>",
     markAllMessageAsRequestDto: new MarkAllMessageAsRequestDto() {
         MarkAs = MarkAs.Read,
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response
@@ -120,13 +119,10 @@ var res = await sdk.SubscribersMessages.MarkAllAsAsync(
     subscriberId: "<id>",
     messageMarkAsRequestDto: new MessageMarkAsRequestDto() {
         MessageId = MessageId.CreateArrayOfStr(
-            new List<string>() {
-                "<id>",
-            }
+            new List<string>() {}
         ),
-        MarkAs = MessageMarkAsRequestDtoMarkAs.Read,
-    },
-    idempotencyKey: "<value>"
+        MarkAs = MessageMarkAsRequestDtoMarkAs.Seen,
+    }
 );
 
 // handle response

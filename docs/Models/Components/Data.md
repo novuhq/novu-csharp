@@ -1,9 +1,28 @@
 # Data
 
-Additional custom data for the subscriber
 
+## Supported Types
 
-## Fields
+### Str
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```csharp
+Data.CreateStr(/* values here */);
+```
+
+### ArrayOfStr
+
+```csharp
+Data.CreateArrayOfStr(/* values here */);
+```
+
+### Boolean
+
+```csharp
+Data.CreateBoolean(/* values here */);
+```
+
+### Number
+
+```csharp
+Data.CreateNumber(/* values here */);
+```

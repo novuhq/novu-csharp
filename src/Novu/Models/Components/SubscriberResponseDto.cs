@@ -28,37 +28,37 @@ namespace Novu.Models.Components
         /// The first name of the subscriber.
         /// </summary>
         [JsonProperty("firstName")]
-        public string? FirstName { get; set; }
+        public string? FirstName { get; set; } = null;
 
         /// <summary>
         /// The last name of the subscriber.
         /// </summary>
         [JsonProperty("lastName")]
-        public string? LastName { get; set; }
+        public string? LastName { get; set; } = null;
 
         /// <summary>
         /// The email address of the subscriber.
         /// </summary>
         [JsonProperty("email")]
-        public string? Email { get; set; }
+        public string? Email { get; set; } = null;
 
         /// <summary>
         /// The phone number of the subscriber.
         /// </summary>
         [JsonProperty("phone")]
-        public string? Phone { get; set; }
+        public string? Phone { get; set; } = null;
 
         /// <summary>
         /// The URL of the subscriber&apos;s avatar image.
         /// </summary>
         [JsonProperty("avatar")]
-        public string? Avatar { get; set; }
+        public string? Avatar { get; set; } = null;
 
         /// <summary>
         /// The locale setting of the subscriber, indicating their preferred language or region.
         /// </summary>
         [JsonProperty("locale")]
-        public string? Locale { get; set; }
+        public string? Locale { get; set; } = null;
 
         /// <summary>
         /// An array of channel settings associated with the subscriber.
@@ -77,13 +77,13 @@ namespace Novu.Models.Components
         /// Indicates whether the subscriber is currently online.
         /// </summary>
         [JsonProperty("isOnline")]
-        public bool? IsOnline { get; set; }
+        public bool? IsOnline { get; set; } = null;
 
         /// <summary>
         /// The timestamp indicating when the subscriber was last online, in ISO 8601 format.
         /// </summary>
         [JsonProperty("lastOnlineAt")]
-        public string? LastOnlineAt { get; set; }
+        public string? LastOnlineAt { get; set; } = null;
 
         /// <summary>
         /// The version of the subscriber document.
@@ -101,7 +101,7 @@ namespace Novu.Models.Components
         /// Timezone of the subscriber
         /// </summary>
         [JsonProperty("timezone")]
-        public string? Timezone { get; set; }
+        public string? Timezone { get; set; } = null;
 
         /// <summary>
         /// The identifier used to create this subscriber, which typically corresponds to the user ID in your system.

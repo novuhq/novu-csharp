@@ -10,8 +10,8 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
-    using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
     
     public class PatchSubscriberRequestDto
     {
@@ -62,6 +62,6 @@ namespace Novu.Models.Components
         /// Additional custom data for the subscriber
         /// </summary>
         [JsonProperty("data")]
-        public Data? Data { get; set; } = null;
+        public Dictionary<string, object>? Data { get; set; } = null;
     }
 }

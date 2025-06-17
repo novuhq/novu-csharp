@@ -4,6 +4,7 @@ generation:
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
@@ -16,9 +17,10 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
 csharp:
-  version: 2.1.0
+  version: 2.2.0
   additionalDependencies: []
   author: Speakeasy
+  baseErrorName: NovuError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
   disableNamespacePascalCasingApr2024: true

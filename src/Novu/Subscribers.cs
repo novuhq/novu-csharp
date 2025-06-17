@@ -50,7 +50,7 @@ namespace Novu
         /// Retrieve a subscriber
         /// 
         /// <remarks>
-        /// Retrive a subscriber by its unique key identifier **subscriberId**. <br/>
+        /// Retrieve a subscriber by its unique key identifier **subscriberId**. <br/>
         ///     **subscriberId** field is required.
         /// </remarks>
         /// </summary>
@@ -67,10 +67,11 @@ namespace Novu
         Task<SubscribersControllerPatchSubscriberResponse> PatchAsync(string subscriberId, PatchSubscriberRequestDto patchSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Delete subscriber
+        /// Delete a subscriber
         /// 
         /// <remarks>
-        /// Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions
+        /// Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions. <br/>
+        ///       **subscriberId** is a required field.
         /// </remarks>
         /// </summary>
         Task<SubscribersControllerRemoveSubscriberResponse> DeleteAsync(string subscriberId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -130,22 +131,15 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.1.0";
-        private const string _sdkGenVersion = "2.605.6";
+        private const string _sdkVersion = "2.2.0";
+        private const string _sdkGenVersion = "2.630.6";
         private const string _openapiDocVersion = "2.2.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.605.6 2.2.0 Novu";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<Novu.Models.Components.Security>? _securitySource;
         public INovuTopics Topics { get; private set; }
 
-        public Subscribers(ISpeakeasyHttpClient client, Func<Novu.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Subscribers(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Topics = new NovuTopics(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Topics = new NovuTopics(SDKConfiguration);
         }
 
         public async Task<SubscribersControllerSearchSubscribersResponse> SearchAsync(SubscribersControllerSearchSubscribersRequest? request = null, RetryConfig? retryConfig = null)
@@ -154,15 +148,15 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersController_searchSubscribers", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersController_searchSubscribers", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -197,8 +191,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -325,7 +319,7 @@ namespace Novu
             var urlString = baseUrl + "/v2/subscribers";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "CreateSubscriberRequestDto", "json", false, false);
@@ -334,12 +328,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersController_createSubscriber", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersController_createSubscriber", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -374,8 +368,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -501,15 +495,15 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersController_getSubscriber", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersController_getSubscriber", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -544,8 +538,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -672,7 +666,7 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "PatchSubscriberRequestDto", "json", false, false);
@@ -681,12 +675,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersController_patchSubscriber", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersController_patchSubscriber", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -721,8 +715,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -848,15 +842,15 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersController_removeSubscriber", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersController_removeSubscriber", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -891,8 +885,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -1019,7 +1013,7 @@ namespace Novu
             var urlString = baseUrl + "/v1/subscribers/bulk";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "BulkSubscriberCreateDto", "json", false, false);
@@ -1028,12 +1022,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersV1Controller_bulkCreateSubscribers", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersV1Controller_bulkCreateSubscribers", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1068,8 +1062,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -1196,7 +1190,7 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/credentials", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "UpdateSubscriberChannelRequestDto", "json", false, false);
@@ -1205,12 +1199,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersV1Controller_updateSubscriberChannel", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersV1Controller_updateSubscriberChannel", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1245,8 +1239,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -1373,7 +1367,7 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/credentials", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "UpdateSubscriberChannelRequestDto", "json", false, false);
@@ -1382,12 +1376,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersV1Controller_modifySubscriberChannel", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersV1Controller_modifySubscriberChannel", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1422,8 +1416,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -1550,15 +1544,15 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/credentials/{providerId}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersV1Controller_deleteSubscriberCredentials", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersV1Controller_deleteSubscriberCredentials", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1593,8 +1587,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -1713,7 +1707,7 @@ namespace Novu
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/online-status", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "UpdateSubscriberOnlineFlagRequestDto", "json", false, false);
@@ -1722,12 +1716,12 @@ namespace Novu
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "SubscribersV1Controller_updateSubscriberOnlineFlag", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "SubscribersV1Controller_updateSubscriberOnlineFlag", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1762,8 +1756,8 @@ namespace Novu
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 

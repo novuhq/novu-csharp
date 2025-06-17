@@ -40,7 +40,7 @@ namespace Novu.Models.Components
         /// Identifier for the message template used.
         /// </summary>
         [JsonProperty("_messageTemplateId")]
-        public string MessageTemplateId { get; set; } = default!;
+        public string? MessageTemplateId { get; set; }
 
         /// <summary>
         /// Identifier for the organization sending the notification.

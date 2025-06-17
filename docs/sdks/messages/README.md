@@ -67,10 +67,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Messages.DeleteAsync(
-    messageId: "507f1f77bcf86cd799439011",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Messages.DeleteAsync(messageId: "507f1f77bcf86cd799439011");
 
 // handle response
 ```
@@ -106,15 +103,10 @@ Delete multiple messages from the Novu platform using **transactionId** of trigg
 ```csharp
 using Novu;
 using Novu.Models.Components;
-using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Messages.DeleteByTransactionIdAsync(
-    transactionId: "507f1f77bcf86cd799439011",
-    channel: Channel.Sms,
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Messages.DeleteByTransactionIdAsync(transactionId: "507f1f77bcf86cd799439011");
 
 // handle response
 ```

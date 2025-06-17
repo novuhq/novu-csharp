@@ -29,7 +29,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-TopicsControllerListTopicsRequest req = new TopicsControllerListTopicsRequest() {};
+TopicsControllerListTopicsRequest req = ;
 
 var res = await sdk.Topics.ListAsync(req);
 
@@ -68,13 +68,10 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Topics.CreateAsync(
-    createUpdateTopicRequestDto: new CreateUpdateTopicRequestDto() {
-        Key = "task:12345",
-        Name = "Task Title",
-    },
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Topics.CreateAsync(createUpdateTopicRequestDto: new CreateUpdateTopicRequestDto() {
+    Key = "task:12345",
+    Name = "Task Title",
+});
 
 // handle response
 ```
@@ -112,10 +109,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Topics.GetAsync(
-    topicKey: "<value>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Topics.GetAsync(topicKey: "<value>");
 
 // handle response
 ```
@@ -157,8 +151,7 @@ var res = await sdk.Topics.UpdateAsync(
     topicKey: "<value>",
     updateTopicRequestDto: new UpdateTopicRequestDto() {
         Name = "Updated Topic Name",
-    },
-    idempotencyKey: "<value>"
+    }
 );
 
 // handle response
@@ -199,10 +192,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Topics.DeleteAsync(
-    topicKey: "<value>",
-    idempotencyKey: "<value>"
-);
+var res = await sdk.Topics.DeleteAsync(topicKey: "<value>");
 
 // handle response
 ```

@@ -1,0 +1,9 @@
+# StepIssuesDto
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Controls`                                                                                        | Dictionary<String, List<[StepContentIssueDto](../../Models/Components/StepContentIssueDto.md)>>   | :heavy_minus_sign:                                                                                | Controls-related issues                                                                           |
+| `Integration`                                                                                     | Dictionary<String, List<[StepIntegrationIssue](../../Models/Components/StepIntegrationIssue.md)>> | :heavy_minus_sign:                                                                                | Integration-related issues                                                                        |

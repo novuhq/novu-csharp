@@ -66,8 +66,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.SubscribersNotifications.UnseenCountAsync(
     subscriberId: "<id>",
     seen: false,
-    limit: 100D,
-    idempotencyKey: "<value>"
+    limit: 100D
 );
 
 // handle response

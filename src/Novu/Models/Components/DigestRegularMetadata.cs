@@ -20,13 +20,13 @@ namespace Novu.Models.Components
         public double? Amount { get; set; }
 
         [JsonProperty("unit")]
-        public Unit? Unit { get; set; }
+        public DigestRegularMetadataUnit? Unit { get; set; }
 
         [JsonProperty("digestKey")]
         public string? DigestKey { get; set; }
 
         [JsonProperty("type")]
-        public Models.Components.Type Type { get; set; } = default!;
+        public DigestRegularMetadataType Type { get; set; } = default!;
 
         [JsonProperty("backoff")]
         public bool? Backoff { get; set; }

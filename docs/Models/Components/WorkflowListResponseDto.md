@@ -1,0 +1,18 @@
+# WorkflowListResponseDto
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Name`                                                              | *string*                                                            | :heavy_check_mark:                                                  | Name of the workflow                                                |
+| `Tags`                                                              | List<*string*>                                                      | :heavy_minus_sign:                                                  | Tags associated with the workflow                                   |
+| `UpdatedAt`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Last updated timestamp                                              |
+| `CreatedAt`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Creation timestamp                                                  |
+| `Id`                                                                | *string*                                                            | :heavy_check_mark:                                                  | Unique database identifier                                          |
+| `WorkflowId`                                                        | *string*                                                            | :heavy_check_mark:                                                  | Workflow identifier                                                 |
+| `Slug`                                                              | *string*                                                            | :heavy_check_mark:                                                  | Workflow slug                                                       |
+| `Status`                                                            | [WorkflowStatusEnum](../../Models/Components/WorkflowStatusEnum.md) | :heavy_check_mark:                                                  | Status of the workflow                                              |
+| `Origin`                                                            | [WorkflowOriginEnum](../../Models/Components/WorkflowOriginEnum.md) | :heavy_check_mark:                                                  | Origin of the workflow                                              |
+| `LastTriggeredAt`                                                   | *string*                                                            | :heavy_minus_sign:                                                  | Timestamp of the last workflow trigger                              |
+| `StepTypeOverviews`                                                 | List<[StepTypeEnum](../../Models/Components/StepTypeEnum.md)>       | :heavy_check_mark:                                                  | Overview of step types in the workflow                              |
