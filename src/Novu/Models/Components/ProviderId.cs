@@ -38,6 +38,8 @@ namespace Novu.Models.Components
         RocketChat,
         [JsonProperty("whatsapp-business")]
         WhatsappBusiness,
+        [JsonProperty("chat-webhook")]
+        ChatWebhook,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]

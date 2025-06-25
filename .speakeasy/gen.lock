@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 61e876ba-f1ab-4e7f-bfcc-4f8231d25d15
 management:
-  docChecksum: 7415a06352ef2c16b6df6f858c9f1f37
-  docVersion: 2.2.0
-  speakeasyVersion: 1.563.4
-  generationVersion: 2.630.6
-  releaseVersion: 2.2.0
-  configChecksum: 409fe81ae1c32810033daa9b06e5e361
+  docChecksum: 6c4e970f87a9fc0506f91742746017cc
+  docVersion: 2.3.0
+  speakeasyVersion: 1.569.0
+  generationVersion: 2.636.0
+  releaseVersion: 2.3.0-alpha.1
+  configChecksum: e4ec12b3e2f2dafe9d89123e44c09301
   repoURL: https://github.com/novuhq/novu-csharp.git
   published: true
 features:
@@ -952,6 +952,7 @@ generatedFiles:
   - src/Novu/Utils/FlexibleObjectDeserializer.cs
   - src/Novu/Utils/HeaderSerializer.cs
   - src/Novu/Utils/IsoDateTimeSerializer.cs
+  - src/Novu/Utils/OpenEnumConverter.cs
   - src/Novu/Utils/RequestBodySerializer.cs
   - src/Novu/Utils/ResponseBodyDeserializer.cs
   - src/Novu/Utils/Retries/BackoffStrategy.cs

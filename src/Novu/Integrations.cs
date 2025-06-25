@@ -25,7 +25,7 @@ namespace Novu
     /// <summary>
     /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
     /// 
-    /// <see>https://docs.novu.co/channels-and-providers/integration-store}</see>
+    /// <see>https://docs.novu.co/platform/integrations/overview}</see>
     /// </summary>
     public interface IIntegrations
     {
@@ -93,15 +93,15 @@ namespace Novu
     /// <summary>
     /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
     /// 
-    /// <see>https://docs.novu.co/channels-and-providers/integration-store}</see>
+    /// <see>https://docs.novu.co/platform/integrations/overview}</see>
     /// </summary>
     public class Integrations: IIntegrations
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.2.0";
-        private const string _sdkGenVersion = "2.630.6";
-        private const string _openapiDocVersion = "2.2.0";
+        private const string _sdkVersion = "2.3.0-alpha.1";
+        private const string _sdkGenVersion = "2.636.0";
+        private const string _openapiDocVersion = "2.3.0";
 
         public Integrations(SDKConfig config)
         {
