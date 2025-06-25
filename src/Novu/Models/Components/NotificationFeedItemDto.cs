@@ -169,9 +169,21 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
+        /// The data sent with the notification.
+        /// </summary>
+        [JsonProperty("data")]
+        public Dictionary<string, object>? Data { get; set; } = null;
+
+        /// <summary>
         /// Provider-specific overrides used when triggering the notification.
         /// </summary>
         [JsonProperty("overrides")]
         public Dictionary<string, object>? Overrides { get; set; }
+
+        /// <summary>
+        /// Tags associated with the workflow that triggered the notification.
+        /// </summary>
+        [JsonProperty("tags")]
+        public List<string>? Tags { get; set; } = null;
     }
 }
