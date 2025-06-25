@@ -45,23 +45,34 @@ namespace Novu.Hooks
                     jsonResponse.EnumerateObject().MoveNext() &&
                     jsonResponse.TryGetProperty("data", out JsonElement dataProperty))
                 {
-                    var newContent = new StringContent(
-                        dataProperty.GetRawText(),
-                        Encoding.UTF8,
-                        response.Content.Headers.ContentType?.MediaType ?? "application/json"
-                    );
-                    var newResponse = new HttpResponseMessage(response.StatusCode)
+                    // Count the number of properties in the response
+                    var propertyCount = 0;
+                    foreach (var _ in jsonResponse.EnumerateObject())
                     {
-                        Content = newContent,
-                        ReasonPhrase = response.ReasonPhrase
-                    };
-
-                    foreach (var header in response.Headers)
-                    {
-                        newResponse.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                        propertyCount++;
                     }
 
-                    return newResponse;
+                    // Only unwrap if "data" is the ONLY property
+                    if (propertyCount == 1)
+                    {
+                        var newContent = new StringContent(
+                            dataProperty.GetRawText(),
+                            Encoding.UTF8,
+                            response.Content.Headers.ContentType?.MediaType ?? "application/json"
+                        );
+                        var newResponse = new HttpResponseMessage(response.StatusCode)
+                        {
+                            Content = newContent,
+                            ReasonPhrase = response.ReasonPhrase
+                        };
+
+                        foreach (var header in response.Headers)
+                        {
+                            newResponse.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                        }
+
+                        return newResponse;
+                    }
                 }
             }
             catch (JsonException ex)
