@@ -81,7 +81,7 @@ namespace Novu.Models.Components
         /// Origin of the workflow
         /// </summary>
         [JsonProperty("origin")]
-        public WorkflowOriginEnum Origin { get; set; } = default!;
+        public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
         /// Preferences for the workflow
