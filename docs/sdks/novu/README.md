@@ -13,6 +13,7 @@ Novu Documentation
 * [Cancel](#cancel) - Cancel triggered event
 * [Broadcast](#broadcast) - Broadcast event to all
 * [TriggerBulk](#triggerbulk) - Bulk trigger event
+* [Retrieve](#retrieve)
 
 ## Trigger
 
@@ -255,3 +256,37 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
 | Novu.Models.Errors.ValidationErrorDto            | 422                                              | application/json                                 |
 | Novu.Models.Errors.ErrorDto                      | 500                                              | application/json                                 |
 | Novu.Models.Errors.APIException                  | 4XX, 5XX                                         | \*/\*                                            |
+
+## Retrieve
+
+### Example Usage
+
+```csharp
+using Novu;
+using Novu.Models.Components;
+using Novu.Models.Requests;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+LogsControllerGetLogsRequest req = ;
+
+var res = await sdk.RetrieveAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [LogsControllerGetLogsRequest](../../Models/Requests/LogsControllerGetLogsRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+
+### Response
+
+**[LogsControllerGetLogsResponse](../../Models/Requests/LogsControllerGetLogsResponse.md)**
+
+### Errors
+
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| Novu.Models.Errors.APIException | 4XX, 5XX                        | \*/\*                           |

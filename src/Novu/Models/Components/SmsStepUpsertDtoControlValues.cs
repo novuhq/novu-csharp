@@ -10,25 +10,197 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
     
-    /// <summary>
-    /// Control values for the SMS step
-    /// </summary>
-    public class SmsStepUpsertDtoControlValues
+
+    public class SmsStepUpsertDtoControlValuesType
     {
+        private SmsStepUpsertDtoControlValuesType(string value) { Value = value; }
 
-        /// <summary>
-        /// JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference.
-        /// </summary>
-        [JsonProperty("skip")]
-        public Dictionary<string, object>? Skip { get; set; }
+        public string Value { get; private set; }
+        public static SmsStepUpsertDtoControlValuesType SmsControlDto { get { return new SmsStepUpsertDtoControlValuesType("SmsControlDto"); } }
+        
+        public static SmsStepUpsertDtoControlValuesType MapOfAny { get { return new SmsStepUpsertDtoControlValuesType("mapOfAny"); } }
+        
+        public static SmsStepUpsertDtoControlValuesType Null { get { return new SmsStepUpsertDtoControlValuesType("null"); } }
 
-        /// <summary>
-        /// Content of the SMS message.
-        /// </summary>
-        [JsonProperty("body")]
-        public string? Body { get; set; }
+        public override string ToString() { return Value; }
+        public static implicit operator String(SmsStepUpsertDtoControlValuesType v) { return v.Value; }
+        public static SmsStepUpsertDtoControlValuesType FromString(string v) {
+            switch(v) {
+                case "SmsControlDto": return SmsControlDto;
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for SmsStepUpsertDtoControlValuesType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((SmsStepUpsertDtoControlValuesType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
+    /// <summary>
+    /// Control values for the SMS step.
+    /// </summary>
+    [JsonConverter(typeof(SmsStepUpsertDtoControlValues.SmsStepUpsertDtoControlValuesConverter))]
+    public class SmsStepUpsertDtoControlValues {
+        public SmsStepUpsertDtoControlValues(SmsStepUpsertDtoControlValuesType type) {
+            Type = type;
+        }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public SmsControlDto? SmsControlDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
+
+        public SmsStepUpsertDtoControlValuesType Type { get; set; }
+
+
+        public static SmsStepUpsertDtoControlValues CreateSmsControlDto(SmsControlDto smsControlDto) {
+            SmsStepUpsertDtoControlValuesType typ = SmsStepUpsertDtoControlValuesType.SmsControlDto;
+
+            SmsStepUpsertDtoControlValues res = new SmsStepUpsertDtoControlValues(typ);
+            res.SmsControlDto = smsControlDto;
+            return res;
+        }
+
+        public static SmsStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+            SmsStepUpsertDtoControlValuesType typ = SmsStepUpsertDtoControlValuesType.MapOfAny;
+
+            SmsStepUpsertDtoControlValues res = new SmsStepUpsertDtoControlValues(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+
+        public static SmsStepUpsertDtoControlValues CreateNull() {
+            SmsStepUpsertDtoControlValuesType typ = SmsStepUpsertDtoControlValuesType.Null;
+            return new SmsStepUpsertDtoControlValues(typ);
+        }
+
+        public class SmsStepUpsertDtoControlValuesConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(SmsStepUpsertDtoControlValues);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new SmsStepUpsertDtoControlValues(SmsStepUpsertDtoControlValuesType.SmsControlDto)
+                    {
+                        SmsControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<SmsControlDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(SmsControlDto), new SmsStepUpsertDtoControlValues(SmsStepUpsertDtoControlValuesType.SmsControlDto), "SmsControlDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new SmsStepUpsertDtoControlValues(SmsStepUpsertDtoControlValuesType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new SmsStepUpsertDtoControlValues(SmsStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                SmsStepUpsertDtoControlValues res = (SmsStepUpsertDtoControlValues)value;
+                if (SmsStepUpsertDtoControlValuesType.FromString(res.Type).Equals(SmsStepUpsertDtoControlValuesType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                if (res.SmsControlDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.SmsControlDto));
+                    return;
+                }
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+
+            }
+
+        }
+
     }
 }

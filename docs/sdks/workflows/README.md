@@ -169,7 +169,7 @@ var res = await sdk.Workflows.UpdateAsync(
                 },
             },
         },
-        Origin = WorkflowOriginEnum.External,
+        Origin = ResourceOriginEnum.External,
     }
 );
 
