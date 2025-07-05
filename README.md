@@ -263,6 +263,7 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [Cancel](docs/sdks/novu/README.md#cancel) - Cancel triggered event
 * [Broadcast](docs/sdks/novu/README.md#broadcast) - Broadcast event to all
 * [TriggerBulk](docs/sdks/novu/README.md#triggerbulk) - Bulk trigger event
+* [Retrieve](docs/sdks/novu/README.md#retrieve)
 
 ### [Subscribers](docs/sdks/subscribers/README.md)
 

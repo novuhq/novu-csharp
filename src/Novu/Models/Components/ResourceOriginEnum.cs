@@ -16,7 +16,7 @@ namespace Novu.Models.Components
     /// <summary>
     /// Origin of the workflow
     /// </summary>
-    public enum WorkflowOriginEnum
+    public enum ResourceOriginEnum
     {
         [JsonProperty("novu-cloud")]
         NovuCloud,
@@ -26,16 +26,16 @@ namespace Novu.Models.Components
         External,
     }
 
-    public static class WorkflowOriginEnumExtension
+    public static class ResourceOriginEnumExtension
     {
-        public static string Value(this WorkflowOriginEnum value)
+        public static string Value(this ResourceOriginEnum value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static WorkflowOriginEnum ToEnum(this string value)
+        public static ResourceOriginEnum ToEnum(this string value)
         {
-            foreach(var field in typeof(WorkflowOriginEnum).GetFields())
+            foreach(var field in typeof(ResourceOriginEnum).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -48,14 +48,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is WorkflowOriginEnum)
+                    if (enumVal is ResourceOriginEnum)
                     {
-                        return (WorkflowOriginEnum)enumVal;
+                        return (ResourceOriginEnum)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum WorkflowOriginEnum");
+            throw new Exception($"Unknown value {value} for enum ResourceOriginEnum");
         }
     }
 

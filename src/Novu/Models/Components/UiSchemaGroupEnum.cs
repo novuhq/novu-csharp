@@ -34,6 +34,8 @@ namespace Novu.Models.Components
         Push,
         [JsonProperty("SKIP")]
         Skip,
+        [JsonProperty("LAYOUT")]
+        Layout,
     }
 
     public static class UiSchemaGroupEnumExtension
