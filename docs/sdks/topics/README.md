@@ -29,7 +29,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-TopicsControllerListTopicsRequest req = ;
+TopicsControllerListTopicsRequest? req = null;
 
 var res = await sdk.Topics.ListAsync(req);
 

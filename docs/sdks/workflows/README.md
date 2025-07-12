@@ -32,7 +32,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.Workflows.CreateAsync(createWorkflowDto: new CreateWorkflowDto() {
     Name = "<value>",
     WorkflowId = "<id>",
-    Steps = new List<Models.Components.Steps>() {},
+    Steps = new List<Novu.Models.Components.Steps>() {},
     Preferences = new PreferencesRequestDto() {
         User = User.CreateUserWorkflowPreferencesDto(
             new UserWorkflowPreferencesDto() {
@@ -98,7 +98,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-WorkflowControllerSearchWorkflowsRequest req = ;
+WorkflowControllerSearchWorkflowsRequest? req = null;
 
 var res = await sdk.Workflows.ListAsync(req);
 
@@ -169,7 +169,7 @@ var res = await sdk.Workflows.UpdateAsync(
                 },
             },
         },
-        Origin = WorkflowOriginEnum.External,
+        Origin = ResourceOriginEnum.External,
     }
 );
 

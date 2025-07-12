@@ -1,0 +1,9 @@
+# LogsControllerGetLogsResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                      | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                         | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `Object`                                                                                        | [LogsControllerGetLogsResponseBody](../../Models/Requests/LogsControllerGetLogsResponseBody.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |
