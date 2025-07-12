@@ -7,25 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Novu.Models.Components
+namespace Novu.Models.Requests
 {
     using Newtonsoft.Json;
     using Novu.Models.Components;
+    using Novu.Models.Requests;
     using Novu.Utils;
     
-    public class LookBackWindowDto
+    public class LogsControllerGetLogsResponse
     {
 
-        /// <summary>
-        /// Amount of time for the look-back window.
-        /// </summary>
-        [JsonProperty("amount")]
-        public double Amount { get; set; } = default!;
+        [JsonProperty("-")]
+        public HTTPMetadata HttpMeta { get; set; } = default!;
 
-        /// <summary>
-        /// Unit of time for the look-back window.
-        /// </summary>
-        [JsonProperty("unit")]
-        public LookBackWindowDtoUnit Unit { get; set; } = default!;
+        public LogsControllerGetLogsResponseBody? Object { get; set; }
     }
 }

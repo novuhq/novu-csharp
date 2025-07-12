@@ -92,7 +92,7 @@ namespace Novu
         /// 
         /// <remarks>
         /// Update credentials for a provider such as slack and push tokens. <br/>
-        ///       **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
+        ///       **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -102,7 +102,7 @@ namespace Novu
         /// 
         /// <remarks>
         /// Update credentials for a provider such as **slack** and **FCM**. <br/>
-        ///       **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
+        ///       **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -131,8 +131,8 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.3.0-alpha.1";
-        private const string _sdkGenVersion = "2.636.0";
+        private const string _sdkVersion = "2.3.0-alpha.2";
+        private const string _sdkGenVersion = "2.656.5";
         private const string _openapiDocVersion = "2.3.0";
         public INovuTopics Topics { get; private set; }
 

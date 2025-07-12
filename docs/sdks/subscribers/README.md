@@ -30,7 +30,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-SubscribersControllerSearchSubscribersRequest req = ;
+SubscribersControllerSearchSubscribersRequest? req = null;
 
 var res = await sdk.Subscribers.SearchAsync(req);
 
@@ -269,7 +269,7 @@ var res = await sdk.Subscribers.CreateBulkAsync(bulkSubscriberCreateDto: new Bul
 ## UpdateCredentials
 
 Update credentials for a provider such as slack and push tokens. 
-      **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
+      **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
 
 ### Example Usage
 
@@ -329,7 +329,7 @@ var res = await sdk.Subscribers.UpdateCredentialsAsync(
 ## AppendCredentials
 
 Update credentials for a provider such as **slack** and **FCM**. 
-      **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
+      **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
 
 ### Example Usage
 

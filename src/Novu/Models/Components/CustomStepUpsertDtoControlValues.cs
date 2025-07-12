@@ -10,19 +10,197 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
     
-    /// <summary>
-    /// Control values for the Custom step
-    /// </summary>
-    public class CustomStepUpsertDtoControlValues
-    {
 
-        /// <summary>
-        /// Custom control values for the step.
-        /// </summary>
-        [JsonProperty("custom")]
-        public Dictionary<string, object>? Custom { get; set; }
+    public class CustomStepUpsertDtoControlValuesType
+    {
+        private CustomStepUpsertDtoControlValuesType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+        public static CustomStepUpsertDtoControlValuesType CustomControlDto { get { return new CustomStepUpsertDtoControlValuesType("CustomControlDto"); } }
+        
+        public static CustomStepUpsertDtoControlValuesType MapOfAny { get { return new CustomStepUpsertDtoControlValuesType("mapOfAny"); } }
+        
+        public static CustomStepUpsertDtoControlValuesType Null { get { return new CustomStepUpsertDtoControlValuesType("null"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(CustomStepUpsertDtoControlValuesType v) { return v.Value; }
+        public static CustomStepUpsertDtoControlValuesType FromString(string v) {
+            switch(v) {
+                case "CustomControlDto": return CustomControlDto;
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for CustomStepUpsertDtoControlValuesType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((CustomStepUpsertDtoControlValuesType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
+    /// <summary>
+    /// Control values for the Custom step.
+    /// </summary>
+    [JsonConverter(typeof(CustomStepUpsertDtoControlValues.CustomStepUpsertDtoControlValuesConverter))]
+    public class CustomStepUpsertDtoControlValues {
+        public CustomStepUpsertDtoControlValues(CustomStepUpsertDtoControlValuesType type) {
+            Type = type;
+        }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CustomControlDto? CustomControlDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
+
+        public CustomStepUpsertDtoControlValuesType Type { get; set; }
+
+
+        public static CustomStepUpsertDtoControlValues CreateCustomControlDto(CustomControlDto customControlDto) {
+            CustomStepUpsertDtoControlValuesType typ = CustomStepUpsertDtoControlValuesType.CustomControlDto;
+
+            CustomStepUpsertDtoControlValues res = new CustomStepUpsertDtoControlValues(typ);
+            res.CustomControlDto = customControlDto;
+            return res;
+        }
+
+        public static CustomStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+            CustomStepUpsertDtoControlValuesType typ = CustomStepUpsertDtoControlValuesType.MapOfAny;
+
+            CustomStepUpsertDtoControlValues res = new CustomStepUpsertDtoControlValues(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+
+        public static CustomStepUpsertDtoControlValues CreateNull() {
+            CustomStepUpsertDtoControlValuesType typ = CustomStepUpsertDtoControlValuesType.Null;
+            return new CustomStepUpsertDtoControlValues(typ);
+        }
+
+        public class CustomStepUpsertDtoControlValuesConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(CustomStepUpsertDtoControlValues);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new CustomStepUpsertDtoControlValues(CustomStepUpsertDtoControlValuesType.CustomControlDto)
+                    {
+                        CustomControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CustomControlDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(CustomControlDto), new CustomStepUpsertDtoControlValues(CustomStepUpsertDtoControlValuesType.CustomControlDto), "CustomControlDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new CustomStepUpsertDtoControlValues(CustomStepUpsertDtoControlValuesType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new CustomStepUpsertDtoControlValues(CustomStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                CustomStepUpsertDtoControlValues res = (CustomStepUpsertDtoControlValues)value;
+                if (CustomStepUpsertDtoControlValuesType.FromString(res.Type).Equals(CustomStepUpsertDtoControlValuesType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                if (res.CustomControlDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CustomControlDto));
+                    return;
+                }
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+
+            }
+
+        }
+
     }
 }
