@@ -39,6 +39,6 @@ namespace Novu.Models.Components
         /// Unit of time for the delay amount.
         /// </summary>
         [JsonProperty("unit")]
-        public DelayControlDtoUnit Unit { get; set; } = default!;
+        public Unit Unit { get; set; } = default!;
     }
 }

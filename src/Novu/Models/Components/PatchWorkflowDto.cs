@@ -51,5 +51,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("validatePayload")]
         public bool? ValidatePayload { get; set; }
+
+        /// <summary>
+        /// Enable or disable translations for this workflow
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool? IsTranslationEnabled { get; set; }
     }
 }

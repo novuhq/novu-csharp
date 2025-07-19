@@ -10,25 +10,197 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
     
-    /// <summary>
-    /// Control values for the Chat step
-    /// </summary>
-    public class ChatStepUpsertDtoControlValues
+
+    public class ChatStepUpsertDtoControlValuesType
     {
+        private ChatStepUpsertDtoControlValuesType(string value) { Value = value; }
 
-        /// <summary>
-        /// JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference.
-        /// </summary>
-        [JsonProperty("skip")]
-        public Dictionary<string, object>? Skip { get; set; }
+        public string Value { get; private set; }
+        public static ChatStepUpsertDtoControlValuesType ChatControlDto { get { return new ChatStepUpsertDtoControlValuesType("ChatControlDto"); } }
+        
+        public static ChatStepUpsertDtoControlValuesType MapOfAny { get { return new ChatStepUpsertDtoControlValuesType("mapOfAny"); } }
+        
+        public static ChatStepUpsertDtoControlValuesType Null { get { return new ChatStepUpsertDtoControlValuesType("null"); } }
 
-        /// <summary>
-        /// Content of the chat message.
-        /// </summary>
-        [JsonProperty("body")]
-        public string? Body { get; set; }
+        public override string ToString() { return Value; }
+        public static implicit operator String(ChatStepUpsertDtoControlValuesType v) { return v.Value; }
+        public static ChatStepUpsertDtoControlValuesType FromString(string v) {
+            switch(v) {
+                case "ChatControlDto": return ChatControlDto;
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for ChatStepUpsertDtoControlValuesType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((ChatStepUpsertDtoControlValuesType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
+    /// <summary>
+    /// Control values for the Chat step.
+    /// </summary>
+    [JsonConverter(typeof(ChatStepUpsertDtoControlValues.ChatStepUpsertDtoControlValuesConverter))]
+    public class ChatStepUpsertDtoControlValues {
+        public ChatStepUpsertDtoControlValues(ChatStepUpsertDtoControlValuesType type) {
+            Type = type;
+        }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ChatControlDto? ChatControlDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
+
+        public ChatStepUpsertDtoControlValuesType Type { get; set; }
+
+
+        public static ChatStepUpsertDtoControlValues CreateChatControlDto(ChatControlDto chatControlDto) {
+            ChatStepUpsertDtoControlValuesType typ = ChatStepUpsertDtoControlValuesType.ChatControlDto;
+
+            ChatStepUpsertDtoControlValues res = new ChatStepUpsertDtoControlValues(typ);
+            res.ChatControlDto = chatControlDto;
+            return res;
+        }
+
+        public static ChatStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+            ChatStepUpsertDtoControlValuesType typ = ChatStepUpsertDtoControlValuesType.MapOfAny;
+
+            ChatStepUpsertDtoControlValues res = new ChatStepUpsertDtoControlValues(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+
+        public static ChatStepUpsertDtoControlValues CreateNull() {
+            ChatStepUpsertDtoControlValuesType typ = ChatStepUpsertDtoControlValuesType.Null;
+            return new ChatStepUpsertDtoControlValues(typ);
+        }
+
+        public class ChatStepUpsertDtoControlValuesConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(ChatStepUpsertDtoControlValues);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new ChatStepUpsertDtoControlValues(ChatStepUpsertDtoControlValuesType.ChatControlDto)
+                    {
+                        ChatControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<ChatControlDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(ChatControlDto), new ChatStepUpsertDtoControlValues(ChatStepUpsertDtoControlValuesType.ChatControlDto), "ChatControlDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new ChatStepUpsertDtoControlValues(ChatStepUpsertDtoControlValuesType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new ChatStepUpsertDtoControlValues(ChatStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                ChatStepUpsertDtoControlValues res = (ChatStepUpsertDtoControlValues)value;
+                if (ChatStepUpsertDtoControlValuesType.FromString(res.Type).Equals(ChatStepUpsertDtoControlValuesType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                if (res.ChatControlDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ChatControlDto));
+                    return;
+                }
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+
+            }
+
+        }
+
     }
 }

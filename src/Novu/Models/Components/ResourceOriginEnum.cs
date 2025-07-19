@@ -14,34 +14,28 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// Unit of time for the delay amount.
+    /// Origin of the workflow
     /// </summary>
-    public enum DelayStepUpsertDtoUnit
+    public enum ResourceOriginEnum
     {
-        [JsonProperty("seconds")]
-        Seconds,
-        [JsonProperty("minutes")]
-        Minutes,
-        [JsonProperty("hours")]
-        Hours,
-        [JsonProperty("days")]
-        Days,
-        [JsonProperty("weeks")]
-        Weeks,
-        [JsonProperty("months")]
-        Months,
+        [JsonProperty("novu-cloud")]
+        NovuCloud,
+        [JsonProperty("novu-cloud-v1")]
+        NovuCloudV1,
+        [JsonProperty("external")]
+        External,
     }
 
-    public static class DelayStepUpsertDtoUnitExtension
+    public static class ResourceOriginEnumExtension
     {
-        public static string Value(this DelayStepUpsertDtoUnit value)
+        public static string Value(this ResourceOriginEnum value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static DelayStepUpsertDtoUnit ToEnum(this string value)
+        public static ResourceOriginEnum ToEnum(this string value)
         {
-            foreach(var field in typeof(DelayStepUpsertDtoUnit).GetFields())
+            foreach(var field in typeof(ResourceOriginEnum).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -54,14 +48,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is DelayStepUpsertDtoUnit)
+                    if (enumVal is ResourceOriginEnum)
                     {
-                        return (DelayStepUpsertDtoUnit)enumVal;
+                        return (ResourceOriginEnum)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum DelayStepUpsertDtoUnit");
+            throw new Exception($"Unknown value {value} for enum ResourceOriginEnum");
         }
     }
 

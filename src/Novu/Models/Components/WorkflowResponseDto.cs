@@ -42,6 +42,24 @@ namespace Novu.Models.Components
         public bool? Active { get; set; } = false;
 
         /// <summary>
+        /// Enable or disable payload schema validation
+        /// </summary>
+        [JsonProperty("validatePayload")]
+        public bool? ValidatePayload { get; set; }
+
+        /// <summary>
+        /// The payload JSON Schema for the workflow
+        /// </summary>
+        [JsonProperty("payloadSchema")]
+        public Dictionary<string, object>? PayloadSchema { get; set; }
+
+        /// <summary>
+        /// Enable or disable translations for this workflow
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool? IsTranslationEnabled { get; set; } = false;
+
+        /// <summary>
         /// Unique identifier of the workflow
         /// </summary>
         [JsonProperty("_id")]
@@ -72,6 +90,12 @@ namespace Novu.Models.Components
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
+        /// User who last updated the workflow
+        /// </summary>
+        [JsonProperty("updatedBy")]
+        public UpdatedBy? UpdatedBy { get; set; } = null;
+
+        /// <summary>
         /// Steps of the workflow
         /// </summary>
         [JsonProperty("steps")]
@@ -81,7 +105,7 @@ namespace Novu.Models.Components
         /// Origin of the workflow
         /// </summary>
         [JsonProperty("origin")]
-        public WorkflowOriginEnum Origin { get; set; } = default!;
+        public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
         /// Preferences for the workflow
@@ -108,21 +132,9 @@ namespace Novu.Models.Components
         public string? LastTriggeredAt { get; set; } = null;
 
         /// <summary>
-        /// The payload JSON Schema for the workflow
-        /// </summary>
-        [JsonProperty("payloadSchema")]
-        public Dictionary<string, object>? PayloadSchema { get; set; } = null;
-
-        /// <summary>
         /// Generated payload example based on the payload schema
         /// </summary>
         [JsonProperty("payloadExample")]
         public Dictionary<string, object>? PayloadExample { get; set; } = null;
-
-        /// <summary>
-        /// Whether payload schema validation is enabled
-        /// </summary>
-        [JsonProperty("validatePayload")]
-        public bool? ValidatePayload { get; set; }
     }
 }

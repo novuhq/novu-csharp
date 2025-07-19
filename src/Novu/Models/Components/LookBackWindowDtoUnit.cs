@@ -14,28 +14,34 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// Origin of the workflow
+    /// Unit of time for the look-back window.
     /// </summary>
-    public enum WorkflowOriginEnum
+    public enum LookBackWindowDtoUnit
     {
-        [JsonProperty("novu-cloud")]
-        NovuCloud,
-        [JsonProperty("novu-cloud-v1")]
-        NovuCloudV1,
-        [JsonProperty("external")]
-        External,
+        [JsonProperty("seconds")]
+        Seconds,
+        [JsonProperty("minutes")]
+        Minutes,
+        [JsonProperty("hours")]
+        Hours,
+        [JsonProperty("days")]
+        Days,
+        [JsonProperty("weeks")]
+        Weeks,
+        [JsonProperty("months")]
+        Months,
     }
 
-    public static class WorkflowOriginEnumExtension
+    public static class LookBackWindowDtoUnitExtension
     {
-        public static string Value(this WorkflowOriginEnum value)
+        public static string Value(this LookBackWindowDtoUnit value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static WorkflowOriginEnum ToEnum(this string value)
+        public static LookBackWindowDtoUnit ToEnum(this string value)
         {
-            foreach(var field in typeof(WorkflowOriginEnum).GetFields())
+            foreach(var field in typeof(LookBackWindowDtoUnit).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -48,14 +54,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is WorkflowOriginEnum)
+                    if (enumVal is LookBackWindowDtoUnit)
                     {
-                        return (WorkflowOriginEnum)enumVal;
+                        return (LookBackWindowDtoUnit)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum WorkflowOriginEnum");
+            throw new Exception($"Unknown value {value} for enum LookBackWindowDtoUnit");
         }
     }
 
