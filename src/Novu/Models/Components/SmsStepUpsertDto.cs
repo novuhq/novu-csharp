@@ -35,9 +35,9 @@ namespace Novu.Models.Components
         public StepTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Control values for the SMS step
+        /// Control values for the SMS step.
         /// </summary>
         [JsonProperty("controlValues")]
-        public SmsStepUpsertDtoControlValues? ControlValues { get; set; } = null;
+        public SmsStepUpsertDtoControlValues? ControlValues { get; set; }
     }
 }
