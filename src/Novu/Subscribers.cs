@@ -88,21 +88,21 @@ namespace Novu
         Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(BulkSubscriberCreateDto bulkSubscriberCreateDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update provider credentials
+        /// Upsert provider credentials
         /// 
         /// <remarks>
-        /// Update credentials for a provider such as slack and push tokens. <br/>
-        ///       **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
+        /// Upsert credentials for a provider such as slack and push tokens. <br/>
+        ///       **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Upsert provider credentials
+        /// Create or Partially Update provider credentials
         /// 
         /// <remarks>
-        /// Update credentials for a provider such as **slack** and **FCM**. <br/>
-        ///       **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
+        /// Create or Partially credentials for a provider such as **slack** and **FCM**. <br/>
+        ///       **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -131,8 +131,8 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.3.0-alpha.1";
-        private const string _sdkGenVersion = "2.636.0";
+        private const string _sdkVersion = "2.3.0-alpha.2";
+        private const string _sdkGenVersion = "2.666.0";
         private const string _openapiDocVersion = "2.3.0";
         public INovuTopics Topics { get; private set; }
 

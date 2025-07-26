@@ -232,6 +232,7 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 ### [Environments](docs/sdks/environments/README.md)
 
+* [GetTags](docs/sdks/environments/README.md#gettags) - Get environment tags
 * [Create](docs/sdks/environments/README.md#create) - Create an environment
 * [List](docs/sdks/environments/README.md#list) - List all environments
 * [Update](docs/sdks/environments/README.md#update) - Update an environment
@@ -263,6 +264,7 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [Cancel](docs/sdks/novu/README.md#cancel) - Cancel triggered event
 * [Broadcast](docs/sdks/novu/README.md#broadcast) - Broadcast event to all
 * [TriggerBulk](docs/sdks/novu/README.md#triggerbulk) - Bulk trigger event
+* [Retrieve](docs/sdks/novu/README.md#retrieve)
 
 ### [Subscribers](docs/sdks/subscribers/README.md)
 
@@ -272,8 +274,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [Patch](docs/sdks/subscribers/README.md#patch) - Update a subscriber
 * [Delete](docs/sdks/subscribers/README.md#delete) - Delete a subscriber
 * [CreateBulk](docs/sdks/subscribers/README.md#createbulk) - Bulk create subscribers
-* [UpdateCredentials](docs/sdks/subscribers/README.md#updatecredentials) - Update provider credentials
-* [AppendCredentials](docs/sdks/subscribers/README.md#appendcredentials) - Upsert provider credentials
+* [UpdateCredentials](docs/sdks/subscribers/README.md#updatecredentials) - Upsert provider credentials
+* [AppendCredentials](docs/sdks/subscribers/README.md#appendcredentials) - Create or Partially Update provider credentials
 * [DeleteCredentials](docs/sdks/subscribers/README.md#deletecredentials) - Delete provider credentials
 * [UpdateOnlineStatus](docs/sdks/subscribers/README.md#updateonlinestatus) - Update subscriber online status
 

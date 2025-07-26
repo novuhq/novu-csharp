@@ -14,24 +14,28 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// Type of the delay. Currently only &apos;regular&apos; is supported by the schema.
+    /// Origin of the workflow
     /// </summary>
-    public enum DelayStepUpsertDtoType
+    public enum ResourceOriginEnum
     {
-        [JsonProperty("regular")]
-        Regular,
+        [JsonProperty("novu-cloud")]
+        NovuCloud,
+        [JsonProperty("novu-cloud-v1")]
+        NovuCloudV1,
+        [JsonProperty("external")]
+        External,
     }
 
-    public static class DelayStepUpsertDtoTypeExtension
+    public static class ResourceOriginEnumExtension
     {
-        public static string Value(this DelayStepUpsertDtoType value)
+        public static string Value(this ResourceOriginEnum value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static DelayStepUpsertDtoType ToEnum(this string value)
+        public static ResourceOriginEnum ToEnum(this string value)
         {
-            foreach(var field in typeof(DelayStepUpsertDtoType).GetFields())
+            foreach(var field in typeof(ResourceOriginEnum).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -44,14 +48,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is DelayStepUpsertDtoType)
+                    if (enumVal is ResourceOriginEnum)
                     {
-                        return (DelayStepUpsertDtoType)enumVal;
+                        return (ResourceOriginEnum)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum DelayStepUpsertDtoType");
+            throw new Exception($"Unknown value {value} for enum ResourceOriginEnum");
         }
     }
 
