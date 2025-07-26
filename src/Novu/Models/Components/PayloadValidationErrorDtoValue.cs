@@ -87,7 +87,7 @@ namespace Novu.Models.Components
         public Value4? Value4 { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Value5>? ArrayOfValue5 { get; set; }
+        public List<Value5?>? ArrayOfValue5 { get; set; }
 
         public PayloadValidationErrorDtoValueType Type { get; set; }
 
@@ -124,7 +124,7 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static PayloadValidationErrorDtoValue CreateArrayOfValue5(List<Value5> arrayOfValue5) {
+        public static PayloadValidationErrorDtoValue CreateArrayOfValue5(List<Value5?> arrayOfValue5) {
             PayloadValidationErrorDtoValueType typ = PayloadValidationErrorDtoValueType.ArrayOfValue5;
 
             PayloadValidationErrorDtoValue res = new PayloadValidationErrorDtoValue(typ);
@@ -211,12 +211,12 @@ namespace Novu.Models.Components
                 {
                     return new PayloadValidationErrorDtoValue(PayloadValidationErrorDtoValueType.ArrayOfValue5)
                     {
-                        ArrayOfValue5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Value5>>(json)
+                        ArrayOfValue5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Value5?>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Value5>), new PayloadValidationErrorDtoValue(PayloadValidationErrorDtoValueType.ArrayOfValue5), "ArrayOfValue5"));
+                    fallbackCandidates.Add((typeof(List<Value5?>), new PayloadValidationErrorDtoValue(PayloadValidationErrorDtoValueType.ArrayOfValue5), "ArrayOfValue5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {

@@ -10,56 +10,197 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
     
-    /// <summary>
-    /// Control values for the Digest step
-    /// </summary>
-    public class DigestStepUpsertDtoControlValues
+
+    public class DigestStepUpsertDtoControlValuesType
     {
+        private DigestStepUpsertDtoControlValuesType(string value) { Value = value; }
 
-        /// <summary>
-        /// JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference.
-        /// </summary>
-        [JsonProperty("skip")]
-        public Dictionary<string, object>? Skip { get; set; }
+        public string Value { get; private set; }
+        public static DigestStepUpsertDtoControlValuesType DigestControlDto { get { return new DigestStepUpsertDtoControlValuesType("DigestControlDto"); } }
+        
+        public static DigestStepUpsertDtoControlValuesType MapOfAny { get { return new DigestStepUpsertDtoControlValuesType("mapOfAny"); } }
+        
+        public static DigestStepUpsertDtoControlValuesType Null { get { return new DigestStepUpsertDtoControlValuesType("null"); } }
 
-        /// <summary>
-        /// The type of digest strategy. Determines which fields are applicable.
-        /// </summary>
-        [JsonProperty("type")]
-        public DigestStepUpsertDtoType? Type { get; set; }
+        public override string ToString() { return Value; }
+        public static implicit operator String(DigestStepUpsertDtoControlValuesType v) { return v.Value; }
+        public static DigestStepUpsertDtoControlValuesType FromString(string v) {
+            switch(v) {
+                case "DigestControlDto": return DigestControlDto;
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for DigestStepUpsertDtoControlValuesType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((DigestStepUpsertDtoControlValuesType)obj).Value);
+        }
 
-        /// <summary>
-        /// The amount of time for the digest interval (for REGULAR type). Min 1.
-        /// </summary>
-        [JsonProperty("amount")]
-        public double? Amount { get; set; }
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
 
-        /// <summary>
-        /// The unit of time for the digest interval (for REGULAR type).
-        /// </summary>
-        [JsonProperty("unit")]
-        public DigestStepUpsertDtoUnit? Unit { get; set; }
 
-        /// <summary>
-        /// Configuration for look-back window (for REGULAR type).
-        /// </summary>
-        [JsonProperty("lookBackWindow")]
-        public LookBackWindowDto? LookBackWindow { get; set; }
+    /// <summary>
+    /// Control values for the Digest step.
+    /// </summary>
+    [JsonConverter(typeof(DigestStepUpsertDtoControlValues.DigestStepUpsertDtoControlValuesConverter))]
+    public class DigestStepUpsertDtoControlValues {
+        public DigestStepUpsertDtoControlValues(DigestStepUpsertDtoControlValuesType type) {
+            Type = type;
+        }
 
-        /// <summary>
-        /// Cron expression for TIMED digest. Min length 1.
-        /// </summary>
-        [JsonProperty("cron")]
-        public string? Cron { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public DigestControlDto? DigestControlDto { get; set; }
 
-        /// <summary>
-        /// Specify a custom key for digesting events instead of the default event key.
-        /// </summary>
-        [JsonProperty("digestKey")]
-        public string? DigestKey { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
+
+        public DigestStepUpsertDtoControlValuesType Type { get; set; }
+
+
+        public static DigestStepUpsertDtoControlValues CreateDigestControlDto(DigestControlDto digestControlDto) {
+            DigestStepUpsertDtoControlValuesType typ = DigestStepUpsertDtoControlValuesType.DigestControlDto;
+
+            DigestStepUpsertDtoControlValues res = new DigestStepUpsertDtoControlValues(typ);
+            res.DigestControlDto = digestControlDto;
+            return res;
+        }
+
+        public static DigestStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+            DigestStepUpsertDtoControlValuesType typ = DigestStepUpsertDtoControlValuesType.MapOfAny;
+
+            DigestStepUpsertDtoControlValues res = new DigestStepUpsertDtoControlValues(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+
+        public static DigestStepUpsertDtoControlValues CreateNull() {
+            DigestStepUpsertDtoControlValuesType typ = DigestStepUpsertDtoControlValuesType.Null;
+            return new DigestStepUpsertDtoControlValues(typ);
+        }
+
+        public class DigestStepUpsertDtoControlValuesConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(DigestStepUpsertDtoControlValues);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new DigestStepUpsertDtoControlValues(DigestStepUpsertDtoControlValuesType.DigestControlDto)
+                    {
+                        DigestControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<DigestControlDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(DigestControlDto), new DigestStepUpsertDtoControlValues(DigestStepUpsertDtoControlValuesType.DigestControlDto), "DigestControlDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new DigestStepUpsertDtoControlValues(DigestStepUpsertDtoControlValuesType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new DigestStepUpsertDtoControlValues(DigestStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                DigestStepUpsertDtoControlValues res = (DigestStepUpsertDtoControlValues)value;
+                if (DigestStepUpsertDtoControlValuesType.FromString(res.Type).Equals(DigestStepUpsertDtoControlValuesType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                if (res.DigestControlDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.DigestControlDto));
+                    return;
+                }
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+
+            }
+
+        }
+
     }
 }

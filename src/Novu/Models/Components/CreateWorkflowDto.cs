@@ -42,6 +42,24 @@ namespace Novu.Models.Components
         public bool? Active { get; set; } = false;
 
         /// <summary>
+        /// Enable or disable payload schema validation
+        /// </summary>
+        [JsonProperty("validatePayload")]
+        public bool? ValidatePayload { get; set; }
+
+        /// <summary>
+        /// The payload JSON Schema for the workflow
+        /// </summary>
+        [JsonProperty("payloadSchema")]
+        public Dictionary<string, object>? PayloadSchema { get; set; } = null;
+
+        /// <summary>
+        /// Enable or disable translations for this workflow
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool? IsTranslationEnabled { get; set; } = false;
+
+        /// <summary>
         /// Unique identifier for the workflow
         /// </summary>
         [JsonProperty("workflowId")]
@@ -64,17 +82,5 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("preferences")]
         public PreferencesRequestDto? Preferences { get; set; }
-
-        /// <summary>
-        /// The payload JSON Schema for the workflow
-        /// </summary>
-        [JsonProperty("payloadSchema")]
-        public Dictionary<string, object>? PayloadSchema { get; set; }
-
-        /// <summary>
-        /// Enable or disable payload schema validation
-        /// </summary>
-        [JsonProperty("validatePayload")]
-        public bool? ValidatePayload { get; set; }
     }
 }

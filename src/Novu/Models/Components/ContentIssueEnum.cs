@@ -14,28 +14,30 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// Origin of the workflow
+    /// Type of step content issue
     /// </summary>
-    public enum WorkflowOriginEnum
+    public enum ContentIssueEnum
     {
-        [JsonProperty("novu-cloud")]
-        NovuCloud,
-        [JsonProperty("novu-cloud-v1")]
-        NovuCloudV1,
-        [JsonProperty("external")]
-        External,
+        [JsonProperty("ILLEGAL_VARIABLE_IN_CONTROL_VALUE")]
+        IllegalVariableInControlValue,
+        [JsonProperty("INVALID_FILTER_ARG_IN_VARIABLE")]
+        InvalidFilterArgInVariable,
+        [JsonProperty("MISSING_VALUE")]
+        MissingValue,
+        [JsonProperty("TIER_LIMIT_EXCEEDED")]
+        TierLimitExceeded,
     }
 
-    public static class WorkflowOriginEnumExtension
+    public static class ContentIssueEnumExtension
     {
-        public static string Value(this WorkflowOriginEnum value)
+        public static string Value(this ContentIssueEnum value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static WorkflowOriginEnum ToEnum(this string value)
+        public static ContentIssueEnum ToEnum(this string value)
         {
-            foreach(var field in typeof(WorkflowOriginEnum).GetFields())
+            foreach(var field in typeof(ContentIssueEnum).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -48,14 +50,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is WorkflowOriginEnum)
+                    if (enumVal is ContentIssueEnum)
                     {
-                        return (WorkflowOriginEnum)enumVal;
+                        return (ContentIssueEnum)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum WorkflowOriginEnum");
+            throw new Exception($"Unknown value {value} for enum ContentIssueEnum");
         }
     }
 

@@ -20,7 +20,7 @@ namespace Novu.Models.Components
         /// Type of step content issue
         /// </summary>
         [JsonProperty("issueType")]
-        public StepContentIssueEnum IssueType { get; set; } = default!;
+        public ContentIssueEnum IssueType { get; set; } = default!;
 
         /// <summary>
         /// Name of the variable related to the issue

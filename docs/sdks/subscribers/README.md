@@ -11,8 +11,8 @@
 * [Patch](#patch) - Update a subscriber
 * [Delete](#delete) - Delete a subscriber
 * [CreateBulk](#createbulk) - Bulk create subscribers
-* [UpdateCredentials](#updatecredentials) - Update provider credentials
-* [AppendCredentials](#appendcredentials) - Upsert provider credentials
+* [UpdateCredentials](#updatecredentials) - Upsert provider credentials
+* [AppendCredentials](#appendcredentials) - Create or Partially Update provider credentials
 * [DeleteCredentials](#deletecredentials) - Delete provider credentials
 * [UpdateOnlineStatus](#updateonlinestatus) - Update subscriber online status
 
@@ -30,7 +30,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-SubscribersControllerSearchSubscribersRequest req = ;
+SubscribersControllerSearchSubscribersRequest? req = null;
 
 var res = await sdk.Subscribers.SearchAsync(req);
 
@@ -268,8 +268,8 @@ var res = await sdk.Subscribers.CreateBulkAsync(bulkSubscriberCreateDto: new Bul
 
 ## UpdateCredentials
 
-Update credentials for a provider such as slack and push tokens. 
-      **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
+Upsert credentials for a provider such as slack and push tokens. 
+      **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
 
 ### Example Usage
 
@@ -328,8 +328,8 @@ var res = await sdk.Subscribers.UpdateCredentialsAsync(
 
 ## AppendCredentials
 
-Update credentials for a provider such as **slack** and **FCM**. 
-      **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
+Create or Partially credentials for a provider such as **slack** and **FCM**. 
+      **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
 
 ### Example Usage
 
