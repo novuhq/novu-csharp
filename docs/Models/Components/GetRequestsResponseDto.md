@@ -1,0 +1,11 @@
+# GetRequestsResponseDto
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `Data`                                                                          | List<[RequestLogResponseDto](../../Models/Components/RequestLogResponseDto.md)> | :heavy_check_mark:                                                              | Request log data                                                                |
+| `Total`                                                                         | *double*                                                                        | :heavy_check_mark:                                                              | Total number of requests                                                        |
+| `PageSize`                                                                      | *double*                                                                        | :heavy_minus_sign:                                                              | Page size                                                                       |
+| `Page`                                                                          | *double*                                                                        | :heavy_minus_sign:                                                              | Current page number                                                             |

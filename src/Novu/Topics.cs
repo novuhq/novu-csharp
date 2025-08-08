@@ -46,10 +46,10 @@ namespace Novu
         /// Create a topic
         /// 
         /// <remarks>
-        /// Creates a new topic if it does not exist, or updates an existing topic if it already exists
+        /// Creates a new topic if it does not exist, or updates an existing topic if it already exists. Use ?failIfExists=true to prevent updates.
         /// </remarks>
         /// </summary>
-        Task<TopicsControllerUpsertTopicResponse> CreateAsync(CreateUpdateTopicRequestDto createUpdateTopicRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        Task<TopicsControllerUpsertTopicResponse> CreateAsync(bool failIfExists, CreateUpdateTopicRequestDto createUpdateTopicRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Retrieve a topic
@@ -89,8 +89,8 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.3.0-alpha.1";
-        private const string _sdkGenVersion = "2.636.0";
+        private const string _sdkVersion = "2.3.0-alpha.2";
+        private const string _sdkGenVersion = "2.675.0";
         private const string _openapiDocVersion = "2.3.0";
         public ISubscriptions Subscriptions { get; private set; }
 
@@ -265,16 +265,16 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<TopicsControllerUpsertTopicResponse> CreateAsync(CreateUpdateTopicRequestDto createUpdateTopicRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        public async Task<TopicsControllerUpsertTopicResponse> CreateAsync(bool failIfExists, CreateUpdateTopicRequestDto createUpdateTopicRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
         {
             var request = new TopicsControllerUpsertTopicRequest()
             {
+                FailIfExists = failIfExists,
                 CreateUpdateTopicRequestDto = createUpdateTopicRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v2/topics";
+            var urlString = URLBuilder.Build(baseUrl, "/v2/topics", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -367,7 +367,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<TopicResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.TopicResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new TopicsControllerUpsertTopicResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -382,6 +382,16 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
+            else if(responseStatusCode == 409)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.TopicResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
             else if(responseStatusCode == 414)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
@@ -392,7 +402,7 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
-            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
+            else if(new List<int>{400, 401, 403, 404, 405, 413, 415}.Contains(responseStatusCode))
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
@@ -537,7 +547,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<TopicResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.TopicResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new TopicsControllerGetTopicResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -714,7 +724,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<TopicResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.TopicResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new TopicsControllerUpdateTopicResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()

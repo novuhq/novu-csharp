@@ -146,23 +146,21 @@ To authenticate with the API the `SecretKey` parameter must be set when initiali
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
-    WorkflowId = "workflow_identifier",
-    Payload = new Dictionary<string, object>() {
-        { "comment_id", "string" },
-        { "post", new Dictionary<string, object>() {
-            { "text", "string" },
-        } },
+ActivityControllerGetLogsRequest req = new ActivityControllerGetLogsRequest() {
+    StatusCodes = new List<double>() {
+        200D,
+        404D,
+        500D,
     },
-    Overrides = new Overrides() {},
-    To = To.CreateStr(
-        "SUBSCRIBER_ID"
-    ),
-});
+    CreatedGte = 1640995200D,
+};
+
+var res = await sdk.RetrieveAsync(req);
 
 // handle response
 ```
@@ -177,11 +175,21 @@ To change the default retry strategy for a single API call, simply pass a `Retry
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerAsync(
+ActivityControllerGetLogsRequest req = new ActivityControllerGetLogsRequest() {
+    StatusCodes = new List<double>() {
+        200D,
+        404D,
+        500D,
+    },
+    CreatedGte = 1640995200D,
+};
+
+var res = await sdk.RetrieveAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -192,19 +200,7 @@ var res = await sdk.TriggerAsync(
         ),
         retryConnectionErrors: false
     ),
-    triggerEventRequestDto: new TriggerEventRequestDto() {
-        WorkflowId = "workflow_identifier",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
-            } },
-        },
-        Overrides = new Overrides() {},
-        To = To.CreateStr(
-            "SUBSCRIBER_ID"
-        ),
-    }
+    request: req
 );
 
 // handle response
@@ -214,6 +210,7 @@ If you'd like to override the default retry strategy for all operations that sup
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new NovuSDK(
@@ -230,19 +227,16 @@ var sdk = new NovuSDK(
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
-    WorkflowId = "workflow_identifier",
-    Payload = new Dictionary<string, object>() {
-        { "comment_id", "string" },
-        { "post", new Dictionary<string, object>() {
-            { "text", "string" },
-        } },
+ActivityControllerGetLogsRequest req = new ActivityControllerGetLogsRequest() {
+    StatusCodes = new List<double>() {
+        200D,
+        404D,
+        500D,
     },
-    Overrides = new Overrides() {},
-    To = To.CreateStr(
-        "SUBSCRIBER_ID"
-    ),
-});
+    CreatedGte = 1640995200D,
+};
+
+var res = await sdk.RetrieveAsync(req);
 
 // handle response
 ```
@@ -353,6 +347,7 @@ You can override the default server globally by passing a server index to the `s
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new NovuSDK(
@@ -360,19 +355,16 @@ var sdk = new NovuSDK(
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
-    WorkflowId = "workflow_identifier",
-    Payload = new Dictionary<string, object>() {
-        { "comment_id", "string" },
-        { "post", new Dictionary<string, object>() {
-            { "text", "string" },
-        } },
+ActivityControllerGetLogsRequest req = new ActivityControllerGetLogsRequest() {
+    StatusCodes = new List<double>() {
+        200D,
+        404D,
+        500D,
     },
-    Overrides = new Overrides() {},
-    To = To.CreateStr(
-        "SUBSCRIBER_ID"
-    ),
-});
+    CreatedGte = 1640995200D,
+};
+
+var res = await sdk.RetrieveAsync(req);
 
 // handle response
 ```
@@ -383,6 +375,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new NovuSDK(
@@ -390,19 +383,16 @@ var sdk = new NovuSDK(
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
-    WorkflowId = "workflow_identifier",
-    Payload = new Dictionary<string, object>() {
-        { "comment_id", "string" },
-        { "post", new Dictionary<string, object>() {
-            { "text", "string" },
-        } },
+ActivityControllerGetLogsRequest req = new ActivityControllerGetLogsRequest() {
+    StatusCodes = new List<double>() {
+        200D,
+        404D,
+        500D,
     },
-    Overrides = new Overrides() {},
-    To = To.CreateStr(
-        "SUBSCRIBER_ID"
-    ),
-});
+    CreatedGte = 1640995200D,
+};
+
+var res = await sdk.RetrieveAsync(req);
 
 // handle response
 ```

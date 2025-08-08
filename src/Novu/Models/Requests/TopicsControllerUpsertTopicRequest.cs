@@ -15,6 +15,9 @@ namespace Novu.Models.Requests
     public class TopicsControllerUpsertTopicRequest
     {
 
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=failIfExists")]
+        public bool FailIfExists { get; set; } = default!;
+
         /// <summary>
         /// A header for idempotency purposes
         /// </summary>

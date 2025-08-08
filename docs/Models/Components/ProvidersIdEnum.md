@@ -59,6 +59,8 @@ Provider ID of the job
 | `EazySms`          | eazy-sms           |
 | `Mobishastra`      | mobishastra        |
 | `AfroMessage`      | afro-message       |
+| `Smsmode`          | smsmode            |
+| `Imedia`           | imedia             |
 | `Fcm`              | fcm                |
 | `Apns`             | apns               |
 | `Expo`             | expo               |

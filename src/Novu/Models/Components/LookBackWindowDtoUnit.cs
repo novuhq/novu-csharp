@@ -14,9 +14,9 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// Unit of time for the delay amount.
+    /// Unit of time for the look-back window.
     /// </summary>
-    public enum DelayStepUpsertDtoUnit
+    public enum LookBackWindowDtoUnit
     {
         [JsonProperty("seconds")]
         Seconds,
@@ -32,16 +32,16 @@ namespace Novu.Models.Components
         Months,
     }
 
-    public static class DelayStepUpsertDtoUnitExtension
+    public static class LookBackWindowDtoUnitExtension
     {
-        public static string Value(this DelayStepUpsertDtoUnit value)
+        public static string Value(this LookBackWindowDtoUnit value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static DelayStepUpsertDtoUnit ToEnum(this string value)
+        public static LookBackWindowDtoUnit ToEnum(this string value)
         {
-            foreach(var field in typeof(DelayStepUpsertDtoUnit).GetFields())
+            foreach(var field in typeof(LookBackWindowDtoUnit).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -54,14 +54,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is DelayStepUpsertDtoUnit)
+                    if (enumVal is LookBackWindowDtoUnit)
                     {
-                        return (DelayStepUpsertDtoUnit)enumVal;
+                        return (LookBackWindowDtoUnit)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum DelayStepUpsertDtoUnit");
+            throw new Exception($"Unknown value {value} for enum LookBackWindowDtoUnit");
         }
     }
 

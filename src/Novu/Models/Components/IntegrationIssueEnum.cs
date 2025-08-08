@@ -14,34 +14,24 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// The unit of time for the digest interval (for REGULAR type).
+    /// Type of integration issue
     /// </summary>
-    public enum DigestStepUpsertDtoUnit
+    public enum IntegrationIssueEnum
     {
-        [JsonProperty("seconds")]
-        Seconds,
-        [JsonProperty("minutes")]
-        Minutes,
-        [JsonProperty("hours")]
-        Hours,
-        [JsonProperty("days")]
-        Days,
-        [JsonProperty("weeks")]
-        Weeks,
-        [JsonProperty("months")]
-        Months,
+        [JsonProperty("MISSING_INTEGRATION")]
+        MissingIntegration,
     }
 
-    public static class DigestStepUpsertDtoUnitExtension
+    public static class IntegrationIssueEnumExtension
     {
-        public static string Value(this DigestStepUpsertDtoUnit value)
+        public static string Value(this IntegrationIssueEnum value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static DigestStepUpsertDtoUnit ToEnum(this string value)
+        public static IntegrationIssueEnum ToEnum(this string value)
         {
-            foreach(var field in typeof(DigestStepUpsertDtoUnit).GetFields())
+            foreach(var field in typeof(IntegrationIssueEnum).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -54,14 +44,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is DigestStepUpsertDtoUnit)
+                    if (enumVal is IntegrationIssueEnum)
                     {
-                        return (DigestStepUpsertDtoUnit)enumVal;
+                        return (IntegrationIssueEnum)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum DigestStepUpsertDtoUnit");
+            throw new Exception($"Unknown value {value} for enum IntegrationIssueEnum");
         }
     }
 

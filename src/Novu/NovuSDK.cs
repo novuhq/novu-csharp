@@ -29,6 +29,13 @@ namespace Novu
     /// </summary>
     public interface INovuSDK
     {
+
+        /// <summary>
+        /// Environments allow you to manage different stages of your application development lifecycle. Each environment has its own set of API keys and configurations, enabling you to separate development, staging, and production workflows.
+        /// 
+        /// <see>https://docs.novu.co/platform/environments}</see>
+        /// </summary>
+        public IEnvironments Environments { get; }
         public ISubscribers Subscribers { get; }
         public ISubscribersPreferences SubscribersPreferences { get; }
 
@@ -47,13 +54,6 @@ namespace Novu
         public IWorkflows Workflows { get; }
 
         /// <summary>
-        /// Environments allow you to manage different stages of your application development lifecycle. Each environment has its own set of API keys and configurations, enabling you to separate development, staging, and production workflows.
-        /// 
-        /// <see>https://docs.novu.co/platform/environments}</see>
-        /// </summary>
-        public IEnvironments Environments { get; }
-
-        /// <summary>
         /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
         /// 
         /// <see>https://docs.novu.co/platform/integrations/overview}</see>
@@ -70,16 +70,14 @@ namespace Novu
         public ISubscribersMessages SubscribersMessages { get; }
         public ISubscribersNotifications SubscribersNotifications { get; }
         public ITopicsSubscribers TopicsSubscribers { get; }
+        Task<ActivityControllerGetLogsResponse> RetrieveAsync(ActivityControllerGetLogsRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Trigger event
         /// 
         /// <remarks>
-        /// <br/>
-        ///     Trigger event is the main (and only) way to send notifications to subscribers. <br/>
-        ///     The trigger identifier is used to match the particular workflow associated with it. <br/>
-        ///     Additional information can be passed according the body interface below.<br/>
-        ///     
+        ///     Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Additional information can be passed according the body interface below.<br/>
+        ///     To prevent duplicate triggers, you can optionally pass a **transactionId** in the request body. If the same **transactionId** is used again, the trigger will be ignored. The retention period depends on your billing tier.
         /// </remarks>
         /// </summary>
         Task<EventsControllerTriggerResponse> TriggerAsync(TriggerEventRequestDto triggerEventRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -132,14 +130,14 @@ namespace Novu
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.3.0-alpha.1";
-        private const string _sdkGenVersion = "2.636.0";
+        private const string _sdkVersion = "2.3.0-alpha.2";
+        private const string _sdkGenVersion = "2.675.0";
         private const string _openapiDocVersion = "2.3.0";
+        public IEnvironments Environments { get; private set; }
         public ISubscribers Subscribers { get; private set; }
         public ISubscribersPreferences SubscribersPreferences { get; private set; }
         public ITopics Topics { get; private set; }
         public IWorkflows Workflows { get; private set; }
-        public IEnvironments Environments { get; private set; }
         public IIntegrations Integrations { get; private set; }
         public IMessages Messages { get; private set; }
         public INotifications Notifications { get; private set; }
@@ -152,6 +150,8 @@ namespace Novu
             SDKConfiguration = config;
             InitHooks();
 
+            Environments = new Environments(SDKConfiguration);
+
             Subscribers = new Subscribers(SDKConfiguration);
 
             SubscribersPreferences = new SubscribersPreferences(SDKConfiguration);
@@ -159,8 +159,6 @@ namespace Novu
             Topics = new Topics(SDKConfiguration);
 
             Workflows = new Workflows(SDKConfiguration);
-
-            Environments = new Environments(SDKConfiguration);
 
             Integrations = new Integrations(SDKConfiguration);
 
@@ -217,6 +215,8 @@ namespace Novu
 
             InitHooks();
 
+            Environments = new Environments(SDKConfiguration);
+
             Subscribers = new Subscribers(SDKConfiguration);
 
             SubscribersPreferences = new SubscribersPreferences(SDKConfiguration);
@@ -224,8 +224,6 @@ namespace Novu
             Topics = new Topics(SDKConfiguration);
 
             Workflows = new Workflows(SDKConfiguration);
-
-            Environments = new Environments(SDKConfiguration);
 
             Integrations = new Integrations(SDKConfiguration);
 
@@ -251,6 +249,123 @@ namespace Novu
             }
             config.Client = postHooksClient;
             SDKConfiguration = config;
+        }
+
+        public async Task<ActivityControllerGetLogsResponse> RetrieveAsync(ActivityControllerGetLogsRequest? request = null, RetryConfig? retryConfig = null)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/activity/requests", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "ActivityController_getLogs", new List<string> {  }, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 1000L,
+                        maxIntervalMs: 30000L,
+                        maxElapsedTimeMs: 3600000L,
+                        exponent: 1.5
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "408",
+                "409",
+                "429",
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
+            };
+            var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await retries.Run();
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<GetRequestsResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new ActivityControllerGetLogsResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.GetRequestsResponseDto = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
         public async Task<EventsControllerTriggerResponse> TriggerAsync(TriggerEventRequestDto triggerEventRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)

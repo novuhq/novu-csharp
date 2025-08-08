@@ -21,6 +21,7 @@ List all the channels integrations created in the organization
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_listIntegrations" method="get" path="/v1/integrations" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -59,6 +60,7 @@ Create an integration for the current environment the user is based on the API k
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_createIntegration" method="post" path="/v1/integrations" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -101,6 +103,7 @@ Update an integration by its unique key identifier **integrationId**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_updateIntegrationById" method="put" path="/v1/integrations/{integrationId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -144,6 +147,7 @@ Delete an integration by its unique key identifier **integrationId**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_removeIntegration" method="delete" path="/v1/integrations/{integrationId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -184,6 +188,7 @@ Update an integration as **primary** by its unique key identifier **integrationI
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_setIntegrationAsPrimary" method="post" path="/v1/integrations/{integrationId}/set-primary" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -222,6 +227,7 @@ List all the active integrations created in the organization
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_getActiveIntegrations" method="get" path="/v1/integrations/active" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

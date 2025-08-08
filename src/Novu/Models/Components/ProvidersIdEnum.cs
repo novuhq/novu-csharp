@@ -122,6 +122,10 @@ namespace Novu.Models.Components
         Mobishastra,
         [JsonProperty("afro-message")]
         AfroMessage,
+        [JsonProperty("smsmode")]
+        Smsmode,
+        [JsonProperty("imedia")]
+        Imedia,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]

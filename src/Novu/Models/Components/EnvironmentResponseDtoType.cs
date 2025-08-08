@@ -14,26 +14,26 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// Type of editor to use for the body.
+    /// Type of the environment
     /// </summary>
-    public enum EmailStepUpsertDtoEditorType
+    public enum EnvironmentResponseDtoType
     {
-        [JsonProperty("block")]
-        Block,
-        [JsonProperty("html")]
-        Html,
+        [JsonProperty("dev")]
+        Dev,
+        [JsonProperty("prod")]
+        Prod,
     }
 
-    public static class EmailStepUpsertDtoEditorTypeExtension
+    public static class EnvironmentResponseDtoTypeExtension
     {
-        public static string Value(this EmailStepUpsertDtoEditorType value)
+        public static string Value(this EnvironmentResponseDtoType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static EmailStepUpsertDtoEditorType ToEnum(this string value)
+        public static EnvironmentResponseDtoType ToEnum(this string value)
         {
-            foreach(var field in typeof(EmailStepUpsertDtoEditorType).GetFields())
+            foreach(var field in typeof(EnvironmentResponseDtoType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -46,14 +46,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is EmailStepUpsertDtoEditorType)
+                    if (enumVal is EnvironmentResponseDtoType)
                     {
-                        return (EmailStepUpsertDtoEditorType)enumVal;
+                        return (EnvironmentResponseDtoType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum EmailStepUpsertDtoEditorType");
+            throw new Exception($"Unknown value {value} for enum EnvironmentResponseDtoType");
         }
     }
 

@@ -42,6 +42,12 @@ namespace Novu.Models.Components
         public string Identifier { get; set; } = default!;
 
         /// <summary>
+        /// Type of the environment
+        /// </summary>
+        [JsonProperty("type")]
+        public EnvironmentResponseDtoType? Type { get; set; } = null;
+
+        /// <summary>
         /// List of API keys associated with the environment
         /// </summary>
         [JsonProperty("apiKeys")]

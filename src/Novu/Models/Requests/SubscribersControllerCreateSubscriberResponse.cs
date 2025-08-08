@@ -23,7 +23,7 @@ namespace Novu.Models.Requests
         /// <summary>
         /// Created
         /// </summary>
-        public SubscriberResponseDto? SubscriberResponseDto { get; set; }
+        public Models.Components.SubscriberResponseDto? SubscriberResponseDto { get; set; }
 
         public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }

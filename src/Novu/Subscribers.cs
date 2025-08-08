@@ -44,7 +44,7 @@ namespace Novu
         ///       **subscriberId** is a required field, rest other fields are optional, if the subscriber already exists, it will be updated
         /// </remarks>
         /// </summary>
-        Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(CreateSubscriberRequestDto createSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(bool failIfExists, CreateSubscriberRequestDto createSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Retrieve a subscriber
@@ -88,21 +88,21 @@ namespace Novu
         Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(BulkSubscriberCreateDto bulkSubscriberCreateDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update provider credentials
+        /// Upsert provider credentials
         /// 
         /// <remarks>
-        /// Update credentials for a provider such as slack and push tokens. <br/>
-        ///       **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
+        /// Upsert credentials for a provider such as slack and push tokens. <br/>
+        ///       **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Upsert provider credentials
+        /// Update provider credentials
         /// 
         /// <remarks>
         /// Update credentials for a provider such as **slack** and **FCM**. <br/>
-        ///       **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
+        ///       **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -131,8 +131,8 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.3.0-alpha.1";
-        private const string _sdkGenVersion = "2.636.0";
+        private const string _sdkVersion = "2.3.0-alpha.2";
+        private const string _sdkGenVersion = "2.675.0";
         private const string _openapiDocVersion = "2.3.0";
         public INovuTopics Topics { get; private set; }
 
@@ -307,16 +307,16 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(CreateSubscriberRequestDto createSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        public async Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(bool failIfExists, CreateSubscriberRequestDto createSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
         {
             var request = new SubscribersControllerCreateSubscriberRequest()
             {
+                FailIfExists = failIfExists,
                 CreateSubscriberRequestDto = createSubscriberRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v2/subscribers";
+            var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -409,7 +409,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new SubscribersControllerCreateSubscriberResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -424,6 +424,16 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
+            else if(responseStatusCode == 409)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
             else if(responseStatusCode == 414)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
@@ -434,7 +444,7 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
-            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
+            else if(new List<int>{400, 401, 403, 404, 405, 413, 415}.Contains(responseStatusCode))
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
@@ -579,7 +589,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new SubscribersControllerGetSubscriberResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -756,7 +766,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new SubscribersControllerPatchSubscriberResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -1280,7 +1290,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new SubscribersV1ControllerUpdateSubscriberChannelResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -1457,7 +1467,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new SubscribersV1ControllerModifySubscriberChannelResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -1797,7 +1807,7 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.SubscriberResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()

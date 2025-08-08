@@ -87,7 +87,7 @@ namespace Novu.Models.Errors
         public Models.Errors.Four? Four { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Models.Errors.Five>? ArrayOf5 { get; set; }
+        public List<Models.Errors.Five?>? ArrayOf5 { get; set; }
 
         public MessageType Type { get; set; }
 
@@ -124,7 +124,7 @@ namespace Novu.Models.Errors
             return res;
         }
 
-        public static Message CreateArrayOf5(List<Models.Errors.Five> arrayOf5) {
+        public static Message CreateArrayOf5(List<Models.Errors.Five?> arrayOf5) {
             MessageType typ = MessageType.ArrayOf5;
 
             Message res = new Message(typ);
@@ -211,12 +211,12 @@ namespace Novu.Models.Errors
                 {
                     return new Message(MessageType.ArrayOf5)
                     {
-                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Models.Errors.Five>>(json)
+                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Models.Errors.Five?>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Models.Errors.Five>), new Message(MessageType.ArrayOf5), "ArrayOf5"));
+                    fallbackCandidates.Add((typeof(List<Models.Errors.Five?>), new Message(MessageType.ArrayOf5), "ArrayOf5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {

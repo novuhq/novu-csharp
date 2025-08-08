@@ -22,10 +22,16 @@ namespace Novu.Models.Components
     {
 
         /// <summary>
-        /// This could be used to override provider specific configurations
+        /// This could be used to override provider specific configurations or layout at the step level
         /// </summary>
         [JsonProperty("steps")]
         public Dictionary<string, StepsOverrides>? Steps { get; set; }
+
+        /// <summary>
+        /// Channel-specific overrides that apply to all steps of a particular channel type. Step-level overrides take precedence over channel-level overrides.
+        /// </summary>
+        [JsonProperty("channels")]
+        public Channels? Channels { get; set; }
 
         /// <summary>
         /// Overrides the provider configuration for the entire workflow and all steps

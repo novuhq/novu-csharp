@@ -22,6 +22,7 @@ Creates a new workflow in the Novu Cloud environment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="WorkflowController_create" method="post" path="/v2/workflows" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -32,7 +33,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.Workflows.CreateAsync(createWorkflowDto: new CreateWorkflowDto() {
     Name = "<value>",
     WorkflowId = "<id>",
-    Steps = new List<Models.Components.Steps>() {},
+    Steps = new List<Novu.Models.Components.Steps>() {},
     Preferences = new PreferencesRequestDto() {
         User = User.CreateUserWorkflowPreferencesDto(
             new UserWorkflowPreferencesDto() {
@@ -91,6 +92,7 @@ Retrieves a list of workflows with optional filtering and pagination
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="WorkflowController_searchWorkflows" method="get" path="/v2/workflows" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -98,7 +100,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-WorkflowControllerSearchWorkflowsRequest req = ;
+WorkflowControllerSearchWorkflowsRequest? req = null;
 
 var res = await sdk.Workflows.ListAsync(req);
 
@@ -131,6 +133,7 @@ Updates the details of an existing workflow, here **workflowId** is the identifi
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="WorkflowController_update" method="put" path="/v2/workflows/{workflowId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -169,7 +172,7 @@ var res = await sdk.Workflows.UpdateAsync(
                 },
             },
         },
-        Origin = WorkflowOriginEnum.External,
+        Origin = ResourceOriginEnum.External,
     }
 );
 
@@ -204,6 +207,7 @@ Fetches details of a specific workflow by its unique identifier **workflowId**
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="WorkflowController_getWorkflow" method="get" path="/v2/workflows/{workflowId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -243,6 +247,7 @@ Removes a specific workflow by its unique identifier **workflowId**
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="WorkflowController_removeWorkflow" method="delete" path="/v2/workflows/{workflowId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -281,6 +286,7 @@ Partially updates a workflow by its unique identifier **workflowId**
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="WorkflowController_patchWorkflow" method="patch" path="/v2/workflows/{workflowId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -323,6 +329,7 @@ Synchronizes a workflow to the target environment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="WorkflowController_sync" method="put" path="/v2/workflows/{workflowId}/sync" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

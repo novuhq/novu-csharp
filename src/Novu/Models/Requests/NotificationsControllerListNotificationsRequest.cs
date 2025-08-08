@@ -61,7 +61,7 @@ namespace Novu.Models.Requests
         public double? Limit { get; set; } = 10D;
 
         /// <summary>
-        /// Transaction ID for filtering
+        /// The transaction ID to filter by
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=transactionId")]
         public string? TransactionId { get; set; }

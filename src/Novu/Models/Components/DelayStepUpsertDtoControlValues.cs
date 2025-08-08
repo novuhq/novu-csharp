@@ -10,38 +10,197 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
     
-    /// <summary>
-    /// Control values for the Delay step
-    /// </summary>
-    public class DelayStepUpsertDtoControlValues
+
+    public class DelayStepUpsertDtoControlValuesType
     {
+        private DelayStepUpsertDtoControlValuesType(string value) { Value = value; }
 
-        /// <summary>
-        /// JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference.
-        /// </summary>
-        [JsonProperty("skip")]
-        public Dictionary<string, object>? Skip { get; set; }
+        public string Value { get; private set; }
+        public static DelayStepUpsertDtoControlValuesType DelayControlDto { get { return new DelayStepUpsertDtoControlValuesType("DelayControlDto"); } }
+        
+        public static DelayStepUpsertDtoControlValuesType MapOfAny { get { return new DelayStepUpsertDtoControlValuesType("mapOfAny"); } }
+        
+        public static DelayStepUpsertDtoControlValuesType Null { get { return new DelayStepUpsertDtoControlValuesType("null"); } }
 
-        /// <summary>
-        /// Type of the delay. Currently only &apos;regular&apos; is supported by the schema.
-        /// </summary>
-        [JsonProperty("type")]
-        public DelayStepUpsertDtoType? Type { get; set; } = Novu.Models.Components.DelayStepUpsertDtoType.Regular;
+        public override string ToString() { return Value; }
+        public static implicit operator String(DelayStepUpsertDtoControlValuesType v) { return v.Value; }
+        public static DelayStepUpsertDtoControlValuesType FromString(string v) {
+            switch(v) {
+                case "DelayControlDto": return DelayControlDto;
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for DelayStepUpsertDtoControlValuesType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((DelayStepUpsertDtoControlValuesType)obj).Value);
+        }
 
-        /// <summary>
-        /// Amount of time to delay.
-        /// </summary>
-        [JsonProperty("amount")]
-        public double Amount { get; set; } = default!;
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
 
-        /// <summary>
-        /// Unit of time for the delay amount.
-        /// </summary>
-        [JsonProperty("unit")]
-        public DelayStepUpsertDtoUnit Unit { get; set; } = default!;
+
+    /// <summary>
+    /// Control values for the Delay step.
+    /// </summary>
+    [JsonConverter(typeof(DelayStepUpsertDtoControlValues.DelayStepUpsertDtoControlValuesConverter))]
+    public class DelayStepUpsertDtoControlValues {
+        public DelayStepUpsertDtoControlValues(DelayStepUpsertDtoControlValuesType type) {
+            Type = type;
+        }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public DelayControlDto? DelayControlDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
+
+        public DelayStepUpsertDtoControlValuesType Type { get; set; }
+
+
+        public static DelayStepUpsertDtoControlValues CreateDelayControlDto(DelayControlDto delayControlDto) {
+            DelayStepUpsertDtoControlValuesType typ = DelayStepUpsertDtoControlValuesType.DelayControlDto;
+
+            DelayStepUpsertDtoControlValues res = new DelayStepUpsertDtoControlValues(typ);
+            res.DelayControlDto = delayControlDto;
+            return res;
+        }
+
+        public static DelayStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+            DelayStepUpsertDtoControlValuesType typ = DelayStepUpsertDtoControlValuesType.MapOfAny;
+
+            DelayStepUpsertDtoControlValues res = new DelayStepUpsertDtoControlValues(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+
+        public static DelayStepUpsertDtoControlValues CreateNull() {
+            DelayStepUpsertDtoControlValuesType typ = DelayStepUpsertDtoControlValuesType.Null;
+            return new DelayStepUpsertDtoControlValues(typ);
+        }
+
+        public class DelayStepUpsertDtoControlValuesConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(DelayStepUpsertDtoControlValues);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new DelayStepUpsertDtoControlValues(DelayStepUpsertDtoControlValuesType.DelayControlDto)
+                    {
+                        DelayControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<DelayControlDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(DelayControlDto), new DelayStepUpsertDtoControlValues(DelayStepUpsertDtoControlValuesType.DelayControlDto), "DelayControlDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new DelayStepUpsertDtoControlValues(DelayStepUpsertDtoControlValuesType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new DelayStepUpsertDtoControlValues(DelayStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                DelayStepUpsertDtoControlValues res = (DelayStepUpsertDtoControlValues)value;
+                if (DelayStepUpsertDtoControlValuesType.FromString(res.Type).Equals(DelayStepUpsertDtoControlValuesType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                if (res.DelayControlDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.DelayControlDto));
+                    return;
+                }
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+
+            }
+
+        }
+
     }
 }
