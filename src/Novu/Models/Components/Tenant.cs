@@ -17,17 +17,17 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class TenantType
     {
         private TenantType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static TenantType Str { get { return new TenantType("str"); } }
-        
+
         public static TenantType TenantPayloadDto { get { return new TenantType("TenantPayloadDto"); } }
-        
+
         public static TenantType Null { get { return new TenantType("null"); } }
 
         public override string ToString() { return Value; }
@@ -64,8 +64,10 @@ namespace Novu.Models.Components
     /// </remarks>
     /// </summary>
     [JsonConverter(typeof(Tenant.TenantConverter))]
-    public class Tenant {
-        public Tenant(TenantType type) {
+    public class Tenant
+    {
+        public Tenant(TenantType type)
+        {
             Type = type;
         }
 
@@ -76,17 +78,16 @@ namespace Novu.Models.Components
         public TenantPayloadDto? TenantPayloadDto { get; set; }
 
         public TenantType Type { get; set; }
-
-
-        public static Tenant CreateStr(string str) {
+        public static Tenant CreateStr(string str)
+        {
             TenantType typ = TenantType.Str;
 
             Tenant res = new Tenant(typ);
             res.Str = str;
             return res;
         }
-
-        public static Tenant CreateTenantPayloadDto(TenantPayloadDto tenantPayloadDto) {
+        public static Tenant CreateTenantPayloadDto(TenantPayloadDto tenantPayloadDto)
+        {
             TenantType typ = TenantType.TenantPayloadDto;
 
             Tenant res = new Tenant(typ);
@@ -94,7 +95,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Tenant CreateNull() {
+        public static Tenant CreateNull()
+        {
             TenantType typ = TenantType.Null;
             return new Tenant(typ);
         }
@@ -172,23 +174,25 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Tenant res = (Tenant)value;
                 if (TenantType.FromString(res.Type).Equals(TenantType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.TenantPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TenantPayloadDto));
                     return;
                 }
-
             }
 
         }

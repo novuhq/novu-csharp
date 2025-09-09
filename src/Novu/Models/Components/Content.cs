@@ -17,17 +17,17 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ContentType
     {
         private ContentType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ContentType ArrayOfEmailBlock { get { return new ContentType("arrayOfEmailBlock"); } }
-        
+
         public static ContentType Str { get { return new ContentType("str"); } }
-        
+
         public static ContentType Null { get { return new ContentType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Novu.Models.Components
     /// Content of the message, can be an email block or a string
     /// </summary>
     [JsonConverter(typeof(Content.ContentConverter))]
-    public class Content {
-        public Content(ContentType type) {
+    public class Content
+    {
+        public Content(ContentType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace Novu.Models.Components
         public string? Str { get; set; }
 
         public ContentType Type { get; set; }
-
-
-        public static Content CreateArrayOfEmailBlock(List<EmailBlock> arrayOfEmailBlock) {
+        public static Content CreateArrayOfEmailBlock(List<EmailBlock> arrayOfEmailBlock)
+        {
             ContentType typ = ContentType.ArrayOfEmailBlock;
 
             Content res = new Content(typ);
             res.ArrayOfEmailBlock = arrayOfEmailBlock;
             return res;
         }
-
-        public static Content CreateStr(string str) {
+        public static Content CreateStr(string str)
+        {
             ContentType typ = ContentType.Str;
 
             Content res = new Content(typ);
@@ -90,7 +91,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Content CreateNull() {
+        public static Content CreateNull()
+        {
             ContentType typ = ContentType.Null;
             return new Content(typ);
         }
@@ -168,23 +170,25 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Content res = (Content)value;
                 if (ContentType.FromString(res.Type).Equals(ContentType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.ArrayOfEmailBlock != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfEmailBlock));
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
-
             }
 
         }

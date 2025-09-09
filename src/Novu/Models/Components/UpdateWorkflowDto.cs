@@ -42,6 +42,24 @@ namespace Novu.Models.Components
         public bool? Active { get; set; } = false;
 
         /// <summary>
+        /// Enable or disable payload schema validation
+        /// </summary>
+        [JsonProperty("validatePayload")]
+        public bool? ValidatePayload { get; set; }
+
+        /// <summary>
+        /// The payload JSON Schema for the workflow
+        /// </summary>
+        [JsonProperty("payloadSchema")]
+        public Dictionary<string, object>? PayloadSchema { get; set; } = null;
+
+        /// <summary>
+        /// Enable or disable translations for this workflow
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool? IsTranslationEnabled { get; set; } = false;
+
+        /// <summary>
         /// Workflow ID (allowed only for code-first workflows)
         /// </summary>
         [JsonProperty("workflowId")]
@@ -63,18 +81,12 @@ namespace Novu.Models.Components
         /// Origin of the workflow
         /// </summary>
         [JsonProperty("origin")]
-        public WorkflowOriginEnum Origin { get; set; } = default!;
+        public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
-        /// The payload JSON Schema for the workflow
+        /// Severity of the workflow
         /// </summary>
-        [JsonProperty("payloadSchema")]
-        public Dictionary<string, object>? PayloadSchema { get; set; }
-
-        /// <summary>
-        /// Enable or disable payload schema validation
-        /// </summary>
-        [JsonProperty("validatePayload")]
-        public bool? ValidatePayload { get; set; }
+        [JsonProperty("severity")]
+        public SeverityLevelEnum? Severity { get; set; }
     }
 }

@@ -18,6 +18,7 @@ The provider identifier for the credentials
 | `RocketChat`       | rocket-chat        |
 | `WhatsappBusiness` | whatsapp-business  |
 | `ChatWebhook`      | chat-webhook       |
+| `NovuSlack`        | novu-slack         |
 | `Fcm`              | fcm                |
 | `Apns`             | apns               |
 | `Expo`             | expo               |

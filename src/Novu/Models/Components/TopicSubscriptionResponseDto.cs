@@ -32,7 +32,7 @@ namespace Novu.Models.Components
         /// Topic information
         /// </summary>
         [JsonProperty("topic")]
-        public TopicResponseDto Topic { get; set; } = default!;
+        public Models.Components.TopicResponseDto Topic { get; set; } = default!;
 
         /// <summary>
         /// Subscriber information

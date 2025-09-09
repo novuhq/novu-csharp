@@ -17,21 +17,21 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class NotificationStepDataMetadataType
     {
         private NotificationStepDataMetadataType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static NotificationStepDataMetadataType DigestRegularMetadata { get { return new NotificationStepDataMetadataType("DigestRegularMetadata"); } }
-        
+
         public static NotificationStepDataMetadataType DigestTimedMetadata { get { return new NotificationStepDataMetadataType("DigestTimedMetadata"); } }
-        
+
         public static NotificationStepDataMetadataType DelayRegularMetadata { get { return new NotificationStepDataMetadataType("DelayRegularMetadata"); } }
-        
+
         public static NotificationStepDataMetadataType DelayScheduledMetadata { get { return new NotificationStepDataMetadataType("DelayScheduledMetadata"); } }
-        
+
         public static NotificationStepDataMetadataType Null { get { return new NotificationStepDataMetadataType("null"); } }
 
         public override string ToString() { return Value; }
@@ -66,8 +66,10 @@ namespace Novu.Models.Components
     /// Metadata associated with the workflow step. Can vary based on the type of step.
     /// </summary>
     [JsonConverter(typeof(NotificationStepDataMetadata.NotificationStepDataMetadataConverter))]
-    public class NotificationStepDataMetadata {
-        public NotificationStepDataMetadata(NotificationStepDataMetadataType type) {
+    public class NotificationStepDataMetadata
+    {
+        public NotificationStepDataMetadata(NotificationStepDataMetadataType type)
+        {
             Type = type;
         }
 
@@ -84,33 +86,32 @@ namespace Novu.Models.Components
         public DelayScheduledMetadata? DelayScheduledMetadata { get; set; }
 
         public NotificationStepDataMetadataType Type { get; set; }
-
-
-        public static NotificationStepDataMetadata CreateDigestRegularMetadata(DigestRegularMetadata digestRegularMetadata) {
+        public static NotificationStepDataMetadata CreateDigestRegularMetadata(DigestRegularMetadata digestRegularMetadata)
+        {
             NotificationStepDataMetadataType typ = NotificationStepDataMetadataType.DigestRegularMetadata;
 
             NotificationStepDataMetadata res = new NotificationStepDataMetadata(typ);
             res.DigestRegularMetadata = digestRegularMetadata;
             return res;
         }
-
-        public static NotificationStepDataMetadata CreateDigestTimedMetadata(DigestTimedMetadata digestTimedMetadata) {
+        public static NotificationStepDataMetadata CreateDigestTimedMetadata(DigestTimedMetadata digestTimedMetadata)
+        {
             NotificationStepDataMetadataType typ = NotificationStepDataMetadataType.DigestTimedMetadata;
 
             NotificationStepDataMetadata res = new NotificationStepDataMetadata(typ);
             res.DigestTimedMetadata = digestTimedMetadata;
             return res;
         }
-
-        public static NotificationStepDataMetadata CreateDelayRegularMetadata(DelayRegularMetadata delayRegularMetadata) {
+        public static NotificationStepDataMetadata CreateDelayRegularMetadata(DelayRegularMetadata delayRegularMetadata)
+        {
             NotificationStepDataMetadataType typ = NotificationStepDataMetadataType.DelayRegularMetadata;
 
             NotificationStepDataMetadata res = new NotificationStepDataMetadata(typ);
             res.DelayRegularMetadata = delayRegularMetadata;
             return res;
         }
-
-        public static NotificationStepDataMetadata CreateDelayScheduledMetadata(DelayScheduledMetadata delayScheduledMetadata) {
+        public static NotificationStepDataMetadata CreateDelayScheduledMetadata(DelayScheduledMetadata delayScheduledMetadata)
+        {
             NotificationStepDataMetadataType typ = NotificationStepDataMetadataType.DelayScheduledMetadata;
 
             NotificationStepDataMetadata res = new NotificationStepDataMetadata(typ);
@@ -118,7 +119,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static NotificationStepDataMetadata CreateNull() {
+        public static NotificationStepDataMetadata CreateNull()
+        {
             NotificationStepDataMetadataType typ = NotificationStepDataMetadataType.Null;
             return new NotificationStepDataMetadata(typ);
         }
@@ -249,33 +251,37 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 NotificationStepDataMetadata res = (NotificationStepDataMetadata)value;
                 if (NotificationStepDataMetadataType.FromString(res.Type).Equals(NotificationStepDataMetadataType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.DigestRegularMetadata != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DigestRegularMetadata));
                     return;
                 }
+
                 if (res.DigestTimedMetadata != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DigestTimedMetadata));
                     return;
                 }
+
                 if (res.DelayRegularMetadata != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DelayRegularMetadata));
                     return;
                 }
+
                 if (res.DelayScheduledMetadata != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DelayScheduledMetadata));
                     return;
                 }
-
             }
 
         }

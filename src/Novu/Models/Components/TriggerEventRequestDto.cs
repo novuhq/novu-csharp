@@ -47,7 +47,11 @@ namespace Novu.Models.Components
         public To To { get; set; } = default!;
 
         /// <summary>
-        /// A unique identifier for this transaction, we will generate a UUID if not provided.
+        /// A unique identifier for deduplication. If the same **transactionId** is sent again, <br/>
+        /// 
+        /// <remarks>
+        ///       the trigger is ignored. Useful to prevent duplicate notifications. The retention period depends on your billing tier.
+        /// </remarks>
         /// </summary>
         [JsonProperty("transactionId")]
         public string? TransactionId { get; set; }

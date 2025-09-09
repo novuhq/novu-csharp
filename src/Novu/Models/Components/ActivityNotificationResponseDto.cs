@@ -121,5 +121,17 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("topics")]
         public List<ActivityTopicDto>? Topics { get; set; }
+
+        /// <summary>
+        /// Severity of the workflow
+        /// </summary>
+        [JsonProperty("severity")]
+        public SeverityLevelEnum? Severity { get; set; }
+
+        /// <summary>
+        /// Criticality of the notification
+        /// </summary>
+        [JsonProperty("critical")]
+        public bool? Critical { get; set; }
     }
 }

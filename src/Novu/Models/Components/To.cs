@@ -17,21 +17,21 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ToType
     {
         private ToType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ToType ArrayOf1 { get { return new ToType("arrayOf1"); } }
-        
+
         public static ToType Str { get { return new ToType("str"); } }
-        
+
         public static ToType SubscriberPayloadDto { get { return new ToType("SubscriberPayloadDto"); } }
-        
+
         public static ToType TopicPayloadDto { get { return new ToType("TopicPayloadDto"); } }
-        
+
         public static ToType Null { get { return new ToType("null"); } }
 
         public override string ToString() { return Value; }
@@ -66,8 +66,10 @@ namespace Novu.Models.Components
     /// The recipients list of people who will receive the notification.
     /// </summary>
     [JsonConverter(typeof(To.ToConverter))]
-    public class To {
-        public To(ToType type) {
+    public class To
+    {
+        public To(ToType type)
+        {
             Type = type;
         }
 
@@ -84,33 +86,32 @@ namespace Novu.Models.Components
         public TopicPayloadDto? TopicPayloadDto { get; set; }
 
         public ToType Type { get; set; }
-
-
-        public static To CreateArrayOf1(List<One> arrayOf1) {
+        public static To CreateArrayOf1(List<One> arrayOf1)
+        {
             ToType typ = ToType.ArrayOf1;
 
             To res = new To(typ);
             res.ArrayOf1 = arrayOf1;
             return res;
         }
-
-        public static To CreateStr(string str) {
+        public static To CreateStr(string str)
+        {
             ToType typ = ToType.Str;
 
             To res = new To(typ);
             res.Str = str;
             return res;
         }
-
-        public static To CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto) {
+        public static To CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto)
+        {
             ToType typ = ToType.SubscriberPayloadDto;
 
             To res = new To(typ);
             res.SubscriberPayloadDto = subscriberPayloadDto;
             return res;
         }
-
-        public static To CreateTopicPayloadDto(TopicPayloadDto topicPayloadDto) {
+        public static To CreateTopicPayloadDto(TopicPayloadDto topicPayloadDto)
+        {
             ToType typ = ToType.TopicPayloadDto;
 
             To res = new To(typ);
@@ -118,7 +119,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static To CreateNull() {
+        public static To CreateNull()
+        {
             ToType typ = ToType.Null;
             return new To(typ);
         }
@@ -236,33 +238,37 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 To res = (To)value;
                 if (ToType.FromString(res.Type).Equals(ToType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.ArrayOf1 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf1));
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.SubscriberPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.SubscriberPayloadDto));
                     return;
                 }
+
                 if (res.TopicPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TopicPayloadDto));
                     return;
                 }
-
             }
 
         }

@@ -15,23 +15,29 @@ Retrieve subscriber channel preferences by its unique key identifier **subscribe
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_getSubscriberPreferences" method="get" path="/v2/subscribers/{subscriberId}/preferences" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.SubscribersPreferences.ListAsync(subscriberId: "<id>");
+var res = await sdk.SubscribersPreferences.ListAsync(
+    subscriberId: "<id>",
+    criticality: Criticality.All
+);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                         | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `SubscriberId`                    | *string*                          | :heavy_check_mark:                | N/A                               |
-| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `SubscriberId`                                      | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
+| `Criticality`                                       | [Criticality](../../Models/Requests/Criticality.md) | :heavy_check_mark:                                  | N/A                                                 |
+| `IdempotencyKey`                                    | *string*                                            | :heavy_minus_sign:                                  | A header for idempotency purposes                   |
 
 ### Response
 
@@ -55,6 +61,7 @@ Update subscriber preferences by its unique key identifier **subscriberId**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_updateSubscriberPreferences" method="patch" path="/v2/subscribers/{subscriberId}/preferences" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

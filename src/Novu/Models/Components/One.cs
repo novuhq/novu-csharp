@@ -17,19 +17,19 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class OneType
     {
         private OneType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static OneType SubscriberPayloadDto { get { return new OneType("SubscriberPayloadDto"); } }
-        
+
         public static OneType TopicPayloadDto { get { return new OneType("TopicPayloadDto"); } }
-        
+
         public static OneType Str { get { return new OneType("str"); } }
-        
+
         public static OneType Null { get { return new OneType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Novu.Models.Components
 
 
     [JsonConverter(typeof(One.OneConverter))]
-    public class One {
-        public One(OneType type) {
+    public class One
+    {
+        public One(OneType type)
+        {
             Type = type;
         }
 
@@ -75,25 +77,24 @@ namespace Novu.Models.Components
         public string? Str { get; set; }
 
         public OneType Type { get; set; }
-
-
-        public static One CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto) {
+        public static One CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto)
+        {
             OneType typ = OneType.SubscriberPayloadDto;
 
             One res = new One(typ);
             res.SubscriberPayloadDto = subscriberPayloadDto;
             return res;
         }
-
-        public static One CreateTopicPayloadDto(TopicPayloadDto topicPayloadDto) {
+        public static One CreateTopicPayloadDto(TopicPayloadDto topicPayloadDto)
+        {
             OneType typ = OneType.TopicPayloadDto;
 
             One res = new One(typ);
             res.TopicPayloadDto = topicPayloadDto;
             return res;
         }
-
-        public static One CreateStr(string str) {
+        public static One CreateStr(string str)
+        {
             OneType typ = OneType.Str;
 
             One res = new One(typ);
@@ -101,7 +102,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static One CreateNull() {
+        public static One CreateNull()
+        {
             OneType typ = OneType.Null;
             return new One(typ);
         }
@@ -199,28 +201,31 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 One res = (One)value;
                 if (OneType.FromString(res.Type).Equals(OneType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.SubscriberPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.SubscriberPayloadDto));
                     return;
                 }
+
                 if (res.TopicPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TopicPayloadDto));
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
-
             }
 
         }

@@ -40,5 +40,11 @@ namespace Novu.Models.Components
 
         [JsonProperty("conditions")]
         public List<StepFilterDto>? Conditions { get; set; }
+
+        /// <summary>
+        /// Configurations for the integration
+        /// </summary>
+        [JsonProperty("configurations")]
+        public UpdateIntegrationRequestDtoConfigurations? Configurations { get; set; }
     }
 }

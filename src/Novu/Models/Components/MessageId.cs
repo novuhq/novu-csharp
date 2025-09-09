@@ -16,17 +16,17 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class MessageIdType
     {
         private MessageIdType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static MessageIdType Str { get { return new MessageIdType("str"); } }
-        
+
         public static MessageIdType ArrayOfStr { get { return new MessageIdType("arrayOfStr"); } }
-        
+
         public static MessageIdType Null { get { return new MessageIdType("null"); } }
 
         public override string ToString() { return Value; }
@@ -56,8 +56,10 @@ namespace Novu.Models.Components
 
 
     [JsonConverter(typeof(MessageId.MessageIdConverter))]
-    public class MessageId {
-        public MessageId(MessageIdType type) {
+    public class MessageId
+    {
+        public MessageId(MessageIdType type)
+        {
             Type = type;
         }
 
@@ -68,17 +70,16 @@ namespace Novu.Models.Components
         public List<string>? ArrayOfStr { get; set; }
 
         public MessageIdType Type { get; set; }
-
-
-        public static MessageId CreateStr(string str) {
+        public static MessageId CreateStr(string str)
+        {
             MessageIdType typ = MessageIdType.Str;
 
             MessageId res = new MessageId(typ);
             res.Str = str;
             return res;
         }
-
-        public static MessageId CreateArrayOfStr(List<string> arrayOfStr) {
+        public static MessageId CreateArrayOfStr(List<string> arrayOfStr)
+        {
             MessageIdType typ = MessageIdType.ArrayOfStr;
 
             MessageId res = new MessageId(typ);
@@ -86,7 +87,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static MessageId CreateNull() {
+        public static MessageId CreateNull()
+        {
             MessageIdType typ = MessageIdType.Null;
             return new MessageId(typ);
         }
@@ -164,23 +166,25 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 MessageId res = (MessageId)value;
                 if (MessageIdType.FromString(res.Type).Equals(MessageIdType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.ArrayOfStr != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfStr));
                     return;
                 }
-
             }
 
         }

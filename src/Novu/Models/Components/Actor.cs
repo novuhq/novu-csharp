@@ -17,17 +17,17 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ActorType
     {
         private ActorType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ActorType Str { get { return new ActorType("str"); } }
-        
+
         public static ActorType SubscriberPayloadDto { get { return new ActorType("SubscriberPayloadDto"); } }
-        
+
         public static ActorType Null { get { return new ActorType("null"); } }
 
         public override string ToString() { return Value; }
@@ -66,8 +66,10 @@ namespace Novu.Models.Components
     /// </remarks>
     /// </summary>
     [JsonConverter(typeof(Actor.ActorConverter))]
-    public class Actor {
-        public Actor(ActorType type) {
+    public class Actor
+    {
+        public Actor(ActorType type)
+        {
             Type = type;
         }
 
@@ -78,17 +80,16 @@ namespace Novu.Models.Components
         public SubscriberPayloadDto? SubscriberPayloadDto { get; set; }
 
         public ActorType Type { get; set; }
-
-
-        public static Actor CreateStr(string str) {
+        public static Actor CreateStr(string str)
+        {
             ActorType typ = ActorType.Str;
 
             Actor res = new Actor(typ);
             res.Str = str;
             return res;
         }
-
-        public static Actor CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto) {
+        public static Actor CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto)
+        {
             ActorType typ = ActorType.SubscriberPayloadDto;
 
             Actor res = new Actor(typ);
@@ -96,7 +97,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Actor CreateNull() {
+        public static Actor CreateNull()
+        {
             ActorType typ = ActorType.Null;
             return new Actor(typ);
         }
@@ -174,23 +176,25 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Actor res = (Actor)value;
                 if (ActorType.FromString(res.Type).Equals(ActorType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.SubscriberPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.SubscriberPayloadDto));
                     return;
                 }
-
             }
 
         }

@@ -10,31 +10,201 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
-    
+    using System.Numerics;
+    using System.Reflection;
+
+    public class PushStepUpsertDtoControlValuesType
+    {
+        private PushStepUpsertDtoControlValuesType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+
+        public static PushStepUpsertDtoControlValuesType PushControlDto { get { return new PushStepUpsertDtoControlValuesType("PushControlDto"); } }
+
+        public static PushStepUpsertDtoControlValuesType MapOfAny { get { return new PushStepUpsertDtoControlValuesType("mapOfAny"); } }
+
+        public static PushStepUpsertDtoControlValuesType Null { get { return new PushStepUpsertDtoControlValuesType("null"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(PushStepUpsertDtoControlValuesType v) { return v.Value; }
+        public static PushStepUpsertDtoControlValuesType FromString(string v) {
+            switch(v) {
+                case "PushControlDto": return PushControlDto;
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for PushStepUpsertDtoControlValuesType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((PushStepUpsertDtoControlValuesType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
     /// <summary>
-    /// Control values for the Push step
+    /// Control values for the Push step.
     /// </summary>
+    [JsonConverter(typeof(PushStepUpsertDtoControlValues.PushStepUpsertDtoControlValuesConverter))]
     public class PushStepUpsertDtoControlValues
     {
+        public PushStepUpsertDtoControlValues(PushStepUpsertDtoControlValuesType type)
+        {
+            Type = type;
+        }
 
-        /// <summary>
-        /// JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference.
-        /// </summary>
-        [JsonProperty("skip")]
-        public Dictionary<string, object>? Skip { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public PushControlDto? PushControlDto { get; set; }
 
-        /// <summary>
-        /// Subject/title of the push notification.
-        /// </summary>
-        [JsonProperty("subject")]
-        public string? Subject { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
 
-        /// <summary>
-        /// Body content of the push notification.
-        /// </summary>
-        [JsonProperty("body")]
-        public string? Body { get; set; }
+        public PushStepUpsertDtoControlValuesType Type { get; set; }
+        public static PushStepUpsertDtoControlValues CreatePushControlDto(PushControlDto pushControlDto)
+        {
+            PushStepUpsertDtoControlValuesType typ = PushStepUpsertDtoControlValuesType.PushControlDto;
+
+            PushStepUpsertDtoControlValues res = new PushStepUpsertDtoControlValues(typ);
+            res.PushControlDto = pushControlDto;
+            return res;
+        }
+        public static PushStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
+            PushStepUpsertDtoControlValuesType typ = PushStepUpsertDtoControlValuesType.MapOfAny;
+
+            PushStepUpsertDtoControlValues res = new PushStepUpsertDtoControlValues(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+
+        public static PushStepUpsertDtoControlValues CreateNull()
+        {
+            PushStepUpsertDtoControlValuesType typ = PushStepUpsertDtoControlValuesType.Null;
+            return new PushStepUpsertDtoControlValues(typ);
+        }
+
+        public class PushStepUpsertDtoControlValuesConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(PushStepUpsertDtoControlValues);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new PushStepUpsertDtoControlValues(PushStepUpsertDtoControlValuesType.PushControlDto)
+                    {
+                        PushControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PushControlDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(PushControlDto), new PushStepUpsertDtoControlValues(PushStepUpsertDtoControlValuesType.PushControlDto), "PushControlDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new PushStepUpsertDtoControlValues(PushStepUpsertDtoControlValuesType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new PushStepUpsertDtoControlValues(PushStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+
+                PushStepUpsertDtoControlValues res = (PushStepUpsertDtoControlValues)value;
+                if (PushStepUpsertDtoControlValuesType.FromString(res.Type).Equals(PushStepUpsertDtoControlValuesType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+
+                if (res.PushControlDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.PushControlDto));
+                    return;
+                }
+
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+            }
+
+        }
+
     }
 }

@@ -14,10 +14,10 @@ namespace Novu.Models.Errors
     using Novu.Utils;
     using System;
     using System.Collections.Generic;
-    
-    public class ValidationErrorDto : Exception
-    {
+    using System.Net.Http;
 
+    public class ValidationErrorDtoPayload
+    {
         /// <summary>
         /// HTTP status code of the error response.
         /// </summary>
@@ -62,7 +62,67 @@ namespace Novu.Models.Errors
         /// Value that failed validation
         /// </summary>
         [JsonProperty("message")]
-        private string? _message { get; set; }
-        public override string Message { get {return _message ?? "";} }
+        public string? Message { get; set; }
     }
+
+    public class ValidationErrorDto : NovuError
+    {
+        /// <summary>
+        ///  The original data that was passed to this exception.
+        /// </summary>
+        public ValidationErrorDtoPayload Payload { get; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use ValidationErrorDto.Payload.StatusCode instead.")]
+        public double StatusCode { get; set; } = default!;
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use ValidationErrorDto.Payload.Timestamp instead.")]
+        public string Timestamp { get; set; } = default!;
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use ValidationErrorDto.Payload.Path instead.")]
+        public string Path { get; set; } = default!;
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use ValidationErrorDto.Payload.Ctx instead.")]
+        public Dictionary<string, object>? Ctx { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use ValidationErrorDto.Payload.ErrorId instead.")]
+        public string? ErrorId { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use ValidationErrorDto.Payload.Errors instead.")]
+        public Dictionary<string, ConstraintValidation> Errors { get; set; } = default!;
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use ValidationErrorDto.Payload.Message instead.")]
+        private string? _message { get; set; }
+
+        private static string ErrorMessage(ValidationErrorDtoPayload payload, string body)
+        {
+            string? message = payload.Message;
+            if (!string.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            return "API error occurred";
+        }
+
+        public ValidationErrorDto(
+            ValidationErrorDtoPayload payload,
+            HttpRequestMessage request,
+            HttpResponseMessage response,
+            string body
+        ): base(ErrorMessage(payload, body), request, response, body)
+        {
+           Payload = payload;
+
+           #pragma warning disable CS0618
+           StatusCode = payload.StatusCode;
+           Timestamp = payload.Timestamp;
+           Path = payload.Path;
+           Ctx = payload.Ctx;
+           ErrorId = payload.ErrorId;
+           Errors = payload.Errors;
+           _message = payload.Message;
+           #pragma warning restore CS0618
+        }
+    }
+
 }

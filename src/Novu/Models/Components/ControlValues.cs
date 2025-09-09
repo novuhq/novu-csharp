@@ -10,68 +10,201 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
-    
+    using System.Numerics;
+    using System.Reflection;
+
+    public class ControlValuesType
+    {
+        private ControlValuesType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+
+        public static ControlValuesType InAppControlDto { get { return new ControlValuesType("InAppControlDto"); } }
+
+        public static ControlValuesType MapOfAny { get { return new ControlValuesType("mapOfAny"); } }
+
+        public static ControlValuesType Null { get { return new ControlValuesType("null"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(ControlValuesType v) { return v.Value; }
+        public static ControlValuesType FromString(string v) {
+            switch(v) {
+                case "InAppControlDto": return InAppControlDto;
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for ControlValuesType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((ControlValuesType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
     /// <summary>
-    /// Control values for the In-App step
+    /// Control values for the In-App step.
     /// </summary>
+    [JsonConverter(typeof(ControlValues.ControlValuesConverter))]
     public class ControlValues
     {
+        public ControlValues(ControlValuesType type)
+        {
+            Type = type;
+        }
 
-        /// <summary>
-        /// JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference.
-        /// </summary>
-        [JsonProperty("skip")]
-        public Dictionary<string, object>? Skip { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public InAppControlDto? InAppControlDto { get; set; }
 
-        /// <summary>
-        /// Content/body of the in-app message. Required if subject is empty.
-        /// </summary>
-        [JsonProperty("body")]
-        public string? Body { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
 
-        /// <summary>
-        /// Subject/title of the in-app message. Required if body is empty.
-        /// </summary>
-        [JsonProperty("subject")]
-        public string? Subject { get; set; }
+        public ControlValuesType Type { get; set; }
+        public static ControlValues CreateInAppControlDto(InAppControlDto inAppControlDto)
+        {
+            ControlValuesType typ = ControlValuesType.InAppControlDto;
 
-        /// <summary>
-        /// URL for an avatar image. Must be a valid URL or start with / or {{ variable }}.
-        /// </summary>
-        [JsonProperty("avatar")]
-        public string? Avatar { get; set; }
+            ControlValues res = new ControlValues(typ);
+            res.InAppControlDto = inAppControlDto;
+            return res;
+        }
+        public static ControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
+            ControlValuesType typ = ControlValuesType.MapOfAny;
 
-        /// <summary>
-        /// Primary action button details.
-        /// </summary>
-        [JsonProperty("primaryAction")]
-        public ActionDto? PrimaryAction { get; set; }
+            ControlValues res = new ControlValues(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
 
-        /// <summary>
-        /// Secondary action button details.
-        /// </summary>
-        [JsonProperty("secondaryAction")]
-        public ActionDto? SecondaryAction { get; set; }
+        public static ControlValues CreateNull()
+        {
+            ControlValuesType typ = ControlValuesType.Null;
+            return new ControlValues(typ);
+        }
 
-        /// <summary>
-        /// Redirection URL configuration for the main content click (if no actions defined/clicked)..
-        /// </summary>
-        [JsonProperty("redirect")]
-        public RedirectDto? Redirect { get; set; }
+        public class ControlValuesConverter : JsonConverter
+        {
 
-        /// <summary>
-        /// Disable sanitization of the output.
-        /// </summary>
-        [JsonProperty("disableOutputSanitization")]
-        public bool? DisableOutputSanitization { get; set; } = false;
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(ControlValues);
 
-        /// <summary>
-        /// Additional data payload for the step.
-        /// </summary>
-        [JsonProperty("data")]
-        public Dictionary<string, object>? Data { get; set; }
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new ControlValues(ControlValuesType.InAppControlDto)
+                    {
+                        InAppControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<InAppControlDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(InAppControlDto), new ControlValues(ControlValuesType.InAppControlDto), "InAppControlDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new ControlValues(ControlValuesType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new ControlValues(ControlValuesType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+
+                ControlValues res = (ControlValues)value;
+                if (ControlValuesType.FromString(res.Type).Equals(ControlValuesType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+
+                if (res.InAppControlDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.InAppControlDto));
+                    return;
+                }
+
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+            }
+
+        }
+
     }
 }

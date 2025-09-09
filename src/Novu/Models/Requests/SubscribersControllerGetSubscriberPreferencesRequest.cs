@@ -9,6 +9,7 @@
 #nullable enable
 namespace Novu.Models.Requests
 {
+    using Novu.Models.Requests;
     using Novu.Utils;
     
     public class SubscribersControllerGetSubscriberPreferencesRequest
@@ -16,6 +17,9 @@ namespace Novu.Models.Requests
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriberId")]
         public string SubscriberId { get; set; } = default!;
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=criticality")]
+        public Criticality Criticality { get; set; } = default!;
 
         /// <summary>
         /// A header for idempotency purposes

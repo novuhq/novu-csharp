@@ -146,23 +146,13 @@ To authenticate with the API the `SecretKey` parameter must be set when initiali
 ```csharp
 using Novu;
 using Novu.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
-    WorkflowId = "workflow_identifier",
-    Payload = new Dictionary<string, object>() {
-        { "comment_id", "string" },
-        { "post", new Dictionary<string, object>() {
-            { "text", "string" },
-        } },
-    },
-    Overrides = new Overrides() {},
-    To = To.CreateStr(
-        "SUBSCRIBER_ID"
-    ),
-});
+var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
+    environmentId: "<id>",
+    integrationId: "<id>"
+);
 
 // handle response
 ```
@@ -177,11 +167,10 @@ To change the default retry strategy for a single API call, simply pass a `Retry
 ```csharp
 using Novu;
 using Novu.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.TriggerAsync(
+var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -192,19 +181,8 @@ var res = await sdk.TriggerAsync(
         ),
         retryConnectionErrors: false
     ),
-    triggerEventRequestDto: new TriggerEventRequestDto() {
-        WorkflowId = "workflow_identifier",
-        Payload = new Dictionary<string, object>() {
-            { "comment_id", "string" },
-            { "post", new Dictionary<string, object>() {
-                { "text", "string" },
-            } },
-        },
-        Overrides = new Overrides() {},
-        To = To.CreateStr(
-            "SUBSCRIBER_ID"
-        ),
-    }
+    environmentId: "<id>",
+    integrationId: "<id>"
 );
 
 // handle response
@@ -214,7 +192,6 @@ If you'd like to override the default retry strategy for all operations that sup
 ```csharp
 using Novu;
 using Novu.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new NovuSDK(
     retryConfig: new RetryConfig(
@@ -230,19 +207,10 @@ var sdk = new NovuSDK(
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
-    WorkflowId = "workflow_identifier",
-    Payload = new Dictionary<string, object>() {
-        { "comment_id", "string" },
-        { "post", new Dictionary<string, object>() {
-            { "text", "string" },
-        } },
-    },
-    Overrides = new Overrides() {},
-    To = To.CreateStr(
-        "SUBSCRIBER_ID"
-    ),
-});
+var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
+    environmentId: "<id>",
+    integrationId: "<id>"
+);
 
 // handle response
 ```
@@ -251,26 +219,15 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
-
-By default, an API error will raise a `Novu.Models.Errors.APIException` exception, which has the following properties:
+[`NovuError`](./src/Novu/Models/Errors/NovuError.cs) is the base exception class for all HTTP error responses. It has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
-| `Message`     | *string*              | The error message     |
-| `Request`     | *HttpRequestMessage*  | The HTTP request      |
-| `Response`    | *HttpResponseMessage* | The HTTP response     |
+| `Message`     | *string*              | Error message         |
+| `Request`     | *HttpRequestMessage*  | HTTP request object   |
+| `Response`    | *HttpResponseMessage* | HTTP response object  |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `TriggerAsync` method throws the following exceptions:
-
-| Error Type                                       | Status Code                       | Content Type     |
-| ------------------------------------------------ | --------------------------------- | ---------------- |
-| Novu.Models.Errors.PayloadValidationExceptionDto | 400                               | application/json |
-| Novu.Models.Errors.ErrorDto                      | 414                               | application/json |
-| Novu.Models.Errors.ErrorDto                      | 401, 403, 404, 405, 409, 413, 415 | application/json |
-| Novu.Models.Errors.ValidationErrorDto            | 422                               | application/json |
-| Novu.Models.Errors.ErrorDto                      | 500                               | application/json |
-| Novu.Models.Errors.APIException                  | 4XX, 5XX                          | \*/\*            |
+Some exceptions in this SDK include an additional `Payload` field, which will contain deserialized custom error data when present. Possible exceptions are listed in the [Error Classes](#error-classes) section.
 
 ### Example
 
@@ -300,40 +257,57 @@ try
 
     // handle response
 }
-catch (Exception ex)
+catch (NovuError ex)  // all SDK exceptions inherit from NovuError
 {
-    if (ex is PayloadValidationExceptionDto)
+    // ex.ToString() provides a detailed error message
+    System.Console.WriteLine(ex);
+
+    // Base exception fields
+    HttpRequestMessage request = ex.Request;
+    HttpResponseMessage response = ex.Response;
+    var statusCode = (int)response.StatusCode;
+    var responseBody = ex.Body;
+
+    if (ex is PayloadValidationExceptionDto) // different exceptions may be thrown depending on the method
     {
-        // Handle exception data
-        throw;
+        // Check error data fields
+        PayloadValidationExceptionDtoPayload payload = ex.Payload;
+        double StatusCode = payload.StatusCode;
+        string Timestamp = payload.Timestamp;
+        // ...
     }
-    else if (ex is ErrorDto)
+
+    // An underlying cause may be provided
+    if (ex.InnerException != null)
     {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is ErrorDto)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is ValidationErrorDto)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is ErrorDto)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Novu.Models.Errors.APIException)
-    {
-        // Handle default exception
-        throw;
+        Exception cause = ex.InnerException;
     }
 }
+catch (System.Net.Http.HttpRequestException ex)
+{
+    // Check ex.InnerException for Network connectivity errors
+}
 ```
+
+### Error Classes
+
+**Primary exceptions:**
+* [`NovuError`](./src/Novu/Models/Errors/NovuError.cs): The base class for HTTP error responses.
+  * [`ErrorDto`](./src/Novu/Models/Errors/ErrorDto.cs): *
+  * [`ValidationErrorDto`](./src/Novu/Models/Errors/ValidationErrorDto.cs): Unprocessable Entity. Status code `422`. *
+
+<details><summary>Less common exceptions (5)</summary>
+
+* [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
+
+* Inheriting from [`NovuError`](./src/Novu/Models/Errors/NovuError.cs):
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 58 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 58 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 58 methods.*
+  * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
+</details>
+
+\* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -353,26 +327,16 @@ You can override the default server globally by passing a server index to the `s
 ```csharp
 using Novu;
 using Novu.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new NovuSDK(
     serverIndex: 1,
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
-    WorkflowId = "workflow_identifier",
-    Payload = new Dictionary<string, object>() {
-        { "comment_id", "string" },
-        { "post", new Dictionary<string, object>() {
-            { "text", "string" },
-        } },
-    },
-    Overrides = new Overrides() {},
-    To = To.CreateStr(
-        "SUBSCRIBER_ID"
-    ),
-});
+var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
+    environmentId: "<id>",
+    integrationId: "<id>"
+);
 
 // handle response
 ```
@@ -383,26 +347,16 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```csharp
 using Novu;
 using Novu.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new NovuSDK(
     serverUrl: "https://eu.api.novu.co",
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
-    WorkflowId = "workflow_identifier",
-    Payload = new Dictionary<string, object>() {
-        { "comment_id", "string" },
-        { "post", new Dictionary<string, object>() {
-            { "text", "string" },
-        } },
-    },
-    Overrides = new Overrides() {},
-    To = To.CreateStr(
-        "SUBSCRIBER_ID"
-    ),
-});
+var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
+    environmentId: "<id>",
+    integrationId: "<id>"
+);
 
 // handle response
 ```
