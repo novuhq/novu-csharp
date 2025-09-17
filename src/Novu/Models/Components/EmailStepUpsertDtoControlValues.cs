@@ -10,44 +10,201 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
-    
+    using System.Numerics;
+    using System.Reflection;
+
+    public class EmailStepUpsertDtoControlValuesType
+    {
+        private EmailStepUpsertDtoControlValuesType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+
+        public static EmailStepUpsertDtoControlValuesType EmailControlDto { get { return new EmailStepUpsertDtoControlValuesType("EmailControlDto"); } }
+
+        public static EmailStepUpsertDtoControlValuesType MapOfAny { get { return new EmailStepUpsertDtoControlValuesType("mapOfAny"); } }
+
+        public static EmailStepUpsertDtoControlValuesType Null { get { return new EmailStepUpsertDtoControlValuesType("null"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(EmailStepUpsertDtoControlValuesType v) { return v.Value; }
+        public static EmailStepUpsertDtoControlValuesType FromString(string v) {
+            switch(v) {
+                case "EmailControlDto": return EmailControlDto;
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for EmailStepUpsertDtoControlValuesType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((EmailStepUpsertDtoControlValuesType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
     /// <summary>
-    /// Control values for the Email step
+    /// Control values for the Email step.
     /// </summary>
+    [JsonConverter(typeof(EmailStepUpsertDtoControlValues.EmailStepUpsertDtoControlValuesConverter))]
     public class EmailStepUpsertDtoControlValues
     {
+        public EmailStepUpsertDtoControlValues(EmailStepUpsertDtoControlValuesType type)
+        {
+            Type = type;
+        }
 
-        /// <summary>
-        /// JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference.
-        /// </summary>
-        [JsonProperty("skip")]
-        public Dictionary<string, object>? Skip { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public EmailControlDto? EmailControlDto { get; set; }
 
-        /// <summary>
-        /// Subject of the email.
-        /// </summary>
-        [JsonProperty("subject")]
-        public string Subject { get; set; } = default!;
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
 
-        /// <summary>
-        /// Body content of the email, either a valid Maily JSON object, or html string.
-        /// </summary>
-        [JsonProperty("body")]
-        public string? Body { get; set; } = "";
+        public EmailStepUpsertDtoControlValuesType Type { get; set; }
+        public static EmailStepUpsertDtoControlValues CreateEmailControlDto(EmailControlDto emailControlDto)
+        {
+            EmailStepUpsertDtoControlValuesType typ = EmailStepUpsertDtoControlValuesType.EmailControlDto;
 
-        /// <summary>
-        /// Type of editor to use for the body.
-        /// </summary>
-        [JsonProperty("editorType")]
-        public EmailStepUpsertDtoEditorType? EditorType { get; set; } = Novu.Models.Components.EmailStepUpsertDtoEditorType.Block;
+            EmailStepUpsertDtoControlValues res = new EmailStepUpsertDtoControlValues(typ);
+            res.EmailControlDto = emailControlDto;
+            return res;
+        }
+        public static EmailStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
+            EmailStepUpsertDtoControlValuesType typ = EmailStepUpsertDtoControlValuesType.MapOfAny;
 
-        /// <summary>
-        /// Disable sanitization of the output.
-        /// </summary>
-        [JsonProperty("disableOutputSanitization")]
-        public bool? DisableOutputSanitization { get; set; } = false;
+            EmailStepUpsertDtoControlValues res = new EmailStepUpsertDtoControlValues(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+
+        public static EmailStepUpsertDtoControlValues CreateNull()
+        {
+            EmailStepUpsertDtoControlValuesType typ = EmailStepUpsertDtoControlValuesType.Null;
+            return new EmailStepUpsertDtoControlValues(typ);
+        }
+
+        public class EmailStepUpsertDtoControlValuesConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(EmailStepUpsertDtoControlValues);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new EmailStepUpsertDtoControlValues(EmailStepUpsertDtoControlValuesType.EmailControlDto)
+                    {
+                        EmailControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<EmailControlDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(EmailControlDto), new EmailStepUpsertDtoControlValues(EmailStepUpsertDtoControlValuesType.EmailControlDto), "EmailControlDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new EmailStepUpsertDtoControlValues(EmailStepUpsertDtoControlValuesType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new EmailStepUpsertDtoControlValues(EmailStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+
+                EmailStepUpsertDtoControlValues res = (EmailStepUpsertDtoControlValues)value;
+                if (EmailStepUpsertDtoControlValuesType.FromString(res.Type).Equals(EmailStepUpsertDtoControlValuesType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+
+                if (res.EmailControlDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.EmailControlDto));
+                    return;
+                }
+
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+            }
+
+        }
+
     }
 }

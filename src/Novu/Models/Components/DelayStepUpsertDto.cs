@@ -35,9 +35,9 @@ namespace Novu.Models.Components
         public StepTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Control values for the Delay step
+        /// Control values for the Delay step.
         /// </summary>
         [JsonProperty("controlValues")]
-        public DelayStepUpsertDtoControlValues? ControlValues { get; set; } = null;
+        public DelayStepUpsertDtoControlValues? ControlValues { get; set; }
     }
 }

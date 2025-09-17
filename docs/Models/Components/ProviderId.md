@@ -18,6 +18,7 @@ The ID of the chat or push provider.
 | `RocketChat`       | rocket-chat        |
 | `WhatsappBusiness` | whatsapp-business  |
 | `ChatWebhook`      | chat-webhook       |
+| `NovuSlack`        | novu-slack         |
 | `Fcm`              | fcm                |
 | `Apns`             | apns               |
 | `Expo`             | expo               |

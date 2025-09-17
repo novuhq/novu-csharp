@@ -35,9 +35,9 @@ namespace Novu.Models.Components
         public StepTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Control values for the Chat step
+        /// Control values for the Chat step.
         /// </summary>
         [JsonProperty("controlValues")]
-        public ChatStepUpsertDtoControlValues? ControlValues { get; set; } = null;
+        public ChatStepUpsertDtoControlValues? ControlValues { get; set; }
     }
 }

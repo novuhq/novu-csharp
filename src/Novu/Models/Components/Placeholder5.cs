@@ -16,21 +16,21 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class Placeholder5Type
     {
         private Placeholder5Type(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static Placeholder5Type Str { get { return new Placeholder5Type("str"); } }
-        
+
         public static Placeholder5Type Number { get { return new Placeholder5Type("number"); } }
-        
+
         public static Placeholder5Type Boolean { get { return new Placeholder5Type("boolean"); } }
-        
+
         public static Placeholder5Type MapOfAny { get { return new Placeholder5Type("mapOfAny"); } }
-        
+
         public static Placeholder5Type Null { get { return new Placeholder5Type("null"); } }
 
         public override string ToString() { return Value; }
@@ -62,8 +62,10 @@ namespace Novu.Models.Components
 
 
     [JsonConverter(typeof(Placeholder5.Placeholder5Converter))]
-    public class Placeholder5 {
-        public Placeholder5(Placeholder5Type type) {
+    public class Placeholder5
+    {
+        public Placeholder5(Placeholder5Type type)
+        {
             Type = type;
         }
 
@@ -80,33 +82,32 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? MapOfAny { get; set; }
 
         public Placeholder5Type Type { get; set; }
-
-
-        public static Placeholder5 CreateStr(string str) {
+        public static Placeholder5 CreateStr(string str)
+        {
             Placeholder5Type typ = Placeholder5Type.Str;
 
             Placeholder5 res = new Placeholder5(typ);
             res.Str = str;
             return res;
         }
-
-        public static Placeholder5 CreateNumber(double number) {
+        public static Placeholder5 CreateNumber(double number)
+        {
             Placeholder5Type typ = Placeholder5Type.Number;
 
             Placeholder5 res = new Placeholder5(typ);
             res.Number = number;
             return res;
         }
-
-        public static Placeholder5 CreateBoolean(bool boolean) {
+        public static Placeholder5 CreateBoolean(bool boolean)
+        {
             Placeholder5Type typ = Placeholder5Type.Boolean;
 
             Placeholder5 res = new Placeholder5(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static Placeholder5 CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static Placeholder5 CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             Placeholder5Type typ = Placeholder5Type.MapOfAny;
 
             Placeholder5 res = new Placeholder5(typ);
@@ -114,7 +115,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Placeholder5 CreateNull() {
+        public static Placeholder5 CreateNull()
+        {
             Placeholder5Type typ = Placeholder5Type.Null;
             return new Placeholder5(typ);
         }
@@ -218,33 +220,37 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Placeholder5 res = (Placeholder5)value;
                 if (Placeholder5Type.FromString(res.Type).Equals(Placeholder5Type.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-
             }
 
         }

@@ -11,8 +11,8 @@
 * [Patch](#patch) - Update a subscriber
 * [Delete](#delete) - Delete a subscriber
 * [CreateBulk](#createbulk) - Bulk create subscribers
-* [UpdateCredentials](#updatecredentials) - Update provider credentials
-* [AppendCredentials](#appendcredentials) - Upsert provider credentials
+* [UpdateCredentials](#updatecredentials) - Upsert provider credentials
+* [AppendCredentials](#appendcredentials) - Update provider credentials
 * [DeleteCredentials](#deletecredentials) - Delete provider credentials
 * [UpdateOnlineStatus](#updateonlinestatus) - Update subscriber online status
 
@@ -23,6 +23,7 @@ Search subscribers by their **email**, **phone**, **subscriberId** and **name**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_searchSubscribers" method="get" path="/v2/subscribers" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -30,7 +31,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-SubscribersControllerSearchSubscribersRequest req = ;
+SubscribersControllerSearchSubscribersRequest? req = null;
 
 var res = await sdk.Subscribers.SearchAsync(req);
 
@@ -64,6 +65,7 @@ Create a subscriber with the subscriber attributes.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_createSubscriber" method="post" path="/v2/subscribers" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -79,10 +81,11 @@ var res = await sdk.Subscribers.CreateAsync(createSubscriberRequestDto: new Crea
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `CreateSubscriberRequestDto`                                                        | [CreateSubscriberRequestDto](../../Models/Components/CreateSubscriberRequestDto.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
-| `IdempotencyKey`                                                                    | *string*                                                                            | :heavy_minus_sign:                                                                  | A header for idempotency purposes                                                   |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `CreateSubscriberRequestDto`                                                             | [CreateSubscriberRequestDto](../../Models/Components/CreateSubscriberRequestDto.md)      | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `FailIfExists`                                                                           | *bool*                                                                                   | :heavy_minus_sign:                                                                       | If true, the request will fail if a subscriber with the same subscriberId already exists |
+| `IdempotencyKey`                                                                         | *string*                                                                                 | :heavy_minus_sign:                                                                       | A header for idempotency purposes                                                        |
 
 ### Response
 
@@ -90,13 +93,14 @@ var res = await sdk.Subscribers.CreateAsync(createSubscriberRequestDto: new Crea
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Novu.Models.Errors.SubscriberResponseDto | 409                                      | application/json                         |
+| Novu.Models.Errors.ErrorDto              | 414                                      | application/json                         |
+| Novu.Models.Errors.ErrorDto              | 400, 401, 403, 404, 405, 413, 415        | application/json                         |
+| Novu.Models.Errors.ValidationErrorDto    | 422                                      | application/json                         |
+| Novu.Models.Errors.ErrorDto              | 500                                      | application/json                         |
+| Novu.Models.Errors.APIException          | 4XX, 5XX                                 | \*/\*                                    |
 
 ## Retrieve
 
@@ -105,6 +109,7 @@ Retrieve a subscriber by its unique key identifier **subscriberId**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_getSubscriber" method="get" path="/v2/subscribers/{subscriberId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -144,6 +149,7 @@ Update a subscriber by its unique key identifier **subscriberId**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_patchSubscriber" method="patch" path="/v2/subscribers/{subscriberId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -187,6 +193,7 @@ Deletes a subscriber entity from the Novu platform along with associated message
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_removeSubscriber" method="delete" path="/v2/subscribers/{subscriberId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -227,6 +234,7 @@ var res = await sdk.Subscribers.DeleteAsync(subscriberId: "<id>");
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersV1Controller_bulkCreateSubscribers" method="post" path="/v1/subscribers/bulk" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -268,11 +276,12 @@ var res = await sdk.Subscribers.CreateBulkAsync(bulkSubscriberCreateDto: new Bul
 
 ## UpdateCredentials
 
-Update credentials for a provider such as slack and push tokens. 
-      **providerId** is required field. This API appends the **deviceTokens** to the existing ones.
+Upsert credentials for a provider such as slack and push tokens. 
+      **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersV1Controller_updateSubscriberChannel" method="put" path="/v1/subscribers/{subscriberId}/credentials" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -329,10 +338,11 @@ var res = await sdk.Subscribers.UpdateCredentialsAsync(
 ## AppendCredentials
 
 Update credentials for a provider such as **slack** and **FCM**. 
-      **providerId** is required field. This API replaces the existing deviceTokens with the provided ones.
+      **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersV1Controller_modifySubscriberChannel" method="patch" path="/v1/subscribers/{subscriberId}/credentials" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -393,6 +403,7 @@ Delete subscriber credentials for a provider such as **slack** and **FCM** by **
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersV1Controller_deleteSubscriberCredentials" method="delete" path="/v1/subscribers/{subscriberId}/credentials/{providerId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -435,6 +446,7 @@ Update the subscriber online status by its unique key identifier **subscriberId*
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersV1Controller_updateSubscriberOnlineFlag" method="patch" path="/v1/subscribers/{subscriberId}/online-status" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

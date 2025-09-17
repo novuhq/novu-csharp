@@ -1,22 +1,9 @@
 # One
 
 
-## Supported Types
+## Fields
 
-### SubscriberPayloadDto
-
-```csharp
-One.CreateSubscriberPayloadDto(/* values here */);
-```
-
-### TopicPayloadDto
-
-```csharp
-One.CreateTopicPayloadDto(/* values here */);
-```
-
-### Str
-
-```csharp
-One.CreateStr(/* values here */);
-```
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `Type`                                                                        | [ResultType](../../Models/Components/ResultType.md)                           | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `Preview`                                                                     | [EmailLayoutRenderOutput](../../Models/Components/EmailLayoutRenderOutput.md) | :heavy_minus_sign:                                                            | N/A                                                                           |

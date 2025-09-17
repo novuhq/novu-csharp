@@ -39,12 +39,18 @@ namespace Novu.Models.Components
         /// Type of editor to use for the body.
         /// </summary>
         [JsonProperty("editorType")]
-        public EditorType? EditorType { get; set; } = Novu.Models.Components.EditorType.Block;
+        public EmailControlDtoEditorType? EditorType { get; set; } = Novu.Models.Components.EmailControlDtoEditorType.Block;
 
         /// <summary>
         /// Disable sanitization of the output.
         /// </summary>
         [JsonProperty("disableOutputSanitization")]
         public bool? DisableOutputSanitization { get; set; } = false;
+
+        /// <summary>
+        /// Layout ID to use for the email. Null means no layout, undefined means default layout.
+        /// </summary>
+        [JsonProperty("layoutId")]
+        public string? LayoutId { get; set; } = null;
     }
 }

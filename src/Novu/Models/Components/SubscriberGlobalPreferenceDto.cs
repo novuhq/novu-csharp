@@ -27,5 +27,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("channels")]
         public SubscriberPreferenceChannels Channels { get; set; } = default!;
+
+        /// <summary>
+        /// Subscriber schedule
+        /// </summary>
+        [JsonProperty("schedule")]
+        public ScheduleDto? Schedule { get; set; }
     }
 }

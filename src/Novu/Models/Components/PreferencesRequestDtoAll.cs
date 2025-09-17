@@ -17,15 +17,15 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class PreferencesRequestDtoAllType
     {
         private PreferencesRequestDtoAllType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static PreferencesRequestDtoAllType WorkflowPreferenceDto { get { return new PreferencesRequestDtoAllType("WorkflowPreferenceDto"); } }
-        
+
         public static PreferencesRequestDtoAllType Null { get { return new PreferencesRequestDtoAllType("null"); } }
 
         public override string ToString() { return Value; }
@@ -57,8 +57,10 @@ namespace Novu.Models.Components
     /// A preference for the workflow. The values specified here will be used if no preference is specified for a channel.
     /// </summary>
     [JsonConverter(typeof(PreferencesRequestDtoAll.PreferencesRequestDtoAllConverter))]
-    public class PreferencesRequestDtoAll {
-        public PreferencesRequestDtoAll(PreferencesRequestDtoAllType type) {
+    public class PreferencesRequestDtoAll
+    {
+        public PreferencesRequestDtoAll(PreferencesRequestDtoAllType type)
+        {
             Type = type;
         }
 
@@ -66,9 +68,8 @@ namespace Novu.Models.Components
         public WorkflowPreferenceDto? WorkflowPreferenceDto { get; set; }
 
         public PreferencesRequestDtoAllType Type { get; set; }
-
-
-        public static PreferencesRequestDtoAll CreateWorkflowPreferenceDto(WorkflowPreferenceDto workflowPreferenceDto) {
+        public static PreferencesRequestDtoAll CreateWorkflowPreferenceDto(WorkflowPreferenceDto workflowPreferenceDto)
+        {
             PreferencesRequestDtoAllType typ = PreferencesRequestDtoAllType.WorkflowPreferenceDto;
 
             PreferencesRequestDtoAll res = new PreferencesRequestDtoAll(typ);
@@ -76,7 +77,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static PreferencesRequestDtoAll CreateNull() {
+        public static PreferencesRequestDtoAll CreateNull()
+        {
             PreferencesRequestDtoAllType typ = PreferencesRequestDtoAllType.Null;
             return new PreferencesRequestDtoAll(typ);
         }
@@ -147,18 +149,19 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 PreferencesRequestDtoAll res = (PreferencesRequestDtoAll)value;
                 if (PreferencesRequestDtoAllType.FromString(res.Type).Equals(PreferencesRequestDtoAllType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.WorkflowPreferenceDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.WorkflowPreferenceDto));
                     return;
                 }
-
             }
 
         }

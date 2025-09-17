@@ -1,10 +1,18 @@
 # CustomStepUpsertDtoControlValues
 
-Control values for the Custom step
+Control values for the Custom step.
 
 
-## Fields
+## Supported Types
 
-| Field                               | Type                                | Required                            | Description                         |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `Custom`                            | Dictionary<String, *object*>        | :heavy_minus_sign:                  | Custom control values for the step. |
+### CustomControlDto
+
+```csharp
+CustomStepUpsertDtoControlValues.CreateCustomControlDto(/* values here */);
+```
+
+### MapOfAny
+
+```csharp
+CustomStepUpsertDtoControlValues.CreateMapOfAny(/* values here */);
+```

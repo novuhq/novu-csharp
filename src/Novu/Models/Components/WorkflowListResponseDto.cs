@@ -42,6 +42,24 @@ namespace Novu.Models.Components
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
+        /// User who last updated the workflow
+        /// </summary>
+        [JsonProperty("updatedBy")]
+        public WorkflowListResponseDtoUpdatedBy? UpdatedBy { get; set; } = null;
+
+        /// <summary>
+        /// Timestamp of the last workflow publication
+        /// </summary>
+        [JsonProperty("lastPublishedAt")]
+        public string? LastPublishedAt { get; set; } = null;
+
+        /// <summary>
+        /// User who last published the workflow
+        /// </summary>
+        [JsonProperty("lastPublishedBy")]
+        public WorkflowListResponseDtoLastPublishedBy? LastPublishedBy { get; set; } = null;
+
+        /// <summary>
         /// Unique database identifier
         /// </summary>
         [JsonProperty("_id")]
@@ -66,10 +84,10 @@ namespace Novu.Models.Components
         public WorkflowStatusEnum Status { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the workflow
+        /// Origin of the layout
         /// </summary>
         [JsonProperty("origin")]
-        public WorkflowOriginEnum Origin { get; set; } = default!;
+        public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
         /// Timestamp of the last workflow trigger
@@ -82,5 +100,17 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("stepTypeOverviews")]
         public List<StepTypeEnum> StepTypeOverviews { get; set; } = default!;
+
+        /// <summary>
+        /// Is translation enabled for the workflow
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool? IsTranslationEnabled { get; set; }
+
+        /// <summary>
+        /// Steps of the workflow
+        /// </summary>
+        [JsonProperty("steps")]
+        public List<StepListResponseDto> Steps { get; set; } = default!;
     }
 }

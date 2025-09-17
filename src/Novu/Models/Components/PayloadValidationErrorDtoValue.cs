@@ -17,23 +17,23 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class PayloadValidationErrorDtoValueType
     {
         private PayloadValidationErrorDtoValueType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static PayloadValidationErrorDtoValueType Str { get { return new PayloadValidationErrorDtoValueType("str"); } }
-        
+
         public static PayloadValidationErrorDtoValueType Number { get { return new PayloadValidationErrorDtoValueType("number"); } }
-        
+
         public static PayloadValidationErrorDtoValueType Boolean { get { return new PayloadValidationErrorDtoValueType("boolean"); } }
-        
+
         public static PayloadValidationErrorDtoValueType Value4 { get { return new PayloadValidationErrorDtoValueType("value_4"); } }
-        
+
         public static PayloadValidationErrorDtoValueType ArrayOfValue5 { get { return new PayloadValidationErrorDtoValueType("arrayOfValue5"); } }
-        
+
         public static PayloadValidationErrorDtoValueType Null { get { return new PayloadValidationErrorDtoValueType("null"); } }
 
         public override string ToString() { return Value; }
@@ -69,8 +69,10 @@ namespace Novu.Models.Components
     /// The actual value that failed validation
     /// </summary>
     [JsonConverter(typeof(PayloadValidationErrorDtoValue.PayloadValidationErrorDtoValueConverter))]
-    public class PayloadValidationErrorDtoValue {
-        public PayloadValidationErrorDtoValue(PayloadValidationErrorDtoValueType type) {
+    public class PayloadValidationErrorDtoValue
+    {
+        public PayloadValidationErrorDtoValue(PayloadValidationErrorDtoValueType type)
+        {
             Type = type;
         }
 
@@ -87,44 +89,43 @@ namespace Novu.Models.Components
         public Value4? Value4 { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Value5>? ArrayOfValue5 { get; set; }
+        public List<Value5?>? ArrayOfValue5 { get; set; }
 
         public PayloadValidationErrorDtoValueType Type { get; set; }
-
-
-        public static PayloadValidationErrorDtoValue CreateStr(string str) {
+        public static PayloadValidationErrorDtoValue CreateStr(string str)
+        {
             PayloadValidationErrorDtoValueType typ = PayloadValidationErrorDtoValueType.Str;
 
             PayloadValidationErrorDtoValue res = new PayloadValidationErrorDtoValue(typ);
             res.Str = str;
             return res;
         }
-
-        public static PayloadValidationErrorDtoValue CreateNumber(double number) {
+        public static PayloadValidationErrorDtoValue CreateNumber(double number)
+        {
             PayloadValidationErrorDtoValueType typ = PayloadValidationErrorDtoValueType.Number;
 
             PayloadValidationErrorDtoValue res = new PayloadValidationErrorDtoValue(typ);
             res.Number = number;
             return res;
         }
-
-        public static PayloadValidationErrorDtoValue CreateBoolean(bool boolean) {
+        public static PayloadValidationErrorDtoValue CreateBoolean(bool boolean)
+        {
             PayloadValidationErrorDtoValueType typ = PayloadValidationErrorDtoValueType.Boolean;
 
             PayloadValidationErrorDtoValue res = new PayloadValidationErrorDtoValue(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static PayloadValidationErrorDtoValue CreateValue4(Value4 value4) {
+        public static PayloadValidationErrorDtoValue CreateValue4(Value4 value4)
+        {
             PayloadValidationErrorDtoValueType typ = PayloadValidationErrorDtoValueType.Value4;
 
             PayloadValidationErrorDtoValue res = new PayloadValidationErrorDtoValue(typ);
             res.Value4 = value4;
             return res;
         }
-
-        public static PayloadValidationErrorDtoValue CreateArrayOfValue5(List<Value5> arrayOfValue5) {
+        public static PayloadValidationErrorDtoValue CreateArrayOfValue5(List<Value5?> arrayOfValue5)
+        {
             PayloadValidationErrorDtoValueType typ = PayloadValidationErrorDtoValueType.ArrayOfValue5;
 
             PayloadValidationErrorDtoValue res = new PayloadValidationErrorDtoValue(typ);
@@ -132,7 +133,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static PayloadValidationErrorDtoValue CreateNull() {
+        public static PayloadValidationErrorDtoValue CreateNull()
+        {
             PayloadValidationErrorDtoValueType typ = PayloadValidationErrorDtoValueType.Null;
             return new PayloadValidationErrorDtoValue(typ);
         }
@@ -211,12 +213,12 @@ namespace Novu.Models.Components
                 {
                     return new PayloadValidationErrorDtoValue(PayloadValidationErrorDtoValueType.ArrayOfValue5)
                     {
-                        ArrayOfValue5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Value5>>(json)
+                        ArrayOfValue5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Value5?>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Value5>), new PayloadValidationErrorDtoValue(PayloadValidationErrorDtoValueType.ArrayOfValue5), "ArrayOfValue5"));
+                    fallbackCandidates.Add((typeof(List<Value5?>), new PayloadValidationErrorDtoValue(PayloadValidationErrorDtoValueType.ArrayOfValue5), "ArrayOfValue5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -256,38 +258,43 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 PayloadValidationErrorDtoValue res = (PayloadValidationErrorDtoValue)value;
                 if (PayloadValidationErrorDtoValueType.FromString(res.Type).Equals(PayloadValidationErrorDtoValueType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.Value4 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Value4));
                     return;
                 }
+
                 if (res.ArrayOfValue5 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfValue5));
                     return;
                 }
-
             }
 
         }

@@ -20,12 +20,18 @@ namespace Novu.Models.Components
         /// Channel-specific preference settings
         /// </summary>
         [JsonProperty("channels")]
-        public PatchPreferenceChannelsDto Channels { get; set; } = default!;
+        public PatchPreferenceChannelsDto? Channels { get; set; }
 
         /// <summary>
         /// Workflow internal _id, identifier or slug. If provided, update workflow specific preferences, otherwise update global preferences
         /// </summary>
         [JsonProperty("workflowId")]
         public string? WorkflowId { get; set; }
+
+        /// <summary>
+        /// Subscriber schedule
+        /// </summary>
+        [JsonProperty("schedule")]
+        public ScheduleDto? Schedule { get; set; }
     }
 }

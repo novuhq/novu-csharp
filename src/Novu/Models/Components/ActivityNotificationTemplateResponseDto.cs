@@ -30,10 +30,10 @@ namespace Novu.Models.Components
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the workflow
+        /// Origin of the layout
         /// </summary>
         [JsonProperty("origin")]
-        public WorkflowOriginEnum? Origin { get; set; }
+        public ResourceOriginEnum? Origin { get; set; }
 
         /// <summary>
         /// Triggers of the template

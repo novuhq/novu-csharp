@@ -15,21 +15,51 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     
     /// <summary>
-    /// Workflow-specific preferences
+    /// Workflow information if this is a template-level preference
     /// </summary>
     public class Workflow
     {
 
         /// <summary>
-        /// A preference for the workflow. The values specified here will be used if no preference is specified for a channel.
+        /// Unique identifier of the workflow
         /// </summary>
-        [JsonProperty("all")]
-        public PreferencesRequestDtoAll All { get; set; } = default!;
+        [JsonProperty("id")]
+        public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Preferences for different communication channels
+        /// Workflow identifier used for triggering
         /// </summary>
-        [JsonProperty("channels")]
-        public Dictionary<string, ChannelPreferenceDto> Channels { get; set; } = default!;
+        [JsonProperty("identifier")]
+        public string Identifier { get; set; } = default!;
+
+        /// <summary>
+        /// Human-readable name of the workflow
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; } = default!;
+
+        /// <summary>
+        /// Whether this workflow is marked as critical
+        /// </summary>
+        [JsonProperty("critical")]
+        public bool Critical { get; set; } = default!;
+
+        /// <summary>
+        /// Tags associated with the workflow
+        /// </summary>
+        [JsonProperty("tags")]
+        public List<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Custom data associated with the workflow
+        /// </summary>
+        [JsonProperty("data")]
+        public GetPreferencesResponseDtoData? Data { get; set; }
+
+        /// <summary>
+        /// Severity of the workflow
+        /// </summary>
+        [JsonProperty("severity")]
+        public SeverityLevelEnum Severity { get; set; } = default!;
     }
 }

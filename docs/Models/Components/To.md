@@ -5,10 +5,10 @@ The recipients list of people who will receive the notification.
 
 ## Supported Types
 
-### ArrayOf1
+### ArrayOfTo1
 
 ```csharp
-To.CreateArrayOf1(/* values here */);
+To.CreateArrayOfTo1(/* values here */);
 ```
 
 ### Str

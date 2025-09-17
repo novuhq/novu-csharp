@@ -17,28 +17,28 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ToType
     {
         private ToType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        public static ToType ArrayOf1 { get { return new ToType("arrayOf1"); } }
-        
+
+        public static ToType ArrayOfTo1 { get { return new ToType("arrayOfTo1"); } }
+
         public static ToType Str { get { return new ToType("str"); } }
-        
+
         public static ToType SubscriberPayloadDto { get { return new ToType("SubscriberPayloadDto"); } }
-        
+
         public static ToType TopicPayloadDto { get { return new ToType("TopicPayloadDto"); } }
-        
+
         public static ToType Null { get { return new ToType("null"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(ToType v) { return v.Value; }
         public static ToType FromString(string v) {
             switch(v) {
-                case "arrayOf1": return ArrayOf1;
+                case "arrayOfTo1": return ArrayOfTo1;
                 case "str": return Str;
                 case "SubscriberPayloadDto": return SubscriberPayloadDto;
                 case "TopicPayloadDto": return TopicPayloadDto;
@@ -66,13 +66,15 @@ namespace Novu.Models.Components
     /// The recipients list of people who will receive the notification.
     /// </summary>
     [JsonConverter(typeof(To.ToConverter))]
-    public class To {
-        public To(ToType type) {
+    public class To
+    {
+        public To(ToType type)
+        {
             Type = type;
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<One>? ArrayOf1 { get; set; }
+        public List<To1>? ArrayOfTo1 { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public string? Str { get; set; }
@@ -84,33 +86,32 @@ namespace Novu.Models.Components
         public TopicPayloadDto? TopicPayloadDto { get; set; }
 
         public ToType Type { get; set; }
-
-
-        public static To CreateArrayOf1(List<One> arrayOf1) {
-            ToType typ = ToType.ArrayOf1;
+        public static To CreateArrayOfTo1(List<To1> arrayOfTo1)
+        {
+            ToType typ = ToType.ArrayOfTo1;
 
             To res = new To(typ);
-            res.ArrayOf1 = arrayOf1;
+            res.ArrayOfTo1 = arrayOfTo1;
             return res;
         }
-
-        public static To CreateStr(string str) {
+        public static To CreateStr(string str)
+        {
             ToType typ = ToType.Str;
 
             To res = new To(typ);
             res.Str = str;
             return res;
         }
-
-        public static To CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto) {
+        public static To CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto)
+        {
             ToType typ = ToType.SubscriberPayloadDto;
 
             To res = new To(typ);
             res.SubscriberPayloadDto = subscriberPayloadDto;
             return res;
         }
-
-        public static To CreateTopicPayloadDto(TopicPayloadDto topicPayloadDto) {
+        public static To CreateTopicPayloadDto(TopicPayloadDto topicPayloadDto)
+        {
             ToType typ = ToType.TopicPayloadDto;
 
             To res = new To(typ);
@@ -118,7 +119,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static To CreateNull() {
+        public static To CreateNull()
+        {
             ToType typ = ToType.Null;
             return new To(typ);
         }
@@ -182,14 +184,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new To(ToType.ArrayOf1)
+                    return new To(ToType.ArrayOfTo1)
                     {
-                        ArrayOf1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<One>>(json)
+                        ArrayOfTo1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<To1>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<One>), new To(ToType.ArrayOf1), "ArrayOf1"));
+                    fallbackCandidates.Add((typeof(List<To1>), new To(ToType.ArrayOfTo1), "ArrayOfTo1"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -236,33 +238,37 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 To res = (To)value;
                 if (ToType.FromString(res.Type).Equals(ToType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
-                if (res.ArrayOf1 != null)
+
+                if (res.ArrayOfTo1 != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf1));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfTo1));
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.SubscriberPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.SubscriberPayloadDto));
                     return;
                 }
+
                 if (res.TopicPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TopicPayloadDto));
                     return;
                 }
-
             }
 
         }

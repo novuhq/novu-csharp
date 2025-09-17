@@ -16,6 +16,7 @@ List all subscriptions of subscribers for a topic.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="TopicsController_listTopicSubscriptions" method="get" path="/v2/topics/{topicKey}/subscriptions" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -59,6 +60,7 @@ This api will create subscription for subscriberIds for a topic.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="TopicsController_createTopicSubscriptions" method="post" path="/v2/topics/{topicKey}/subscriptions" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -107,6 +109,7 @@ Delete subscriptions for subscriberIds for a topic.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="TopicsController_deleteTopicSubscriptions" method="delete" path="/v2/topics/{topicKey}/subscriptions" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

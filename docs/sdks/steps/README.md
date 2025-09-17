@@ -13,6 +13,7 @@ Retrieves data for a specific step in a workflow
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="WorkflowController_getWorkflowStepData" method="get" path="/v2/workflows/{workflowId}/steps/{stepId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

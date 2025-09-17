@@ -1,0 +1,8 @@
+# BulkUpdateSubscriberPreferencesDto
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `Preferences`                                                                                                   | List<[BulkUpdateSubscriberPreferenceItemDto](../../Models/Components/BulkUpdateSubscriberPreferenceItemDto.md)> | :heavy_check_mark:                                                                                              | Array of workflow preferences to update (maximum 100 items)                                                     |

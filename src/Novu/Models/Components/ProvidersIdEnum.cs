@@ -122,6 +122,12 @@ namespace Novu.Models.Components
         Mobishastra,
         [JsonProperty("afro-message")]
         AfroMessage,
+        [JsonProperty("unifonic")]
+        Unifonic,
+        [JsonProperty("smsmode")]
+        Smsmode,
+        [JsonProperty("imedia")]
+        Imedia,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]
@@ -160,6 +166,8 @@ namespace Novu.Models.Components
         WhatsappBusiness,
         [JsonProperty("chat-webhook")]
         ChatWebhook,
+        [JsonProperty("novu-slack")]
+        NovuSlack,
     }
 
     public static class ProvidersIdEnumExtension

@@ -66,6 +66,12 @@ namespace Novu.Models.Components
         public CredentialsDto Credentials { get; set; } = default!;
 
         /// <summary>
+        /// The configurations required for enabling the additional configurations of the integration.
+        /// </summary>
+        [JsonProperty("configurations")]
+        public ConfigurationsDto? Configurations { get; set; }
+
+        /// <summary>
         /// Indicates whether the integration is currently active. An active integration will process events and messages.
         /// </summary>
         [JsonProperty("active")]

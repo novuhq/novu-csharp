@@ -17,23 +17,23 @@ namespace Novu.Models.Errors
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class MessageType
     {
         private MessageType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static MessageType Str { get { return new MessageType("str"); } }
-        
+
         public static MessageType Number { get { return new MessageType("number"); } }
-        
+
         public static MessageType Boolean { get { return new MessageType("boolean"); } }
-        
+
         public static MessageType Four { get { return new MessageType("4"); } }
-        
+
         public static MessageType ArrayOf5 { get { return new MessageType("arrayOf5"); } }
-        
+
         public static MessageType Null { get { return new MessageType("null"); } }
 
         public override string ToString() { return Value; }
@@ -69,8 +69,10 @@ namespace Novu.Models.Errors
     /// Value that failed validation
     /// </summary>
     [JsonConverter(typeof(Message.MessageConverter))]
-    public class Message {
-        public Message(MessageType type) {
+    public class Message
+    {
+        public Message(MessageType type)
+        {
             Type = type;
         }
 
@@ -87,44 +89,43 @@ namespace Novu.Models.Errors
         public Models.Errors.Four? Four { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Models.Errors.Five>? ArrayOf5 { get; set; }
+        public List<Models.Errors.Five?>? ArrayOf5 { get; set; }
 
         public MessageType Type { get; set; }
-
-
-        public static Message CreateStr(string str) {
+        public static Message CreateStr(string str)
+        {
             MessageType typ = MessageType.Str;
 
             Message res = new Message(typ);
             res.Str = str;
             return res;
         }
-
-        public static Message CreateNumber(double number) {
+        public static Message CreateNumber(double number)
+        {
             MessageType typ = MessageType.Number;
 
             Message res = new Message(typ);
             res.Number = number;
             return res;
         }
-
-        public static Message CreateBoolean(bool boolean) {
+        public static Message CreateBoolean(bool boolean)
+        {
             MessageType typ = MessageType.Boolean;
 
             Message res = new Message(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static Message CreateFour(Models.Errors.Four four) {
+        public static Message CreateFour(Models.Errors.Four four)
+        {
             MessageType typ = MessageType.Four;
 
             Message res = new Message(typ);
             res.Four = four;
             return res;
         }
-
-        public static Message CreateArrayOf5(List<Models.Errors.Five> arrayOf5) {
+        public static Message CreateArrayOf5(List<Models.Errors.Five?> arrayOf5)
+        {
             MessageType typ = MessageType.ArrayOf5;
 
             Message res = new Message(typ);
@@ -132,7 +133,8 @@ namespace Novu.Models.Errors
             return res;
         }
 
-        public static Message CreateNull() {
+        public static Message CreateNull()
+        {
             MessageType typ = MessageType.Null;
             return new Message(typ);
         }
@@ -211,12 +213,12 @@ namespace Novu.Models.Errors
                 {
                     return new Message(MessageType.ArrayOf5)
                     {
-                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Models.Errors.Five>>(json)
+                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Models.Errors.Five?>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Models.Errors.Five>), new Message(MessageType.ArrayOf5), "ArrayOf5"));
+                    fallbackCandidates.Add((typeof(List<Models.Errors.Five?>), new Message(MessageType.ArrayOf5), "ArrayOf5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -256,38 +258,43 @@ namespace Novu.Models.Errors
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Message res = (Message)value;
                 if (MessageType.FromString(res.Type).Equals(MessageType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.Four != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Four));
                     return;
                 }
+
                 if (res.ArrayOf5 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf5));
                     return;
                 }
-
             }
 
         }

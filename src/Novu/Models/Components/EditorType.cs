@@ -14,14 +14,14 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// Type of editor to use for the body.
+    /// Editor type of the layout.
     /// </summary>
     public enum EditorType
     {
-        [JsonProperty("block")]
-        Block,
         [JsonProperty("html")]
         Html,
+        [JsonProperty("block")]
+        Block,
     }
 
     public static class EditorTypeExtension
