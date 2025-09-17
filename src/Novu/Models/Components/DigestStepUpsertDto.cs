@@ -35,9 +35,9 @@ namespace Novu.Models.Components
         public StepTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Control values for the Digest step
+        /// Control values for the Digest step.
         /// </summary>
         [JsonProperty("controlValues")]
-        public DigestStepUpsertDtoControlValues? ControlValues { get; set; } = null;
+        public DigestStepUpsertDtoControlValues? ControlValues { get; set; }
     }
 }

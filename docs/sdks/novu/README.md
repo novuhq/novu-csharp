@@ -9,21 +9,57 @@ Novu Documentation
 
 ### Available Operations
 
+* [InboundWebhooksControllerHandleWebhook](#inboundwebhookscontrollerhandlewebhook)
 * [Trigger](#trigger) - Trigger event
 * [Cancel](#cancel) - Cancel triggered event
 * [Broadcast](#broadcast) - Broadcast event to all
 * [TriggerBulk](#triggerbulk) - Bulk trigger event
 
-## Trigger
-
-
-    Trigger event is the main (and only) way to send notifications to subscribers. 
-    The trigger identifier is used to match the particular workflow associated with it. 
-    Additional information can be passed according the body interface below.
-    
+## InboundWebhooksControllerHandleWebhook
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="InboundWebhooksController_handleWebhook" method="post" path="/v2/inbound-webhooks/delivery-providers/{environmentId}/{integrationId}" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
+    environmentId: "<id>",
+    integrationId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                         | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `EnvironmentId`                   | *string*                          | :heavy_check_mark:                | N/A                               |
+| `IntegrationId`                   | *string*                          | :heavy_check_mark:                | N/A                               |
+| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
+
+### Response
+
+**[InboundWebhooksControllerHandleWebhookResponse](../../Models/Requests/InboundWebhooksControllerHandleWebhookResponse.md)**
+
+### Errors
+
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| Novu.Models.Errors.APIException | 4XX, 5XX                        | \*/\*                           |
+
+## Trigger
+
+    Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Additional information can be passed according the body interface below.
+    To prevent duplicate triggers, you can optionally pass a **transactionId** in the request body. If the same **transactionId** is used again, the trigger will be ignored. The retention period depends on your billing tier.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="EventsController_trigger" method="post" path="/v1/events/trigger" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -79,6 +115,7 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="EventsController_cancel" method="delete" path="/v1/events/trigger/{transactionId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -120,6 +157,7 @@ Trigger a broadcast event to all existing subscribers, could be used to send ann
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="EventsController_broadcastEventToAll" method="post" path="/v1/events/trigger/broadcast" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -180,6 +218,7 @@ var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEvent
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="EventsController_triggerBulk" method="post" path="/v1/events/trigger/bulk" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

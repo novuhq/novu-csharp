@@ -49,6 +49,12 @@ namespace Novu.Models.Requests
         public List<string>? SubscriberIds { get; set; }
 
         /// <summary>
+        /// Array of severity levels or a single severity level
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=severity")]
+        public List<string>? Severity { get; set; }
+
+        /// <summary>
         /// Page number for pagination
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")]
@@ -61,7 +67,7 @@ namespace Novu.Models.Requests
         public double? Limit { get; set; } = 10D;
 
         /// <summary>
-        /// Transaction ID for filtering
+        /// The transaction ID to filter by
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=transactionId")]
         public string? TransactionId { get; set; }

@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Novu.Utils;
     
     /// <summary>
-    /// Slug of the workflow
+    /// Slug of the layout
     /// </summary>
     public class Slug
     {

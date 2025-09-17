@@ -17,17 +17,17 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class TriggerEventToAllRequestDtoActorType
     {
         private TriggerEventToAllRequestDtoActorType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static TriggerEventToAllRequestDtoActorType Str { get { return new TriggerEventToAllRequestDtoActorType("str"); } }
-        
+
         public static TriggerEventToAllRequestDtoActorType SubscriberPayloadDto { get { return new TriggerEventToAllRequestDtoActorType("SubscriberPayloadDto"); } }
-        
+
         public static TriggerEventToAllRequestDtoActorType Null { get { return new TriggerEventToAllRequestDtoActorType("null"); } }
 
         public override string ToString() { return Value; }
@@ -65,8 +65,10 @@ namespace Novu.Models.Components
     /// </remarks>
     /// </summary>
     [JsonConverter(typeof(TriggerEventToAllRequestDtoActor.TriggerEventToAllRequestDtoActorConverter))]
-    public class TriggerEventToAllRequestDtoActor {
-        public TriggerEventToAllRequestDtoActor(TriggerEventToAllRequestDtoActorType type) {
+    public class TriggerEventToAllRequestDtoActor
+    {
+        public TriggerEventToAllRequestDtoActor(TriggerEventToAllRequestDtoActorType type)
+        {
             Type = type;
         }
 
@@ -77,17 +79,16 @@ namespace Novu.Models.Components
         public SubscriberPayloadDto? SubscriberPayloadDto { get; set; }
 
         public TriggerEventToAllRequestDtoActorType Type { get; set; }
-
-
-        public static TriggerEventToAllRequestDtoActor CreateStr(string str) {
+        public static TriggerEventToAllRequestDtoActor CreateStr(string str)
+        {
             TriggerEventToAllRequestDtoActorType typ = TriggerEventToAllRequestDtoActorType.Str;
 
             TriggerEventToAllRequestDtoActor res = new TriggerEventToAllRequestDtoActor(typ);
             res.Str = str;
             return res;
         }
-
-        public static TriggerEventToAllRequestDtoActor CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto) {
+        public static TriggerEventToAllRequestDtoActor CreateSubscriberPayloadDto(SubscriberPayloadDto subscriberPayloadDto)
+        {
             TriggerEventToAllRequestDtoActorType typ = TriggerEventToAllRequestDtoActorType.SubscriberPayloadDto;
 
             TriggerEventToAllRequestDtoActor res = new TriggerEventToAllRequestDtoActor(typ);
@@ -95,7 +96,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static TriggerEventToAllRequestDtoActor CreateNull() {
+        public static TriggerEventToAllRequestDtoActor CreateNull()
+        {
             TriggerEventToAllRequestDtoActorType typ = TriggerEventToAllRequestDtoActorType.Null;
             return new TriggerEventToAllRequestDtoActor(typ);
         }
@@ -173,23 +175,25 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 TriggerEventToAllRequestDtoActor res = (TriggerEventToAllRequestDtoActor)value;
                 if (TriggerEventToAllRequestDtoActorType.FromString(res.Type).Equals(TriggerEventToAllRequestDtoActorType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.SubscriberPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.SubscriberPayloadDto));
                     return;
                 }
-
             }
 
         }

@@ -16,21 +16,21 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class Value5Type
     {
         private Value5Type(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static Value5Type Str { get { return new Value5Type("str"); } }
-        
+
         public static Value5Type Number { get { return new Value5Type("number"); } }
-        
+
         public static Value5Type Boolean { get { return new Value5Type("boolean"); } }
-        
+
         public static Value5Type MapOfAny { get { return new Value5Type("mapOfAny"); } }
-        
+
         public static Value5Type Null { get { return new Value5Type("null"); } }
 
         public override string ToString() { return Value; }
@@ -62,8 +62,10 @@ namespace Novu.Models.Components
 
 
     [JsonConverter(typeof(Value5.Value5Converter))]
-    public class Value5 {
-        public Value5(Value5Type type) {
+    public class Value5
+    {
+        public Value5(Value5Type type)
+        {
             Type = type;
         }
 
@@ -80,33 +82,32 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? MapOfAny { get; set; }
 
         public Value5Type Type { get; set; }
-
-
-        public static Value5 CreateStr(string str) {
+        public static Value5 CreateStr(string str)
+        {
             Value5Type typ = Value5Type.Str;
 
             Value5 res = new Value5(typ);
             res.Str = str;
             return res;
         }
-
-        public static Value5 CreateNumber(double number) {
+        public static Value5 CreateNumber(double number)
+        {
             Value5Type typ = Value5Type.Number;
 
             Value5 res = new Value5(typ);
             res.Number = number;
             return res;
         }
-
-        public static Value5 CreateBoolean(bool boolean) {
+        public static Value5 CreateBoolean(bool boolean)
+        {
             Value5Type typ = Value5Type.Boolean;
 
             Value5 res = new Value5(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static Value5 CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static Value5 CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             Value5Type typ = Value5Type.MapOfAny;
 
             Value5 res = new Value5(typ);
@@ -114,7 +115,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Value5 CreateNull() {
+        public static Value5 CreateNull()
+        {
             Value5Type typ = Value5Type.Null;
             return new Value5(typ);
         }
@@ -218,33 +220,37 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Value5 res = (Value5)value;
                 if (Value5Type.FromString(res.Type).Equals(Value5Type.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-
             }
 
         }

@@ -50,6 +50,12 @@ namespace Novu.Models.Components
         [JsonProperty("disableOutputSanitization")]
         public bool? DisableOutputSanitization { get; set; } = false;
 
+        /// <summary>
+        /// Layout ID to use for the email. Null means no layout, undefined means default layout.
+        /// </summary>
+        [JsonProperty("layoutId")]
+        public string? LayoutId { get; set; } = null;
+
         [JsonProperty("additionalProperties")]
         public Dictionary<string, object>? AdditionalProperties { get; set; }
     }

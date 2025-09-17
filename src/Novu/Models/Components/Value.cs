@@ -17,23 +17,23 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ValueType
     {
         private ValueType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ValueType Str { get { return new ValueType("str"); } }
-        
+
         public static ValueType Number { get { return new ValueType("number"); } }
-        
+
         public static ValueType Boolean { get { return new ValueType("boolean"); } }
-        
+
         public static ValueType Four { get { return new ValueType("4"); } }
-        
+
         public static ValueType ArrayOf5 { get { return new ValueType("arrayOf5"); } }
-        
+
         public static ValueType Null { get { return new ValueType("null"); } }
 
         public override string ToString() { return Value; }
@@ -69,8 +69,10 @@ namespace Novu.Models.Components
     /// Value that failed validation
     /// </summary>
     [JsonConverter(typeof(Value.ValueConverter))]
-    public class Value {
-        public Value(ValueType type) {
+    public class Value
+    {
+        public Value(ValueType type)
+        {
             Type = type;
         }
 
@@ -87,44 +89,43 @@ namespace Novu.Models.Components
         public Models.Components.Four? Four { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Models.Components.Five>? ArrayOf5 { get; set; }
+        public List<Models.Components.Five?>? ArrayOf5 { get; set; }
 
         public ValueType Type { get; set; }
-
-
-        public static Value CreateStr(string str) {
+        public static Value CreateStr(string str)
+        {
             ValueType typ = ValueType.Str;
 
             Value res = new Value(typ);
             res.Str = str;
             return res;
         }
-
-        public static Value CreateNumber(double number) {
+        public static Value CreateNumber(double number)
+        {
             ValueType typ = ValueType.Number;
 
             Value res = new Value(typ);
             res.Number = number;
             return res;
         }
-
-        public static Value CreateBoolean(bool boolean) {
+        public static Value CreateBoolean(bool boolean)
+        {
             ValueType typ = ValueType.Boolean;
 
             Value res = new Value(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static Value CreateFour(Models.Components.Four four) {
+        public static Value CreateFour(Models.Components.Four four)
+        {
             ValueType typ = ValueType.Four;
 
             Value res = new Value(typ);
             res.Four = four;
             return res;
         }
-
-        public static Value CreateArrayOf5(List<Models.Components.Five> arrayOf5) {
+        public static Value CreateArrayOf5(List<Models.Components.Five?> arrayOf5)
+        {
             ValueType typ = ValueType.ArrayOf5;
 
             Value res = new Value(typ);
@@ -132,7 +133,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Value CreateNull() {
+        public static Value CreateNull()
+        {
             ValueType typ = ValueType.Null;
             return new Value(typ);
         }
@@ -211,12 +213,12 @@ namespace Novu.Models.Components
                 {
                     return new Value(ValueType.ArrayOf5)
                     {
-                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Models.Components.Five>>(json)
+                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Models.Components.Five?>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Models.Components.Five>), new Value(ValueType.ArrayOf5), "ArrayOf5"));
+                    fallbackCandidates.Add((typeof(List<Models.Components.Five?>), new Value(ValueType.ArrayOf5), "ArrayOf5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -256,38 +258,43 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Value res = (Value)value;
                 if (ValueType.FromString(res.Type).Equals(ValueType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.Four != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Four));
                     return;
                 }
+
                 if (res.ArrayOf5 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf5));
                     return;
                 }
-
             }
 
         }

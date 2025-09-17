@@ -40,6 +40,8 @@ namespace Novu.Models.Components
         WhatsappBusiness,
         [JsonProperty("chat-webhook")]
         ChatWebhook,
+        [JsonProperty("novu-slack")]
+        NovuSlack,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]

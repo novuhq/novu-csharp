@@ -17,15 +17,15 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class UserAllType
     {
         private UserAllType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static UserAllType WorkflowPreferenceDto { get { return new UserAllType("WorkflowPreferenceDto"); } }
-        
+
         public static UserAllType Null { get { return new UserAllType("null"); } }
 
         public override string ToString() { return Value; }
@@ -57,8 +57,10 @@ namespace Novu.Models.Components
     /// A preference for the workflow. The values specified here will be used if no preference is specified for a channel.
     /// </summary>
     [JsonConverter(typeof(UserAll.UserAllConverter))]
-    public class UserAll {
-        public UserAll(UserAllType type) {
+    public class UserAll
+    {
+        public UserAll(UserAllType type)
+        {
             Type = type;
         }
 
@@ -66,9 +68,8 @@ namespace Novu.Models.Components
         public WorkflowPreferenceDto? WorkflowPreferenceDto { get; set; }
 
         public UserAllType Type { get; set; }
-
-
-        public static UserAll CreateWorkflowPreferenceDto(WorkflowPreferenceDto workflowPreferenceDto) {
+        public static UserAll CreateWorkflowPreferenceDto(WorkflowPreferenceDto workflowPreferenceDto)
+        {
             UserAllType typ = UserAllType.WorkflowPreferenceDto;
 
             UserAll res = new UserAll(typ);
@@ -76,7 +77,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static UserAll CreateNull() {
+        public static UserAll CreateNull()
+        {
             UserAllType typ = UserAllType.Null;
             return new UserAll(typ);
         }
@@ -147,18 +149,19 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 UserAll res = (UserAll)value;
                 if (UserAllType.FromString(res.Type).Equals(UserAllType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.WorkflowPreferenceDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.WorkflowPreferenceDto));
                     return;
                 }
-
             }
 
         }

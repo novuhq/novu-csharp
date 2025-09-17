@@ -17,23 +17,23 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class PlaceholderType
     {
         private PlaceholderType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static PlaceholderType Str { get { return new PlaceholderType("str"); } }
-        
+
         public static PlaceholderType Number { get { return new PlaceholderType("number"); } }
-        
+
         public static PlaceholderType Boolean { get { return new PlaceholderType("boolean"); } }
-        
+
         public static PlaceholderType MapOfAny { get { return new PlaceholderType("mapOfAny"); } }
-        
+
         public static PlaceholderType ArrayOfPlaceholder5 { get { return new PlaceholderType("arrayOfPlaceholder5"); } }
-        
+
         public static PlaceholderType Null { get { return new PlaceholderType("null"); } }
 
         public override string ToString() { return Value; }
@@ -69,8 +69,10 @@ namespace Novu.Models.Components
     /// Placeholder for the UI Schema Property
     /// </summary>
     [JsonConverter(typeof(Placeholder.PlaceholderConverter))]
-    public class Placeholder {
-        public Placeholder(PlaceholderType type) {
+    public class Placeholder
+    {
+        public Placeholder(PlaceholderType type)
+        {
             Type = type;
         }
 
@@ -90,41 +92,40 @@ namespace Novu.Models.Components
         public List<Placeholder5>? ArrayOfPlaceholder5 { get; set; }
 
         public PlaceholderType Type { get; set; }
-
-
-        public static Placeholder CreateStr(string str) {
+        public static Placeholder CreateStr(string str)
+        {
             PlaceholderType typ = PlaceholderType.Str;
 
             Placeholder res = new Placeholder(typ);
             res.Str = str;
             return res;
         }
-
-        public static Placeholder CreateNumber(double number) {
+        public static Placeholder CreateNumber(double number)
+        {
             PlaceholderType typ = PlaceholderType.Number;
 
             Placeholder res = new Placeholder(typ);
             res.Number = number;
             return res;
         }
-
-        public static Placeholder CreateBoolean(bool boolean) {
+        public static Placeholder CreateBoolean(bool boolean)
+        {
             PlaceholderType typ = PlaceholderType.Boolean;
 
             Placeholder res = new Placeholder(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static Placeholder CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static Placeholder CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             PlaceholderType typ = PlaceholderType.MapOfAny;
 
             Placeholder res = new Placeholder(typ);
             res.MapOfAny = mapOfAny;
             return res;
         }
-
-        public static Placeholder CreateArrayOfPlaceholder5(List<Placeholder5> arrayOfPlaceholder5) {
+        public static Placeholder CreateArrayOfPlaceholder5(List<Placeholder5> arrayOfPlaceholder5)
+        {
             PlaceholderType typ = PlaceholderType.ArrayOfPlaceholder5;
 
             Placeholder res = new Placeholder(typ);
@@ -132,7 +133,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Placeholder CreateNull() {
+        public static Placeholder CreateNull()
+        {
             PlaceholderType typ = PlaceholderType.Null;
             return new Placeholder(typ);
         }
@@ -256,38 +258,43 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Placeholder res = (Placeholder)value;
                 if (PlaceholderType.FromString(res.Type).Equals(PlaceholderType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
+
                 if (res.ArrayOfPlaceholder5 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfPlaceholder5));
                     return;
                 }
-
             }
 
         }

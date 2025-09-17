@@ -22,6 +22,7 @@ This api returns a paginated list of topics.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="TopicsController_listTopics" method="get" path="/v2/topics" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -29,7 +30,7 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-TopicsControllerListTopicsRequest req = ;
+TopicsControllerListTopicsRequest? req = null;
 
 var res = await sdk.Topics.ListAsync(req);
 
@@ -58,10 +59,11 @@ var res = await sdk.Topics.ListAsync(req);
 
 ## Create
 
-Creates a new topic if it does not exist, or updates an existing topic if it already exists
+Creates a new topic if it does not exist, or updates an existing topic if it already exists. Use ?failIfExists=true to prevent updates.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="TopicsController_upsertTopic" method="post" path="/v2/topics" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -81,6 +83,7 @@ var res = await sdk.Topics.CreateAsync(createUpdateTopicRequestDto: new CreateUp
 | Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `CreateUpdateTopicRequestDto`                                                         | [CreateUpdateTopicRequestDto](../../Models/Components/CreateUpdateTopicRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `FailIfExists`                                                                        | *bool*                                                                                | :heavy_minus_sign:                                                                    | If true, the request will fail if a topic with the same key already exists            |
 | `IdempotencyKey`                                                                      | *string*                                                                              | :heavy_minus_sign:                                                                    | A header for idempotency purposes                                                     |
 
 ### Response
@@ -89,13 +92,14 @@ var res = await sdk.Topics.CreateAsync(createUpdateTopicRequestDto: new CreateUp
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
-| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
-| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
-| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| Novu.Models.Errors.TopicResponseDto   | 409                                   | application/json                      |
+| Novu.Models.Errors.ErrorDto           | 414                                   | application/json                      |
+| Novu.Models.Errors.ErrorDto           | 400, 401, 403, 404, 405, 413, 415     | application/json                      |
+| Novu.Models.Errors.ValidationErrorDto | 422                                   | application/json                      |
+| Novu.Models.Errors.ErrorDto           | 500                                   | application/json                      |
+| Novu.Models.Errors.APIException       | 4XX, 5XX                              | \*/\*                                 |
 
 ## Get
 
@@ -103,6 +107,7 @@ Retrieve a topic by its unique key identifier **topicKey**
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="TopicsController_getTopic" method="get" path="/v2/topics/{topicKey}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -141,6 +146,7 @@ Update a topic name by its unique key identifier **topicKey**
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="TopicsController_updateTopic" method="patch" path="/v2/topics/{topicKey}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -186,6 +192,7 @@ Delete a topic by its unique key identifier **topicKey**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="TopicsController_deleteTopic" method="delete" path="/v2/topics/{topicKey}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

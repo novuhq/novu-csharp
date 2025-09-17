@@ -16,12 +16,13 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
+    hoistGlobalSecurity: true
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.3.0-alpha.1
+  version: 2.3.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: NovuError
@@ -32,6 +33,7 @@ csharp:
   enableSourceLink: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  httpClientPrefix: Speakeasy
   imports:
     option: openapi
     paths:
