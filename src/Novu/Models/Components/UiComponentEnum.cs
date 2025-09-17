@@ -20,6 +20,8 @@ namespace Novu.Models.Components
     {
         [JsonProperty("EMAIL_EDITOR_SELECT")]
         EmailEditorSelect,
+        [JsonProperty("LAYOUT_SELECT")]
+        LayoutSelect,
         [JsonProperty("BLOCK_EDITOR")]
         BlockEditor,
         [JsonProperty("EMAIL_BODY")]
@@ -56,6 +58,8 @@ namespace Novu.Models.Components
         DelayAmount,
         [JsonProperty("DELAY_UNIT")]
         DelayUnit,
+        [JsonProperty("EXTEND_TO_SCHEDULE")]
+        ExtendToSchedule,
         [JsonProperty("SMS_BODY")]
         SmsBody,
         [JsonProperty("CHAT_BODY")]
@@ -68,6 +72,8 @@ namespace Novu.Models.Components
         QueryEditor,
         [JsonProperty("DATA")]
         Data,
+        [JsonProperty("LAYOUT_EMAIL")]
+        LayoutEmail,
     }
 
     public static class UiComponentEnumExtension

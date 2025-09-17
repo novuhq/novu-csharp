@@ -56,7 +56,7 @@ namespace Novu.Models.Components
         /// Provider ID of the job
         /// </summary>
         [JsonProperty("providerId")]
-        public ProvidersIdEnum ProviderId { get; set; } = default!;
+        public ProvidersIdEnum? ProviderId { get; set; }
 
         /// <summary>
         /// Raw data of the execution

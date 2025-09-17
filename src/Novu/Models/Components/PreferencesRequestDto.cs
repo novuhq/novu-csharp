@@ -26,6 +26,6 @@ namespace Novu.Models.Components
         /// Workflow-specific preferences
         /// </summary>
         [JsonProperty("workflow")]
-        public Workflow? Workflow { get; set; } = null;
+        public PreferencesRequestDtoWorkflow? Workflow { get; set; } = null;
     }
 }

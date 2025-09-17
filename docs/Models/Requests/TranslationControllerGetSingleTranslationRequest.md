@@ -1,0 +1,11 @@
+# TranslationControllerGetSingleTranslationRequest
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `ResourceType`                                                          | [PathParamResourceType](../../Models/Requests/PathParamResourceType.md) | :heavy_check_mark:                                                      | Resource type                                                           |                                                                         |
+| `ResourceId`                                                            | *string*                                                                | :heavy_check_mark:                                                      | Resource ID                                                             | welcome-email                                                           |
+| `Locale`                                                                | *string*                                                                | :heavy_check_mark:                                                      | Locale code                                                             | en_US                                                                   |
+| `IdempotencyKey`                                                        | *string*                                                                | :heavy_minus_sign:                                                      | A header for idempotency purposes                                       |                                                                         |

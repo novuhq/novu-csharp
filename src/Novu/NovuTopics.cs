@@ -40,9 +40,9 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.3.0-alpha.1";
-        private const string _sdkGenVersion = "2.636.0";
-        private const string _openapiDocVersion = "2.3.0";
+        private const string _sdkVersion = "2.3.0";
+        private const string _sdkGenVersion = "2.701.8";
+        private const string _openapiDocVersion = "3.9.0";
 
         public NovuTopics(SDKConfig config)
         {
@@ -139,7 +139,17 @@ namespace Novu
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<ListTopicSubscriptionsResponseDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ListTopicSubscriptionsResponseDto obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<ListTopicSubscriptionsResponseDto>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ListTopicSubscriptionsResponseDto.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new SubscribersControllerListSubscriberTopicsResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -152,66 +162,106 @@ namespace Novu
                     return response;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 414)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 422)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<ValidationErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ValidationErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ValidationErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ValidationErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ValidationErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 429)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 500)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<ErrorDto>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 503)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
     }
 }

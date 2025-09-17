@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
     
     public class UiSchemaProperty
     {
@@ -27,5 +28,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("component")]
         public UiComponentEnum Component { get; set; } = default!;
+
+        /// <summary>
+        /// Properties of the UI Schema
+        /// </summary>
+        [JsonProperty("properties")]
+        public Dictionary<string, UiSchemaProperty>? Properties { get; set; }
     }
 }

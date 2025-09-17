@@ -44,12 +44,18 @@ namespace Novu.Models.Components
         /// The payload JSON Schema for the workflow
         /// </summary>
         [JsonProperty("payloadSchema")]
-        public Dictionary<string, object>? PayloadSchema { get; set; }
+        public Dictionary<string, object>? PayloadSchema { get; set; } = null;
 
         /// <summary>
         /// Enable or disable payload schema validation
         /// </summary>
         [JsonProperty("validatePayload")]
         public bool? ValidatePayload { get; set; }
+
+        /// <summary>
+        /// Enable or disable translations for this workflow
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool? IsTranslationEnabled { get; set; }
     }
 }

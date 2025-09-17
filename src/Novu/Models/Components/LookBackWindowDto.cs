@@ -26,6 +26,6 @@ namespace Novu.Models.Components
         /// Unit of time for the look-back window.
         /// </summary>
         [JsonProperty("unit")]
-        public Unit Unit { get; set; } = default!;
+        public LookBackWindowDtoUnit Unit { get; set; } = default!;
     }
 }

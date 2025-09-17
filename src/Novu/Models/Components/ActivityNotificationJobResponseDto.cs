@@ -76,5 +76,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("updatedAt")]
         public string? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// The number of times the digest/delay job has been extended to align with the subscribers schedule
+        /// </summary>
+        [JsonProperty("scheduleExtensionsCount")]
+        public double? ScheduleExtensionsCount { get; set; }
     }
 }

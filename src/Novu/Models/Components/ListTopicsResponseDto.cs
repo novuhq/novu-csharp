@@ -21,7 +21,7 @@ namespace Novu.Models.Components
         /// List of returned Topics
         /// </summary>
         [JsonProperty("data")]
-        public List<TopicResponseDto> Data { get; set; } = default!;
+        public List<Models.Components.TopicResponseDto> Data { get; set; } = default!;
 
         /// <summary>
         /// The cursor for the next page of results, or null if there are no more pages.

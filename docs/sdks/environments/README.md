@@ -8,10 +8,50 @@ Environments allow you to manage different stages of your application developmen
 
 ### Available Operations
 
+* [GetTags](#gettags) - Get environment tags
 * [Create](#create) - Create an environment
 * [List](#list) - List all environments
 * [Update](#update) - Update an environment
 * [Delete](#delete) - Delete an environment
+
+## GetTags
+
+Retrieve all unique tags used in workflows within the specified environment. These tags can be used for filtering workflows.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="EnvironmentsController_getEnvironmentTags" method="get" path="/v2/environments/{environmentId}/tags" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Environments.GetTagsAsync(environmentId: "6615943e7ace93b0540ae377");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `EnvironmentId`                                          | *string*                                                 | :heavy_check_mark:                                       | Environment internal ID (MongoDB ObjectId) or identifier | 6615943e7ace93b0540ae377                                 |
+| `IdempotencyKey`                                         | *string*                                                 | :heavy_minus_sign:                                       | A header for idempotency purposes                        |                                                          |
+
+### Response
+
+**[EnvironmentsControllerGetEnvironmentTagsResponse](../../Models/Requests/EnvironmentsControllerGetEnvironmentTagsResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
 
 ## Create
 
@@ -21,6 +61,7 @@ Creates a new environment within the current organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="EnvironmentsControllerV1_createEnvironment" method="post" path="/v1/environments" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -64,6 +105,7 @@ This API returns a list of environments for the current organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="EnvironmentsControllerV1_listMyEnvironments" method="get" path="/v1/environments" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -102,6 +144,7 @@ Update an environment by its unique identifier **environmentId**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="EnvironmentsControllerV1_updateMyEnvironment" method="put" path="/v1/environments/{environmentId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
@@ -145,6 +188,7 @@ Delete an environment by its unique identifier **environmentId**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="EnvironmentsControllerV1_deleteEnvironment" method="delete" path="/v1/environments/{environmentId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

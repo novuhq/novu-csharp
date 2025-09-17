@@ -17,15 +17,15 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class WorkflowPreferencesResponseDtoAllType
     {
         private WorkflowPreferencesResponseDtoAllType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static WorkflowPreferencesResponseDtoAllType WorkflowPreferenceDto { get { return new WorkflowPreferencesResponseDtoAllType("WorkflowPreferenceDto"); } }
-        
+
         public static WorkflowPreferencesResponseDtoAllType Null { get { return new WorkflowPreferencesResponseDtoAllType("null"); } }
 
         public override string ToString() { return Value; }
@@ -57,8 +57,10 @@ namespace Novu.Models.Components
     /// A preference for the workflow. The values specified here will be used if no preference is specified for a channel.
     /// </summary>
     [JsonConverter(typeof(WorkflowPreferencesResponseDtoAll.WorkflowPreferencesResponseDtoAllConverter))]
-    public class WorkflowPreferencesResponseDtoAll {
-        public WorkflowPreferencesResponseDtoAll(WorkflowPreferencesResponseDtoAllType type) {
+    public class WorkflowPreferencesResponseDtoAll
+    {
+        public WorkflowPreferencesResponseDtoAll(WorkflowPreferencesResponseDtoAllType type)
+        {
             Type = type;
         }
 
@@ -66,9 +68,8 @@ namespace Novu.Models.Components
         public WorkflowPreferenceDto? WorkflowPreferenceDto { get; set; }
 
         public WorkflowPreferencesResponseDtoAllType Type { get; set; }
-
-
-        public static WorkflowPreferencesResponseDtoAll CreateWorkflowPreferenceDto(WorkflowPreferenceDto workflowPreferenceDto) {
+        public static WorkflowPreferencesResponseDtoAll CreateWorkflowPreferenceDto(WorkflowPreferenceDto workflowPreferenceDto)
+        {
             WorkflowPreferencesResponseDtoAllType typ = WorkflowPreferencesResponseDtoAllType.WorkflowPreferenceDto;
 
             WorkflowPreferencesResponseDtoAll res = new WorkflowPreferencesResponseDtoAll(typ);
@@ -76,7 +77,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static WorkflowPreferencesResponseDtoAll CreateNull() {
+        public static WorkflowPreferencesResponseDtoAll CreateNull()
+        {
             WorkflowPreferencesResponseDtoAllType typ = WorkflowPreferencesResponseDtoAllType.Null;
             return new WorkflowPreferencesResponseDtoAll(typ);
         }
@@ -147,18 +149,19 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 WorkflowPreferencesResponseDtoAll res = (WorkflowPreferencesResponseDtoAll)value;
                 if (WorkflowPreferencesResponseDtoAllType.FromString(res.Type).Equals(WorkflowPreferencesResponseDtoAllType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.WorkflowPreferenceDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.WorkflowPreferenceDto));
                     return;
                 }
-
             }
 
         }

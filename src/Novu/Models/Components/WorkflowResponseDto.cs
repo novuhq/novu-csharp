@@ -42,6 +42,24 @@ namespace Novu.Models.Components
         public bool? Active { get; set; } = false;
 
         /// <summary>
+        /// Enable or disable payload schema validation
+        /// </summary>
+        [JsonProperty("validatePayload")]
+        public bool? ValidatePayload { get; set; }
+
+        /// <summary>
+        /// The payload JSON Schema for the workflow
+        /// </summary>
+        [JsonProperty("payloadSchema")]
+        public Dictionary<string, object>? PayloadSchema { get; set; } = null;
+
+        /// <summary>
+        /// Enable or disable translations for this workflow
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool? IsTranslationEnabled { get; set; } = false;
+
+        /// <summary>
         /// Unique identifier of the workflow
         /// </summary>
         [JsonProperty("_id")]
@@ -57,7 +75,7 @@ namespace Novu.Models.Components
         /// Slug of the workflow
         /// </summary>
         [JsonProperty("slug")]
-        public Slug Slug { get; set; } = default!;
+        public WorkflowResponseDtoSlug Slug { get; set; } = default!;
 
         /// <summary>
         /// Last updated timestamp
@@ -72,16 +90,34 @@ namespace Novu.Models.Components
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
+        /// User who last updated the workflow
+        /// </summary>
+        [JsonProperty("updatedBy")]
+        public WorkflowResponseDtoUpdatedBy? UpdatedBy { get; set; } = null;
+
+        /// <summary>
+        /// Timestamp of the last workflow publication
+        /// </summary>
+        [JsonProperty("lastPublishedAt")]
+        public string? LastPublishedAt { get; set; } = null;
+
+        /// <summary>
+        /// User who last published the workflow
+        /// </summary>
+        [JsonProperty("lastPublishedBy")]
+        public LastPublishedBy? LastPublishedBy { get; set; } = null;
+
+        /// <summary>
         /// Steps of the workflow
         /// </summary>
         [JsonProperty("steps")]
         public List<WorkflowResponseDtoSteps> Steps { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the workflow
+        /// Origin of the layout
         /// </summary>
         [JsonProperty("origin")]
-        public WorkflowOriginEnum Origin { get; set; } = default!;
+        public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
         /// Preferences for the workflow
@@ -108,21 +144,15 @@ namespace Novu.Models.Components
         public string? LastTriggeredAt { get; set; } = null;
 
         /// <summary>
-        /// The payload JSON Schema for the workflow
-        /// </summary>
-        [JsonProperty("payloadSchema")]
-        public Dictionary<string, object>? PayloadSchema { get; set; } = null;
-
-        /// <summary>
         /// Generated payload example based on the payload schema
         /// </summary>
         [JsonProperty("payloadExample")]
         public Dictionary<string, object>? PayloadExample { get; set; } = null;
 
         /// <summary>
-        /// Whether payload schema validation is enabled
+        /// Severity of the workflow
         /// </summary>
-        [JsonProperty("validatePayload")]
-        public bool? ValidatePayload { get; set; }
+        [JsonProperty("severity")]
+        public SeverityLevelEnum Severity { get; set; } = default!;
     }
 }

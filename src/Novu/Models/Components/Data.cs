@@ -16,21 +16,21 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class DataType
     {
         private DataType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static DataType Str { get { return new DataType("str"); } }
-        
+
         public static DataType ArrayOfStr { get { return new DataType("arrayOfStr"); } }
-        
+
         public static DataType Boolean { get { return new DataType("boolean"); } }
-        
+
         public static DataType Number { get { return new DataType("number"); } }
-        
+
         public static DataType Null { get { return new DataType("null"); } }
 
         public override string ToString() { return Value; }
@@ -62,8 +62,10 @@ namespace Novu.Models.Components
 
 
     [JsonConverter(typeof(Data.DataConverter))]
-    public class Data {
-        public Data(DataType type) {
+    public class Data
+    {
+        public Data(DataType type)
+        {
             Type = type;
         }
 
@@ -80,33 +82,32 @@ namespace Novu.Models.Components
         public double? Number { get; set; }
 
         public DataType Type { get; set; }
-
-
-        public static Data CreateStr(string str) {
+        public static Data CreateStr(string str)
+        {
             DataType typ = DataType.Str;
 
             Data res = new Data(typ);
             res.Str = str;
             return res;
         }
-
-        public static Data CreateArrayOfStr(List<string> arrayOfStr) {
+        public static Data CreateArrayOfStr(List<string> arrayOfStr)
+        {
             DataType typ = DataType.ArrayOfStr;
 
             Data res = new Data(typ);
             res.ArrayOfStr = arrayOfStr;
             return res;
         }
-
-        public static Data CreateBoolean(bool boolean) {
+        public static Data CreateBoolean(bool boolean)
+        {
             DataType typ = DataType.Boolean;
 
             Data res = new Data(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static Data CreateNumber(double number) {
+        public static Data CreateNumber(double number)
+        {
             DataType typ = DataType.Number;
 
             Data res = new Data(typ);
@@ -114,7 +115,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Data CreateNull() {
+        public static Data CreateNull()
+        {
             DataType typ = DataType.Null;
             return new Data(typ);
         }
@@ -218,33 +220,37 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Data res = (Data)value;
                 if (DataType.FromString(res.Type).Equals(DataType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.ArrayOfStr != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfStr));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
-
             }
 
         }

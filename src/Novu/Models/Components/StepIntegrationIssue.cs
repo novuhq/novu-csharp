@@ -20,7 +20,7 @@ namespace Novu.Models.Components
         /// Type of integration issue
         /// </summary>
         [JsonProperty("issueType")]
-        public StepIntegrationIssueEnum IssueType { get; set; } = default!;
+        public IntegrationIssueEnum IssueType { get; set; } = default!;
 
         /// <summary>
         /// Name of the variable related to the issue

@@ -17,22 +17,29 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class StepsType
     {
         private StepsType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        
+
         public static StepsType InApp { get { return new StepsType("in_app"); } }
+
         public static StepsType Email { get { return new StepsType("email"); } }
+
         public static StepsType Sms { get { return new StepsType("sms"); } }
+
         public static StepsType Push { get { return new StepsType("push"); } }
+
         public static StepsType Chat { get { return new StepsType("chat"); } }
+
         public static StepsType Delay { get { return new StepsType("delay"); } }
+
         public static StepsType Digest { get { return new StepsType("digest"); } }
+
         public static StepsType Custom { get { return new StepsType("custom"); } }
+
         public static StepsType Null { get { return new StepsType("null"); } }
 
         public override string ToString() { return Value; }
@@ -68,8 +75,10 @@ namespace Novu.Models.Components
 
 
     [JsonConverter(typeof(Steps.StepsConverter))]
-    public class Steps {
-        public Steps(StepsType type) {
+    public class Steps
+    {
+        public Steps(StepsType type)
+        {
             Type = type;
         }
 
@@ -99,88 +108,88 @@ namespace Novu.Models.Components
 
         public StepsType Type { get; set; }
 
-
-        public static Steps CreateInApp(InAppStepUpsertDto inApp) {
+        public static Steps CreateInApp(InAppStepUpsertDto inApp)
+        {
             StepsType typ = StepsType.InApp;
-        
             string typStr = StepsType.InApp.ToString();
-            
             inApp.Type = StepTypeEnumExtension.ToEnum(StepsType.InApp.ToString());
             Steps res = new Steps(typ);
             res.InAppStepUpsertDto = inApp;
             return res;
         }
-        public static Steps CreateEmail(EmailStepUpsertDto email) {
+
+        public static Steps CreateEmail(EmailStepUpsertDto email)
+        {
             StepsType typ = StepsType.Email;
-        
             string typStr = StepsType.Email.ToString();
-            
             email.Type = StepTypeEnumExtension.ToEnum(StepsType.Email.ToString());
             Steps res = new Steps(typ);
             res.EmailStepUpsertDto = email;
             return res;
         }
-        public static Steps CreateSms(SmsStepUpsertDto sms) {
+
+        public static Steps CreateSms(SmsStepUpsertDto sms)
+        {
             StepsType typ = StepsType.Sms;
-        
             string typStr = StepsType.Sms.ToString();
-            
             sms.Type = StepTypeEnumExtension.ToEnum(StepsType.Sms.ToString());
             Steps res = new Steps(typ);
             res.SmsStepUpsertDto = sms;
             return res;
         }
-        public static Steps CreatePush(PushStepUpsertDto push) {
+
+        public static Steps CreatePush(PushStepUpsertDto push)
+        {
             StepsType typ = StepsType.Push;
-        
             string typStr = StepsType.Push.ToString();
-            
             push.Type = StepTypeEnumExtension.ToEnum(StepsType.Push.ToString());
             Steps res = new Steps(typ);
             res.PushStepUpsertDto = push;
             return res;
         }
-        public static Steps CreateChat(ChatStepUpsertDto chat) {
+
+        public static Steps CreateChat(ChatStepUpsertDto chat)
+        {
             StepsType typ = StepsType.Chat;
-        
             string typStr = StepsType.Chat.ToString();
-            
             chat.Type = StepTypeEnumExtension.ToEnum(StepsType.Chat.ToString());
             Steps res = new Steps(typ);
             res.ChatStepUpsertDto = chat;
             return res;
         }
-        public static Steps CreateDelay(DelayStepUpsertDto delay) {
+
+        public static Steps CreateDelay(DelayStepUpsertDto delay)
+        {
             StepsType typ = StepsType.Delay;
-        
             string typStr = StepsType.Delay.ToString();
-            
             delay.Type = StepTypeEnumExtension.ToEnum(StepsType.Delay.ToString());
             Steps res = new Steps(typ);
             res.DelayStepUpsertDto = delay;
             return res;
         }
-        public static Steps CreateDigest(DigestStepUpsertDto digest) {
+
+        public static Steps CreateDigest(DigestStepUpsertDto digest)
+        {
             StepsType typ = StepsType.Digest;
-        
             string typStr = StepsType.Digest.ToString();
-            
             digest.Type = StepTypeEnumExtension.ToEnum(StepsType.Digest.ToString());
             Steps res = new Steps(typ);
             res.DigestStepUpsertDto = digest;
             return res;
         }
-        public static Steps CreateCustom(CustomStepUpsertDto custom) {
+
+        public static Steps CreateCustom(CustomStepUpsertDto custom)
+        {
             StepsType typ = StepsType.Custom;
-        
             string typStr = StepsType.Custom.ToString();
-            
             custom.Type = StepTypeEnumExtension.ToEnum(StepsType.Custom.ToString());
             Steps res = new Steps(typ);
             res.CustomStepUpsertDto = custom;
             return res;
         }
-        public static Steps CreateNull() {
+
+        public static Steps CreateNull()
+        {
             StepsType typ = StepsType.Null;
             return new Steps(typ);
         }
@@ -198,43 +207,43 @@ namespace Novu.Models.Components
                 string discriminator = jo.GetValue("type")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == StepsType.InApp.ToString())
                 {
-                    InAppStepUpsertDto? inAppStepUpsertDto = ResponseBodyDeserializer.Deserialize<InAppStepUpsertDto>(jo.ToString());
-                    return CreateInApp(inAppStepUpsertDto!);
+                    InAppStepUpsertDto inAppStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<InAppStepUpsertDto>(jo.ToString());
+                    return CreateInApp(inAppStepUpsertDto);
                 }
                 if (discriminator == StepsType.Email.ToString())
                 {
-                    EmailStepUpsertDto? emailStepUpsertDto = ResponseBodyDeserializer.Deserialize<EmailStepUpsertDto>(jo.ToString());
-                    return CreateEmail(emailStepUpsertDto!);
+                    EmailStepUpsertDto emailStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<EmailStepUpsertDto>(jo.ToString());
+                    return CreateEmail(emailStepUpsertDto);
                 }
                 if (discriminator == StepsType.Sms.ToString())
                 {
-                    SmsStepUpsertDto? smsStepUpsertDto = ResponseBodyDeserializer.Deserialize<SmsStepUpsertDto>(jo.ToString());
-                    return CreateSms(smsStepUpsertDto!);
+                    SmsStepUpsertDto smsStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<SmsStepUpsertDto>(jo.ToString());
+                    return CreateSms(smsStepUpsertDto);
                 }
                 if (discriminator == StepsType.Push.ToString())
                 {
-                    PushStepUpsertDto? pushStepUpsertDto = ResponseBodyDeserializer.Deserialize<PushStepUpsertDto>(jo.ToString());
-                    return CreatePush(pushStepUpsertDto!);
+                    PushStepUpsertDto pushStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<PushStepUpsertDto>(jo.ToString());
+                    return CreatePush(pushStepUpsertDto);
                 }
                 if (discriminator == StepsType.Chat.ToString())
                 {
-                    ChatStepUpsertDto? chatStepUpsertDto = ResponseBodyDeserializer.Deserialize<ChatStepUpsertDto>(jo.ToString());
-                    return CreateChat(chatStepUpsertDto!);
+                    ChatStepUpsertDto chatStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<ChatStepUpsertDto>(jo.ToString());
+                    return CreateChat(chatStepUpsertDto);
                 }
                 if (discriminator == StepsType.Delay.ToString())
                 {
-                    DelayStepUpsertDto? delayStepUpsertDto = ResponseBodyDeserializer.Deserialize<DelayStepUpsertDto>(jo.ToString());
-                    return CreateDelay(delayStepUpsertDto!);
+                    DelayStepUpsertDto delayStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<DelayStepUpsertDto>(jo.ToString());
+                    return CreateDelay(delayStepUpsertDto);
                 }
                 if (discriminator == StepsType.Digest.ToString())
                 {
-                    DigestStepUpsertDto? digestStepUpsertDto = ResponseBodyDeserializer.Deserialize<DigestStepUpsertDto>(jo.ToString());
-                    return CreateDigest(digestStepUpsertDto!);
+                    DigestStepUpsertDto digestStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<DigestStepUpsertDto>(jo.ToString());
+                    return CreateDigest(digestStepUpsertDto);
                 }
                 if (discriminator == StepsType.Custom.ToString())
                 {
-                    CustomStepUpsertDto? customStepUpsertDto = ResponseBodyDeserializer.Deserialize<CustomStepUpsertDto>(jo.ToString());
-                    return CreateCustom(customStepUpsertDto!);
+                    CustomStepUpsertDto customStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepUpsertDto>(jo.ToString());
+                    return CreateCustom(customStepUpsertDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -246,53 +255,61 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Steps res = (Steps)value;
                 if (StepsType.FromString(res.Type).Equals(StepsType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.InAppStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.InAppStepUpsertDto));
                     return;
                 }
+
                 if (res.EmailStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.EmailStepUpsertDto));
                     return;
                 }
+
                 if (res.SmsStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.SmsStepUpsertDto));
                     return;
                 }
+
                 if (res.PushStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PushStepUpsertDto));
                     return;
                 }
+
                 if (res.ChatStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ChatStepUpsertDto));
                     return;
                 }
+
                 if (res.DelayStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DelayStepUpsertDto));
                     return;
                 }
+
                 if (res.DigestStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DigestStepUpsertDto));
                     return;
                 }
+
                 if (res.CustomStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CustomStepUpsertDto));
                     return;
                 }
-
             }
 
         }

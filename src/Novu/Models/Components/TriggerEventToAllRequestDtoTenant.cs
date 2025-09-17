@@ -17,17 +17,17 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class TriggerEventToAllRequestDtoTenantType
     {
         private TriggerEventToAllRequestDtoTenantType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static TriggerEventToAllRequestDtoTenantType Str { get { return new TriggerEventToAllRequestDtoTenantType("str"); } }
-        
+
         public static TriggerEventToAllRequestDtoTenantType TenantPayloadDto { get { return new TriggerEventToAllRequestDtoTenantType("TenantPayloadDto"); } }
-        
+
         public static TriggerEventToAllRequestDtoTenantType Null { get { return new TriggerEventToAllRequestDtoTenantType("null"); } }
 
         public override string ToString() { return Value; }
@@ -65,8 +65,10 @@ namespace Novu.Models.Components
     /// </remarks>
     /// </summary>
     [JsonConverter(typeof(TriggerEventToAllRequestDtoTenant.TriggerEventToAllRequestDtoTenantConverter))]
-    public class TriggerEventToAllRequestDtoTenant {
-        public TriggerEventToAllRequestDtoTenant(TriggerEventToAllRequestDtoTenantType type) {
+    public class TriggerEventToAllRequestDtoTenant
+    {
+        public TriggerEventToAllRequestDtoTenant(TriggerEventToAllRequestDtoTenantType type)
+        {
             Type = type;
         }
 
@@ -77,17 +79,16 @@ namespace Novu.Models.Components
         public TenantPayloadDto? TenantPayloadDto { get; set; }
 
         public TriggerEventToAllRequestDtoTenantType Type { get; set; }
-
-
-        public static TriggerEventToAllRequestDtoTenant CreateStr(string str) {
+        public static TriggerEventToAllRequestDtoTenant CreateStr(string str)
+        {
             TriggerEventToAllRequestDtoTenantType typ = TriggerEventToAllRequestDtoTenantType.Str;
 
             TriggerEventToAllRequestDtoTenant res = new TriggerEventToAllRequestDtoTenant(typ);
             res.Str = str;
             return res;
         }
-
-        public static TriggerEventToAllRequestDtoTenant CreateTenantPayloadDto(TenantPayloadDto tenantPayloadDto) {
+        public static TriggerEventToAllRequestDtoTenant CreateTenantPayloadDto(TenantPayloadDto tenantPayloadDto)
+        {
             TriggerEventToAllRequestDtoTenantType typ = TriggerEventToAllRequestDtoTenantType.TenantPayloadDto;
 
             TriggerEventToAllRequestDtoTenant res = new TriggerEventToAllRequestDtoTenant(typ);
@@ -95,7 +96,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static TriggerEventToAllRequestDtoTenant CreateNull() {
+        public static TriggerEventToAllRequestDtoTenant CreateNull()
+        {
             TriggerEventToAllRequestDtoTenantType typ = TriggerEventToAllRequestDtoTenantType.Null;
             return new TriggerEventToAllRequestDtoTenant(typ);
         }
@@ -173,23 +175,25 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 TriggerEventToAllRequestDtoTenant res = (TriggerEventToAllRequestDtoTenant)value;
                 if (TriggerEventToAllRequestDtoTenantType.FromString(res.Type).Equals(TriggerEventToAllRequestDtoTenantType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.TenantPayloadDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TenantPayloadDto));
                     return;
                 }
-
             }
 
         }

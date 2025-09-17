@@ -66,10 +66,10 @@ namespace Novu.Models.Components
         public StepTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the workflow
+        /// Origin of the layout
         /// </summary>
         [JsonProperty("origin")]
-        public WorkflowOriginEnum Origin { get; set; } = default!;
+        public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
         /// Workflow identifier

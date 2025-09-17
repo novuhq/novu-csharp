@@ -47,3 +47,5 @@
 | `ChannelId`                                         | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
 | `PhoneNumberIdentification`                         | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
 | `AccessKey`                                         | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `AppSid`                                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `SenderId`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |

@@ -16,17 +16,17 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class FeedIdentifierType
     {
         private FeedIdentifierType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static FeedIdentifierType Str { get { return new FeedIdentifierType("str"); } }
-        
+
         public static FeedIdentifierType ArrayOfStr { get { return new FeedIdentifierType("arrayOfStr"); } }
-        
+
         public static FeedIdentifierType Null { get { return new FeedIdentifierType("null"); } }
 
         public override string ToString() { return Value; }
@@ -59,8 +59,10 @@ namespace Novu.Models.Components
     /// Optional feed identifier or array of feed identifiers
     /// </summary>
     [JsonConverter(typeof(FeedIdentifier.FeedIdentifierConverter))]
-    public class FeedIdentifier {
-        public FeedIdentifier(FeedIdentifierType type) {
+    public class FeedIdentifier
+    {
+        public FeedIdentifier(FeedIdentifierType type)
+        {
             Type = type;
         }
 
@@ -71,17 +73,16 @@ namespace Novu.Models.Components
         public List<string>? ArrayOfStr { get; set; }
 
         public FeedIdentifierType Type { get; set; }
-
-
-        public static FeedIdentifier CreateStr(string str) {
+        public static FeedIdentifier CreateStr(string str)
+        {
             FeedIdentifierType typ = FeedIdentifierType.Str;
 
             FeedIdentifier res = new FeedIdentifier(typ);
             res.Str = str;
             return res;
         }
-
-        public static FeedIdentifier CreateArrayOfStr(List<string> arrayOfStr) {
+        public static FeedIdentifier CreateArrayOfStr(List<string> arrayOfStr)
+        {
             FeedIdentifierType typ = FeedIdentifierType.ArrayOfStr;
 
             FeedIdentifier res = new FeedIdentifier(typ);
@@ -89,7 +90,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static FeedIdentifier CreateNull() {
+        public static FeedIdentifier CreateNull()
+        {
             FeedIdentifierType typ = FeedIdentifierType.Null;
             return new FeedIdentifier(typ);
         }
@@ -167,23 +169,25 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 FeedIdentifier res = (FeedIdentifier)value;
                 if (FeedIdentifierType.FromString(res.Type).Equals(FeedIdentifierType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.ArrayOfStr != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfStr));
                     return;
                 }
-
             }
 
         }

@@ -27,7 +27,7 @@ namespace Novu.Models.Components
         /// Template ID associated with the message
         /// </summary>
         [JsonProperty("_templateId")]
-        public string TemplateId { get; set; } = default!;
+        public string? TemplateId { get; set; } = null;
 
         /// <summary>
         /// Environment ID where the message is sent
@@ -39,7 +39,7 @@ namespace Novu.Models.Components
         /// Message template ID
         /// </summary>
         [JsonProperty("_messageTemplateId")]
-        public string MessageTemplateId { get; set; } = default!;
+        public string? MessageTemplateId { get; set; } = null;
 
         /// <summary>
         /// Organization ID associated with the message
@@ -63,7 +63,7 @@ namespace Novu.Models.Components
         /// Subscriber details, if available
         /// </summary>
         [JsonProperty("subscriber")]
-        public SubscriberResponseDto? Subscriber { get; set; }
+        public Models.Components.SubscriberResponseDto? Subscriber { get; set; }
 
         /// <summary>
         /// Workflow template associated with the message
@@ -105,7 +105,7 @@ namespace Novu.Models.Components
         /// Content of the message, can be an email block or a string
         /// </summary>
         [JsonProperty("content")]
-        public Content Content { get; set; } = default!;
+        public MessageResponseDtoContent? Content { get; set; } = null;
 
         /// <summary>
         /// Transaction ID associated with the message

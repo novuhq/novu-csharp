@@ -15,23 +15,29 @@ Retrieve subscriber channel preferences by its unique key identifier **subscribe
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_getSubscriberPreferences" method="get" path="/v2/subscribers/{subscriberId}/preferences" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.SubscribersPreferences.ListAsync(subscriberId: "<id>");
+var res = await sdk.SubscribersPreferences.ListAsync(
+    subscriberId: "<id>",
+    criticality: Criticality.NonCritical
+);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                         | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `SubscriberId`                    | *string*                          | :heavy_check_mark:                | N/A                               |
-| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `SubscriberId`                                      | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
+| `Criticality`                                       | [Criticality](../../Models/Requests/Criticality.md) | :heavy_minus_sign:                                  | N/A                                                 |
+| `IdempotencyKey`                                    | *string*                                            | :heavy_minus_sign:                                  | A header for idempotency purposes                   |
 
 ### Response
 
@@ -55,16 +61,85 @@ Update subscriber preferences by its unique key identifier **subscriberId**.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="SubscribersController_updateSubscriberPreferences" method="patch" path="/v2/subscribers/{subscriberId}/preferences" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.SubscribersPreferences.UpdateAsync(
     subscriberId: "<id>",
     patchSubscriberPreferencesDto: new PatchSubscriberPreferencesDto() {
-        Channels = new PatchPreferenceChannelsDto() {},
+        Schedule = new ScheduleDto() {
+            IsEnabled = true,
+            WeeklySchedule = new WeeklySchedule() {
+                Monday = new Monday() {
+                    IsEnabled = true,
+                    Hours = new List<TimeRangeDto>() {
+                        new TimeRangeDto() {
+                            Start = "09:00 AM",
+                            End = "05:00 PM",
+                        },
+                    },
+                },
+                Tuesday = new Tuesday() {
+                    IsEnabled = true,
+                    Hours = new List<TimeRangeDto>() {
+                        new TimeRangeDto() {
+                            Start = "09:00 AM",
+                            End = "05:00 PM",
+                        },
+                    },
+                },
+                Wednesday = new Wednesday() {
+                    IsEnabled = true,
+                    Hours = new List<TimeRangeDto>() {
+                        new TimeRangeDto() {
+                            Start = "09:00 AM",
+                            End = "05:00 PM",
+                        },
+                    },
+                },
+                Thursday = new Thursday() {
+                    IsEnabled = true,
+                    Hours = new List<TimeRangeDto>() {
+                        new TimeRangeDto() {
+                            Start = "09:00 AM",
+                            End = "05:00 PM",
+                        },
+                    },
+                },
+                Friday = new Friday() {
+                    IsEnabled = true,
+                    Hours = new List<TimeRangeDto>() {
+                        new TimeRangeDto() {
+                            Start = "09:00 AM",
+                            End = "05:00 PM",
+                        },
+                    },
+                },
+                Saturday = new Saturday() {
+                    IsEnabled = true,
+                    Hours = new List<TimeRangeDto>() {
+                        new TimeRangeDto() {
+                            Start = "09:00 AM",
+                            End = "05:00 PM",
+                        },
+                    },
+                },
+                Sunday = new Sunday() {
+                    IsEnabled = true,
+                    Hours = new List<TimeRangeDto>() {
+                        new TimeRangeDto() {
+                            Start = "09:00 AM",
+                            End = "05:00 PM",
+                        },
+                    },
+                },
+            },
+        },
     }
 );
 

@@ -141,5 +141,11 @@ namespace Novu.Models.Components
 
         [JsonProperty("accessKey")]
         public string? AccessKey { get; set; }
+
+        [JsonProperty("appSid")]
+        public string? AppSid { get; set; }
+
+        [JsonProperty("senderId")]
+        public string? SenderId { get; set; }
     }
 }

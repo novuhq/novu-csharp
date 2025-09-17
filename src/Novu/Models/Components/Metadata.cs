@@ -17,21 +17,21 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class MetadataType
     {
         private MetadataType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static MetadataType DigestRegularMetadata { get { return new MetadataType("DigestRegularMetadata"); } }
-        
+
         public static MetadataType DigestTimedMetadata { get { return new MetadataType("DigestTimedMetadata"); } }
-        
+
         public static MetadataType DelayRegularMetadata { get { return new MetadataType("DelayRegularMetadata"); } }
-        
+
         public static MetadataType DelayScheduledMetadata { get { return new MetadataType("DelayScheduledMetadata"); } }
-        
+
         public static MetadataType Null { get { return new MetadataType("null"); } }
 
         public override string ToString() { return Value; }
@@ -66,8 +66,10 @@ namespace Novu.Models.Components
     /// Metadata associated with the workflow step. Can vary based on the type of step.
     /// </summary>
     [JsonConverter(typeof(Metadata.MetadataConverter))]
-    public class Metadata {
-        public Metadata(MetadataType type) {
+    public class Metadata
+    {
+        public Metadata(MetadataType type)
+        {
             Type = type;
         }
 
@@ -84,33 +86,32 @@ namespace Novu.Models.Components
         public DelayScheduledMetadata? DelayScheduledMetadata { get; set; }
 
         public MetadataType Type { get; set; }
-
-
-        public static Metadata CreateDigestRegularMetadata(DigestRegularMetadata digestRegularMetadata) {
+        public static Metadata CreateDigestRegularMetadata(DigestRegularMetadata digestRegularMetadata)
+        {
             MetadataType typ = MetadataType.DigestRegularMetadata;
 
             Metadata res = new Metadata(typ);
             res.DigestRegularMetadata = digestRegularMetadata;
             return res;
         }
-
-        public static Metadata CreateDigestTimedMetadata(DigestTimedMetadata digestTimedMetadata) {
+        public static Metadata CreateDigestTimedMetadata(DigestTimedMetadata digestTimedMetadata)
+        {
             MetadataType typ = MetadataType.DigestTimedMetadata;
 
             Metadata res = new Metadata(typ);
             res.DigestTimedMetadata = digestTimedMetadata;
             return res;
         }
-
-        public static Metadata CreateDelayRegularMetadata(DelayRegularMetadata delayRegularMetadata) {
+        public static Metadata CreateDelayRegularMetadata(DelayRegularMetadata delayRegularMetadata)
+        {
             MetadataType typ = MetadataType.DelayRegularMetadata;
 
             Metadata res = new Metadata(typ);
             res.DelayRegularMetadata = delayRegularMetadata;
             return res;
         }
-
-        public static Metadata CreateDelayScheduledMetadata(DelayScheduledMetadata delayScheduledMetadata) {
+        public static Metadata CreateDelayScheduledMetadata(DelayScheduledMetadata delayScheduledMetadata)
+        {
             MetadataType typ = MetadataType.DelayScheduledMetadata;
 
             Metadata res = new Metadata(typ);
@@ -118,7 +119,8 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Metadata CreateNull() {
+        public static Metadata CreateNull()
+        {
             MetadataType typ = MetadataType.Null;
             return new Metadata(typ);
         }
@@ -249,33 +251,37 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Metadata res = (Metadata)value;
                 if (MetadataType.FromString(res.Type).Equals(MetadataType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.DigestRegularMetadata != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DigestRegularMetadata));
                     return;
                 }
+
                 if (res.DigestTimedMetadata != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DigestTimedMetadata));
                     return;
                 }
+
                 if (res.DelayRegularMetadata != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DelayRegularMetadata));
                     return;
                 }
+
                 if (res.DelayScheduledMetadata != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DelayScheduledMetadata));
                     return;
                 }
-
             }
 
         }

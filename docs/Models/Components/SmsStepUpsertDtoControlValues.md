@@ -1,11 +1,18 @@
 # SmsStepUpsertDtoControlValues
 
-Control values for the SMS step
+Control values for the SMS step.
 
 
-## Fields
+## Supported Types
 
-| Field                                                                                                                                                                                                        | Type                                                                                                                                                                                                         | Required                                                                                                                                                                                                     | Description                                                                                                                                                                                                  | Example                                                                                                                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Skip`                                                                                                                                                                                                       | Dictionary<String, *object*>                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                                           | JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference. | {<br/>"and": [<br/>{<br/>"==": [<br/>{<br/>"var": "payload.tier"<br/>},<br/>"pro"<br/>]<br/>},<br/>{<br/>"==": [<br/>{<br/>"var": "subscriber.data.role"<br/>},<br/>"admin"<br/>]<br/>},<br/>{<br/>"\u003e": [<br/>{<br/>"var": "payload.amount"<br/>},<br/>"4"<br/>]<br/>}<br/>]<br/>} |
-| `Body`                                                                                                                                                                                                       | *string*                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                           | Content of the SMS message.                                                                                                                                                                                  |                                                                                                                                                                                                              |
+### SmsControlDto
+
+```csharp
+SmsStepUpsertDtoControlValues.CreateSmsControlDto(/* values here */);
+```
+
+### MapOfAny
+
+```csharp
+SmsStepUpsertDtoControlValues.CreateMapOfAny(/* values here */);
+```

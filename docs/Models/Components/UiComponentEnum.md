@@ -8,6 +8,7 @@ Component type for the UI Schema Property
 | Name                               | Value                              |
 | ---------------------------------- | ---------------------------------- |
 | `EmailEditorSelect`                | EMAIL_EDITOR_SELECT                |
+| `LayoutSelect`                     | LAYOUT_SELECT                      |
 | `BlockEditor`                      | BLOCK_EDITOR                       |
 | `EmailBody`                        | EMAIL_BODY                         |
 | `TextFullLine`                     | TEXT_FULL_LINE                     |
@@ -26,9 +27,11 @@ Component type for the UI Schema Property
 | `DelayType`                        | DELAY_TYPE                         |
 | `DelayAmount`                      | DELAY_AMOUNT                       |
 | `DelayUnit`                        | DELAY_UNIT                         |
+| `ExtendToSchedule`                 | EXTEND_TO_SCHEDULE                 |
 | `SmsBody`                          | SMS_BODY                           |
 | `ChatBody`                         | CHAT_BODY                          |
 | `PushBody`                         | PUSH_BODY                          |
 | `PushSubject`                      | PUSH_SUBJECT                       |
 | `QueryEditor`                      | QUERY_EDITOR                       |
 | `Data`                             | DATA                               |
+| `LayoutEmail`                      | LAYOUT_EMAIL                       |

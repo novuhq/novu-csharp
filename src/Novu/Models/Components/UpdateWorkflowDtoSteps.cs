@@ -17,22 +17,29 @@ namespace Novu.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class UpdateWorkflowDtoStepsType
     {
         private UpdateWorkflowDtoStepsType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        
+
         public static UpdateWorkflowDtoStepsType InApp { get { return new UpdateWorkflowDtoStepsType("in_app"); } }
+
         public static UpdateWorkflowDtoStepsType Email { get { return new UpdateWorkflowDtoStepsType("email"); } }
+
         public static UpdateWorkflowDtoStepsType Sms { get { return new UpdateWorkflowDtoStepsType("sms"); } }
+
         public static UpdateWorkflowDtoStepsType Push { get { return new UpdateWorkflowDtoStepsType("push"); } }
+
         public static UpdateWorkflowDtoStepsType Chat { get { return new UpdateWorkflowDtoStepsType("chat"); } }
+
         public static UpdateWorkflowDtoStepsType Delay { get { return new UpdateWorkflowDtoStepsType("delay"); } }
+
         public static UpdateWorkflowDtoStepsType Digest { get { return new UpdateWorkflowDtoStepsType("digest"); } }
+
         public static UpdateWorkflowDtoStepsType Custom { get { return new UpdateWorkflowDtoStepsType("custom"); } }
+
         public static UpdateWorkflowDtoStepsType Null { get { return new UpdateWorkflowDtoStepsType("null"); } }
 
         public override string ToString() { return Value; }
@@ -68,8 +75,10 @@ namespace Novu.Models.Components
 
 
     [JsonConverter(typeof(UpdateWorkflowDtoSteps.UpdateWorkflowDtoStepsConverter))]
-    public class UpdateWorkflowDtoSteps {
-        public UpdateWorkflowDtoSteps(UpdateWorkflowDtoStepsType type) {
+    public class UpdateWorkflowDtoSteps
+    {
+        public UpdateWorkflowDtoSteps(UpdateWorkflowDtoStepsType type)
+        {
             Type = type;
         }
 
@@ -99,88 +108,88 @@ namespace Novu.Models.Components
 
         public UpdateWorkflowDtoStepsType Type { get; set; }
 
-
-        public static UpdateWorkflowDtoSteps CreateInApp(InAppStepUpsertDto inApp) {
+        public static UpdateWorkflowDtoSteps CreateInApp(InAppStepUpsertDto inApp)
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.InApp;
-        
             string typStr = UpdateWorkflowDtoStepsType.InApp.ToString();
-            
             inApp.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.InApp.ToString());
             UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
             res.InAppStepUpsertDto = inApp;
             return res;
         }
-        public static UpdateWorkflowDtoSteps CreateEmail(EmailStepUpsertDto email) {
+
+        public static UpdateWorkflowDtoSteps CreateEmail(EmailStepUpsertDto email)
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Email;
-        
             string typStr = UpdateWorkflowDtoStepsType.Email.ToString();
-            
             email.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Email.ToString());
             UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
             res.EmailStepUpsertDto = email;
             return res;
         }
-        public static UpdateWorkflowDtoSteps CreateSms(SmsStepUpsertDto sms) {
+
+        public static UpdateWorkflowDtoSteps CreateSms(SmsStepUpsertDto sms)
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Sms;
-        
             string typStr = UpdateWorkflowDtoStepsType.Sms.ToString();
-            
             sms.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Sms.ToString());
             UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
             res.SmsStepUpsertDto = sms;
             return res;
         }
-        public static UpdateWorkflowDtoSteps CreatePush(PushStepUpsertDto push) {
+
+        public static UpdateWorkflowDtoSteps CreatePush(PushStepUpsertDto push)
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Push;
-        
             string typStr = UpdateWorkflowDtoStepsType.Push.ToString();
-            
             push.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Push.ToString());
             UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
             res.PushStepUpsertDto = push;
             return res;
         }
-        public static UpdateWorkflowDtoSteps CreateChat(ChatStepUpsertDto chat) {
+
+        public static UpdateWorkflowDtoSteps CreateChat(ChatStepUpsertDto chat)
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Chat;
-        
             string typStr = UpdateWorkflowDtoStepsType.Chat.ToString();
-            
             chat.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Chat.ToString());
             UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
             res.ChatStepUpsertDto = chat;
             return res;
         }
-        public static UpdateWorkflowDtoSteps CreateDelay(DelayStepUpsertDto delay) {
+
+        public static UpdateWorkflowDtoSteps CreateDelay(DelayStepUpsertDto delay)
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Delay;
-        
             string typStr = UpdateWorkflowDtoStepsType.Delay.ToString();
-            
             delay.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Delay.ToString());
             UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
             res.DelayStepUpsertDto = delay;
             return res;
         }
-        public static UpdateWorkflowDtoSteps CreateDigest(DigestStepUpsertDto digest) {
+
+        public static UpdateWorkflowDtoSteps CreateDigest(DigestStepUpsertDto digest)
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Digest;
-        
             string typStr = UpdateWorkflowDtoStepsType.Digest.ToString();
-            
             digest.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Digest.ToString());
             UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
             res.DigestStepUpsertDto = digest;
             return res;
         }
-        public static UpdateWorkflowDtoSteps CreateCustom(CustomStepUpsertDto custom) {
+
+        public static UpdateWorkflowDtoSteps CreateCustom(CustomStepUpsertDto custom)
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Custom;
-        
             string typStr = UpdateWorkflowDtoStepsType.Custom.ToString();
-            
             custom.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Custom.ToString());
             UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
             res.CustomStepUpsertDto = custom;
             return res;
         }
-        public static UpdateWorkflowDtoSteps CreateNull() {
+
+        public static UpdateWorkflowDtoSteps CreateNull()
+        {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Null;
             return new UpdateWorkflowDtoSteps(typ);
         }
@@ -198,43 +207,43 @@ namespace Novu.Models.Components
                 string discriminator = jo.GetValue("type")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == UpdateWorkflowDtoStepsType.InApp.ToString())
                 {
-                    InAppStepUpsertDto? inAppStepUpsertDto = ResponseBodyDeserializer.Deserialize<InAppStepUpsertDto>(jo.ToString());
-                    return CreateInApp(inAppStepUpsertDto!);
+                    InAppStepUpsertDto inAppStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<InAppStepUpsertDto>(jo.ToString());
+                    return CreateInApp(inAppStepUpsertDto);
                 }
                 if (discriminator == UpdateWorkflowDtoStepsType.Email.ToString())
                 {
-                    EmailStepUpsertDto? emailStepUpsertDto = ResponseBodyDeserializer.Deserialize<EmailStepUpsertDto>(jo.ToString());
-                    return CreateEmail(emailStepUpsertDto!);
+                    EmailStepUpsertDto emailStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<EmailStepUpsertDto>(jo.ToString());
+                    return CreateEmail(emailStepUpsertDto);
                 }
                 if (discriminator == UpdateWorkflowDtoStepsType.Sms.ToString())
                 {
-                    SmsStepUpsertDto? smsStepUpsertDto = ResponseBodyDeserializer.Deserialize<SmsStepUpsertDto>(jo.ToString());
-                    return CreateSms(smsStepUpsertDto!);
+                    SmsStepUpsertDto smsStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<SmsStepUpsertDto>(jo.ToString());
+                    return CreateSms(smsStepUpsertDto);
                 }
                 if (discriminator == UpdateWorkflowDtoStepsType.Push.ToString())
                 {
-                    PushStepUpsertDto? pushStepUpsertDto = ResponseBodyDeserializer.Deserialize<PushStepUpsertDto>(jo.ToString());
-                    return CreatePush(pushStepUpsertDto!);
+                    PushStepUpsertDto pushStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<PushStepUpsertDto>(jo.ToString());
+                    return CreatePush(pushStepUpsertDto);
                 }
                 if (discriminator == UpdateWorkflowDtoStepsType.Chat.ToString())
                 {
-                    ChatStepUpsertDto? chatStepUpsertDto = ResponseBodyDeserializer.Deserialize<ChatStepUpsertDto>(jo.ToString());
-                    return CreateChat(chatStepUpsertDto!);
+                    ChatStepUpsertDto chatStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<ChatStepUpsertDto>(jo.ToString());
+                    return CreateChat(chatStepUpsertDto);
                 }
                 if (discriminator == UpdateWorkflowDtoStepsType.Delay.ToString())
                 {
-                    DelayStepUpsertDto? delayStepUpsertDto = ResponseBodyDeserializer.Deserialize<DelayStepUpsertDto>(jo.ToString());
-                    return CreateDelay(delayStepUpsertDto!);
+                    DelayStepUpsertDto delayStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<DelayStepUpsertDto>(jo.ToString());
+                    return CreateDelay(delayStepUpsertDto);
                 }
                 if (discriminator == UpdateWorkflowDtoStepsType.Digest.ToString())
                 {
-                    DigestStepUpsertDto? digestStepUpsertDto = ResponseBodyDeserializer.Deserialize<DigestStepUpsertDto>(jo.ToString());
-                    return CreateDigest(digestStepUpsertDto!);
+                    DigestStepUpsertDto digestStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<DigestStepUpsertDto>(jo.ToString());
+                    return CreateDigest(digestStepUpsertDto);
                 }
                 if (discriminator == UpdateWorkflowDtoStepsType.Custom.ToString())
                 {
-                    CustomStepUpsertDto? customStepUpsertDto = ResponseBodyDeserializer.Deserialize<CustomStepUpsertDto>(jo.ToString());
-                    return CreateCustom(customStepUpsertDto!);
+                    CustomStepUpsertDto customStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepUpsertDto>(jo.ToString());
+                    return CreateCustom(customStepUpsertDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -246,53 +255,61 @@ namespace Novu.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 UpdateWorkflowDtoSteps res = (UpdateWorkflowDtoSteps)value;
                 if (UpdateWorkflowDtoStepsType.FromString(res.Type).Equals(UpdateWorkflowDtoStepsType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.InAppStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.InAppStepUpsertDto));
                     return;
                 }
+
                 if (res.EmailStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.EmailStepUpsertDto));
                     return;
                 }
+
                 if (res.SmsStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.SmsStepUpsertDto));
                     return;
                 }
+
                 if (res.PushStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PushStepUpsertDto));
                     return;
                 }
+
                 if (res.ChatStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ChatStepUpsertDto));
                     return;
                 }
+
                 if (res.DelayStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DelayStepUpsertDto));
                     return;
                 }
+
                 if (res.DigestStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DigestStepUpsertDto));
                     return;
                 }
+
                 if (res.CustomStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CustomStepUpsertDto));
                     return;
                 }
-
             }
 
         }

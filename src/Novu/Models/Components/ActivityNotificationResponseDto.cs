@@ -96,7 +96,7 @@ namespace Novu.Models.Components
         /// Payload of the notification
         /// </summary>
         [JsonProperty("payload")]
-        public ActivityNotificationResponseDtoPayload? Payload { get; set; }
+        public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
         /// Tags associated with the notification
@@ -108,18 +108,30 @@ namespace Novu.Models.Components
         /// Controls associated with the notification
         /// </summary>
         [JsonProperty("controls")]
-        public Controls? Controls { get; set; }
+        public Dictionary<string, object>? Controls { get; set; }
 
         /// <summary>
         /// To field for subscriber definition
         /// </summary>
         [JsonProperty("to")]
-        public ActivityNotificationResponseDtoTo? To { get; set; }
+        public Dictionary<string, object>? To { get; set; }
 
         /// <summary>
         /// Topics of the notification
         /// </summary>
         [JsonProperty("topics")]
         public List<ActivityTopicDto>? Topics { get; set; }
+
+        /// <summary>
+        /// Severity of the workflow
+        /// </summary>
+        [JsonProperty("severity")]
+        public SeverityLevelEnum? Severity { get; set; }
+
+        /// <summary>
+        /// Criticality of the notification
+        /// </summary>
+        [JsonProperty("critical")]
+        public bool? Critical { get; set; }
     }
 }
