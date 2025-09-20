@@ -33,7 +33,7 @@ namespace Novu.Models.Components
         /// Slug of the layout
         /// </summary>
         [JsonProperty("slug")]
-        public Slug Slug { get; set; } = default!;
+        public string Slug { get; set; } = default!;
 
         /// <summary>
         /// Name of the layout

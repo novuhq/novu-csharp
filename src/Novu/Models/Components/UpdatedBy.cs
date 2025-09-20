@@ -10,7 +10,6 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
-    using Novu.Models.Components;
     using Novu.Utils;
     
     /// <summary>
@@ -35,7 +34,7 @@ namespace Novu.Models.Components
         /// User last name
         /// </summary>
         [JsonProperty("lastName")]
-        public LastName? LastName { get; set; } = null;
+        public string? LastName { get; set; } = null;
 
         /// <summary>
         /// User external ID

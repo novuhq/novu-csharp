@@ -75,7 +75,7 @@ namespace Novu.Models.Components
         /// Slug of the workflow
         /// </summary>
         [JsonProperty("slug")]
-        public WorkflowResponseDtoSlug Slug { get; set; } = default!;
+        public string Slug { get; set; } = default!;
 
         /// <summary>
         /// Last updated timestamp
