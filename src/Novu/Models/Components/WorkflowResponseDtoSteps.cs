@@ -40,6 +40,8 @@ namespace Novu.Models.Components
 
         public static WorkflowResponseDtoStepsType Custom { get { return new WorkflowResponseDtoStepsType("custom"); } }
 
+        public static WorkflowResponseDtoStepsType Throttle { get { return new WorkflowResponseDtoStepsType("throttle"); } }
+
         public static WorkflowResponseDtoStepsType Null { get { return new WorkflowResponseDtoStepsType("null"); } }
 
         public override string ToString() { return Value; }
@@ -54,6 +56,7 @@ namespace Novu.Models.Components
                 case "delay": return Delay;
                 case "digest": return Digest;
                 case "custom": return Custom;
+                case "throttle": return Throttle;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for WorkflowResponseDtoStepsType");
             }
@@ -105,6 +108,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public CustomStepResponseDto? CustomStepResponseDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ThrottleStepResponseDto? ThrottleStepResponseDto { get; set; }
 
         public WorkflowResponseDtoStepsType Type { get; set; }
 
@@ -188,6 +194,16 @@ namespace Novu.Models.Components
             return res;
         }
 
+        public static WorkflowResponseDtoSteps CreateThrottle(ThrottleStepResponseDto throttle)
+        {
+            WorkflowResponseDtoStepsType typ = WorkflowResponseDtoStepsType.Throttle;
+            string typStr = WorkflowResponseDtoStepsType.Throttle.ToString();
+            throttle.Type = StepTypeEnumExtension.ToEnum(WorkflowResponseDtoStepsType.Throttle.ToString());
+            WorkflowResponseDtoSteps res = new WorkflowResponseDtoSteps(typ);
+            res.ThrottleStepResponseDto = throttle;
+            return res;
+        }
+
         public static WorkflowResponseDtoSteps CreateNull()
         {
             WorkflowResponseDtoStepsType typ = WorkflowResponseDtoStepsType.Null;
@@ -244,6 +260,11 @@ namespace Novu.Models.Components
                 {
                     CustomStepResponseDto customStepResponseDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepResponseDto>(jo.ToString());
                     return CreateCustom(customStepResponseDto);
+                }
+                if (discriminator == WorkflowResponseDtoStepsType.Throttle.ToString())
+                {
+                    ThrottleStepResponseDto throttleStepResponseDto = ResponseBodyDeserializer.DeserializeNotNull<ThrottleStepResponseDto>(jo.ToString());
+                    return CreateThrottle(throttleStepResponseDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -308,6 +329,12 @@ namespace Novu.Models.Components
                 if (res.CustomStepResponseDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CustomStepResponseDto));
+                    return;
+                }
+
+                if (res.ThrottleStepResponseDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ThrottleStepResponseDto));
                     return;
                 }
             }

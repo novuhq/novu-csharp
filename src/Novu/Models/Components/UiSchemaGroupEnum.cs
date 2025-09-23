@@ -26,6 +26,8 @@ namespace Novu.Models.Components
         Digest,
         [JsonProperty("DELAY")]
         Delay,
+        [JsonProperty("THROTTLE")]
+        Throttle,
         [JsonProperty("SMS")]
         Sms,
         [JsonProperty("CHAT")]
