@@ -104,7 +104,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Content of the message, can be an email block or a string
         /// </summary>
-        [JsonProperty("content")]
+        [JsonProperty("content", NullValueHandling = NullValueHandling.Include)]
         public MessageResponseDtoContent? Content { get; set; } = null;
 
         /// <summary>

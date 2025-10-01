@@ -28,15 +28,12 @@ namespace Novu.Models.Components
 
         public static TriggerEventToAllRequestDtoActorType SubscriberPayloadDto { get { return new TriggerEventToAllRequestDtoActorType("SubscriberPayloadDto"); } }
 
-        public static TriggerEventToAllRequestDtoActorType Null { get { return new TriggerEventToAllRequestDtoActorType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(TriggerEventToAllRequestDtoActorType v) { return v.Value; }
         public static TriggerEventToAllRequestDtoActorType FromString(string v) {
             switch(v) {
                 case "str": return Str;
                 case "SubscriberPayloadDto": return SubscriberPayloadDto;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for TriggerEventToAllRequestDtoActorType");
             }
         }
@@ -96,27 +93,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static TriggerEventToAllRequestDtoActor CreateNull()
-        {
-            TriggerEventToAllRequestDtoActorType typ = TriggerEventToAllRequestDtoActorType.Null;
-            return new TriggerEventToAllRequestDtoActor(typ);
-        }
-
         public class TriggerEventToAllRequestDtoActorConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(TriggerEventToAllRequestDtoActor);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -171,17 +161,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 TriggerEventToAllRequestDtoActor res = (TriggerEventToAllRequestDtoActor)value;
-                if (TriggerEventToAllRequestDtoActorType.FromString(res.Type).Equals(TriggerEventToAllRequestDtoActorType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Str != null)
                 {

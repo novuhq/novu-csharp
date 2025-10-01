@@ -40,7 +40,7 @@ namespace Novu.Models.Components
 
         public static WorkflowResponseDtoStepsType Custom { get { return new WorkflowResponseDtoStepsType("custom"); } }
 
-        public static WorkflowResponseDtoStepsType Null { get { return new WorkflowResponseDtoStepsType("null"); } }
+        public static WorkflowResponseDtoStepsType Throttle { get { return new WorkflowResponseDtoStepsType("throttle"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(WorkflowResponseDtoStepsType v) { return v.Value; }
@@ -54,7 +54,7 @@ namespace Novu.Models.Components
                 case "delay": return Delay;
                 case "digest": return Digest;
                 case "custom": return Custom;
-                case "null": return Null;
+                case "throttle": return Throttle;
                 default: throw new ArgumentException("Invalid value for WorkflowResponseDtoStepsType");
             }
         }
@@ -105,6 +105,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public CustomStepResponseDto? CustomStepResponseDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ThrottleStepResponseDto? ThrottleStepResponseDto { get; set; }
 
         public WorkflowResponseDtoStepsType Type { get; set; }
 
@@ -188,21 +191,29 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static WorkflowResponseDtoSteps CreateNull()
+        public static WorkflowResponseDtoSteps CreateThrottle(ThrottleStepResponseDto throttle)
         {
-            WorkflowResponseDtoStepsType typ = WorkflowResponseDtoStepsType.Null;
-            return new WorkflowResponseDtoSteps(typ);
+            WorkflowResponseDtoStepsType typ = WorkflowResponseDtoStepsType.Throttle;
+            string typStr = WorkflowResponseDtoStepsType.Throttle.ToString();
+            throttle.Type = StepTypeEnumExtension.ToEnum(WorkflowResponseDtoStepsType.Throttle.ToString());
+            WorkflowResponseDtoSteps res = new WorkflowResponseDtoSteps(typ);
+            res.ThrottleStepResponseDto = throttle;
+            return res;
         }
 
         public class WorkflowResponseDtoStepsConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(WorkflowResponseDtoSteps);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    throw new InvalidOperationException("Received unexpected null JSON value");
+                }
+
                 JObject jo = JObject.Load(reader);
                 string discriminator = jo.GetValue("type")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == WorkflowResponseDtoStepsType.InApp.ToString())
@@ -245,23 +256,24 @@ namespace Novu.Models.Components
                     CustomStepResponseDto customStepResponseDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepResponseDto>(jo.ToString());
                     return CreateCustom(customStepResponseDto);
                 }
+                if (discriminator == WorkflowResponseDtoStepsType.Throttle.ToString())
+                {
+                    ThrottleStepResponseDto throttleStepResponseDto = ResponseBodyDeserializer.DeserializeNotNull<ThrottleStepResponseDto>(jo.ToString());
+                    return CreateThrottle(throttleStepResponseDto);
+                }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
             }
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 WorkflowResponseDtoSteps res = (WorkflowResponseDtoSteps)value;
-                if (WorkflowResponseDtoStepsType.FromString(res.Type).Equals(WorkflowResponseDtoStepsType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.InAppStepResponseDto != null)
                 {
@@ -308,6 +320,12 @@ namespace Novu.Models.Components
                 if (res.CustomStepResponseDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CustomStepResponseDto));
+                    return;
+                }
+
+                if (res.ThrottleStepResponseDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ThrottleStepResponseDto));
                     return;
                 }
             }

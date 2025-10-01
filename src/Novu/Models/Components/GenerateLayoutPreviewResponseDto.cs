@@ -32,7 +32,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Preview result
         /// </summary>
-        [JsonProperty("result")]
+        [JsonProperty("result", NullValueHandling = NullValueHandling.Include)]
         public Result Result { get; set; } = default!;
     }
 }

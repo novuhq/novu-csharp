@@ -34,5 +34,17 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("previous", NullValueHandling = NullValueHandling.Include)]
         public string? Previous { get; set; }
+
+        /// <summary>
+        /// The total count of items (up to 50,000)
+        /// </summary>
+        [JsonProperty("totalCount")]
+        public double TotalCount { get; set; } = default!;
+
+        /// <summary>
+        /// Whether there are more than 50,000 results available
+        /// </summary>
+        [JsonProperty("totalCountCapped")]
+        public bool TotalCountCapped { get; set; } = default!;
     }
 }

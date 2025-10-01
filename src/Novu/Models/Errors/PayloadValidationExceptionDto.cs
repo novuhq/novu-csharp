@@ -40,7 +40,7 @@ namespace Novu.Models.Errors
         /// <summary>
         /// Value that failed validation
         /// </summary>
-        [JsonProperty("message")]
+        [JsonProperty("message", NullValueHandling = NullValueHandling.Include)]
         public Message? Message { get; set; }
 
         /// <summary>

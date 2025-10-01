@@ -57,7 +57,7 @@ namespace Novu.Models.Components
         /// Slug of the step
         /// </summary>
         [JsonProperty("slug")]
-        public PushStepResponseDtoSlug Slug { get; set; } = default!;
+        public string Slug { get; set; } = default!;
 
         /// <summary>
         /// Type of the step

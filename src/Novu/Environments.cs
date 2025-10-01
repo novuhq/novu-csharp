@@ -90,8 +90,8 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.3.0";
-        private const string _sdkGenVersion = "2.701.8";
+        private const string _sdkVersion = "2.4.0";
+        private const string _sdkGenVersion = "2.716.16";
         private const string _openapiDocVersion = "3.9.0";
 
         public Environments(SDKConfig config)

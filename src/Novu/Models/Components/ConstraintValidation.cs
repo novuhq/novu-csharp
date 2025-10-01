@@ -26,7 +26,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Value that failed validation
         /// </summary>
-        [JsonProperty("value")]
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
         public Value? Value { get; set; } = null;
     }
 }

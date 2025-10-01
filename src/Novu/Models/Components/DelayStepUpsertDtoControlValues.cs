@@ -28,15 +28,12 @@ namespace Novu.Models.Components
 
         public static DelayStepUpsertDtoControlValuesType MapOfAny { get { return new DelayStepUpsertDtoControlValuesType("mapOfAny"); } }
 
-        public static DelayStepUpsertDtoControlValuesType Null { get { return new DelayStepUpsertDtoControlValuesType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(DelayStepUpsertDtoControlValuesType v) { return v.Value; }
         public static DelayStepUpsertDtoControlValuesType FromString(string v) {
             switch(v) {
                 case "DelayControlDto": return DelayControlDto;
                 case "mapOfAny": return MapOfAny;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for DelayStepUpsertDtoControlValuesType");
             }
         }
@@ -91,27 +88,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static DelayStepUpsertDtoControlValues CreateNull()
-        {
-            DelayStepUpsertDtoControlValuesType typ = DelayStepUpsertDtoControlValuesType.Null;
-            return new DelayStepUpsertDtoControlValues(typ);
-        }
-
         public class DelayStepUpsertDtoControlValuesConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(DelayStepUpsertDtoControlValues);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -179,17 +169,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 DelayStepUpsertDtoControlValues res = (DelayStepUpsertDtoControlValues)value;
-                if (DelayStepUpsertDtoControlValuesType.FromString(res.Type).Equals(DelayStepUpsertDtoControlValuesType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.DelayControlDto != null)
                 {

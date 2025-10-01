@@ -26,14 +26,11 @@ namespace Novu.Models.Components
 
         public static ResultUnionType One { get { return new ResultUnionType("1"); } }
 
-        public static ResultUnionType Null { get { return new ResultUnionType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(ResultUnionType v) { return v.Value; }
         public static ResultUnionType FromString(string v) {
             switch(v) {
                 case "1": return One;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ResultUnionType");
             }
         }
@@ -77,27 +74,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Result CreateNull()
-        {
-            ResultUnionType typ = ResultUnionType.Null;
-            return new Result(typ);
-        }
-
         public class ResultConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(Result);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -145,17 +135,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 Result res = (Result)value;
-                if (ResultUnionType.FromString(res.Type).Equals(ResultUnionType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.One != null)
                 {

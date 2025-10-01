@@ -20,7 +20,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Placeholder for the UI Schema Property
         /// </summary>
-        [JsonProperty("placeholder")]
+        [JsonProperty("placeholder", NullValueHandling = NullValueHandling.Include)]
         public Placeholder? Placeholder { get; set; } = null;
 
         /// <summary>

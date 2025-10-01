@@ -74,7 +74,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Metadata associated with the workflow step. Can vary based on the type of step.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Include)]
         public NotificationStepDataMetadata? Metadata { get; set; }
 
         /// <summary>

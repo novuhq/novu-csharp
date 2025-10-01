@@ -28,15 +28,12 @@ namespace Novu.Models.Components
 
         public static TenantType TenantPayloadDto { get { return new TenantType("TenantPayloadDto"); } }
 
-        public static TenantType Null { get { return new TenantType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(TenantType v) { return v.Value; }
         public static TenantType FromString(string v) {
             switch(v) {
                 case "str": return Str;
                 case "TenantPayloadDto": return TenantPayloadDto;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for TenantType");
             }
         }
@@ -95,27 +92,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static Tenant CreateNull()
-        {
-            TenantType typ = TenantType.Null;
-            return new Tenant(typ);
-        }
-
         public class TenantConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(Tenant);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -170,17 +160,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 Tenant res = (Tenant)value;
-                if (TenantType.FromString(res.Type).Equals(TenantType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Str != null)
                 {
