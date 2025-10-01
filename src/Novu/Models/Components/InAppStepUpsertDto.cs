@@ -37,7 +37,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Control values for the In-App step.
         /// </summary>
-        [JsonProperty("controlValues")]
+        [JsonProperty("controlValues", NullValueHandling = NullValueHandling.Include)]
         public InAppStepUpsertDtoControlValues? ControlValues { get; set; }
     }
 }

@@ -34,6 +34,8 @@ namespace Novu.Models.Components
         Trigger,
         [JsonProperty("delay")]
         Delay,
+        [JsonProperty("throttle")]
+        Throttle,
         [JsonProperty("custom")]
         Custom,
     }

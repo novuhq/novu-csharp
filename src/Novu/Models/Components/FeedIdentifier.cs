@@ -27,15 +27,12 @@ namespace Novu.Models.Components
 
         public static FeedIdentifierType ArrayOfStr { get { return new FeedIdentifierType("arrayOfStr"); } }
 
-        public static FeedIdentifierType Null { get { return new FeedIdentifierType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(FeedIdentifierType v) { return v.Value; }
         public static FeedIdentifierType FromString(string v) {
             switch(v) {
                 case "str": return Str;
                 case "arrayOfStr": return ArrayOfStr;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for FeedIdentifierType");
             }
         }
@@ -90,27 +87,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static FeedIdentifier CreateNull()
-        {
-            FeedIdentifierType typ = FeedIdentifierType.Null;
-            return new FeedIdentifier(typ);
-        }
-
         public class FeedIdentifierConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(FeedIdentifier);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
@@ -165,17 +155,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 FeedIdentifier res = (FeedIdentifier)value;
-                if (FeedIdentifierType.FromString(res.Type).Equals(FeedIdentifierType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Str != null)
                 {

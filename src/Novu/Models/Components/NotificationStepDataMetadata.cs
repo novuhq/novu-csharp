@@ -32,8 +32,6 @@ namespace Novu.Models.Components
 
         public static NotificationStepDataMetadataType DelayScheduledMetadata { get { return new NotificationStepDataMetadataType("DelayScheduledMetadata"); } }
 
-        public static NotificationStepDataMetadataType Null { get { return new NotificationStepDataMetadataType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(NotificationStepDataMetadataType v) { return v.Value; }
         public static NotificationStepDataMetadataType FromString(string v) {
@@ -42,7 +40,6 @@ namespace Novu.Models.Components
                 case "DigestTimedMetadata": return DigestTimedMetadata;
                 case "DelayRegularMetadata": return DelayRegularMetadata;
                 case "DelayScheduledMetadata": return DelayScheduledMetadata;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for NotificationStepDataMetadataType");
             }
         }
@@ -119,27 +116,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static NotificationStepDataMetadata CreateNull()
-        {
-            NotificationStepDataMetadataType typ = NotificationStepDataMetadataType.Null;
-            return new NotificationStepDataMetadata(typ);
-        }
-
         public class NotificationStepDataMetadataConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(NotificationStepDataMetadata);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -247,17 +237,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 NotificationStepDataMetadata res = (NotificationStepDataMetadata)value;
-                if (NotificationStepDataMetadataType.FromString(res.Type).Equals(NotificationStepDataMetadataType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.DigestRegularMetadata != null)
                 {

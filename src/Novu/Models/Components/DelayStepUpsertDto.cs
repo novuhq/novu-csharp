@@ -37,7 +37,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Control values for the Delay step.
         /// </summary>
-        [JsonProperty("controlValues")]
+        [JsonProperty("controlValues", NullValueHandling = NullValueHandling.Include)]
         public DelayStepUpsertDtoControlValues? ControlValues { get; set; }
     }
 }

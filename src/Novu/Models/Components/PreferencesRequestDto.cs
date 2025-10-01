@@ -19,7 +19,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// User workflow preferences
         /// </summary>
-        [JsonProperty("user")]
+        [JsonProperty("user", NullValueHandling = NullValueHandling.Include)]
         public User? User { get; set; } = null;
 
         /// <summary>

@@ -26,14 +26,11 @@ namespace Novu.Models.Components
 
         public static UserAllType WorkflowPreferenceDto { get { return new UserAllType("WorkflowPreferenceDto"); } }
 
-        public static UserAllType Null { get { return new UserAllType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(UserAllType v) { return v.Value; }
         public static UserAllType FromString(string v) {
             switch(v) {
                 case "WorkflowPreferenceDto": return WorkflowPreferenceDto;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for UserAllType");
             }
         }
@@ -77,27 +74,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static UserAll CreateNull()
-        {
-            UserAllType typ = UserAllType.Null;
-            return new UserAll(typ);
-        }
-
         public class UserAllConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(UserAll);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -145,17 +135,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 UserAll res = (UserAll)value;
-                if (UserAllType.FromString(res.Type).Equals(UserAllType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.WorkflowPreferenceDto != null)
                 {

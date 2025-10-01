@@ -37,7 +37,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Control values for the SMS step.
         /// </summary>
-        [JsonProperty("controlValues")]
+        [JsonProperty("controlValues", NullValueHandling = NullValueHandling.Include)]
         public SmsStepUpsertDtoControlValues? ControlValues { get; set; }
     }
 }

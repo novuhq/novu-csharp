@@ -37,7 +37,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Control values for the Email step.
         /// </summary>
-        [JsonProperty("controlValues")]
+        [JsonProperty("controlValues", NullValueHandling = NullValueHandling.Include)]
         public EmailStepUpsertDtoControlValues? ControlValues { get; set; }
     }
 }

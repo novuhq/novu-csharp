@@ -50,3 +50,9 @@ WorkflowResponseDtoSteps.CreateDigest(/* values here */);
 ```csharp
 WorkflowResponseDtoSteps.CreateCustom(/* values here */);
 ```
+
+### Throttle
+
+```csharp
+WorkflowResponseDtoSteps.CreateThrottle(/* values here */);
+```

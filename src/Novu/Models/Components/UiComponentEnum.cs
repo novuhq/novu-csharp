@@ -58,6 +58,18 @@ namespace Novu.Models.Components
         DelayAmount,
         [JsonProperty("DELAY_UNIT")]
         DelayUnit,
+        [JsonProperty("THROTTLE_TYPE")]
+        ThrottleType,
+        [JsonProperty("THROTTLE_WINDOW")]
+        ThrottleWindow,
+        [JsonProperty("THROTTLE_UNIT")]
+        ThrottleUnit,
+        [JsonProperty("THROTTLE_DYNAMIC_KEY")]
+        ThrottleDynamicKey,
+        [JsonProperty("THROTTLE_THRESHOLD")]
+        ThrottleThreshold,
+        [JsonProperty("THROTTLE_KEY")]
+        ThrottleKey,
         [JsonProperty("EXTEND_TO_SCHEDULE")]
         ExtendToSchedule,
         [JsonProperty("SMS_BODY")]

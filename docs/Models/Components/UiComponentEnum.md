@@ -27,6 +27,12 @@ Component type for the UI Schema Property
 | `DelayType`                        | DELAY_TYPE                         |
 | `DelayAmount`                      | DELAY_AMOUNT                       |
 | `DelayUnit`                        | DELAY_UNIT                         |
+| `ThrottleType`                     | THROTTLE_TYPE                      |
+| `ThrottleWindow`                   | THROTTLE_WINDOW                    |
+| `ThrottleUnit`                     | THROTTLE_UNIT                      |
+| `ThrottleDynamicKey`               | THROTTLE_DYNAMIC_KEY               |
+| `ThrottleThreshold`                | THROTTLE_THRESHOLD                 |
+| `ThrottleKey`                      | THROTTLE_KEY                       |
 | `ExtendToSchedule`                 | EXTEND_TO_SCHEDULE                 |
 | `SmsBody`                          | SMS_BODY                           |
 | `ChatBody`                         | CHAT_BODY                          |

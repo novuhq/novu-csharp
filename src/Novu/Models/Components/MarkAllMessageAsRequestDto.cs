@@ -19,7 +19,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// Optional feed identifier or array of feed identifiers
         /// </summary>
-        [JsonProperty("feedIdentifier")]
+        [JsonProperty("feedIdentifier", NullValueHandling = NullValueHandling.Include)]
         public FeedIdentifier? FeedIdentifier { get; set; }
 
         /// <summary>

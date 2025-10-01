@@ -40,8 +40,6 @@ namespace Novu.Models.Components
 
         public static UpdateWorkflowDtoStepsType Custom { get { return new UpdateWorkflowDtoStepsType("custom"); } }
 
-        public static UpdateWorkflowDtoStepsType Null { get { return new UpdateWorkflowDtoStepsType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(UpdateWorkflowDtoStepsType v) { return v.Value; }
         public static UpdateWorkflowDtoStepsType FromString(string v) {
@@ -54,7 +52,6 @@ namespace Novu.Models.Components
                 case "delay": return Delay;
                 case "digest": return Digest;
                 case "custom": return Custom;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for UpdateWorkflowDtoStepsType");
             }
         }
@@ -188,21 +185,19 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static UpdateWorkflowDtoSteps CreateNull()
-        {
-            UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Null;
-            return new UpdateWorkflowDtoSteps(typ);
-        }
-
         public class UpdateWorkflowDtoStepsConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(UpdateWorkflowDtoSteps);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    throw new InvalidOperationException("Received unexpected null JSON value");
+                }
+
                 JObject jo = JObject.Load(reader);
                 string discriminator = jo.GetValue("type")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == UpdateWorkflowDtoStepsType.InApp.ToString())
@@ -251,17 +246,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 UpdateWorkflowDtoSteps res = (UpdateWorkflowDtoSteps)value;
-                if (UpdateWorkflowDtoStepsType.FromString(res.Type).Equals(UpdateWorkflowDtoStepsType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.InAppStepUpsertDto != null)
                 {

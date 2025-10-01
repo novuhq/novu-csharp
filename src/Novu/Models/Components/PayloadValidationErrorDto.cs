@@ -31,7 +31,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// The actual value that failed validation
         /// </summary>
-        [JsonProperty("value")]
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
         public PayloadValidationErrorDtoValue? Value { get; set; } = null;
 
         /// <summary>

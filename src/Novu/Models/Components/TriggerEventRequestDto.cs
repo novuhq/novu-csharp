@@ -43,7 +43,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// The recipients list of people who will receive the notification.
         /// </summary>
-        [JsonProperty("to")]
+        [JsonProperty("to", NullValueHandling = NullValueHandling.Include)]
         public To To { get; set; } = default!;
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Novu.Models.Components
         ///     If a new actor object is provided, we will create a new subscriber in our system
         /// </remarks>
         /// </summary>
-        [JsonProperty("actor")]
+        [JsonProperty("actor", NullValueHandling = NullValueHandling.Include)]
         public Actor? Actor { get; set; }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Novu.Models.Components
         ///     Existing tenants will be updated with the provided details.
         /// </remarks>
         /// </summary>
-        [JsonProperty("tenant")]
+        [JsonProperty("tenant", NullValueHandling = NullValueHandling.Include)]
         public Tenant? Tenant { get; set; }
     }
 }

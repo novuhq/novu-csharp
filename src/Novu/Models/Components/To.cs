@@ -32,8 +32,6 @@ namespace Novu.Models.Components
 
         public static ToType TopicPayloadDto { get { return new ToType("TopicPayloadDto"); } }
 
-        public static ToType Null { get { return new ToType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(ToType v) { return v.Value; }
         public static ToType FromString(string v) {
@@ -42,7 +40,6 @@ namespace Novu.Models.Components
                 case "str": return Str;
                 case "SubscriberPayloadDto": return SubscriberPayloadDto;
                 case "TopicPayloadDto": return TopicPayloadDto;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ToType");
             }
         }
@@ -119,27 +116,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static To CreateNull()
-        {
-            ToType typ = ToType.Null;
-            return new To(typ);
-        }
-
         public class ToConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(To);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -234,17 +224,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 To res = (To)value;
-                if (ToType.FromString(res.Type).Equals(ToType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.ArrayOfTo1 != null)
                 {

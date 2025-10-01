@@ -16,7 +16,7 @@ namespace Novu.Models.Components
     public class MessageMarkAsRequestDto
     {
 
-        [JsonProperty("messageId")]
+        [JsonProperty("messageId", NullValueHandling = NullValueHandling.Include)]
         public MessageId MessageId { get; set; } = default!;
 
         [JsonProperty("markAs")]

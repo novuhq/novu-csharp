@@ -26,14 +26,11 @@ namespace Novu.Models.Components
 
         public static AllType WorkflowPreferenceDto { get { return new AllType("WorkflowPreferenceDto"); } }
 
-        public static AllType Null { get { return new AllType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(AllType v) { return v.Value; }
         public static AllType FromString(string v) {
             switch(v) {
                 case "WorkflowPreferenceDto": return WorkflowPreferenceDto;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for AllType");
             }
         }
@@ -77,27 +74,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static All CreateNull()
-        {
-            AllType typ = AllType.Null;
-            return new All(typ);
-        }
-
         public class AllConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(All);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -145,17 +135,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 All res = (All)value;
-                if (AllType.FromString(res.Type).Equals(AllType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.WorkflowPreferenceDto != null)
                 {

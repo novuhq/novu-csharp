@@ -45,6 +45,12 @@ Steps.CreateDelay(/* values here */);
 Steps.CreateDigest(/* values here */);
 ```
 
+### Throttle
+
+```csharp
+Steps.CreateThrottle(/* values here */);
+```
+
 ### Custom
 
 ```csharp

@@ -28,15 +28,12 @@ namespace Novu.Models.Components
 
         public static CustomStepUpsertDtoControlValuesType MapOfAny { get { return new CustomStepUpsertDtoControlValuesType("mapOfAny"); } }
 
-        public static CustomStepUpsertDtoControlValuesType Null { get { return new CustomStepUpsertDtoControlValuesType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(CustomStepUpsertDtoControlValuesType v) { return v.Value; }
         public static CustomStepUpsertDtoControlValuesType FromString(string v) {
             switch(v) {
                 case "CustomControlDto": return CustomControlDto;
                 case "mapOfAny": return MapOfAny;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for CustomStepUpsertDtoControlValuesType");
             }
         }
@@ -91,27 +88,20 @@ namespace Novu.Models.Components
             return res;
         }
 
-        public static CustomStepUpsertDtoControlValues CreateNull()
-        {
-            CustomStepUpsertDtoControlValuesType typ = CustomStepUpsertDtoControlValuesType.Null;
-            return new CustomStepUpsertDtoControlValues(typ);
-        }
-
         public class CustomStepUpsertDtoControlValuesConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(CustomStepUpsertDtoControlValues);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -179,17 +169,13 @@ namespace Novu.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 CustomStepUpsertDtoControlValues res = (CustomStepUpsertDtoControlValues)value;
-                if (CustomStepUpsertDtoControlValuesType.FromString(res.Type).Equals(CustomStepUpsertDtoControlValuesType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.CustomControlDto != null)
                 {

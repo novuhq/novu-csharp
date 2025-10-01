@@ -54,7 +54,7 @@ namespace Novu.Models.Components
         ///     
         /// </remarks>
         /// </summary>
-        [JsonProperty("actor")]
+        [JsonProperty("actor", NullValueHandling = NullValueHandling.Include)]
         public TriggerEventToAllRequestDtoActor? Actor { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Novu.Models.Components
         ///     
         /// </remarks>
         /// </summary>
-        [JsonProperty("tenant")]
+        [JsonProperty("tenant", NullValueHandling = NullValueHandling.Include)]
         public TriggerEventToAllRequestDtoTenant? Tenant { get; set; }
     }
 }
