@@ -36,13 +36,19 @@ namespace Novu.Models.Components
         /// Amount of time to delay.
         /// </summary>
         [JsonProperty("amount")]
-        public double Amount { get; set; } = default!;
+        public double? Amount { get; set; }
 
         /// <summary>
         /// Unit of time for the delay amount.
         /// </summary>
         [JsonProperty("unit")]
-        public DelayStepResponseDtoUnit Unit { get; set; } = default!;
+        public DelayStepResponseDtoUnit? Unit { get; set; }
+
+        /// <summary>
+        /// Cron expression for the delay. Min length 1.
+        /// </summary>
+        [JsonProperty("cron")]
+        public string? Cron { get; set; }
 
         [JsonProperty("additionalProperties")]
         public Dictionary<string, object>? AdditionalProperties { get; set; }

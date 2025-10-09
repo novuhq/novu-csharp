@@ -23,6 +23,12 @@ namespace Novu.Models.Components
         public string Name { get; set; } = default!;
 
         /// <summary>
+        /// Enable or disable translations for this layout
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool? IsTranslationEnabled { get; set; } = false;
+
+        /// <summary>
         /// Control values for the layout
         /// </summary>
         [JsonProperty("controlValues")]

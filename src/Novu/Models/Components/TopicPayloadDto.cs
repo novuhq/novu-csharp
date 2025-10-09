@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
     
     public class TopicPayloadDto
     {
@@ -21,5 +22,11 @@ namespace Novu.Models.Components
 
         [JsonProperty("type")]
         public TriggerRecipientsTypeEnum Type { get; set; } = default!;
+
+        /// <summary>
+        /// Optional array of subscriber IDs to exclude from the topic trigger
+        /// </summary>
+        [JsonProperty("exclude")]
+        public List<string>? Exclude { get; set; }
     }
 }

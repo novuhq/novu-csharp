@@ -58,5 +58,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("cronExpression")]
         public string? CronExpression { get; set; }
+
+        /// <summary>
+        /// Until date for scheduling
+        /// </summary>
+        [JsonProperty("untilDate")]
+        public string? UntilDate { get; set; }
     }
 }

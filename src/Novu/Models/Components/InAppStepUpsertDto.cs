@@ -17,10 +17,16 @@ namespace Novu.Models.Components
     {
 
         /// <summary>
-        /// Unique identifier of the step
+        /// Database identifier of the step. Used for updating the step.
         /// </summary>
         [JsonProperty("_id")]
         public string? Id { get; set; }
+
+        /// <summary>
+        /// Unique identifier for the step
+        /// </summary>
+        [JsonProperty("stepId")]
+        public string? StepId { get; set; }
 
         /// <summary>
         /// Name of the step

@@ -172,7 +172,6 @@ namespace Novu.Models.Components
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 CustomStepUpsertDtoControlValues res = (CustomStepUpsertDtoControlValues)value;

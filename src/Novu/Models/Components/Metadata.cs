@@ -240,7 +240,6 @@ namespace Novu.Models.Components
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 Metadata res = (Metadata)value;

@@ -20,6 +20,8 @@ namespace Novu.Models.Requests
     {
         [JsonProperty("workflow")]
         Workflow,
+        [JsonProperty("layout")]
+        Layout,
     }
 
     public static class TranslationControllerDeleteTranslationEndpointPathParamResourceTypeExtension

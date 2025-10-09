@@ -48,16 +48,20 @@ namespace Novu.Models.Components
         DigestAmount,
         [JsonProperty("DIGEST_UNIT")]
         DigestUnit,
+        [JsonProperty("DIGEST_TYPE")]
+        DigestType,
         [JsonProperty("DIGEST_KEY")]
         DigestKey,
         [JsonProperty("DIGEST_CRON")]
         DigestCron,
-        [JsonProperty("DELAY_TYPE")]
-        DelayType,
         [JsonProperty("DELAY_AMOUNT")]
         DelayAmount,
         [JsonProperty("DELAY_UNIT")]
         DelayUnit,
+        [JsonProperty("DELAY_TYPE")]
+        DelayType,
+        [JsonProperty("DELAY_CRON")]
+        DelayCron,
         [JsonProperty("THROTTLE_TYPE")]
         ThrottleType,
         [JsonProperty("THROTTLE_WINDOW")]

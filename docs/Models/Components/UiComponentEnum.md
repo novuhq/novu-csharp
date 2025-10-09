@@ -22,11 +22,13 @@ Component type for the UI Schema Property
 | `UrlTextBox`                       | URL_TEXT_BOX                       |
 | `DigestAmount`                     | DIGEST_AMOUNT                      |
 | `DigestUnit`                       | DIGEST_UNIT                        |
+| `DigestType`                       | DIGEST_TYPE                        |
 | `DigestKey`                        | DIGEST_KEY                         |
 | `DigestCron`                       | DIGEST_CRON                        |
-| `DelayType`                        | DELAY_TYPE                         |
 | `DelayAmount`                      | DELAY_AMOUNT                       |
 | `DelayUnit`                        | DELAY_UNIT                         |
+| `DelayType`                        | DELAY_TYPE                         |
+| `DelayCron`                        | DELAY_CRON                         |
 | `ThrottleType`                     | THROTTLE_TYPE                      |
 | `ThrottleWindow`                   | THROTTLE_WINDOW                    |
 | `ThrottleUnit`                     | THROTTLE_UNIT                      |
