@@ -38,7 +38,7 @@ namespace Novu
         /// Retrieve a translation group
         /// 
         /// <remarks>
-        /// Retrieves a single translation group by resource type (workflow) and resource ID (workflowId)
+        /// Retrieves a single translation group by resource type (workflow, layout) and resource ID (workflowId, layoutId)
         /// </remarks>
         /// </summary>
         Task<TranslationControllerGetTranslationGroupEndpointResponse> RetrieveAsync(TranslationControllerGetTranslationGroupEndpointPathParamResourceType resourceType, string resourceId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -48,8 +48,8 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.4.0";
-        private const string _sdkGenVersion = "2.716.16";
+        private const string _sdkVersion = "2.5.0";
+        private const string _sdkGenVersion = "2.723.8";
         private const string _openapiDocVersion = "3.9.0";
 
         public Groups(SDKConfig config)
@@ -77,7 +77,7 @@ namespace Novu
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_deleteTranslationGroupEndpoint", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_deleteTranslationGroupEndpoint", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -192,7 +192,7 @@ namespace Novu
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_getTranslationGroupEndpoint", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_getTranslationGroupEndpoint", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)

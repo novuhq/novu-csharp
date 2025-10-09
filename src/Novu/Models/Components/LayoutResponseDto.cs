@@ -48,6 +48,12 @@ namespace Novu.Models.Components
         public bool IsDefault { get; set; } = default!;
 
         /// <summary>
+        /// Whether the layout translations are enabled
+        /// </summary>
+        [JsonProperty("isTranslationEnabled")]
+        public bool IsTranslationEnabled { get; set; } = default!;
+
+        /// <summary>
         /// Last updated timestamp
         /// </summary>
         [JsonProperty("updatedAt")]

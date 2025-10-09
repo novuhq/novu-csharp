@@ -8,3 +8,4 @@ The resource type to associate translation with
 | Name       | Value      |
 | ---------- | ---------- |
 | `Workflow` | workflow   |
+| `Layout`   | layout     |

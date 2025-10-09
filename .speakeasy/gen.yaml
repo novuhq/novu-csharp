@@ -22,7 +22,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.4.0
+  version: 2.5.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: NovuError
@@ -30,6 +30,7 @@ csharp:
   defaultErrorName: APIException
   disableNamespacePascalCasingApr2024: true
   dotnetVersion: net8.0
+  enableCancellationToken: false
   enableSourceLink: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first

@@ -227,7 +227,6 @@ namespace Novu.Models.Components
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 To res = (To)value;

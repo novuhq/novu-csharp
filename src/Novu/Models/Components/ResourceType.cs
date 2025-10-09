@@ -20,6 +20,8 @@ namespace Novu.Models.Components
     {
         [JsonProperty("workflow")]
         Workflow,
+        [JsonProperty("layout")]
+        Layout,
     }
 
     public static class ResourceTypeExtension

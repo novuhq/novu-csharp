@@ -9,22 +9,12 @@
 #nullable enable
 namespace Novu.Models.Components
 {
-    using Newtonsoft.Json;
     using Novu.Utils;
     
-    public class DuplicateLayoutDto
+    /// <summary>
+    /// All translations for given locale organized by layout identifier
+    /// </summary>
+    public class Layouts
     {
-
-        /// <summary>
-        /// Name of the layout
-        /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; } = default!;
-
-        /// <summary>
-        /// Enable or disable translations for this layout
-        /// </summary>
-        [JsonProperty("isTranslationEnabled")]
-        public bool? IsTranslationEnabled { get; set; } = false;
     }
 }

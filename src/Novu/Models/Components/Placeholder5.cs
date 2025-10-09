@@ -209,7 +209,6 @@ namespace Novu.Models.Components
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 Placeholder5 res = (Placeholder5)value;

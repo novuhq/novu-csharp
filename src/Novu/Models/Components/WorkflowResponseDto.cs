@@ -60,7 +60,7 @@ namespace Novu.Models.Components
         public bool? IsTranslationEnabled { get; set; } = false;
 
         /// <summary>
-        /// Unique identifier of the workflow
+        /// Database identifier of the workflow
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;

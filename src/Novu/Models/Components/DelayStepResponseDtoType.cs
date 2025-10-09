@@ -20,6 +20,8 @@ namespace Novu.Models.Components
     {
         [JsonProperty("regular")]
         Regular,
+        [JsonProperty("timed")]
+        Timed,
     }
 
     public static class DelayStepResponseDtoTypeExtension

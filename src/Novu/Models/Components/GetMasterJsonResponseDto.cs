@@ -21,5 +21,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("workflows")]
         public Models.Components.Workflows Workflows { get; set; } = default!;
+
+        /// <summary>
+        /// All translations for given locale organized by layout identifier
+        /// </summary>
+        [JsonProperty("layouts")]
+        public Models.Components.Layouts Layouts { get; set; } = default!;
     }
 }
