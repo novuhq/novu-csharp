@@ -47,7 +47,7 @@ namespace Novu.Models.Errors
         public string? UpdatedAt { get; set; }
     }
 
-    public class TopicResponseDto : NovuError
+    public class TopicResponseDto : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

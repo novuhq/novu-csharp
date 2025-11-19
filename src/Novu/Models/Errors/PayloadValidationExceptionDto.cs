@@ -78,7 +78,7 @@ namespace Novu.Models.Errors
         public Schema? Schema { get; set; }
     }
 
-    public class PayloadValidationExceptionDto : NovuError
+    public class PayloadValidationExceptionDto : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

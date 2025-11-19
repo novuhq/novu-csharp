@@ -49,3 +49,4 @@
 | `AccessKey`                                         | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
 | `AppSid`                                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
 | `SenderId`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `AppIOBaseUrl`                                      | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |

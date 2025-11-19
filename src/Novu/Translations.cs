@@ -25,7 +25,7 @@ namespace Novu
     /// <summary>
     /// Used to localize your notifications to different languages.
     /// 
-    /// <see>https://docs.novu.co/platform/workflow/translations}</see>
+    /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
     /// </summary>
     public interface ITranslations
     {
@@ -72,15 +72,15 @@ namespace Novu
     /// <summary>
     /// Used to localize your notifications to different languages.
     /// 
-    /// <see>https://docs.novu.co/platform/workflow/translations}</see>
+    /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
     /// </summary>
     public class Translations: ITranslations
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.5.0";
-        private const string _sdkGenVersion = "2.723.8";
-        private const string _openapiDocVersion = "3.9.0";
+        private const string _sdkVersion = "3.11.0";
+        private const string _sdkGenVersion = "2.755.9";
+        private const string _openapiDocVersion = "3.11.0";
         public IGroups Groups { get; private set; }
         public IMaster Master { get; private set; }
 

@@ -25,10 +25,16 @@ List all messages for the current environment.
 using Novu;
 using Novu.Models.Components;
 using Novu.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-MessagesControllerGetMessagesRequest req = new MessagesControllerGetMessagesRequest() {};
+MessagesControllerGetMessagesRequest req = new MessagesControllerGetMessagesRequest() {
+    ContextKeys = new List<string>() {
+        "tenant:org-123",
+        "region:us-east-1",
+    },
+};
 
 var res = await sdk.Messages.GetAsync(req);
 

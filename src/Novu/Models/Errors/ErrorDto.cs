@@ -58,7 +58,7 @@ namespace Novu.Models.Errors
         public string? Message { get; set; }
     }
 
-    public class ErrorDto : NovuError
+    public class ErrorDto : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

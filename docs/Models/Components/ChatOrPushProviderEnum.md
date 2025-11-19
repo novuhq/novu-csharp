@@ -26,3 +26,4 @@ The provider identifier for the credentials
 | `Pushpad`          | pushpad            |
 | `PushWebhook`      | push-webhook       |
 | `PusherBeams`      | pusher-beams       |
+| `Appio`            | appio              |

@@ -14,9 +14,15 @@ namespace Novu.Models.Requests
     public class InboundWebhooksControllerHandleWebhookRequest
     {
 
+        /// <summary>
+        /// The environment identifier
+        /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=environmentId")]
         public string EnvironmentId { get; set; } = default!;
 
+        /// <summary>
+        /// The integration identifier for the delivery provider
+        /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=integrationId")]
         public string IntegrationId { get; set; } = default!;
 
@@ -25,5 +31,11 @@ namespace Novu.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
+
+        /// <summary>
+        /// Webhook event payload from the delivery provider
+        /// </summary>
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public object RequestBody { get; set; } = default!;
     }
 }

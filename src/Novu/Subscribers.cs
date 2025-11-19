@@ -89,21 +89,21 @@ namespace Novu
         Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(BulkSubscriberCreateDto bulkSubscriberCreateDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Upsert provider credentials
-        /// 
-        /// <remarks>
-        /// Upsert credentials for a provider such as slack and push tokens. <br/>
-        ///       **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
-        /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
         /// Update provider credentials
         /// 
         /// <remarks>
         /// Update credentials for a provider such as **slack** and **FCM**. <br/>
         ///       **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
+        /// </remarks>
+        /// </summary>
+        Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+
+        /// <summary>
+        /// Upsert provider credentials
+        /// 
+        /// <remarks>
+        /// Upsert credentials for a provider such as **slack** and **FCM**. <br/>
+        ///       **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
         /// </remarks>
         /// </summary>
         Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
@@ -132,9 +132,9 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.5.0";
-        private const string _sdkGenVersion = "2.723.8";
-        private const string _openapiDocVersion = "3.9.0";
+        private const string _sdkVersion = "3.11.0";
+        private const string _sdkGenVersion = "2.755.9";
+        private const string _openapiDocVersion = "3.11.0";
         public IPreferences Preferences { get; private set; }
         public INovuTopics Topics { get; private set; }
 

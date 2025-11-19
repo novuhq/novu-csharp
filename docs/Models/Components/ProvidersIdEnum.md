@@ -62,6 +62,8 @@ Provider ID of the job
 | `Unifonic`         | unifonic           |
 | `Smsmode`          | smsmode            |
 | `Imedia`           | imedia             |
+| `Sinch`            | sinch              |
+| `IsendproSms`      | isendpro-sms       |
 | `Fcm`              | fcm                |
 | `Apns`             | apns               |
 | `Expo`             | expo               |
@@ -69,6 +71,7 @@ Provider ID of the job
 | `Pushpad`          | pushpad            |
 | `PushWebhook`      | push-webhook       |
 | `PusherBeams`      | pusher-beams       |
+| `Appio`            | appio              |
 | `Novu`             | novu               |
 | `Slack`            | slack              |
 | `Discord`          | discord            |

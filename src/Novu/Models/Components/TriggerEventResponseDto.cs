@@ -27,7 +27,7 @@ namespace Novu.Models.Components
         /// Status of the trigger
         /// </summary>
         [JsonProperty("status")]
-        public Status Status { get; set; } = default!;
+        public TriggerEventResponseDtoStatus Status { get; set; } = default!;
 
         /// <summary>
         /// In case of an error, this field will contain the error message(s)

@@ -9,48 +9,10 @@ Novu Documentation
 
 ### Available Operations
 
-* [InboundWebhooksControllerHandleWebhook](#inboundwebhookscontrollerhandlewebhook)
 * [Trigger](#trigger) - Trigger event
 * [Cancel](#cancel) - Cancel triggered event
 * [Broadcast](#broadcast) - Broadcast event to all
 * [TriggerBulk](#triggerbulk) - Bulk trigger event
-
-## InboundWebhooksControllerHandleWebhook
-
-### Example Usage
-
-<!-- UsageSnippet language="csharp" operationID="InboundWebhooksController_handleWebhook" method="post" path="/v2/inbound-webhooks/delivery-providers/{environmentId}/{integrationId}" -->
-```csharp
-using Novu;
-using Novu.Models.Components;
-
-var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
-
-var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
-    environmentId: "<id>",
-    integrationId: "<id>"
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                         | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `EnvironmentId`                   | *string*                          | :heavy_check_mark:                | N/A                               |
-| `IntegrationId`                   | *string*                          | :heavy_check_mark:                | N/A                               |
-| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
-
-### Response
-
-**[InboundWebhooksControllerHandleWebhookResponse](../../Models/Requests/InboundWebhooksControllerHandleWebhookResponse.md)**
-
-### Errors
-
-| Error Type                      | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| Novu.Models.Errors.APIException | 4XX, 5XX                        | \*/\*                           |
 
 ## Trigger
 
@@ -79,6 +41,14 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     To = To.CreateStr(
         "SUBSCRIBER_ID"
     ),
+    Actor = Actor.CreateStr(
+        "<value>"
+    ),
+    Context = new Dictionary<string, Context>() {
+        { "key", Context.CreateStr(
+            "org-acme"
+        ) },
+    },
 });
 
 // handle response
@@ -182,6 +152,18 @@ var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEvent
             } },
         },
     },
+    Actor = TriggerEventToAllRequestDtoActor.CreateSubscriberPayloadDto(
+        new SubscriberPayloadDto() {
+            FirstName = "John",
+            LastName = "Doe",
+            Email = "john.doe@example.com",
+            Phone = "+1234567890",
+            Avatar = "https://example.com/avatar.jpg",
+            Locale = "en-US",
+            Timezone = "America/New_York",
+            SubscriberId = "<id>",
+        }
+    ),
 });
 
 // handle response

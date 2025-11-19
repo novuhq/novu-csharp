@@ -1,28 +1,9 @@
 # Data
 
+Optional custom data to associate with this context.
 
-## Supported Types
 
-### Str
+## Fields
 
-```csharp
-Data.CreateStr(/* values here */);
-```
-
-### ArrayOfStr
-
-```csharp
-Data.CreateArrayOfStr(/* values here */);
-```
-
-### Boolean
-
-```csharp
-Data.CreateBoolean(/* values here */);
-```
-
-### Number
-
-```csharp
-Data.CreateNumber(/* values here */);
-```
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

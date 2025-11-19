@@ -14,7 +14,7 @@ namespace Novu.Models.Errors
     using System.Net.Http;
     using System.Net.Http.Headers;
 
-    public class NovuError : Exception
+    public class BaseException : Exception
     {
         /// <summary>
         /// Error Message
@@ -36,14 +36,14 @@ namespace Novu.Models.Errors
         /// </summary>
         public string Body { get; }
 
-        public NovuError(
+        public BaseException(
             string message,
             HttpRequestMessage request,
             HttpResponseMessage response,
             string body
         ) : this(message, request, response, body, null) {}
 
-        public NovuError(
+        public BaseException(
             string message,
             HttpRequestMessage request,
             HttpResponseMessage response,

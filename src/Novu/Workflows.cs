@@ -25,7 +25,7 @@ namespace Novu
     /// <summary>
     /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.
     /// 
-    /// <see>https://docs.novu.co/workflows}</see>
+    /// <see href="https://docs.novu.co/workflows">https://docs.novu.co/workflows</see>
     /// </summary>
     public interface IWorkflows
     {
@@ -98,15 +98,15 @@ namespace Novu
     /// <summary>
     /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.
     /// 
-    /// <see>https://docs.novu.co/workflows}</see>
+    /// <see href="https://docs.novu.co/workflows">https://docs.novu.co/workflows</see>
     /// </summary>
     public class Workflows: IWorkflows
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.5.0";
-        private const string _sdkGenVersion = "2.723.8";
-        private const string _openapiDocVersion = "3.9.0";
+        private const string _sdkVersion = "3.11.0";
+        private const string _sdkGenVersion = "2.755.9";
+        private const string _openapiDocVersion = "3.11.0";
         public ISteps Steps { get; private set; }
 
         public Workflows(SDKConfig config)

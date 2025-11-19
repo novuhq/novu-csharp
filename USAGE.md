@@ -20,6 +20,14 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     To = To.CreateStr(
         "SUBSCRIBER_ID"
     ),
+    Actor = Actor.CreateStr(
+        "<value>"
+    ),
+    Context = new Dictionary<string, Context>() {
+        { "key", Context.CreateStr(
+            "org-acme"
+        ) },
+    },
 });
 
 // handle response
@@ -64,6 +72,18 @@ var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEvent
             } },
         },
     },
+    Actor = TriggerEventToAllRequestDtoActor.CreateSubscriberPayloadDto(
+        new SubscriberPayloadDto() {
+            FirstName = "John",
+            LastName = "Doe",
+            Email = "john.doe@example.com",
+            Phone = "+1234567890",
+            Avatar = "https://example.com/avatar.jpg",
+            Locale = "en-US",
+            Timezone = "America/New_York",
+            SubscriberId = "<id>",
+        }
+    ),
 });
 
 // handle response

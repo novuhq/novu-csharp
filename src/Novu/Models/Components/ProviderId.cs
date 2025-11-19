@@ -56,6 +56,8 @@ namespace Novu.Models.Components
         PushWebhook,
         [JsonProperty("pusher-beams")]
         PusherBeams,
+        [JsonProperty("appio")]
+        Appio,
     }
 
     public static class ProviderIdExtension

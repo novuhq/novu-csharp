@@ -62,6 +62,8 @@ namespace Novu.Models.Components
         DelayType,
         [JsonProperty("DELAY_CRON")]
         DelayCron,
+        [JsonProperty("DELAY_DYNAMIC_KEY")]
+        DelayDynamicKey,
         [JsonProperty("THROTTLE_TYPE")]
         ThrottleType,
         [JsonProperty("THROTTLE_WINDOW")]

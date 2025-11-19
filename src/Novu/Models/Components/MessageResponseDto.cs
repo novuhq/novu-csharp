@@ -220,5 +220,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("overrides")]
         public MessageResponseDtoOverrides? Overrides { get; set; }
+
+        /// <summary>
+        /// Context (single or multi) in which the message was sent
+        /// </summary>
+        [JsonProperty("contextKeys")]
+        public List<string>? ContextKeys { get; set; }
     }
 }

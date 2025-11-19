@@ -140,7 +140,7 @@ namespace Novu.Models.Errors
         public string UpdatedAt { get; set; } = default!;
     }
 
-    public class SubscriberResponseDto : NovuError
+    public class SubscriberResponseDto : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

@@ -14,24 +14,50 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// Status of the trigger
+    /// Status of the event
     /// </summary>
     public enum Status
     {
-        [JsonProperty("error")]
-        Error,
-        [JsonProperty("trigger_not_active")]
-        TriggerNotActive,
-        [JsonProperty("no_workflow_active_steps_defined")]
-        NoWorkflowActiveStepsDefined,
-        [JsonProperty("no_workflow_steps_defined")]
-        NoWorkflowStepsDefined,
-        [JsonProperty("processed")]
-        Processed,
-        [JsonProperty("no_tenant_found")]
-        NoTenantFound,
-        [JsonProperty("invalid_recipients")]
-        InvalidRecipients,
+        [JsonProperty("opened")]
+        Opened,
+        [JsonProperty("rejected")]
+        Rejected,
+        [JsonProperty("sent")]
+        Sent,
+        [JsonProperty("deferred")]
+        Deferred,
+        [JsonProperty("delivered")]
+        Delivered,
+        [JsonProperty("bounced")]
+        Bounced,
+        [JsonProperty("dropped")]
+        Dropped,
+        [JsonProperty("clicked")]
+        Clicked,
+        [JsonProperty("blocked")]
+        Blocked,
+        [JsonProperty("spam")]
+        Spam,
+        [JsonProperty("unsubscribed")]
+        Unsubscribed,
+        [JsonProperty("delayed")]
+        Delayed,
+        [JsonProperty("complaint")]
+        Complaint,
+        [JsonProperty("created")]
+        Created,
+        [JsonProperty("accepted")]
+        Accepted,
+        [JsonProperty("queued")]
+        Queued,
+        [JsonProperty("sending")]
+        Sending,
+        [JsonProperty("failed")]
+        Failed,
+        [JsonProperty("undelivered")]
+        Undelivered,
+        [JsonProperty("dismissed")]
+        Dismissed,
     }
 
     public static class StatusExtension

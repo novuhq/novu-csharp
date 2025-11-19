@@ -11,8 +11,8 @@
 * [Patch](#patch) - Update a subscriber
 * [Delete](#delete) - Delete a subscriber
 * [CreateBulk](#createbulk) - Bulk create subscribers
-* [UpdateCredentials](#updatecredentials) - Upsert provider credentials
-* [AppendCredentials](#appendcredentials) - Update provider credentials
+* [UpdateCredentials](#updatecredentials) - Update provider credentials
+* [AppendCredentials](#appendcredentials) - Upsert provider credentials
 * [DeleteCredentials](#deletecredentials) - Delete provider credentials
 * [UpdateOnlineStatus](#updateonlinestatus) - Update subscriber online status
 
@@ -73,6 +73,13 @@ using Novu.Models.Components;
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Subscribers.CreateAsync(createSubscriberRequestDto: new CreateSubscriberRequestDto() {
+    FirstName = "John",
+    LastName = "Doe",
+    Email = "john.doe@example.com",
+    Phone = "+1234567890",
+    Avatar = "https://example.com/avatar.jpg",
+    Locale = "en-US",
+    Timezone = "America/New_York",
     SubscriberId = "<id>",
 });
 
@@ -158,7 +165,15 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Subscribers.PatchAsync(
     subscriberId: "<id>",
-    patchSubscriberRequestDto: new PatchSubscriberRequestDto() {}
+    patchSubscriberRequestDto: new PatchSubscriberRequestDto() {
+        FirstName = "John",
+        LastName = "Doe",
+        Email = "john.doe@example.com",
+        Phone = "+1234567890",
+        Avatar = "https://example.com/avatar.jpg",
+        Locale = "en-US",
+        Timezone = "America/New_York",
+    }
 );
 
 // handle response
@@ -276,8 +291,8 @@ var res = await sdk.Subscribers.CreateBulkAsync(bulkSubscriberCreateDto: new Bul
 
 ## UpdateCredentials
 
-Upsert credentials for a provider such as slack and push tokens. 
-      **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
+Update credentials for a provider such as **slack** and **FCM**. 
+      **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
 
 ### Example Usage
 
@@ -337,8 +352,8 @@ var res = await sdk.Subscribers.UpdateCredentialsAsync(
 
 ## AppendCredentials
 
-Update credentials for a provider such as **slack** and **FCM**. 
-      **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
+Upsert credentials for a provider such as **slack** and **FCM**. 
+      **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
 
 ### Example Usage
 

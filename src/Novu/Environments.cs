@@ -25,7 +25,7 @@ namespace Novu
     /// <summary>
     /// Environments allow you to manage different stages of your application development lifecycle. Each environment has its own set of API keys and configurations, enabling you to separate development, staging, and production workflows.
     /// 
-    /// <see>https://docs.novu.co/platform/environments}</see>
+    /// <see href="https://docs.novu.co/platform/environments">https://docs.novu.co/platform/environments</see>
     /// </summary>
     public interface IEnvironments
     {
@@ -84,15 +84,15 @@ namespace Novu
     /// <summary>
     /// Environments allow you to manage different stages of your application development lifecycle. Each environment has its own set of API keys and configurations, enabling you to separate development, staging, and production workflows.
     /// 
-    /// <see>https://docs.novu.co/platform/environments}</see>
+    /// <see href="https://docs.novu.co/platform/environments">https://docs.novu.co/platform/environments</see>
     /// </summary>
     public class Environments: IEnvironments
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.5.0";
-        private const string _sdkGenVersion = "2.723.8";
-        private const string _openapiDocVersion = "3.9.0";
+        private const string _sdkVersion = "3.11.0";
+        private const string _sdkGenVersion = "2.755.9";
+        private const string _openapiDocVersion = "3.11.0";
 
         public Environments(SDKConfig config)
         {

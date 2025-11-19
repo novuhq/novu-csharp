@@ -25,7 +25,7 @@ namespace Novu
     /// <summary>
     /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.
     /// 
-    /// <see>https://docs.novu.co/subscribers/topics}</see>
+    /// <see href="https://docs.novu.co/subscribers/topics">https://docs.novu.co/subscribers/topics</see>
     /// </summary>
     public interface ITopics
     {
@@ -83,15 +83,15 @@ namespace Novu
     /// <summary>
     /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.
     /// 
-    /// <see>https://docs.novu.co/subscribers/topics}</see>
+    /// <see href="https://docs.novu.co/subscribers/topics">https://docs.novu.co/subscribers/topics</see>
     /// </summary>
     public class Topics: ITopics
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.5.0";
-        private const string _sdkGenVersion = "2.723.8";
-        private const string _openapiDocVersion = "3.9.0";
+        private const string _sdkVersion = "3.11.0";
+        private const string _sdkGenVersion = "2.755.9";
+        private const string _openapiDocVersion = "3.11.0";
         public ISubscriptions Subscriptions { get; private set; }
 
         public Topics(SDKConfig config)

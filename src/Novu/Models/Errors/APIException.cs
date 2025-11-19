@@ -13,7 +13,7 @@ namespace Novu.Models.Errors
     using System;
     using System.Net.Http;
 
-    public class APIException : NovuError
+    public class APIException : BaseException
     {
         /// <summary>
         /// Default API exception.

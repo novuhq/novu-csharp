@@ -37,7 +37,7 @@ namespace Novu.Models.Requests
         /// Direction of sorting
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderDirection")]
-        public OrderDirection? OrderDirection { get; set; }
+        public QueryParamOrderDirection? OrderDirection { get; set; }
 
         /// <summary>
         /// Field to order by
