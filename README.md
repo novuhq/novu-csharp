@@ -29,6 +29,7 @@ For more information about the API: [Novu Documentation](https://docs.novu.co)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -77,6 +78,14 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     To = To.CreateStr(
         "SUBSCRIBER_ID"
     ),
+    Actor = Actor.CreateStr(
+        "<value>"
+    ),
+    Context = new Dictionary<string, Context>() {
+        { "key", Context.CreateStr(
+            "org-acme"
+        ) },
+    },
 });
 
 // handle response
@@ -121,6 +130,18 @@ var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEvent
             } },
         },
     },
+    Actor = TriggerEventToAllRequestDtoActor.CreateSubscriberPayloadDto(
+        new SubscriberPayloadDto() {
+            FirstName = "John",
+            LastName = "Doe",
+            Email = "john.doe@example.com",
+            Phone = "+1234567890",
+            Avatar = "https://example.com/avatar.jpg",
+            Locale = "en-US",
+            Timezone = "America/New_York",
+            SubscriberId = "<id>",
+        }
+    ),
 });
 
 // handle response
@@ -198,13 +219,31 @@ To authenticate with the API the `SecretKey` parameter must be set when initiali
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
-    environmentId: "<id>",
-    integrationId: "<id>"
-);
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
+    },
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+    Actor = Actor.CreateStr(
+        "<value>"
+    ),
+    Context = new Dictionary<string, Context>() {
+        { "key", Context.CreateStr(
+            "org-acme"
+        ) },
+    },
+});
 
 // handle response
 ```
@@ -215,6 +254,18 @@ var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
 
 <details open>
 <summary>Available methods</summary>
+
+### [Activity](docs/sdks/activity/README.md)
+
+* [Track](docs/sdks/activity/README.md#track) - Track activity and engagement events
+
+### [Contexts](docs/sdks/contexts/README.md)
+
+* [Create](docs/sdks/contexts/README.md#create) - Create a context
+* [List](docs/sdks/contexts/README.md#list) - List all contexts
+* [Update](docs/sdks/contexts/README.md#update) - Update a context
+* [Retrieve](docs/sdks/contexts/README.md#retrieve) - Retrieve a context
+* [Delete](docs/sdks/contexts/README.md#delete) - Delete a context
 
 ### [Environments](docs/sdks/environments/README.md)
 
@@ -258,7 +309,6 @@ var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
 
 ### [Novu SDK](docs/sdks/novu/README.md)
 
-* [InboundWebhooksControllerHandleWebhook](docs/sdks/novu/README.md#inboundwebhookscontrollerhandlewebhook)
 * [Trigger](docs/sdks/novu/README.md#trigger) - Trigger event
 * [Cancel](docs/sdks/novu/README.md#cancel) - Cancel triggered event
 * [Broadcast](docs/sdks/novu/README.md#broadcast) - Broadcast event to all
@@ -272,8 +322,8 @@ var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
 * [Patch](docs/sdks/subscribers/README.md#patch) - Update a subscriber
 * [Delete](docs/sdks/subscribers/README.md#delete) - Delete a subscriber
 * [CreateBulk](docs/sdks/subscribers/README.md#createbulk) - Bulk create subscribers
-* [UpdateCredentials](docs/sdks/subscribers/README.md#updatecredentials) - Upsert provider credentials
-* [AppendCredentials](docs/sdks/subscribers/README.md#appendcredentials) - Update provider credentials
+* [UpdateCredentials](docs/sdks/subscribers/README.md#updatecredentials) - Update provider credentials
+* [AppendCredentials](docs/sdks/subscribers/README.md#appendcredentials) - Upsert provider credentials
 * [DeleteCredentials](docs/sdks/subscribers/README.md#deletecredentials) - Delete provider credentials
 * [UpdateOnlineStatus](docs/sdks/subscribers/README.md#updateonlinestatus) - Update subscriber online status
 
@@ -363,10 +413,11 @@ To change the default retry strategy for a single API call, simply pass a `Retry
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
+var res = await sdk.TriggerAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -377,8 +428,27 @@ var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
         ),
         retryConnectionErrors: false
     ),
-    environmentId: "<id>",
-    integrationId: "<id>"
+    triggerEventRequestDto: new TriggerEventRequestDto() {
+        WorkflowId = "workflow_identifier",
+        Payload = new Dictionary<string, object>() {
+            { "comment_id", "string" },
+            { "post", new Dictionary<string, object>() {
+                { "text", "string" },
+            } },
+        },
+        Overrides = new Overrides() {},
+        To = To.CreateStr(
+            "SUBSCRIBER_ID"
+        ),
+        Actor = Actor.CreateStr(
+            "<value>"
+        ),
+        Context = new Dictionary<string, Context>() {
+            { "key", Context.CreateStr(
+                "org-acme"
+            ) },
+        },
+    }
 );
 
 // handle response
@@ -388,6 +458,7 @@ If you'd like to override the default retry strategy for all operations that sup
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(
     retryConfig: new RetryConfig(
@@ -403,10 +474,27 @@ var sdk = new NovuSDK(
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
-    environmentId: "<id>",
-    integrationId: "<id>"
-);
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
+    },
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+    Actor = Actor.CreateStr(
+        "<value>"
+    ),
+    Context = new Dictionary<string, Context>() {
+        { "key", Context.CreateStr(
+            "org-acme"
+        ) },
+    },
+});
 
 // handle response
 ```
@@ -415,7 +503,7 @@ var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-[`NovuError`](./src/Novu/Models/Errors/NovuError.cs) is the base exception class for all HTTP error responses. It has the following properties:
+[`BaseException`](./src/Novu/Models/Errors/BaseException.cs) is the base exception class for all HTTP error responses. It has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
@@ -449,11 +537,19 @@ try
         To = To.CreateStr(
             "SUBSCRIBER_ID"
         ),
+        Actor = Actor.CreateStr(
+            "<value>"
+        ),
+        Context = new Dictionary<string, Context>() {
+            { "key", Context.CreateStr(
+                "org-acme"
+            ) },
+        },
     });
 
     // handle response
 }
-catch (NovuError ex)  // all SDK exceptions inherit from NovuError
+catch (BaseException ex)  // all SDK exceptions inherit from BaseException
 {
     // ex.ToString() provides a detailed error message
     System.Console.WriteLine(ex);
@@ -488,7 +584,7 @@ catch (System.Net.Http.HttpRequestException ex)
 ### Error Classes
 
 **Primary exceptions:**
-* [`NovuError`](./src/Novu/Models/Errors/NovuError.cs): The base class for HTTP error responses.
+* [`BaseException`](./src/Novu/Models/Errors/BaseException.cs): The base class for HTTP error responses.
   * [`ErrorDto`](./src/Novu/Models/Errors/ErrorDto.cs): *
   * [`ValidationErrorDto`](./src/Novu/Models/Errors/ValidationErrorDto.cs): Unprocessable Entity. Status code `422`. *
 
@@ -496,10 +592,10 @@ catch (System.Net.Http.HttpRequestException ex)
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
-* Inheriting from [`NovuError`](./src/Novu/Models/Errors/NovuError.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 75 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 75 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 75 methods.*
+* Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 80 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 80 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 80 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
@@ -523,16 +619,34 @@ You can override the default server globally by passing a server index to the `s
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(
-    serverIndex: 1,
+    serverIndex: 0,
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
-    environmentId: "<id>",
-    integrationId: "<id>"
-);
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
+    },
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+    Actor = Actor.CreateStr(
+        "<value>"
+    ),
+    Context = new Dictionary<string, Context>() {
+        { "key", Context.CreateStr(
+            "org-acme"
+        ) },
+    },
+});
 
 // handle response
 ```
@@ -543,20 +657,184 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(
     serverUrl: "https://eu.api.novu.co",
     secretKey: "YOUR_SECRET_KEY_HERE"
 );
 
-var res = await sdk.InboundWebhooksControllerHandleWebhookAsync(
-    environmentId: "<id>",
-    integrationId: "<id>"
-);
+var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequestDto() {
+    WorkflowId = "workflow_identifier",
+    Payload = new Dictionary<string, object>() {
+        { "comment_id", "string" },
+        { "post", new Dictionary<string, object>() {
+            { "text", "string" },
+        } },
+    },
+    Overrides = new Overrides() {},
+    To = To.CreateStr(
+        "SUBSCRIBER_ID"
+    ),
+    Actor = Actor.CreateStr(
+        "<value>"
+    ),
+    Context = new Dictionary<string, Context>() {
+        { "key", Context.CreateStr(
+            "org-acme"
+        ) },
+    },
+});
 
 // handle response
 ```
 <!-- End Server Selection [server] -->
+
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The C# SDK makes API calls using an `ISpeakeasyHttpClient` that wraps the native
+[HttpClient](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient). This
+client provides the ability to attach hooks around the request lifecycle that can be used to modify the request or handle
+errors and response.
+
+The `ISpeakeasyHttpClient` interface allows you to either use the default `SpeakeasyHttpClient` that comes with the SDK,
+or provide your own custom implementation with customized configuration such as custom message handlers, timeouts,
+connection pooling, and other HTTP client settings.
+
+The following example shows how to create a custom HTTP client with request modification and error handling:
+
+```csharp
+using Novu;
+using Novu.Utils;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+
+// Create a custom HTTP client
+public class CustomHttpClient : ISpeakeasyHttpClient
+{
+    private readonly ISpeakeasyHttpClient _defaultClient;
+
+    public CustomHttpClient()
+    {
+        _defaultClient = new SpeakeasyHttpClient();
+    }
+
+    public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null)
+    {
+        // Add custom header and timeout
+        request.Headers.Add("x-custom-header", "custom value");
+        request.Headers.Add("x-request-timeout", "30");
+        
+        try
+        {
+            var response = await _defaultClient.SendAsync(request, cancellationToken);
+            // Log successful response
+            Console.WriteLine($"Request successful: {response.StatusCode}");
+            return response;
+        }
+        catch (Exception error)
+        {
+            // Log error
+            Console.WriteLine($"Request failed: {error.Message}");
+            throw;
+        }
+    }
+
+    public void Dispose()
+    {
+        _httpClient?.Dispose();
+        _defaultClient?.Dispose();
+    }
+}
+
+// Use the custom HTTP client with the SDK
+var customHttpClient = new CustomHttpClient();
+var sdk = new Novu(client: customHttpClient);
+```
+
+<details>
+<summary>You can also provide a completely custom HTTP client with your own configuration:</summary>
+
+```csharp
+using Novu.Utils;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+
+// Custom HTTP client with custom configuration
+public class AdvancedHttpClient : ISpeakeasyHttpClient
+{
+    private readonly HttpClient _httpClient;
+
+    public AdvancedHttpClient()
+    {
+        var handler = new HttpClientHandler()
+        {
+            MaxConnectionsPerServer = 10,
+            // ServerCertificateCustomValidationCallback = customCertValidation, // Custom SSL validation if needed
+        };
+
+        _httpClient = new HttpClient(handler)
+        {
+            Timeout = TimeSpan.FromSeconds(30)
+        };
+    }
+
+    public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null)
+    {
+        return await _httpClient.SendAsync(request, cancellationToken ?? CancellationToken.None);
+    }
+
+    public void Dispose()
+    {
+        _httpClient?.Dispose();
+    }
+}
+
+var sdk = Novu.Builder()
+    .WithClient(new AdvancedHttpClient())
+    .Build();
+```
+</details>
+
+<details>
+<summary>For simple debugging, you can enable request/response logging by implementing a custom client:</summary>
+
+```csharp
+public class LoggingHttpClient : ISpeakeasyHttpClient
+{
+    private readonly ISpeakeasyHttpClient _innerClient;
+
+    public LoggingHttpClient(ISpeakeasyHttpClient innerClient = null)
+    {
+        _innerClient = innerClient ?? new SpeakeasyHttpClient();
+    }
+
+    public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null)
+    {
+        // Log request
+        Console.WriteLine($"Sending {request.Method} request to {request.RequestUri}");
+        
+        var response = await _innerClient.SendAsync(request, cancellationToken);
+        
+        // Log response
+        Console.WriteLine($"Received {response.StatusCode} response");
+        
+        return response;
+    }
+
+    public void Dispose() => _innerClient?.Dispose();
+}
+
+var sdk = new Novu(client: new LoggingHttpClient());
+```
+</details>
+
+The SDK also provides built-in hook support through the `SDKConfiguration.Hooks` system, which automatically handles
+`BeforeRequestAsync`, `AfterSuccessAsync`, and `AfterErrorAsync` hooks for advanced request lifecycle management.
+<!-- End Custom HTTP Client [http-client] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

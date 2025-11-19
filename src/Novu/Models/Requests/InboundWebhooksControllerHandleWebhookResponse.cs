@@ -12,11 +12,17 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
     
     public class InboundWebhooksControllerHandleWebhookResponse
     {
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
+
+        /// <summary>
+        /// Successfully processed webhook events
+        /// </summary>
+        public List<WebhookResultDto>? WebhookResultDtos { get; set; }
     }
 }

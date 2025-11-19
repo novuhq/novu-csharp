@@ -30,7 +30,7 @@ namespace Novu
         /// 
         /// <remarks>
         /// List all notification events (triggered events) for the current environment. <br/>
-        ///     This API supports filtering by **channels**, **templates**, **emails**, **subscriberIds**, **transactionId**, **topicKey**. <br/>
+        ///     This API supports filtering by **channels**, **templates**, **emails**, **subscriberIds**, **transactionId**, **topicKey**, **severity**, **contextKeys**. <br/>
         ///     Checkout all available filters in the query section.<br/>
         ///     This API returns event triggers, to list each channel notifications, check messages APIs.
         /// </remarks>
@@ -53,9 +53,9 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.5.0";
-        private const string _sdkGenVersion = "2.723.8";
-        private const string _openapiDocVersion = "3.9.0";
+        private const string _sdkVersion = "3.11.0";
+        private const string _sdkGenVersion = "2.755.9";
+        private const string _openapiDocVersion = "3.11.0";
 
         public Notifications(SDKConfig config)
         {

@@ -128,6 +128,10 @@ namespace Novu.Models.Components
         Smsmode,
         [JsonProperty("imedia")]
         Imedia,
+        [JsonProperty("sinch")]
+        Sinch,
+        [JsonProperty("isendpro-sms")]
+        IsendproSms,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]
@@ -142,6 +146,8 @@ namespace Novu.Models.Components
         PushWebhook,
         [JsonProperty("pusher-beams")]
         PusherBeams,
+        [JsonProperty("appio")]
+        Appio,
         [JsonProperty("novu")]
         Novu,
         [JsonProperty("slack")]

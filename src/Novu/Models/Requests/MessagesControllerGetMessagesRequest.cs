@@ -28,6 +28,12 @@ namespace Novu.Models.Requests
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=transactionId")]
         public List<string>? TransactionId { get; set; }
 
+        /// <summary>
+        /// Filter by exact context keys, order insensitive (format: &quot;type:id&quot;)
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contextKeys")]
+        public List<string>? ContextKeys { get; set; }
+
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")]
         public double? Page { get; set; } = 0D;
 

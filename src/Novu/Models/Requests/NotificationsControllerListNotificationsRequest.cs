@@ -79,6 +79,12 @@ namespace Novu.Models.Requests
         public string? TopicKey { get; set; }
 
         /// <summary>
+        /// Filter by exact context keys, order insensitive (format: &quot;type:id&quot;)
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contextKeys")]
+        public List<string>? ContextKeys { get; set; }
+
+        /// <summary>
         /// Date filter for records after this timestamp. Defaults to earliest date allowed by subscription plan
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after")]

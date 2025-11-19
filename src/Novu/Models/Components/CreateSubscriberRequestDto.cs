@@ -17,12 +17,6 @@ namespace Novu.Models.Components
     {
 
         /// <summary>
-        /// Unique identifier of the subscriber
-        /// </summary>
-        [JsonProperty("subscriberId")]
-        public string SubscriberId { get; set; } = default!;
-
-        /// <summary>
         /// First name of the subscriber
         /// </summary>
         [JsonProperty("firstName")]
@@ -53,21 +47,27 @@ namespace Novu.Models.Components
         public string? Avatar { get; set; } = null;
 
         /// <summary>
-        /// Timezone of the subscriber
-        /// </summary>
-        [JsonProperty("timezone")]
-        public string? Timezone { get; set; } = null;
-
-        /// <summary>
         /// Locale of the subscriber
         /// </summary>
         [JsonProperty("locale")]
         public string? Locale { get; set; } = null;
 
         /// <summary>
-        /// Additional custom data for the subscriber
+        /// Timezone of the subscriber
+        /// </summary>
+        [JsonProperty("timezone")]
+        public string? Timezone { get; set; } = null;
+
+        /// <summary>
+        /// Additional custom data associated with the subscriber
         /// </summary>
         [JsonProperty("data")]
         public Dictionary<string, object>? Data { get; set; } = null;
+
+        /// <summary>
+        /// Unique identifier of the subscriber
+        /// </summary>
+        [JsonProperty("subscriberId")]
+        public string SubscriberId { get; set; } = default!;
     }
 }

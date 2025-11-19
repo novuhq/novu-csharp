@@ -25,22 +25,24 @@ namespace Novu
     /// <summary>
     /// Novu API: Novu REST API. Please see https://docs.novu.co/api-reference for more details.
     /// 
-    /// <see>https://docs.novu.co} - Novu Documentation</see>
+    /// <see href="https://docs.novu.co">Novu Documentation</see>
     /// </summary>
     public interface INovuSDK
     {
+        public IContexts Contexts { get; }
 
         /// <summary>
         /// Environments allow you to manage different stages of your application development lifecycle. Each environment has its own set of API keys and configurations, enabling you to separate development, staging, and production workflows.
         /// 
-        /// <see>https://docs.novu.co/platform/environments}</see>
+        /// <see href="https://docs.novu.co/platform/environments">https://docs.novu.co/platform/environments</see>
         /// </summary>
         public IEnvironments Environments { get; }
+        public IActivity Activity { get; }
 
         /// <summary>
         /// Layouts are reusable wrappers for your email notifications.
         /// 
-        /// <see>https://docs.novu.co/platform/workflow/layouts}</see>
+        /// <see href="https://docs.novu.co/platform/workflow/layouts">https://docs.novu.co/platform/workflow/layouts</see>
         /// </summary>
         public ILayouts Layouts { get; }
         public ISubscribers Subscribers { get; }
@@ -49,42 +51,41 @@ namespace Novu
         /// <summary>
         /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.
         /// 
-        /// <see>https://docs.novu.co/subscribers/topics}</see>
+        /// <see href="https://docs.novu.co/subscribers/topics">https://docs.novu.co/subscribers/topics</see>
         /// </summary>
         public ITopics Topics { get; }
 
         /// <summary>
         /// Used to localize your notifications to different languages.
         /// 
-        /// <see>https://docs.novu.co/platform/workflow/translations}</see>
+        /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
         /// </summary>
         public ITranslations Translations { get; }
 
         /// <summary>
         /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.
         /// 
-        /// <see>https://docs.novu.co/workflows}</see>
+        /// <see href="https://docs.novu.co/workflows">https://docs.novu.co/workflows</see>
         /// </summary>
         public IWorkflows Workflows { get; }
 
         /// <summary>
         /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
         /// 
-        /// <see>https://docs.novu.co/platform/integrations/overview}</see>
+        /// <see href="https://docs.novu.co/platform/integrations/overview">https://docs.novu.co/platform/integrations/overview</see>
         /// </summary>
         public IIntegrations Integrations { get; }
 
         /// <summary>
         /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.
         /// 
-        /// <see>https://docs.novu.co/workflows/messages}</see>
+        /// <see href="https://docs.novu.co/workflows/messages">https://docs.novu.co/workflows/messages</see>
         /// </summary>
         public IMessages Messages { get; }
         public INotifications Notifications { get; }
         public ISubscribersMessages SubscribersMessages { get; }
         public ISubscribersNotifications SubscribersNotifications { get; }
         public ITopicsSubscribers TopicsSubscribers { get; }
-        Task<InboundWebhooksControllerHandleWebhookResponse> InboundWebhooksControllerHandleWebhookAsync(string environmentId, string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Trigger event
@@ -137,17 +138,19 @@ namespace Novu
     /// <summary>
     /// Novu API: Novu REST API. Please see https://docs.novu.co/api-reference for more details.
     /// 
-    /// <see>https://docs.novu.co} - Novu Documentation</see>
+    /// <see href="https://docs.novu.co">Novu Documentation</see>
     /// </summary>
     public class NovuSDK: INovuSDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.5.0";
-        private const string _sdkGenVersion = "2.723.8";
-        private const string _openapiDocVersion = "3.9.0";
+        private const string _sdkVersion = "3.11.0";
+        private const string _sdkGenVersion = "2.755.9";
+        private const string _openapiDocVersion = "3.11.0";
+        public IContexts Contexts { get; private set; }
         public IEnvironments Environments { get; private set; }
+        public IActivity Activity { get; private set; }
         public ILayouts Layouts { get; private set; }
         public ISubscribers Subscribers { get; private set; }
         public ISubscribersPreferences SubscribersPreferences { get; private set; }
@@ -166,7 +169,11 @@ namespace Novu
             SDKConfiguration = config;
             InitHooks();
 
+            Contexts = new Contexts(SDKConfiguration);
+
             Environments = new Environments(SDKConfiguration);
+
+            Activity = new Activity(SDKConfiguration);
 
             Layouts = new Layouts(SDKConfiguration);
 
@@ -193,6 +200,17 @@ namespace Novu
             TopicsSubscribers = new TopicsSubscribers(SDKConfiguration);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the SDK with optional configuration parameters.
+        /// </summary>
+        /// <param name="secretKey">The security configuration to use for API requests. If provided, this will be used as a static security configuration.</param>
+        /// <param name="secretKeySource">A function that returns the security configuration dynamically. This takes precedence over the static security parameter if both are provided.</param>
+        /// <param name="serverIndex">The index of the server to use from the predefined server list. Must be between 0 and the length of the server list. Defaults to 0 if not specified.</param>
+        /// <param name="serverUrl">A custom server URL to use instead of the predefined server list. If provided with urlParams, the URL will be templated with the provided parameters.</param>
+        /// <param name="urlParams">A dictionary of parameters to use for templating the serverUrl. Only used when serverUrl is provided.</param>
+        /// <param name="client">A custom HTTP client implementation to use for making API requests. If not provided, the default SpeakeasyHttpClient will be used.</param>
+        /// <param name="retryConfig">Configuration for retry behavior when API requests fail. Defines retry strategies, backoff policies, and maximum retry attempts.</param>
+        /// <exception cref="Exception">Thrown when the serverIndex is out of range (less than 0 or greater than or equal to the server list length).</exception>
         public NovuSDK(string? secretKey = null, Func<string>? secretKeySource = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (serverIndex != null)
@@ -235,7 +253,11 @@ namespace Novu
 
             InitHooks();
 
+            Contexts = new Contexts(SDKConfiguration);
+
             Environments = new Environments(SDKConfiguration);
+
+            Activity = new Activity(SDKConfiguration);
 
             Layouts = new Layouts(SDKConfiguration);
 
@@ -273,121 +295,6 @@ namespace Novu
             }
             config.Client = postHooksClient;
             SDKConfiguration = config;
-        }
-
-        public async Task<InboundWebhooksControllerHandleWebhookResponse> InboundWebhooksControllerHandleWebhookAsync(string environmentId, string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
-        {
-            var request = new InboundWebhooksControllerHandleWebhookRequest()
-            {
-                EnvironmentId = environmentId,
-                IntegrationId = integrationId,
-                IdempotencyKey = idempotencyKey,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v2/inbound-webhooks/delivery-providers/{environmentId}/{integrationId}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "InboundWebhooksController_handleWebhook", null, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-            if (retryConfig == null)
-            {
-                if (this.SDKConfiguration.RetryConfig != null)
-                {
-                    retryConfig = this.SDKConfiguration.RetryConfig;
-                }
-                else
-                {
-                    var backoff = new BackoffStrategy(
-                        initialIntervalMs: 1000L,
-                        maxIntervalMs: 30000L,
-                        maxElapsedTimeMs: 3600000L,
-                        exponent: 1.5
-                    );
-                    retryConfig = new RetryConfig(
-                        strategy: RetryConfig.RetryStrategy.BACKOFF,
-                        backoff: backoff,
-                        retryConnectionErrors: true
-                    );
-                }
-            }
-
-            List<string> statusCodes = new List<string>
-            {
-                "408",
-                "409",
-                "429",
-                "5XX",
-            };
-
-            Func<Task<HttpResponseMessage>> retrySend = async () =>
-            {
-                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
-                return await SDKConfiguration.Client.SendAsync(_httpRequest);
-            };
-            var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await retries.Run();
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 201)
-            {
-                return new InboundWebhooksControllerHandleWebhookResponse()
-                {
-                    HttpMeta = new Models.Components.HTTPMetadata()
-                    {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    }
-                };
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
         public async Task<EventsControllerTriggerResponse> TriggerAsync(TriggerEventRequestDto triggerEventRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)

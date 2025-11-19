@@ -29,6 +29,7 @@ Component type for the UI Schema Property
 | `DelayUnit`                        | DELAY_UNIT                         |
 | `DelayType`                        | DELAY_TYPE                         |
 | `DelayCron`                        | DELAY_CRON                         |
+| `DelayDynamicKey`                  | DELAY_DYNAMIC_KEY                  |
 | `ThrottleType`                     | THROTTLE_TYPE                      |
 | `ThrottleWindow`                   | THROTTLE_WINDOW                    |
 | `ThrottleUnit`                     | THROTTLE_UNIT                      |

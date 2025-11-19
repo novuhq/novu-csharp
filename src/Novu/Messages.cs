@@ -25,7 +25,7 @@ namespace Novu
     /// <summary>
     /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.
     /// 
-    /// <see>https://docs.novu.co/workflows/messages}</see>
+    /// <see href="https://docs.novu.co/workflows/messages">https://docs.novu.co/workflows/messages</see>
     /// </summary>
     public interface IMessages
     {
@@ -65,15 +65,15 @@ namespace Novu
     /// <summary>
     /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.
     /// 
-    /// <see>https://docs.novu.co/workflows/messages}</see>
+    /// <see href="https://docs.novu.co/workflows/messages">https://docs.novu.co/workflows/messages</see>
     /// </summary>
     public class Messages: IMessages
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.5.0";
-        private const string _sdkGenVersion = "2.723.8";
-        private const string _openapiDocVersion = "3.9.0";
+        private const string _sdkVersion = "3.11.0";
+        private const string _sdkGenVersion = "2.755.9";
+        private const string _openapiDocVersion = "3.11.0";
 
         public Messages(SDKConfig config)
         {

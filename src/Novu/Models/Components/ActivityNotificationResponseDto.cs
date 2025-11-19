@@ -135,7 +135,7 @@ namespace Novu.Models.Components
         public bool? Critical { get; set; }
 
         /// <summary>
-        /// Contexts (keys) in which the notification was sent
+        /// Context (single or multi) in which the notification was sent
         /// </summary>
         [JsonProperty("contextKeys")]
         public List<string>? ContextKeys { get; set; }
