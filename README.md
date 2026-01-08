@@ -81,8 +81,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -142,6 +142,11 @@ var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEvent
             SubscriberId = "<id>",
         }
     ),
+    Context = new Dictionary<string, TriggerEventToAllRequestDtoContext>() {
+        { "key", TriggerEventToAllRequestDtoContext.CreateStr(
+            "org-acme"
+        ) },
+    },
 });
 
 // handle response
@@ -238,8 +243,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -255,9 +260,32 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 <details open>
 <summary>Available methods</summary>
 
+### [Novu SDK](docs/sdks/novu/README.md)
+
+* [Trigger](docs/sdks/novu/README.md#trigger) - Trigger event
+* [Cancel](docs/sdks/novu/README.md#cancel) - Cancel triggered event
+* [Broadcast](docs/sdks/novu/README.md#broadcast) - Broadcast event to all
+* [TriggerBulk](docs/sdks/novu/README.md#triggerbulk) - Bulk trigger event
+
 ### [Activity](docs/sdks/activity/README.md)
 
 * [Track](docs/sdks/activity/README.md#track) - Track activity and engagement events
+
+### [ChannelConnections](docs/sdks/channelconnections/README.md)
+
+* [List](docs/sdks/channelconnections/README.md#list) - List all channel connections
+* [Create](docs/sdks/channelconnections/README.md#create) - Create a channel connection
+* [Retrieve](docs/sdks/channelconnections/README.md#retrieve) - Retrieve a channel connection
+* [Update](docs/sdks/channelconnections/README.md#update) - Update a channel connection
+* [Delete](docs/sdks/channelconnections/README.md#delete) - Delete a channel connection
+
+### [ChannelEndpoints](docs/sdks/channelendpoints/README.md)
+
+* [List](docs/sdks/channelendpoints/README.md#list) - List all channel endpoints
+* [Create](docs/sdks/channelendpoints/README.md#create) - Create a channel endpoint
+* [Retrieve](docs/sdks/channelendpoints/README.md#retrieve) - Retrieve a channel endpoint
+* [Update](docs/sdks/channelendpoints/README.md#update) - Update a channel endpoint
+* [Delete](docs/sdks/channelendpoints/README.md#delete) - Delete a channel endpoint
 
 ### [Contexts](docs/sdks/contexts/README.md)
 
@@ -284,6 +312,7 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [IntegrationsControllerAutoConfigureIntegration](docs/sdks/integrations/README.md#integrationscontrollerautoconfigureintegration) - Auto-configure an integration for inbound webhooks
 * [SetPrimary](docs/sdks/integrations/README.md#setprimary) - Update integration as primary
 * [ListActive](docs/sdks/integrations/README.md#listactive) - List active integrations
+* [GenerateChatOAuthUrl](docs/sdks/integrations/README.md#generatechatoauthurl) - Generate chat OAuth URL
 
 ### [Layouts](docs/sdks/layouts/README.md)
 
@@ -306,13 +335,6 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 * [Get](docs/sdks/notifications/README.md#get) - List all events
 * [Retrieve](docs/sdks/notifications/README.md#retrieve) - Retrieve an event
-
-### [Novu SDK](docs/sdks/novu/README.md)
-
-* [Trigger](docs/sdks/novu/README.md#trigger) - Trigger event
-* [Cancel](docs/sdks/novu/README.md#cancel) - Cancel triggered event
-* [Broadcast](docs/sdks/novu/README.md#broadcast) - Broadcast event to all
-* [TriggerBulk](docs/sdks/novu/README.md#triggerbulk) - Bulk trigger event
 
 ### [Subscribers](docs/sdks/subscribers/README.md)
 
@@ -364,6 +386,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [List](docs/sdks/subscriptions/README.md#list) - List topic subscriptions
 * [Create](docs/sdks/subscriptions/README.md#create) - Create topic subscriptions
 * [Delete](docs/sdks/subscriptions/README.md#delete) - Delete topic subscriptions
+* [GetSubscription](docs/sdks/subscriptions/README.md#getsubscription) - Get a topic subscription
+* [Update](docs/sdks/subscriptions/README.md#update) - Update a topic subscription
 
 ### [TopicsSubscribers](docs/sdks/topicssubscribers/README.md)
 
@@ -443,8 +467,8 @@ var res = await sdk.TriggerAsync(
         Actor = Actor.CreateStr(
             "<value>"
         ),
-        Context = new Dictionary<string, Context>() {
-            { "key", Context.CreateStr(
+        Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+            { "key", TriggerEventRequestDtoContext.CreateStr(
                 "org-acme"
             ) },
         },
@@ -489,8 +513,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -540,8 +564,8 @@ try
         Actor = Actor.CreateStr(
             "<value>"
         ),
-        Context = new Dictionary<string, Context>() {
-            { "key", Context.CreateStr(
+        Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+            { "key", TriggerEventRequestDtoContext.CreateStr(
                 "org-acme"
             ) },
         },
@@ -593,9 +617,9 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 80 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 80 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 80 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 93 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 93 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 93 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
@@ -641,8 +665,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -679,8 +703,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },

@@ -9,6 +9,7 @@
 #nullable enable
 namespace Novu.Models.Requests
 {
+    using Novu.Models.Requests;
     using Novu.Utils;
     
     public class TranslationControllerUploadMasterJsonEndpointRequest
@@ -19,5 +20,8 @@ namespace Novu.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=multipart/form-data")]
+        public TranslationControllerUploadMasterJsonEndpointRequestBody RequestBody { get; set; } = default!;
     }
 }

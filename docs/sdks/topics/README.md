@@ -1,5 +1,4 @@
 # Topics
-(*Topics*)
 
 ## Overview
 
@@ -30,7 +29,9 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-TopicsControllerListTopicsRequest? req = null;
+TopicsControllerListTopicsRequest req = new TopicsControllerListTopicsRequest() {
+    Limit = 10D,
+};
 
 var res = await sdk.Topics.ListAsync(req);
 

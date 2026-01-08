@@ -28,8 +28,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -89,6 +89,11 @@ var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEvent
             SubscriberId = "<id>",
         }
     ),
+    Context = new Dictionary<string, TriggerEventToAllRequestDtoContext>() {
+        { "key", TriggerEventToAllRequestDtoContext.CreateStr(
+            "org-acme"
+        ) },
+    },
 });
 
 // handle response
@@ -185,8 +190,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -235,8 +240,8 @@ var res = await sdk.TriggerAsync(
         Actor = Actor.CreateStr(
             "<value>"
         ),
-        Context = new Dictionary<string, Context>() {
-            { "key", Context.CreateStr(
+        Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+            { "key", TriggerEventRequestDtoContext.CreateStr(
                 "org-acme"
             ) },
         },
@@ -281,8 +286,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -332,8 +337,8 @@ try
         Actor = Actor.CreateStr(
             "<value>"
         ),
-        Context = new Dictionary<string, Context>() {
-            { "key", Context.CreateStr(
+        Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+            { "key", TriggerEventRequestDtoContext.CreateStr(
                 "org-acme"
             ) },
         },
@@ -380,16 +385,15 @@ catch (System.Net.Http.HttpRequestException ex)
   * [`ErrorDto`](./src/Novu/Models/Errors/ErrorDto.cs): *
   * [`ValidationErrorDto`](./src/Novu/Models/Errors/ValidationErrorDto.cs): Unprocessable Entity. Status code `422`. *
 
-<details><summary>Less common exceptions (5)</summary>
+**Less common exceptions (5)**
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 80 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 80 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 80 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 93 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 93 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 93 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
-</details>
 
 \* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.
 <!-- End Error Handling [errors] -->
@@ -433,8 +437,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -471,8 +475,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -546,8 +550,7 @@ var customHttpClient = new CustomHttpClient();
 var sdk = new Novu(client: customHttpClient);
 ```
 
-<details>
-<summary>You can also provide a completely custom HTTP client with your own configuration:</summary>
+**You can also provide a completely custom HTTP client with your own configuration:**
 
 ```csharp
 using Novu.Utils;
@@ -589,10 +592,8 @@ var sdk = Novu.Builder()
     .WithClient(new AdvancedHttpClient())
     .Build();
 ```
-</details>
 
-<details>
-<summary>For simple debugging, you can enable request/response logging by implementing a custom client:</summary>
+**For simple debugging, you can enable request/response logging by implementing a custom client:**
 
 ```csharp
 public class LoggingHttpClient : ISpeakeasyHttpClient
@@ -622,7 +623,6 @@ public class LoggingHttpClient : ISpeakeasyHttpClient
 
 var sdk = new Novu(client: new LoggingHttpClient());
 ```
-</details>
 
 The SDK also provides built-in hook support through the `SDKConfiguration.Hooks` system, which automatically handles
 `BeforeRequestAsync`, `AfterSuccessAsync`, and `AfterErrorAsync` hooks for advanced request lifecycle management.

@@ -1,5 +1,4 @@
 # Workflows
-(*Workflows*)
 
 ## Overview
 
@@ -100,7 +99,10 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-WorkflowControllerSearchWorkflowsRequest? req = null;
+WorkflowControllerSearchWorkflowsRequest req = new WorkflowControllerSearchWorkflowsRequest() {
+    Limit = 10D,
+    Offset = 0D,
+};
 
 var res = await sdk.Workflows.ListAsync(req);
 

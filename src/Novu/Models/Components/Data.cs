@@ -11,9 +11,6 @@ namespace Novu.Models.Components
 {
     using Novu.Utils;
     
-    /// <summary>
-    /// Optional custom data to associate with this context.
-    /// </summary>
     public class Data
     {
     }

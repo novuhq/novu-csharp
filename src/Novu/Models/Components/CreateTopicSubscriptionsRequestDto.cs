@@ -10,16 +10,37 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
     
     public class CreateTopicSubscriptionsRequestDto
     {
 
         /// <summary>
-        /// List of subscriber identifiers to subscribe to the topic (max: 100)
+        /// List of subscriber IDs to subscribe to the topic (max: 100). @deprecated Use the &quot;subscriptions&quot; property instead.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("subscriberIds")]
-        public List<string> SubscriberIds { get; set; } = default!;
+        public List<string>? SubscriberIds { get; set; }
+
+        /// <summary>
+        /// List of subscriptions to subscribe to the topic (max: 100). Can be either a string array of subscriber IDs or an array of objects with identifier and subscriberId
+        /// </summary>
+        [JsonProperty("subscriptions")]
+        public List<Models.Components.Subscriptions>? Subscriptions { get; set; }
+
+        /// <summary>
+        /// The name of the topic
+        /// </summary>
+        [JsonProperty("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The preferences of the topic. Can be a simple workflow ID string, workflow preference object, or group filter object
+        /// </summary>
+        [JsonProperty("preferences")]
+        public List<Models.Components.Preferences>? Preferences { get; set; }
     }
 }

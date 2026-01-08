@@ -68,6 +68,8 @@ namespace Novu
         /// <see href="https://docs.novu.co/workflows">https://docs.novu.co/workflows</see>
         /// </summary>
         public IWorkflows Workflows { get; }
+        public IChannelConnections ChannelConnections { get; }
+        public IChannelEndpoints ChannelEndpoints { get; }
 
         /// <summary>
         /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
@@ -91,7 +93,7 @@ namespace Novu
         /// Trigger event
         /// 
         /// <remarks>
-        ///     Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Additional information can be passed according the body interface below.<br/>
+        ///     Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Maximum number of recipients can be 100. Additional information can be passed according the body interface below.<br/>
         ///     To prevent duplicate triggers, you can optionally pass a **transactionId** in the request body. If the same **transactionId** is used again, the trigger will be ignored. The retention period depends on your billing tier.
         /// </remarks>
         /// </summary>
@@ -144,10 +146,10 @@ namespace Novu
     {
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = "csharp";
-        private const string _sdkVersion = "3.11.0";
-        private const string _sdkGenVersion = "2.755.9";
-        private const string _openapiDocVersion = "3.11.0";
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
         public IContexts Contexts { get; private set; }
         public IEnvironments Environments { get; private set; }
         public IActivity Activity { get; private set; }
@@ -157,6 +159,8 @@ namespace Novu
         public ITopics Topics { get; private set; }
         public ITranslations Translations { get; private set; }
         public IWorkflows Workflows { get; private set; }
+        public IChannelConnections ChannelConnections { get; private set; }
+        public IChannelEndpoints ChannelEndpoints { get; private set; }
         public IIntegrations Integrations { get; private set; }
         public IMessages Messages { get; private set; }
         public INotifications Notifications { get; private set; }
@@ -186,6 +190,10 @@ namespace Novu
             Translations = new Translations(SDKConfiguration);
 
             Workflows = new Workflows(SDKConfiguration);
+
+            ChannelConnections = new ChannelConnections(SDKConfiguration);
+
+            ChannelEndpoints = new ChannelEndpoints(SDKConfiguration);
 
             Integrations = new Integrations(SDKConfiguration);
 
@@ -270,6 +278,10 @@ namespace Novu
             Translations = new Translations(SDKConfiguration);
 
             Workflows = new Workflows(SDKConfiguration);
+
+            ChannelConnections = new ChannelConnections(SDKConfiguration);
+
+            ChannelEndpoints = new ChannelEndpoints(SDKConfiguration);
 
             Integrations = new Integrations(SDKConfiguration);
 
@@ -552,7 +564,7 @@ namespace Novu
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/events/trigger/{transactionId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/events/trigger/{transactionId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

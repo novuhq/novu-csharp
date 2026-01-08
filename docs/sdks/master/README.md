@@ -1,5 +1,4 @@
-# Master
-(*Translations.Master*)
+# Translations.Master
 
 ## Overview
 
@@ -54,12 +53,24 @@ Import translations for multiple workflows from master JSON format for a specifi
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Translations.Master.ImportAsync(importMasterJsonRequestDto: new ImportMasterJsonRequestDto() {
     Locale = "en_US",
-    MasterJson = new MasterJson() {},
+    MasterJson = new Dictionary<string, object>() {
+        { "workflows", new Dictionary<string, object>() {
+            { "welcome-email", new Dictionary<string, object>() {
+                { "welcome.title", "Welcome to our platform" },
+                { "welcome.message", "Hello there!" },
+            } },
+            { "password-reset", new Dictionary<string, object>() {
+                { "reset.title", "Reset your password" },
+                { "reset.message", "Click the link to reset" },
+            } },
+        } },
+    },
 });
 
 // handle response
@@ -92,19 +103,26 @@ Upload a master JSON file containing translations for multiple workflows. Locale
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Translations.Master.UploadAsync();
+var res = await sdk.Translations.Master.UploadAsync(requestBody: new TranslationControllerUploadMasterJsonEndpointRequestBody() {
+    File = new Novu.Models.Requests.File() {
+        FileName = "example.file",
+        Content = System.IO.File.ReadAllBytes("example.file"),
+    },
+});
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                         | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
+| Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RequestBody`                                                                                                                                 | [TranslationControllerUploadMasterJsonEndpointRequestBody](../../Models/Requests/TranslationControllerUploadMasterJsonEndpointRequestBody.md) | :heavy_check_mark:                                                                                                                            | N/A                                                                                                                                           |
+| `IdempotencyKey`                                                                                                                              | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | A header for idempotency purposes                                                                                                             |
 
 ### Response
 

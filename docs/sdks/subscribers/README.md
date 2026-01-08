@@ -1,5 +1,4 @@
 # Subscribers
-(*Subscribers*)
 
 ## Overview
 
@@ -31,7 +30,9 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-SubscribersControllerSearchSubscribersRequest? req = null;
+SubscribersControllerSearchSubscribersRequest req = new SubscribersControllerSearchSubscribersRequest() {
+    Limit = 10D,
+};
 
 var res = await sdk.Subscribers.SearchAsync(req);
 

@@ -145,6 +145,12 @@ namespace Novu.Models.Components
         public bool Seen { get; set; } = default!;
 
         /// <summary>
+        /// Indicates whether the notification has been archived by the subscriber.
+        /// </summary>
+        [JsonProperty("archived")]
+        public bool Archived { get; set; } = default!;
+
+        /// <summary>
         /// Device tokens for push notifications, if applicable.
         /// </summary>
         [JsonProperty("deviceTokens")]

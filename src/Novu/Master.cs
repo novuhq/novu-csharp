@@ -50,16 +50,17 @@ namespace Novu
         /// Upload a master JSON file containing translations for multiple workflows. Locale is automatically detected from filename (e.g., en_US.json)
         /// </remarks>
         /// </summary>
-        Task<TranslationControllerUploadMasterJsonEndpointResponse> UploadAsync(string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        Task<TranslationControllerUploadMasterJsonEndpointResponse> UploadAsync(TranslationControllerUploadMasterJsonEndpointRequestBody requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null);
     }
 
     public class Master: IMaster
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "3.11.0";
-        private const string _sdkGenVersion = "2.755.9";
-        private const string _openapiDocVersion = "3.11.0";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Master(SDKConfig config)
         {
@@ -74,7 +75,7 @@ namespace Novu
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v2/translations/master-json", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v2/translations/master-json", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -337,10 +338,11 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TranslationControllerUploadMasterJsonEndpointResponse> UploadAsync(string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        public async Task<TranslationControllerUploadMasterJsonEndpointResponse> UploadAsync(TranslationControllerUploadMasterJsonEndpointRequestBody requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null)
         {
             var request = new TranslationControllerUploadMasterJsonEndpointRequest()
             {
+                RequestBody = requestBody,
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -350,6 +352,12 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "multipart", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -436,7 +444,7 @@ namespace Novu
                     ImportMasterJsonResponseDto obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<ImportMasterJsonResponseDto>(httpResponseBody, NullValueHandling.Include);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<ImportMasterJsonResponseDto>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {

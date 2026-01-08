@@ -79,6 +79,12 @@ namespace Novu.Models.Requests
         public string? TopicKey { get; set; }
 
         /// <summary>
+        /// Subscription ID for filtering notifications by subscription
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=subscriptionId")]
+        public string? SubscriptionId { get; set; }
+
+        /// <summary>
         /// Filter by exact context keys, order insensitive (format: &quot;type:id&quot;)
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contextKeys")]

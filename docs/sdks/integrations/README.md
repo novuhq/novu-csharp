@@ -1,5 +1,4 @@
 # Integrations
-(*Integrations*)
 
 ## Overview
 
@@ -15,6 +14,7 @@ With the help of the Integration Store, you can easily integrate your favorite d
 * [IntegrationsControllerAutoConfigureIntegration](#integrationscontrollerautoconfigureintegration) - Auto-configure an integration for inbound webhooks
 * [SetPrimary](#setprimary) - Update integration as primary
 * [ListActive](#listactive) - List active integrations
+* [GenerateChatOAuthUrl](#generatechatoauthurl) - Generate chat OAuth URL
 
 ## GetAll
 
@@ -289,6 +289,66 @@ var res = await sdk.Integrations.ListActiveAsync();
 ### Response
 
 **[IntegrationsControllerGetActiveIntegrationsResponse](../../Models/Requests/IntegrationsControllerGetActiveIntegrationsResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
+## GenerateChatOAuthUrl
+
+Generate an OAuth URL for chat integrations like Slack and MS Teams. 
+    This URL allows subscribers to authorize the integration, enabling the system to send messages 
+    through their chat workspace. The generated URL expires after 5 minutes.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_getChatOAuthUrl" method="post" path="/v1/integrations/chat/oauth" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Integrations.GenerateChatOAuthUrlAsync(generateChatOauthUrlRequestDto: new GenerateChatOauthUrlRequestDto() {
+    SubscriberId = "subscriber-123",
+    IntegrationIdentifier = "<value>",
+    ConnectionIdentifier = "slack-connection-abc123",
+    Context = new Dictionary<string, GenerateChatOauthUrlRequestDtoContext>() {
+        { "key", GenerateChatOauthUrlRequestDtoContext.CreateStr(
+            "org-acme"
+        ) },
+    },
+    Scope = new List<string>() {
+        "chat:write",
+        "chat:write.public",
+        "channels:read",
+        "groups:read",
+        "users:read",
+        "users:read.email",
+        "incoming-webhook",
+    },
+});
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `GenerateChatOauthUrlRequestDto`                                                            | [GenerateChatOauthUrlRequestDto](../../Models/Components/GenerateChatOauthUrlRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `IdempotencyKey`                                                                            | *string*                                                                                    | :heavy_minus_sign:                                                                          | A header for idempotency purposes                                                           |
+
+### Response
+
+**[IntegrationsControllerGetChatOAuthUrlResponse](../../Models/Requests/IntegrationsControllerGetChatOAuthUrlResponse.md)**
 
 ### Errors
 

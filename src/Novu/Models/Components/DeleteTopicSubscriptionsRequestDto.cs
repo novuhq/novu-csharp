@@ -10,16 +10,25 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
     
     public class DeleteTopicSubscriptionsRequestDto
     {
 
         /// <summary>
-        /// List of subscriber identifiers to unsubscribe from the topic (max: 100)
+        /// List of subscriber identifiers to unsubscribe from the topic (max: 100). @deprecated Use the &quot;subscriptions&quot; property instead.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("subscriberIds")]
-        public List<string> SubscriberIds { get; set; } = default!;
+        public List<string>? SubscriberIds { get; set; }
+
+        /// <summary>
+        /// List of subscriptions to unsubscribe from the topic (max: 100). Can be either a string array of subscriber IDs or an array of objects with identifier and/or subscriberId. If only subscriberId is provided, all subscriptions for that subscriber within the topic will be deleted.
+        /// </summary>
+        [JsonProperty("subscriptions")]
+        public List<DeleteTopicSubscriptionsRequestDtoSubscriptions>? Subscriptions { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 # TopicsSubscribers
-(*TopicsSubscribers*)
 
 ## Overview
 

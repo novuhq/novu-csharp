@@ -41,7 +41,7 @@ namespace Novu.Models.Components
         public Overrides? Overrides { get; set; }
 
         /// <summary>
-        /// The recipients list of people who will receive the notification.
+        /// The recipients list of people who will receive the notification. Maximum number of recipients can be 100.
         /// </summary>
         [JsonProperty("to", NullValueHandling = NullValueHandling.Include)]
         public To To { get; set; } = default!;
@@ -79,6 +79,6 @@ namespace Novu.Models.Components
         public Tenant? Tenant { get; set; }
 
         [JsonProperty("context")]
-        public Dictionary<string, Context>? Context { get; set; }
+        public Dictionary<string, TriggerEventRequestDtoContext>? Context { get; set; }
     }
 }

@@ -23,6 +23,12 @@ namespace Novu.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
+        /// The identifier of the subscription
+        /// </summary>
+        [JsonProperty("identifier")]
+        public string Identifier { get; set; } = default!;
+
+        /// <summary>
         /// The date and time the subscription was created
         /// </summary>
         [JsonProperty("createdAt")]

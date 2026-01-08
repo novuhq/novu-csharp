@@ -14,10 +14,142 @@ namespace Novu.Models.Components
     using System;
     
     /// <summary>
-    /// The ID of the chat or push provider.
+    /// The provider identifier (e.g., sendgrid, twilio, slack, etc.).
     /// </summary>
     public enum ProviderId
     {
+        [JsonProperty("emailjs")]
+        Emailjs,
+        [JsonProperty("mailgun")]
+        Mailgun,
+        [JsonProperty("mailjet")]
+        Mailjet,
+        [JsonProperty("mandrill")]
+        Mandrill,
+        [JsonProperty("nodemailer")]
+        Nodemailer,
+        [JsonProperty("postmark")]
+        Postmark,
+        [JsonProperty("sendgrid")]
+        Sendgrid,
+        [JsonProperty("sendinblue")]
+        Sendinblue,
+        [JsonProperty("ses")]
+        Ses,
+        [JsonProperty("netcore")]
+        Netcore,
+        [JsonProperty("infobip-email")]
+        InfobipEmail,
+        [JsonProperty("resend")]
+        Resend,
+        [JsonProperty("plunk")]
+        Plunk,
+        [JsonProperty("mailersend")]
+        Mailersend,
+        [JsonProperty("mailtrap")]
+        Mailtrap,
+        [JsonProperty("clickatell")]
+        Clickatell,
+        [JsonProperty("outlook365")]
+        Outlook365,
+        [JsonProperty("novu-email")]
+        NovuEmail,
+        [JsonProperty("sparkpost")]
+        Sparkpost,
+        [JsonProperty("email-webhook")]
+        EmailWebhook,
+        [JsonProperty("braze")]
+        Braze,
+        [JsonProperty("nexmo")]
+        Nexmo,
+        [JsonProperty("plivo")]
+        Plivo,
+        [JsonProperty("sms77")]
+        Sms77,
+        [JsonProperty("sms-central")]
+        SmsCentral,
+        [JsonProperty("sns")]
+        Sns,
+        [JsonProperty("telnyx")]
+        Telnyx,
+        [JsonProperty("twilio")]
+        Twilio,
+        [JsonProperty("gupshup")]
+        Gupshup,
+        [JsonProperty("firetext")]
+        Firetext,
+        [JsonProperty("infobip-sms")]
+        InfobipSms,
+        [JsonProperty("burst-sms")]
+        BurstSms,
+        [JsonProperty("bulk-sms")]
+        BulkSms,
+        [JsonProperty("isend-sms")]
+        IsendSms,
+        [JsonProperty("forty-six-elks")]
+        FortySixElks,
+        [JsonProperty("kannel")]
+        Kannel,
+        [JsonProperty("maqsam")]
+        Maqsam,
+        [JsonProperty("termii")]
+        Termii,
+        [JsonProperty("africas-talking")]
+        AfricasTalking,
+        [JsonProperty("novu-sms")]
+        NovuSms,
+        [JsonProperty("sendchamp")]
+        Sendchamp,
+        [JsonProperty("generic-sms")]
+        GenericSms,
+        [JsonProperty("clicksend")]
+        Clicksend,
+        [JsonProperty("bandwidth")]
+        Bandwidth,
+        [JsonProperty("messagebird")]
+        Messagebird,
+        [JsonProperty("simpletexting")]
+        Simpletexting,
+        [JsonProperty("azure-sms")]
+        AzureSms,
+        [JsonProperty("ring-central")]
+        RingCentral,
+        [JsonProperty("brevo-sms")]
+        BrevoSms,
+        [JsonProperty("eazy-sms")]
+        EazySms,
+        [JsonProperty("mobishastra")]
+        Mobishastra,
+        [JsonProperty("afro-message")]
+        AfroMessage,
+        [JsonProperty("unifonic")]
+        Unifonic,
+        [JsonProperty("smsmode")]
+        Smsmode,
+        [JsonProperty("imedia")]
+        Imedia,
+        [JsonProperty("sinch")]
+        Sinch,
+        [JsonProperty("isendpro-sms")]
+        IsendproSms,
+        [JsonProperty("fcm")]
+        Fcm,
+        [JsonProperty("apns")]
+        Apns,
+        [JsonProperty("expo")]
+        Expo,
+        [JsonProperty("one-signal")]
+        OneSignal,
+        [JsonProperty("pushpad")]
+        Pushpad,
+        [JsonProperty("push-webhook")]
+        PushWebhook,
+        [JsonProperty("pusher-beams")]
+        PusherBeams,
+        [JsonProperty("appio")]
+        Appio,
+        [JsonProperty("novu")]
+        Novu,
         [JsonProperty("slack")]
         Slack,
         [JsonProperty("discord")]
@@ -42,22 +174,6 @@ namespace Novu.Models.Components
         ChatWebhook,
         [JsonProperty("novu-slack")]
         NovuSlack,
-        [JsonProperty("fcm")]
-        Fcm,
-        [JsonProperty("apns")]
-        Apns,
-        [JsonProperty("expo")]
-        Expo,
-        [JsonProperty("one-signal")]
-        OneSignal,
-        [JsonProperty("pushpad")]
-        Pushpad,
-        [JsonProperty("push-webhook")]
-        PushWebhook,
-        [JsonProperty("pusher-beams")]
-        PusherBeams,
-        [JsonProperty("appio")]
-        Appio,
     }
 
     public static class ProviderIdExtension

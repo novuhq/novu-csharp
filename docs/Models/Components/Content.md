@@ -1,9 +1,18 @@
 # Content
 
-Translation content as JSON object
+Content of the message, can be an email block or a string
 
 
-## Fields
+## Supported Types
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+### ArrayOfEmailBlock
+
+```csharp
+Content.CreateArrayOfEmailBlock(/* values here */);
+```
+
+### Str
+
+```csharp
+Content.CreateStr(/* values here */);
+```
