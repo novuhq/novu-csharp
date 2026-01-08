@@ -23,6 +23,6 @@ namespace Novu.Models.Components
         public string? Name { get; set; }
 
         [JsonProperty("data")]
-        public TenantPayloadDtoData? Data { get; set; }
+        public Data? Data { get; set; }
     }
 }

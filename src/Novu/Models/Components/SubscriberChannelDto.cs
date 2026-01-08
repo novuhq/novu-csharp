@@ -20,7 +20,7 @@ namespace Novu.Models.Components
         /// The ID of the chat or push provider.
         /// </summary>
         [JsonProperty("providerId")]
-        public ProviderId ProviderId { get; set; } = default!;
+        public SubscriberChannelDtoProviderId ProviderId { get; set; } = default!;
 
         /// <summary>
         /// An optional identifier for the integration.

@@ -148,6 +148,9 @@ namespace Novu.Models.Components
         [JsonProperty("senderId")]
         public string? SenderId { get; set; }
 
+        [JsonProperty("tenantId")]
+        public string? TenantId { get; set; }
+
         [JsonProperty("AppIOBaseUrl")]
         public string? AppIOBaseUrl { get; set; }
     }

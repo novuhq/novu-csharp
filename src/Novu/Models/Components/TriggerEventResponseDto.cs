@@ -40,5 +40,8 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("transactionId")]
         public string? TransactionId { get; set; }
+
+        [JsonProperty("jobData")]
+        public JobData? JobData { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-# NovuTopics
-(*Subscribers.Topics*)
+# Subscribers.Topics
 
 ## Overview
 
@@ -24,6 +23,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 SubscribersControllerListSubscriberTopicsRequest req = new SubscribersControllerListSubscriberTopicsRequest() {
     SubscriberId = "<id>",
+    Limit = 10D,
 };
 
 var res = await sdk.Subscribers.Topics.ListAsync(req);

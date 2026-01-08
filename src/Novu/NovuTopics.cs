@@ -39,10 +39,11 @@ namespace Novu
     public class NovuTopics: INovuTopics
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "3.11.0";
-        private const string _sdkGenVersion = "2.755.9";
-        private const string _openapiDocVersion = "3.11.0";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public NovuTopics(SDKConfig config)
         {
@@ -52,7 +53,7 @@ namespace Novu
         public async Task<SubscribersControllerListSubscriberTopicsResponse> ListAsync(SubscribersControllerListSubscriberTopicsRequest request, RetryConfig? retryConfig = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}/subscriptions", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}/subscriptions", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

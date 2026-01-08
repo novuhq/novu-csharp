@@ -23,8 +23,8 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
     Actor = Actor.CreateStr(
         "<value>"
     ),
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, TriggerEventRequestDtoContext>() {
+        { "key", TriggerEventRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },
@@ -84,6 +84,11 @@ var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEvent
             SubscriberId = "<id>",
         }
     ),
+    Context = new Dictionary<string, TriggerEventToAllRequestDtoContext>() {
+        { "key", TriggerEventToAllRequestDtoContext.CreateStr(
+            "org-acme"
+        ) },
+    },
 });
 
 // handle response

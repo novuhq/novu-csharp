@@ -1,12 +1,78 @@
 # ProviderId
 
-The ID of the chat or push provider.
+The provider identifier (e.g., sendgrid, twilio, slack, etc.).
 
 
 ## Values
 
 | Name               | Value              |
 | ------------------ | ------------------ |
+| `Emailjs`          | emailjs            |
+| `Mailgun`          | mailgun            |
+| `Mailjet`          | mailjet            |
+| `Mandrill`         | mandrill           |
+| `Nodemailer`       | nodemailer         |
+| `Postmark`         | postmark           |
+| `Sendgrid`         | sendgrid           |
+| `Sendinblue`       | sendinblue         |
+| `Ses`              | ses                |
+| `Netcore`          | netcore            |
+| `InfobipEmail`     | infobip-email      |
+| `Resend`           | resend             |
+| `Plunk`            | plunk              |
+| `Mailersend`       | mailersend         |
+| `Mailtrap`         | mailtrap           |
+| `Clickatell`       | clickatell         |
+| `Outlook365`       | outlook365         |
+| `NovuEmail`        | novu-email         |
+| `Sparkpost`        | sparkpost          |
+| `EmailWebhook`     | email-webhook      |
+| `Braze`            | braze              |
+| `Nexmo`            | nexmo              |
+| `Plivo`            | plivo              |
+| `Sms77`            | sms77              |
+| `SmsCentral`       | sms-central        |
+| `Sns`              | sns                |
+| `Telnyx`           | telnyx             |
+| `Twilio`           | twilio             |
+| `Gupshup`          | gupshup            |
+| `Firetext`         | firetext           |
+| `InfobipSms`       | infobip-sms        |
+| `BurstSms`         | burst-sms          |
+| `BulkSms`          | bulk-sms           |
+| `IsendSms`         | isend-sms          |
+| `FortySixElks`     | forty-six-elks     |
+| `Kannel`           | kannel             |
+| `Maqsam`           | maqsam             |
+| `Termii`           | termii             |
+| `AfricasTalking`   | africas-talking    |
+| `NovuSms`          | novu-sms           |
+| `Sendchamp`        | sendchamp          |
+| `GenericSms`       | generic-sms        |
+| `Clicksend`        | clicksend          |
+| `Bandwidth`        | bandwidth          |
+| `Messagebird`      | messagebird        |
+| `Simpletexting`    | simpletexting      |
+| `AzureSms`         | azure-sms          |
+| `RingCentral`      | ring-central       |
+| `BrevoSms`         | brevo-sms          |
+| `EazySms`          | eazy-sms           |
+| `Mobishastra`      | mobishastra        |
+| `AfroMessage`      | afro-message       |
+| `Unifonic`         | unifonic           |
+| `Smsmode`          | smsmode            |
+| `Imedia`           | imedia             |
+| `Sinch`            | sinch              |
+| `IsendproSms`      | isendpro-sms       |
+| `Fcm`              | fcm                |
+| `Apns`             | apns               |
+| `Expo`             | expo               |
+| `OneSignal`        | one-signal         |
+| `Pushpad`          | pushpad            |
+| `PushWebhook`      | push-webhook       |
+| `PusherBeams`      | pusher-beams       |
+| `Appio`            | appio              |
+| `Novu`             | novu               |
 | `Slack`            | slack              |
 | `Discord`          | discord            |
 | `Msteams`          | msteams            |
@@ -19,11 +85,3 @@ The ID of the chat or push provider.
 | `WhatsappBusiness` | whatsapp-business  |
 | `ChatWebhook`      | chat-webhook       |
 | `NovuSlack`        | novu-slack         |
-| `Fcm`              | fcm                |
-| `Apns`             | apns               |
-| `Expo`             | expo               |
-| `OneSignal`        | one-signal         |
-| `Pushpad`          | pushpad            |
-| `PushWebhook`      | push-webhook       |
-| `PusherBeams`      | pusher-beams       |
-| `Appio`            | appio              |

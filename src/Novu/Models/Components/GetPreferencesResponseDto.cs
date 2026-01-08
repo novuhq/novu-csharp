@@ -39,5 +39,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("channels")]
         public SubscriberPreferenceChannels Channels { get; set; } = default!;
+
+        /// <summary>
+        /// Condition using JSON Logic rules
+        /// </summary>
+        [JsonProperty("condition")]
+        public Condition? Condition { get; set; } = null;
     }
 }

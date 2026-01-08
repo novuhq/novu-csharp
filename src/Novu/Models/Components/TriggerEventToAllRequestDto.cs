@@ -67,5 +67,8 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("tenant", NullValueHandling = NullValueHandling.Include)]
         public TriggerEventToAllRequestDtoTenant? Tenant { get; set; }
+
+        [JsonProperty("context")]
+        public Dictionary<string, TriggerEventToAllRequestDtoContext>? Context { get; set; }
     }
 }

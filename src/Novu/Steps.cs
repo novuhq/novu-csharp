@@ -38,10 +38,11 @@ namespace Novu
     public class Steps: ISteps
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "3.11.0";
-        private const string _sdkGenVersion = "2.755.9";
-        private const string _openapiDocVersion = "3.11.0";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Steps(SDKConfig config)
         {
@@ -57,7 +58,7 @@ namespace Novu
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v2/workflows/{workflowId}/steps/{stepId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v2/workflows/{workflowId}/steps/{stepId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

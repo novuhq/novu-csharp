@@ -14,7 +14,7 @@ namespace Novu.Models.Requests
     using System;
     
     /// <summary>
-    /// Resource type
+    /// The resource type to associate localizations with
     /// </summary>
     public enum ResourceType
     {

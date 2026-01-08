@@ -19,7 +19,7 @@ namespace Novu.Models.Requests
         /// Resource type
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=resourceType")]
-        public Models.Requests.ResourceType ResourceType { get; set; } = default!;
+        public TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType ResourceType { get; set; } = default!;
 
         /// <summary>
         /// Resource ID

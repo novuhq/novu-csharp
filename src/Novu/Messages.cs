@@ -59,7 +59,7 @@ namespace Novu
         ///     This API supports filtering by **channel** and delete all messages associated with the **transactionId**.
         /// </remarks>
         /// </summary>
-        Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(string transactionId, Models.Requests.Channel? channel = null, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(string transactionId, MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel? channel = null, string? idempotencyKey = null, RetryConfig? retryConfig = null);
     }
 
     /// <summary>
@@ -70,10 +70,11 @@ namespace Novu
     public class Messages: IMessages
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "3.11.0";
-        private const string _sdkGenVersion = "2.755.9";
-        private const string _openapiDocVersion = "3.11.0";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Messages(SDKConfig config)
         {
@@ -83,7 +84,7 @@ namespace Novu
         public async Task<MessagesControllerGetMessagesResponse> GetAsync(MessagesControllerGetMessagesRequest? request = null, RetryConfig? retryConfig = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/messages", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/messages", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -303,7 +304,7 @@ namespace Novu
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/messages/{messageId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/messages/{messageId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -515,7 +516,7 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(string transactionId, Models.Requests.Channel? channel = null, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        public async Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(string transactionId, MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel? channel = null, string? idempotencyKey = null, RetryConfig? retryConfig = null)
         {
             var request = new MessagesControllerDeleteMessagesByTransactionIdRequest()
             {
@@ -524,7 +525,7 @@ namespace Novu
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/messages/transaction/{transactionId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/messages/transaction/{transactionId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

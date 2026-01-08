@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
     
     public class TranslationResponseDto
     {
@@ -38,7 +39,7 @@ namespace Novu.Models.Components
         /// Translation content as JSON object
         /// </summary>
         [JsonProperty("content")]
-        public TranslationResponseDtoContent Content { get; set; } = default!;
+        public Dictionary<string, object> Content { get; set; } = default!;
 
         /// <summary>
         /// Creation timestamp

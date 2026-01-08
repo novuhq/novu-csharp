@@ -1,5 +1,4 @@
 # SubscribersNotifications
-(*SubscribersNotifications*)
 
 ## Overview
 
@@ -24,6 +23,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 SubscribersV1ControllerGetNotificationsFeedRequest req = new SubscribersV1ControllerGetNotificationsFeedRequest() {
     SubscriberId = "<id>",
+    Page = 0D,
     Payload = "btoa(JSON.stringify({ foo: 123 })) results in base64 encoded string like eyJmb28iOjEyM30=",
 };
 

@@ -10,8 +10,8 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
-    using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
     
     public class ImportMasterJsonRequestDto
     {
@@ -26,6 +26,6 @@ namespace Novu.Models.Components
         /// Master JSON object containing all translations organized by workflow identifier
         /// </summary>
         [JsonProperty("masterJson")]
-        public MasterJson MasterJson { get; set; } = default!;
+        public Dictionary<string, object> MasterJson { get; set; } = default!;
     }
 }

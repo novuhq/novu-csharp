@@ -52,10 +52,11 @@ namespace Novu
     public class Notifications: INotifications
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "3.11.0";
-        private const string _sdkGenVersion = "2.755.9";
-        private const string _openapiDocVersion = "3.11.0";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Notifications(SDKConfig config)
         {
@@ -65,7 +66,7 @@ namespace Novu
         public async Task<NotificationsControllerListNotificationsResponse> GetAsync(NotificationsControllerListNotificationsRequest? request = null, RetryConfig? retryConfig = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/notifications", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/notifications", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -285,7 +286,7 @@ namespace Novu
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/notifications/{notificationId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/notifications/{notificationId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

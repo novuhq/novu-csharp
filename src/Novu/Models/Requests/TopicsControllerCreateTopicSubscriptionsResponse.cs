@@ -23,7 +23,7 @@ namespace Novu.Models.Requests
         /// <summary>
         /// Subscriptions created successfully
         /// </summary>
-        public CreateTopicSubscriptionsResponseDto? CreateTopicSubscriptionsResponseDto { get; set; }
+        public CreateSubscriptionsResponseDto? CreateSubscriptionsResponseDto { get; set; }
 
         public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }

@@ -19,7 +19,7 @@ namespace Novu.Models.Requests
         /// The channel of the message to be deleted
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=channel")]
-        public Models.Requests.Channel? Channel { get; set; }
+        public MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel? Channel { get; set; }
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transactionId")]
         public string TransactionId { get; set; } = default!;

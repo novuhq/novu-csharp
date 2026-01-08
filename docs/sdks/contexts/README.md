@@ -1,5 +1,4 @@
 # Contexts
-(*Contexts*)
 
 ## Overview
 
@@ -24,13 +23,20 @@ Create a new context with the specified type, id, and data. Returns 409 if conte
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Contexts.CreateAsync(createContextRequestDto: new CreateContextRequestDto() {
     Type = "tenant",
     Id = "org-acme",
-    Data = new Data() {},
+    Data = new Dictionary<string, object>() {
+        { "tenantName", "Acme Corp" },
+        { "region", "us-east-1" },
+        { "settings", new Dictionary<string, object>() {
+            { "theme", "dark" },
+        } },
+    },
 });
 
 // handle response
@@ -77,6 +83,7 @@ using Novu.Models.Requests;
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 ContextsControllerListContextsRequest req = new ContextsControllerListContextsRequest() {
+    Limit = 10D,
     Id = "tenant-prod-123",
     Search = "tenant",
 };
@@ -118,6 +125,7 @@ Update the data of an existing context.
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
@@ -125,7 +133,13 @@ var res = await sdk.Contexts.UpdateAsync(
     id: "<id>",
     type: "<value>",
     updateContextRequestDto: new UpdateContextRequestDto() {
-        Data = new UpdateContextRequestDtoData() {},
+        Data = new Dictionary<string, object>() {
+            { "tenantName", "Acme Corp" },
+            { "region", "us-east-1" },
+            { "settings", new Dictionary<string, object>() {
+                { "theme", "dark" },
+            } },
+        },
     }
 );
 

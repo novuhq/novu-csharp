@@ -57,7 +57,7 @@ namespace Novu.Models.Components
         /// The channel type for the integration, which defines how the integration communicates (e.g., email, SMS).
         /// </summary>
         [JsonProperty("channel")]
-        public Models.Components.Channel Channel { get; set; } = default!;
+        public IntegrationResponseDtoChannel Channel { get; set; } = default!;
 
         /// <summary>
         /// The credentials required for the integration to function, including API keys and other sensitive information.

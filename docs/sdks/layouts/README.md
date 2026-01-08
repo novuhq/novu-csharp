@@ -1,5 +1,4 @@
 # Layouts
-(*Layouts*)
 
 ## Overview
 
@@ -73,7 +72,10 @@ using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-LayoutsControllerListRequest? req = null;
+LayoutsControllerListRequest req = new LayoutsControllerListRequest() {
+    Limit = 10D,
+    Offset = 0D,
+};
 
 var res = await sdk.Layouts.ListAsync(req);
 

@@ -1,5 +1,4 @@
-# Groups
-(*Translations.Groups*)
+# Translations.Groups
 
 ## Overview
 
@@ -18,11 +17,12 @@ Delete an entire translation group and all its translations
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Translations.Groups.DeleteAsync(
-    resourceType: Novu.Models.Requests.ResourceType.Workflow,
+    resourceType: TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType.Workflow,
     resourceId: "welcome-email"
 );
 
@@ -31,11 +31,11 @@ var res = await sdk.Translations.Groups.DeleteAsync(
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `ResourceType`                                                        | [Models.Requests.ResourceType](../../Models/Requests/ResourceType.md) | :heavy_check_mark:                                                    | Resource type                                                         | workflow                                                              |
-| `ResourceId`                                                          | *string*                                                              | :heavy_check_mark:                                                    | Resource ID                                                           | welcome-email                                                         |
-| `IdempotencyKey`                                                      | *string*                                                              | :heavy_minus_sign:                                                    | A header for idempotency purposes                                     |                                                                       |
+| Parameter                                                                                                                                                                     | Type                                                                                                                                                                          | Required                                                                                                                                                                      | Description                                                                                                                                                                   | Example                                                                                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ResourceType`                                                                                                                                                                | [TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType](../../Models/Requests/TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType.md) | :heavy_check_mark:                                                                                                                                                            | Resource type                                                                                                                                                                 | workflow                                                                                                                                                                      |
+| `ResourceId`                                                                                                                                                                  | *string*                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                            | Resource ID                                                                                                                                                                   | welcome-email                                                                                                                                                                 |
+| `IdempotencyKey`                                                                                                                                                              | *string*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                            | A header for idempotency purposes                                                                                                                                             |                                                                                                                                                                               |
 
 ### Response
 

@@ -9,7 +9,7 @@
 #nullable enable
 namespace Novu.Models.Requests
 {
-    using Novu.Models.Components;
+    using Novu.Models.Requests;
     using Novu.Utils;
     
     public class TranslationControllerUploadTranslationFilesRequest
@@ -21,10 +21,7 @@ namespace Novu.Models.Requests
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
 
-        /// <summary>
-        /// Translation files upload body details
-        /// </summary>
         [SpeakeasyMetadata("request:mediaType=multipart/form-data")]
-        public UploadTranslationsRequestDto UploadTranslationsRequestDto { get; set; } = default!;
+        public TranslationControllerUploadTranslationFilesRequestBody RequestBody { get; set; } = default!;
     }
 }

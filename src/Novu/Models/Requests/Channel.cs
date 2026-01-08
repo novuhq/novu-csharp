@@ -14,7 +14,7 @@ namespace Novu.Models.Requests
     using System;
     
     /// <summary>
-    /// The channel of the message to be deleted
+    /// Filter by channel type (email, sms, push, chat, etc.).
     /// </summary>
     public enum Channel
     {

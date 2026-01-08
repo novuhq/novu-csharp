@@ -63,10 +63,10 @@ namespace Novu
         /// Upload translation files
         /// 
         /// <remarks>
-        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json
+        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json. Supports both &quot;files&quot; and &quot;files[]&quot; field names for backwards compatibility.
         /// </remarks>
         /// </summary>
-        Task<TranslationControllerUploadTranslationFilesResponse> UploadAsync(UploadTranslationsRequestDto uploadTranslationsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        Task<TranslationControllerUploadTranslationFilesResponse> UploadAsync(TranslationControllerUploadTranslationFilesRequestBody requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null);
     }
 
     /// <summary>
@@ -77,10 +77,11 @@ namespace Novu
     public class Translations: ITranslations
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "3.11.0";
-        private const string _sdkGenVersion = "2.755.9";
-        private const string _openapiDocVersion = "3.11.0";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
         public IGroups Groups { get; private set; }
         public IMaster Master { get; private set; }
 
@@ -240,7 +241,7 @@ namespace Novu
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v2/translations/{resourceType}/{resourceId}/{locale}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v2/translations/{resourceType}/{resourceId}/{locale}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -374,7 +375,7 @@ namespace Novu
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v2/translations/{resourceType}/{resourceId}/{locale}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v2/translations/{resourceType}/{resourceId}/{locale}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -480,11 +481,11 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TranslationControllerUploadTranslationFilesResponse> UploadAsync(UploadTranslationsRequestDto uploadTranslationsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        public async Task<TranslationControllerUploadTranslationFilesResponse> UploadAsync(TranslationControllerUploadTranslationFilesRequestBody requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null)
         {
             var request = new TranslationControllerUploadTranslationFilesRequest()
             {
-                UploadTranslationsRequestDto = uploadTranslationsRequestDto,
+                RequestBody = requestBody,
                 IdempotencyKey = idempotencyKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -495,7 +496,7 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "UploadTranslationsRequestDto", "multipart", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "multipart", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;

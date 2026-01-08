@@ -10,8 +10,8 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
-    using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
     
     public class UpdateContextRequestDto
     {
@@ -20,6 +20,6 @@ namespace Novu.Models.Components
         /// Custom data to associate with this context. Replaces existing data.
         /// </summary>
         [JsonProperty("data")]
-        public UpdateContextRequestDtoData Data { get; set; } = default!;
+        public Dictionary<string, object> Data { get; set; } = default!;
     }
 }
