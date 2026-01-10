@@ -40,5 +40,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("workflow")]
         public SubscriberPreferencesWorkflowInfoDto Workflow { get; set; } = default!;
+
+        /// <summary>
+        /// Timestamp when the subscriber last updated their preference. Only present if subscriber explicitly set preferences.
+        /// </summary>
+        [JsonProperty("updatedAt")]
+        public string? UpdatedAt { get; set; }
     }
 }

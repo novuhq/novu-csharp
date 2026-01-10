@@ -1,18 +1,18 @@
 lockVersion: 2.0.0
 id: 61e876ba-f1ab-4e7f-bfcc-4f8231d25d15
 management:
-  docChecksum: ea753691d2ed8c95d84e1db99a61b5b3
-  docVersion: 3.11.0
-  speakeasyVersion: 1.682.0
-  generationVersion: 2.791.1
-  releaseVersion: 3.12.0
-  configChecksum: 3bd20d324d9c470213b0388418bfb97d
+  docChecksum: 3204a67f1ee7c782e8f390ee3480f429
+  docVersion: 3.12.0
+  speakeasyVersion: 1.684.0
+  generationVersion: 2.793.0
+  releaseVersion: 3.13.0
+  configChecksum: f56edab6d9fad733a413c6ec694ad504
   repoURL: https://github.com/novuhq/novu-csharp.git
   published: true
 persistentEdits:
-  generation_id: 6a8129a6-8dd9-46a5-adda-308cef355acd
-  pristine_commit_hash: cba9f3a799faf8900e47441ec0493c3d8d5820c4
-  pristine_tree_hash: f187ade3e5f3a7eee613e474860eb80fccbe0a93
+  generation_id: d90b0fda-55c0-49ce-8d1e-b22785ef65c5
+  pristine_commit_hash: 404893d7616b8e4d0116e01ea38de2806e6fdb1c
+  pristine_tree_hash: a184af5d0739099508404d54e60a122e061849cc
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1414,8 +1414,8 @@ trackedFiles:
     pristine_git_object: 896dc1dc1241c86c6c23f7796a25a63f6151bc2e
   docs/Models/Components/SubscriberWorkflowPreferenceDto.md:
     id: c34ff68ea4e0
-    last_write_checksum: sha1:0218d1f044991b4a99f57ae463bfa9d78ccf929e
-    pristine_git_object: 2190d2bd0c0bc083645033460e76d42a588663df
+    last_write_checksum: sha1:08a24e4eb82f126132b08acbb0af627c0fdcd308
+    pristine_git_object: 4fabbba3cc11836160e9751ab3c773845afa3a66
   docs/Models/Components/SubscriptionDto.md:
     id: a7b6d279197e
     last_write_checksum: sha1:866f115822c69075623d6871372c7bad97142e07
@@ -4242,8 +4242,8 @@ trackedFiles:
     pristine_git_object: 90c785b87eb4c2f9d53a1ce0b1bc9ac6e11f9656
   src/Novu/Models/Components/SubscriberWorkflowPreferenceDto.cs:
     id: 02e312469620
-    last_write_checksum: sha1:84394c72153633f496ffe6216afec569dc6c7aff
-    pristine_git_object: 909d352ddd6ed00d201f1dd7ae98bfd0cfd3e831
+    last_write_checksum: sha1:52c29187efba0b12d36f07c48e7ff28fc0632702
+    pristine_git_object: 945ef63e686b62c12fc7c0b79cd398e72f9e7617
   src/Novu/Models/Components/SubscriptionDto.cs:
     id: aff2f23ae98e
     last_write_checksum: sha1:7b42f935825e8c1099259fae2efaca410b2f616b
@@ -5578,8 +5578,8 @@ trackedFiles:
     pristine_git_object: f3ca8f87da75c1025699aa94284079907e54bb3d
   src/Novu/Novu.csproj:
     id: d1fe7f089c20
-    last_write_checksum: sha1:e8a01c7fadb6aa4b68e45a1c72f5886e57ef87f3
-    pristine_git_object: 2a7f12b1a8571e2c34b8988d7437ff536eb2089c
+    last_write_checksum: sha1:c77e91bcbc2c5e555db7720eac301f897a2e7d07
+    pristine_git_object: c24f5b68b4db5e965635690eeb02dc0fc0794008
   src/Novu/NovuSDK.cs:
     id: 4ea74ce26f49
     last_write_checksum: sha1:11d188990cc292209a95bf3d2f98a09e332af308
@@ -5594,8 +5594,8 @@ trackedFiles:
     pristine_git_object: 56a0638aa9f354f79d06b67c0fe717c755054b3d
   src/Novu/SDKConfig.cs:
     id: 228eb68fa757
-    last_write_checksum: sha1:aeb35f587b010e8dc420217a0737046bd15c84c3
-    pristine_git_object: 4112d543bb506f0336e39c6ba1a472f916f45397
+    last_write_checksum: sha1:6f578e89ca843dea9700673b7f4560c2d7238588
+    pristine_git_object: 2e878bbed28a1c38335a7a5a55730480fef8d4d3
   src/Novu/Steps.cs:
     id: 5b24d842ca7a
     last_write_checksum: sha1:fa06d8554e2e3971f8e0037897a66e8b2e86712d
@@ -5642,8 +5642,8 @@ trackedFiles:
     pristine_git_object: 9c9aae9055f608027cf99f2fded32e149f0b6f36
   src/Novu/Utils/Constants.cs:
     id: 47b034209815
-    last_write_checksum: sha1:cae1689b892c8f39fc927cf2c1e9893a42bbb60c
-    pristine_git_object: 24e3680cb60197f6a55e455312e623841536ff21
+    last_write_checksum: sha1:62aac8148b5317c40be208921939e51d653216db
+    pristine_git_object: 69a75f5d979d2bdd7fbcc7c0908a61c9d41747fe
   src/Novu/Utils/DecimalStrConverter.cs:
     id: c5c1dbe2ffcb
     last_write_checksum: sha1:e9b291cdfe54d763cfec70c8b9b83e59e0de7a5b
@@ -7227,7 +7227,10 @@ examples:
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Novu.Translations.Upload()`:  `request` **Changed** **Breaking** :warning:\n* `Novu.Translations.Master.Retrieve()`:  `response` **Changed** **Breaking** :warning:\n* `Novu.Translations.Master.Upload()`:  `requestBody` **Added** **Breaking** :warning:\n* `Novu.Translations.Master.Import()`: \n  *  `request.importMasterJsonRequestDto.MasterJson` **Changed** **Breaking** :warning:\n* `Novu.Contexts.Update()`: \n  *  `request.updateContextRequestDto.Data` **Changed** **Breaking** :warning:\n  *  `response.data` **Changed** **Breaking** :warning:\n* `Novu.Translations.Retrieve()`:  `response.content` **Changed** **Breaking** :warning:\n* `Novu.Translations.Create()`: \n  *  `request.createTranslationRequestDto.Content` **Changed** **Breaking** :warning:\n  *  `response.content` **Changed** **Breaking** :warning:\n* `Novu.Contexts.Create()`: \n  *  `request.createContextRequestDto.Data` **Changed** **Breaking** :warning:\n  *  `response.data` **Changed** **Breaking** :warning:\n* `Novu.Contexts.List()`:  `response.data.[].Data` **Changed** **Breaking** :warning:\n* `Novu.Contexts.Retrieve()`:  `response.data` **Changed** **Breaking** :warning:\n* `Novu.ChannelConnections.Create()`: **Added**\n* `Novu.Topics.Subscriptions.Delete()`: \n  *  `request.deleteTopicSubscriptionsRequestDto` **Changed**\n  *  `response.data.[].Identifier` **Added**\n* `Novu.Integrations.GenerateChatOAuthUrl()`: **Added**\n* `Novu.Trigger()`:  `response.jobData` **Added**\n* `Novu.Broadcast()`: \n  *  `request.triggerEventToAllRequestDto.Context` **Added**\n  *  `response.jobData` **Added**\n* `Novu.TriggerBulk()`:  `response.[].JobData` **Added**\n* `Novu.ChannelEndpoints.Retrieve()`: **Added**\n* `Novu.ChannelEndpoints.Create()`: **Added**\n* `Novu.Topics.Subscriptions.Update()`: **Added**\n* `Novu.ChannelEndpoints.List()`: **Added**\n* `Novu.Topics.Subscriptions.Create()`: \n  *  `request.createTopicSubscriptionsRequestDto` **Changed**\n  *  `response.data.[]` **Changed**\n* `Novu.Subscribers.Topics.List()`:  `response.data.[].Identifier` **Added**\n* `Novu.Topics.Subscriptions.List()`:  `response.data.[].Identifier` **Added**\n* `Novu.ChannelEndpoints.Update()`: **Added**\n* `Novu.ChannelEndpoints.Delete()`: **Added**\n* `Novu.ChannelConnections.Update()`: **Added**\n* `Novu.Subscribers.Preferences.BulkUpdate()`:  `response.[].Condition` **Added**\n* `Novu.Topics.Subscriptions.GetSubscription()`: **Added**\n* `Novu.ChannelConnections.Retrieve()`: **Added**\n* `Novu.Integrations.GetAll()`:  `response.[].Credentials.TenantId` **Added**\n* `Novu.ChannelConnections.List()`: **Added**\n* `Novu.ChannelConnections.Delete()`: **Added**\n* `Novu.Integrations.Create()`: \n  *  `request.createIntegrationRequestDto.Credentials.TenantId` **Added**\n  *  `response.credentials.TenantId` **Added**\n* `Novu.Integrations.Update()`: \n  *  `request.updateIntegrationRequestDto.Credentials.TenantId` **Added**\n  *  `response.credentials.TenantId` **Added**\n* `Novu.Integrations.Delete()`:  `response.[].Credentials.TenantId` **Added**\n* `Novu.Integrations.SetPrimary()`:  `response.credentials.TenantId` **Added**\n* `Novu.Integrations.ListActive()`:  `response.[].Credentials.TenantId` **Added**\n* `Novu.Notifications.Get()`: \n  *  `request.SubscriptionId` **Added**\n* `Novu.SubscribersNotifications.Feed()`:  `response.data.[].Archived` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Novu.SubscribersPreferences.List()`:  `response.workflows.[].UpdatedAt` **Added**
+  * `Novu.SubscribersPreferences.Update()`:  `response.workflows.[].UpdatedAt` **Added**
 generatedFiles:
   - .gitattributes
   - NUGET.md
