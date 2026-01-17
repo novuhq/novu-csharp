@@ -22,7 +22,7 @@ namespace Novu.Utils
         /// <summary>
         /// The version of the SDK.
         /// </summary>
-        public const string SdkVersion = "3.12.0";
+        public const string SdkVersion = "3.13.0";
 
         /// <summary>
         /// The version of the SDK generator used to create this SDK.
@@ -32,7 +32,7 @@ namespace Novu.Utils
         /// <summary>
         /// The version of the OpenAPI document used to generate this SDK.
         /// </summary>
-        public const string OpenApiDocVersion = "3.11.0";
+        public const string OpenApiDocVersion = "3.12.0";
     }
 }
 
