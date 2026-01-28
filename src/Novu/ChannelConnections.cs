@@ -24,68 +24,147 @@ namespace Novu
 
     public interface IChannelConnections
     {
-
         /// <summary>
-        /// List all channel connections
-        /// 
+        /// List all channel connections.
+        /// </summary>
         /// <remarks>
         /// List all channel connections for a resource.
         /// </remarks>
-        /// </summary>
-        Task<ChannelConnectionsControllerListChannelConnectionsResponse> ListAsync(ChannelConnectionsControllerListChannelConnectionsRequest? request = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="ChannelConnectionsControllerListChannelConnectionsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerListChannelConnectionsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ChannelConnectionsControllerListChannelConnectionsResponse> ListAsync(
+            ChannelConnectionsControllerListChannelConnectionsRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create a channel connection
-        /// 
+        /// Create a channel connection.
+        /// </summary>
         /// <remarks>
         /// Create a new channel connection for a resource for given integration. Only one channel connection is allowed per resource and integration.
         /// </remarks>
-        /// </summary>
-        Task<ChannelConnectionsControllerCreateChannelConnectionResponse> CreateAsync(CreateChannelConnectionRequestDto createChannelConnectionRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="createChannelConnectionRequestDto">A <see cref="CreateChannelConnectionRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerCreateChannelConnectionResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createChannelConnectionRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ChannelConnectionsControllerCreateChannelConnectionResponse> CreateAsync(
+            CreateChannelConnectionRequestDto createChannelConnectionRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Retrieve a channel connection
-        /// 
+        /// Retrieve a channel connection.
+        /// </summary>
         /// <remarks>
         /// Retrieve a specific channel connection by its unique identifier.
         /// </remarks>
-        /// </summary>
-        Task<ChannelConnectionsControllerGetChannelConnectionByIdentifierResponse> RetrieveAsync(string identifier, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="identifier">The unique identifier of the channel connection.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerGetChannelConnectionByIdentifierResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identifier"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ChannelConnectionsControllerGetChannelConnectionByIdentifierResponse> RetrieveAsync(
+            string identifier,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a channel connection
-        /// 
+        /// Update a channel connection.
+        /// </summary>
         /// <remarks>
         /// Update an existing channel connection by its unique identifier.
         /// </remarks>
-        /// </summary>
-        Task<ChannelConnectionsControllerUpdateChannelConnectionResponse> UpdateAsync(string identifier, UpdateChannelConnectionRequestDto updateChannelConnectionRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="identifier">The unique identifier of the channel connection.</param>
+        /// <param name="updateChannelConnectionRequestDto">A <see cref="UpdateChannelConnectionRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerUpdateChannelConnectionResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="identifier"/> or <paramref name="updateChannelConnectionRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ChannelConnectionsControllerUpdateChannelConnectionResponse> UpdateAsync(
+            string identifier,
+            UpdateChannelConnectionRequestDto updateChannelConnectionRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a channel connection
-        /// 
+        /// Delete a channel connection.
+        /// </summary>
         /// <remarks>
         /// Delete a specific channel connection by its unique identifier.
         /// </remarks>
-        /// </summary>
-        Task<ChannelConnectionsControllerDeleteChannelConnectionResponse> DeleteAsync(string identifier, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="identifier">The unique identifier of the channel connection.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerDeleteChannelConnectionResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identifier"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ChannelConnectionsControllerDeleteChannelConnectionResponse> DeleteAsync(
+            string identifier,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class ChannelConnections: IChannelConnections
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public ChannelConnections(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<ChannelConnectionsControllerListChannelConnectionsResponse> ListAsync(ChannelConnectionsControllerListChannelConnectionsRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List all channel connections.
+        /// </summary>
+        /// <remarks>
+        /// List all channel connections for a resource.
+        /// </remarks>
+        /// <param name="request">A <see cref="ChannelConnectionsControllerListChannelConnectionsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerListChannelConnectionsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ChannelConnectionsControllerListChannelConnectionsResponse> ListAsync(
+            ChannelConnectionsControllerListChannelConnectionsRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/channel-connections", request, null);
@@ -145,7 +224,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -300,15 +379,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ChannelConnectionsControllerCreateChannelConnectionResponse> CreateAsync(CreateChannelConnectionRequestDto createChannelConnectionRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Create a channel connection.
+        /// </summary>
+        /// <remarks>
+        /// Create a new channel connection for a resource for given integration. Only one channel connection is allowed per resource and integration.
+        /// </remarks>
+        /// <param name="createChannelConnectionRequestDto">A <see cref="CreateChannelConnectionRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerCreateChannelConnectionResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createChannelConnectionRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ChannelConnectionsControllerCreateChannelConnectionResponse> CreateAsync(
+            CreateChannelConnectionRequestDto createChannelConnectionRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (createChannelConnectionRequestDto == null) throw new ArgumentNullException(nameof(createChannelConnectionRequestDto));
+
             var request = new ChannelConnectionsControllerCreateChannelConnectionRequest()
             {
                 CreateChannelConnectionRequestDto = createChannelConnectionRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/channel-connections";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -372,7 +474,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -527,13 +629,37 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ChannelConnectionsControllerGetChannelConnectionByIdentifierResponse> RetrieveAsync(string identifier, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Retrieve a channel connection.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a specific channel connection by its unique identifier.
+        /// </remarks>
+        /// <param name="identifier">The unique identifier of the channel connection.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerGetChannelConnectionByIdentifierResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identifier"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ChannelConnectionsControllerGetChannelConnectionByIdentifierResponse> RetrieveAsync(
+            string identifier,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (identifier == null) throw new ArgumentNullException(nameof(identifier));
+
             var request = new ChannelConnectionsControllerGetChannelConnectionByIdentifierRequest()
             {
                 Identifier = identifier,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/channel-connections/{identifier}", request, null);
 
@@ -592,7 +718,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -747,14 +873,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ChannelConnectionsControllerUpdateChannelConnectionResponse> UpdateAsync(string identifier, UpdateChannelConnectionRequestDto updateChannelConnectionRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update a channel connection.
+        /// </summary>
+        /// <remarks>
+        /// Update an existing channel connection by its unique identifier.
+        /// </remarks>
+        /// <param name="identifier">The unique identifier of the channel connection.</param>
+        /// <param name="updateChannelConnectionRequestDto">A <see cref="UpdateChannelConnectionRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerUpdateChannelConnectionResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="identifier"/> or <paramref name="updateChannelConnectionRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ChannelConnectionsControllerUpdateChannelConnectionResponse> UpdateAsync(
+            string identifier,
+            UpdateChannelConnectionRequestDto updateChannelConnectionRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (identifier == null) throw new ArgumentNullException(nameof(identifier));
+            if (updateChannelConnectionRequestDto == null) throw new ArgumentNullException(nameof(updateChannelConnectionRequestDto));
+
             var request = new ChannelConnectionsControllerUpdateChannelConnectionRequest()
             {
                 Identifier = identifier,
                 UpdateChannelConnectionRequestDto = updateChannelConnectionRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/channel-connections/{identifier}", request, null);
 
@@ -819,7 +972,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -974,13 +1127,37 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ChannelConnectionsControllerDeleteChannelConnectionResponse> DeleteAsync(string identifier, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete a channel connection.
+        /// </summary>
+        /// <remarks>
+        /// Delete a specific channel connection by its unique identifier.
+        /// </remarks>
+        /// <param name="identifier">The unique identifier of the channel connection.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ChannelConnectionsControllerDeleteChannelConnectionResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identifier"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ChannelConnectionsControllerDeleteChannelConnectionResponse> DeleteAsync(
+            string identifier,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (identifier == null) throw new ArgumentNullException(nameof(identifier));
+
             var request = new ChannelConnectionsControllerDeleteChannelConnectionRequest()
             {
                 Identifier = identifier,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/channel-connections/{identifier}", request, null);
 
@@ -1039,7 +1216,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1175,5 +1352,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

@@ -19,12 +19,16 @@ Retrieve subscriber channel preferences by its unique key identifier **subscribe
 using Novu;
 using Novu.Models.Components;
 using Novu.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.SubscribersPreferences.ListAsync(
     subscriberId: "<id>",
-    criticality: Criticality.NonCritical
+    criticality: Criticality.NonCritical,
+    contextKeys: new List<string>() {
+        "tenant:acme",
+    }
 );
 
 // handle response
@@ -32,11 +36,12 @@ var res = await sdk.SubscribersPreferences.ListAsync(
 
 ### Parameters
 
-| Parameter                                           | Type                                                | Required                                            | Description                                         |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `SubscriberId`                                      | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
-| `Criticality`                                       | [Criticality](../../Models/Requests/Criticality.md) | :heavy_minus_sign:                                  | N/A                                                 |
-| `IdempotencyKey`                                    | *string*                                            | :heavy_minus_sign:                                  | A header for idempotency purposes                   |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `SubscriberId`                                                 | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |                                                                |
+| `Criticality`                                                  | [Criticality](../../Models/Requests/Criticality.md)            | :heavy_minus_sign:                                             | N/A                                                            |                                                                |
+| `ContextKeys`                                                  | List<*string*>                                                 | :heavy_minus_sign:                                             | Context keys for filtering preferences (e.g., ["tenant:acme"]) | [<br/>"tenant:acme"<br/>]                                      |
+| `IdempotencyKey`                                               | *string*                                                       | :heavy_minus_sign:                                             | A header for idempotency purposes                              |                                                                |
 
 ### Response
 
@@ -138,6 +143,11 @@ var res = await sdk.SubscribersPreferences.UpdateAsync(
                     },
                 },
             },
+        },
+        Context = new Dictionary<string, Context>() {
+            { "key", Context.CreateStr(
+                "org-acme"
+            ) },
         },
     }
 );

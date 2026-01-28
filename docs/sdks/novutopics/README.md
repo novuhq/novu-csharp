@@ -18,12 +18,17 @@ Retrieve subscriber's topic subscriptions by its unique key identifier **subscri
 using Novu;
 using Novu.Models.Components;
 using Novu.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 SubscribersControllerListSubscriberTopicsRequest req = new SubscribersControllerListSubscriberTopicsRequest() {
     SubscriberId = "<id>",
     Limit = 10D,
+    ContextKeys = new List<string>() {
+        "tenant:org-123",
+        "region:us-east-1",
+    },
 };
 
 var res = await sdk.Subscribers.Topics.ListAsync(req);

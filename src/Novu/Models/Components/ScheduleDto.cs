@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class ScheduleDto
     {
-
         /// <summary>
-        /// Schedule enabled
+        /// Schedule enabled.
         /// </summary>
         [JsonProperty("isEnabled")]
         public bool IsEnabled { get; set; } = default!;
 
         /// <summary>
-        /// Weekly schedule
+        /// Weekly schedule.
         /// </summary>
         [JsonProperty("weeklySchedule")]
         public WeeklySchedule? WeeklySchedule { get; set; }

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Severity of the workflow
+    /// Severity of the workflow.
     /// </summary>
     public enum SeverityLevelEnum
     {
@@ -60,5 +60,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum SeverityLevelEnum");
         }
     }
-
 }

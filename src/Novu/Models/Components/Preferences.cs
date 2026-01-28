@@ -55,7 +55,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(Preferences.PreferencesConverter))]
     public class Preferences
     {

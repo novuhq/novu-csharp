@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class PushStepUpsertDto
     {
-
         /// <summary>
         /// Database identifier of the step. Used for updating the step.
         /// </summary>
@@ -23,19 +22,19 @@ namespace Novu.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// Unique identifier for the step
+        /// Unique identifier for the step.
         /// </summary>
         [JsonProperty("stepId")]
         public string? StepId { get; set; }
 
         /// <summary>
-        /// Name of the step
+        /// Name of the step.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Type of the step
+        /// Type of the step.
         /// </summary>
         [JsonProperty("type")]
         public StepTypeEnum Type { get; set; } = default!;

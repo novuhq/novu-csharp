@@ -13,51 +13,50 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// Workflow information if this is a template-level preference
+    /// Workflow information if this is a template-level preference.
     /// </summary>
     public class SubscriptionPreferenceDtoWorkflow
     {
-
         /// <summary>
-        /// Unique identifier of the workflow
+        /// Unique identifier of the workflow.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Workflow identifier used for triggering
+        /// Workflow identifier used for triggering.
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; } = default!;
 
         /// <summary>
-        /// Human-readable name of the workflow
+        /// Human-readable name of the workflow.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Whether this workflow is marked as critical
+        /// Whether this workflow is marked as critical.
         /// </summary>
         [JsonProperty("critical")]
         public bool Critical { get; set; } = default!;
 
         /// <summary>
-        /// Tags associated with the workflow
+        /// Tags associated with the workflow.
         /// </summary>
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; }
 
         /// <summary>
-        /// Custom data associated with the workflow
+        /// Custom data associated with the workflow.
         /// </summary>
         [JsonProperty("data")]
         public SubscriptionPreferenceDtoData? Data { get; set; }
 
         /// <summary>
-        /// Severity of the workflow
+        /// Severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum Severity { get; set; } = default!;

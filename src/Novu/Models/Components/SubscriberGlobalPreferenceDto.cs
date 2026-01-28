@@ -12,24 +12,23 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class SubscriberGlobalPreferenceDto
     {
-
         /// <summary>
-        /// Whether notifications are enabled globally
+        /// Whether notifications are enabled globally.
         /// </summary>
         [JsonProperty("enabled")]
         public bool Enabled { get; set; } = default!;
 
         /// <summary>
-        /// Channel-specific preference settings
+        /// Channel-specific preference settings.
         /// </summary>
         [JsonProperty("channels")]
         public SubscriberPreferenceChannels Channels { get; set; } = default!;
 
         /// <summary>
-        /// Subscriber schedule
+        /// Subscriber schedule.
         /// </summary>
         [JsonProperty("schedule")]
         public ScheduleDto? Schedule { get; set; }

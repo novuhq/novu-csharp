@@ -11,24 +11,23 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class MetaDto
     {
-
         /// <summary>
-        /// The total count of subscriber IDs provided
+        /// The total count of subscriber IDs provided.
         /// </summary>
         [JsonProperty("totalCount")]
         public double TotalCount { get; set; } = default!;
 
         /// <summary>
-        /// The count of successfully created subscriptions
+        /// The count of successfully created subscriptions.
         /// </summary>
         [JsonProperty("successful")]
         public double Successful { get; set; } = default!;
 
         /// <summary>
-        /// The count of failed subscription attempts
+        /// The count of failed subscription attempts.
         /// </summary>
         [JsonProperty("failed")]
         public double Failed { get; set; } = default!;

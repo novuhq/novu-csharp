@@ -12,9 +12,9 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Direction of sorting
+    /// Direction of sorting.
     /// </summary>
     public enum ChannelConnectionsControllerListChannelConnectionsQueryParamOrderDirection
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Requests
             throw new Exception($"Unknown value {value} for enum ChannelConnectionsControllerListChannelConnectionsQueryParamOrderDirection");
         }
     }
-
 }

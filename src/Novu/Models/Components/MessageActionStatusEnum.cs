@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Status of the message action
+    /// Status of the message action.
     /// </summary>
     public enum MessageActionStatusEnum
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum MessageActionStatusEnum");
         }
     }
-
 }

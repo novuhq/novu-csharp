@@ -12,30 +12,29 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class PayloadValidationErrorDto
     {
-
         /// <summary>
-        /// Field path that failed validation
+        /// Field path that failed validation.
         /// </summary>
         [JsonProperty("field")]
         public string Field { get; set; } = default!;
 
         /// <summary>
-        /// Validation error message
+        /// Validation error message.
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = default!;
 
         /// <summary>
-        /// The actual value that failed validation
+        /// The actual value that failed validation.
         /// </summary>
         [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
         public PayloadValidationErrorDtoValue? Value { get; set; } = null;
 
         /// <summary>
-        /// JSON Schema path where the validation failed
+        /// JSON Schema path where the validation failed.
         /// </summary>
         [JsonProperty("schemaPath")]
         public string? SchemaPath { get; set; }

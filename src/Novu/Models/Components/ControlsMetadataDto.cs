@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ControlsMetadataDto
     {
-
         /// <summary>
-        /// JSON Schema for data
+        /// JSON Schema for data.
         /// </summary>
         [JsonProperty("dataSchema")]
         public Dictionary<string, object>? DataSchema { get; set; }
 
         /// <summary>
-        /// UI Schema for rendering
+        /// UI Schema for rendering.
         /// </summary>
         [JsonProperty("uiSchema")]
         public UiSchema? UiSchema { get; set; }

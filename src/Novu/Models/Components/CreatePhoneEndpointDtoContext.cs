@@ -52,7 +52,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(CreatePhoneEndpointDtoContext.CreatePhoneEndpointDtoContextConverter))]
     public class CreatePhoneEndpointDtoContext
     {

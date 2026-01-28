@@ -24,34 +24,64 @@ namespace Novu
 
     public interface INovuTopics
     {
-
         /// <summary>
-        /// Retrieve subscriber subscriptions
-        /// 
+        /// Retrieve subscriber subscriptions.
+        /// </summary>
         /// <remarks>
-        /// Retrieve subscriber&apos;s topic subscriptions by its unique key identifier **subscriberId**. <br/>
+        /// Retrieve subscriber's topic subscriptions by its unique key identifier **subscriberId**. <br/>
         ///     Checkout all available filters in the query section.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersControllerListSubscriberTopicsResponse> ListAsync(SubscribersControllerListSubscriberTopicsRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="SubscribersControllerListSubscriberTopicsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerListSubscriberTopicsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersControllerListSubscriberTopicsResponse> ListAsync(
+            SubscribersControllerListSubscriberTopicsRequest request,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class NovuTopics: INovuTopics
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public NovuTopics(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<SubscribersControllerListSubscriberTopicsResponse> ListAsync(SubscribersControllerListSubscriberTopicsRequest request, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Retrieve subscriber subscriptions.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve subscriber's topic subscriptions by its unique key identifier **subscriberId**. <br/>
+        ///     Checkout all available filters in the query section.
+        /// </remarks>
+        /// <param name="request">A <see cref="SubscribersControllerListSubscriberTopicsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerListSubscriberTopicsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersControllerListSubscriberTopicsResponse> ListAsync(
+            SubscribersControllerListSubscriberTopicsRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}/subscriptions", request, null);
 
@@ -110,7 +140,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -264,5 +294,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

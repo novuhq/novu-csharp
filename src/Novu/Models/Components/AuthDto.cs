@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class AuthDto
     {
-
         [JsonProperty("accessToken")]
         public string AccessToken { get; set; } = default!;
     }

@@ -12,24 +12,23 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class MessageCTA
     {
-
         /// <summary>
-        /// Type of call to action
+        /// Type of call to action.
         /// </summary>
         [JsonProperty("type")]
         public ChannelCTATypeEnum? Type { get; set; }
 
         /// <summary>
-        /// Data associated with the call to action
+        /// Data associated with the call to action.
         /// </summary>
         [JsonProperty("data")]
         public MessageCTAData? Data { get; set; }
 
         /// <summary>
-        /// Action associated with the call to action
+        /// Action associated with the call to action.
         /// </summary>
         [JsonProperty("action")]
         public MessageAction? Action { get; set; }

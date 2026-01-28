@@ -11,18 +11,17 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class WebhookEndpointDto
     {
-
         /// <summary>
-        /// Webhook URL
+        /// Webhook URL.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; } = default!;
 
         /// <summary>
-        /// Optional channel identifier
+        /// Optional channel identifier.
         /// </summary>
         [JsonProperty("channel")]
         public string? Channel { get; set; }

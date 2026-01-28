@@ -52,15 +52,11 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// It is used to display the Avatar of the provided actor&apos;s subscriber id or actor object.<br/>
-    /// 
-    /// <remarks>
+    /// It is used to display the Avatar of the provided actor's subscriber id or actor object.<br/>
     /// <br/>
     /// <br/>
-    ///     If a new actor object is provided, we will create a new subscriber in our system
-    /// </remarks>
+    ///     If a new actor object is provided, we will create a new subscriber in our system.
     /// </summary>
     [JsonConverter(typeof(Actor.ActorConverter))]
     public class Actor

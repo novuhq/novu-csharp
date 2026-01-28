@@ -13,97 +13,96 @@ namespace Novu.Models.Requests
     using Novu.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     public class NotificationsControllerListNotificationsRequest
     {
-
         /// <summary>
-        /// Array of channel types
+        /// Array of channel types.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=channels")]
         public List<ChannelTypeEnum>? Channels { get; set; }
 
         /// <summary>
-        /// Array of template IDs or a single template ID
+        /// Array of template IDs or a single template ID.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=templates")]
         public List<string>? Templates { get; set; }
 
         /// <summary>
-        /// Array of email addresses or a single email address
+        /// Array of email addresses or a single email address.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=emails")]
         public List<string>? Emails { get; set; }
 
         /// <summary>
-        /// Search term (deprecated)
+        /// Search term (deprecated).
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=search")]
         public string? Search { get; set; }
 
         /// <summary>
-        /// Array of subscriber IDs or a single subscriber ID
+        /// Array of subscriber IDs or a single subscriber ID.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=subscriberIds")]
         public List<string>? SubscriberIds { get; set; }
 
         /// <summary>
-        /// Array of severity levels or a single severity level
+        /// Array of severity levels or a single severity level.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=severity")]
         public List<string>? Severity { get; set; }
 
         /// <summary>
-        /// Page number for pagination
+        /// Page number for pagination.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")]
         public double? Page { get; set; } = 0D;
 
         /// <summary>
-        /// Limit for pagination
+        /// Limit for pagination.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public double? Limit { get; set; } = 10D;
 
         /// <summary>
-        /// The transaction ID to filter by
+        /// The transaction ID to filter by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=transactionId")]
         public string? TransactionId { get; set; }
 
         /// <summary>
-        /// Topic Key for filtering notifications by topic
+        /// Topic Key for filtering notifications by topic.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=topicKey")]
         public string? TopicKey { get; set; }
 
         /// <summary>
-        /// Subscription ID for filtering notifications by subscription
+        /// Subscription ID for filtering notifications by subscription.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=subscriptionId")]
         public string? SubscriptionId { get; set; }
 
         /// <summary>
-        /// Filter by exact context keys, order insensitive (format: &quot;type:id&quot;)
+        /// Filter by exact context keys, order insensitive (format: "type:id").
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contextKeys")]
         public List<string>? ContextKeys { get; set; }
 
         /// <summary>
-        /// Date filter for records after this timestamp. Defaults to earliest date allowed by subscription plan
+        /// Date filter for records after this timestamp. Defaults to earliest date allowed by subscription plan.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after")]
         public string? After { get; set; }
 
         /// <summary>
-        /// Date filter for records before this timestamp. Defaults to current time of request (now)
+        /// Date filter for records before this timestamp. Defaults to current time of request (now).
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=before")]
         public string? Before { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

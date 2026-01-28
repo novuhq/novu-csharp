@@ -13,24 +13,23 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class MessageAction
     {
-
         /// <summary>
-        /// Status of the message action
+        /// Status of the message action.
         /// </summary>
         [JsonProperty("status")]
         public MessageActionStatusEnum? Status { get; set; }
 
         /// <summary>
-        /// List of buttons associated with the message action
+        /// List of buttons associated with the message action.
         /// </summary>
         [JsonProperty("buttons")]
         public List<MessageButton>? Buttons { get; set; }
 
         /// <summary>
-        /// Result of the message action
+        /// Result of the message action.
         /// </summary>
         [JsonProperty("result")]
         public MessageActionResult? Result { get; set; }

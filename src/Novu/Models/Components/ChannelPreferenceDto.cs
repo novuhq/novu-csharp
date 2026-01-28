@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class ChannelPreferenceDto
     {
-
         /// <summary>
         /// A flag specifying if notification delivery is enabled for the channel. If true, notification delivery is enabled.
         /// </summary>

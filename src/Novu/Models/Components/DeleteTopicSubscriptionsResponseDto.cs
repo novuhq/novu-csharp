@@ -13,24 +13,23 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class DeleteTopicSubscriptionsResponseDto
     {
-
         /// <summary>
-        /// The list of successfully deleted subscriptions
+        /// The list of successfully deleted subscriptions.
         /// </summary>
         [JsonProperty("data")]
         public List<SubscriptionDto> Data { get; set; } = default!;
 
         /// <summary>
-        /// Metadata about the operation
+        /// Metadata about the operation.
         /// </summary>
         [JsonProperty("meta")]
         public MetaDto Meta { get; set; } = default!;
 
         /// <summary>
-        /// The list of errors for failed deletion attempts
+        /// The list of errors for failed deletion attempts.
         /// </summary>
         [JsonProperty("errors")]
         public List<SubscriptionsDeleteErrorDto>? Errors { get; set; }

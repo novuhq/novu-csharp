@@ -13,30 +13,29 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class NotificationTriggerDto
     {
-
         /// <summary>
-        /// Type of the trigger
+        /// Type of the trigger.
         /// </summary>
         [JsonProperty("type")]
         public NotificationTriggerDtoType Type { get; set; } = default!;
 
         /// <summary>
-        /// Identifier of the trigger
+        /// Identifier of the trigger.
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; } = default!;
 
         /// <summary>
-        /// Variables of the trigger
+        /// Variables of the trigger.
         /// </summary>
         [JsonProperty("variables")]
         public List<NotificationTriggerVariable> Variables { get; set; } = default!;
 
         /// <summary>
-        /// Subscriber variables of the trigger
+        /// Subscriber variables of the trigger.
         /// </summary>
         [JsonProperty("subscriberVariables")]
         public List<NotificationTriggerVariable>? SubscriberVariables { get; set; }

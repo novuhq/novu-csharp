@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// The channel type (email, sms, push, chat, etc.).
     /// </summary>
@@ -62,5 +62,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum Channel");
         }
     }
-
 }

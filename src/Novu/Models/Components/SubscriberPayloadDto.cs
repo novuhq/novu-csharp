@@ -13,60 +13,59 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class SubscriberPayloadDto
     {
-
         /// <summary>
-        /// First name of the subscriber
+        /// First name of the subscriber.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; } = null;
 
         /// <summary>
-        /// Last name of the subscriber
+        /// Last name of the subscriber.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; } = null;
 
         /// <summary>
-        /// Email address of the subscriber
+        /// Email address of the subscriber.
         /// </summary>
         [JsonProperty("email")]
         public string? Email { get; set; } = null;
 
         /// <summary>
-        /// Phone number of the subscriber
+        /// Phone number of the subscriber.
         /// </summary>
         [JsonProperty("phone")]
         public string? Phone { get; set; } = null;
 
         /// <summary>
-        /// Avatar URL or identifier
+        /// Avatar URL or identifier.
         /// </summary>
         [JsonProperty("avatar")]
         public string? Avatar { get; set; } = null;
 
         /// <summary>
-        /// Locale of the subscriber
+        /// Locale of the subscriber.
         /// </summary>
         [JsonProperty("locale")]
         public string? Locale { get; set; } = null;
 
         /// <summary>
-        /// Timezone of the subscriber
+        /// Timezone of the subscriber.
         /// </summary>
         [JsonProperty("timezone")]
         public string? Timezone { get; set; } = null;
 
         /// <summary>
-        /// Additional custom data associated with the subscriber
+        /// Additional custom data associated with the subscriber.
         /// </summary>
         [JsonProperty("data")]
         public Dictionary<string, object>? Data { get; set; } = null;
 
         /// <summary>
-        /// The internal identifier you used to create this subscriber, usually correlates to the id the user in your systems
+        /// The internal identifier you used to create this subscriber, usually correlates to the id the user in your systems.
         /// </summary>
         [JsonProperty("subscriberId")]
         public string SubscriberId { get; set; } = default!;

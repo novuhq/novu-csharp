@@ -55,7 +55,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(To1.To1Converter))]
     public class To1
     {

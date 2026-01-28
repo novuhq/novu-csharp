@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Condition using JSON Logic rules
+    /// Condition using JSON Logic rules.
     /// </summary>
     public class Condition
     {

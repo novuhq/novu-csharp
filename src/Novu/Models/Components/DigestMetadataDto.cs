@@ -13,66 +13,65 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class DigestMetadataDto
     {
-
         /// <summary>
-        /// Optional key for the digest
+        /// Optional key for the digest.
         /// </summary>
         [JsonProperty("digestKey")]
         public string? DigestKey { get; set; }
 
         /// <summary>
-        /// Amount for the digest
+        /// Amount for the digest.
         /// </summary>
         [JsonProperty("amount")]
         public double? Amount { get; set; }
 
         /// <summary>
-        /// Unit of the digest
+        /// Unit of the digest.
         /// </summary>
         [JsonProperty("unit")]
         public DigestMetadataDtoUnit? Unit { get; set; }
 
         /// <summary>
-        /// The Digest Type
+        /// The Digest Type.
         /// </summary>
         [JsonProperty("type")]
         public DigestTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Optional array of events associated with the digest, represented as key-value pairs
+        /// Optional array of events associated with the digest, represented as key-value pairs.
         /// </summary>
         [JsonProperty("events")]
         public List<Dictionary<string, object>>? Events { get; set; }
 
         /// <summary>
-        /// Regular digest: Indicates if backoff is enabled for the regular digest
+        /// Regular digest: Indicates if backoff is enabled for the regular digest.
         /// </summary>
         [JsonProperty("backoff")]
         public bool? Backoff { get; set; }
 
         /// <summary>
-        /// Regular digest: Amount for backoff
+        /// Regular digest: Amount for backoff.
         /// </summary>
         [JsonProperty("backoffAmount")]
         public double? BackoffAmount { get; set; }
 
         /// <summary>
-        /// Regular digest: Unit for backoff
+        /// Regular digest: Unit for backoff.
         /// </summary>
         [JsonProperty("backoffUnit")]
         public DigestUnitEnum? BackoffUnit { get; set; }
 
         /// <summary>
-        /// Regular digest: Indicates if the digest should update
+        /// Regular digest: Indicates if the digest should update.
         /// </summary>
         [JsonProperty("updateMode")]
         public bool? UpdateMode { get; set; }
 
         /// <summary>
-        /// Configuration for timed digest
+        /// Configuration for timed digest.
         /// </summary>
         [JsonProperty("timed")]
         public DigestTimedConfigDto? Timed { get; set; }

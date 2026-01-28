@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class WebhookResultDto
     {
-
         /// <summary>
-        /// Unique identifier for the webhook result
+        /// Unique identifier for the webhook result.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Event body containing the webhook event data
+        /// Event body containing the webhook event data.
         /// </summary>
         [JsonProperty("event")]
         public EventBody Event { get; set; } = default!;

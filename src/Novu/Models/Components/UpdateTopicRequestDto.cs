@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class UpdateTopicRequestDto
     {
-
         /// <summary>
-        /// The display name for the topic
+        /// The display name for the topic.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;

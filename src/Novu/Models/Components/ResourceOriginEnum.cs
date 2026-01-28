@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Origin of the layout
+    /// Origin of the layout.
     /// </summary>
     public enum ResourceOriginEnum
     {
@@ -58,5 +58,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ResourceOriginEnum");
         }
     }
-
 }

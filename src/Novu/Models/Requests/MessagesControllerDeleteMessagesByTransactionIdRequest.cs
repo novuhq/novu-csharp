@@ -11,12 +11,11 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Requests;
     using Novu.Utils;
-    
+
     public class MessagesControllerDeleteMessagesByTransactionIdRequest
     {
-
         /// <summary>
-        /// The channel of the message to be deleted
+        /// The channel of the message to be deleted.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=channel")]
         public MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel? Channel { get; set; }
@@ -25,7 +24,7 @@ namespace Novu.Models.Requests
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

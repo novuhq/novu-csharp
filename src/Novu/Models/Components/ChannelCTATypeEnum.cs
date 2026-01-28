@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Type of call to action
+    /// Type of call to action.
     /// </summary>
     public enum ChannelCTATypeEnum
     {
@@ -54,5 +54,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ChannelCTATypeEnum");
         }
     }
-
 }

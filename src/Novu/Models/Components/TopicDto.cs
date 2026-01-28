@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class TopicDto
     {
-
         /// <summary>
-        /// The internal unique identifier of the topic
+        /// The internal unique identifier of the topic.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
@@ -28,7 +27,7 @@ namespace Novu.Models.Components
         public string Key { get; set; } = default!;
 
         /// <summary>
-        /// The name of the topic
+        /// The name of the topic.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }

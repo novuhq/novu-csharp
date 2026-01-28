@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     public enum DigestRegularMetadataUnit
     {
         [JsonProperty("seconds")]
@@ -61,5 +61,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DigestRegularMetadataUnit");
         }
     }
-
 }

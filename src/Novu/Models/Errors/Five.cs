@@ -60,7 +60,6 @@ namespace Novu.Models.Errors
         }
     }
 
-
     [JsonConverter(typeof(Five.FiveConverter))]
     public class Five
     {

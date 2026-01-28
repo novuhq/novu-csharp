@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class BulkTriggerEventDto
     {
-
         [JsonProperty("events")]
         public List<TriggerEventRequestDto> Events { get; set; } = default!;
     }

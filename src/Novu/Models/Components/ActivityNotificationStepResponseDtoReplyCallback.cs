@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Reply callback settings
+    /// Reply callback settings.
     /// </summary>
     public class ActivityNotificationStepResponseDtoReplyCallback
     {

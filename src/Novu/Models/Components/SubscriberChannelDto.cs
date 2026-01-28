@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class SubscriberChannelDto
     {
-
         /// <summary>
         /// The ID of the chat or push provider.
         /// </summary>

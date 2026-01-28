@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Type of the delay. Currently only &apos;regular&apos; is supported by the schema.
+    /// Type of the delay. Currently only 'regular' is supported by the schema.
     /// </summary>
     public enum DelayStepResponseDtoType
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DelayStepResponseDtoType");
         }
     }
-
 }

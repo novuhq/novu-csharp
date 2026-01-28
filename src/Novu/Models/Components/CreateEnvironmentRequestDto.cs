@@ -11,24 +11,23 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class CreateEnvironmentRequestDto
     {
-
         /// <summary>
-        /// Name of the environment to be created
+        /// Name of the environment to be created.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// MongoDB ObjectId of the parent environment (optional)
+        /// MongoDB ObjectId of the parent environment (optional).
         /// </summary>
         [JsonProperty("parentId")]
         public string? ParentId { get; set; }
 
         /// <summary>
-        /// Hex color code for the environment
+        /// Hex color code for the environment.
         /// </summary>
         [JsonProperty("color")]
         public string Color { get; set; } = default!;

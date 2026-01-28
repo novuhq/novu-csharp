@@ -12,24 +12,23 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class AutoConfigureIntegrationResponseDto
     {
-
         /// <summary>
-        /// Indicates whether the auto-configuration was successful
+        /// Indicates whether the auto-configuration was successful.
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; set; } = default!;
 
         /// <summary>
-        /// Optional message describing the result or any errors that occurred
+        /// Optional message describing the result or any errors that occurred.
         /// </summary>
         [JsonProperty("message")]
         public string? Message { get; set; }
 
         /// <summary>
-        /// The updated configurations after auto-configuration
+        /// The updated configurations after auto-configuration.
         /// </summary>
         [JsonProperty("integration")]
         public Integration? Integration { get; set; }

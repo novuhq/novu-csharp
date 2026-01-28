@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// The status enum for the performed action
+    /// The status enum for the performed action.
     /// </summary>
     public enum DeleteMessageResponseDtoStatus
     {
@@ -54,5 +54,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DeleteMessageResponseDtoStatus");
         }
     }
-
 }

@@ -52,7 +52,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(CreateSlackUserEndpointDtoContext.CreateSlackUserEndpointDtoContextConverter))]
     public class CreateSlackUserEndpointDtoContext
     {

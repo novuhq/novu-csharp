@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Text alignment for the email block
+    /// Text alignment for the email block.
     /// </summary>
     public enum TextAlignEnum
     {
@@ -58,5 +58,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum TextAlignEnum");
         }
     }
-
 }

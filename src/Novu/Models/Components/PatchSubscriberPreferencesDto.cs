@@ -12,26 +12,29 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+    using System.Collections.Generic;
+
     public class PatchSubscriberPreferencesDto
     {
-
         /// <summary>
-        /// Channel-specific preference settings
+        /// Channel-specific preference settings.
         /// </summary>
         [JsonProperty("channels")]
         public PatchPreferenceChannelsDto? Channels { get; set; }
 
         /// <summary>
-        /// Workflow internal _id, identifier or slug. If provided, update workflow specific preferences, otherwise update global preferences
+        /// Workflow internal _id, identifier or slug. If provided, update workflow specific preferences, otherwise update global preferences.
         /// </summary>
         [JsonProperty("workflowId")]
         public string? WorkflowId { get; set; }
 
         /// <summary>
-        /// Subscriber schedule
+        /// Subscriber schedule.
         /// </summary>
         [JsonProperty("schedule")]
         public ScheduleDto? Schedule { get; set; }
+
+        [JsonProperty("context")]
+        public Dictionary<string, Context>? Context { get; set; }
     }
 }

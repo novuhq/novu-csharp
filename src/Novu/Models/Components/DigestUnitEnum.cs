@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Regular digest: Unit for backoff
+    /// Regular digest: Unit for backoff.
     /// </summary>
     public enum DigestUnitEnum
     {
@@ -64,5 +64,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DigestUnitEnum");
         }
     }
-
 }

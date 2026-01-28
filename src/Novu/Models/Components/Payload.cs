@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Payload of the action result
+    /// Optional payload for the job.
     /// </summary>
     public class Payload
     {

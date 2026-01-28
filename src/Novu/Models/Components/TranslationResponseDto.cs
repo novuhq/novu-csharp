@@ -13,42 +13,41 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TranslationResponseDto
     {
-
         /// <summary>
-        /// Resource identifier
+        /// Resource identifier.
         /// </summary>
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; } = default!;
 
         /// <summary>
-        /// Resource type
+        /// Resource type.
         /// </summary>
         [JsonProperty("resourceType")]
         public TranslationResponseDtoResourceType ResourceType { get; set; } = default!;
 
         /// <summary>
-        /// Locale code
+        /// Locale code.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; } = default!;
 
         /// <summary>
-        /// Translation content as JSON object
+        /// Translation content as JSON object.
         /// </summary>
         [JsonProperty("content")]
         public Dictionary<string, object> Content { get; set; } = default!;
 
         /// <summary>
-        /// Creation timestamp
+        /// Creation timestamp.
         /// </summary>
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Last update timestamp
+        /// Last update timestamp.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; } = default!;

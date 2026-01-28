@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Message action status
+    /// Message action status.
     /// </summary>
     public enum MarkMessageActionAsSeenDtoStatus
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum MarkMessageActionAsSeenDtoStatus");
         }
     }
-
 }

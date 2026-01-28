@@ -11,24 +11,23 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class ApiKeyDto
     {
-
         /// <summary>
-        /// API key
+        /// API key.
         /// </summary>
         [JsonProperty("key")]
         public string Key { get; set; } = default!;
 
         /// <summary>
-        /// User ID associated with the API key
+        /// User ID associated with the API key.
         /// </summary>
         [JsonProperty("_userId")]
         public string UserId { get; set; } = default!;
 
         /// <summary>
-        /// Hashed representation of the API key
+        /// Hashed representation of the API key.
         /// </summary>
         [JsonProperty("hash")]
         public string? Hash { get; set; }

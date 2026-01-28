@@ -11,12 +11,11 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Requests;
     using Novu.Utils;
-    
+
     public class TranslationControllerUploadMasterJsonEndpointRequestBody
     {
-
         /// <summary>
-        /// Master JSON file with locale as filename (e.g., en_US.json)
+        /// Master JSON file with locale as filename (e.g., en_US.json).
         /// </summary>
         [SpeakeasyMetadata("multipartForm:file,name=file")]
         public Models.Requests.File File { get; set; } = default!;

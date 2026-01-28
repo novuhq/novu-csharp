@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GroupPreferenceFilterDetailsDto
     {
-
         /// <summary>
-        /// List of workflow identifiers
+        /// List of workflow identifiers.
         /// </summary>
         [JsonProperty("workflowIds")]
         public List<string>? WorkflowIds { get; set; }
 
         /// <summary>
-        /// List of tags
+        /// List of tags.
         /// </summary>
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; }

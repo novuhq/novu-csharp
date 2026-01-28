@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class MessageCTAData
     {
-
         /// <summary>
-        /// URL for the call to action
+        /// URL for the call to action.
         /// </summary>
         [JsonProperty("url")]
         public string? Url { get; set; }

@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class FailedOperationDto
     {
-
         /// <summary>
         /// The error message associated with the failed operation.
         /// </summary>

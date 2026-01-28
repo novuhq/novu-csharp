@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TriggerEventToAllRequestDto
     {
-
         /// <summary>
         /// The trigger identifier associated for the template you wish to send. This identifier can be found on the template page.
         /// </summary>
@@ -25,17 +24,14 @@ namespace Novu.Models.Components
 
         /// <summary>
         /// The payload object is used to pass additional information that <br/>
-        /// 
-        /// <remarks>
         ///     could be used to render the template, or perform routing rules based on it. <br/>
         ///       For In-App channel, payload data are also available in &lt;Inbox /&gt;
-        /// </remarks>
         /// </summary>
         [JsonProperty("payload")]
         public Dictionary<string, object> Payload { get; set; } = default!;
 
         /// <summary>
-        /// This could be used to override provider specific configurations
+        /// This could be used to override provider specific configurations.
         /// </summary>
         [JsonProperty("overrides")]
         public TriggerEventToAllRequestDtoOverrides? Overrides { get; set; }
@@ -47,23 +43,15 @@ namespace Novu.Models.Components
         public string? TransactionId { get; set; }
 
         /// <summary>
-        /// It is used to display the Avatar of the provided actor&apos;s subscriber id or actor object.<br/>
-        /// 
-        /// <remarks>
-        ///     If a new actor object is provided, we will create a new subscriber in our system<br/>
-        ///     
-        /// </remarks>
+        /// It is used to display the Avatar of the provided actor's subscriber id or actor object.<br/>
+        ///     If a new actor object is provided, we will create a new subscriber in our system.
         /// </summary>
         [JsonProperty("actor", NullValueHandling = NullValueHandling.Include)]
         public TriggerEventToAllRequestDtoActor? Actor { get; set; }
 
         /// <summary>
         /// It is used to specify a tenant context during trigger event.<br/>
-        /// 
-        /// <remarks>
-        ///     If a new tenant object is provided, we will create a new tenant.<br/>
-        ///     
-        /// </remarks>
+        ///     If a new tenant object is provided, we will create a new tenant.
         /// </summary>
         [JsonProperty("tenant", NullValueHandling = NullValueHandling.Include)]
         public TriggerEventToAllRequestDtoTenant? Tenant { get; set; }

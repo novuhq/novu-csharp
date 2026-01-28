@@ -10,24 +10,23 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class TopicsV1ControllerGetTopicSubscriberRequest
     {
-
         /// <summary>
-        /// The external subscriber id
+        /// The external subscriber id.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=externalSubscriberId")]
         public string ExternalSubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// The topic key
+        /// The topic key.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=topicKey")]
         public string TopicKey { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

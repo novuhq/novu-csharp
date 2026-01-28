@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class SlackChannelEndpointDto
     {
-
         /// <summary>
-        /// Slack channel ID
+        /// Slack channel ID.
         /// </summary>
         [JsonProperty("channelId")]
         public string ChannelId { get; set; } = default!;

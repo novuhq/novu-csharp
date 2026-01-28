@@ -13,21 +13,20 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// Friday schedule
+    /// Friday schedule.
     /// </summary>
     public class Friday
     {
-
         /// <summary>
-        /// Day schedule enabled
+        /// Day schedule enabled.
         /// </summary>
         [JsonProperty("isEnabled")]
         public bool IsEnabled { get; set; } = default!;
 
         /// <summary>
-        /// Hours
+        /// Hours.
         /// </summary>
         [JsonProperty("hours")]
         public List<TimeRangeDto>? Hours { get; set; }

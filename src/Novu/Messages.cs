@@ -23,65 +23,118 @@ namespace Novu
     using System.Threading.Tasks;
 
     /// <summary>
-    /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.
-    /// 
+    /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.<br/>
     /// <see href="https://docs.novu.co/workflows/messages">https://docs.novu.co/workflows/messages</see>
     /// </summary>
     public interface IMessages
     {
-
         /// <summary>
-        /// List all messages
-        /// 
+        /// List all messages.
+        /// </summary>
         /// <remarks>
         /// List all messages for the current environment. <br/>
         ///     This API supports filtering by **channel**, **subscriberId**, and **transactionId**. <br/>
         ///     This API returns a paginated list of messages.
         /// </remarks>
-        /// </summary>
-        Task<MessagesControllerGetMessagesResponse> GetAsync(MessagesControllerGetMessagesRequest? request = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="MessagesControllerGetMessagesRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="MessagesControllerGetMessagesResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<MessagesControllerGetMessagesResponse> GetAsync(
+            MessagesControllerGetMessagesRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a message
-        /// 
+        /// Delete a message.
+        /// </summary>
         /// <remarks>
         /// Delete a message entity from the Novu platform by **messageId**. <br/>
         ///     This action is irreversible. **messageId** is required and of mongodbId type.
         /// </remarks>
-        /// </summary>
-        Task<MessagesControllerDeleteMessageResponse> DeleteAsync(string messageId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="messageId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="MessagesControllerDeleteMessageResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="messageId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<MessagesControllerDeleteMessageResponse> DeleteAsync(
+            string messageId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete messages by transactionId
-        /// 
+        /// Delete messages by transactionId.
+        /// </summary>
         /// <remarks>
         /// Delete multiple messages from the Novu platform using **transactionId** of triggered event. <br/>
         ///     This API supports filtering by **channel** and delete all messages associated with the **transactionId**.
         /// </remarks>
-        /// </summary>
-        Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(string transactionId, MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel? channel = null, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="transactionId">Description not available.</param>
+        /// <param name="channel">The channel of the message to be deleted.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="MessagesControllerDeleteMessagesByTransactionIdResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="transactionId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(
+            string transactionId,
+            MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel? channel = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     /// <summary>
-    /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.
-    /// 
+    /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.<br/>
     /// <see href="https://docs.novu.co/workflows/messages">https://docs.novu.co/workflows/messages</see>
     /// </summary>
     public class Messages: IMessages
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Messages(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<MessagesControllerGetMessagesResponse> GetAsync(MessagesControllerGetMessagesRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List all messages.
+        /// </summary>
+        /// <remarks>
+        /// List all messages for the current environment. <br/>
+        ///     This API supports filtering by **channel**, **subscriberId**, and **transactionId**. <br/>
+        ///     This API returns a paginated list of messages.
+        /// </remarks>
+        /// <param name="request">A <see cref="MessagesControllerGetMessagesRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="MessagesControllerGetMessagesResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<MessagesControllerGetMessagesResponse> GetAsync(
+            MessagesControllerGetMessagesRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/messages", request, null);
@@ -141,7 +194,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -296,13 +349,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<MessagesControllerDeleteMessageResponse> DeleteAsync(string messageId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete a message.
+        /// </summary>
+        /// <remarks>
+        /// Delete a message entity from the Novu platform by **messageId**. <br/>
+        ///     This action is irreversible. **messageId** is required and of mongodbId type.
+        /// </remarks>
+        /// <param name="messageId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="MessagesControllerDeleteMessageResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="messageId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<MessagesControllerDeleteMessageResponse> DeleteAsync(
+            string messageId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+
             var request = new MessagesControllerDeleteMessageRequest()
             {
                 MessageId = messageId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/messages/{messageId}", request, null);
 
@@ -361,7 +439,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -516,14 +594,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(string transactionId, MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel? channel = null, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete messages by transactionId.
+        /// </summary>
+        /// <remarks>
+        /// Delete multiple messages from the Novu platform using **transactionId** of triggered event. <br/>
+        ///     This API supports filtering by **channel** and delete all messages associated with the **transactionId**.
+        /// </remarks>
+        /// <param name="transactionId">Description not available.</param>
+        /// <param name="channel">The channel of the message to be deleted.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="MessagesControllerDeleteMessagesByTransactionIdResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="transactionId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<MessagesControllerDeleteMessagesByTransactionIdResponse> DeleteByTransactionIdAsync(
+            string transactionId,
+            MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel? channel = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new MessagesControllerDeleteMessagesByTransactionIdRequest()
             {
                 TransactionId = transactionId,
                 Channel = channel,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/messages/transaction/{transactionId}", request, null);
 
@@ -582,7 +687,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -718,5 +823,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

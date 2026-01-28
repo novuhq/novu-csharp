@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class UnseenCountResponse
     {
-
         [JsonProperty("count")]
         public double Count { get; set; } = default!;
     }

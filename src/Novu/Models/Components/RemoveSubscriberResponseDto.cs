@@ -11,18 +11,17 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class RemoveSubscriberResponseDto
     {
-
         /// <summary>
-        /// Indicates whether the operation was acknowledged by the server
+        /// Indicates whether the operation was acknowledged by the server.
         /// </summary>
         [JsonProperty("acknowledged")]
         public bool Acknowledged { get; set; } = default!;
 
         /// <summary>
-        /// Status of the subscriber removal operation
+        /// Status of the subscriber removal operation.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; } = default!;

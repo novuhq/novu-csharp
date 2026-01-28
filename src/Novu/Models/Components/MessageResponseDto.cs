@@ -13,216 +13,215 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class MessageResponseDto
     {
-
         /// <summary>
-        /// Unique identifier for the message
+        /// Unique identifier for the message.
         /// </summary>
         [JsonProperty("_id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Template ID associated with the message
+        /// Template ID associated with the message.
         /// </summary>
         [JsonProperty("_templateId")]
         public string? TemplateId { get; set; } = null;
 
         /// <summary>
-        /// Environment ID where the message is sent
+        /// Environment ID where the message is sent.
         /// </summary>
         [JsonProperty("_environmentId")]
         public string EnvironmentId { get; set; } = default!;
 
         /// <summary>
-        /// Message template ID
+        /// Message template ID.
         /// </summary>
         [JsonProperty("_messageTemplateId")]
         public string? MessageTemplateId { get; set; } = null;
 
         /// <summary>
-        /// Organization ID associated with the message
+        /// Organization ID associated with the message.
         /// </summary>
         [JsonProperty("_organizationId")]
         public string OrganizationId { get; set; } = default!;
 
         /// <summary>
-        /// Notification ID associated with the message
+        /// Notification ID associated with the message.
         /// </summary>
         [JsonProperty("_notificationId")]
         public string NotificationId { get; set; } = default!;
 
         /// <summary>
-        /// Subscriber ID associated with the message
+        /// Subscriber ID associated with the message.
         /// </summary>
         [JsonProperty("_subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// Subscriber details, if available
+        /// Subscriber details, if available.
         /// </summary>
         [JsonProperty("subscriber")]
         public Models.Components.SubscriberResponseDto? Subscriber { get; set; }
 
         /// <summary>
-        /// Workflow template associated with the message
+        /// Workflow template associated with the message.
         /// </summary>
         [JsonProperty("template")]
         public WorkflowResponse? Template { get; set; }
 
         /// <summary>
-        /// Identifier for the message template
+        /// Identifier for the message template.
         /// </summary>
         [JsonProperty("templateIdentifier")]
         public string? TemplateIdentifier { get; set; }
 
         /// <summary>
-        /// Creation date of the message
+        /// Creation date of the message.
         /// </summary>
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Array of delivery dates for the message, if the message has multiple delivery dates, for example after being snoozed
+        /// Array of delivery dates for the message, if the message has multiple delivery dates, for example after being snoozed.
         /// </summary>
         [JsonProperty("deliveredAt")]
         public List<string>? DeliveredAt { get; set; }
 
         /// <summary>
-        /// Last seen date of the message, if available
+        /// Last seen date of the message, if available.
         /// </summary>
         [JsonProperty("lastSeenDate")]
         public string? LastSeenDate { get; set; }
 
         /// <summary>
-        /// Last read date of the message, if available
+        /// Last read date of the message, if available.
         /// </summary>
         [JsonProperty("lastReadDate")]
         public string? LastReadDate { get; set; }
 
         /// <summary>
-        /// Content of the message, can be an email block or a string
+        /// Content of the message, can be an email block or a string.
         /// </summary>
         [JsonProperty("content", NullValueHandling = NullValueHandling.Include)]
         public Content? Content { get; set; } = null;
 
         /// <summary>
-        /// Transaction ID associated with the message
+        /// Transaction ID associated with the message.
         /// </summary>
         [JsonProperty("transactionId")]
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
-        /// Subject of the message, if applicable
+        /// Subject of the message, if applicable.
         /// </summary>
         [JsonProperty("subject")]
         public string? Subject { get; set; }
 
         /// <summary>
-        /// Channel type through which the message is sent
+        /// Channel type through which the message is sent.
         /// </summary>
         [JsonProperty("channel")]
         public ChannelTypeEnum Channel { get; set; } = default!;
 
         /// <summary>
-        /// Indicates if the message has been read
+        /// Indicates if the message has been read.
         /// </summary>
         [JsonProperty("read")]
         public bool Read { get; set; } = default!;
 
         /// <summary>
-        /// Indicates if the message has been seen
+        /// Indicates if the message has been seen.
         /// </summary>
         [JsonProperty("seen")]
         public bool Seen { get; set; } = default!;
 
         /// <summary>
-        /// Date when the message will be unsnoozed
+        /// Date when the message will be unsnoozed.
         /// </summary>
         [JsonProperty("snoozedUntil")]
         public string? SnoozedUntil { get; set; }
 
         /// <summary>
-        /// Email address associated with the message, if applicable
+        /// Email address associated with the message, if applicable.
         /// </summary>
         [JsonProperty("email")]
         public string? Email { get; set; }
 
         /// <summary>
-        /// Phone number associated with the message, if applicable
+        /// Phone number associated with the message, if applicable.
         /// </summary>
         [JsonProperty("phone")]
         public string? Phone { get; set; }
 
         /// <summary>
-        /// Direct webhook URL for the message, if applicable
+        /// Direct webhook URL for the message, if applicable.
         /// </summary>
         [JsonProperty("directWebhookUrl")]
         public string? DirectWebhookUrl { get; set; }
 
         /// <summary>
-        /// Provider ID associated with the message, if applicable
+        /// Provider ID associated with the message, if applicable.
         /// </summary>
         [JsonProperty("providerId")]
         public string? ProviderId { get; set; }
 
         /// <summary>
-        /// Device tokens associated with the message, if applicable
+        /// Device tokens associated with the message, if applicable.
         /// </summary>
         [JsonProperty("deviceTokens")]
         public List<string>? DeviceTokens { get; set; }
 
         /// <summary>
-        /// Title of the message, if applicable
+        /// Title of the message, if applicable.
         /// </summary>
         [JsonProperty("title")]
         public string? Title { get; set; }
 
         /// <summary>
-        /// Call to action associated with the message
+        /// Call to action associated with the message.
         /// </summary>
         [JsonProperty("cta")]
         public MessageCTA Cta { get; set; } = default!;
 
         /// <summary>
-        /// Feed ID associated with the message, if applicable
+        /// Feed ID associated with the message, if applicable.
         /// </summary>
         [JsonProperty("_feedId")]
         public string? FeedId { get; set; } = null;
 
         /// <summary>
-        /// Status of the message
+        /// Status of the message.
         /// </summary>
         [JsonProperty("status")]
         public MessageStatusEnum Status { get; set; } = default!;
 
         /// <summary>
-        /// Error ID if the message has an error
+        /// Error ID if the message has an error.
         /// </summary>
         [JsonProperty("errorId")]
         public string? ErrorId { get; set; }
 
         /// <summary>
-        /// Error text if the message has an error
+        /// Error text if the message has an error.
         /// </summary>
         [JsonProperty("errorText")]
         public string? ErrorText { get; set; }
 
         /// <summary>
-        /// The payload that was used to send the notification trigger
+        /// The payload that was used to send the notification trigger.
         /// </summary>
         [JsonProperty("payload")]
-        public MessageResponseDtoPayload? Payload { get; set; }
+        public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
-        /// Provider specific overrides used when triggering the notification
+        /// Provider specific overrides used when triggering the notification.
         /// </summary>
         [JsonProperty("overrides")]
-        public MessageResponseDtoOverrides? Overrides { get; set; }
+        public Dictionary<string, object>? Overrides { get; set; }
 
         /// <summary>
-        /// Context (single or multi) in which the message was sent
+        /// Context (single or multi) in which the message was sent.
         /// </summary>
         [JsonProperty("contextKeys")]
         public List<string>? ContextKeys { get; set; }

@@ -12,12 +12,11 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class LayoutPreviewPayloadDto
     {
-
         /// <summary>
-        /// Partial subscriber information
+        /// Partial subscriber information.
         /// </summary>
         [JsonProperty("subscriber")]
         public SubscriberResponseDtoOptional? Subscriber { get; set; }

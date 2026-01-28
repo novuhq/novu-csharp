@@ -24,39 +24,78 @@ namespace Novu
 
     public interface ISteps
     {
-
         /// <summary>
-        /// Retrieve workflow step
-        /// 
-        /// <remarks>
-        /// Retrieves data for a specific step in a workflow
-        /// </remarks>
+        /// Retrieve workflow step.
         /// </summary>
-        Task<WorkflowControllerGetWorkflowStepDataResponse> RetrieveAsync(string workflowId, string stepId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Retrieves data for a specific step in a workflow.
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="stepId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerGetWorkflowStepDataResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="workflowId"/> or <paramref name="stepId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WorkflowControllerGetWorkflowStepDataResponse> RetrieveAsync(
+            string workflowId,
+            string stepId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Steps: ISteps
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Steps(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<WorkflowControllerGetWorkflowStepDataResponse> RetrieveAsync(string workflowId, string stepId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Retrieve workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves data for a specific step in a workflow.
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="stepId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerGetWorkflowStepDataResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="workflowId"/> or <paramref name="stepId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WorkflowControllerGetWorkflowStepDataResponse> RetrieveAsync(
+            string workflowId,
+            string stepId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (workflowId == null) throw new ArgumentNullException(nameof(workflowId));
+            if (stepId == null) throw new ArgumentNullException(nameof(stepId));
+
             var request = new WorkflowControllerGetWorkflowStepDataRequest()
             {
                 WorkflowId = workflowId,
                 StepId = stepId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/workflows/{workflowId}/steps/{stepId}", request, null);
 
@@ -115,7 +154,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -269,5 +308,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

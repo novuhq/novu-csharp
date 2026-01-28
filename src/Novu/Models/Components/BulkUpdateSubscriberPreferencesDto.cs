@@ -13,14 +13,16 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class BulkUpdateSubscriberPreferencesDto
     {
-
         /// <summary>
-        /// Array of workflow preferences to update (maximum 100 items)
+        /// Array of workflow preferences to update (maximum 100 items).
         /// </summary>
         [JsonProperty("preferences")]
         public List<BulkUpdateSubscriberPreferenceItemDto> Preferences { get; set; } = default!;
+
+        [JsonProperty("context")]
+        public Dictionary<string, BulkUpdateSubscriberPreferencesDtoContext>? Context { get; set; }
     }
 }

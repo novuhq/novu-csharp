@@ -13,10 +13,9 @@ namespace Novu.Models.Requests
     using Novu.Models.Requests;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ChannelEndpointsControllerListChannelEndpointsRequest
     {
-
         /// <summary>
         /// Cursor for pagination indicating the starting point after which to fetch results.
         /// </summary>
@@ -30,37 +29,37 @@ namespace Novu.Models.Requests
         public string? Before { get; set; }
 
         /// <summary>
-        /// Limit the number of items to return (max 100)
+        /// Limit the number of items to return (max 100).
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public double? Limit { get; set; }
 
         /// <summary>
-        /// Direction of sorting
+        /// Direction of sorting.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderDirection")]
         public ChannelEndpointsControllerListChannelEndpointsQueryParamOrderDirection? OrderDirection { get; set; }
 
         /// <summary>
-        /// Field to order by
+        /// Field to order by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderBy")]
         public string? OrderBy { get; set; }
 
         /// <summary>
-        /// Include cursor item in response
+        /// Include cursor item in response.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeCursor")]
         public bool? IncludeCursor { get; set; }
 
         /// <summary>
-        /// The subscriber ID to filter results by
+        /// The subscriber ID to filter results by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=subscriberId")]
         public string? SubscriberId { get; set; }
 
         /// <summary>
-        /// Filter by exact context keys, order insensitive (format: &quot;type:id&quot;)
+        /// Filter by exact context keys, order insensitive (format: "type:id").
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contextKeys")]
         public List<string>? ContextKeys { get; set; }
@@ -90,7 +89,7 @@ namespace Novu.Models.Requests
         public string? ConnectionIdentifier { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

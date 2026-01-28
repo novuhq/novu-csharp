@@ -64,9 +64,8 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// The actual value that failed validation
+    /// The actual value that failed validation.
     /// </summary>
     [JsonConverter(typeof(PayloadValidationErrorDtoValue.PayloadValidationErrorDtoValueConverter))]
     public class PayloadValidationErrorDtoValue

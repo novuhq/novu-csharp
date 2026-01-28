@@ -11,24 +11,23 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class SubscriptionErrorDto
     {
-
         /// <summary>
-        /// The subscriber ID that failed
+        /// The subscriber ID that failed.
         /// </summary>
         [JsonProperty("subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// The error code
+        /// The error code.
         /// </summary>
         [JsonProperty("code")]
         public string Code { get; set; } = default!;
 
         /// <summary>
-        /// The error message
+        /// The error message.
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = default!;

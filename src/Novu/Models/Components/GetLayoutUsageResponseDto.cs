@@ -13,12 +13,11 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GetLayoutUsageResponseDto
     {
-
         /// <summary>
-        /// Array of workflows that use this layout
+        /// Array of workflows that use this layout.
         /// </summary>
         [JsonProperty("workflows")]
         public List<WorkflowInfoDto> Workflows { get; set; } = default!;

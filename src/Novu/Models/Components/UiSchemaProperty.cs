@@ -13,24 +13,23 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class UiSchemaProperty
     {
-
         /// <summary>
-        /// Placeholder for the UI Schema Property
+        /// Placeholder for the UI Schema Property.
         /// </summary>
         [JsonProperty("placeholder", NullValueHandling = NullValueHandling.Include)]
         public Placeholder? Placeholder { get; set; } = null;
 
         /// <summary>
-        /// Component type for the UI Schema Property
+        /// Component type for the UI Schema Property.
         /// </summary>
         [JsonProperty("component")]
         public UiComponentEnum Component { get; set; } = default!;
 
         /// <summary>
-        /// Properties of the UI Schema
+        /// Properties of the UI Schema.
         /// </summary>
         [JsonProperty("properties")]
         public Dictionary<string, UiSchemaProperty>? Properties { get; set; }

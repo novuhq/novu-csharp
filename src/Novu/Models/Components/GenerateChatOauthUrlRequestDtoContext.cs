@@ -52,7 +52,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(GenerateChatOauthUrlRequestDtoContext.GenerateChatOauthUrlRequestDtoContextConverter))]
     public class GenerateChatOauthUrlRequestDtoContext
     {

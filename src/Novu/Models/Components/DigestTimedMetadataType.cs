@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     public enum DigestTimedMetadataType
     {
         [JsonProperty("timed")]
@@ -51,5 +51,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DigestTimedMetadataType");
         }
     }
-
 }

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// The level of the preference (global or template)
+    /// The level of the preference (global or template).
     /// </summary>
     public enum PreferenceLevelEnum
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum PreferenceLevelEnum");
         }
     }
-
 }

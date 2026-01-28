@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class WorkflowPreferencesResponseDto
     {
-
         /// <summary>
-        /// User-specific workflow preferences
+        /// User-specific workflow preferences.
         /// </summary>
         [JsonProperty("user")]
         public WorkflowPreferencesResponseDtoUser? User { get; set; } = null;
 
         /// <summary>
-        /// Default workflow preferences
+        /// Default workflow preferences.
         /// </summary>
         [JsonProperty("default")]
         public WorkflowPreferencesDto Default { get; set; } = default!;

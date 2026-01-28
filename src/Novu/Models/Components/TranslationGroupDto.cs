@@ -13,48 +13,47 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TranslationGroupDto
     {
-
         /// <summary>
-        /// Resource identifier (slugified ID)
+        /// Resource identifier (slugified ID).
         /// </summary>
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; } = default!;
 
         /// <summary>
-        /// Resource type
+        /// Resource type.
         /// </summary>
         [JsonProperty("resourceType")]
         public TranslationGroupDtoResourceType ResourceType { get; set; } = default!;
 
         /// <summary>
-        /// Resource name (e.g., workflow name)
+        /// Resource name (e.g., workflow name).
         /// </summary>
         [JsonProperty("resourceName")]
         public string ResourceName { get; set; } = default!;
 
         /// <summary>
-        /// Array of available locales for this resource
+        /// Array of available locales for this resource.
         /// </summary>
         [JsonProperty("locales")]
         public List<string> Locales { get; set; } = default!;
 
         /// <summary>
-        /// Locales that are outdated compared to the default locale (only present when there are outdated locales)
+        /// Locales that are outdated compared to the default locale (only present when there are outdated locales).
         /// </summary>
         [JsonProperty("outdatedLocales")]
         public List<string>? OutdatedLocales { get; set; }
 
         /// <summary>
-        /// Creation timestamp
+        /// Creation timestamp.
         /// </summary>
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Last update timestamp
+        /// Last update timestamp.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; } = default!;

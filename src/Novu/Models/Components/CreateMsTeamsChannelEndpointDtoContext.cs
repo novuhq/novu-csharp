@@ -52,7 +52,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(CreateMsTeamsChannelEndpointDtoContext.CreateMsTeamsChannelEndpointDtoContextConverter))]
     public class CreateMsTeamsChannelEndpointDtoContext
     {

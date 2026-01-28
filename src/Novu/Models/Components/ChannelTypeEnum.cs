@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Channel type through which the message is sent
+    /// Channel type through which the message is sent.
     /// </summary>
     public enum ChannelTypeEnum
     {
@@ -62,5 +62,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ChannelTypeEnum");
         }
     }
-
 }

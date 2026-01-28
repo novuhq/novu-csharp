@@ -9,8 +9,8 @@
 CreateSlackChannelEndpointDtoContext.CreateStr(/* values here */);
 ```
 
-### Context2
+### CreateSlackChannelEndpointDtoContext2
 
 ```csharp
-CreateSlackChannelEndpointDtoContext.CreateContext2(/* values here */);
+CreateSlackChannelEndpointDtoContext.CreateCreateSlackChannelEndpointDtoContext2(/* values here */);
 ```

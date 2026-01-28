@@ -11,30 +11,29 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class SubscriberPreferencesWorkflowInfoDto
     {
-
         /// <summary>
-        /// Workflow slug
+        /// Workflow slug.
         /// </summary>
         [JsonProperty("slug")]
         public string Slug { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier of the workflow
+        /// Unique identifier of the workflow.
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; } = default!;
 
         /// <summary>
-        /// Display name of the workflow
+        /// Display name of the workflow.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// last updated date
+        /// last updated date.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string? UpdatedAt { get; set; }

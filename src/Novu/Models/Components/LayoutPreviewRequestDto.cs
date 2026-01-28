@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class LayoutPreviewRequestDto
     {
-
         /// <summary>
-        /// Optional control values for layout preview
+        /// Optional control values for layout preview.
         /// </summary>
         [JsonProperty("controlValues")]
         public Dictionary<string, object>? ControlValues { get; set; }
 
         /// <summary>
-        /// Optional payload for layout preview
+        /// Optional payload for layout preview.
         /// </summary>
         [JsonProperty("previewPayload")]
         public LayoutPreviewPayloadDto? PreviewPayload { get; set; }

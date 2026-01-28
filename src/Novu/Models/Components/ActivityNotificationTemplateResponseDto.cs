@@ -13,30 +13,29 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ActivityNotificationTemplateResponseDto
     {
-
         /// <summary>
-        /// Unique identifier of the template
+        /// Unique identifier of the template.
         /// </summary>
         [JsonProperty("_id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Name of the template
+        /// Name of the template.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout
+        /// Origin of the layout.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum? Origin { get; set; }
 
         /// <summary>
-        /// Triggers of the template
+        /// Triggers of the template.
         /// </summary>
         [JsonProperty("triggers")]
         public List<NotificationTriggerDto> Triggers { get; set; } = default!;

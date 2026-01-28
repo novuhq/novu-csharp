@@ -13,24 +13,23 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class CustomControlsMetadataResponseDto
     {
-
         /// <summary>
-        /// JSON Schema for data
+        /// JSON Schema for data.
         /// </summary>
         [JsonProperty("dataSchema")]
         public Dictionary<string, object>? DataSchema { get; set; }
 
         /// <summary>
-        /// UI Schema for rendering
+        /// UI Schema for rendering.
         /// </summary>
         [JsonProperty("uiSchema")]
         public UiSchema? UiSchema { get; set; }
 
         /// <summary>
-        /// Control values specific to Custom step
+        /// Control values specific to Custom step.
         /// </summary>
         [JsonProperty("values")]
         public CustomControlDto Values { get; set; } = default!;

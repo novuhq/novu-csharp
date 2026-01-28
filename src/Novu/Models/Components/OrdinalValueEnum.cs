@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Value of the ordinal
+    /// Value of the ordinal.
     /// </summary>
     public enum OrdinalValueEnum
     {
@@ -72,5 +72,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum OrdinalValueEnum");
         }
     }
-
 }

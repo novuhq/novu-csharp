@@ -12,9 +12,9 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Resource type
+    /// Resource type.
     /// </summary>
     public enum TranslationControllerGetTranslationGroupEndpointPathParamResourceType
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Requests
             throw new Exception($"Unknown value {value} for enum TranslationControllerGetTranslationGroupEndpointPathParamResourceType");
         }
     }
-
 }

@@ -23,76 +23,144 @@ namespace Novu
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.
-    /// 
+    /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.<br/>
     /// <see href="https://docs.novu.co/subscribers/topics">https://docs.novu.co/subscribers/topics</see>
     /// </summary>
     public interface ITopics
     {
         public ISubscriptions Subscriptions { get; }
-
         /// <summary>
-        /// List all topics
-        /// 
+        /// List all topics.
+        /// </summary>
         /// <remarks>
         /// This api returns a paginated list of topics.<br/>
         ///     Topics can be filtered by **key**, **name**, or **includeCursor** to paginate through the list. <br/>
         ///     Checkout all available filters in the query section.
         /// </remarks>
-        /// </summary>
-        Task<TopicsControllerListTopicsResponse> ListAsync(TopicsControllerListTopicsRequest? request = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="TopicsControllerListTopicsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerListTopicsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TopicsControllerListTopicsResponse> ListAsync(
+            TopicsControllerListTopicsRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create a topic
-        /// 
+        /// Create a topic.
+        /// </summary>
         /// <remarks>
         /// Creates a new topic if it does not exist, or updates an existing topic if it already exists. Use ?failIfExists=true to prevent updates.
         /// </remarks>
-        /// </summary>
-        Task<TopicsControllerUpsertTopicResponse> CreateAsync(CreateUpdateTopicRequestDto createUpdateTopicRequestDto, bool? failIfExists = null, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="createUpdateTopicRequestDto">A <see cref="CreateUpdateTopicRequestDto"/> parameter.</param>
+        /// <param name="failIfExists">If true, the request will fail if a topic with the same key already exists.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerUpsertTopicResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createUpdateTopicRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Models.Errors.TopicResponseDto">OK. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TopicsControllerUpsertTopicResponse> CreateAsync(
+            CreateUpdateTopicRequestDto createUpdateTopicRequestDto,
+            bool? failIfExists = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Retrieve a topic
-        /// 
+        /// Retrieve a topic.
+        /// </summary>
         /// <remarks>
         /// Retrieve a topic by its unique key identifier **topicKey**
         /// </remarks>
-        /// </summary>
-        Task<TopicsControllerGetTopicResponse> GetAsync(string topicKey, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="topicKey">The key identifier of the topic.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerGetTopicResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="topicKey"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TopicsControllerGetTopicResponse> GetAsync(
+            string topicKey,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a topic
-        /// 
+        /// Update a topic.
+        /// </summary>
         /// <remarks>
         /// Update a topic name by its unique key identifier **topicKey**
         /// </remarks>
-        /// </summary>
-        Task<TopicsControllerUpdateTopicResponse> UpdateAsync(string topicKey, UpdateTopicRequestDto updateTopicRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="topicKey">The key identifier of the topic.</param>
+        /// <param name="updateTopicRequestDto">A <see cref="UpdateTopicRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerUpdateTopicResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="topicKey"/> or <paramref name="updateTopicRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TopicsControllerUpdateTopicResponse> UpdateAsync(
+            string topicKey,
+            UpdateTopicRequestDto updateTopicRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a topic
-        /// 
+        /// Delete a topic.
+        /// </summary>
         /// <remarks>
         /// Delete a topic by its unique key identifier **topicKey**. <br/>
         ///     This action is irreversible and will remove all subscriptions to the topic.
         /// </remarks>
-        /// </summary>
-        Task<TopicsControllerDeleteTopicResponse> DeleteAsync(string topicKey, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="topicKey">The key identifier of the topic.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerDeleteTopicResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="topicKey"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TopicsControllerDeleteTopicResponse> DeleteAsync(
+            string topicKey,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     /// <summary>
-    /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.
-    /// 
+    /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.<br/>
     /// <see href="https://docs.novu.co/subscribers/topics">https://docs.novu.co/subscribers/topics</see>
     /// </summary>
     public class Topics: ITopics
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Subscriptions SubSDK.
+        /// <see cref="ISubscriptions"/>
+        /// </summary>
         public ISubscriptions Subscriptions { get; private set; }
 
         public Topics(SDKConfig config)
@@ -101,7 +169,26 @@ namespace Novu
             Subscriptions = new Subscriptions(SDKConfiguration);
         }
 
-        public async Task<TopicsControllerListTopicsResponse> ListAsync(TopicsControllerListTopicsRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List all topics.
+        /// </summary>
+        /// <remarks>
+        /// This api returns a paginated list of topics.<br/>
+        ///     Topics can be filtered by **key**, **name**, or **includeCursor** to paginate through the list. <br/>
+        ///     Checkout all available filters in the query section.
+        /// </remarks>
+        /// <param name="request">A <see cref="TopicsControllerListTopicsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerListTopicsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TopicsControllerListTopicsResponse> ListAsync(
+            TopicsControllerListTopicsRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/topics", request, null);
@@ -161,7 +248,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -316,14 +403,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TopicsControllerUpsertTopicResponse> CreateAsync(CreateUpdateTopicRequestDto createUpdateTopicRequestDto, bool? failIfExists = null, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Create a topic.
+        /// </summary>
+        /// <remarks>
+        /// Creates a new topic if it does not exist, or updates an existing topic if it already exists. Use ?failIfExists=true to prevent updates.
+        /// </remarks>
+        /// <param name="createUpdateTopicRequestDto">A <see cref="CreateUpdateTopicRequestDto"/> parameter.</param>
+        /// <param name="failIfExists">If true, the request will fail if a topic with the same key already exists.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerUpsertTopicResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createUpdateTopicRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Models.Errors.TopicResponseDto">OK. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TopicsControllerUpsertTopicResponse> CreateAsync(
+            CreateUpdateTopicRequestDto createUpdateTopicRequestDto,
+            bool? failIfExists = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (createUpdateTopicRequestDto == null) throw new ArgumentNullException(nameof(createUpdateTopicRequestDto));
+
             var request = new TopicsControllerUpsertTopicRequest()
             {
                 CreateUpdateTopicRequestDto = createUpdateTopicRequestDto,
                 FailIfExists = failIfExists,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/topics", request, null);
 
@@ -388,7 +502,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -563,13 +677,37 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TopicsControllerGetTopicResponse> GetAsync(string topicKey, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Retrieve a topic.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a topic by its unique key identifier **topicKey**
+        /// </remarks>
+        /// <param name="topicKey">The key identifier of the topic.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerGetTopicResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="topicKey"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TopicsControllerGetTopicResponse> GetAsync(
+            string topicKey,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (topicKey == null) throw new ArgumentNullException(nameof(topicKey));
+
             var request = new TopicsControllerGetTopicRequest()
             {
                 TopicKey = topicKey,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/topics/{topicKey}", request, null);
 
@@ -628,7 +766,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -783,14 +921,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TopicsControllerUpdateTopicResponse> UpdateAsync(string topicKey, UpdateTopicRequestDto updateTopicRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update a topic.
+        /// </summary>
+        /// <remarks>
+        /// Update a topic name by its unique key identifier **topicKey**
+        /// </remarks>
+        /// <param name="topicKey">The key identifier of the topic.</param>
+        /// <param name="updateTopicRequestDto">A <see cref="UpdateTopicRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerUpdateTopicResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="topicKey"/> or <paramref name="updateTopicRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TopicsControllerUpdateTopicResponse> UpdateAsync(
+            string topicKey,
+            UpdateTopicRequestDto updateTopicRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (topicKey == null) throw new ArgumentNullException(nameof(topicKey));
+            if (updateTopicRequestDto == null) throw new ArgumentNullException(nameof(updateTopicRequestDto));
+
             var request = new TopicsControllerUpdateTopicRequest()
             {
                 TopicKey = topicKey,
                 UpdateTopicRequestDto = updateTopicRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/topics/{topicKey}", request, null);
 
@@ -855,7 +1020,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1010,13 +1175,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TopicsControllerDeleteTopicResponse> DeleteAsync(string topicKey, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete a topic.
+        /// </summary>
+        /// <remarks>
+        /// Delete a topic by its unique key identifier **topicKey**. <br/>
+        ///     This action is irreversible and will remove all subscriptions to the topic.
+        /// </remarks>
+        /// <param name="topicKey">The key identifier of the topic.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TopicsControllerDeleteTopicResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="topicKey"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TopicsControllerDeleteTopicResponse> DeleteAsync(
+            string topicKey,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (topicKey == null) throw new ArgumentNullException(nameof(topicKey));
+
             var request = new TopicsControllerDeleteTopicRequest()
             {
                 TopicKey = topicKey,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/topics/{topicKey}", request, null);
 
@@ -1075,7 +1265,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1229,5 +1419,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

@@ -55,7 +55,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(UpdateTopicSubscriptionRequestDtoPreferences.UpdateTopicSubscriptionRequestDtoPreferencesConverter))]
     public class UpdateTopicSubscriptionRequestDtoPreferences
     {

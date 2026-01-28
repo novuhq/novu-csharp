@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ListLayoutResponseDto
     {
-
         /// <summary>
-        /// List of layouts
+        /// List of layouts.
         /// </summary>
         [JsonProperty("layouts")]
         public List<LayoutResponseDto> Layouts { get; set; } = default!;
 
         /// <summary>
-        /// Total number of layouts
+        /// Total number of layouts.
         /// </summary>
         [JsonProperty("totalCount")]
         public double TotalCount { get; set; } = default!;

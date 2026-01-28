@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class WorkflowPreferenceRequestDto
     {
-
         /// <summary>
         /// Whether the preference is enabled. Used when condition is not provided.
         /// </summary>
@@ -23,13 +22,13 @@ namespace Novu.Models.Components
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Optional condition using JSON Logic rules
+        /// Optional condition using JSON Logic rules.
         /// </summary>
         [JsonProperty("condition")]
         public Dictionary<string, object>? Condition { get; set; }
 
         /// <summary>
-        /// The workflow identifier
+        /// The workflow identifier.
         /// </summary>
         [JsonProperty("workflowId")]
         public string WorkflowId { get; set; } = default!;

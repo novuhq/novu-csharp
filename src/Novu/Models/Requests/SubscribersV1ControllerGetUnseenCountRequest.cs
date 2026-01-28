@@ -10,10 +10,9 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class SubscribersV1ControllerGetUnseenCountRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
@@ -30,7 +29,7 @@ namespace Novu.Models.Requests
         public double? Limit { get; set; } = 100D;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
