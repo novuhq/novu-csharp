@@ -11,24 +11,23 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class TopicSubscriberIdentifierDto
     {
-
         /// <summary>
-        /// Unique identifier for this subscription
+        /// Unique identifier for this subscription.
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; } = default!;
 
         /// <summary>
-        /// The subscriber ID
+        /// The subscriber ID.
         /// </summary>
         [JsonProperty("subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// The name of the subscription
+        /// The name of the subscription.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }

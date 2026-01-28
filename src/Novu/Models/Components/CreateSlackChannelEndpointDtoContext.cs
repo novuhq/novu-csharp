@@ -26,14 +26,14 @@ namespace Novu.Models.Components
 
         public static CreateSlackChannelEndpointDtoContextType Str { get { return new CreateSlackChannelEndpointDtoContextType("str"); } }
 
-        public static CreateSlackChannelEndpointDtoContextType Context2 { get { return new CreateSlackChannelEndpointDtoContextType("context_2"); } }
+        public static CreateSlackChannelEndpointDtoContextType CreateSlackChannelEndpointDtoContext2 { get { return new CreateSlackChannelEndpointDtoContextType("CreateSlackChannelEndpointDto_context_2"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(CreateSlackChannelEndpointDtoContextType v) { return v.Value; }
         public static CreateSlackChannelEndpointDtoContextType FromString(string v) {
             switch(v) {
                 case "str": return Str;
-                case "context_2": return Context2;
+                case "CreateSlackChannelEndpointDto_context_2": return CreateSlackChannelEndpointDtoContext2;
                 default: throw new ArgumentException("Invalid value for CreateSlackChannelEndpointDtoContextType");
             }
         }
@@ -52,7 +52,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(CreateSlackChannelEndpointDtoContext.CreateSlackChannelEndpointDtoContextConverter))]
     public class CreateSlackChannelEndpointDtoContext
     {
@@ -65,7 +64,7 @@ namespace Novu.Models.Components
         public string? Str { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public Context2? Context2 { get; set; }
+        public CreateSlackChannelEndpointDtoContext2? CreateSlackChannelEndpointDtoContext2 { get; set; }
 
         public CreateSlackChannelEndpointDtoContextType Type { get; set; }
         public static CreateSlackChannelEndpointDtoContext CreateStr(string str)
@@ -76,12 +75,12 @@ namespace Novu.Models.Components
             res.Str = str;
             return res;
         }
-        public static CreateSlackChannelEndpointDtoContext CreateContext2(Context2 context2)
+        public static CreateSlackChannelEndpointDtoContext CreateCreateSlackChannelEndpointDtoContext2(CreateSlackChannelEndpointDtoContext2 createSlackChannelEndpointDtoContext2)
         {
-            CreateSlackChannelEndpointDtoContextType typ = CreateSlackChannelEndpointDtoContextType.Context2;
+            CreateSlackChannelEndpointDtoContextType typ = CreateSlackChannelEndpointDtoContextType.CreateSlackChannelEndpointDtoContext2;
 
             CreateSlackChannelEndpointDtoContext res = new CreateSlackChannelEndpointDtoContext(typ);
-            res.Context2 = context2;
+            res.CreateSlackChannelEndpointDtoContext2 = createSlackChannelEndpointDtoContext2;
             return res;
         }
 
@@ -103,14 +102,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new CreateSlackChannelEndpointDtoContext(CreateSlackChannelEndpointDtoContextType.Context2)
+                    return new CreateSlackChannelEndpointDtoContext(CreateSlackChannelEndpointDtoContextType.CreateSlackChannelEndpointDtoContext2)
                     {
-                        Context2 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Context2>(json)
+                        CreateSlackChannelEndpointDtoContext2 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CreateSlackChannelEndpointDtoContext2>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Context2), new CreateSlackChannelEndpointDtoContext(CreateSlackChannelEndpointDtoContextType.Context2), "Context2"));
+                    fallbackCandidates.Add((typeof(CreateSlackChannelEndpointDtoContext2), new CreateSlackChannelEndpointDtoContext(CreateSlackChannelEndpointDtoContextType.CreateSlackChannelEndpointDtoContext2), "CreateSlackChannelEndpointDtoContext2"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -166,9 +165,9 @@ namespace Novu.Models.Components
                     return;
                 }
 
-                if (res.Context2 != null)
+                if (res.CreateSlackChannelEndpointDtoContext2 != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.Context2));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateSlackChannelEndpointDtoContext2));
                     return;
                 }
             }

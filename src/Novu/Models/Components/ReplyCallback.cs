@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class ReplyCallback
     {
-
         /// <summary>
         /// Indicates whether the reply callback is active.
         /// </summary>

@@ -12,15 +12,14 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     /// <summary>
     /// Channel-specific overrides that apply to all steps of a particular channel type. Step-level overrides take precedence over channel-level overrides.
     /// </summary>
     public class Channels
     {
-
         /// <summary>
-        /// Email channel specific overrides
+        /// Email channel specific overrides.
         /// </summary>
         [JsonProperty("email")]
         public EmailChannelOverrides? Email { get; set; }

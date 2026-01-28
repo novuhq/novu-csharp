@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class StepIssuesDto
     {
-
         /// <summary>
-        /// Controls-related issues
+        /// Controls-related issues.
         /// </summary>
         [JsonProperty("controls")]
         public Dictionary<string, List<StepContentIssueDto>>? Controls { get; set; }
 
         /// <summary>
-        /// Integration-related issues
+        /// Integration-related issues.
         /// </summary>
         [JsonProperty("integration")]
         public Dictionary<string, List<StepIntegrationIssue>>? Integration { get; set; }

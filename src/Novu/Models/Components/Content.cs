@@ -55,9 +55,8 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// Content of the message, can be an email block or a string
+    /// Content of the message, can be an email block or a string.
     /// </summary>
     [JsonConverter(typeof(Content.ContentConverter))]
     public class Content

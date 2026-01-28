@@ -12,36 +12,35 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GetContextResponseDto
     {
-
         /// <summary>
-        /// Context type (e.g., tenant, app, workspace)
+        /// Context type (e.g., tenant, app, workspace).
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier for this context
+        /// Unique identifier for this context.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Custom data associated with this context
+        /// Custom data associated with this context.
         /// </summary>
         [JsonProperty("data")]
         public Dictionary<string, object> Data { get; set; } = default!;
 
         /// <summary>
-        /// Creation timestamp
+        /// Creation timestamp.
         /// </summary>
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Last update timestamp
+        /// Last update timestamp.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; } = default!;

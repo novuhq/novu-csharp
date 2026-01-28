@@ -13,30 +13,29 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class CreateTranslationRequestDto
     {
-
         /// <summary>
-        /// The resource ID to associate translation with. Accepts identifier or slug format
+        /// The resource ID to associate translation with. Accepts identifier or slug format.
         /// </summary>
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; } = default!;
 
         /// <summary>
-        /// The resource type to associate translation with
+        /// The resource type to associate translation with.
         /// </summary>
         [JsonProperty("resourceType")]
         public Models.Components.ResourceType ResourceType { get; set; } = default!;
 
         /// <summary>
-        /// Locale code (e.g., en_US, es_ES)
+        /// Locale code (e.g., en_US, es_ES).
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; } = default!;
 
         /// <summary>
-        /// Translation content as JSON object
+        /// Translation content as JSON object.
         /// </summary>
         [JsonProperty("content")]
         public Dictionary<string, object> Content { get; set; } = default!;

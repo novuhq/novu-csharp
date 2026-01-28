@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class CreateContextRequestDto
     {
-
         /// <summary>
         /// Context type (e.g., tenant, app, workspace). Must be lowercase alphanumeric with optional separators.
         /// </summary>

@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// The updated configurations after auto-configuration
+    /// The updated configurations after auto-configuration.
     /// </summary>
     public class Integration
     {

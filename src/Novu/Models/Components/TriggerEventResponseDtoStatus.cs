@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Status of the trigger
+    /// Status of the trigger.
     /// </summary>
     public enum TriggerEventResponseDtoStatus
     {
@@ -66,5 +66,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum TriggerEventResponseDtoStatus");
         }
     }
-
 }

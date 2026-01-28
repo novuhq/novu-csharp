@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ListWorkflowResponse
     {
-
         /// <summary>
-        /// List of workflows
+        /// List of workflows.
         /// </summary>
         [JsonProperty("workflows")]
         public List<WorkflowListResponseDto> Workflows { get; set; } = default!;
 
         /// <summary>
-        /// Total number of workflows
+        /// Total number of workflows.
         /// </summary>
         [JsonProperty("totalCount")]
         public double TotalCount { get; set; } = default!;

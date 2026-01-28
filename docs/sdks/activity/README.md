@@ -16,13 +16,16 @@ Track activity and engagement events for a specific delivery provider
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Activity.TrackAsync(
     environmentId: "<id>",
     integrationId: "<id>",
-    requestBody: "<value>"
+    requestBody: new Dictionary<string, object>() {
+
+    }
 );
 
 // handle response
@@ -34,7 +37,7 @@ var res = await sdk.Activity.TrackAsync(
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | `EnvironmentId`                                      | *string*                                             | :heavy_check_mark:                                   | The environment identifier                           |
 | `IntegrationId`                                      | *string*                                             | :heavy_check_mark:                                   | The integration identifier for the delivery provider |
-| `RequestBody`                                        | *object*                                             | :heavy_check_mark:                                   | Webhook event payload from the delivery provider     |
+| `RequestBody`                                        | Dictionary<String, *object*>                         | :heavy_check_mark:                                   | Webhook event payload from the delivery provider     |
 | `IdempotencyKey`                                     | *string*                                             | :heavy_minus_sign:                                   | A header for idempotency purposes                    |
 
 ### Response

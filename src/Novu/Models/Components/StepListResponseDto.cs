@@ -12,24 +12,23 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class StepListResponseDto
     {
-
         /// <summary>
-        /// Slug of the step
+        /// Slug of the step.
         /// </summary>
         [JsonProperty("slug")]
         public string Slug { get; set; } = default!;
 
         /// <summary>
-        /// Type of the step
+        /// Type of the step.
         /// </summary>
         [JsonProperty("type")]
         public StepTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Issues associated with the step
+        /// Issues associated with the step.
         /// </summary>
         [JsonProperty("issues")]
         public StepIssuesDto? Issues { get; set; }

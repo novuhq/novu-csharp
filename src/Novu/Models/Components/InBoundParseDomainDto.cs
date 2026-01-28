@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class InBoundParseDomainDto
     {
-
         [JsonProperty("inboundParseDomain")]
         public string? InboundParseDomain { get; set; }
     }

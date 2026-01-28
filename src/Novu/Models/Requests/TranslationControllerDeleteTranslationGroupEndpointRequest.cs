@@ -11,24 +11,23 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Requests;
     using Novu.Utils;
-    
+
     public class TranslationControllerDeleteTranslationGroupEndpointRequest
     {
-
         /// <summary>
-        /// Resource type
+        /// Resource type.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=resourceType")]
         public TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType ResourceType { get; set; } = default!;
 
         /// <summary>
-        /// Resource ID
+        /// Resource ID.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=resourceId")]
         public string ResourceId { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

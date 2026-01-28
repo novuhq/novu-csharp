@@ -11,33 +11,32 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     /// <summary>
-    /// User who last updated the workflow
+    /// User who last updated the workflow.
     /// </summary>
     public class WorkflowListResponseDtoUpdatedBy
     {
-
         /// <summary>
-        /// User ID
+        /// User ID.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// User first name
+        /// User first name.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; } = null;
 
         /// <summary>
-        /// User last name
+        /// User last name.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; } = null;
 
         /// <summary>
-        /// User external ID
+        /// User external ID.
         /// </summary>
         [JsonProperty("externalId")]
         public string? ExternalId { get; set; } = null;

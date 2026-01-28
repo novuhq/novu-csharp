@@ -12,42 +12,41 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class EventBody
     {
-
         /// <summary>
-        /// Status of the event
+        /// Status of the event.
         /// </summary>
         [JsonProperty("status")]
         public Status Status { get; set; } = default!;
 
         /// <summary>
-        /// Date of the event
+        /// Date of the event.
         /// </summary>
         [JsonProperty("date")]
         public string Date { get; set; } = default!;
 
         /// <summary>
-        /// External ID from the provider
+        /// External ID from the provider.
         /// </summary>
         [JsonProperty("externalId")]
         public string? ExternalId { get; set; }
 
         /// <summary>
-        /// Number of attempts
+        /// Number of attempts.
         /// </summary>
         [JsonProperty("attempts")]
         public double? Attempts { get; set; }
 
         /// <summary>
-        /// Response from the provider
+        /// Response from the provider.
         /// </summary>
         [JsonProperty("response")]
         public string? Response { get; set; }
 
         /// <summary>
-        /// Raw content from the provider webhook
+        /// Raw content from the provider webhook.
         /// </summary>
         [JsonProperty("row")]
         public string? Row { get; set; }

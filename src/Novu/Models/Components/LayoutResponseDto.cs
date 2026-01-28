@@ -13,84 +13,83 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class LayoutResponseDto
     {
-
         /// <summary>
-        /// Unique internal identifier of the layout
+        /// Unique internal identifier of the layout.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier for the layout
+        /// Unique identifier for the layout.
         /// </summary>
         [JsonProperty("layoutId")]
         public string LayoutId { get; set; } = default!;
 
         /// <summary>
-        /// Slug of the layout
+        /// Slug of the layout.
         /// </summary>
         [JsonProperty("slug")]
         public string Slug { get; set; } = default!;
 
         /// <summary>
-        /// Name of the layout
+        /// Name of the layout.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Whether the layout is the default layout
+        /// Whether the layout is the default layout.
         /// </summary>
         [JsonProperty("isDefault")]
         public bool IsDefault { get; set; } = default!;
 
         /// <summary>
-        /// Whether the layout translations are enabled
+        /// Whether the layout translations are enabled.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
         public bool IsTranslationEnabled { get; set; } = default!;
 
         /// <summary>
-        /// Last updated timestamp
+        /// Last updated timestamp.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; } = default!;
 
         /// <summary>
-        /// User who last updated the layout
+        /// User who last updated the layout.
         /// </summary>
         [JsonProperty("updatedBy")]
         public UpdatedBy? UpdatedBy { get; set; } = null;
 
         /// <summary>
-        /// Creation timestamp
+        /// Creation timestamp.
         /// </summary>
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout
+        /// Origin of the layout.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
-        /// Type of the layout
+        /// Type of the layout.
         /// </summary>
         [JsonProperty("type")]
         public ResourceTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// The variables JSON Schema for the layout
+        /// The variables JSON Schema for the layout.
         /// </summary>
         [JsonProperty("variables")]
         public Dictionary<string, object>? Variables { get; set; } = null;
 
         /// <summary>
-        /// Controls metadata for the layout
+        /// Controls metadata for the layout.
         /// </summary>
         [JsonProperty("controls")]
         public LayoutControlsDto Controls { get; set; } = default!;

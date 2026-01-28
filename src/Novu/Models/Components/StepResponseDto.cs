@@ -13,78 +13,77 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class StepResponseDto
     {
-
         /// <summary>
-        /// Controls metadata for the step
+        /// Controls metadata for the step.
         /// </summary>
         [JsonProperty("controls")]
         public ControlsMetadataDto Controls { get; set; } = default!;
 
         /// <summary>
-        /// Control values for the step (alias for controls.values)
+        /// Control values for the step (alias for controls.values).
         /// </summary>
         [JsonProperty("controlValues")]
         public Dictionary<string, object>? ControlValues { get; set; }
 
         /// <summary>
-        /// JSON Schema for variables, follows the JSON Schema standard
+        /// JSON Schema for variables, follows the JSON Schema standard.
         /// </summary>
         [JsonProperty("variables")]
         public Dictionary<string, object> Variables { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier of the step
+        /// Unique identifier of the step.
         /// </summary>
         [JsonProperty("stepId")]
         public string StepId { get; set; } = default!;
 
         /// <summary>
-        /// Database identifier of the step
+        /// Database identifier of the step.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Name of the step
+        /// Name of the step.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Slug of the step
+        /// Slug of the step.
         /// </summary>
         [JsonProperty("slug")]
         public string Slug { get; set; } = default!;
 
         /// <summary>
-        /// Type of the step
+        /// Type of the step.
         /// </summary>
         [JsonProperty("type")]
         public StepTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout
+        /// Origin of the layout.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
-        /// Workflow identifier
+        /// Workflow identifier.
         /// </summary>
         [JsonProperty("workflowId")]
         public string WorkflowId { get; set; } = default!;
 
         /// <summary>
-        /// Workflow database identifier
+        /// Workflow database identifier.
         /// </summary>
         [JsonProperty("workflowDatabaseId")]
         public string WorkflowDatabaseId { get; set; } = default!;
 
         /// <summary>
-        /// Issues associated with the step
+        /// Issues associated with the step.
         /// </summary>
         [JsonProperty("issues")]
         public StepIssuesDto? Issues { get; set; }

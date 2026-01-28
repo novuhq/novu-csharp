@@ -11,12 +11,12 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Requests;
     using Novu.Utils;
-    
+    using System.Collections.Generic;
+
     public class TopicsControllerListTopicSubscriptionsRequest
     {
-
         /// <summary>
-        /// The key identifier of the topic
+        /// The key identifier of the topic.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=topicKey")]
         public string TopicKey { get; set; } = default!;
@@ -34,37 +34,43 @@ namespace Novu.Models.Requests
         public string? Before { get; set; }
 
         /// <summary>
-        /// Limit the number of items to return (max 100)
+        /// Limit the number of items to return (max 100).
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public double? Limit { get; set; }
 
         /// <summary>
-        /// Direction of sorting
+        /// Direction of sorting.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderDirection")]
         public TopicsControllerListTopicSubscriptionsQueryParamOrderDirection? OrderDirection { get; set; }
 
         /// <summary>
-        /// Field to order by
+        /// Field to order by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderBy")]
         public string? OrderBy { get; set; }
 
         /// <summary>
-        /// Include cursor item in response
+        /// Include cursor item in response.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeCursor")]
         public bool? IncludeCursor { get; set; }
 
         /// <summary>
-        /// Filter by subscriber ID
+        /// Filter by subscriber ID.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=subscriberId")]
         public string? SubscriberId { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// Filter by exact context keys, order insensitive (format: "type:id").
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contextKeys")]
+        public List<string>? ContextKeys { get; set; }
+
+        /// <summary>
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

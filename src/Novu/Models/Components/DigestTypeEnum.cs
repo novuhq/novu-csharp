@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// The Digest Type
+    /// The Digest Type.
     /// </summary>
     public enum DigestTypeEnum
     {
@@ -58,5 +58,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DigestTypeEnum");
         }
     }
-
 }

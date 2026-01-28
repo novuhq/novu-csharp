@@ -23,91 +23,188 @@ namespace Novu
     using System.Threading.Tasks;
 
     /// <summary>
-    /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.
-    /// 
+    /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.<br/>
     /// <see href="https://docs.novu.co/workflows">https://docs.novu.co/workflows</see>
     /// </summary>
     public interface IWorkflows
     {
         public ISteps Steps { get; }
-
         /// <summary>
-        /// Create a workflow
-        /// 
-        /// <remarks>
-        /// Creates a new workflow in the Novu Cloud environment
-        /// </remarks>
+        /// Create a workflow.
         /// </summary>
-        Task<WorkflowControllerCreateResponse> CreateAsync(CreateWorkflowDto createWorkflowDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// List all workflows
-        /// 
         /// <remarks>
-        /// Retrieves a list of workflows with optional filtering and pagination
+        /// Creates a new workflow in the Novu Cloud environment.
         /// </remarks>
-        /// </summary>
-        Task<WorkflowControllerSearchWorkflowsResponse> ListAsync(WorkflowControllerSearchWorkflowsRequest? request = null, RetryConfig? retryConfig = null);
+        /// <param name="createWorkflowDto">Workflow creation details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerCreateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createWorkflowDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WorkflowControllerCreateResponse> CreateAsync(
+            CreateWorkflowDto createWorkflowDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a workflow
-        /// 
+        /// List all workflows.
+        /// </summary>
         /// <remarks>
-        /// Updates the details of an existing workflow, here **workflowId** is the identifier of the workflow
+        /// Retrieves a list of workflows with optional filtering and pagination.
         /// </remarks>
-        /// </summary>
-        Task<WorkflowControllerUpdateResponse> UpdateAsync(string workflowId, UpdateWorkflowDto updateWorkflowDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="WorkflowControllerSearchWorkflowsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerSearchWorkflowsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WorkflowControllerSearchWorkflowsResponse> ListAsync(
+            WorkflowControllerSearchWorkflowsRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Retrieve a workflow
-        /// 
+        /// Update a workflow.
+        /// </summary>
+        /// <remarks>
+        /// Updates the details of an existing workflow, here **workflowId** is the identifier of the workflow.
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="updateWorkflowDto">Workflow update details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="workflowId"/> or <paramref name="updateWorkflowDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WorkflowControllerUpdateResponse> UpdateAsync(
+            string workflowId,
+            UpdateWorkflowDto updateWorkflowDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
+
+        /// <summary>
+        /// Retrieve a workflow.
+        /// </summary>
         /// <remarks>
         /// Fetches details of a specific workflow by its unique identifier **workflowId**
         /// </remarks>
-        /// </summary>
-        Task<WorkflowControllerGetWorkflowResponse> GetAsync(string workflowId, string? environmentId = null, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="environmentId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerGetWorkflowResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="workflowId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WorkflowControllerGetWorkflowResponse> GetAsync(
+            string workflowId,
+            string? environmentId = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a workflow
-        /// 
+        /// Delete a workflow.
+        /// </summary>
         /// <remarks>
         /// Removes a specific workflow by its unique identifier **workflowId**
         /// </remarks>
-        /// </summary>
-        Task<WorkflowControllerRemoveWorkflowResponse> DeleteAsync(string workflowId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerRemoveWorkflowResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="workflowId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WorkflowControllerRemoveWorkflowResponse> DeleteAsync(
+            string workflowId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a workflow
-        /// 
+        /// Update a workflow.
+        /// </summary>
         /// <remarks>
         /// Partially updates a workflow by its unique identifier **workflowId**
         /// </remarks>
-        /// </summary>
-        Task<WorkflowControllerPatchWorkflowResponse> PatchAsync(string workflowId, PatchWorkflowDto patchWorkflowDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="patchWorkflowDto">Workflow patch details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerPatchWorkflowResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="workflowId"/> or <paramref name="patchWorkflowDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WorkflowControllerPatchWorkflowResponse> PatchAsync(
+            string workflowId,
+            PatchWorkflowDto patchWorkflowDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Sync a workflow
-        /// 
-        /// <remarks>
-        /// Synchronizes a workflow to the target environment
-        /// </remarks>
+        /// Sync a workflow.
         /// </summary>
-        Task<WorkflowControllerSyncResponse> SyncAsync(string workflowId, SyncWorkflowDto syncWorkflowDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Synchronizes a workflow to the target environment.
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="syncWorkflowDto">Sync workflow details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerSyncResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="workflowId"/> or <paramref name="syncWorkflowDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WorkflowControllerSyncResponse> SyncAsync(
+            string workflowId,
+            SyncWorkflowDto syncWorkflowDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     /// <summary>
-    /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.
-    /// 
+    /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.<br/>
     /// <see href="https://docs.novu.co/workflows">https://docs.novu.co/workflows</see>
     /// </summary>
     public class Workflows: IWorkflows
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Steps SubSDK.
+        /// <see cref="ISteps"/>
+        /// </summary>
         public ISteps Steps { get; private set; }
 
         public Workflows(SDKConfig config)
@@ -116,15 +213,37 @@ namespace Novu
             Steps = new Steps(SDKConfiguration);
         }
 
-        public async Task<WorkflowControllerCreateResponse> CreateAsync(CreateWorkflowDto createWorkflowDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Create a workflow.
+        /// </summary>
+        /// <remarks>
+        /// Creates a new workflow in the Novu Cloud environment.
+        /// </remarks>
+        /// <param name="createWorkflowDto">Workflow creation details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerCreateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createWorkflowDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WorkflowControllerCreateResponse> CreateAsync(
+            CreateWorkflowDto createWorkflowDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (createWorkflowDto == null) throw new ArgumentNullException(nameof(createWorkflowDto));
+
             var request = new WorkflowControllerCreateRequest()
             {
                 CreateWorkflowDto = createWorkflowDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v2/workflows";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -188,7 +307,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -343,7 +462,25 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<WorkflowControllerSearchWorkflowsResponse> ListAsync(WorkflowControllerSearchWorkflowsRequest? request = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// List all workflows.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of workflows with optional filtering and pagination.
+        /// </remarks>
+        /// <param name="request">A <see cref="WorkflowControllerSearchWorkflowsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerSearchWorkflowsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WorkflowControllerSearchWorkflowsResponse> ListAsync(
+            WorkflowControllerSearchWorkflowsRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/workflows", request, null);
@@ -403,7 +540,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -558,14 +695,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<WorkflowControllerUpdateResponse> UpdateAsync(string workflowId, UpdateWorkflowDto updateWorkflowDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update a workflow.
+        /// </summary>
+        /// <remarks>
+        /// Updates the details of an existing workflow, here **workflowId** is the identifier of the workflow.
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="updateWorkflowDto">Workflow update details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="workflowId"/> or <paramref name="updateWorkflowDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WorkflowControllerUpdateResponse> UpdateAsync(
+            string workflowId,
+            UpdateWorkflowDto updateWorkflowDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (workflowId == null) throw new ArgumentNullException(nameof(workflowId));
+            if (updateWorkflowDto == null) throw new ArgumentNullException(nameof(updateWorkflowDto));
+
             var request = new WorkflowControllerUpdateRequest()
             {
                 WorkflowId = workflowId,
                 UpdateWorkflowDto = updateWorkflowDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/workflows/{workflowId}", request, null);
 
@@ -630,7 +794,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -785,14 +949,40 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<WorkflowControllerGetWorkflowResponse> GetAsync(string workflowId, string? environmentId = null, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Retrieve a workflow.
+        /// </summary>
+        /// <remarks>
+        /// Fetches details of a specific workflow by its unique identifier **workflowId**
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="environmentId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerGetWorkflowResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="workflowId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WorkflowControllerGetWorkflowResponse> GetAsync(
+            string workflowId,
+            string? environmentId = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (workflowId == null) throw new ArgumentNullException(nameof(workflowId));
+
             var request = new WorkflowControllerGetWorkflowRequest()
             {
                 WorkflowId = workflowId,
                 EnvironmentId = environmentId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/workflows/{workflowId}", request, null);
 
@@ -851,7 +1041,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1006,13 +1196,37 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<WorkflowControllerRemoveWorkflowResponse> DeleteAsync(string workflowId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete a workflow.
+        /// </summary>
+        /// <remarks>
+        /// Removes a specific workflow by its unique identifier **workflowId**
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerRemoveWorkflowResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="workflowId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WorkflowControllerRemoveWorkflowResponse> DeleteAsync(
+            string workflowId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (workflowId == null) throw new ArgumentNullException(nameof(workflowId));
+
             var request = new WorkflowControllerRemoveWorkflowRequest()
             {
                 WorkflowId = workflowId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/workflows/{workflowId}", request, null);
 
@@ -1071,7 +1285,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1208,14 +1422,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<WorkflowControllerPatchWorkflowResponse> PatchAsync(string workflowId, PatchWorkflowDto patchWorkflowDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update a workflow.
+        /// </summary>
+        /// <remarks>
+        /// Partially updates a workflow by its unique identifier **workflowId**
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="patchWorkflowDto">Workflow patch details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerPatchWorkflowResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="workflowId"/> or <paramref name="patchWorkflowDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WorkflowControllerPatchWorkflowResponse> PatchAsync(
+            string workflowId,
+            PatchWorkflowDto patchWorkflowDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (workflowId == null) throw new ArgumentNullException(nameof(workflowId));
+            if (patchWorkflowDto == null) throw new ArgumentNullException(nameof(patchWorkflowDto));
+
             var request = new WorkflowControllerPatchWorkflowRequest()
             {
                 WorkflowId = workflowId,
                 PatchWorkflowDto = patchWorkflowDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/workflows/{workflowId}", request, null);
 
@@ -1280,7 +1521,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1435,14 +1676,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<WorkflowControllerSyncResponse> SyncAsync(string workflowId, SyncWorkflowDto syncWorkflowDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Sync a workflow.
+        /// </summary>
+        /// <remarks>
+        /// Synchronizes a workflow to the target environment.
+        /// </remarks>
+        /// <param name="workflowId">Description not available.</param>
+        /// <param name="syncWorkflowDto">Sync workflow details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WorkflowControllerSyncResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="workflowId"/> or <paramref name="syncWorkflowDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WorkflowControllerSyncResponse> SyncAsync(
+            string workflowId,
+            SyncWorkflowDto syncWorkflowDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (workflowId == null) throw new ArgumentNullException(nameof(workflowId));
+            if (syncWorkflowDto == null) throw new ArgumentNullException(nameof(syncWorkflowDto));
+
             var request = new WorkflowControllerSyncRequest()
             {
                 WorkflowId = workflowId,
                 SyncWorkflowDto = syncWorkflowDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/workflows/{workflowId}/sync", request, null);
 
@@ -1507,7 +1775,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1661,5 +1929,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

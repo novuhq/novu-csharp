@@ -11,18 +11,17 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class ChannelEndpointsControllerUpdateChannelEndpointRequest
     {
-
         /// <summary>
-        /// The unique identifier of the channel endpoint
+        /// The unique identifier of the channel endpoint.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=identifier")]
         public string Identifier { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

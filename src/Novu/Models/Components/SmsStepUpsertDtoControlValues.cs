@@ -52,7 +52,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
     /// Control values for the SMS step.
     /// </summary>

@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Message action payload
+    /// Message action payload.
     /// </summary>
     public class MarkMessageActionAsSeenDtoPayload
     {

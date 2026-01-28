@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// Current status of the notification.
     /// </summary>
@@ -58,5 +58,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum NotificationFeedItemDtoStatus");
         }
     }
-
 }

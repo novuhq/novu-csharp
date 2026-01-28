@@ -12,10 +12,9 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class TranslationControllerDeleteTranslationGroupEndpointResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
     }

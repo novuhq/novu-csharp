@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Status of the execution detail
+    /// Status of the execution detail.
     /// </summary>
     public enum ExecutionDetailsStatusEnum
     {
@@ -64,5 +64,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ExecutionDetailsStatusEnum");
         }
     }
-
 }

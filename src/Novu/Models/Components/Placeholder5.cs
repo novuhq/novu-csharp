@@ -57,7 +57,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(Placeholder5.Placeholder5Converter))]
     public class Placeholder5
     {

@@ -12,9 +12,9 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// The channel of the message to be deleted
+    /// The channel of the message to be deleted.
     /// </summary>
     public enum MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel
     {
@@ -62,5 +62,4 @@ namespace Novu.Models.Requests
             throw new Exception($"Unknown value {value} for enum MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel");
         }
     }
-
 }

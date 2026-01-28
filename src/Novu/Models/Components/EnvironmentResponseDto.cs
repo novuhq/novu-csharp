@@ -13,54 +13,53 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class EnvironmentResponseDto
     {
-
         /// <summary>
-        /// Unique identifier of the environment
+        /// Unique identifier of the environment.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Name of the environment
+        /// Name of the environment.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Organization ID associated with the environment
+        /// Organization ID associated with the environment.
         /// </summary>
         [JsonProperty("_organizationId")]
         public string OrganizationId { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier for the environment
+        /// Unique identifier for the environment.
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; } = default!;
 
         /// <summary>
-        /// Type of the environment
+        /// Type of the environment.
         /// </summary>
         [JsonProperty("type")]
         public EnvironmentResponseDtoType? Type { get; set; } = null;
 
         /// <summary>
-        /// List of API keys associated with the environment
+        /// List of API keys associated with the environment.
         /// </summary>
         [JsonProperty("apiKeys")]
         public List<ApiKeyDto>? ApiKeys { get; set; }
 
         /// <summary>
-        /// Parent environment ID
+        /// Parent environment ID.
         /// </summary>
         [JsonProperty("_parentId")]
         public string? ParentId { get; set; }
 
         /// <summary>
-        /// URL-friendly slug for the environment
+        /// URL-friendly slug for the environment.
         /// </summary>
         [JsonProperty("slug")]
         public string? Slug { get; set; }

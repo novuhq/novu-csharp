@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// The resource type to associate translation with
+    /// The resource type to associate translation with.
     /// </summary>
     public enum ResourceType
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ResourceType");
         }
     }
-
 }

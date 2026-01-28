@@ -13,78 +13,77 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class CreateWorkflowDto
     {
-
         /// <summary>
-        /// Name of the workflow
+        /// Name of the workflow.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Description of the workflow
+        /// Description of the workflow.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// Tags associated with the workflow
+        /// Tags associated with the workflow.
         /// </summary>
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; }
 
         /// <summary>
-        /// Whether the workflow is active
+        /// Whether the workflow is active.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; } = false;
 
         /// <summary>
-        /// Enable or disable payload schema validation
+        /// Enable or disable payload schema validation.
         /// </summary>
         [JsonProperty("validatePayload")]
         public bool? ValidatePayload { get; set; }
 
         /// <summary>
-        /// The payload JSON Schema for the workflow
+        /// The payload JSON Schema for the workflow.
         /// </summary>
         [JsonProperty("payloadSchema")]
         public Dictionary<string, object>? PayloadSchema { get; set; } = null;
 
         /// <summary>
-        /// Enable or disable translations for this workflow
+        /// Enable or disable translations for this workflow.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
         public bool? IsTranslationEnabled { get; set; } = false;
 
         /// <summary>
-        /// Unique identifier for the workflow
+        /// Unique identifier for the workflow.
         /// </summary>
         [JsonProperty("workflowId")]
         public string WorkflowId { get; set; } = default!;
 
         /// <summary>
-        /// Steps of the workflow
+        /// Steps of the workflow.
         /// </summary>
         [JsonProperty("steps")]
         public List<Models.Components.Steps> Steps { get; set; } = default!;
 
         /// <summary>
-        /// Source of workflow creation
+        /// Source of workflow creation.
         /// </summary>
         [JsonProperty("__source")]
         public WorkflowCreationSourceEnum? Source { get; set; } = Novu.Models.Components.WorkflowCreationSourceEnum.Editor;
 
         /// <summary>
-        /// Workflow preferences
+        /// Workflow preferences.
         /// </summary>
         [JsonProperty("preferences")]
         public PreferencesRequestDto? Preferences { get; set; }
 
         /// <summary>
-        /// Severity of the workflow
+        /// Severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum? Severity { get; set; }

@@ -10,18 +10,17 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class TranslationControllerGetMasterJsonEndpointRequest
     {
-
         /// <summary>
-        /// Locale to export. If not provided, exports organization default locale
+        /// Locale to export. If not provided, exports organization default locale.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=locale")]
         public string? Locale { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

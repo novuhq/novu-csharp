@@ -23,114 +23,239 @@ namespace Novu
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Layouts are reusable wrappers for your email notifications.
-    /// 
+    /// Layouts are reusable wrappers for your email notifications.<br/>
     /// <see href="https://docs.novu.co/platform/workflow/layouts">https://docs.novu.co/platform/workflow/layouts</see>
     /// </summary>
     public interface ILayouts
     {
-
         /// <summary>
-        /// Create a layout
-        /// 
-        /// <remarks>
-        /// Creates a new layout in the Novu Cloud environment
-        /// </remarks>
+        /// Create a layout.
         /// </summary>
-        Task<LayoutsControllerCreateResponse> CreateAsync(CreateLayoutDto createLayoutDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// List all layouts
-        /// 
         /// <remarks>
-        /// Retrieves a list of layouts with optional filtering and pagination
+        /// Creates a new layout in the Novu Cloud environment.
         /// </remarks>
-        /// </summary>
-        Task<LayoutsControllerListResponse> ListAsync(LayoutsControllerListRequest? request = null, RetryConfig? retryConfig = null);
+        /// <param name="createLayoutDto">Layout creation details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerCreateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createLayoutDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<LayoutsControllerCreateResponse> CreateAsync(
+            CreateLayoutDto createLayoutDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a layout
-        /// 
+        /// List all layouts.
+        /// </summary>
         /// <remarks>
-        /// Updates the details of an existing layout, here **layoutId** is the identifier of the layout
+        /// Retrieves a list of layouts with optional filtering and pagination.
         /// </remarks>
-        /// </summary>
-        Task<LayoutsControllerUpdateResponse> UpdateAsync(string layoutId, UpdateLayoutDto updateLayoutDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="LayoutsControllerListRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerListResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<LayoutsControllerListResponse> ListAsync(
+            LayoutsControllerListRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Retrieve a layout
-        /// 
+        /// Update a layout.
+        /// </summary>
+        /// <remarks>
+        /// Updates the details of an existing layout, here **layoutId** is the identifier of the layout.
+        /// </remarks>
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="updateLayoutDto">Layout update details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="layoutId"/> or <paramref name="updateLayoutDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<LayoutsControllerUpdateResponse> UpdateAsync(
+            string layoutId,
+            UpdateLayoutDto updateLayoutDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
+
+        /// <summary>
+        /// Retrieve a layout.
+        /// </summary>
         /// <remarks>
         /// Fetches details of a specific layout by its unique identifier **layoutId**
         /// </remarks>
-        /// </summary>
-        Task<LayoutsControllerGetResponse> RetrieveAsync(string layoutId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerGetResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="layoutId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<LayoutsControllerGetResponse> RetrieveAsync(
+            string layoutId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a layout
-        /// 
+        /// Delete a layout.
+        /// </summary>
         /// <remarks>
         /// Removes a specific layout by its unique identifier **layoutId**
         /// </remarks>
-        /// </summary>
-        Task<LayoutsControllerDeleteResponse> DeleteAsync(string layoutId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="layoutId">The unique identifier of the layout.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="layoutId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<LayoutsControllerDeleteResponse> DeleteAsync(
+            string layoutId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Duplicate a layout
-        /// 
+        /// Duplicate a layout.
+        /// </summary>
         /// <remarks>
         /// Duplicates a layout by its unique identifier **layoutId**. This will create a new layout with the content of the original layout.
         /// </remarks>
-        /// </summary>
-        Task<LayoutsControllerDuplicateResponse> DuplicateAsync(string layoutId, DuplicateLayoutDto duplicateLayoutDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="duplicateLayoutDto">A <see cref="DuplicateLayoutDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerDuplicateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="layoutId"/> or <paramref name="duplicateLayoutDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<LayoutsControllerDuplicateResponse> DuplicateAsync(
+            string layoutId,
+            DuplicateLayoutDto duplicateLayoutDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Generate layout preview
-        /// 
+        /// Generate layout preview.
+        /// </summary>
         /// <remarks>
         /// Generates a preview for a layout by its unique identifier **layoutId**
         /// </remarks>
-        /// </summary>
-        Task<LayoutsControllerGeneratePreviewResponse> GeneratePreviewAsync(string layoutId, LayoutPreviewRequestDto layoutPreviewRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="layoutPreviewRequestDto">Layout preview generation details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerGeneratePreviewResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="layoutId"/> or <paramref name="layoutPreviewRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<LayoutsControllerGeneratePreviewResponse> GeneratePreviewAsync(
+            string layoutId,
+            LayoutPreviewRequestDto layoutPreviewRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get layout usage
-        /// 
+        /// Get layout usage.
+        /// </summary>
         /// <remarks>
         /// Retrieves information about workflows that use the specified layout by its unique identifier **layoutId**
         /// </remarks>
-        /// </summary>
-        Task<LayoutsControllerGetUsageResponse> UsageAsync(string layoutId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerGetUsageResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="layoutId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<LayoutsControllerGetUsageResponse> UsageAsync(
+            string layoutId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     /// <summary>
-    /// Layouts are reusable wrappers for your email notifications.
-    /// 
+    /// Layouts are reusable wrappers for your email notifications.<br/>
     /// <see href="https://docs.novu.co/platform/workflow/layouts">https://docs.novu.co/platform/workflow/layouts</see>
     /// </summary>
     public class Layouts: ILayouts
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Layouts(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<LayoutsControllerCreateResponse> CreateAsync(CreateLayoutDto createLayoutDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Create a layout.
+        /// </summary>
+        /// <remarks>
+        /// Creates a new layout in the Novu Cloud environment.
+        /// </remarks>
+        /// <param name="createLayoutDto">Layout creation details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerCreateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createLayoutDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<LayoutsControllerCreateResponse> CreateAsync(
+            CreateLayoutDto createLayoutDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (createLayoutDto == null) throw new ArgumentNullException(nameof(createLayoutDto));
+
             var request = new LayoutsControllerCreateRequest()
             {
                 CreateLayoutDto = createLayoutDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v2/layouts";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -194,7 +319,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -349,7 +474,25 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<LayoutsControllerListResponse> ListAsync(LayoutsControllerListRequest? request = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// List all layouts.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of layouts with optional filtering and pagination.
+        /// </remarks>
+        /// <param name="request">A <see cref="LayoutsControllerListRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerListResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<LayoutsControllerListResponse> ListAsync(
+            LayoutsControllerListRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/layouts", request, null);
@@ -409,7 +552,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -564,14 +707,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<LayoutsControllerUpdateResponse> UpdateAsync(string layoutId, UpdateLayoutDto updateLayoutDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update a layout.
+        /// </summary>
+        /// <remarks>
+        /// Updates the details of an existing layout, here **layoutId** is the identifier of the layout.
+        /// </remarks>
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="updateLayoutDto">Layout update details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="layoutId"/> or <paramref name="updateLayoutDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<LayoutsControllerUpdateResponse> UpdateAsync(
+            string layoutId,
+            UpdateLayoutDto updateLayoutDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (layoutId == null) throw new ArgumentNullException(nameof(layoutId));
+            if (updateLayoutDto == null) throw new ArgumentNullException(nameof(updateLayoutDto));
+
             var request = new LayoutsControllerUpdateRequest()
             {
                 LayoutId = layoutId,
                 UpdateLayoutDto = updateLayoutDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/layouts/{layoutId}", request, null);
 
@@ -636,7 +806,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -791,13 +961,37 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<LayoutsControllerGetResponse> RetrieveAsync(string layoutId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Retrieve a layout.
+        /// </summary>
+        /// <remarks>
+        /// Fetches details of a specific layout by its unique identifier **layoutId**
+        /// </remarks>
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerGetResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="layoutId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<LayoutsControllerGetResponse> RetrieveAsync(
+            string layoutId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (layoutId == null) throw new ArgumentNullException(nameof(layoutId));
+
             var request = new LayoutsControllerGetRequest()
             {
                 LayoutId = layoutId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/layouts/{layoutId}", request, null);
 
@@ -856,7 +1050,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1011,13 +1205,37 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<LayoutsControllerDeleteResponse> DeleteAsync(string layoutId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete a layout.
+        /// </summary>
+        /// <remarks>
+        /// Removes a specific layout by its unique identifier **layoutId**
+        /// </remarks>
+        /// <param name="layoutId">The unique identifier of the layout.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="layoutId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<LayoutsControllerDeleteResponse> DeleteAsync(
+            string layoutId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (layoutId == null) throw new ArgumentNullException(nameof(layoutId));
+
             var request = new LayoutsControllerDeleteRequest()
             {
                 LayoutId = layoutId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/layouts/{layoutId}", request, null);
 
@@ -1076,7 +1294,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1213,14 +1431,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<LayoutsControllerDuplicateResponse> DuplicateAsync(string layoutId, DuplicateLayoutDto duplicateLayoutDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Duplicate a layout.
+        /// </summary>
+        /// <remarks>
+        /// Duplicates a layout by its unique identifier **layoutId**. This will create a new layout with the content of the original layout.
+        /// </remarks>
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="duplicateLayoutDto">A <see cref="DuplicateLayoutDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerDuplicateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="layoutId"/> or <paramref name="duplicateLayoutDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<LayoutsControllerDuplicateResponse> DuplicateAsync(
+            string layoutId,
+            DuplicateLayoutDto duplicateLayoutDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (layoutId == null) throw new ArgumentNullException(nameof(layoutId));
+            if (duplicateLayoutDto == null) throw new ArgumentNullException(nameof(duplicateLayoutDto));
+
             var request = new LayoutsControllerDuplicateRequest()
             {
                 LayoutId = layoutId,
                 DuplicateLayoutDto = duplicateLayoutDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/layouts/{layoutId}/duplicate", request, null);
 
@@ -1285,7 +1530,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1440,14 +1685,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<LayoutsControllerGeneratePreviewResponse> GeneratePreviewAsync(string layoutId, LayoutPreviewRequestDto layoutPreviewRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Generate layout preview.
+        /// </summary>
+        /// <remarks>
+        /// Generates a preview for a layout by its unique identifier **layoutId**
+        /// </remarks>
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="layoutPreviewRequestDto">Layout preview generation details.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerGeneratePreviewResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="layoutId"/> or <paramref name="layoutPreviewRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<LayoutsControllerGeneratePreviewResponse> GeneratePreviewAsync(
+            string layoutId,
+            LayoutPreviewRequestDto layoutPreviewRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (layoutId == null) throw new ArgumentNullException(nameof(layoutId));
+            if (layoutPreviewRequestDto == null) throw new ArgumentNullException(nameof(layoutPreviewRequestDto));
+
             var request = new LayoutsControllerGeneratePreviewRequest()
             {
                 LayoutId = layoutId,
                 LayoutPreviewRequestDto = layoutPreviewRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/layouts/{layoutId}/preview", request, null);
 
@@ -1512,7 +1784,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1667,13 +1939,37 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<LayoutsControllerGetUsageResponse> UsageAsync(string layoutId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get layout usage.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves information about workflows that use the specified layout by its unique identifier **layoutId**
+        /// </remarks>
+        /// <param name="layoutId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="LayoutsControllerGetUsageResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="layoutId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<LayoutsControllerGetUsageResponse> UsageAsync(
+            string layoutId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (layoutId == null) throw new ArgumentNullException(nameof(layoutId));
+
             var request = new LayoutsControllerGetUsageRequest()
             {
                 LayoutId = layoutId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/layouts/{layoutId}/usage", request, null);
 
@@ -1732,7 +2028,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1886,5 +2182,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

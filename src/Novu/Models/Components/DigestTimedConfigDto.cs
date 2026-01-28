@@ -13,54 +13,53 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class DigestTimedConfigDto
     {
-
         /// <summary>
-        /// Time at which the digest is triggered
+        /// Time at which the digest is triggered.
         /// </summary>
         [JsonProperty("atTime")]
         public string? AtTime { get; set; }
 
         /// <summary>
-        /// Days of the week for the digest
+        /// Days of the week for the digest.
         /// </summary>
         [JsonProperty("weekDays")]
         public List<DigestTimedConfigDtoWeekDays>? WeekDays { get; set; }
 
         /// <summary>
-        /// Specific days of the month for the digest
+        /// Specific days of the month for the digest.
         /// </summary>
         [JsonProperty("monthDays")]
         public List<double>? MonthDays { get; set; }
 
         /// <summary>
-        /// Ordinal position for the digest
+        /// Ordinal position for the digest.
         /// </summary>
         [JsonProperty("ordinal")]
         public OrdinalEnum? Ordinal { get; set; }
 
         /// <summary>
-        /// Value of the ordinal
+        /// Value of the ordinal.
         /// </summary>
         [JsonProperty("ordinalValue")]
         public OrdinalValueEnum? OrdinalValue { get; set; }
 
         /// <summary>
-        /// Type of monthly schedule
+        /// Type of monthly schedule.
         /// </summary>
         [JsonProperty("monthlyType")]
         public MonthlyTypeEnum? MonthlyType { get; set; }
 
         /// <summary>
-        /// Cron expression for scheduling
+        /// Cron expression for scheduling.
         /// </summary>
         [JsonProperty("cronExpression")]
         public string? CronExpression { get; set; }
 
         /// <summary>
-        /// Until date for scheduling
+        /// Until date for scheduling.
         /// </summary>
         [JsonProperty("untilDate")]
         public string? UntilDate { get; set; }

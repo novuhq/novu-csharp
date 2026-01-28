@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class ActorFeedItemDto
     {
-
         /// <summary>
         /// The data associated with the actor, can be null if not applicable.
         /// </summary>

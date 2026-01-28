@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GetMasterJsonResponseDto
     {
-
         /// <summary>
-        /// All translations for given locale organized by workflow identifier
+        /// All translations for given locale organized by workflow identifier.
         /// </summary>
         [JsonProperty("workflows")]
         public Dictionary<string, object> Workflows { get; set; } = default!;
 
         /// <summary>
-        /// All translations for given locale organized by layout identifier
+        /// All translations for given locale organized by layout identifier.
         /// </summary>
         [JsonProperty("layouts")]
         public Dictionary<string, object> Layouts { get; set; } = default!;

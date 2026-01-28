@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// The type of the actor, indicating the role in the notification process.
     /// </summary>
@@ -60,5 +60,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ActorTypeEnum");
         }
     }
-
 }

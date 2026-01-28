@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// The provider identifier (e.g., sendgrid, twilio, slack, etc.).
     /// </summary>
@@ -208,5 +208,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ProviderId");
         }
     }
-
 }

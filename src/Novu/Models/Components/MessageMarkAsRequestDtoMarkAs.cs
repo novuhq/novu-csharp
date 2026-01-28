@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     public enum MessageMarkAsRequestDtoMarkAs
     {
         [JsonProperty("read")]
@@ -57,5 +57,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum MessageMarkAsRequestDtoMarkAs");
         }
     }
-
 }

@@ -11,21 +11,20 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class LayoutsControllerUpdateRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=layoutId")]
         public string LayoutId { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
 
         /// <summary>
-        /// Layout update details
+        /// Layout update details.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public UpdateLayoutDto UpdateLayoutDto { get; set; } = default!;

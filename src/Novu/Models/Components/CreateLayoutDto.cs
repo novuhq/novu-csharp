@@ -12,30 +12,29 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class CreateLayoutDto
     {
-
         /// <summary>
-        /// Unique identifier for the layout
+        /// Unique identifier for the layout.
         /// </summary>
         [JsonProperty("layoutId")]
         public string LayoutId { get; set; } = default!;
 
         /// <summary>
-        /// Name of the layout
+        /// Name of the layout.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Enable or disable translations for this layout
+        /// Enable or disable translations for this layout.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
         public bool? IsTranslationEnabled { get; set; } = false;
 
         /// <summary>
-        /// Source of layout creation
+        /// Source of layout creation.
         /// </summary>
         [JsonProperty("__source")]
         public LayoutCreationSourceEnum? Source { get; set; } = Novu.Models.Components.LayoutCreationSourceEnum.Dashboard;

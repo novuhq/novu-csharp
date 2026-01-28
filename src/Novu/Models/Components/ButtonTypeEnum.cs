@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Type of button for the action result
+    /// Type of button for the action result.
     /// </summary>
     public enum ButtonTypeEnum
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ButtonTypeEnum");
         }
     }
-
 }

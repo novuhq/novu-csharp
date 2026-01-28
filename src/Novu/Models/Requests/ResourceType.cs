@@ -12,9 +12,9 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// The resource type to associate localizations with
+    /// The resource type to associate localizations with.
     /// </summary>
     public enum ResourceType
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Requests
             throw new Exception($"Unknown value {value} for enum ResourceType");
         }
     }
-
 }

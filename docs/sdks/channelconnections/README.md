@@ -79,8 +79,8 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 var res = await sdk.ChannelConnections.CreateAsync(createChannelConnectionRequestDto: new CreateChannelConnectionRequestDto() {
     Identifier = "slack-prod-user123-abc4",
     SubscriberId = "subscriber-123",
-    Context = new Dictionary<string, Context>() {
-        { "key", Context.CreateStr(
+    Context = new Dictionary<string, CreateChannelConnectionRequestDtoContext>() {
+        { "key", CreateChannelConnectionRequestDtoContext.CreateStr(
             "org-acme"
         ) },
     },

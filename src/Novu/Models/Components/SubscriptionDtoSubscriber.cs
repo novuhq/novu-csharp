@@ -11,45 +11,44 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     /// <summary>
-    /// The subscriber information
+    /// The subscriber information.
     /// </summary>
     public class SubscriptionDtoSubscriber
     {
-
         /// <summary>
-        /// The identifier of the subscriber
+        /// The identifier of the subscriber.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The external identifier of the subscriber
+        /// The external identifier of the subscriber.
         /// </summary>
         [JsonProperty("subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// The avatar URL of the subscriber
+        /// The avatar URL of the subscriber.
         /// </summary>
         [JsonProperty("avatar")]
         public string? Avatar { get; set; } = null;
 
         /// <summary>
-        /// The first name of the subscriber
+        /// The first name of the subscriber.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; } = null;
 
         /// <summary>
-        /// The last name of the subscriber
+        /// The last name of the subscriber.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; } = null;
 
         /// <summary>
-        /// The email of the subscriber
+        /// The email of the subscriber.
         /// </summary>
         [JsonProperty("email")]
         public string? Email { get; set; } = null;

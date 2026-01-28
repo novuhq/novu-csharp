@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class RedirectDto
     {
-
         /// <summary>
         /// URL for redirection. Must be a valid URL or start with / or {{ variable }}.
         /// </summary>

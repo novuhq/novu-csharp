@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class PhoneEndpointDto
     {
-
         /// <summary>
-        /// Phone number in E.164 format
+        /// Phone number in E.164 format.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;

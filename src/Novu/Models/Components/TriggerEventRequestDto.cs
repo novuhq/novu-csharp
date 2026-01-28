@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TriggerEventRequestDto
     {
-
         /// <summary>
         /// The trigger identifier of the workflow you wish to send. This identifier can be found on the workflow page.
         /// </summary>
@@ -25,17 +24,14 @@ namespace Novu.Models.Components
 
         /// <summary>
         /// The payload object is used to pass additional custom information that could be <br/>
-        /// 
-        /// <remarks>
         ///     used to render the workflow, or perform routing rules based on it. <br/>
         ///       This data will also be available when fetching the notifications feed from the API to display certain parts of the UI.
-        /// </remarks>
         /// </summary>
         [JsonProperty("payload")]
         public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
-        /// This could be used to override provider specific configurations
+        /// This could be used to override provider specific configurations.
         /// </summary>
         [JsonProperty("overrides")]
         public Overrides? Overrides { get; set; }
@@ -48,32 +44,23 @@ namespace Novu.Models.Components
 
         /// <summary>
         /// A unique identifier for deduplication. If the same **transactionId** is sent again, <br/>
-        /// 
-        /// <remarks>
         ///       the trigger is ignored. Useful to prevent duplicate notifications. The retention period depends on your billing tier.
-        /// </remarks>
         /// </summary>
         [JsonProperty("transactionId")]
         public string? TransactionId { get; set; }
 
         /// <summary>
-        /// It is used to display the Avatar of the provided actor&apos;s subscriber id or actor object.<br/>
-        /// 
-        /// <remarks>
+        /// It is used to display the Avatar of the provided actor's subscriber id or actor object.<br/>
         /// <br/>
         /// <br/>
-        ///     If a new actor object is provided, we will create a new subscriber in our system
-        /// </remarks>
+        ///     If a new actor object is provided, we will create a new subscriber in our system.
         /// </summary>
         [JsonProperty("actor", NullValueHandling = NullValueHandling.Include)]
         public Actor? Actor { get; set; }
 
         /// <summary>
         /// It is used to specify a tenant context during trigger event.<br/>
-        /// 
-        /// <remarks>
         ///     Existing tenants will be updated with the provided details.
-        /// </remarks>
         /// </summary>
         [JsonProperty("tenant", NullValueHandling = NullValueHandling.Include)]
         public Tenant? Tenant { get; set; }

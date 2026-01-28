@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class MarkAllMessageAsRequestDto
     {
-
         /// <summary>
-        /// Optional feed identifier or array of feed identifiers
+        /// Optional feed identifier or array of feed identifiers.
         /// </summary>
         [JsonProperty("feedIdentifier", NullValueHandling = NullValueHandling.Include)]
         public FeedIdentifier? FeedIdentifier { get; set; }
 
         /// <summary>
-        /// Mark all subscriber messages as read, unread, seen or unseen
+        /// Mark all subscriber messages as read, unread, seen or unseen.
         /// </summary>
         [JsonProperty("markAs")]
         public MarkAs MarkAs { get; set; } = default!;

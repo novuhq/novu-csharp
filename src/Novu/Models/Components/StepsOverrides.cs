@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class StepsOverrides
     {
-
         /// <summary>
-        /// Passing the provider id and the provider specific configurations
+        /// Passing the provider id and the provider specific configurations.
         /// </summary>
         [JsonProperty("providers")]
         public Dictionary<string, Dictionary<string, object>>? Providers { get; set; }
 
         /// <summary>
-        /// Override the or remove the layout for this specific step
+        /// Override the or remove the layout for this specific step.
         /// </summary>
         [JsonProperty("layoutId")]
         public string? LayoutId { get; set; } = null;

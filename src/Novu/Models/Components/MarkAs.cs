@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Mark all subscriber messages as read, unread, seen or unseen
+    /// Mark all subscriber messages as read, unread, seen or unseen.
     /// </summary>
     public enum MarkAs
     {
@@ -60,5 +60,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum MarkAs");
         }
     }
-
 }

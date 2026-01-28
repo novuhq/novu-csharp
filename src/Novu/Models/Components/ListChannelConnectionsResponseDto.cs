@@ -13,12 +13,11 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ListChannelConnectionsResponseDto
     {
-
         /// <summary>
-        /// List of returned Channel Connections
+        /// List of returned Channel Connections.
         /// </summary>
         [JsonProperty("data")]
         public List<GetChannelConnectionResponseDto> Data { get; set; } = default!;
@@ -36,13 +35,13 @@ namespace Novu.Models.Components
         public string? Previous { get; set; }
 
         /// <summary>
-        /// The total count of items (up to 50,000)
+        /// The total count of items (up to 50,000).
         /// </summary>
         [JsonProperty("totalCount")]
         public double TotalCount { get; set; } = default!;
 
         /// <summary>
-        /// Whether there are more than 50,000 results available
+        /// Whether there are more than 50,000 results available.
         /// </summary>
         [JsonProperty("totalCountCapped")]
         public bool TotalCountCapped { get; set; } = default!;

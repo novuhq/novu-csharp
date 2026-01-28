@@ -14,10 +14,9 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     public class NotificationFeedItemDto
     {
-
         /// <summary>
         /// Unique identifier for the notification.
         /// </summary>
@@ -127,7 +126,7 @@ namespace Novu.Models.Components
         public string? Subject { get; set; } = null;
 
         /// <summary>
-        /// Channel type through which the message is sent
+        /// Channel type through which the message is sent.
         /// </summary>
         [JsonProperty("channel")]
         public ChannelTypeEnum Channel { get; set; } = default!;

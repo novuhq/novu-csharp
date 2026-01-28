@@ -64,9 +64,8 @@ namespace Novu.Models.Errors
         }
     }
 
-
     /// <summary>
-    /// Value that failed validation
+    /// Value that failed validation.
     /// </summary>
     [JsonConverter(typeof(Message.MessageConverter))]
     public class Message

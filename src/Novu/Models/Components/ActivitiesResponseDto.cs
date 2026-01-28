@@ -13,30 +13,29 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ActivitiesResponseDto
     {
-
         /// <summary>
-        /// Indicates if there are more activities in the result set
+        /// Indicates if there are more activities in the result set.
         /// </summary>
         [JsonProperty("hasMore")]
         public bool HasMore { get; set; } = default!;
 
         /// <summary>
-        /// Array of activity notifications
+        /// Array of activity notifications.
         /// </summary>
         [JsonProperty("data")]
         public List<ActivityNotificationResponseDto> Data { get; set; } = default!;
 
         /// <summary>
-        /// Page size of the activities
+        /// Page size of the activities.
         /// </summary>
         [JsonProperty("pageSize")]
         public double PageSize { get; set; } = default!;
 
         /// <summary>
-        /// Current page of the activities
+        /// Current page of the activities.
         /// </summary>
         [JsonProperty("page")]
         public double Page { get; set; } = default!;

@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// The type of digest strategy. Determines which fields are applicable.
     /// </summary>
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DigestStepResponseDtoType");
         }
     }
-
 }

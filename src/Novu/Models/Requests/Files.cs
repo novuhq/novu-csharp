@@ -10,10 +10,9 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class Files
     {
-
         [SpeakeasyMetadata("multipartForm:name=fileName")]
         public string FileName { get; set; } = default!;
 

@@ -11,42 +11,41 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class TopicSubscriberDto
     {
-
         /// <summary>
-        /// Unique identifier for the organization
+        /// Unique identifier for the organization.
         /// </summary>
         [JsonProperty("_organizationId")]
         public string OrganizationId { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier for the environment
+        /// Unique identifier for the environment.
         /// </summary>
         [JsonProperty("_environmentId")]
         public string EnvironmentId { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier for the subscriber
+        /// Unique identifier for the subscriber.
         /// </summary>
         [JsonProperty("_subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier for the topic
+        /// Unique identifier for the topic.
         /// </summary>
         [JsonProperty("_topicId")]
         public string TopicId { get; set; } = default!;
 
         /// <summary>
-        /// Key associated with the topic
+        /// Key associated with the topic.
         /// </summary>
         [JsonProperty("topicKey")]
         public string TopicKey { get; set; } = default!;
 
         /// <summary>
-        /// External identifier for the subscriber
+        /// External identifier for the subscriber.
         /// </summary>
         [JsonProperty("externalSubscriberId")]
         public string ExternalSubscriberId { get; set; } = default!;

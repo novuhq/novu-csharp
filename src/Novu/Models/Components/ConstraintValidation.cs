@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ConstraintValidation
     {
-
         /// <summary>
-        /// List of validation error messages
+        /// List of validation error messages.
         /// </summary>
         [JsonProperty("messages")]
         public List<string> Messages { get; set; } = default!;
 
         /// <summary>
-        /// Value that failed validation
+        /// Value that failed validation.
         /// </summary>
         [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
         public Value? Value { get; set; } = null;

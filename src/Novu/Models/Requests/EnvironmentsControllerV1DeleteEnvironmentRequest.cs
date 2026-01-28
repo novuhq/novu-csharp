@@ -10,18 +10,17 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class EnvironmentsControllerV1DeleteEnvironmentRequest
     {
-
         /// <summary>
-        /// The unique identifier of the environment
+        /// The unique identifier of the environment.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=environmentId")]
         public string EnvironmentId { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

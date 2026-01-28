@@ -52,7 +52,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(TriggerEventToAllRequestDtoContext.TriggerEventToAllRequestDtoContextConverter))]
     public class TriggerEventToAllRequestDtoContext
     {

@@ -11,36 +11,35 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class SubscriberPreferenceChannels
     {
-
         /// <summary>
-        /// Email channel preference
+        /// Email channel preference.
         /// </summary>
         [JsonProperty("email")]
         public bool? Email { get; set; }
 
         /// <summary>
-        /// SMS channel preference
+        /// SMS channel preference.
         /// </summary>
         [JsonProperty("sms")]
         public bool? Sms { get; set; }
 
         /// <summary>
-        /// In-app channel preference
+        /// In-app channel preference.
         /// </summary>
         [JsonProperty("in_app")]
         public bool? InApp { get; set; }
 
         /// <summary>
-        /// Chat channel preference
+        /// Chat channel preference.
         /// </summary>
         [JsonProperty("chat")]
         public bool? Chat { get; set; }
 
         /// <summary>
-        /// Push notification channel preference
+        /// Push notification channel preference.
         /// </summary>
         [JsonProperty("push")]
         public bool? Push { get; set; }

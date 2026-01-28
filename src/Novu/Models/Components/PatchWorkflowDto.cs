@@ -12,48 +12,47 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class PatchWorkflowDto
     {
-
         /// <summary>
-        /// Activate or deactivate the workflow
+        /// Activate or deactivate the workflow.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; }
 
         /// <summary>
-        /// New name for the workflow
+        /// New name for the workflow.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Updated description of the workflow
+        /// Updated description of the workflow.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// Tags associated with the workflow
+        /// Tags associated with the workflow.
         /// </summary>
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; }
 
         /// <summary>
-        /// The payload JSON Schema for the workflow
+        /// The payload JSON Schema for the workflow.
         /// </summary>
         [JsonProperty("payloadSchema")]
         public Dictionary<string, object>? PayloadSchema { get; set; } = null;
 
         /// <summary>
-        /// Enable or disable payload schema validation
+        /// Enable or disable payload schema validation.
         /// </summary>
         [JsonProperty("validatePayload")]
         public bool? ValidatePayload { get; set; }
 
         /// <summary>
-        /// Enable or disable translations for this workflow
+        /// Enable or disable translations for this workflow.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
         public bool? IsTranslationEnabled { get; set; }

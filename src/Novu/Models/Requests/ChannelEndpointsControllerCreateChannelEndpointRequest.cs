@@ -12,12 +12,11 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Models.Requests;
     using Novu.Utils;
-    
+
     public class ChannelEndpointsControllerCreateChannelEndpointRequest
     {
-
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

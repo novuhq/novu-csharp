@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Unit of the digest
+    /// Unit of the digest.
     /// </summary>
     public enum DigestMetadataDtoUnit
     {
@@ -64,5 +64,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DigestMetadataDtoUnit");
         }
     }
-
 }

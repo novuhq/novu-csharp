@@ -9,12 +9,22 @@
 #nullable enable
 namespace Novu.Models.Components
 {
+    using Newtonsoft.Json;
     using Novu.Utils;
-    
+    using System.Collections.Generic;
+
     /// <summary>
-    /// Translation content as JSON object
+    /// Rich context object with id and optional data.
     /// </summary>
-    public class TranslationResponseDtoContent
+    public class CreateSlackChannelEndpointDtoContext2
     {
+        [JsonProperty("id")]
+        public string Id { get; set; } = default!;
+
+        /// <summary>
+        /// Optional additional context data.
+        /// </summary>
+        [JsonProperty("data")]
+        public Dictionary<string, object>? Data { get; set; }
     }
 }

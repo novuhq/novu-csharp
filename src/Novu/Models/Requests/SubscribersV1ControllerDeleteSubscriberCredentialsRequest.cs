@@ -10,10 +10,9 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class SubscribersV1ControllerDeleteSubscriberCredentialsRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
@@ -21,7 +20,7 @@ namespace Novu.Models.Requests
         public string ProviderId { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

@@ -24,53 +24,113 @@ namespace Novu
 
     public interface ISubscribersMessages
     {
-
         /// <summary>
-        /// Update notification action status
-        /// 
+        /// Update notification action status.
+        /// </summary>
         /// <remarks>
-        /// Update in-app (inbox) notification&apos;s action status by its unique key identifier **messageId** and type field **type**. <br/>
+        /// Update in-app (inbox) notification's action status by its unique key identifier **messageId** and type field **type**. <br/>
         ///       **type** field can be **primary** or **secondary**
         /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerMarkActionAsSeenResponse> UpdateActionAsync(SubscribersV1ControllerMarkActionAsSeenRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="SubscribersV1ControllerMarkActionAsSeenRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerMarkActionAsSeenResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersV1ControllerMarkActionAsSeenResponse> UpdateActionAsync(
+            SubscribersV1ControllerMarkActionAsSeenRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update all notifications state
-        /// 
+        /// Update all notifications state.
+        /// </summary>
         /// <remarks>
         /// Update all subscriber in-app (inbox) notifications state such as read, unread, seen or unseen by **subscriberId**.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerMarkAllUnreadAsReadResponse> MarkAllAsync(string subscriberId, MarkAllMessageAsRequestDto markAllMessageAsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="markAllMessageAsRequestDto">A <see cref="MarkAllMessageAsRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerMarkAllUnreadAsReadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="markAllMessageAsRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersV1ControllerMarkAllUnreadAsReadResponse> MarkAllAsync(
+            string subscriberId,
+            MarkAllMessageAsRequestDto markAllMessageAsRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update notifications state
-        /// 
-        /// <remarks>
-        /// Update subscriber&apos;s multiple in-app (inbox) notifications state such as seen, read, unseen or unread by **subscriberId**. <br/>
-        ///       **messageId** is of type mongodbId of notifications
-        /// </remarks>
+        /// Update notifications state.
         /// </summary>
-        Task<SubscribersV1ControllerMarkMessagesAsResponse> MarkAllAsAsync(string subscriberId, MessageMarkAsRequestDto messageMarkAsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Update subscriber's multiple in-app (inbox) notifications state such as seen, read, unseen or unread by **subscriberId**. <br/>
+        ///       **messageId** is of type mongodbId of notifications.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="messageMarkAsRequestDto">A <see cref="MessageMarkAsRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerMarkMessagesAsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="messageMarkAsRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersV1ControllerMarkMessagesAsResponse> MarkAllAsAsync(
+            string subscriberId,
+            MessageMarkAsRequestDto messageMarkAsRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class SubscribersMessages: ISubscribersMessages
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public SubscribersMessages(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<SubscribersV1ControllerMarkActionAsSeenResponse> UpdateActionAsync(SubscribersV1ControllerMarkActionAsSeenRequest request, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Update notification action status.
+        /// </summary>
+        /// <remarks>
+        /// Update in-app (inbox) notification's action status by its unique key identifier **messageId** and type field **type**. <br/>
+        ///       **type** field can be **primary** or **secondary**
+        /// </remarks>
+        /// <param name="request">A <see cref="SubscribersV1ControllerMarkActionAsSeenRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerMarkActionAsSeenResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersV1ControllerMarkActionAsSeenResponse> UpdateActionAsync(
+            SubscribersV1ControllerMarkActionAsSeenRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/messages/{messageId}/actions/{type}", request, null);
 
@@ -135,7 +195,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -290,14 +350,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersV1ControllerMarkAllUnreadAsReadResponse> MarkAllAsync(string subscriberId, MarkAllMessageAsRequestDto markAllMessageAsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update all notifications state.
+        /// </summary>
+        /// <remarks>
+        /// Update all subscriber in-app (inbox) notifications state such as read, unread, seen or unseen by **subscriberId**.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="markAllMessageAsRequestDto">A <see cref="MarkAllMessageAsRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerMarkAllUnreadAsReadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="markAllMessageAsRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersV1ControllerMarkAllUnreadAsReadResponse> MarkAllAsync(
+            string subscriberId,
+            MarkAllMessageAsRequestDto markAllMessageAsRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+            if (markAllMessageAsRequestDto == null) throw new ArgumentNullException(nameof(markAllMessageAsRequestDto));
+
             var request = new SubscribersV1ControllerMarkAllUnreadAsReadRequest()
             {
                 SubscriberId = subscriberId,
                 MarkAllMessageAsRequestDto = markAllMessageAsRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/messages/mark-all", request, null);
 
@@ -362,7 +449,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -517,14 +604,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersV1ControllerMarkMessagesAsResponse> MarkAllAsAsync(string subscriberId, MessageMarkAsRequestDto messageMarkAsRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update notifications state.
+        /// </summary>
+        /// <remarks>
+        /// Update subscriber's multiple in-app (inbox) notifications state such as seen, read, unseen or unread by **subscriberId**. <br/>
+        ///       **messageId** is of type mongodbId of notifications.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="messageMarkAsRequestDto">A <see cref="MessageMarkAsRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerMarkMessagesAsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="messageMarkAsRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersV1ControllerMarkMessagesAsResponse> MarkAllAsAsync(
+            string subscriberId,
+            MessageMarkAsRequestDto messageMarkAsRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+            if (messageMarkAsRequestDto == null) throw new ArgumentNullException(nameof(messageMarkAsRequestDto));
+
             var request = new SubscribersV1ControllerMarkMessagesAsRequest()
             {
                 SubscriberId = subscriberId,
                 MessageMarkAsRequestDto = messageMarkAsRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/messages/mark-as", request, null);
 
@@ -589,7 +704,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -743,5 +858,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

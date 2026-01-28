@@ -12,24 +12,23 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class ChannelSettingsDto
     {
-
         /// <summary>
-        /// The provider identifier for the credentials
+        /// The provider identifier for the credentials.
         /// </summary>
         [JsonProperty("providerId")]
         public ChatOrPushProviderEnum ProviderId { get; set; } = default!;
 
         /// <summary>
-        /// The integration identifier
+        /// The integration identifier.
         /// </summary>
         [JsonProperty("integrationIdentifier")]
         public string? IntegrationIdentifier { get; set; }
 
         /// <summary>
-        /// Credentials payload for the specified provider
+        /// Credentials payload for the specified provider.
         /// </summary>
         [JsonProperty("credentials")]
         public ChannelCredentials Credentials { get; set; } = default!;

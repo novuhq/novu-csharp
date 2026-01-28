@@ -51,7 +51,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(MessageId.MessageIdConverter))]
     public class MessageId
     {

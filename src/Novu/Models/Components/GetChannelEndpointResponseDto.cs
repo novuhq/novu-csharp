@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GetChannelEndpointResponseDto
     {
-
         /// <summary>
         /// The unique identifier of the channel endpoint.
         /// </summary>
@@ -48,25 +47,25 @@ namespace Novu.Models.Components
         public string? ConnectionIdentifier { get; set; }
 
         /// <summary>
-        /// The subscriber ID to which the channel endpoint is linked
+        /// The subscriber ID to which the channel endpoint is linked.
         /// </summary>
         [JsonProperty("subscriberId", NullValueHandling = NullValueHandling.Include)]
         public string? SubscriberId { get; set; }
 
         /// <summary>
-        /// The context of the channel connection
+        /// The context of the channel connection.
         /// </summary>
         [JsonProperty("contextKeys")]
         public List<string> ContextKeys { get; set; } = default!;
 
         /// <summary>
-        /// Type of channel endpoint
+        /// Type of channel endpoint.
         /// </summary>
         [JsonProperty("type")]
         public GetChannelEndpointResponseDtoType Type { get; set; } = default!;
 
         /// <summary>
-        /// Endpoint data specific to the channel type
+        /// Endpoint data specific to the channel type.
         /// </summary>
         [JsonProperty("endpoint", NullValueHandling = NullValueHandling.Include)]
         public Endpoint Endpoint { get; set; } = default!;

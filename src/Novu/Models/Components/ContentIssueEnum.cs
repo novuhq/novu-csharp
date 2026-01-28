@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Type of step content issue
+    /// Type of step content issue.
     /// </summary>
     public enum ContentIssueEnum
     {
@@ -60,5 +60,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ContentIssueEnum");
         }
     }
-
 }

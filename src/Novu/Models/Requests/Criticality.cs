@@ -12,7 +12,7 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     public enum Criticality
     {
         [JsonProperty("critical")]
@@ -55,5 +55,4 @@ namespace Novu.Models.Requests
             throw new Exception($"Unknown value {value} for enum Criticality");
         }
     }
-
 }

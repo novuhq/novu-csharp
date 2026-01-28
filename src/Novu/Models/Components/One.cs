@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class One
     {
-
         [JsonProperty("type")]
         public ResultType? Type { get; set; }
 

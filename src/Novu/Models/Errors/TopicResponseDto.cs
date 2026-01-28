@@ -17,31 +17,31 @@ namespace Novu.Models.Errors
     public class TopicResponseDtoPayload
     {
         /// <summary>
-        /// The identifier of the topic
+        /// The identifier of the topic.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The unique key of the topic
+        /// The unique key of the topic.
         /// </summary>
         [JsonProperty("key")]
         public string Key { get; set; } = default!;
 
         /// <summary>
-        /// The name of the topic
+        /// The name of the topic.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The date the topic was created
+        /// The date the topic was created.
         /// </summary>
         [JsonProperty("createdAt")]
         public string? CreatedAt { get; set; }
 
         /// <summary>
-        /// The date the topic was last updated
+        /// The date the topic was last updated.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string? UpdatedAt { get; set; }
@@ -87,5 +87,4 @@ namespace Novu.Models.Errors
            #pragma warning restore CS0618
         }
     }
-
 }

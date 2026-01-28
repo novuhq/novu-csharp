@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class NotificationTriggerVariable
     {
-
         /// <summary>
-        /// Name of the variable
+        /// Name of the variable.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;

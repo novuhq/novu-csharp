@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class EmailChannelOverrides
     {
-
         /// <summary>
-        /// Override or remove the layout for all email steps in the workflow
+        /// Override or remove the layout for all email steps in the workflow.
         /// </summary>
         [JsonProperty("layoutId")]
         public string? LayoutId { get; set; } = null;

@@ -13,15 +13,14 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class SubscribersV1ControllerGetUnseenCountResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// OK
+        /// OK.
         /// </summary>
         public UnseenCountResponse? UnseenCountResponse { get; set; }
 

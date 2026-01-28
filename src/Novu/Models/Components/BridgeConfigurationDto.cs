@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class BridgeConfigurationDto
     {
-
         [JsonProperty("url")]
         public string? Url { get; set; }
     }

@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Step issues
+    /// Step issues.
     /// </summary>
     public class Issues
     {

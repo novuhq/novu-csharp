@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Source of workflow creation
+    /// Source of workflow creation.
     /// </summary>
     public enum WorkflowCreationSourceEnum
     {
@@ -72,5 +72,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum WorkflowCreationSourceEnum");
         }
     }
-
 }

@@ -12,15 +12,14 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class TranslationControllerImportMasterJsonEndpointResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Master translations imported successfully
+        /// Master translations imported successfully.
         /// </summary>
         public ImportMasterJsonResponseDto? ImportMasterJsonResponseDto { get; set; }
     }

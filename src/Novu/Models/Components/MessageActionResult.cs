@@ -12,18 +12,18 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+    using System.Collections.Generic;
+
     public class MessageActionResult
     {
-
         /// <summary>
-        /// Payload of the action result
+        /// Payload of the action result.
         /// </summary>
         [JsonProperty("payload")]
-        public Payload? Payload { get; set; }
+        public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
-        /// Type of button for the action result
+        /// Type of button for the action result.
         /// </summary>
         [JsonProperty("type")]
         public ButtonTypeEnum? Type { get; set; }

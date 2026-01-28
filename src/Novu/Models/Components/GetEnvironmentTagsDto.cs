@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class GetEnvironmentTagsDto
     {
-
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
     }

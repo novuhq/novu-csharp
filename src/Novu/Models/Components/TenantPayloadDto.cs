@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class TenantPayloadDto
     {
-
         [JsonProperty("identifier")]
         public string? Identifier { get; set; }
 

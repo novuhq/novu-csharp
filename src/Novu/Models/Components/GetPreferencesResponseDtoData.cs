@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Custom data associated with the workflow
+    /// Custom data associated with the workflow.
     /// </summary>
     public class GetPreferencesResponseDtoData
     {

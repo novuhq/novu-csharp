@@ -12,24 +12,23 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class MessageButton
     {
-
         /// <summary>
-        /// Type of button for the action result
+        /// Type of button for the action result.
         /// </summary>
         [JsonProperty("type")]
         public ButtonTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Content of the button
+        /// Content of the button.
         /// </summary>
         [JsonProperty("content")]
         public string Content { get; set; } = default!;
 
         /// <summary>
-        /// Content of the result when the button is clicked
+        /// Content of the result when the button is clicked.
         /// </summary>
         [JsonProperty("resultContent")]
         public string? ResultContent { get; set; }

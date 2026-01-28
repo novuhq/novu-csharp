@@ -12,30 +12,29 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class UploadTranslationsResponseDto
     {
-
         /// <summary>
-        /// Total number of files processed
+        /// Total number of files processed.
         /// </summary>
         [JsonProperty("totalFiles")]
         public double TotalFiles { get; set; } = default!;
 
         /// <summary>
-        /// Number of files successfully uploaded
+        /// Number of files successfully uploaded.
         /// </summary>
         [JsonProperty("successfulUploads")]
         public double SuccessfulUploads { get; set; } = default!;
 
         /// <summary>
-        /// Number of files that failed to upload
+        /// Number of files that failed to upload.
         /// </summary>
         [JsonProperty("failedUploads")]
         public double FailedUploads { get; set; } = default!;
 
         /// <summary>
-        /// List of error messages for failed uploads
+        /// List of error messages for failed uploads.
         /// </summary>
         [JsonProperty("errors")]
         public List<string> Errors { get; set; } = default!;

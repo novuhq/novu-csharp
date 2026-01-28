@@ -22,12 +22,17 @@ List all subscriptions of subscribers for a topic.
 using Novu;
 using Novu.Models.Components;
 using Novu.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 TopicsControllerListTopicSubscriptionsRequest req = new TopicsControllerListTopicSubscriptionsRequest() {
     TopicKey = "<value>",
     Limit = 10D,
+    ContextKeys = new List<string>() {
+        "tenant:org-123",
+        "region:us-east-1",
+    },
 };
 
 var res = await sdk.Topics.Subscriptions.ListAsync(req);
@@ -88,6 +93,11 @@ var res = await sdk.Topics.Subscriptions.CreateAsync(
             ),
         },
         Name = "My Topic",
+        Context = new Dictionary<string, CreateTopicSubscriptionsRequestDtoContext>() {
+            { "key", CreateTopicSubscriptionsRequestDtoContext.CreateStr(
+                "org-acme"
+            ) },
+        },
         Preferences = new List<Novu.Models.Components.Preferences>() {
             Novu.Models.Components.Preferences.CreateWorkflowPreferenceRequestDto(
                 new WorkflowPreferenceRequestDto() {

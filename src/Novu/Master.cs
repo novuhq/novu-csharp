@@ -24,56 +24,104 @@ namespace Novu
 
     public interface IMaster
     {
+        /// <summary>
+        /// Retrieve master translations JSON.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve all translations for a locale in master JSON format organized by resourceId (workflowId).
+        /// </remarks>
+        /// <param name="locale">Locale to export. If not provided, exports organization default locale.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerGetMasterJsonEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerGetMasterJsonEndpointResponse> RetrieveAsync(
+            string? locale = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Retrieve master translations JSON
-        /// 
-        /// <remarks>
-        /// Retrieve all translations for a locale in master JSON format organized by resourceId (workflowId)
-        /// </remarks>
+        /// Import master translations JSON.
         /// </summary>
-        Task<TranslationControllerGetMasterJsonEndpointResponse> RetrieveAsync(string? locale = null, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Import translations for multiple workflows from master JSON format for a specific locale.
+        /// </remarks>
+        /// <param name="importMasterJsonRequestDto">A <see cref="ImportMasterJsonRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerImportMasterJsonEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="importMasterJsonRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerImportMasterJsonEndpointResponse> ImportAsync(
+            ImportMasterJsonRequestDto importMasterJsonRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Import master translations JSON
-        /// 
-        /// <remarks>
-        /// Import translations for multiple workflows from master JSON format for a specific locale
-        /// </remarks>
+        /// Upload master translations JSON file.
         /// </summary>
-        Task<TranslationControllerImportMasterJsonEndpointResponse> ImportAsync(ImportMasterJsonRequestDto importMasterJsonRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Upload master translations JSON file
-        /// 
         /// <remarks>
-        /// Upload a master JSON file containing translations for multiple workflows. Locale is automatically detected from filename (e.g., en_US.json)
+        /// Upload a master JSON file containing translations for multiple workflows. Locale is automatically detected from filename (e.g., en_US.json).
         /// </remarks>
-        /// </summary>
-        Task<TranslationControllerUploadMasterJsonEndpointResponse> UploadAsync(TranslationControllerUploadMasterJsonEndpointRequestBody requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="requestBody">A <see cref="TranslationControllerUploadMasterJsonEndpointRequestBody"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerUploadMasterJsonEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="requestBody"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerUploadMasterJsonEndpointResponse> UploadAsync(
+            TranslationControllerUploadMasterJsonEndpointRequestBody requestBody,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Master: IMaster
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Master(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<TranslationControllerGetMasterJsonEndpointResponse> RetrieveAsync(string? locale = null, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Retrieve master translations JSON.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve all translations for a locale in master JSON format organized by resourceId (workflowId).
+        /// </remarks>
+        /// <param name="locale">Locale to export. If not provided, exports organization default locale.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerGetMasterJsonEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerGetMasterJsonEndpointResponse> RetrieveAsync(
+            string? locale = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
             var request = new TranslationControllerGetMasterJsonEndpointRequest()
             {
                 Locale = locale,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/translations/master-json", request, null);
 
@@ -199,15 +247,36 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TranslationControllerImportMasterJsonEndpointResponse> ImportAsync(ImportMasterJsonRequestDto importMasterJsonRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Import master translations JSON.
+        /// </summary>
+        /// <remarks>
+        /// Import translations for multiple workflows from master JSON format for a specific locale.
+        /// </remarks>
+        /// <param name="importMasterJsonRequestDto">A <see cref="ImportMasterJsonRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerImportMasterJsonEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="importMasterJsonRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerImportMasterJsonEndpointResponse> ImportAsync(
+            ImportMasterJsonRequestDto importMasterJsonRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (importMasterJsonRequestDto == null) throw new ArgumentNullException(nameof(importMasterJsonRequestDto));
+
             var request = new TranslationControllerImportMasterJsonEndpointRequest()
             {
                 ImportMasterJsonRequestDto = importMasterJsonRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v2/translations/master-json";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -338,15 +407,36 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TranslationControllerUploadMasterJsonEndpointResponse> UploadAsync(TranslationControllerUploadMasterJsonEndpointRequestBody requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Upload master translations JSON file.
+        /// </summary>
+        /// <remarks>
+        /// Upload a master JSON file containing translations for multiple workflows. Locale is automatically detected from filename (e.g., en_US.json).
+        /// </remarks>
+        /// <param name="requestBody">A <see cref="TranslationControllerUploadMasterJsonEndpointRequestBody"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerUploadMasterJsonEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="requestBody"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerUploadMasterJsonEndpointResponse> UploadAsync(
+            TranslationControllerUploadMasterJsonEndpointRequestBody requestBody,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (requestBody == null) throw new ArgumentNullException(nameof(requestBody));
+
             var request = new TranslationControllerUploadMasterJsonEndpointRequest()
             {
                 RequestBody = requestBody,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v2/translations/master-json/upload";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -476,5 +566,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

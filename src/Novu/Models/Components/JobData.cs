@@ -10,7 +10,7 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     public class JobData
     {
     }

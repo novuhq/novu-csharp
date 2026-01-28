@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class GenerateChatOAuthUrlResponseDto
     {
-
         /// <summary>
         /// The OAuth authorization URL for the chat provider. For Slack: https://slack.com/oauth/v2/authorize?... For MS Teams: https://login.microsoftonline.com/.../adminconsent?... This URL should be presented to the user to authorize the integration. Expires after 5 minutes.
         /// </summary>

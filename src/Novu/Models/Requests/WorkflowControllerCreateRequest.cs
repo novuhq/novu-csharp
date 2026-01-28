@@ -11,18 +11,17 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class WorkflowControllerCreateRequest
     {
-
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
 
         /// <summary>
-        /// Workflow creation details
+        /// Workflow creation details.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public CreateWorkflowDto CreateWorkflowDto { get; set; } = default!;

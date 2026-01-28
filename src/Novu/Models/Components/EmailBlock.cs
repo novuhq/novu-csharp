@@ -12,30 +12,29 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class EmailBlock
     {
-
         /// <summary>
-        /// Type of the email block
+        /// Type of the email block.
         /// </summary>
         [JsonProperty("type")]
         public EmailBlockTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Content of the email block
+        /// Content of the email block.
         /// </summary>
         [JsonProperty("content")]
         public string Content { get; set; } = default!;
 
         /// <summary>
-        /// URL associated with the email block, if any
+        /// URL associated with the email block, if any.
         /// </summary>
         [JsonProperty("url")]
         public string? Url { get; set; }
 
         /// <summary>
-        /// Styles applied to the email block
+        /// Styles applied to the email block.
         /// </summary>
         [JsonProperty("styles")]
         public EmailBlockStyles? Styles { get; set; }

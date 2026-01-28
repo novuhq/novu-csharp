@@ -73,7 +73,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(Steps.StepsConverter))]
     public class Steps
     {

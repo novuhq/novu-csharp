@@ -24,88 +24,181 @@ namespace Novu
 
     public interface IContexts
     {
-
         /// <summary>
-        /// Create a context
-        /// 
+        /// Create a context.
+        /// </summary>
         /// <remarks>
         /// Create a new context with the specified type, id, and data. Returns 409 if context already exists.<br/>
         /// <br/>
         /// <br/>
-        ///       **type** and **id** are required fields, **data** is optional, if the context already exists, it returns the 409 response
+        ///       **type** and **id** are required fields, **data** is optional, if the context already exists, it returns the 409 response.
         /// </remarks>
-        /// </summary>
-        Task<ContextsControllerCreateContextResponse> CreateAsync(CreateContextRequestDto createContextRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="createContextRequestDto">A <see cref="CreateContextRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerCreateContextResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createContextRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ContextsControllerCreateContextResponse> CreateAsync(
+            CreateContextRequestDto createContextRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// List all contexts
-        /// 
+        /// List all contexts.
+        /// </summary>
         /// <remarks>
         /// Retrieve a paginated list of all contexts, optionally filtered by type and key pattern.<br/>
         /// <br/>
         /// <br/>
         ///       **type** and **id** are optional fields, if provided, only contexts with the matching type and id will be returned.<br/>
         ///       **search** is an optional field, if provided, only contexts with the matching key pattern will be returned.<br/>
-        ///       Checkout all possible parameters in the query section below for more details
+        ///       Checkout all possible parameters in the query section below for more details.
         /// </remarks>
-        /// </summary>
-        Task<ContextsControllerListContextsResponse> ListAsync(ContextsControllerListContextsRequest? request = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="ContextsControllerListContextsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerListContextsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ContextsControllerListContextsResponse> ListAsync(
+            ContextsControllerListContextsRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a context
-        /// 
+        /// Update a context.
+        /// </summary>
         /// <remarks>
         /// Update the data of an existing context.<br/>
         ///       **type** and **id** are required fields, **data** is required. Only the data field is updated, the rest of the context is not affected.<br/>
-        ///       If the context does not exist, it returns the 404 response
+        ///       If the context does not exist, it returns the 404 response.
         /// </remarks>
-        /// </summary>
-        Task<ContextsControllerUpdateContextResponse> UpdateAsync(string id, string type, UpdateContextRequestDto updateContextRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="id">Context ID.</param>
+        /// <param name="type">Context type.</param>
+        /// <param name="updateContextRequestDto">A <see cref="UpdateContextRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerUpdateContextResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/>, <paramref name="type"/> or <paramref name="updateContextRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ContextsControllerUpdateContextResponse> UpdateAsync(
+            string id,
+            string type,
+            UpdateContextRequestDto updateContextRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Retrieve a context
-        /// 
+        /// Retrieve a context.
+        /// </summary>
         /// <remarks>
         /// Retrieve a specific context by its type and id.<br/>
-        ///       **type** and **id** are required fields, if the context does not exist, it returns the 404 response
+        ///       **type** and **id** are required fields, if the context does not exist, it returns the 404 response.
         /// </remarks>
-        /// </summary>
-        Task<ContextsControllerGetContextResponse> RetrieveAsync(string id, string type, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="id">Context ID.</param>
+        /// <param name="type">Context type.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerGetContextResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/> or <paramref name="type"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ContextsControllerGetContextResponse> RetrieveAsync(
+            string id,
+            string type,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a context
-        /// 
+        /// Delete a context.
+        /// </summary>
         /// <remarks>
         /// Delete a context by its type and id.<br/>
-        ///       **type** and **id** are required fields, if the context does not exist, it returns the 404 response
+        ///       **type** and **id** are required fields, if the context does not exist, it returns the 404 response.
         /// </remarks>
-        /// </summary>
-        Task<ContextsControllerDeleteContextResponse> DeleteAsync(string id, string type, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="id">Context ID.</param>
+        /// <param name="type">Context type.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerDeleteContextResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/> or <paramref name="type"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ContextsControllerDeleteContextResponse> DeleteAsync(
+            string id,
+            string type,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Contexts: IContexts
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Contexts(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<ContextsControllerCreateContextResponse> CreateAsync(CreateContextRequestDto createContextRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Create a context.
+        /// </summary>
+        /// <remarks>
+        /// Create a new context with the specified type, id, and data. Returns 409 if context already exists.<br/>
+        /// <br/>
+        /// <br/>
+        ///       **type** and **id** are required fields, **data** is optional, if the context already exists, it returns the 409 response.
+        /// </remarks>
+        /// <param name="createContextRequestDto">A <see cref="CreateContextRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerCreateContextResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createContextRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ContextsControllerCreateContextResponse> CreateAsync(
+            CreateContextRequestDto createContextRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (createContextRequestDto == null) throw new ArgumentNullException(nameof(createContextRequestDto));
+
             var request = new ContextsControllerCreateContextRequest()
             {
                 CreateContextRequestDto = createContextRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v2/contexts";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -169,7 +262,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -324,7 +417,30 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ContextsControllerListContextsResponse> ListAsync(ContextsControllerListContextsRequest? request = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// List all contexts.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a paginated list of all contexts, optionally filtered by type and key pattern.<br/>
+        /// <br/>
+        /// <br/>
+        ///       **type** and **id** are optional fields, if provided, only contexts with the matching type and id will be returned.<br/>
+        ///       **search** is an optional field, if provided, only contexts with the matching key pattern will be returned.<br/>
+        ///       Checkout all possible parameters in the query section below for more details.
+        /// </remarks>
+        /// <param name="request">A <see cref="ContextsControllerListContextsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerListContextsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ContextsControllerListContextsResponse> ListAsync(
+            ContextsControllerListContextsRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/contexts", request, null);
@@ -384,7 +500,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -539,8 +655,39 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ContextsControllerUpdateContextResponse> UpdateAsync(string id, string type, UpdateContextRequestDto updateContextRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update a context.
+        /// </summary>
+        /// <remarks>
+        /// Update the data of an existing context.<br/>
+        ///       **type** and **id** are required fields, **data** is required. Only the data field is updated, the rest of the context is not affected.<br/>
+        ///       If the context does not exist, it returns the 404 response.
+        /// </remarks>
+        /// <param name="id">Context ID.</param>
+        /// <param name="type">Context type.</param>
+        /// <param name="updateContextRequestDto">A <see cref="UpdateContextRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerUpdateContextResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/>, <paramref name="type"/> or <paramref name="updateContextRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ContextsControllerUpdateContextResponse> UpdateAsync(
+            string id,
+            string type,
+            UpdateContextRequestDto updateContextRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+            if (type == null) throw new ArgumentNullException(nameof(type));
+            if (updateContextRequestDto == null) throw new ArgumentNullException(nameof(updateContextRequestDto));
+
             var request = new ContextsControllerUpdateContextRequest()
             {
                 Id = id,
@@ -548,6 +695,7 @@ namespace Novu
                 UpdateContextRequestDto = updateContextRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/contexts/{type}/{id}", request, null);
 
@@ -612,7 +760,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -767,14 +915,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ContextsControllerGetContextResponse> RetrieveAsync(string id, string type, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Retrieve a context.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a specific context by its type and id.<br/>
+        ///       **type** and **id** are required fields, if the context does not exist, it returns the 404 response.
+        /// </remarks>
+        /// <param name="id">Context ID.</param>
+        /// <param name="type">Context type.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerGetContextResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/> or <paramref name="type"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ContextsControllerGetContextResponse> RetrieveAsync(
+            string id,
+            string type,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+            if (type == null) throw new ArgumentNullException(nameof(type));
+
             var request = new ContextsControllerGetContextRequest()
             {
                 Id = id,
                 Type = type,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/contexts/{type}/{id}", request, null);
 
@@ -833,7 +1009,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -988,14 +1164,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ContextsControllerDeleteContextResponse> DeleteAsync(string id, string type, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete a context.
+        /// </summary>
+        /// <remarks>
+        /// Delete a context by its type and id.<br/>
+        ///       **type** and **id** are required fields, if the context does not exist, it returns the 404 response.
+        /// </remarks>
+        /// <param name="id">Context ID.</param>
+        /// <param name="type">Context type.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ContextsControllerDeleteContextResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/> or <paramref name="type"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ContextsControllerDeleteContextResponse> DeleteAsync(
+            string id,
+            string type,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+            if (type == null) throw new ArgumentNullException(nameof(type));
+
             var request = new ContextsControllerDeleteContextRequest()
             {
                 Id = id,
                 Type = type,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/contexts/{type}/{id}", request, null);
 
@@ -1054,7 +1258,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1190,5 +1394,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

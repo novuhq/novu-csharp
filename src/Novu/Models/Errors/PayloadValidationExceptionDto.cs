@@ -38,7 +38,7 @@ namespace Novu.Models.Errors
         public string Path { get; set; } = default!;
 
         /// <summary>
-        /// Value that failed validation
+        /// Value that failed validation.
         /// </summary>
         [JsonProperty("message", NullValueHandling = NullValueHandling.Include)]
         public Message? Message { get; set; }
@@ -51,28 +51,25 @@ namespace Novu.Models.Errors
 
         /// <summary>
         /// Optional unique identifier for the error, useful for tracking using Sentry and <br/>
-        /// 
-        /// <remarks>
         ///       New Relic, only available for 500.
-        /// </remarks>
         /// </summary>
         [JsonProperty("errorId")]
         public string? ErrorId { get; set; }
 
         /// <summary>
-        /// Type identifier for payload validation errors
+        /// Type identifier for payload validation errors.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; } = default!;
 
         /// <summary>
-        /// Array of detailed validation errors
+        /// Array of detailed validation errors.
         /// </summary>
         [JsonProperty("errors")]
         public List<PayloadValidationErrorDto> Errors { get; set; } = default!;
 
         /// <summary>
-        /// The JSON schema that was used for validation
+        /// The JSON schema that was used for validation.
         /// </summary>
         [JsonProperty("schema")]
         public Schema? Schema { get; set; }
@@ -134,5 +131,4 @@ namespace Novu.Models.Errors
            #pragma warning restore CS0618
         }
     }
-
 }

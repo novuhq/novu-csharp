@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// Editor type of the layout.
     /// </summary>
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum EditorType");
         }
     }
-
 }

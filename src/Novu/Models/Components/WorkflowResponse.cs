@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class WorkflowResponse
     {
-
         [JsonProperty("_id")]
         public string? Id { get; set; }
 

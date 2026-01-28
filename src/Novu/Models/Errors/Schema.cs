@@ -10,9 +10,9 @@
 namespace Novu.Models.Errors
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// The JSON schema that was used for validation
+    /// The JSON schema that was used for validation.
     /// </summary>
     public class Schema
     {

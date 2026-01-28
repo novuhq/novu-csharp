@@ -49,9 +49,8 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// Preview result
+    /// Preview result.
     /// </summary>
     [JsonConverter(typeof(Result.ResultConverter))]
     public class Result

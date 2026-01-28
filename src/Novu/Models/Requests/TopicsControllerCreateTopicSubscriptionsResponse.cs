@@ -13,15 +13,14 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TopicsControllerCreateTopicSubscriptionsResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Subscriptions created successfully
+        /// Subscriptions created successfully.
         /// </summary>
         public CreateSubscriptionsResponseDto? CreateSubscriptionsResponseDto { get; set; }
 

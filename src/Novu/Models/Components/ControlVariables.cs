@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Control variables
+    /// Control variables.
     /// </summary>
     public class ControlVariables
     {

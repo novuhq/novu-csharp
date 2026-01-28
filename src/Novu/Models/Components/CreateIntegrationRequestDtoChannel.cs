@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// The channel type for the integration
+    /// The channel type for the integration.
     /// </summary>
     public enum CreateIntegrationRequestDtoChannel
     {
@@ -62,5 +62,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum CreateIntegrationRequestDtoChannel");
         }
     }
-
 }

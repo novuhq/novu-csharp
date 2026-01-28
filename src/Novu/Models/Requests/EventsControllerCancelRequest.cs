@@ -10,15 +10,14 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class EventsControllerCancelRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transactionId")]
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

@@ -13,78 +13,77 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ActivityNotificationStepResponseDto
     {
-
         /// <summary>
-        /// Unique identifier of the step
+        /// Unique identifier of the step.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Whether the step is active or not
+        /// Whether the step is active or not.
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; set; } = default!;
 
         /// <summary>
-        /// Reply callback settings
+        /// Reply callback settings.
         /// </summary>
         [JsonProperty("replyCallback")]
         public ActivityNotificationStepResponseDtoReplyCallback? ReplyCallback { get; set; }
 
         /// <summary>
-        /// Control variables
+        /// Control variables.
         /// </summary>
         [JsonProperty("controlVariables")]
         public ControlVariables? ControlVariables { get; set; }
 
         /// <summary>
-        /// Metadata for the workflow step
+        /// Metadata for the workflow step.
         /// </summary>
         [JsonProperty("metadata")]
         public ActivityNotificationStepResponseDtoMetadata? Metadata { get; set; }
 
         /// <summary>
-        /// Step issues
+        /// Step issues.
         /// </summary>
         [JsonProperty("issues")]
         public Issues? Issues { get; set; }
 
         /// <summary>
-        /// Filter criteria for the step
+        /// Filter criteria for the step.
         /// </summary>
         [JsonProperty("filters")]
         public List<StepFilterDto> Filters { get; set; } = default!;
 
         /// <summary>
-        /// Optional template for the step
+        /// Optional template for the step.
         /// </summary>
         [JsonProperty("template")]
         public MessageTemplateDto? Template { get; set; }
 
         /// <summary>
-        /// Variants of the step
+        /// Variants of the step.
         /// </summary>
         [JsonProperty("variants")]
         public List<ActivityNotificationStepResponseDto>? Variants { get; set; }
 
         /// <summary>
-        /// The identifier for the template associated with this step
+        /// The identifier for the template associated with this step.
         /// </summary>
         [JsonProperty("_templateId")]
         public string TemplateId { get; set; } = default!;
 
         /// <summary>
-        /// The name of the step
+        /// The name of the step.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The unique identifier for the parent step
+        /// The unique identifier for the parent step.
         /// </summary>
         [JsonProperty("_parentId")]
         public string? ParentId { get; set; } = null;

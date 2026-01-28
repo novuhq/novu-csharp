@@ -11,18 +11,17 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class WorkflowInfoDto
     {
-
         /// <summary>
-        /// The name of the workflow
+        /// The name of the workflow.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// The unique identifier of the workflow
+        /// The unique identifier of the workflow.
         /// </summary>
         [JsonProperty("workflowId")]
         public string WorkflowId { get; set; } = default!;
