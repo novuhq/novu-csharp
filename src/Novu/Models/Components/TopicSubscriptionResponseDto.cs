@@ -12,38 +12,44 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+    using System.Collections.Generic;
+
     public class TopicSubscriptionResponseDto
     {
-
         /// <summary>
-        /// The identifier of the subscription
+        /// The identifier of the subscription.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The identifier of the subscription
+        /// The identifier of the subscription.
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; } = default!;
 
         /// <summary>
-        /// The date and time the subscription was created
+        /// The date and time the subscription was created.
         /// </summary>
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Topic information
+        /// Topic information.
         /// </summary>
         [JsonProperty("topic")]
         public Models.Components.TopicResponseDto Topic { get; set; } = default!;
 
         /// <summary>
-        /// Subscriber information
+        /// Subscriber information.
         /// </summary>
         [JsonProperty("subscriber")]
         public SubscriberDto Subscriber { get; set; } = default!;
+
+        /// <summary>
+        /// Context keys that scope this subscription (e.g., tenant:org-a, project:proj-123).
+        /// </summary>
+        [JsonProperty("contextKeys")]
+        public List<string>? ContextKeys { get; set; }
     }
 }

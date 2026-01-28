@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class BulkUpdateSubscriberPreferenceItemDto
     {
-
         /// <summary>
-        /// Channel-specific preference settings
+        /// Channel-specific preference settings.
         /// </summary>
         [JsonProperty("channels")]
         public PatchPreferenceChannelsDto Channels { get; set; } = default!;
 
         /// <summary>
-        /// Workflow internal _id, identifier or slug
+        /// Workflow internal _id, identifier or slug.
         /// </summary>
         [JsonProperty("workflowId")]
         public string WorkflowId { get; set; } = default!;

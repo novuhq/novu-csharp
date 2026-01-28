@@ -11,21 +11,20 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class WorkflowControllerUpdateRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workflowId")]
         public string WorkflowId { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }
 
         /// <summary>
-        /// Workflow update details
+        /// Workflow update details.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public UpdateWorkflowDto UpdateWorkflowDto { get; set; } = default!;

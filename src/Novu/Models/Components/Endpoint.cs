@@ -58,9 +58,8 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// Endpoint data specific to the channel type
+    /// Endpoint data specific to the channel type.
     /// </summary>
     [JsonConverter(typeof(Endpoint.EndpointConverter))]
     public class Endpoint

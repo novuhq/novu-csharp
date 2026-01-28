@@ -12,24 +12,23 @@ namespace Novu.Models.Requests
     using Novu.Models.Requests;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TranslationControllerUploadTranslationFilesRequestBody
     {
-
         /// <summary>
-        /// The resource ID to associate localizations with. Accepts identifier or slug format
+        /// The resource ID to associate localizations with. Accepts identifier or slug format.
         /// </summary>
         [SpeakeasyMetadata("multipartForm:name=resourceId")]
         public string ResourceId { get; set; } = default!;
 
         /// <summary>
-        /// The resource type to associate localizations with
+        /// The resource type to associate localizations with.
         /// </summary>
         [SpeakeasyMetadata("multipartForm:name=resourceType")]
         public Models.Requests.ResourceType ResourceType { get; set; } = default!;
 
         /// <summary>
-        /// One or more JSON translation files. Filenames must match locale format (e.g., en_US.json, fr_FR.json). Field name can be &quot;files&quot; or &quot;files[]&quot;.
+        /// One or more JSON translation files. Filenames must match locale format (e.g., en_US.json, fr_FR.json). Field name can be "files" or "files[]".
         /// </summary>
         [SpeakeasyMetadata("multipartForm:file,name=files")]
         public List<Files> Files { get; set; } = default!;

@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class BulkSubscriberCreateDto
     {
-
         /// <summary>
         /// An array of subscribers to be created in bulk.
         /// </summary>

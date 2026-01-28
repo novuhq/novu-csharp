@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// The source of overrides
+    /// The source of overrides.
     /// </summary>
     public enum PreferenceOverrideSourceEnum
     {
@@ -58,5 +58,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum PreferenceOverrideSourceEnum");
         }
     }
-
 }

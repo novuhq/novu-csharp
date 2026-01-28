@@ -13,78 +13,77 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class UpdateWorkflowDto
     {
-
         /// <summary>
-        /// Name of the workflow
+        /// Name of the workflow.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Description of the workflow
+        /// Description of the workflow.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// Tags associated with the workflow
+        /// Tags associated with the workflow.
         /// </summary>
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; }
 
         /// <summary>
-        /// Whether the workflow is active
+        /// Whether the workflow is active.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; } = false;
 
         /// <summary>
-        /// Enable or disable payload schema validation
+        /// Enable or disable payload schema validation.
         /// </summary>
         [JsonProperty("validatePayload")]
         public bool? ValidatePayload { get; set; }
 
         /// <summary>
-        /// The payload JSON Schema for the workflow
+        /// The payload JSON Schema for the workflow.
         /// </summary>
         [JsonProperty("payloadSchema")]
         public Dictionary<string, object>? PayloadSchema { get; set; } = null;
 
         /// <summary>
-        /// Enable or disable translations for this workflow
+        /// Enable or disable translations for this workflow.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
         public bool? IsTranslationEnabled { get; set; } = false;
 
         /// <summary>
-        /// Workflow ID (allowed only for code-first workflows)
+        /// Workflow ID (allowed only for code-first workflows).
         /// </summary>
         [JsonProperty("workflowId")]
         public string? WorkflowId { get; set; }
 
         /// <summary>
-        /// Steps of the workflow
+        /// Steps of the workflow.
         /// </summary>
         [JsonProperty("steps")]
         public List<UpdateWorkflowDtoSteps> Steps { get; set; } = default!;
 
         /// <summary>
-        /// Workflow preferences
+        /// Workflow preferences.
         /// </summary>
         [JsonProperty("preferences")]
         public PreferencesRequestDto Preferences { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout
+        /// Origin of the layout.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
-        /// Severity of the workflow
+        /// Severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum? Severity { get; set; }

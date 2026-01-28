@@ -13,54 +13,59 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class SubscriptionResponseDto
     {
-
         /// <summary>
-        /// The unique identifier of the subscription
+        /// The unique identifier of the subscription.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The identifier of the subscription
+        /// The identifier of the subscription.
         /// </summary>
         [JsonProperty("identifier")]
         public string? Identifier { get; set; }
 
         /// <summary>
-        /// The name of the subscription
+        /// The name of the subscription.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The topic information
+        /// The topic information.
         /// </summary>
         [JsonProperty("topic")]
         public TopicDto Topic { get; set; } = default!;
 
         /// <summary>
-        /// The subscriber information
+        /// The subscriber information.
         /// </summary>
         [JsonProperty("subscriber", NullValueHandling = NullValueHandling.Include)]
         public Subscriber? Subscriber { get; set; }
 
         /// <summary>
-        /// The preferences for workflows in this subscription
+        /// The preferences for workflows in this subscription.
         /// </summary>
         [JsonProperty("preferences")]
         public List<SubscriptionPreferenceDto>? Preferences { get; set; }
 
         /// <summary>
-        /// The creation date of the subscription
+        /// Context keys that scope this subscription (e.g., tenant:org-a, project:proj-123).
+        /// </summary>
+        [JsonProperty("contextKeys")]
+        public List<string>? ContextKeys { get; set; }
+
+        /// <summary>
+        /// The creation date of the subscription.
         /// </summary>
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// The last update date of the subscription
+        /// The last update date of the subscription.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; } = default!;

@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GenerateChatOauthUrlRequestDto
     {
-
         /// <summary>
         /// The subscriber ID to link the channel connection to. For Slack: Required for incoming webhook endpoints, optional for workspace connections. For MS Teams: Optional. Admin consent is tenant-wide and can be associated with a subscriber for organizational purposes.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Novu.Models.Components
         public string? SubscriberId { get; set; }
 
         /// <summary>
-        /// Integration identifier
+        /// Integration identifier.
         /// </summary>
         [JsonProperty("integrationIdentifier")]
         public string IntegrationIdentifier { get; set; } = default!;

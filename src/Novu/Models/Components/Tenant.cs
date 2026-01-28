@@ -52,13 +52,9 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
     /// It is used to specify a tenant context during trigger event.<br/>
-    /// 
-    /// <remarks>
     ///     Existing tenants will be updated with the provided details.
-    /// </remarks>
     /// </summary>
     [JsonConverter(typeof(Tenant.TenantConverter))]
     public class Tenant

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Type of the step
+    /// Type of the step.
     /// </summary>
     public enum StepTypeEnum
     {
@@ -72,5 +72,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum StepTypeEnum");
         }
     }
-
 }

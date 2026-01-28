@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// Unit of time for the delay amount.
     /// </summary>
@@ -64,5 +64,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum Unit");
         }
     }
-
 }

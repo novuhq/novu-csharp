@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class EmailLayoutRenderOutput
     {
-
         /// <summary>
-        /// Content of the email
+        /// Content of the email.
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; set; } = default!;

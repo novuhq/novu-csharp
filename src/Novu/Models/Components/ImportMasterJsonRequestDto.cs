@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ImportMasterJsonRequestDto
     {
-
         /// <summary>
-        /// The locale for which translations are being imported
+        /// The locale for which translations are being imported.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; } = default!;
 
         /// <summary>
-        /// Master JSON object containing all translations organized by workflow identifier
+        /// Master JSON object containing all translations organized by workflow identifier.
         /// </summary>
         [JsonProperty("masterJson")]
         public Dictionary<string, object> MasterJson { get; set; } = default!;

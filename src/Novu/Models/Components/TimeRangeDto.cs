@@ -11,18 +11,17 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class TimeRangeDto
     {
-
         /// <summary>
-        /// Start time
+        /// Start time.
         /// </summary>
         [JsonProperty("start")]
         public string Start { get; set; } = default!;
 
         /// <summary>
-        /// End time
+        /// End time.
         /// </summary>
         [JsonProperty("end")]
         public string End { get; set; } = default!;

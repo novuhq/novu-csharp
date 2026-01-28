@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ChannelCredentialsDto
     {
-
         /// <summary>
         /// The URL for the webhook associated with the channel.
         /// </summary>

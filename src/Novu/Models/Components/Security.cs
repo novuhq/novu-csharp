@@ -10,10 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     public class Security
     {
-
         [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=Authorization")]
         public string SecretKey { get; set; } = default!;
     }

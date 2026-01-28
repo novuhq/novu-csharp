@@ -13,36 +13,35 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ActivityNotificationJobResponseDto
     {
-
         /// <summary>
-        /// Unique identifier of the job
+        /// Unique identifier of the job.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Type of the job
+        /// Type of the job.
         /// </summary>
         [JsonProperty("type")]
         public ActivityNotificationJobResponseDtoType Type { get; set; } = default!;
 
         /// <summary>
-        /// Optional digest for the job, including metadata and events
+        /// Optional digest for the job, including metadata and events.
         /// </summary>
         [JsonProperty("digest")]
         public DigestMetadataDto? Digest { get; set; }
 
         /// <summary>
-        /// Execution details of the job
+        /// Execution details of the job.
         /// </summary>
         [JsonProperty("executionDetails")]
         public List<ActivityNotificationExecutionDetailResponseDto> ExecutionDetails { get; set; } = default!;
 
         /// <summary>
-        /// Step details of the job
+        /// Step details of the job.
         /// </summary>
         [JsonProperty("step")]
         public ActivityNotificationStepResponseDto Step { get; set; } = default!;
@@ -54,31 +53,31 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? Overrides { get; set; }
 
         /// <summary>
-        /// Optional payload for the job
+        /// Optional payload for the job.
         /// </summary>
         [JsonProperty("payload")]
         public ActivityNotificationJobResponseDtoPayload? Payload { get; set; }
 
         /// <summary>
-        /// Provider ID of the job
+        /// Provider ID of the job.
         /// </summary>
         [JsonProperty("providerId")]
         public ProvidersIdEnum ProviderId { get; set; } = default!;
 
         /// <summary>
-        /// Status of the job
+        /// Status of the job.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; } = default!;
 
         /// <summary>
-        /// Updated time of the notification
+        /// Updated time of the notification.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The number of times the digest/delay job has been extended to align with the subscribers schedule
+        /// The number of times the digest/delay job has been extended to align with the subscribers schedule.
         /// </summary>
         [JsonProperty("scheduleExtensionsCount")]
         public double? ScheduleExtensionsCount { get; set; }

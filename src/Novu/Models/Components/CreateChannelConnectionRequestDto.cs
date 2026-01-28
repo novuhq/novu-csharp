@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class CreateChannelConnectionRequestDto
     {
-
         /// <summary>
         /// The unique identifier for the channel connection. If not provided, one will be generated automatically.
         /// </summary>
@@ -24,13 +23,13 @@ namespace Novu.Models.Components
         public string? Identifier { get; set; }
 
         /// <summary>
-        /// The subscriber ID to link the channel connection to
+        /// The subscriber ID to link the channel connection to.
         /// </summary>
         [JsonProperty("subscriberId")]
         public string? SubscriberId { get; set; }
 
         [JsonProperty("context")]
-        public Dictionary<string, Context>? Context { get; set; }
+        public Dictionary<string, CreateChannelConnectionRequestDtoContext>? Context { get; set; }
 
         /// <summary>
         /// The identifier of the integration to use for this channel connection.

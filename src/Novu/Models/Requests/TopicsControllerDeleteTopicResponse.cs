@@ -13,15 +13,14 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TopicsControllerDeleteTopicResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Topic deleted successfully
+        /// Topic deleted successfully.
         /// </summary>
         public DeleteTopicResponseDto? DeleteTopicResponseDto { get; set; }
 

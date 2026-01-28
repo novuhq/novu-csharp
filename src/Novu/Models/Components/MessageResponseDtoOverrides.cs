@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Provider specific overrides used when triggering the notification
+    /// Provider specific overrides used when triggering the notification.
     /// </summary>
     public class MessageResponseDtoOverrides
     {

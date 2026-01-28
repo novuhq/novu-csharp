@@ -11,18 +11,17 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class MsTeamsChannelEndpointDto
     {
-
         /// <summary>
-        /// MS Teams team ID
+        /// MS Teams team ID.
         /// </summary>
         [JsonProperty("teamId")]
         public string TeamId { get; set; } = default!;
 
         /// <summary>
-        /// MS Teams channel ID
+        /// MS Teams channel ID.
         /// </summary>
         [JsonProperty("channelId")]
         public string ChannelId { get; set; } = default!;

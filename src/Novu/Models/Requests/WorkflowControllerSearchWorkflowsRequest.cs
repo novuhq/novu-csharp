@@ -12,54 +12,53 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class WorkflowControllerSearchWorkflowsRequest
     {
-
         /// <summary>
-        /// Number of items to return per page
+        /// Number of items to return per page.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public double? Limit { get; set; }
 
         /// <summary>
-        /// Number of items to skip before starting to return results
+        /// Number of items to skip before starting to return results.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=offset")]
         public double? Offset { get; set; }
 
         /// <summary>
-        /// Direction of sorting
+        /// Direction of sorting.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderDirection")]
         public DirectionEnum? OrderDirection { get; set; }
 
         /// <summary>
-        /// Field to sort the results by
+        /// Field to sort the results by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderBy")]
         public WorkflowResponseDtoSortField? OrderBy { get; set; }
 
         /// <summary>
-        /// Search query to filter workflows
+        /// Search query to filter workflows.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=query")]
         public string? Query { get; set; }
 
         /// <summary>
-        /// Filter workflows by tags
+        /// Filter workflows by tags.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=tags")]
         public List<string>? Tags { get; set; }
 
         /// <summary>
-        /// Filter workflows by status
+        /// Filter workflows by status.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")]
         public List<WorkflowStatusEnum>? Status { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

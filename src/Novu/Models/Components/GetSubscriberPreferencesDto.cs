@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GetSubscriberPreferencesDto
     {
-
         /// <summary>
-        /// Global preference settings
+        /// Global preference settings.
         /// </summary>
         [JsonProperty("global")]
         public SubscriberGlobalPreferenceDto Global { get; set; } = default!;
 
         /// <summary>
-        /// Workflow-specific preference settings
+        /// Workflow-specific preference settings.
         /// </summary>
         [JsonProperty("workflows")]
         public List<SubscriberWorkflowPreferenceDto> Workflows { get; set; } = default!;

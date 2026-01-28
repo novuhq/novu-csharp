@@ -12,12 +12,11 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class LayoutControlValuesDto
     {
-
         /// <summary>
-        /// Email layout controls
+        /// Email layout controls.
         /// </summary>
         [JsonProperty("email")]
         public EmailControlsDto? Email { get; set; }

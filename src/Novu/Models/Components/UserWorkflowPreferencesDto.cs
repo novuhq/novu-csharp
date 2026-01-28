@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class UserWorkflowPreferencesDto
     {
-
         /// <summary>
         /// A preference for the workflow. The values specified here will be used if no preference is specified for a channel.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Novu.Models.Components
         public UserAll All { get; set; } = default!;
 
         /// <summary>
-        /// Preferences for different communication channels
+        /// Preferences for different communication channels.
         /// </summary>
         [JsonProperty("channels")]
         public Dictionary<string, ChannelPreferenceDto> Channels { get; set; } = default!;

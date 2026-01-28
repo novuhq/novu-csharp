@@ -25,6 +25,11 @@ var res = await sdk.Subscribers.Preferences.BulkUpdateAsync(
     subscriberId: "<id>",
     bulkUpdateSubscriberPreferencesDto: new BulkUpdateSubscriberPreferencesDto() {
         Preferences = new List<BulkUpdateSubscriberPreferenceItemDto>() {},
+        Context = new Dictionary<string, BulkUpdateSubscriberPreferencesDtoContext>() {
+            { "key", BulkUpdateSubscriberPreferencesDtoContext.CreateStr(
+                "org-acme"
+            ) },
+        },
     }
 );
 

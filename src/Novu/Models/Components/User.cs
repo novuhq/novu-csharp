@@ -52,9 +52,8 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// User workflow preferences
+    /// User workflow preferences.
     /// </summary>
     [JsonConverter(typeof(User.UserConverter))]
     public class User

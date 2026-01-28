@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Type of integration issue
+    /// Type of integration issue.
     /// </summary>
     public enum IntegrationIssueEnum
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum IntegrationIssueEnum");
         }
     }
-
 }

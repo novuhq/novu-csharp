@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class LookBackWindowDto
     {
-
         /// <summary>
         /// Amount of time for the look-back window.
         /// </summary>

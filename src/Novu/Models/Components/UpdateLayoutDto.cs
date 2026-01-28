@@ -12,24 +12,23 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class UpdateLayoutDto
     {
-
         /// <summary>
-        /// Name of the layout
+        /// Name of the layout.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Enable or disable translations for this layout
+        /// Enable or disable translations for this layout.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
         public bool? IsTranslationEnabled { get; set; } = false;
 
         /// <summary>
-        /// Control values for the layout
+        /// Control values for the layout.
         /// </summary>
         [JsonProperty("controlValues")]
         public ControlValues? ControlValues { get; set; } = null;

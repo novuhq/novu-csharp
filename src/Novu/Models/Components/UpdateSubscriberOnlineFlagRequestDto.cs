@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class UpdateSubscriberOnlineFlagRequestDto
     {
-
         [JsonProperty("isOnline")]
         public bool IsOnline { get; set; } = default!;
     }

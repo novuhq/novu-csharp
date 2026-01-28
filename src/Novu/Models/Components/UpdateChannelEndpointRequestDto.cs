@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class UpdateChannelEndpointRequestDto
     {
-
         /// <summary>
         /// Updated endpoint data. The structure must match the existing channel endpoint type.
         /// </summary>

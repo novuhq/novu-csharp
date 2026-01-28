@@ -13,32 +13,37 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class SubscriberWorkflowPreferenceDto
     {
-
         /// <summary>
-        /// Whether notifications are enabled for this workflow
+        /// Whether notifications are enabled for this workflow.
         /// </summary>
         [JsonProperty("enabled")]
         public bool Enabled { get; set; } = default!;
 
         /// <summary>
-        /// Channel-specific preference settings for this workflow
+        /// Channel-specific preference settings for this workflow.
         /// </summary>
         [JsonProperty("channels")]
         public SubscriberPreferenceChannels Channels { get; set; } = default!;
 
         /// <summary>
-        /// List of preference overrides
+        /// List of preference overrides.
         /// </summary>
         [JsonProperty("overrides")]
         public List<SubscriberPreferenceOverrideDto> Overrides { get; set; } = default!;
 
         /// <summary>
-        /// Workflow information
+        /// Workflow information.
         /// </summary>
         [JsonProperty("workflow")]
         public SubscriberPreferencesWorkflowInfoDto Workflow { get; set; } = default!;
+
+        /// <summary>
+        /// Timestamp when the subscriber last updated their preference. Only present if subscriber explicitly set preferences.
+        /// </summary>
+        [JsonProperty("updatedAt")]
+        public string? UpdatedAt { get; set; }
     }
 }

@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Optional payload for the job
+    /// Optional payload for the job.
     /// </summary>
     public class ActivityNotificationJobResponseDtoPayload
     {

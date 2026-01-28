@@ -12,7 +12,7 @@ namespace Novu.Models.Requests
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// Channel type to filter results.
     /// </summary>
@@ -62,5 +62,4 @@ namespace Novu.Models.Requests
             throw new Exception($"Unknown value {value} for enum QueryParamChannel");
         }
     }
-
 }

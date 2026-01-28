@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// The payload that was used to send the notification trigger
+    /// The payload that was used to send the notification trigger.
     /// </summary>
     public class MessageResponseDtoPayload
     {

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Component type for the UI Schema Property
+    /// Component type for the UI Schema Property.
     /// </summary>
     public enum UiComponentEnum
     {
@@ -126,5 +126,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum UiComponentEnum");
         }
     }
-
 }

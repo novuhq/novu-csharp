@@ -13,17 +13,16 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TopicsControllerGetTopicSubscriptionResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// OK
+        /// OK.
         /// </summary>
-        public SubscriptionResponseDto? SubscriptionResponseDto { get; set; }
+        public SubscriptionDetailsResponseDto? SubscriptionDetailsResponseDto { get; set; }
 
         public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }

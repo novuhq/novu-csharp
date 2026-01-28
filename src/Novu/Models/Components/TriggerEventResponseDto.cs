@@ -13,30 +13,29 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class TriggerEventResponseDto
     {
-
         /// <summary>
-        /// Indicates whether the trigger was acknowledged or not
+        /// Indicates whether the trigger was acknowledged or not.
         /// </summary>
         [JsonProperty("acknowledged")]
         public bool Acknowledged { get; set; } = default!;
 
         /// <summary>
-        /// Status of the trigger
+        /// Status of the trigger.
         /// </summary>
         [JsonProperty("status")]
         public TriggerEventResponseDtoStatus Status { get; set; } = default!;
 
         /// <summary>
-        /// In case of an error, this field will contain the error message(s)
+        /// In case of an error, this field will contain the error message(s).
         /// </summary>
         [JsonProperty("error")]
         public List<string>? Error { get; set; }
 
         /// <summary>
-        /// The returned transaction ID of the trigger
+        /// The returned transaction ID of the trigger.
         /// </summary>
         [JsonProperty("transactionId")]
         public string? TransactionId { get; set; }

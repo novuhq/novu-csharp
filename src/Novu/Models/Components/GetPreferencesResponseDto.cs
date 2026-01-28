@@ -12,36 +12,35 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class GetPreferencesResponseDto
     {
-
         /// <summary>
-        /// The level of the preference (global or template)
+        /// The level of the preference (global or template).
         /// </summary>
         [JsonProperty("level")]
         public PreferenceLevelEnum Level { get; set; } = default!;
 
         /// <summary>
-        /// Workflow information if this is a template-level preference
+        /// Workflow information if this is a template-level preference.
         /// </summary>
         [JsonProperty("workflow")]
         public Workflow? Workflow { get; set; } = null;
 
         /// <summary>
-        /// Whether the preference is enabled
+        /// Whether the preference is enabled.
         /// </summary>
         [JsonProperty("enabled")]
         public bool Enabled { get; set; } = default!;
 
         /// <summary>
-        /// Channel-specific preference settings
+        /// Channel-specific preference settings.
         /// </summary>
         [JsonProperty("channels")]
         public SubscriberPreferenceChannels Channels { get; set; } = default!;
 
         /// <summary>
-        /// Condition using JSON Logic rules
+        /// Condition using JSON Logic rules.
         /// </summary>
         [JsonProperty("condition")]
         public Condition? Condition { get; set; } = null;

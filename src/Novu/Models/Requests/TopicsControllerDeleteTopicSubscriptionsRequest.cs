@@ -11,18 +11,17 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class TopicsControllerDeleteTopicSubscriptionsRequest
     {
-
         /// <summary>
-        /// The key identifier of the topic
+        /// The key identifier of the topic.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=topicKey")]
         public string TopicKey { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Status of the workflow
+    /// Status of the workflow.
     /// </summary>
     public enum WorkflowStatusEnum
     {
@@ -58,5 +58,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum WorkflowStatusEnum");
         }
     }
-
 }

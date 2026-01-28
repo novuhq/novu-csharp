@@ -10,29 +10,21 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
-    using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
-    public class CreateTopicSubscriptionsResponseDto
+
+    /// <summary>
+    /// Rich context object with id and optional data.
+    /// </summary>
+    public class CreateTopicSubscriptionsRequestDtoContext2
     {
+        [JsonProperty("id")]
+        public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The list of successfully created subscriptions
+        /// Optional additional context data.
         /// </summary>
         [JsonProperty("data")]
-        public List<SubscriptionDto> Data { get; set; } = default!;
-
-        /// <summary>
-        /// Metadata about the operation
-        /// </summary>
-        [JsonProperty("meta")]
-        public MetaDto Meta { get; set; } = default!;
-
-        /// <summary>
-        /// The list of errors for failed subscription attempts
-        /// </summary>
-        [JsonProperty("errors")]
-        public List<SubscriptionErrorDto>? Errors { get; set; }
+        public Dictionary<string, object>? Data { get; set; }
     }
 }

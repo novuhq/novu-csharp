@@ -12,12 +12,11 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class EmailBlockStyles
     {
-
         /// <summary>
-        /// Text alignment for the email block
+        /// Text alignment for the email block.
         /// </summary>
         [JsonProperty("textAlign")]
         public TextAlignEnum TextAlign { get; set; } = default!;

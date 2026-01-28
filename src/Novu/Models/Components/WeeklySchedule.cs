@@ -12,51 +12,50 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Weekly schedule
+    /// Weekly schedule.
     /// </summary>
     public class WeeklySchedule
     {
-
         /// <summary>
-        /// Monday schedule
+        /// Monday schedule.
         /// </summary>
         [JsonProperty("monday")]
         public Monday? Monday { get; set; }
 
         /// <summary>
-        /// Tuesday schedule
+        /// Tuesday schedule.
         /// </summary>
         [JsonProperty("tuesday")]
         public Tuesday? Tuesday { get; set; }
 
         /// <summary>
-        /// Wednesday schedule
+        /// Wednesday schedule.
         /// </summary>
         [JsonProperty("wednesday")]
         public Wednesday? Wednesday { get; set; }
 
         /// <summary>
-        /// Thursday schedule
+        /// Thursday schedule.
         /// </summary>
         [JsonProperty("thursday")]
         public Thursday? Thursday { get; set; }
 
         /// <summary>
-        /// Friday schedule
+        /// Friday schedule.
         /// </summary>
         [JsonProperty("friday")]
         public Friday? Friday { get; set; }
 
         /// <summary>
-        /// Saturday schedule
+        /// Saturday schedule.
         /// </summary>
         [JsonProperty("saturday")]
         public Saturday? Saturday { get; set; }
 
         /// <summary>
-        /// Sunday schedule
+        /// Sunday schedule.
         /// </summary>
         [JsonProperty("sunday")]
         public Sunday? Sunday { get; set; }

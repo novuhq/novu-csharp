@@ -13,24 +13,23 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GenerateLayoutPreviewResponseDto
     {
-
         /// <summary>
-        /// Preview payload example
+        /// Preview payload example.
         /// </summary>
         [JsonProperty("previewPayloadExample")]
         public LayoutPreviewPayloadDto PreviewPayloadExample { get; set; } = default!;
 
         /// <summary>
-        /// The payload schema that was used to generate the preview payload example
+        /// The payload schema that was used to generate the preview payload example.
         /// </summary>
         [JsonProperty("schema")]
         public Dictionary<string, object>? Schema { get; set; } = null;
 
         /// <summary>
-        /// Preview result
+        /// Preview result.
         /// </summary>
         [JsonProperty("result", NullValueHandling = NullValueHandling.Include)]
         public Result Result { get; set; } = default!;

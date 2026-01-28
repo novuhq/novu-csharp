@@ -14,12 +14,11 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     public class DeleteTopicSubscriptionsRequestDto
     {
-
         /// <summary>
-        /// List of subscriber identifiers to unsubscribe from the topic (max: 100). @deprecated Use the &quot;subscriptions&quot; property instead.
+        /// List of subscriber identifiers to unsubscribe from the topic (max: 100). @deprecated Use the "subscriptions" property instead.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("subscriberIds")]

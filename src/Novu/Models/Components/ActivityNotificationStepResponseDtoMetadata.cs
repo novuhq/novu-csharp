@@ -10,9 +10,9 @@
 namespace Novu.Models.Components
 {
     using Novu.Utils;
-    
+
     /// <summary>
-    /// Metadata for the workflow step
+    /// Metadata for the workflow step.
     /// </summary>
     public class ActivityNotificationStepResponseDtoMetadata
     {

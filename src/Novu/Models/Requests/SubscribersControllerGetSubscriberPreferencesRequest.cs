@@ -11,10 +11,10 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Requests;
     using Novu.Utils;
-    
+    using System.Collections.Generic;
+
     public class SubscribersControllerGetSubscriberPreferencesRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
@@ -22,7 +22,13 @@ namespace Novu.Models.Requests
         public Criticality? Criticality { get; set; } = Novu.Models.Requests.Criticality.NonCritical;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// Context keys for filtering preferences (e.g., ["tenant:acme"]).
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contextKeys")]
+        public List<string>? ContextKeys { get; set; }
+
+        /// <summary>
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

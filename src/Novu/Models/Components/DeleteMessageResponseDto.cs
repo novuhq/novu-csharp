@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class DeleteMessageResponseDto
     {
-
         /// <summary>
-        /// A boolean stating the success of the action
+        /// A boolean stating the success of the action.
         /// </summary>
         [JsonProperty("acknowledged")]
         public bool Acknowledged { get; set; } = default!;
 
         /// <summary>
-        /// The status enum for the performed action
+        /// The status enum for the performed action.
         /// </summary>
         [JsonProperty("status")]
         public DeleteMessageResponseDtoStatus Status { get; set; } = default!;

@@ -11,18 +11,17 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class ActivityTopicDto
     {
-
         /// <summary>
-        /// Internal Topic ID of the notification
+        /// Internal Topic ID of the notification.
         /// </summary>
         [JsonProperty("_topicId")]
         public string TopicId { get; set; } = default!;
 
         /// <summary>
-        /// Topic Key of the notification
+        /// Topic Key of the notification.
         /// </summary>
         [JsonProperty("topicKey")]
         public string TopicKey { get; set; } = default!;

@@ -25,118 +25,265 @@ namespace Novu
     public interface ISubscribers
     {
         public IPreferences Preferences { get; }
-        public INovuTopics Topics { get; }
 
+        public INovuTopics Topics { get; }
         /// <summary>
-        /// Search subscribers
-        /// 
+        /// Search subscribers.
+        /// </summary>
         /// <remarks>
         /// Search subscribers by their **email**, **phone**, **subscriberId** and **name**. <br/>
         ///     The search is case sensitive and supports pagination.Checkout all available filters in the query section.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersControllerSearchSubscribersResponse> SearchAsync(SubscribersControllerSearchSubscribersRequest? request = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="SubscribersControllerSearchSubscribersRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerSearchSubscribersResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersControllerSearchSubscribersResponse> SearchAsync(
+            SubscribersControllerSearchSubscribersRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create a subscriber
-        /// 
+        /// Create a subscriber.
+        /// </summary>
         /// <remarks>
         /// Create a subscriber with the subscriber attributes. <br/>
-        ///       **subscriberId** is a required field, rest other fields are optional, if the subscriber already exists, it will be updated
+        ///       **subscriberId** is a required field, rest other fields are optional, if the subscriber already exists, it will be updated.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(CreateSubscriberRequestDto createSubscriberRequestDto, bool? failIfExists = null, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="createSubscriberRequestDto">A <see cref="CreateSubscriberRequestDto"/> parameter.</param>
+        /// <param name="failIfExists">If true, the request will fail if a subscriber with the same subscriberId already exists.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerCreateSubscriberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createSubscriberRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Models.Errors.SubscriberResponseDto">Created. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(
+            CreateSubscriberRequestDto createSubscriberRequestDto,
+            bool? failIfExists = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Retrieve a subscriber
-        /// 
+        /// Retrieve a subscriber.
+        /// </summary>
         /// <remarks>
         /// Retrieve a subscriber by its unique key identifier **subscriberId**. <br/>
         ///     **subscriberId** field is required.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersControllerGetSubscriberResponse> RetrieveAsync(string subscriberId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerGetSubscriberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="subscriberId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersControllerGetSubscriberResponse> RetrieveAsync(
+            string subscriberId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a subscriber
-        /// 
+        /// Update a subscriber.
+        /// </summary>
         /// <remarks>
         /// Update a subscriber by its unique key identifier **subscriberId**. <br/>
-        ///     **subscriberId** is a required field, rest other fields are optional
+        ///     **subscriberId** is a required field, rest other fields are optional.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersControllerPatchSubscriberResponse> PatchAsync(string subscriberId, PatchSubscriberRequestDto patchSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="patchSubscriberRequestDto">A <see cref="PatchSubscriberRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerPatchSubscriberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="patchSubscriberRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersControllerPatchSubscriberResponse> PatchAsync(
+            string subscriberId,
+            PatchSubscriberRequestDto patchSubscriberRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a subscriber
-        /// 
+        /// Delete a subscriber.
+        /// </summary>
         /// <remarks>
         /// Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions. <br/>
         ///       **subscriberId** is a required field.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersControllerRemoveSubscriberResponse> DeleteAsync(string subscriberId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerRemoveSubscriberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="subscriberId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersControllerRemoveSubscriberResponse> DeleteAsync(
+            string subscriberId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Bulk create subscribers
-        /// 
+        /// Bulk create subscribers.
+        /// </summary>
         /// <remarks>
-        /// <br/>
-        ///       Using this endpoint multiple subscribers can be created at once. The bulk API is limited to 500 subscribers per request.<br/>
-        ///     
+        /// Using this endpoint multiple subscribers can be created at once. The bulk API is limited to 500 subscribers per request.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(BulkSubscriberCreateDto bulkSubscriberCreateDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="bulkSubscriberCreateDto">A <see cref="BulkSubscriberCreateDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerBulkCreateSubscribersResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="bulkSubscriberCreateDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(
+            BulkSubscriberCreateDto bulkSubscriberCreateDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update provider credentials
-        /// 
+        /// Update provider credentials.
+        /// </summary>
         /// <remarks>
         /// Update credentials for a provider such as **slack** and **FCM**. <br/>
         ///       **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="updateSubscriberChannelRequestDto">A <see cref="UpdateSubscriberChannelRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerUpdateSubscriberChannelResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="updateSubscriberChannelRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(
+            string subscriberId,
+            UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Upsert provider credentials
-        /// 
+        /// Upsert provider credentials.
+        /// </summary>
         /// <remarks>
         /// Upsert credentials for a provider such as **slack** and **FCM**. <br/>
         ///       **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="updateSubscriberChannelRequestDto">A <see cref="UpdateSubscriberChannelRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerModifySubscriberChannelResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="updateSubscriberChannelRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(
+            string subscriberId,
+            UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete provider credentials
-        /// 
+        /// Delete provider credentials.
+        /// </summary>
         /// <remarks>
         /// Delete subscriber credentials for a provider such as **slack** and **FCM** by **providerId**. <br/>
         ///     This action is irreversible and will remove the credentials for the provider for particular **subscriberId**.
         /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerDeleteSubscriberCredentialsResponse> DeleteCredentialsAsync(string subscriberId, string providerId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="providerId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerDeleteSubscriberCredentialsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="providerId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersV1ControllerDeleteSubscriberCredentialsResponse> DeleteCredentialsAsync(
+            string subscriberId,
+            string providerId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update subscriber online status
-        /// 
+        /// Update subscriber online status.
+        /// </summary>
         /// <remarks>
         /// Update the subscriber online status by its unique key identifier **subscriberId**
         /// </remarks>
-        /// </summary>
-        Task<SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse> UpdateOnlineStatusAsync(string subscriberId, UpdateSubscriberOnlineFlagRequestDto updateSubscriberOnlineFlagRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="updateSubscriberOnlineFlagRequestDto">A <see cref="UpdateSubscriberOnlineFlagRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="updateSubscriberOnlineFlagRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse> UpdateOnlineStatusAsync(
+            string subscriberId,
+            UpdateSubscriberOnlineFlagRequestDto updateSubscriberOnlineFlagRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Subscribers: ISubscribers
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Preferences SubSDK.
+        /// <see cref="IPreferences"/>
+        /// </summary>
         public IPreferences Preferences { get; private set; }
+
+        /// <summary>
+        /// Topics SubSDK.
+        /// <see cref="INovuTopics"/>
+        /// </summary>
         public INovuTopics Topics { get; private set; }
 
         public Subscribers(SDKConfig config)
@@ -146,7 +293,25 @@ namespace Novu
             Topics = new NovuTopics(SDKConfiguration);
         }
 
-        public async Task<SubscribersControllerSearchSubscribersResponse> SearchAsync(SubscribersControllerSearchSubscribersRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Search subscribers.
+        /// </summary>
+        /// <remarks>
+        /// Search subscribers by their **email**, **phone**, **subscriberId** and **name**. <br/>
+        ///     The search is case sensitive and supports pagination.Checkout all available filters in the query section.
+        /// </remarks>
+        /// <param name="request">A <see cref="SubscribersControllerSearchSubscribersRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerSearchSubscribersResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersControllerSearchSubscribersResponse> SearchAsync(
+            SubscribersControllerSearchSubscribersRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers", request, null);
@@ -206,7 +371,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -361,14 +526,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(CreateSubscriberRequestDto createSubscriberRequestDto, bool? failIfExists = null, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Create a subscriber.
+        /// </summary>
+        /// <remarks>
+        /// Create a subscriber with the subscriber attributes. <br/>
+        ///       **subscriberId** is a required field, rest other fields are optional, if the subscriber already exists, it will be updated.
+        /// </remarks>
+        /// <param name="createSubscriberRequestDto">A <see cref="CreateSubscriberRequestDto"/> parameter.</param>
+        /// <param name="failIfExists">If true, the request will fail if a subscriber with the same subscriberId already exists.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerCreateSubscriberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createSubscriberRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Models.Errors.SubscriberResponseDto">Created. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersControllerCreateSubscriberResponse> CreateAsync(
+            CreateSubscriberRequestDto createSubscriberRequestDto,
+            bool? failIfExists = null,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (createSubscriberRequestDto == null) throw new ArgumentNullException(nameof(createSubscriberRequestDto));
+
             var request = new SubscribersControllerCreateSubscriberRequest()
             {
                 CreateSubscriberRequestDto = createSubscriberRequestDto,
                 FailIfExists = failIfExists,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers", request, null);
 
@@ -433,7 +626,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -608,13 +801,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersControllerGetSubscriberResponse> RetrieveAsync(string subscriberId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Retrieve a subscriber.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a subscriber by its unique key identifier **subscriberId**. <br/>
+        ///     **subscriberId** field is required.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerGetSubscriberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="subscriberId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersControllerGetSubscriberResponse> RetrieveAsync(
+            string subscriberId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+
             var request = new SubscribersControllerGetSubscriberRequest()
             {
                 SubscriberId = subscriberId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}", request, null);
 
@@ -673,7 +891,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -828,14 +1046,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersControllerPatchSubscriberResponse> PatchAsync(string subscriberId, PatchSubscriberRequestDto patchSubscriberRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update a subscriber.
+        /// </summary>
+        /// <remarks>
+        /// Update a subscriber by its unique key identifier **subscriberId**. <br/>
+        ///     **subscriberId** is a required field, rest other fields are optional.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="patchSubscriberRequestDto">A <see cref="PatchSubscriberRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerPatchSubscriberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="patchSubscriberRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersControllerPatchSubscriberResponse> PatchAsync(
+            string subscriberId,
+            PatchSubscriberRequestDto patchSubscriberRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+            if (patchSubscriberRequestDto == null) throw new ArgumentNullException(nameof(patchSubscriberRequestDto));
+
             var request = new SubscribersControllerPatchSubscriberRequest()
             {
                 SubscriberId = subscriberId,
                 PatchSubscriberRequestDto = patchSubscriberRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}", request, null);
 
@@ -900,7 +1146,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1055,13 +1301,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersControllerRemoveSubscriberResponse> DeleteAsync(string subscriberId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete a subscriber.
+        /// </summary>
+        /// <remarks>
+        /// Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions. <br/>
+        ///       **subscriberId** is a required field.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersControllerRemoveSubscriberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="subscriberId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersControllerRemoveSubscriberResponse> DeleteAsync(
+            string subscriberId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+
             var request = new SubscribersControllerRemoveSubscriberRequest()
             {
                 SubscriberId = subscriberId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/subscribers/{subscriberId}", request, null);
 
@@ -1120,7 +1391,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1275,15 +1546,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(BulkSubscriberCreateDto bulkSubscriberCreateDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Bulk create subscribers.
+        /// </summary>
+        /// <remarks>
+        /// Using this endpoint multiple subscribers can be created at once. The bulk API is limited to 500 subscribers per request.
+        /// </remarks>
+        /// <param name="bulkSubscriberCreateDto">A <see cref="BulkSubscriberCreateDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerBulkCreateSubscribersResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="bulkSubscriberCreateDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersV1ControllerBulkCreateSubscribersResponse> CreateBulkAsync(
+            BulkSubscriberCreateDto bulkSubscriberCreateDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (bulkSubscriberCreateDto == null) throw new ArgumentNullException(nameof(bulkSubscriberCreateDto));
+
             var request = new SubscribersV1ControllerBulkCreateSubscribersRequest()
             {
                 BulkSubscriberCreateDto = bulkSubscriberCreateDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/subscribers/bulk";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -1347,7 +1641,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1502,14 +1796,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update provider credentials.
+        /// </summary>
+        /// <remarks>
+        /// Update credentials for a provider such as **slack** and **FCM**. <br/>
+        ///       **providerId** is required field. This API creates the **deviceTokens** or replaces the existing ones.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="updateSubscriberChannelRequestDto">A <see cref="UpdateSubscriberChannelRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerUpdateSubscriberChannelResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="updateSubscriberChannelRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersV1ControllerUpdateSubscriberChannelResponse> UpdateCredentialsAsync(
+            string subscriberId,
+            UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+            if (updateSubscriberChannelRequestDto == null) throw new ArgumentNullException(nameof(updateSubscriberChannelRequestDto));
+
             var request = new SubscribersV1ControllerUpdateSubscriberChannelRequest()
             {
                 SubscriberId = subscriberId,
                 UpdateSubscriberChannelRequestDto = updateSubscriberChannelRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/credentials", request, null);
 
@@ -1574,7 +1896,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1729,14 +2051,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(string subscriberId, UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Upsert provider credentials.
+        /// </summary>
+        /// <remarks>
+        /// Upsert credentials for a provider such as **slack** and **FCM**. <br/>
+        ///       **providerId** is required field. This API creates **deviceTokens** or appends to the existing ones.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="updateSubscriberChannelRequestDto">A <see cref="UpdateSubscriberChannelRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerModifySubscriberChannelResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="updateSubscriberChannelRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersV1ControllerModifySubscriberChannelResponse> AppendCredentialsAsync(
+            string subscriberId,
+            UpdateSubscriberChannelRequestDto updateSubscriberChannelRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+            if (updateSubscriberChannelRequestDto == null) throw new ArgumentNullException(nameof(updateSubscriberChannelRequestDto));
+
             var request = new SubscribersV1ControllerModifySubscriberChannelRequest()
             {
                 SubscriberId = subscriberId,
                 UpdateSubscriberChannelRequestDto = updateSubscriberChannelRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/credentials", request, null);
 
@@ -1801,7 +2151,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1956,14 +2306,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersV1ControllerDeleteSubscriberCredentialsResponse> DeleteCredentialsAsync(string subscriberId, string providerId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete provider credentials.
+        /// </summary>
+        /// <remarks>
+        /// Delete subscriber credentials for a provider such as **slack** and **FCM** by **providerId**. <br/>
+        ///     This action is irreversible and will remove the credentials for the provider for particular **subscriberId**.
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="providerId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerDeleteSubscriberCredentialsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="providerId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersV1ControllerDeleteSubscriberCredentialsResponse> DeleteCredentialsAsync(
+            string subscriberId,
+            string providerId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+            if (providerId == null) throw new ArgumentNullException(nameof(providerId));
+
             var request = new SubscribersV1ControllerDeleteSubscriberCredentialsRequest()
             {
                 SubscriberId = subscriberId,
                 ProviderId = providerId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/credentials/{providerId}", request, null);
 
@@ -2022,7 +2400,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -2159,14 +2537,41 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse> UpdateOnlineStatusAsync(string subscriberId, UpdateSubscriberOnlineFlagRequestDto updateSubscriberOnlineFlagRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update subscriber online status.
+        /// </summary>
+        /// <remarks>
+        /// Update the subscriber online status by its unique key identifier **subscriberId**
+        /// </remarks>
+        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="updateSubscriberOnlineFlagRequestDto">A <see cref="UpdateSubscriberOnlineFlagRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="subscriberId"/> or <paramref name="updateSubscriberOnlineFlagRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SubscribersV1ControllerUpdateSubscriberOnlineFlagResponse> UpdateOnlineStatusAsync(
+            string subscriberId,
+            UpdateSubscriberOnlineFlagRequestDto updateSubscriberOnlineFlagRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
+            if (updateSubscriberOnlineFlagRequestDto == null) throw new ArgumentNullException(nameof(updateSubscriberOnlineFlagRequestDto));
+
             var request = new SubscribersV1ControllerUpdateSubscriberOnlineFlagRequest()
             {
                 SubscriberId = subscriberId,
                 UpdateSubscriberOnlineFlagRequestDto = updateSubscriberOnlineFlagRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/online-status", request, null);
 
@@ -2231,7 +2636,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -2385,5 +2790,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

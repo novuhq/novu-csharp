@@ -13,60 +13,59 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ActivityNotificationResponseDto
     {
-
         /// <summary>
-        /// Unique identifier of the notification
+        /// Unique identifier of the notification.
         /// </summary>
         [JsonProperty("_id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Environment ID of the notification
+        /// Environment ID of the notification.
         /// </summary>
         [JsonProperty("_environmentId")]
         public string EnvironmentId { get; set; } = default!;
 
         /// <summary>
-        /// Organization ID of the notification
+        /// Organization ID of the notification.
         /// </summary>
         [JsonProperty("_organizationId")]
         public string OrganizationId { get; set; } = default!;
 
         /// <summary>
-        /// Subscriber ID of the notification
+        /// Subscriber ID of the notification.
         /// </summary>
         [JsonProperty("_subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// Transaction ID of the notification
+        /// Transaction ID of the notification.
         /// </summary>
         [JsonProperty("transactionId")]
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
-        /// Template ID of the notification
+        /// Template ID of the notification.
         /// </summary>
         [JsonProperty("_templateId")]
         public string? TemplateId { get; set; }
 
         /// <summary>
-        /// Digested Notification ID
+        /// Digested Notification ID.
         /// </summary>
         [JsonProperty("_digestedNotificationId")]
         public string? DigestedNotificationId { get; set; }
 
         /// <summary>
-        /// Creation time of the notification
+        /// Creation time of the notification.
         /// </summary>
         [JsonProperty("createdAt")]
         public string? CreatedAt { get; set; }
 
         /// <summary>
-        /// Last updated time of the notification
+        /// Last updated time of the notification.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string? UpdatedAt { get; set; }
@@ -75,67 +74,67 @@ namespace Novu.Models.Components
         public List<StepTypeEnum>? Channels { get; set; }
 
         /// <summary>
-        /// Subscriber of the notification
+        /// Subscriber of the notification.
         /// </summary>
         [JsonProperty("subscriber")]
         public ActivityNotificationSubscriberResponseDto? Subscriber { get; set; }
 
         /// <summary>
-        /// Template of the notification
+        /// Template of the notification.
         /// </summary>
         [JsonProperty("template")]
         public ActivityNotificationTemplateResponseDto? Template { get; set; }
 
         /// <summary>
-        /// Jobs of the notification
+        /// Jobs of the notification.
         /// </summary>
         [JsonProperty("jobs")]
         public List<ActivityNotificationJobResponseDto>? Jobs { get; set; }
 
         /// <summary>
-        /// Payload of the notification
+        /// Payload of the notification.
         /// </summary>
         [JsonProperty("payload")]
         public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
-        /// Tags associated with the notification
+        /// Tags associated with the notification.
         /// </summary>
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; }
 
         /// <summary>
-        /// Controls associated with the notification
+        /// Controls associated with the notification.
         /// </summary>
         [JsonProperty("controls")]
         public Dictionary<string, object>? Controls { get; set; }
 
         /// <summary>
-        /// To field for subscriber definition
+        /// To field for subscriber definition.
         /// </summary>
         [JsonProperty("to")]
         public Dictionary<string, object>? To { get; set; }
 
         /// <summary>
-        /// Topics of the notification
+        /// Topics of the notification.
         /// </summary>
         [JsonProperty("topics")]
         public List<ActivityTopicDto>? Topics { get; set; }
 
         /// <summary>
-        /// Severity of the workflow
+        /// Severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum? Severity { get; set; }
 
         /// <summary>
-        /// Criticality of the notification
+        /// Criticality of the notification.
         /// </summary>
         [JsonProperty("critical")]
         public bool? Critical { get; set; }
 
         /// <summary>
-        /// Context (single or multi) in which the notification was sent
+        /// Context (single or multi) in which the notification was sent.
         /// </summary>
         [JsonProperty("contextKeys")]
         public List<string>? ContextKeys { get; set; }

@@ -13,36 +13,35 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class MessagesResponseDto
     {
-
         /// <summary>
-        /// Total number of messages available
+        /// Total number of messages available.
         /// </summary>
         [JsonProperty("totalCount")]
         public double? TotalCount { get; set; }
 
         /// <summary>
-        /// Indicates if there are more messages available
+        /// Indicates if there are more messages available.
         /// </summary>
         [JsonProperty("hasMore")]
         public bool HasMore { get; set; } = default!;
 
         /// <summary>
-        /// List of messages
+        /// List of messages.
         /// </summary>
         [JsonProperty("data")]
         public List<MessageResponseDto> Data { get; set; } = default!;
 
         /// <summary>
-        /// Number of messages per page
+        /// Number of messages per page.
         /// </summary>
         [JsonProperty("pageSize")]
         public double PageSize { get; set; } = default!;
 
         /// <summary>
-        /// Current page number
+        /// Current page number.
         /// </summary>
         [JsonProperty("page")]
         public double Page { get; set; } = default!;

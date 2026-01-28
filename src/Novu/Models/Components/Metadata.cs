@@ -58,7 +58,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
     /// Metadata associated with the workflow step. Can vary based on the type of step.
     /// </summary>

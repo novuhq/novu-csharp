@@ -64,9 +64,8 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// Value that failed validation
+    /// Value that failed validation.
     /// </summary>
     [JsonConverter(typeof(Value.ValueConverter))]
     public class Value

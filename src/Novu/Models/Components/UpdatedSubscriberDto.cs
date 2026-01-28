@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class UpdatedSubscriberDto
     {
-
         /// <summary>
         /// The ID of the subscriber that was updated.
         /// </summary>

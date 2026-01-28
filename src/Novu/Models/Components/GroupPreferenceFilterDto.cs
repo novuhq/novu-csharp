@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class GroupPreferenceFilterDto
     {
-
         /// <summary>
         /// Whether the preference is enabled. Used when condition is not provided.
         /// </summary>
@@ -24,13 +23,13 @@ namespace Novu.Models.Components
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Optional condition using JSON Logic rules
+        /// Optional condition using JSON Logic rules.
         /// </summary>
         [JsonProperty("condition")]
         public Dictionary<string, object>? Condition { get; set; }
 
         /// <summary>
-        /// Filter criteria for workflow IDs and tags
+        /// Filter criteria for workflow IDs and tags.
         /// </summary>
         [JsonProperty("filter")]
         public GroupPreferenceFilterDetailsDto Filter { get; set; } = default!;

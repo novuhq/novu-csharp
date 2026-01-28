@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class UpdateTopicSubscriptionRequestDto
     {
-
         /// <summary>
-        /// The name of the subscription
+        /// The name of the subscription.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The preferences of the topic. Can be a simple workflow ID string, workflow preference object, or group filter object
+        /// The preferences of the topic. Can be a simple workflow ID string, workflow preference object, or group filter object.
         /// </summary>
         [JsonProperty("preferences")]
         public List<UpdateTopicSubscriptionRequestDtoPreferences>? Preferences { get; set; }

@@ -11,10 +11,9 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Requests;
     using Novu.Utils;
-    
+
     public class ContextsControllerListContextsRequest
     {
-
         /// <summary>
         /// Cursor for pagination indicating the starting point after which to fetch results.
         /// </summary>
@@ -28,43 +27,43 @@ namespace Novu.Models.Requests
         public string? Before { get; set; }
 
         /// <summary>
-        /// Limit the number of items to return
+        /// Limit the number of items to return.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public double? Limit { get; set; }
 
         /// <summary>
-        /// Direction of sorting
+        /// Direction of sorting.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderDirection")]
         public OrderDirection? OrderDirection { get; set; }
 
         /// <summary>
-        /// Field to order by
+        /// Field to order by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderBy")]
         public string? OrderBy { get; set; }
 
         /// <summary>
-        /// Include cursor item in response
+        /// Include cursor item in response.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeCursor")]
         public bool? IncludeCursor { get; set; }
 
         /// <summary>
-        /// Filter contexts by id
+        /// Filter contexts by id.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Search contexts by type or id (supports partial matching across both fields)
+        /// Search contexts by type or id (supports partial matching across both fields).
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=search")]
         public string? Search { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

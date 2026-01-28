@@ -51,9 +51,8 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// Optional feed identifier or array of feed identifiers
+    /// Optional feed identifier or array of feed identifiers.
     /// </summary>
     [JsonConverter(typeof(FeedIdentifier.FeedIdentifierConverter))]
     public class FeedIdentifier

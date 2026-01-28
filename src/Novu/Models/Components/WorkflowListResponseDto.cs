@@ -13,102 +13,101 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class WorkflowListResponseDto
     {
-
         /// <summary>
-        /// Name of the workflow
+        /// Name of the workflow.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Tags associated with the workflow
+        /// Tags associated with the workflow.
         /// </summary>
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; }
 
         /// <summary>
-        /// Last updated timestamp
+        /// Last updated timestamp.
         /// </summary>
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Creation timestamp
+        /// Creation timestamp.
         /// </summary>
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// User who last updated the workflow
+        /// User who last updated the workflow.
         /// </summary>
         [JsonProperty("updatedBy")]
         public WorkflowListResponseDtoUpdatedBy? UpdatedBy { get; set; } = null;
 
         /// <summary>
-        /// Timestamp of the last workflow publication
+        /// Timestamp of the last workflow publication.
         /// </summary>
         [JsonProperty("lastPublishedAt")]
         public string? LastPublishedAt { get; set; } = null;
 
         /// <summary>
-        /// User who last published the workflow
+        /// User who last published the workflow.
         /// </summary>
         [JsonProperty("lastPublishedBy")]
         public WorkflowListResponseDtoLastPublishedBy? LastPublishedBy { get; set; } = null;
 
         /// <summary>
-        /// Unique database identifier
+        /// Unique database identifier.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Workflow identifier
+        /// Workflow identifier.
         /// </summary>
         [JsonProperty("workflowId")]
         public string WorkflowId { get; set; } = default!;
 
         /// <summary>
-        /// Workflow slug
+        /// Workflow slug.
         /// </summary>
         [JsonProperty("slug")]
         public string Slug { get; set; } = default!;
 
         /// <summary>
-        /// Status of the workflow
+        /// Status of the workflow.
         /// </summary>
         [JsonProperty("status")]
         public WorkflowStatusEnum Status { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout
+        /// Origin of the layout.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum Origin { get; set; } = default!;
 
         /// <summary>
-        /// Timestamp of the last workflow trigger
+        /// Timestamp of the last workflow trigger.
         /// </summary>
         [JsonProperty("lastTriggeredAt")]
         public string? LastTriggeredAt { get; set; } = null;
 
         /// <summary>
-        /// Overview of step types in the workflow
+        /// Overview of step types in the workflow.
         /// </summary>
         [JsonProperty("stepTypeOverviews")]
         public List<StepTypeEnum> StepTypeOverviews { get; set; } = default!;
 
         /// <summary>
-        /// Is translation enabled for the workflow
+        /// Is translation enabled for the workflow.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
         public bool? IsTranslationEnabled { get; set; }
 
         /// <summary>
-        /// Steps of the workflow
+        /// Steps of the workflow.
         /// </summary>
         [JsonProperty("steps")]
         public List<StepListResponseDto> Steps { get; set; } = default!;

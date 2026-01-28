@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class DelayControlDto
     {
-
         /// <summary>
         /// JSONLogic filter conditions for conditionally skipping the step execution. Supports complex logical operations with AND, OR, and comparison operators. See https://jsonlogic.com/ for full typing reference.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? Skip { get; set; }
 
         /// <summary>
-        /// Type of the delay. Currently only &apos;regular&apos; is supported by the schema.
+        /// Type of the delay. Currently only 'regular' is supported by the schema.
         /// </summary>
         [JsonProperty("type")]
         public Models.Components.Type? Type { get; set; } = Novu.Models.Components.Type.Regular;

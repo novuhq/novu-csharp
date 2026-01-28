@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class MarkMessageActionAsSeenDto
     {
-
         /// <summary>
-        /// Message action status
+        /// Message action status.
         /// </summary>
         [JsonProperty("status")]
         public MarkMessageActionAsSeenDtoStatus Status { get; set; } = default!;
 
         /// <summary>
-        /// Message action payload
+        /// Message action payload.
         /// </summary>
         [JsonProperty("payload")]
         public MarkMessageActionAsSeenDtoPayload? Payload { get; set; }

@@ -24,48 +24,93 @@ namespace Novu
 
     public interface IGroups
     {
+        /// <summary>
+        /// Delete a translation group.
+        /// </summary>
+        /// <remarks>
+        /// Delete an entire translation group and all its translations.
+        /// </remarks>
+        /// <param name="resourceType">Resource type.</param>
+        /// <param name="resourceId">Resource ID.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerDeleteTranslationGroupEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="resourceId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerDeleteTranslationGroupEndpointResponse> DeleteAsync(
+            TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType resourceType,
+            string resourceId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a translation group
-        /// 
-        /// <remarks>
-        /// Delete an entire translation group and all its translations
-        /// </remarks>
+        /// Retrieve a translation group.
         /// </summary>
-        Task<TranslationControllerDeleteTranslationGroupEndpointResponse> DeleteAsync(TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType resourceType, string resourceId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Retrieve a translation group
-        /// 
         /// <remarks>
-        /// Retrieves a single translation group by resource type (workflow, layout) and resource ID (workflowId, layoutId)
+        /// Retrieves a single translation group by resource type (workflow, layout) and resource ID (workflowId, layoutId).
         /// </remarks>
-        /// </summary>
-        Task<TranslationControllerGetTranslationGroupEndpointResponse> RetrieveAsync(TranslationControllerGetTranslationGroupEndpointPathParamResourceType resourceType, string resourceId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="resourceType">Resource type.</param>
+        /// <param name="resourceId">Resource ID.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerGetTranslationGroupEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="resourceId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerGetTranslationGroupEndpointResponse> RetrieveAsync(
+            TranslationControllerGetTranslationGroupEndpointPathParamResourceType resourceType,
+            string resourceId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Groups: IGroups
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Groups(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<TranslationControllerDeleteTranslationGroupEndpointResponse> DeleteAsync(TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType resourceType, string resourceId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Delete a translation group.
+        /// </summary>
+        /// <remarks>
+        /// Delete an entire translation group and all its translations.
+        /// </remarks>
+        /// <param name="resourceType">Resource type.</param>
+        /// <param name="resourceId">Resource ID.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerDeleteTranslationGroupEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="resourceId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerDeleteTranslationGroupEndpointResponse> DeleteAsync(
+            TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType resourceType,
+            string resourceId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (resourceId == null) throw new ArgumentNullException(nameof(resourceId));
+
             var request = new TranslationControllerDeleteTranslationGroupEndpointRequest()
             {
                 ResourceType = resourceType,
                 ResourceId = resourceId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/translations/{resourceType}/{resourceId}", request, null);
 
@@ -124,7 +169,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -161,7 +206,7 @@ namespace Novu
                     }
                 };
             }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
@@ -173,14 +218,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TranslationControllerGetTranslationGroupEndpointResponse> RetrieveAsync(TranslationControllerGetTranslationGroupEndpointPathParamResourceType resourceType, string resourceId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Retrieve a translation group.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single translation group by resource type (workflow, layout) and resource ID (workflowId, layoutId).
+        /// </remarks>
+        /// <param name="resourceType">Resource type.</param>
+        /// <param name="resourceId">Resource ID.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerGetTranslationGroupEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="resourceId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerGetTranslationGroupEndpointResponse> RetrieveAsync(
+            TranslationControllerGetTranslationGroupEndpointPathParamResourceType resourceType,
+            string resourceId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (resourceId == null) throw new ArgumentNullException(nameof(resourceId));
+
             var request = new TranslationControllerGetTranslationGroupEndpointRequest()
             {
                 ResourceType = resourceType,
                 ResourceId = resourceId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/translations/group/{resourceType}/{resourceId}", request, null);
 
@@ -239,7 +308,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -294,7 +363,7 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
@@ -305,5 +374,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

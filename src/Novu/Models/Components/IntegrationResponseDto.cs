@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class IntegrationResponseDto
     {
-
         /// <summary>
         /// The unique identifier of the integration record in the database. This is automatically generated.
         /// </summary>
@@ -48,7 +47,7 @@ namespace Novu.Models.Components
         public string Identifier { get; set; } = default!;
 
         /// <summary>
-        /// The identifier for the provider of the integration (e.g., &quot;mailgun&quot;, &quot;twilio&quot;).
+        /// The identifier for the provider of the integration (e.g., "mailgun", "twilio").
         /// </summary>
         [JsonProperty("providerId")]
         public string ProviderId { get; set; } = default!;

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Type of the email block
+    /// Type of the email block.
     /// </summary>
     public enum EmailBlockTypeEnum
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum EmailBlockTypeEnum");
         }
     }
-
 }

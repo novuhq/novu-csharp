@@ -12,18 +12,17 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class SubscriberPreferenceOverrideDto
     {
-
         /// <summary>
-        /// Channel type through which the message is sent
+        /// Channel type through which the message is sent.
         /// </summary>
         [JsonProperty("channel")]
         public ChannelTypeEnum Channel { get; set; } = default!;
 
         /// <summary>
-        /// The source of overrides
+        /// The source of overrides.
         /// </summary>
         [JsonProperty("source")]
         public PreferenceOverrideSourceEnum Source { get; set; } = default!;

@@ -11,18 +11,17 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class TopicsControllerUpsertTopicRequest
     {
-
         /// <summary>
-        /// If true, the request will fail if a topic with the same key already exists
+        /// If true, the request will fail if a topic with the same key already exists.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=failIfExists")]
         public bool? FailIfExists { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class DeleteTopicSubscriberIdentifierDto
     {
-
         /// <summary>
         /// Unique identifier for this subscription. If provided, deletes only this specific subscription.
         /// </summary>

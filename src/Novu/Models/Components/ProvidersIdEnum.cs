@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Provider ID of the job
+    /// Provider ID of the job.
     /// </summary>
     public enum ProvidersIdEnum
     {
@@ -208,5 +208,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ProvidersIdEnum");
         }
     }
-
 }

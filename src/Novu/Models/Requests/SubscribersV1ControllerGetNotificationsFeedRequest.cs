@@ -10,10 +10,9 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class SubscribersV1ControllerGetNotificationsFeedRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
@@ -30,13 +29,13 @@ namespace Novu.Models.Requests
         public bool? Seen { get; set; }
 
         /// <summary>
-        /// Base64 encoded string of the partial payload JSON object
+        /// Base64 encoded string of the partial payload JSON object.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payload")]
         public string? Payload { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Group of the UI Schema
+    /// Group of the UI Schema.
     /// </summary>
     public enum UiSchemaGroupEnum
     {
@@ -72,5 +72,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum UiSchemaGroupEnum");
         }
     }
-
 }

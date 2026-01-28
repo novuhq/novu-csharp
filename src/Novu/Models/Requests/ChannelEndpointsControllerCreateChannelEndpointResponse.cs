@@ -13,15 +13,14 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ChannelEndpointsControllerCreateChannelEndpointResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Created
+        /// Created.
         /// </summary>
         public GetChannelEndpointResponseDto? GetChannelEndpointResponseDto { get; set; }
 

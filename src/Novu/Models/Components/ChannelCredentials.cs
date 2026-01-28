@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ChannelCredentials
     {
-
         /// <summary>
         /// Webhook URL used by chat app integrations. The webhook should be obtained from the chat app provider.
         /// </summary>

@@ -49,7 +49,7 @@ namespace Novu.Models.Errors
         public string? Phone { get; set; }
 
         /// <summary>
-        /// The URL of the subscriber&apos;s avatar image.
+        /// The URL of the subscriber's avatar image.
         /// </summary>
         [JsonProperty("avatar")]
         public string? Avatar { get; set; }
@@ -68,7 +68,7 @@ namespace Novu.Models.Errors
 
         /// <summary>
         /// An array of topics that the subscriber is subscribed to.
-        /// </summary>        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
+        /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("topics")]
         public List<string>? Topics { get; set; }
@@ -92,13 +92,13 @@ namespace Novu.Models.Errors
         public double? V { get; set; }
 
         /// <summary>
-        /// Additional custom data for the subscriber
+        /// Additional custom data for the subscriber.
         /// </summary>
         [JsonProperty("data")]
         public Dictionary<string, object>? Data { get; set; }
 
         /// <summary>
-        /// Timezone of the subscriber
+        /// Timezone of the subscriber.
         /// </summary>
         [JsonProperty("timezone")]
         public string? Timezone { get; set; }
@@ -236,5 +236,4 @@ namespace Novu.Models.Errors
            #pragma warning restore CS0618
         }
     }
-
 }

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Type of the job
+    /// Type of the job.
     /// </summary>
     public enum ActivityNotificationJobResponseDtoType
     {
@@ -72,5 +72,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum ActivityNotificationJobResponseDtoType");
         }
     }
-
 }

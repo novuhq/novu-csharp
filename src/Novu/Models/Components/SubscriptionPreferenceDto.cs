@@ -13,30 +13,29 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class SubscriptionPreferenceDto
     {
-
         /// <summary>
-        /// The unique identifier of the subscription
+        /// The unique identifier of the subscription.
         /// </summary>
         [JsonProperty("subscriptionId")]
         public string SubscriptionId { get; set; } = default!;
 
         /// <summary>
-        /// Workflow information if this is a template-level preference
+        /// Workflow information if this is a template-level preference.
         /// </summary>
         [JsonProperty("workflow")]
         public SubscriptionPreferenceDtoWorkflow? Workflow { get; set; } = null;
 
         /// <summary>
-        /// Whether the preference is enabled
+        /// Whether the preference is enabled.
         /// </summary>
         [JsonProperty("enabled")]
         public bool Enabled { get; set; } = default!;
 
         /// <summary>
-        /// Optional condition using JSON Logic rules
+        /// Optional condition using JSON Logic rules.
         /// </summary>
         [JsonProperty("condition")]
         public Dictionary<string, object>? Condition { get; set; }

@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class UpdateIntegrationRequestDto
     {
-
         [JsonProperty("name")]
         public string? Name { get; set; }
 
@@ -27,7 +26,7 @@ namespace Novu.Models.Components
         public string? EnvironmentId { get; set; }
 
         /// <summary>
-        /// If the integration is active the validation on the credentials field will run
+        /// If the integration is active the validation on the credentials field will run.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; }
@@ -42,7 +41,7 @@ namespace Novu.Models.Components
         public List<StepFilterDto>? Conditions { get; set; }
 
         /// <summary>
-        /// Configurations for the integration
+        /// Configurations for the integration.
         /// </summary>
         [JsonProperty("configurations")]
         public UpdateIntegrationRequestDtoConfigurations? Configurations { get; set; }

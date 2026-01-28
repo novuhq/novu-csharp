@@ -13,15 +13,14 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class InboundWebhooksControllerHandleWebhookResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Successfully processed webhook events
+        /// Successfully processed webhook events.
         /// </summary>
         public List<WebhookResultDto>? WebhookResultDtos { get; set; }
     }

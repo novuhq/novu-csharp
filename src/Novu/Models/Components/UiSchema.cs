@@ -13,18 +13,17 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class UiSchema
     {
-
         /// <summary>
-        /// Group of the UI Schema
+        /// Group of the UI Schema.
         /// </summary>
         [JsonProperty("group")]
         public UiSchemaGroupEnum? Group { get; set; }
 
         /// <summary>
-        /// Properties of the UI Schema
+        /// Properties of the UI Schema.
         /// </summary>
         [JsonProperty("properties")]
         public Dictionary<string, UiSchemaProperty>? Properties { get; set; }

@@ -18,26 +18,23 @@ namespace Novu.Models.Components
     using System.Numerics;
     using System.Reflection;
 
-    public class MessageResponseDtoContentType
+    public class BulkUpdateSubscriberPreferencesDtoContextType
     {
-        private MessageResponseDtoContentType(string value) { Value = value; }
+        private BulkUpdateSubscriberPreferencesDtoContextType(string value) { Value = value; }
 
         public string Value { get; private set; }
 
-        public static MessageResponseDtoContentType ArrayOfEmailBlock { get { return new MessageResponseDtoContentType("arrayOfEmailBlock"); } }
+        public static BulkUpdateSubscriberPreferencesDtoContextType Str { get { return new BulkUpdateSubscriberPreferencesDtoContextType("str"); } }
 
-        public static MessageResponseDtoContentType Str { get { return new MessageResponseDtoContentType("str"); } }
-
-        public static MessageResponseDtoContentType Null { get { return new MessageResponseDtoContentType("null"); } }
+        public static BulkUpdateSubscriberPreferencesDtoContextType Context2 { get { return new BulkUpdateSubscriberPreferencesDtoContextType("context_2"); } }
 
         public override string ToString() { return Value; }
-        public static implicit operator String(MessageResponseDtoContentType v) { return v.Value; }
-        public static MessageResponseDtoContentType FromString(string v) {
+        public static implicit operator String(BulkUpdateSubscriberPreferencesDtoContextType v) { return v.Value; }
+        public static BulkUpdateSubscriberPreferencesDtoContextType FromString(string v) {
             switch(v) {
-                case "arrayOfEmailBlock": return ArrayOfEmailBlock;
                 case "str": return Str;
-                case "null": return Null;
-                default: throw new ArgumentException("Invalid value for MessageResponseDtoContentType");
+                case "context_2": return Context2;
+                default: throw new ArgumentException("Invalid value for BulkUpdateSubscriberPreferencesDtoContextType");
             }
         }
         public override bool Equals(object? obj)
@@ -46,7 +43,7 @@ namespace Novu.Models.Components
             {
                 return false;
             }
-            return Value.Equals(((MessageResponseDtoContentType)obj).Value);
+            return Value.Equals(((BulkUpdateSubscriberPreferencesDtoContextType)obj).Value);
         }
 
         public override int GetHashCode()
@@ -55,51 +52,41 @@ namespace Novu.Models.Components
         }
     }
 
-
-    /// <summary>
-    /// Content of the message, can be an email block or a string
-    /// </summary>
-    [JsonConverter(typeof(MessageResponseDtoContent.MessageResponseDtoContentConverter))]
-    public class MessageResponseDtoContent
+    [JsonConverter(typeof(BulkUpdateSubscriberPreferencesDtoContext.BulkUpdateSubscriberPreferencesDtoContextConverter))]
+    public class BulkUpdateSubscriberPreferencesDtoContext
     {
-        public MessageResponseDtoContent(MessageResponseDtoContentType type)
+        public BulkUpdateSubscriberPreferencesDtoContext(BulkUpdateSubscriberPreferencesDtoContextType type)
         {
             Type = type;
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<EmailBlock>? ArrayOfEmailBlock { get; set; }
-
-        [SpeakeasyMetadata("form:explode=true")]
         public string? Str { get; set; }
 
-        public MessageResponseDtoContentType Type { get; set; }
-        public static MessageResponseDtoContent CreateArrayOfEmailBlock(List<EmailBlock> arrayOfEmailBlock)
-        {
-            MessageResponseDtoContentType typ = MessageResponseDtoContentType.ArrayOfEmailBlock;
+        [SpeakeasyMetadata("form:explode=true")]
+        public Context2? Context2 { get; set; }
 
-            MessageResponseDtoContent res = new MessageResponseDtoContent(typ);
-            res.ArrayOfEmailBlock = arrayOfEmailBlock;
-            return res;
-        }
-        public static MessageResponseDtoContent CreateStr(string str)
+        public BulkUpdateSubscriberPreferencesDtoContextType Type { get; set; }
+        public static BulkUpdateSubscriberPreferencesDtoContext CreateStr(string str)
         {
-            MessageResponseDtoContentType typ = MessageResponseDtoContentType.Str;
+            BulkUpdateSubscriberPreferencesDtoContextType typ = BulkUpdateSubscriberPreferencesDtoContextType.Str;
 
-            MessageResponseDtoContent res = new MessageResponseDtoContent(typ);
+            BulkUpdateSubscriberPreferencesDtoContext res = new BulkUpdateSubscriberPreferencesDtoContext(typ);
             res.Str = str;
             return res;
         }
-
-        public static MessageResponseDtoContent CreateNull()
+        public static BulkUpdateSubscriberPreferencesDtoContext CreateContext2(Context2 context2)
         {
-            MessageResponseDtoContentType typ = MessageResponseDtoContentType.Null;
-            return new MessageResponseDtoContent(typ);
+            BulkUpdateSubscriberPreferencesDtoContextType typ = BulkUpdateSubscriberPreferencesDtoContextType.Context2;
+
+            BulkUpdateSubscriberPreferencesDtoContext res = new BulkUpdateSubscriberPreferencesDtoContext(typ);
+            res.Context2 = context2;
+            return res;
         }
 
-        public class MessageResponseDtoContentConverter : JsonConverter
+        public class BulkUpdateSubscriberPreferencesDtoContextConverter : JsonConverter
         {
-            public override bool CanConvert(System.Type objectType) => objectType == typeof(MessageResponseDtoContent);
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(BulkUpdateSubscriberPreferencesDtoContext);
 
             public override bool CanRead => true;
 
@@ -107,7 +94,7 @@ namespace Novu.Models.Components
             {
                 if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
                 var json = JRaw.Create(reader).ToString();
@@ -115,14 +102,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new MessageResponseDtoContent(MessageResponseDtoContentType.ArrayOfEmailBlock)
+                    return new BulkUpdateSubscriberPreferencesDtoContext(BulkUpdateSubscriberPreferencesDtoContextType.Context2)
                     {
-                        ArrayOfEmailBlock = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<EmailBlock>>(json)
+                        Context2 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Context2>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<EmailBlock>), new MessageResponseDtoContent(MessageResponseDtoContentType.ArrayOfEmailBlock), "ArrayOfEmailBlock"));
+                    fallbackCandidates.Add((typeof(Context2), new BulkUpdateSubscriberPreferencesDtoContext(BulkUpdateSubscriberPreferencesDtoContextType.Context2), "Context2"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -134,7 +121,7 @@ namespace Novu.Models.Components
                 }
 
                 if (json[0] == '"' && json[^1] == '"'){
-                    return new MessageResponseDtoContent(MessageResponseDtoContentType.Str)
+                    return new BulkUpdateSubscriberPreferencesDtoContext(BulkUpdateSubscriberPreferencesDtoContextType.Str)
                     {
                         Str = json[1..^1]
                     };
@@ -167,26 +154,20 @@ namespace Novu.Models.Components
             {
                 if (value == null)
                 {
-                    writer.WriteRawValue("null");
-                    return;
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                 }
 
-                MessageResponseDtoContent res = (MessageResponseDtoContent)value;
-                if (MessageResponseDtoContentType.FromString(res.Type).Equals(MessageResponseDtoContentType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
-
-                if (res.ArrayOfEmailBlock != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfEmailBlock));
-                    return;
-                }
+                BulkUpdateSubscriberPreferencesDtoContext res = (BulkUpdateSubscriberPreferencesDtoContext)value;
 
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
+                    return;
+                }
+
+                if (res.Context2 != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Context2));
                     return;
                 }
             }

@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class DelayScheduledMetadata
     {
-
         [JsonProperty("type")]
         public DelayScheduledMetadataType Type { get; set; } = default!;
 

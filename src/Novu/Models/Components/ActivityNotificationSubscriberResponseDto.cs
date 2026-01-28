@@ -11,42 +11,41 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class ActivityNotificationSubscriberResponseDto
     {
-
         /// <summary>
-        /// First name of the subscriber
+        /// First name of the subscriber.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; }
 
         /// <summary>
-        /// External unique identifier of the subscriber
+        /// External unique identifier of the subscriber.
         /// </summary>
         [JsonProperty("subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// Internal to Novu unique identifier of the subscriber
+        /// Internal to Novu unique identifier of the subscriber.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Last name of the subscriber
+        /// Last name of the subscriber.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; }
 
         /// <summary>
-        /// Email address of the subscriber
+        /// Email address of the subscriber.
         /// </summary>
         [JsonProperty("email")]
         public string? Email { get; set; }
 
         /// <summary>
-        /// Phone number of the subscriber
+        /// Phone number of the subscriber.
         /// </summary>
         [JsonProperty("phone")]
         public string? Phone { get; set; }

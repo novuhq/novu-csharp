@@ -70,7 +70,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(UpdateWorkflowDtoSteps.UpdateWorkflowDtoStepsConverter))]
     public class UpdateWorkflowDtoSteps
     {

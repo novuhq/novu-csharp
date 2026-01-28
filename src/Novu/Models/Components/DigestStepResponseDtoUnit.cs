@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// The unit of time for the digest interval (for REGULAR type).
     /// </summary>
@@ -64,5 +64,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum DigestStepResponseDtoUnit");
         }
     }
-
 }

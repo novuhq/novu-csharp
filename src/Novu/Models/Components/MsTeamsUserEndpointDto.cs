@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class MsTeamsUserEndpointDto
     {
-
         /// <summary>
-        /// MS Teams user ID
+        /// MS Teams user ID.
         /// </summary>
         [JsonProperty("userId")]
         public string UserId { get; set; } = default!;

@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Ordinal position for the digest
+    /// Ordinal position for the digest.
     /// </summary>
     public enum OrdinalEnum
     {
@@ -64,5 +64,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum OrdinalEnum");
         }
     }
-
 }

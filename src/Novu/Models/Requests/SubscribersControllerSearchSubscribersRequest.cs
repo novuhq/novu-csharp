@@ -11,10 +11,9 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Requests;
     using Novu.Utils;
-    
+
     public class SubscribersControllerSearchSubscribersRequest
     {
-
         /// <summary>
         /// Cursor for pagination indicating the starting point after which to fetch results.
         /// </summary>
@@ -28,25 +27,25 @@ namespace Novu.Models.Requests
         public string? Before { get; set; }
 
         /// <summary>
-        /// Limit the number of items to return
+        /// Limit the number of items to return.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public double? Limit { get; set; }
 
         /// <summary>
-        /// Direction of sorting
+        /// Direction of sorting.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderDirection")]
         public QueryParamOrderDirection? OrderDirection { get; set; }
 
         /// <summary>
-        /// Field to order by
+        /// Field to order by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderBy")]
         public string? OrderBy { get; set; }
 
         /// <summary>
-        /// Include cursor item in response
+        /// Include cursor item in response.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeCursor")]
         public bool? IncludeCursor { get; set; }
@@ -76,7 +75,7 @@ namespace Novu.Models.Requests
         public string? SubscriberId { get; set; }
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

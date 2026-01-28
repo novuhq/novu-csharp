@@ -24,33 +24,72 @@ namespace Novu
 
     public interface IActivity
     {
-
         /// <summary>
-        /// Track activity and engagement events
-        /// 
-        /// <remarks>
-        /// Track activity and engagement events for a specific delivery provider
-        /// </remarks>
+        /// Track activity and engagement events.
         /// </summary>
-        Task<InboundWebhooksControllerHandleWebhookResponse> TrackAsync(string environmentId, string integrationId, object requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Track activity and engagement events for a specific delivery provider.
+        /// </remarks>
+        /// <param name="environmentId">The environment identifier.</param>
+        /// <param name="integrationId">The integration identifier for the delivery provider.</param>
+        /// <param name="requestBody">Webhook event payload from the delivery provider.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="InboundWebhooksControllerHandleWebhookResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="environmentId"/>, <paramref name="integrationId"/> or <paramref name="requestBody"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<InboundWebhooksControllerHandleWebhookResponse> TrackAsync(
+            string environmentId,
+            string integrationId,
+            Dictionary<string, object> requestBody,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Activity: IActivity
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Activity(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<InboundWebhooksControllerHandleWebhookResponse> TrackAsync(string environmentId, string integrationId, object requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Track activity and engagement events.
+        /// </summary>
+        /// <remarks>
+        /// Track activity and engagement events for a specific delivery provider.
+        /// </remarks>
+        /// <param name="environmentId">The environment identifier.</param>
+        /// <param name="integrationId">The integration identifier for the delivery provider.</param>
+        /// <param name="requestBody">Webhook event payload from the delivery provider.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="InboundWebhooksControllerHandleWebhookResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="environmentId"/>, <paramref name="integrationId"/> or <paramref name="requestBody"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<InboundWebhooksControllerHandleWebhookResponse> TrackAsync(
+            string environmentId,
+            string integrationId,
+            Dictionary<string, object> requestBody,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (environmentId == null) throw new ArgumentNullException(nameof(environmentId));
+            if (integrationId == null) throw new ArgumentNullException(nameof(integrationId));
+            if (requestBody == null) throw new ArgumentNullException(nameof(requestBody));
+
             var request = new InboundWebhooksControllerHandleWebhookRequest()
             {
                 EnvironmentId = environmentId,
@@ -58,6 +97,7 @@ namespace Novu
                 RequestBody = requestBody,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/inbound-webhooks/delivery-providers/{environmentId}/{integrationId}", request, null);
 
@@ -188,5 +228,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

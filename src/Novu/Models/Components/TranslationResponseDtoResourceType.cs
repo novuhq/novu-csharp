@@ -12,9 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
-    /// Resource type
+    /// Resource type.
     /// </summary>
     public enum TranslationResponseDtoResourceType
     {
@@ -56,5 +56,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum TranslationResponseDtoResourceType");
         }
     }
-
 }

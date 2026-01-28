@@ -11,18 +11,17 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class DuplicateLayoutDto
     {
-
         /// <summary>
-        /// Name of the layout
+        /// Name of the layout.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Enable or disable translations for this layout
+        /// Enable or disable translations for this layout.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
         public bool? IsTranslationEnabled { get; set; } = false;

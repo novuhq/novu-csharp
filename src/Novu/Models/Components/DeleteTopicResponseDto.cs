@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class DeleteTopicResponseDto
     {
-
         /// <summary>
-        /// Indicates if the operation was acknowledged
+        /// Indicates if the operation was acknowledged.
         /// </summary>
         [JsonProperty("acknowledged")]
         public bool Acknowledged { get; set; } = default!;

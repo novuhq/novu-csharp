@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class CustomControlDto
     {
-
         /// <summary>
         /// Custom control values for the step.
         /// </summary>

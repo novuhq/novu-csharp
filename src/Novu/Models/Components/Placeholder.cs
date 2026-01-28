@@ -64,9 +64,8 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
-    /// Placeholder for the UI Schema Property
+    /// Placeholder for the UI Schema Property.
     /// </summary>
     [JsonConverter(typeof(Placeholder.PlaceholderConverter))]
     public class Placeholder

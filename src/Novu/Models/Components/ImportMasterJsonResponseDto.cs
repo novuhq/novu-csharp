@@ -12,30 +12,29 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class ImportMasterJsonResponseDto
     {
-
         /// <summary>
-        /// Overall success status of the import operation
+        /// Overall success status of the import operation.
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; set; } = default!;
 
         /// <summary>
-        /// Human-readable message describing the import result
+        /// Human-readable message describing the import result.
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = default!;
 
         /// <summary>
-        /// List of resource IDs that were successfully imported
+        /// List of resource IDs that were successfully imported.
         /// </summary>
         [JsonProperty("successful")]
         public List<string>? Successful { get; set; }
 
         /// <summary>
-        /// List of resource IDs that failed to import
+        /// List of resource IDs that failed to import.
         /// </summary>
         [JsonProperty("failed")]
         public List<string>? Failed { get; set; }

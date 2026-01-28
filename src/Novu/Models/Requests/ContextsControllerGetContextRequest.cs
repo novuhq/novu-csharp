@@ -10,24 +10,23 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
-    
+
     public class ContextsControllerGetContextRequest
     {
-
         /// <summary>
-        /// Context ID
+        /// Context ID.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Context type
+        /// Context type.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=type")]
         public string Type { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class NotificationGroup
     {
-
         [JsonProperty("_id")]
         public string? Id { get; set; }
 

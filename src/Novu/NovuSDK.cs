@@ -21,10 +21,8 @@ namespace Novu
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
-
     /// <summary>
-    /// Novu API: Novu REST API. Please see https://docs.novu.co/api-reference for more details.
-    /// 
+    /// Novu API: Novu REST API. Please see https://docs.novu.co/api-reference for more details.<br/>
     /// <see href="https://docs.novu.co">Novu Documentation</see>
     /// </summary>
     public interface INovuSDK
@@ -32,142 +30,246 @@ namespace Novu
         public IContexts Contexts { get; }
 
         /// <summary>
-        /// Environments allow you to manage different stages of your application development lifecycle. Each environment has its own set of API keys and configurations, enabling you to separate development, staging, and production workflows.
-        /// 
+        /// Environments allow you to manage different stages of your application development lifecycle. Each environment has its own set of API keys and configurations, enabling you to separate development, staging, and production workflows.<br/>
         /// <see href="https://docs.novu.co/platform/environments">https://docs.novu.co/platform/environments</see>
         /// </summary>
         public IEnvironments Environments { get; }
+
         public IActivity Activity { get; }
 
         /// <summary>
-        /// Layouts are reusable wrappers for your email notifications.
-        /// 
+        /// Layouts are reusable wrappers for your email notifications.<br/>
         /// <see href="https://docs.novu.co/platform/workflow/layouts">https://docs.novu.co/platform/workflow/layouts</see>
         /// </summary>
         public ILayouts Layouts { get; }
+
         public ISubscribers Subscribers { get; }
+
         public ISubscribersPreferences SubscribersPreferences { get; }
 
         /// <summary>
-        /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.
-        /// 
+        /// Topics are a way to group subscribers together so that they can be notified of events at once. A topic is identified by a custom key. This can be helpful for things like sending out marketing emails or notifying users of new features. Topics can also be used to send notifications to the subscribers who have been grouped together based on their interests, location, activities and much more.<br/>
         /// <see href="https://docs.novu.co/subscribers/topics">https://docs.novu.co/subscribers/topics</see>
         /// </summary>
         public ITopics Topics { get; }
 
         /// <summary>
-        /// Used to localize your notifications to different languages.
-        /// 
+        /// Used to localize your notifications to different languages.<br/>
         /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
         /// </summary>
         public ITranslations Translations { get; }
 
         /// <summary>
-        /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.
-        /// 
+        /// All notifications are sent via a workflow. Each workflow acts as a container for the logic and blueprint that are associated with a type of notification in your system.<br/>
         /// <see href="https://docs.novu.co/workflows">https://docs.novu.co/workflows</see>
         /// </summary>
         public IWorkflows Workflows { get; }
+
         public IChannelConnections ChannelConnections { get; }
+
         public IChannelEndpoints ChannelEndpoints { get; }
 
         /// <summary>
-        /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
-        /// 
+        /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.<br/>
         /// <see href="https://docs.novu.co/platform/integrations/overview">https://docs.novu.co/platform/integrations/overview</see>
         /// </summary>
         public IIntegrations Integrations { get; }
 
         /// <summary>
-        /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.
-        /// 
+        /// A message in Novu represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events. Learn more about messages.<br/>
         /// <see href="https://docs.novu.co/workflows/messages">https://docs.novu.co/workflows/messages</see>
         /// </summary>
         public IMessages Messages { get; }
+
         public INotifications Notifications { get; }
+
         public ISubscribersMessages SubscribersMessages { get; }
+
         public ISubscribersNotifications SubscribersNotifications { get; }
+
         public ITopicsSubscribers TopicsSubscribers { get; }
 
         /// <summary>
-        /// Trigger event
-        /// 
+        /// Trigger event.
+        /// </summary>
         /// <remarks>
-        ///     Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Maximum number of recipients can be 100. Additional information can be passed according the body interface below.<br/>
+        /// Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Maximum number of recipients can be 100. Additional information can be passed according the body interface below.<br/>
         ///     To prevent duplicate triggers, you can optionally pass a **transactionId** in the request body. If the same **transactionId** is used again, the trigger will be ignored. The retention period depends on your billing tier.
         /// </remarks>
-        /// </summary>
-        Task<EventsControllerTriggerResponse> TriggerAsync(TriggerEventRequestDto triggerEventRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="triggerEventRequestDto">A <see cref="TriggerEventRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="EventsControllerTriggerResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="triggerEventRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="PayloadValidationExceptionDto">Payload validation failed - returned when payload does not match the workflow schema. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="ErrorDto">Unauthorized. Thrown when the API returns a 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<EventsControllerTriggerResponse> TriggerAsync(
+            TriggerEventRequestDto triggerEventRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Cancel triggered event
-        /// 
+        /// Cancel triggered event.
+        /// </summary>
         /// <remarks>
-        /// <br/>
-        ///     Using a previously generated transactionId during the event trigger,<br/>
-        ///      will cancel any active or pending workflows. This is useful to cancel active digests, delays etc...<br/>
-        ///     
+        /// Using a previously generated transactionId during the event trigger,<br/>
+        ///      will cancel any active or pending workflows. This is useful to cancel active digests, delays etc...
         /// </remarks>
-        /// </summary>
-        Task<EventsControllerCancelResponse> CancelAsync(string transactionId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="transactionId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="EventsControllerCancelResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="transactionId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<EventsControllerCancelResponse> CancelAsync(
+            string transactionId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Broadcast event to all
-        /// 
+        /// Broadcast event to all.
+        /// </summary>
         /// <remarks>
         /// Trigger a broadcast event to all existing subscribers, could be used to send announcements, etc.<br/>
         /// <br/>
         /// <br/>
         ///       In the future could be used to trigger events to a subset of subscribers based on defined filters.
         /// </remarks>
-        /// </summary>
-        Task<EventsControllerBroadcastEventToAllResponse> BroadcastAsync(TriggerEventToAllRequestDto triggerEventToAllRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="triggerEventToAllRequestDto">A <see cref="TriggerEventToAllRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="EventsControllerBroadcastEventToAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="triggerEventToAllRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="PayloadValidationExceptionDto">Payload validation failed - returned when payload does not match the workflow schema. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="ErrorDto">Unauthorized. Thrown when the API returns a 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<EventsControllerBroadcastEventToAllResponse> BroadcastAsync(
+            TriggerEventToAllRequestDto triggerEventToAllRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Bulk trigger event
-        /// 
-        /// <remarks>
-        /// <br/>
-        ///       Using this endpoint you can trigger multiple events at once, to avoid multiple calls to the API.<br/>
-        ///       The bulk API is limited to 100 events per request.<br/>
-        ///     
-        /// </remarks>
+        /// Bulk trigger event.
         /// </summary>
-        Task<EventsControllerTriggerBulkResponse> TriggerBulkAsync(BulkTriggerEventDto bulkTriggerEventDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Using this endpoint you can trigger multiple events at once, to avoid multiple calls to the API.<br/>
+        ///       The bulk API is limited to 100 events per request.
+        /// </remarks>
+        /// <param name="bulkTriggerEventDto">A <see cref="BulkTriggerEventDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="EventsControllerTriggerBulkResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="bulkTriggerEventDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="PayloadValidationExceptionDto">Payload validation failed - returned when any event payload does not match the workflow schema. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="ErrorDto">Unauthorized. Thrown when the API returns a 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<EventsControllerTriggerBulkResponse> TriggerBulkAsync(
+            BulkTriggerEventDto bulkTriggerEventDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
-
     /// <summary>
-    /// Novu API: Novu REST API. Please see https://docs.novu.co/api-reference for more details.
-    /// 
+    /// Novu API: Novu REST API. Please see https://docs.novu.co/api-reference for more details.<br/>
     /// <see href="https://docs.novu.co">Novu Documentation</see>
     /// </summary>
     public class NovuSDK: INovuSDK
     {
+        /// <summary>
+        /// The main SDK Configuration.
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// The Contexts sub-SDK.
+        /// </summary>
         public IContexts Contexts { get; private set; }
+        /// <summary>
+        /// The Environments sub-SDK.
+        /// </summary>
         public IEnvironments Environments { get; private set; }
+        /// <summary>
+        /// The Activity sub-SDK.
+        /// </summary>
         public IActivity Activity { get; private set; }
+        /// <summary>
+        /// The Layouts sub-SDK.
+        /// </summary>
         public ILayouts Layouts { get; private set; }
+        /// <summary>
+        /// The Subscribers sub-SDK.
+        /// </summary>
         public ISubscribers Subscribers { get; private set; }
+        /// <summary>
+        /// The SubscribersPreferences sub-SDK.
+        /// </summary>
         public ISubscribersPreferences SubscribersPreferences { get; private set; }
+        /// <summary>
+        /// The Topics sub-SDK.
+        /// </summary>
         public ITopics Topics { get; private set; }
+        /// <summary>
+        /// The Translations sub-SDK.
+        /// </summary>
         public ITranslations Translations { get; private set; }
+        /// <summary>
+        /// The Workflows sub-SDK.
+        /// </summary>
         public IWorkflows Workflows { get; private set; }
+        /// <summary>
+        /// The ChannelConnections sub-SDK.
+        /// </summary>
         public IChannelConnections ChannelConnections { get; private set; }
+        /// <summary>
+        /// The ChannelEndpoints sub-SDK.
+        /// </summary>
         public IChannelEndpoints ChannelEndpoints { get; private set; }
+        /// <summary>
+        /// The Integrations sub-SDK.
+        /// </summary>
         public IIntegrations Integrations { get; private set; }
+        /// <summary>
+        /// The Messages sub-SDK.
+        /// </summary>
         public IMessages Messages { get; private set; }
+        /// <summary>
+        /// The Notifications sub-SDK.
+        /// </summary>
         public INotifications Notifications { get; private set; }
+        /// <summary>
+        /// The SubscribersMessages sub-SDK.
+        /// </summary>
         public ISubscribersMessages SubscribersMessages { get; private set; }
+        /// <summary>
+        /// The SubscribersNotifications sub-SDK.
+        /// </summary>
         public ISubscribersNotifications SubscribersNotifications { get; private set; }
+        /// <summary>
+        /// The TopicsSubscribers sub-SDK.
+        /// </summary>
         public ITopicsSubscribers TopicsSubscribers { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the SDK based on a <see cref="SDKConfig"/> configuration object.
+        /// </summary>
+        /// <param name="config">The SDK configuration object.</param>
         public NovuSDK(SDKConfig config)
         {
             SDKConfiguration = config;
@@ -218,14 +320,23 @@ namespace Novu
         /// <param name="urlParams">A dictionary of parameters to use for templating the serverUrl. Only used when serverUrl is provided.</param>
         /// <param name="client">A custom HTTP client implementation to use for making API requests. If not provided, the default SpeakeasyHttpClient will be used.</param>
         /// <param name="retryConfig">Configuration for retry behavior when API requests fail. Defines retry strategies, backoff policies, and maximum retry attempts.</param>
-        /// <exception cref="Exception">Thrown when the serverIndex is out of range (less than 0 or greater than or equal to the server list length).</exception>
-        public NovuSDK(string? secretKey = null, Func<string>? secretKeySource = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        /// <exception cref="ArgumentOutOfRangeException">Invalid value provided for <paramref name="serverIndex"/>: must be between 0 (inclusive) and 2 (exclusive).</exception>
+        /// <exception cref="ArgumentException">None of <paramref name="secretKey"/> and <paramref name="secretKeySource"/> were provided.</exception>
+        public NovuSDK(
+            string? secretKey = null,
+            Func<string>? secretKeySource = null,
+            int? serverIndex = null,
+            string? serverUrl = null,
+            Dictionary<string, string>? urlParams = null,
+            ISpeakeasyHttpClient? client = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (serverIndex != null)
             {
                 if (serverIndex.Value < 0 || serverIndex.Value >= SDKConfig.ServerList.Length)
                 {
-                    throw new Exception($"Invalid server index {serverIndex.Value}");
+                    throw new ArgumentOutOfRangeException($"Invalid server index {serverIndex}: must be between 0 (inclusive) and {SDKConfig.ServerList.Length} (exclusive)." );
                 }
             }
 
@@ -248,7 +359,7 @@ namespace Novu
             }
             else
             {
-                throw new Exception("secretKey and secretKeySource cannot both be null");
+                throw new ArgumentException("secretKey and secretKeySource cannot both be null");
             }
 
             SDKConfiguration = new SDKConfig(client)
@@ -309,15 +420,39 @@ namespace Novu
             SDKConfiguration = config;
         }
 
-        public async Task<EventsControllerTriggerResponse> TriggerAsync(TriggerEventRequestDto triggerEventRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Trigger event.
+        /// </summary>
+        /// <remarks>
+        /// Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Maximum number of recipients can be 100. Additional information can be passed according the body interface below.<br/>
+        ///     To prevent duplicate triggers, you can optionally pass a **transactionId** in the request body. If the same **transactionId** is used again, the trigger will be ignored. The retention period depends on your billing tier.
+        /// </remarks>
+        /// <param name="triggerEventRequestDto">A <see cref="TriggerEventRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="EventsControllerTriggerResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="triggerEventRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="PayloadValidationExceptionDto">Payload validation failed - returned when payload does not match the workflow schema. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="ErrorDto">Unauthorized. Thrown when the API returns a 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<EventsControllerTriggerResponse> TriggerAsync(
+            TriggerEventRequestDto triggerEventRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (triggerEventRequestDto == null) throw new ArgumentNullException(nameof(triggerEventRequestDto));
+
             var request = new EventsControllerTriggerRequest()
             {
                 TriggerEventRequestDto = triggerEventRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/events/trigger";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -381,7 +516,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -556,13 +691,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<EventsControllerCancelResponse> CancelAsync(string transactionId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Cancel triggered event.
+        /// </summary>
+        /// <remarks>
+        /// Using a previously generated transactionId during the event trigger,<br/>
+        ///      will cancel any active or pending workflows. This is useful to cancel active digests, delays etc...
+        /// </remarks>
+        /// <param name="transactionId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="EventsControllerCancelResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="transactionId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<EventsControllerCancelResponse> CancelAsync(
+            string transactionId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new EventsControllerCancelRequest()
             {
                 TransactionId = transactionId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/events/trigger/{transactionId}", request, null);
 
@@ -621,7 +781,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -776,15 +936,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<EventsControllerBroadcastEventToAllResponse> BroadcastAsync(TriggerEventToAllRequestDto triggerEventToAllRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Broadcast event to all.
+        /// </summary>
+        /// <remarks>
+        /// Trigger a broadcast event to all existing subscribers, could be used to send announcements, etc.<br/>
+        /// <br/>
+        /// <br/>
+        ///       In the future could be used to trigger events to a subset of subscribers based on defined filters.
+        /// </remarks>
+        /// <param name="triggerEventToAllRequestDto">A <see cref="TriggerEventToAllRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="EventsControllerBroadcastEventToAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="triggerEventToAllRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="PayloadValidationExceptionDto">Payload validation failed - returned when payload does not match the workflow schema. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="ErrorDto">Unauthorized. Thrown when the API returns a 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<EventsControllerBroadcastEventToAllResponse> BroadcastAsync(
+            TriggerEventToAllRequestDto triggerEventToAllRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (triggerEventToAllRequestDto == null) throw new ArgumentNullException(nameof(triggerEventToAllRequestDto));
+
             var request = new EventsControllerBroadcastEventToAllRequest()
             {
                 TriggerEventToAllRequestDto = triggerEventToAllRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/events/trigger/broadcast";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -848,7 +1035,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1023,15 +1210,40 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<EventsControllerTriggerBulkResponse> TriggerBulkAsync(BulkTriggerEventDto bulkTriggerEventDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Bulk trigger event.
+        /// </summary>
+        /// <remarks>
+        /// Using this endpoint you can trigger multiple events at once, to avoid multiple calls to the API.<br/>
+        ///       The bulk API is limited to 100 events per request.
+        /// </remarks>
+        /// <param name="bulkTriggerEventDto">A <see cref="BulkTriggerEventDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="EventsControllerTriggerBulkResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="bulkTriggerEventDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="PayloadValidationExceptionDto">Payload validation failed - returned when any event payload does not match the workflow schema. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="ErrorDto">Unauthorized. Thrown when the API returns a 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<EventsControllerTriggerBulkResponse> TriggerBulkAsync(
+            BulkTriggerEventDto bulkTriggerEventDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (bulkTriggerEventDto == null) throw new ArgumentNullException(nameof(bulkTriggerEventDto));
+
             var request = new EventsControllerTriggerBulkRequest()
             {
                 BulkTriggerEventDto = bulkTriggerEventDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/events/trigger/bulk";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -1095,7 +1307,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1270,22 +1482,32 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
+
+        /// <summary>
+        /// Builder class for constructing an instance of the SDK.
+        /// </summary>
         public class SDKBuilder
         {
             private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
 
             public SDKBuilder() { }
 
+            /// <summary>
+            /// Overrides the default server by index.
+            /// </summary>
             public SDKBuilder WithServerIndex(int serverIndex)
             {
                 if (serverIndex < 0 || serverIndex >= SDKConfig.ServerList.Length)
                 {
-                    throw new Exception($"Invalid server index {serverIndex}");
+                    throw new ArgumentOutOfRangeException($"Invalid server index {serverIndex}: must be between 0 (inclusive) and {SDKConfig.ServerList.Length} (exclusive)." );
                 }
                 _sdkConfig.ServerIndex = serverIndex;
                 return this;
             }
 
+            /// <summary>
+            /// Overrides the default server URL for the SDK.
+            /// </summary>
             public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
             {
                 if (serverVariables != null)
@@ -1296,34 +1518,49 @@ namespace Novu
                 return this;
             }
 
+            /// <summary>
+            /// Sets the secretKeySource security parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithSecretKeySource(Func<string> secretKeySource)
             {
                 _sdkConfig.SecuritySource = () => new Novu.Models.Components.Security() { SecretKey = secretKeySource() };
                 return this;
             }
 
+            /// <summary>
+            /// Sets the secretKey security parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithSecretKey(string secretKey)
             {
                 _sdkConfig.SecuritySource = () => new Novu.Models.Components.Security() { SecretKey = secretKey };
                 return this;
             }
 
+            /// <summary>
+            /// Sets a custom HTTP client to be used by the SDK.
+            /// </summary>
             public SDKBuilder WithClient(ISpeakeasyHttpClient client)
             {
                 _sdkConfig.Client = client;
                 return this;
             }
 
+            /// <summary>
+            /// Sets the retry configuration for the SDK.
+            /// </summary>
             public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
             {
                 _sdkConfig.RetryConfig = retryConfig;
                 return this;
             }
 
+            /// <summary>
+            /// Builds and returns the SDK instance.
+            /// </summary>
             public NovuSDK Build()
             {
               if (_sdkConfig.SecuritySource == null) {
-                  throw new Exception("securitySource cannot be null. One of `SecretKey` or `secretKeySource` needs to be defined.");
+                  throw new ArgumentException("securitySource cannot be null. One of `SecretKey` or `secretKeySource` needs to be defined.");
               }
               return new NovuSDK(_sdkConfig);
             }

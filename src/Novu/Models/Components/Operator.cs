@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     public enum Operator
     {
         [JsonProperty("LARGER")]
@@ -77,5 +77,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum Operator");
         }
     }
-
 }

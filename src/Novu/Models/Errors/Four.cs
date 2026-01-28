@@ -10,7 +10,7 @@
 namespace Novu.Models.Errors
 {
     using Novu.Utils;
-    
+
     public class Four
     {
     }

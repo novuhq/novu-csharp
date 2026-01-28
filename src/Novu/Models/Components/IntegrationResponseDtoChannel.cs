@@ -12,7 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
-    
+
     /// <summary>
     /// The channel type for the integration, which defines how the integration communicates (e.g., email, SMS).
     /// </summary>
@@ -62,5 +62,4 @@ namespace Novu.Models.Components
             throw new Exception($"Unknown value {value} for enum IntegrationResponseDtoChannel");
         }
     }
-
 }

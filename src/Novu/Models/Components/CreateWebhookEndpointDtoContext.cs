@@ -52,7 +52,6 @@ namespace Novu.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(CreateWebhookEndpointDtoContext.CreateWebhookEndpointDtoContextConverter))]
     public class CreateWebhookEndpointDtoContext
     {

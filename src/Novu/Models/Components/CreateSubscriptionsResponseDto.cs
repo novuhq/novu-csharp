@@ -13,24 +13,23 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class CreateSubscriptionsResponseDto
     {
-
         /// <summary>
-        /// The list of successfully created subscriptions
+        /// The list of successfully created subscriptions.
         /// </summary>
         [JsonProperty("data")]
         public List<SubscriptionResponseDto> Data { get; set; } = default!;
 
         /// <summary>
-        /// Metadata about the operation
+        /// Metadata about the operation.
         /// </summary>
         [JsonProperty("meta")]
         public MetaDto Meta { get; set; } = default!;
 
         /// <summary>
-        /// The list of errors for failed subscription attempts
+        /// The list of errors for failed subscription attempts.
         /// </summary>
         [JsonProperty("errors")]
         public List<SubscriptionErrorDto>? Errors { get; set; }

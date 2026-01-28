@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class WorkspaceDto
     {
-
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 

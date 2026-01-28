@@ -23,66 +23,124 @@ namespace Novu
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Used to localize your notifications to different languages.
-    /// 
+    /// Used to localize your notifications to different languages.<br/>
     /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
     /// </summary>
     public interface ITranslations
     {
         public IGroups Groups { get; }
+
         public IMaster Master { get; }
+        /// <summary>
+        /// Create a translation.
+        /// </summary>
+        /// <remarks>
+        /// Create a translation for a specific workflow and locale, if the translation already exists, it will be updated.
+        /// </remarks>
+        /// <param name="createTranslationRequestDto">A <see cref="CreateTranslationRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerCreateTranslationEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createTranslationRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerCreateTranslationEndpointResponse> CreateAsync(
+            CreateTranslationRequestDto createTranslationRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create a translation
-        /// 
-        /// <remarks>
-        /// Create a translation for a specific workflow and locale, if the translation already exists, it will be updated
-        /// </remarks>
+        /// Retrieve a translation.
         /// </summary>
-        Task<TranslationControllerCreateTranslationEndpointResponse> CreateAsync(CreateTranslationRequestDto createTranslationRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Retrieve a specific translation by resource type, resource ID and locale.
+        /// </remarks>
+        /// <param name="resourceType">Resource type.</param>
+        /// <param name="resourceId">Resource ID.</param>
+        /// <param name="locale">Locale code.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerGetSingleTranslationResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="resourceId"/> or <paramref name="locale"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerGetSingleTranslationResponse> RetrieveAsync(
+            PathParamResourceType resourceType,
+            string resourceId,
+            string locale,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Retrieve a translation
-        /// 
-        /// <remarks>
-        /// Retrieve a specific translation by resource type, resource ID and locale
-        /// </remarks>
+        /// Delete a translation.
         /// </summary>
-        Task<TranslationControllerGetSingleTranslationResponse> RetrieveAsync(PathParamResourceType resourceType, string resourceId, string locale, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Delete a specific translation by resource type, resource ID and locale.
+        /// </remarks>
+        /// <param name="resourceType">Resource type.</param>
+        /// <param name="resourceId">Resource ID.</param>
+        /// <param name="locale">Locale code.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerDeleteTranslationEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="resourceId"/> or <paramref name="locale"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerDeleteTranslationEndpointResponse> DeleteAsync(
+            TranslationControllerDeleteTranslationEndpointPathParamResourceType resourceType,
+            string resourceId,
+            string locale,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete a translation
-        /// 
-        /// <remarks>
-        /// Delete a specific translation by resource type, resource ID and locale
-        /// </remarks>
+        /// Upload translation files.
         /// </summary>
-        Task<TranslationControllerDeleteTranslationEndpointResponse> DeleteAsync(TranslationControllerDeleteTranslationEndpointPathParamResourceType resourceType, string resourceId, string locale, string? idempotencyKey = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Upload translation files
-        /// 
         /// <remarks>
-        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json. Supports both &quot;files&quot; and &quot;files[]&quot; field names for backwards compatibility.
+        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json. Supports both "files" and "files[]" field names for backwards compatibility.
         /// </remarks>
-        /// </summary>
-        Task<TranslationControllerUploadTranslationFilesResponse> UploadAsync(TranslationControllerUploadTranslationFilesRequestBody requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="requestBody">A <see cref="TranslationControllerUploadTranslationFilesRequestBody"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerUploadTranslationFilesResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="requestBody"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<TranslationControllerUploadTranslationFilesResponse> UploadAsync(
+            TranslationControllerUploadTranslationFilesRequestBody requestBody,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     /// <summary>
-    /// Used to localize your notifications to different languages.
-    /// 
+    /// Used to localize your notifications to different languages.<br/>
     /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
     /// </summary>
     public class Translations: ITranslations
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Groups SubSDK.
+        /// <see cref="IGroups"/>
+        /// </summary>
         public IGroups Groups { get; private set; }
+
+        /// <summary>
+        /// Master SubSDK.
+        /// <see cref="IMaster"/>
+        /// </summary>
         public IMaster Master { get; private set; }
 
         public Translations(SDKConfig config)
@@ -92,15 +150,35 @@ namespace Novu
             Master = new Master(SDKConfiguration);
         }
 
-        public async Task<TranslationControllerCreateTranslationEndpointResponse> CreateAsync(CreateTranslationRequestDto createTranslationRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Create a translation.
+        /// </summary>
+        /// <remarks>
+        /// Create a translation for a specific workflow and locale, if the translation already exists, it will be updated.
+        /// </remarks>
+        /// <param name="createTranslationRequestDto">A <see cref="CreateTranslationRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerCreateTranslationEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createTranslationRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerCreateTranslationEndpointResponse> CreateAsync(
+            CreateTranslationRequestDto createTranslationRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (createTranslationRequestDto == null) throw new ArgumentNullException(nameof(createTranslationRequestDto));
+
             var request = new TranslationControllerCreateTranslationEndpointRequest()
             {
                 CreateTranslationRequestDto = createTranslationRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v2/translations";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -231,8 +309,34 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TranslationControllerGetSingleTranslationResponse> RetrieveAsync(PathParamResourceType resourceType, string resourceId, string locale, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Retrieve a translation.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a specific translation by resource type, resource ID and locale.
+        /// </remarks>
+        /// <param name="resourceType">Resource type.</param>
+        /// <param name="resourceId">Resource ID.</param>
+        /// <param name="locale">Locale code.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerGetSingleTranslationResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="resourceId"/> or <paramref name="locale"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerGetSingleTranslationResponse> RetrieveAsync(
+            PathParamResourceType resourceType,
+            string resourceId,
+            string locale,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (resourceId == null) throw new ArgumentNullException(nameof(resourceId));
+            if (locale == null) throw new ArgumentNullException(nameof(locale));
+
             var request = new TranslationControllerGetSingleTranslationRequest()
             {
                 ResourceType = resourceType,
@@ -240,6 +344,7 @@ namespace Novu
                 Locale = locale,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/translations/{resourceType}/{resourceId}/{locale}", request, null);
 
@@ -298,7 +403,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -353,7 +458,7 @@ namespace Novu
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
@@ -365,8 +470,33 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TranslationControllerDeleteTranslationEndpointResponse> DeleteAsync(TranslationControllerDeleteTranslationEndpointPathParamResourceType resourceType, string resourceId, string locale, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete a translation.
+        /// </summary>
+        /// <remarks>
+        /// Delete a specific translation by resource type, resource ID and locale.
+        /// </remarks>
+        /// <param name="resourceType">Resource type.</param>
+        /// <param name="resourceId">Resource ID.</param>
+        /// <param name="locale">Locale code.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerDeleteTranslationEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="resourceId"/> or <paramref name="locale"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerDeleteTranslationEndpointResponse> DeleteAsync(
+            TranslationControllerDeleteTranslationEndpointPathParamResourceType resourceType,
+            string resourceId,
+            string locale,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (resourceId == null) throw new ArgumentNullException(nameof(resourceId));
+            if (locale == null) throw new ArgumentNullException(nameof(locale));
+
             var request = new TranslationControllerDeleteTranslationEndpointRequest()
             {
                 ResourceType = resourceType,
@@ -374,6 +504,7 @@ namespace Novu
                 Locale = locale,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v2/translations/{resourceType}/{resourceId}/{locale}", request, null);
 
@@ -432,7 +563,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -469,7 +600,7 @@ namespace Novu
                     }
                 };
             }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
@@ -481,15 +612,36 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TranslationControllerUploadTranslationFilesResponse> UploadAsync(TranslationControllerUploadTranslationFilesRequestBody requestBody, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Upload translation files.
+        /// </summary>
+        /// <remarks>
+        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json. Supports both "files" and "files[]" field names for backwards compatibility.
+        /// </remarks>
+        /// <param name="requestBody">A <see cref="TranslationControllerUploadTranslationFilesRequestBody"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="TranslationControllerUploadTranslationFilesResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="requestBody"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<TranslationControllerUploadTranslationFilesResponse> UploadAsync(
+            TranslationControllerUploadTranslationFilesRequestBody requestBody,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (requestBody == null) throw new ArgumentNullException(nameof(requestBody));
+
             var request = new TranslationControllerUploadTranslationFilesRequest()
             {
                 RequestBody = requestBody,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v2/translations/upload";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -619,5 +771,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

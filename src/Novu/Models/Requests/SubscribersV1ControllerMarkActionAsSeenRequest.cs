@@ -11,10 +11,9 @@ namespace Novu.Models.Requests
 {
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class SubscribersV1ControllerMarkActionAsSeenRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=messageId")]
         public string MessageId { get; set; } = default!;
 
@@ -25,7 +24,7 @@ namespace Novu.Models.Requests
         public string SubscriberId { get; set; } = default!;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

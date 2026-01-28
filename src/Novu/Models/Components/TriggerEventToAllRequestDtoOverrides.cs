@@ -14,15 +14,14 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// This could be used to override provider specific configurations
+    /// This could be used to override provider specific configurations.
     /// </summary>
     public class TriggerEventToAllRequestDtoOverrides
     {
-
         /// <summary>
-        /// This could be used to override provider specific configurations or layout at the step level
+        /// This could be used to override provider specific configurations or layout at the step level.
         /// </summary>
         [JsonProperty("steps")]
         public Dictionary<string, StepsOverrides>? Steps { get; set; }
@@ -34,48 +33,48 @@ namespace Novu.Models.Components
         public TriggerEventToAllRequestDtoChannels? Channels { get; set; }
 
         /// <summary>
-        /// Overrides the provider configuration for the entire workflow and all steps
+        /// Overrides the provider configuration for the entire workflow and all steps.
         /// </summary>
         [JsonProperty("providers")]
         public Dictionary<string, Dictionary<string, object>>? Providers { get; set; }
 
         /// <summary>
-        /// Override the email provider specific configurations for the entire workflow
+        /// Override the email provider specific configurations for the entire workflow.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("email")]
         public Dictionary<string, object>? Email { get; set; }
 
         /// <summary>
-        /// Override the push provider specific configurations for the entire workflow
+        /// Override the push provider specific configurations for the entire workflow.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("push")]
         public Dictionary<string, object>? Push { get; set; }
 
         /// <summary>
-        /// Override the sms provider specific configurations for the entire workflow
+        /// Override the sms provider specific configurations for the entire workflow.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("sms")]
         public Dictionary<string, object>? Sms { get; set; }
 
         /// <summary>
-        /// Override the chat provider specific configurations for the entire workflow
+        /// Override the chat provider specific configurations for the entire workflow.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("chat")]
         public Dictionary<string, object>? Chat { get; set; }
 
         /// <summary>
-        /// Override the layout identifier for the entire workflow
+        /// Override the layout identifier for the entire workflow.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("layoutIdentifier")]
         public string? LayoutIdentifier { get; set; }
 
         /// <summary>
-        /// Severity of the workflow
+        /// Severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum? Severity { get; set; }

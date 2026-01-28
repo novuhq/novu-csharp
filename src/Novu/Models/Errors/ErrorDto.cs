@@ -43,16 +43,13 @@ namespace Novu.Models.Errors
 
         /// <summary>
         /// Optional unique identifier for the error, useful for tracking using Sentry and <br/>
-        /// 
-        /// <remarks>
         ///       New Relic, only available for 500.
-        /// </remarks>
         /// </summary>
         [JsonProperty("errorId")]
         public string? ErrorId { get; set; }
 
         /// <summary>
-        /// Value that failed validation
+        /// Value that failed validation.
         /// </summary>
         [JsonProperty("message")]
         public string? Message { get; set; }
@@ -113,5 +110,4 @@ namespace Novu.Models.Errors
            #pragma warning restore CS0618
         }
     }
-
 }

@@ -12,10 +12,9 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
-    
+
     public class MessageMarkAsRequestDto
     {
-
         [JsonProperty("messageId", NullValueHandling = NullValueHandling.Include)]
         public MessageId MessageId { get; set; } = default!;
 

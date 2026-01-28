@@ -13,10 +13,9 @@ namespace Novu.Models.Components
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class CreateMsTeamsUserEndpointDto
     {
-
         /// <summary>
         /// The unique identifier for the channel endpoint. If not provided, one will be generated automatically.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Novu.Models.Components
         public string? Identifier { get; set; }
 
         /// <summary>
-        /// The subscriber ID to which the channel endpoint is linked
+        /// The subscriber ID to which the channel endpoint is linked.
         /// </summary>
         [JsonProperty("subscriberId")]
         public string SubscriberId { get; set; } = default!;
@@ -45,13 +44,13 @@ namespace Novu.Models.Components
         public string? ConnectionIdentifier { get; set; }
 
         /// <summary>
-        /// Type of channel endpoint
+        /// Type of channel endpoint.
         /// </summary>
         [JsonProperty("type")]
         public CreateMsTeamsUserEndpointDtoType Type { get; set; } = default!;
 
         /// <summary>
-        /// MS Teams user endpoint data
+        /// MS Teams user endpoint data.
         /// </summary>
         [JsonProperty("endpoint")]
         public MsTeamsUserEndpointDto Endpoint { get; set; } = default!;

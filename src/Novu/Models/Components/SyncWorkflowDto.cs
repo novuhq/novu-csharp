@@ -11,12 +11,11 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class SyncWorkflowDto
     {
-
         /// <summary>
-        /// Target environment identifier to sync the workflow to
+        /// Target environment identifier to sync the workflow to.
         /// </summary>
         [JsonProperty("targetEnvironmentId")]
         public string TargetEnvironmentId { get; set; } = default!;

@@ -11,10 +11,9 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
-    
+
     public class CreateUpdateTopicRequestDto
     {
-
         /// <summary>
         /// The unique key identifier for the topic. The key must contain only alphanumeric characters (a-z, A-Z, 0-9), hyphens (-), underscores (_), colons (:), or be a valid email address.
         /// </summary>
@@ -22,7 +21,7 @@ namespace Novu.Models.Components
         public string Key { get; set; } = default!;
 
         /// <summary>
-        /// The display name for the topic
+        /// The display name for the topic.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }

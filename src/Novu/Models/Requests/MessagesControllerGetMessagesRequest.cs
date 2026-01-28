@@ -12,12 +12,11 @@ namespace Novu.Models.Requests
     using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
-    
+
     public class MessagesControllerGetMessagesRequest
     {
-
         /// <summary>
-        /// Channel type through which the message is sent
+        /// Channel type through which the message is sent.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=channel")]
         public ChannelTypeEnum? Channel { get; set; }
@@ -29,7 +28,7 @@ namespace Novu.Models.Requests
         public List<string>? TransactionId { get; set; }
 
         /// <summary>
-        /// Filter by exact context keys, order insensitive (format: &quot;type:id&quot;)
+        /// Filter by exact context keys, order insensitive (format: "type:id").
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contextKeys")]
         public List<string>? ContextKeys { get; set; }
@@ -41,7 +40,7 @@ namespace Novu.Models.Requests
         public double? Limit { get; set; } = 10D;
 
         /// <summary>
-        /// A header for idempotency purposes
+        /// A header for idempotency purposes.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; }

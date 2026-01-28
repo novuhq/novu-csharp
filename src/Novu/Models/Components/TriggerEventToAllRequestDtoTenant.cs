@@ -52,14 +52,9 @@ namespace Novu.Models.Components
         }
     }
 
-
     /// <summary>
     /// It is used to specify a tenant context during trigger event.<br/>
-    /// 
-    /// <remarks>
-    ///     If a new tenant object is provided, we will create a new tenant.<br/>
-    ///     
-    /// </remarks>
+    ///     If a new tenant object is provided, we will create a new tenant.
     /// </summary>
     [JsonConverter(typeof(TriggerEventToAllRequestDtoTenant.TriggerEventToAllRequestDtoTenantConverter))]
     public class TriggerEventToAllRequestDtoTenant

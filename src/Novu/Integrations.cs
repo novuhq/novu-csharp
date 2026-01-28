@@ -23,121 +23,234 @@ namespace Novu
     using System.Threading.Tasks;
 
     /// <summary>
-    /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
-    /// 
+    /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.<br/>
     /// <see href="https://docs.novu.co/platform/integrations/overview">https://docs.novu.co/platform/integrations/overview</see>
     /// </summary>
     public interface IIntegrations
     {
-
         /// <summary>
-        /// List all integrations
-        /// 
-        /// <remarks>
-        /// List all the channels integrations created in the organization
-        /// </remarks>
+        /// List all integrations.
         /// </summary>
-        Task<IntegrationsControllerListIntegrationsResponse> GetAllAsync(string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// List all the channels integrations created in the organization.
+        /// </remarks>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerListIntegrationsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerListIntegrationsResponse> GetAllAsync(
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create an integration
-        /// 
+        /// Create an integration.
+        /// </summary>
         /// <remarks>
         /// Create an integration for the current environment the user is based on the API key provided. <br/>
         ///     Each provider supports different credentials, check the provider documentation for more details.
         /// </remarks>
-        /// </summary>
-        Task<IntegrationsControllerCreateIntegrationResponse> CreateAsync(CreateIntegrationRequestDto createIntegrationRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="createIntegrationRequestDto">A <see cref="CreateIntegrationRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerCreateIntegrationResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createIntegrationRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerCreateIntegrationResponse> CreateAsync(
+            CreateIntegrationRequestDto createIntegrationRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update an integration
-        /// 
+        /// Update an integration.
+        /// </summary>
         /// <remarks>
         /// Update an integration by its unique key identifier **integrationId**. <br/>
         ///     Each provider supports different credentials, check the provider documentation for more details.
         /// </remarks>
-        /// </summary>
-        Task<IntegrationsControllerUpdateIntegrationByIdResponse> UpdateAsync(string integrationId, UpdateIntegrationRequestDto updateIntegrationRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="integrationId">Description not available.</param>
+        /// <param name="updateIntegrationRequestDto">A <see cref="UpdateIntegrationRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerUpdateIntegrationByIdResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="integrationId"/> or <paramref name="updateIntegrationRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerUpdateIntegrationByIdResponse> UpdateAsync(
+            string integrationId,
+            UpdateIntegrationRequestDto updateIntegrationRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete an integration
-        /// 
+        /// Delete an integration.
+        /// </summary>
         /// <remarks>
         /// Delete an integration by its unique key identifier **integrationId**. <br/>
         ///     This action is irreversible.
         /// </remarks>
-        /// </summary>
-        Task<IntegrationsControllerRemoveIntegrationResponse> DeleteAsync(string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="integrationId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerRemoveIntegrationResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="integrationId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerRemoveIntegrationResponse> DeleteAsync(
+            string integrationId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Auto-configure an integration for inbound webhooks
-        /// 
+        /// Auto-configure an integration for inbound webhooks.
+        /// </summary>
         /// <remarks>
         /// Auto-configure an integration by its unique key identifier **integrationId** for inbound webhook support. <br/>
         ///     This will automatically generate required webhook signing keys and configure webhook endpoints.
         /// </remarks>
-        /// </summary>
-        Task<IntegrationsControllerAutoConfigureIntegrationResponse> IntegrationsControllerAutoConfigureIntegrationAsync(string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="integrationId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerAutoConfigureIntegrationResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="integrationId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerAutoConfigureIntegrationResponse> IntegrationsControllerAutoConfigureIntegrationAsync(
+            string integrationId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update integration as primary
-        /// 
+        /// Update integration as primary.
+        /// </summary>
         /// <remarks>
         /// Update an integration as **primary** by its unique key identifier **integrationId**. <br/>
         ///     This API will set the integration as primary for that channel in the current environment. <br/>
         ///     Primary integration is used to deliver notification for sms and email channels in the workflow.
         /// </remarks>
-        /// </summary>
-        Task<IntegrationsControllerSetIntegrationAsPrimaryResponse> SetPrimaryAsync(string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="integrationId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerSetIntegrationAsPrimaryResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="integrationId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerSetIntegrationAsPrimaryResponse> SetPrimaryAsync(
+            string integrationId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// List active integrations
-        /// 
+        /// List active integrations.
+        /// </summary>
         /// <remarks>
-        /// List all the active integrations created in the organization
+        /// List all the active integrations created in the organization.
         /// </remarks>
-        /// </summary>
-        Task<IntegrationsControllerGetActiveIntegrationsResponse> ListActiveAsync(string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerGetActiveIntegrationsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerGetActiveIntegrationsResponse> ListActiveAsync(
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Generate chat OAuth URL
-        /// 
+        /// Generate chat OAuth URL.
+        /// </summary>
         /// <remarks>
         /// Generate an OAuth URL for chat integrations like Slack and MS Teams. <br/>
         ///     This URL allows subscribers to authorize the integration, enabling the system to send messages <br/>
         ///     through their chat workspace. The generated URL expires after 5 minutes.
         /// </remarks>
-        /// </summary>
-        Task<IntegrationsControllerGetChatOAuthUrlResponse> GenerateChatOAuthUrlAsync(GenerateChatOauthUrlRequestDto generateChatOauthUrlRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null);
+        /// <param name="generateChatOauthUrlRequestDto">A <see cref="GenerateChatOauthUrlRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerGetChatOAuthUrlResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="generateChatOauthUrlRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerGetChatOAuthUrlResponse> GenerateChatOAuthUrlAsync(
+            GenerateChatOauthUrlRequestDto generateChatOauthUrlRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     /// <summary>
-    /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.
-    /// 
+    /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.<br/>
     /// <see href="https://docs.novu.co/platform/integrations/overview">https://docs.novu.co/platform/integrations/overview</see>
     /// </summary>
     public class Integrations: IIntegrations
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Integrations(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<IntegrationsControllerListIntegrationsResponse> GetAllAsync(string? idempotencyKey = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List all integrations.
+        /// </summary>
+        /// <remarks>
+        /// List all the channels integrations created in the organization.
+        /// </remarks>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerListIntegrationsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerListIntegrationsResponse> GetAllAsync(
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
             var request = new IntegrationsControllerListIntegrationsRequest()
             {
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/integrations";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
@@ -195,7 +308,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -350,15 +463,39 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<IntegrationsControllerCreateIntegrationResponse> CreateAsync(CreateIntegrationRequestDto createIntegrationRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Create an integration.
+        /// </summary>
+        /// <remarks>
+        /// Create an integration for the current environment the user is based on the API key provided. <br/>
+        ///     Each provider supports different credentials, check the provider documentation for more details.
+        /// </remarks>
+        /// <param name="createIntegrationRequestDto">A <see cref="CreateIntegrationRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerCreateIntegrationResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createIntegrationRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerCreateIntegrationResponse> CreateAsync(
+            CreateIntegrationRequestDto createIntegrationRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (createIntegrationRequestDto == null) throw new ArgumentNullException(nameof(createIntegrationRequestDto));
+
             var request = new IntegrationsControllerCreateIntegrationRequest()
             {
                 CreateIntegrationRequestDto = createIntegrationRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/integrations";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -422,7 +559,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -577,14 +714,42 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<IntegrationsControllerUpdateIntegrationByIdResponse> UpdateAsync(string integrationId, UpdateIntegrationRequestDto updateIntegrationRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update an integration.
+        /// </summary>
+        /// <remarks>
+        /// Update an integration by its unique key identifier **integrationId**. <br/>
+        ///     Each provider supports different credentials, check the provider documentation for more details.
+        /// </remarks>
+        /// <param name="integrationId">Description not available.</param>
+        /// <param name="updateIntegrationRequestDto">A <see cref="UpdateIntegrationRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerUpdateIntegrationByIdResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="integrationId"/> or <paramref name="updateIntegrationRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerUpdateIntegrationByIdResponse> UpdateAsync(
+            string integrationId,
+            UpdateIntegrationRequestDto updateIntegrationRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (integrationId == null) throw new ArgumentNullException(nameof(integrationId));
+            if (updateIntegrationRequestDto == null) throw new ArgumentNullException(nameof(updateIntegrationRequestDto));
+
             var request = new IntegrationsControllerUpdateIntegrationByIdRequest()
             {
                 IntegrationId = integrationId,
                 UpdateIntegrationRequestDto = updateIntegrationRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/integrations/{integrationId}", request, null);
 
@@ -649,7 +814,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -804,13 +969,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<IntegrationsControllerRemoveIntegrationResponse> DeleteAsync(string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete an integration.
+        /// </summary>
+        /// <remarks>
+        /// Delete an integration by its unique key identifier **integrationId**. <br/>
+        ///     This action is irreversible.
+        /// </remarks>
+        /// <param name="integrationId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerRemoveIntegrationResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="integrationId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerRemoveIntegrationResponse> DeleteAsync(
+            string integrationId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (integrationId == null) throw new ArgumentNullException(nameof(integrationId));
+
             var request = new IntegrationsControllerRemoveIntegrationRequest()
             {
                 IntegrationId = integrationId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/integrations/{integrationId}", request, null);
 
@@ -869,7 +1059,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1024,13 +1214,38 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<IntegrationsControllerAutoConfigureIntegrationResponse> IntegrationsControllerAutoConfigureIntegrationAsync(string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Auto-configure an integration for inbound webhooks.
+        /// </summary>
+        /// <remarks>
+        /// Auto-configure an integration by its unique key identifier **integrationId** for inbound webhook support. <br/>
+        ///     This will automatically generate required webhook signing keys and configure webhook endpoints.
+        /// </remarks>
+        /// <param name="integrationId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerAutoConfigureIntegrationResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="integrationId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerAutoConfigureIntegrationResponse> IntegrationsControllerAutoConfigureIntegrationAsync(
+            string integrationId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (integrationId == null) throw new ArgumentNullException(nameof(integrationId));
+
             var request = new IntegrationsControllerAutoConfigureIntegrationRequest()
             {
                 IntegrationId = integrationId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/integrations/{integrationId}/auto-configure", request, null);
 
@@ -1089,7 +1304,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1244,13 +1459,39 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<IntegrationsControllerSetIntegrationAsPrimaryResponse> SetPrimaryAsync(string integrationId, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update integration as primary.
+        /// </summary>
+        /// <remarks>
+        /// Update an integration as **primary** by its unique key identifier **integrationId**. <br/>
+        ///     This API will set the integration as primary for that channel in the current environment. <br/>
+        ///     Primary integration is used to deliver notification for sms and email channels in the workflow.
+        /// </remarks>
+        /// <param name="integrationId">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerSetIntegrationAsPrimaryResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="integrationId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerSetIntegrationAsPrimaryResponse> SetPrimaryAsync(
+            string integrationId,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (integrationId == null) throw new ArgumentNullException(nameof(integrationId));
+
             var request = new IntegrationsControllerSetIntegrationAsPrimaryRequest()
             {
                 IntegrationId = integrationId,
                 IdempotencyKey = idempotencyKey,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/integrations/{integrationId}/set-primary", request, null);
 
@@ -1309,7 +1550,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1464,14 +1705,32 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<IntegrationsControllerGetActiveIntegrationsResponse> ListActiveAsync(string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// List active integrations.
+        /// </summary>
+        /// <remarks>
+        /// List all the active integrations created in the organization.
+        /// </remarks>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerGetActiveIntegrationsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerGetActiveIntegrationsResponse> ListActiveAsync(
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
             var request = new IntegrationsControllerGetActiveIntegrationsRequest()
             {
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/integrations/active";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
@@ -1529,7 +1788,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1684,15 +1943,40 @@ namespace Novu
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<IntegrationsControllerGetChatOAuthUrlResponse> GenerateChatOAuthUrlAsync(GenerateChatOauthUrlRequestDto generateChatOauthUrlRequestDto, string? idempotencyKey = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Generate chat OAuth URL.
+        /// </summary>
+        /// <remarks>
+        /// Generate an OAuth URL for chat integrations like Slack and MS Teams. <br/>
+        ///     This URL allows subscribers to authorize the integration, enabling the system to send messages <br/>
+        ///     through their chat workspace. The generated URL expires after 5 minutes.
+        /// </remarks>
+        /// <param name="generateChatOauthUrlRequestDto">A <see cref="GenerateChatOauthUrlRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerGetChatOAuthUrlResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="generateChatOauthUrlRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerGetChatOAuthUrlResponse> GenerateChatOAuthUrlAsync(
+            GenerateChatOauthUrlRequestDto generateChatOauthUrlRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
         {
+            if (generateChatOauthUrlRequestDto == null) throw new ArgumentNullException(nameof(generateChatOauthUrlRequestDto));
+
             var request = new IntegrationsControllerGetChatOAuthUrlRequest()
             {
                 GenerateChatOauthUrlRequestDto = generateChatOauthUrlRequestDto,
                 IdempotencyKey = idempotencyKey,
             };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/integrations/chat/oauth";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -1756,7 +2040,7 @@ namespace Novu
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 413 || _statusCode == 414 || _statusCode == 415 || _statusCode == 422 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 503 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1910,5 +2194,6 @@ namespace Novu
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }
