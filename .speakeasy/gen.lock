@@ -3,16 +3,16 @@ id: 61e876ba-f1ab-4e7f-bfcc-4f8231d25d15
 management:
   docChecksum: 941bcd37a84b4e59e5879a5070526888
   docVersion: 3.12.0
-  speakeasyVersion: 1.700.1
-  generationVersion: 2.801.0
-  releaseVersion: 3.13.0
-  configChecksum: bc51ac76819b8f39f3e0b14bec8de3cc
+  speakeasyVersion: 1.700.2
+  generationVersion: 2.801.2
+  releaseVersion: 3.13.1
+  configChecksum: 692dfaec051c0389efafe274b6df5719
   repoURL: https://github.com/novuhq/novu-csharp.git
   published: true
 persistentEdits:
-  generation_id: 6d0feac9-15d1-4a23-88a5-6450c9565ba2
-  pristine_commit_hash: 3e7b6de80d5cd7756e43004edbe43a40c5ea7b72
-  pristine_tree_hash: 1808fb1a34e683ea2961ba02381b7f045317ca56
+  generation_id: 8d525f55-2dd9-4ec2-b373-03545772daa5
+  pristine_commit_hash: 8d3dc291ea5a1679dabce637a864bc41ebd2bb4d
+  pristine_tree_hash: 615131d2f7ae90ead33804405fdf6fb14d7f7788
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -5610,8 +5610,8 @@ trackedFiles:
     pristine_git_object: b605273bb7063cad5bac055373375f6dc89cd290
   src/Novu/Novu.csproj:
     id: d1fe7f089c20
-    last_write_checksum: sha1:c77e91bcbc2c5e555db7720eac301f897a2e7d07
-    pristine_git_object: c24f5b68b4db5e965635690eeb02dc0fc0794008
+    last_write_checksum: sha1:b128b5d4635c777e7c61e799d7e66375c5bdf354
+    pristine_git_object: c2602915939a41cb8d703c785bdd4ceb2cd352bc
   src/Novu/NovuSDK.cs:
     id: 4ea74ce26f49
     last_write_checksum: sha1:ec50ad3da30e944d5e02794affe28b494734fe7c
@@ -5626,8 +5626,8 @@ trackedFiles:
     pristine_git_object: ac1d7e5f40efff8a662934713f0d73f920e1c508
   src/Novu/SDKConfig.cs:
     id: 228eb68fa757
-    last_write_checksum: sha1:c18145b540dd2f87b6b3da4da0fa37658ffe8b57
-    pristine_git_object: aac3d3d22338fdc539220e7a9121e1f77baeccb9
+    last_write_checksum: sha1:e6f5b1bbc431b72cd10365afa3ef4165b7b6beab
+    pristine_git_object: e5f493b17d632e590d8f5298c7a01aeed7490e6d
   src/Novu/Steps.cs:
     id: 5b24d842ca7a
     last_write_checksum: sha1:c61df21cf6ad4ca9130a3e9120015181c632f3fc
@@ -5674,8 +5674,8 @@ trackedFiles:
     pristine_git_object: 9c9aae9055f608027cf99f2fded32e149f0b6f36
   src/Novu/Utils/Constants.cs:
     id: 47b034209815
-    last_write_checksum: sha1:7312128b15f50218489266137d40309ca67725c8
-    pristine_git_object: 9ede5fc593509e329270778f0da0fe7622eae009
+    last_write_checksum: sha1:42c8cbc6f9e1fd22a5c2a9f5cd0f86d45a4cc738
+    pristine_git_object: c119e3b4f106c562f26c4886f1e271484856115d
   src/Novu/Utils/DecimalStrConverter.cs:
     id: c5c1dbe2ffcb
     last_write_checksum: sha1:e9b291cdfe54d763cfec70c8b9b83e59e0de7a5b
