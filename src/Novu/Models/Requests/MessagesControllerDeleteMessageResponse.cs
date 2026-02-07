@@ -24,6 +24,6 @@ namespace Novu.Models.Requests
         /// </summary>
         public DeleteMessageResponseDto? DeleteMessageResponseDto { get; set; }
 
-        public Dictionary<string, List<string>> Headers { get; set; } = default!;
+        public Dictionary<string, List<string>> Headers { get; set; } = new Dictionary<string, List<string>>();
     }
 }

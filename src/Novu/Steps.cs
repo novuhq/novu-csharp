@@ -201,7 +201,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.StepResponseDto = obj;
                     return response;

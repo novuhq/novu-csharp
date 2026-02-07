@@ -366,7 +366,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.LayoutResponseDto = obj;
                     return response;
@@ -599,7 +600,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ListLayoutResponseDto = obj;
                     return response;
@@ -853,7 +855,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.LayoutResponseDto = obj;
                     return response;
@@ -1097,7 +1100,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.LayoutResponseDto = obj;
                     return response;
@@ -1328,7 +1332,8 @@ namespace Novu
                     {
                         Response = httpResponse,
                         Request = httpRequest
-                    }
+                    },
+                    Headers = Utilities.CollectHeaders(httpResponse.Headers)
                 };
             }
             else if(responseStatusCode == 414)
@@ -1577,7 +1582,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.LayoutResponseDto = obj;
                     return response;
@@ -1831,7 +1837,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GenerateLayoutPreviewResponseDto = obj;
                     return response;
@@ -2075,7 +2082,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GetLayoutUsageResponseDto = obj;
                     return response;

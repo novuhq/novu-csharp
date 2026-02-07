@@ -43,6 +43,10 @@ namespace Novu
         /// </summary>
         public ILayouts Layouts { get; }
 
+        /// <summary>
+        /// A subscriber in Novu represents someone who should receive a message. A subscriber's profile information contains important attributes about the subscriber that will be used in messages (name, email). The subscriber object can contain other key-value pairs that can be used to further personalize your messages.<br/>
+        /// <see href="https://docs.novu.co/subscribers/subscribers">https://docs.novu.co/subscribers/subscribers</see>
+        /// </summary>
         public ISubscribers Subscribers { get; }
 
         public ISubscribersPreferences SubscribersPreferences { get; }
@@ -563,7 +567,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.TriggerEventResponseDto = obj;
                     return response;
@@ -828,7 +833,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.Boolean = obj;
                     return response;
@@ -1082,7 +1088,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.TriggerEventResponseDto = obj;
                     return response;
@@ -1354,7 +1361,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.TriggerEventResponseDtos = obj;
                     return response;

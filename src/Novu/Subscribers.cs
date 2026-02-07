@@ -22,6 +22,10 @@ namespace Novu
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// A subscriber in Novu represents someone who should receive a message. A subscriber's profile information contains important attributes about the subscriber that will be used in messages (name, email). The subscriber object can contain other key-value pairs that can be used to further personalize your messages.<br/>
+    /// <see href="https://docs.novu.co/subscribers/subscribers">https://docs.novu.co/subscribers/subscribers</see>
+    /// </summary>
     public interface ISubscribers
     {
         public IPreferences Preferences { get; }
@@ -266,6 +270,10 @@ namespace Novu
         );
     }
 
+    /// <summary>
+    /// A subscriber in Novu represents someone who should receive a message. A subscriber's profile information contains important attributes about the subscriber that will be used in messages (name, email). The subscriber object can contain other key-value pairs that can be used to further personalize your messages.<br/>
+    /// <see href="https://docs.novu.co/subscribers/subscribers">https://docs.novu.co/subscribers/subscribers</see>
+    /// </summary>
     public class Subscribers: ISubscribers
     {
         /// <summary>
@@ -418,7 +426,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ListSubscribersResponseDto = obj;
                     return response;
@@ -673,7 +682,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.SubscriberResponseDto = obj;
                     return response;
@@ -938,7 +948,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.SubscriberResponseDto = obj;
                     return response;
@@ -1193,7 +1204,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.SubscriberResponseDto = obj;
                     return response;
@@ -1438,7 +1450,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.RemoveSubscriberResponseDto = obj;
                     return response;
@@ -1688,7 +1701,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.BulkCreateSubscriberResponseDto = obj;
                     return response;
@@ -1943,7 +1957,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.SubscriberResponseDto = obj;
                     return response;
@@ -2198,7 +2213,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.SubscriberResponseDto = obj;
                     return response;
@@ -2434,7 +2450,8 @@ namespace Novu
                     {
                         Response = httpResponse,
                         Request = httpRequest
-                    }
+                    },
+                    Headers = Utilities.CollectHeaders(httpResponse.Headers)
                 };
             }
             else if(responseStatusCode == 414)
@@ -2683,7 +2700,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.SubscriberResponseDto = obj;
                     return response;
