@@ -21,6 +21,6 @@ namespace Novu.Models.Requests
 
         public double? Number { get; set; }
 
-        public Dictionary<string, List<string>> Headers { get; set; } = default!;
+        public Dictionary<string, List<string>> Headers { get; set; } = new Dictionary<string, List<string>>();
     }
 }
