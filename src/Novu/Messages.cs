@@ -203,9 +203,9 @@ namespace Novu
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -241,7 +241,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.MessagesResponseDto = obj;
                     return response;
@@ -448,9 +449,9 @@ namespace Novu
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -486,7 +487,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.DeleteMessageResponseDto = obj;
                     return response;
@@ -696,9 +698,9 @@ namespace Novu
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -721,7 +723,8 @@ namespace Novu
                     {
                         Response = httpResponse,
                         Request = httpRequest
-                    }
+                    },
+                    Headers = Utilities.CollectHeaders(httpResponse.Headers)
                 };
             }
             else if(responseStatusCode == 414)
