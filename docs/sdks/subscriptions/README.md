@@ -7,7 +7,7 @@
 * [List](#list) - List topic subscriptions
 * [Create](#create) - Create topic subscriptions
 * [Delete](#delete) - Delete topic subscriptions
-* [GetSubscription](#getsubscription) - Get a topic subscription
+* [GetSubscription](#getsubscription) - Retrieve a topic subscription
 * [Update](#update) - Update a topic subscription
 
 ## List
@@ -206,7 +206,7 @@ var res = await sdk.Topics.Subscriptions.DeleteAsync(
 
 ## GetSubscription
 
-Get a subscription by its unique identifier for a topic.
+Retrieve a subscription by its unique identifier for a topic.
 
 ### Example Usage
 
