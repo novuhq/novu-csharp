@@ -297,7 +297,7 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 ### [Environments](docs/sdks/environments/README.md)
 
-* [GetTags](docs/sdks/environments/README.md#gettags) - Get environment tags
+* [GetTags](docs/sdks/environments/README.md#gettags) - List environment tags
 * [Create](docs/sdks/environments/README.md#create) - Create an environment
 * [List](docs/sdks/environments/README.md#list) - List all environments
 * [Update](docs/sdks/environments/README.md#update) - Update an environment
@@ -386,7 +386,7 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [List](docs/sdks/subscriptions/README.md#list) - List topic subscriptions
 * [Create](docs/sdks/subscriptions/README.md#create) - Create topic subscriptions
 * [Delete](docs/sdks/subscriptions/README.md#delete) - Delete topic subscriptions
-* [GetSubscription](docs/sdks/subscriptions/README.md#getsubscription) - Get a topic subscription
+* [GetSubscription](docs/sdks/subscriptions/README.md#getsubscription) - Retrieve a topic subscription
 * [Update](docs/sdks/subscriptions/README.md#update) - Update a topic subscription
 
 ### [TopicsSubscribers](docs/sdks/topicssubscribers/README.md)
