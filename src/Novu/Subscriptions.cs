@@ -95,10 +95,10 @@ namespace Novu
         );
 
         /// <summary>
-        /// Get a topic subscription.
+        /// Retrieve a topic subscription.
         /// </summary>
         /// <remarks>
-        /// Get a subscription by its unique identifier for a topic.
+        /// Retrieve a subscription by its unique identifier for a topic.
         /// </remarks>
         /// <param name="topicKey">The key identifier of the topic.</param>
         /// <param name="identifier">The unique identifier of the subscription.</param>
@@ -248,9 +248,9 @@ namespace Novu
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -286,7 +286,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ListTopicSubscriptionsResponseDto = obj;
                     return response;
@@ -503,9 +504,9 @@ namespace Novu
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -541,7 +542,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.CreateSubscriptionsResponseDto = obj;
                     return response;
@@ -757,9 +759,9 @@ namespace Novu
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -795,7 +797,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.DeleteTopicSubscriptionsResponseDto = obj;
                     return response;
@@ -905,10 +908,10 @@ namespace Novu
 
 
         /// <summary>
-        /// Get a topic subscription.
+        /// Retrieve a topic subscription.
         /// </summary>
         /// <remarks>
-        /// Get a subscription by its unique identifier for a topic.
+        /// Retrieve a subscription by its unique identifier for a topic.
         /// </remarks>
         /// <param name="topicKey">The key identifier of the topic.</param>
         /// <param name="identifier">The unique identifier of the subscription.</param>
@@ -1005,9 +1008,9 @@ namespace Novu
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1043,7 +1046,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.SubscriptionDetailsResponseDto = obj;
                     return response;
@@ -1263,9 +1267,9 @@ namespace Novu
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1301,7 +1305,8 @@ namespace Novu
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.SubscriptionResponseDto = obj;
                     return response;
