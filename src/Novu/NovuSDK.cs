@@ -59,7 +59,7 @@ namespace Novu
 
         /// <summary>
         /// Used to localize your notifications to different languages.<br/>
-        /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
+        /// <see href="https://docs.novu.co/platform/workflow/advanced-features/translations">https://docs.novu.co/platform/workflow/advanced-features/translations</see>
         /// </summary>
         public ITranslations Translations { get; }
 
@@ -463,6 +463,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "TriggerEventRequestDto", "json", false, false);
             if (serializedBody != null)
             {
@@ -735,6 +740,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
@@ -983,6 +993,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "TriggerEventToAllRequestDto", "json", false, false);
             if (serializedBody != null)
@@ -1256,6 +1271,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "BulkTriggerEventDto", "json", false, false);
             if (serializedBody != null)

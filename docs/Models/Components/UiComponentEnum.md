@@ -9,6 +9,7 @@ Component type for the UI Schema Property
 | ---------------------------------- | ---------------------------------- |
 | `EmailEditorSelect`                | EMAIL_EDITOR_SELECT                |
 | `LayoutSelect`                     | LAYOUT_SELECT                      |
+| `EmailRendererSelect`              | EMAIL_RENDERER_SELECT              |
 | `BlockEditor`                      | BLOCK_EDITOR                       |
 | `EmailBody`                        | EMAIL_BODY                         |
 | `TextFullLine`                     | TEXT_FULL_LINE                     |
