@@ -14,44 +14,26 @@ namespace Novu.Models.Components
     using System;
 
     /// <summary>
-    /// Source of workflow creation.
+    /// Type of renderer to use (raw HTML or React Email step resolver).
     /// </summary>
-    public enum WorkflowCreationSourceEnum
+    public enum EmailStepResponseDtoRendererType
     {
-        [JsonProperty("template_store")]
-        TemplateStore,
-        [JsonProperty("editor")]
-        Editor,
-        [JsonProperty("notification_directory")]
-        NotificationDirectory,
-        [JsonProperty("onboarding_digest_demo")]
-        OnboardingDigestDemo,
-        [JsonProperty("onboarding_in_app")]
-        OnboardingInApp,
-        [JsonProperty("empty_state")]
-        EmptyState,
-        [JsonProperty("dropdown")]
-        Dropdown,
-        [JsonProperty("onboarding_get_started")]
-        OnboardingGetStarted,
-        [JsonProperty("bridge")]
-        Bridge,
-        [JsonProperty("dashboard")]
-        Dashboard,
-        [JsonProperty("ai")]
-        Ai,
+        [JsonProperty("html")]
+        Html,
+        [JsonProperty("react-email")]
+        ReactEmail,
     }
 
-    public static class WorkflowCreationSourceEnumExtension
+    public static class EmailStepResponseDtoRendererTypeExtension
     {
-        public static string Value(this WorkflowCreationSourceEnum value)
+        public static string Value(this EmailStepResponseDtoRendererType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static WorkflowCreationSourceEnum ToEnum(this string value)
+        public static EmailStepResponseDtoRendererType ToEnum(this string value)
         {
-            foreach(var field in typeof(WorkflowCreationSourceEnum).GetFields())
+            foreach(var field in typeof(EmailStepResponseDtoRendererType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -64,14 +46,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is WorkflowCreationSourceEnum)
+                    if (enumVal is EmailStepResponseDtoRendererType)
                     {
-                        return (WorkflowCreationSourceEnum)enumVal;
+                        return (EmailStepResponseDtoRendererType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum WorkflowCreationSourceEnum");
+            throw new Exception($"Unknown value {value} for enum EmailStepResponseDtoRendererType");
         }
     }
 }
