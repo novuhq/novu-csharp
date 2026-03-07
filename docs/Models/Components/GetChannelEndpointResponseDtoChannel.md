@@ -2,6 +2,14 @@
 
 The channel type (email, sms, push, chat, etc.).
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = GetChannelEndpointResponseDtoChannel.InApp;
+```
+
 
 ## Values
 

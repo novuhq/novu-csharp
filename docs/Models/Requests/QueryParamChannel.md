@@ -2,6 +2,14 @@
 
 Channel type to filter results.
 
+## Example Usage
+
+```csharp
+using Novu.Models.Requests;
+
+var value = QueryParamChannel.InApp;
+```
+
 
 ## Values
 

@@ -1,5 +1,13 @@
 # DigestTimedConfigDtoWeekDays
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = DigestTimedConfigDtoWeekDays.Monday;
+```
+
 
 ## Values
 

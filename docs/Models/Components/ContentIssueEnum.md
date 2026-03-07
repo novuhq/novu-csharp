@@ -2,6 +2,14 @@
 
 Type of step content issue
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ContentIssueEnum.IllegalVariableInControlValue;
+```
+
 
 ## Values
 
