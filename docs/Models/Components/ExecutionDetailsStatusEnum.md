@@ -2,6 +2,14 @@
 
 Status of the execution detail
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ExecutionDetailsStatusEnum.Success;
+```
+
 
 ## Values
 

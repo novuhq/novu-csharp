@@ -1,5 +1,13 @@
 # DelayRegularMetadataUnit
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = DelayRegularMetadataUnit.Seconds;
+```
+
 
 ## Values
 

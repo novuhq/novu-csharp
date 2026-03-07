@@ -2,6 +2,14 @@
 
 Type of the job
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ActivityNotificationJobResponseDtoType.InApp;
+```
+
 
 ## Values
 

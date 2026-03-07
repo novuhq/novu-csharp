@@ -44,6 +44,12 @@ namespace Novu.Models.Components
         public EmailStepResponseDtoEditorType? EditorType { get; set; } = Novu.Models.Components.EmailStepResponseDtoEditorType.Block;
 
         /// <summary>
+        /// Type of renderer to use (raw HTML or React Email step resolver).
+        /// </summary>
+        [JsonProperty("rendererType")]
+        public EmailStepResponseDtoRendererType? RendererType { get; set; } = Novu.Models.Components.EmailStepResponseDtoRendererType.Html;
+
+        /// <summary>
         /// Disable sanitization of the output.
         /// </summary>
         [JsonProperty("disableOutputSanitization")]

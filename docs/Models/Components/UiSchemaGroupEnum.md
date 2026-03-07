@@ -2,6 +2,14 @@
 
 Group of the UI Schema
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = UiSchemaGroupEnum.InApp;
+```
+
 
 ## Values
 

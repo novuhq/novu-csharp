@@ -390,9 +390,9 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 93 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 93 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 93 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 95 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 95 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 95 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 
 \* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.
