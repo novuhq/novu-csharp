@@ -12,118 +12,138 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Component type for the UI Schema Property.
     /// </summary>
-    public enum UiComponentEnum
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class UiComponentEnum : IEquatable<UiComponentEnum>
     {
-        [JsonProperty("EMAIL_EDITOR_SELECT")]
-        EmailEditorSelect,
-        [JsonProperty("LAYOUT_SELECT")]
-        LayoutSelect,
-        [JsonProperty("BLOCK_EDITOR")]
-        BlockEditor,
-        [JsonProperty("EMAIL_BODY")]
-        EmailBody,
-        [JsonProperty("TEXT_FULL_LINE")]
-        TextFullLine,
-        [JsonProperty("TEXT_INLINE_LABEL")]
-        TextInlineLabel,
-        [JsonProperty("IN_APP_BODY")]
-        InAppBody,
-        [JsonProperty("IN_APP_AVATAR")]
-        InAppAvatar,
-        [JsonProperty("IN_APP_PRIMARY_SUBJECT")]
-        InAppPrimarySubject,
-        [JsonProperty("IN_APP_BUTTON_DROPDOWN")]
-        InAppButtonDropdown,
-        [JsonProperty("IN_APP_DISABLE_SANITIZATION_SWITCH")]
-        InAppDisableSanitizationSwitch,
-        [JsonProperty("DISABLE_SANITIZATION_SWITCH")]
-        DisableSanitizationSwitch,
-        [JsonProperty("URL_TEXT_BOX")]
-        UrlTextBox,
-        [JsonProperty("DIGEST_AMOUNT")]
-        DigestAmount,
-        [JsonProperty("DIGEST_UNIT")]
-        DigestUnit,
-        [JsonProperty("DIGEST_TYPE")]
-        DigestType,
-        [JsonProperty("DIGEST_KEY")]
-        DigestKey,
-        [JsonProperty("DIGEST_CRON")]
-        DigestCron,
-        [JsonProperty("DELAY_AMOUNT")]
-        DelayAmount,
-        [JsonProperty("DELAY_UNIT")]
-        DelayUnit,
-        [JsonProperty("DELAY_TYPE")]
-        DelayType,
-        [JsonProperty("DELAY_CRON")]
-        DelayCron,
-        [JsonProperty("DELAY_DYNAMIC_KEY")]
-        DelayDynamicKey,
-        [JsonProperty("THROTTLE_TYPE")]
-        ThrottleType,
-        [JsonProperty("THROTTLE_WINDOW")]
-        ThrottleWindow,
-        [JsonProperty("THROTTLE_UNIT")]
-        ThrottleUnit,
-        [JsonProperty("THROTTLE_DYNAMIC_KEY")]
-        ThrottleDynamicKey,
-        [JsonProperty("THROTTLE_THRESHOLD")]
-        ThrottleThreshold,
-        [JsonProperty("THROTTLE_KEY")]
-        ThrottleKey,
-        [JsonProperty("EXTEND_TO_SCHEDULE")]
-        ExtendToSchedule,
-        [JsonProperty("SMS_BODY")]
-        SmsBody,
-        [JsonProperty("CHAT_BODY")]
-        ChatBody,
-        [JsonProperty("PUSH_BODY")]
-        PushBody,
-        [JsonProperty("PUSH_SUBJECT")]
-        PushSubject,
-        [JsonProperty("QUERY_EDITOR")]
-        QueryEditor,
-        [JsonProperty("DATA")]
-        Data,
-        [JsonProperty("LAYOUT_EMAIL")]
-        LayoutEmail,
-    }
+        public static readonly UiComponentEnum EmailEditorSelect = new UiComponentEnum("EMAIL_EDITOR_SELECT");
+        public static readonly UiComponentEnum LayoutSelect = new UiComponentEnum("LAYOUT_SELECT");
+        public static readonly UiComponentEnum EmailRendererSelect = new UiComponentEnum("EMAIL_RENDERER_SELECT");
+        public static readonly UiComponentEnum BlockEditor = new UiComponentEnum("BLOCK_EDITOR");
+        public static readonly UiComponentEnum EmailBody = new UiComponentEnum("EMAIL_BODY");
+        public static readonly UiComponentEnum TextFullLine = new UiComponentEnum("TEXT_FULL_LINE");
+        public static readonly UiComponentEnum TextInlineLabel = new UiComponentEnum("TEXT_INLINE_LABEL");
+        public static readonly UiComponentEnum InAppBody = new UiComponentEnum("IN_APP_BODY");
+        public static readonly UiComponentEnum InAppAvatar = new UiComponentEnum("IN_APP_AVATAR");
+        public static readonly UiComponentEnum InAppPrimarySubject = new UiComponentEnum("IN_APP_PRIMARY_SUBJECT");
+        public static readonly UiComponentEnum InAppButtonDropdown = new UiComponentEnum("IN_APP_BUTTON_DROPDOWN");
+        public static readonly UiComponentEnum InAppDisableSanitizationSwitch = new UiComponentEnum("IN_APP_DISABLE_SANITIZATION_SWITCH");
+        public static readonly UiComponentEnum DisableSanitizationSwitch = new UiComponentEnum("DISABLE_SANITIZATION_SWITCH");
+        public static readonly UiComponentEnum UrlTextBox = new UiComponentEnum("URL_TEXT_BOX");
+        public static readonly UiComponentEnum DigestAmount = new UiComponentEnum("DIGEST_AMOUNT");
+        public static readonly UiComponentEnum DigestUnit = new UiComponentEnum("DIGEST_UNIT");
+        public static readonly UiComponentEnum DigestType = new UiComponentEnum("DIGEST_TYPE");
+        public static readonly UiComponentEnum DigestKey = new UiComponentEnum("DIGEST_KEY");
+        public static readonly UiComponentEnum DigestCron = new UiComponentEnum("DIGEST_CRON");
+        public static readonly UiComponentEnum DelayAmount = new UiComponentEnum("DELAY_AMOUNT");
+        public static readonly UiComponentEnum DelayUnit = new UiComponentEnum("DELAY_UNIT");
+        public static readonly UiComponentEnum DelayType = new UiComponentEnum("DELAY_TYPE");
+        public static readonly UiComponentEnum DelayCron = new UiComponentEnum("DELAY_CRON");
+        public static readonly UiComponentEnum DelayDynamicKey = new UiComponentEnum("DELAY_DYNAMIC_KEY");
+        public static readonly UiComponentEnum ThrottleType = new UiComponentEnum("THROTTLE_TYPE");
+        public static readonly UiComponentEnum ThrottleWindow = new UiComponentEnum("THROTTLE_WINDOW");
+        public static readonly UiComponentEnum ThrottleUnit = new UiComponentEnum("THROTTLE_UNIT");
+        public static readonly UiComponentEnum ThrottleDynamicKey = new UiComponentEnum("THROTTLE_DYNAMIC_KEY");
+        public static readonly UiComponentEnum ThrottleThreshold = new UiComponentEnum("THROTTLE_THRESHOLD");
+        public static readonly UiComponentEnum ThrottleKey = new UiComponentEnum("THROTTLE_KEY");
+        public static readonly UiComponentEnum ExtendToSchedule = new UiComponentEnum("EXTEND_TO_SCHEDULE");
+        public static readonly UiComponentEnum SmsBody = new UiComponentEnum("SMS_BODY");
+        public static readonly UiComponentEnum ChatBody = new UiComponentEnum("CHAT_BODY");
+        public static readonly UiComponentEnum PushBody = new UiComponentEnum("PUSH_BODY");
+        public static readonly UiComponentEnum PushSubject = new UiComponentEnum("PUSH_SUBJECT");
+        public static readonly UiComponentEnum QueryEditor = new UiComponentEnum("QUERY_EDITOR");
+        public static readonly UiComponentEnum Data = new UiComponentEnum("DATA");
+        public static readonly UiComponentEnum LayoutEmail = new UiComponentEnum("LAYOUT_EMAIL");
 
-    public static class UiComponentEnumExtension
-    {
-        public static string Value(this UiComponentEnum value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static UiComponentEnum ToEnum(this string value)
-        {
-            foreach(var field in typeof(UiComponentEnum).GetFields())
+        private static readonly Dictionary <string, UiComponentEnum> _knownValues =
+            new Dictionary <string, UiComponentEnum> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["EMAIL_EDITOR_SELECT"] = EmailEditorSelect,
+                ["LAYOUT_SELECT"] = LayoutSelect,
+                ["EMAIL_RENDERER_SELECT"] = EmailRendererSelect,
+                ["BLOCK_EDITOR"] = BlockEditor,
+                ["EMAIL_BODY"] = EmailBody,
+                ["TEXT_FULL_LINE"] = TextFullLine,
+                ["TEXT_INLINE_LABEL"] = TextInlineLabel,
+                ["IN_APP_BODY"] = InAppBody,
+                ["IN_APP_AVATAR"] = InAppAvatar,
+                ["IN_APP_PRIMARY_SUBJECT"] = InAppPrimarySubject,
+                ["IN_APP_BUTTON_DROPDOWN"] = InAppButtonDropdown,
+                ["IN_APP_DISABLE_SANITIZATION_SWITCH"] = InAppDisableSanitizationSwitch,
+                ["DISABLE_SANITIZATION_SWITCH"] = DisableSanitizationSwitch,
+                ["URL_TEXT_BOX"] = UrlTextBox,
+                ["DIGEST_AMOUNT"] = DigestAmount,
+                ["DIGEST_UNIT"] = DigestUnit,
+                ["DIGEST_TYPE"] = DigestType,
+                ["DIGEST_KEY"] = DigestKey,
+                ["DIGEST_CRON"] = DigestCron,
+                ["DELAY_AMOUNT"] = DelayAmount,
+                ["DELAY_UNIT"] = DelayUnit,
+                ["DELAY_TYPE"] = DelayType,
+                ["DELAY_CRON"] = DelayCron,
+                ["DELAY_DYNAMIC_KEY"] = DelayDynamicKey,
+                ["THROTTLE_TYPE"] = ThrottleType,
+                ["THROTTLE_WINDOW"] = ThrottleWindow,
+                ["THROTTLE_UNIT"] = ThrottleUnit,
+                ["THROTTLE_DYNAMIC_KEY"] = ThrottleDynamicKey,
+                ["THROTTLE_THRESHOLD"] = ThrottleThreshold,
+                ["THROTTLE_KEY"] = ThrottleKey,
+                ["EXTEND_TO_SCHEDULE"] = ExtendToSchedule,
+                ["SMS_BODY"] = SmsBody,
+                ["CHAT_BODY"] = ChatBody,
+                ["PUSH_BODY"] = PushBody,
+                ["PUSH_SUBJECT"] = PushSubject,
+                ["QUERY_EDITOR"] = QueryEditor,
+                ["DATA"] = Data,
+                ["LAYOUT_EMAIL"] = LayoutEmail
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, UiComponentEnum> _values =
+            new ConcurrentDictionary<string, UiComponentEnum>(_knownValues);
 
-                    if (enumVal is UiComponentEnum)
-                    {
-                        return (UiComponentEnum)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum UiComponentEnum");
+        private UiComponentEnum(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static UiComponentEnum Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new UiComponentEnum(value));
+        }
+
+        public static implicit operator UiComponentEnum(string value) => Of(value);
+        public static implicit operator string(UiComponentEnum uicomponentenum) => uicomponentenum.Value;
+
+        public static UiComponentEnum[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as UiComponentEnum);
+
+        public bool Equals(UiComponentEnum? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 }

@@ -2,6 +2,14 @@
 
 Value of the ordinal
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = OrdinalValueEnum.Day;
+```
+
 
 ## Values
 

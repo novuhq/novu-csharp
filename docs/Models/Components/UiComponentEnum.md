@@ -2,6 +2,17 @@
 
 Component type for the UI Schema Property
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = UiComponentEnum.EmailEditorSelect;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = UiComponentEnum.Of("custom_value");
+```
+
 
 ## Values
 
@@ -9,6 +20,7 @@ Component type for the UI Schema Property
 | ---------------------------------- | ---------------------------------- |
 | `EmailEditorSelect`                | EMAIL_EDITOR_SELECT                |
 | `LayoutSelect`                     | LAYOUT_SELECT                      |
+| `EmailRendererSelect`              | EMAIL_RENDERER_SELECT              |
 | `BlockEditor`                      | BLOCK_EDITOR                       |
 | `EmailBody`                        | EMAIL_BODY                         |
 | `TextFullLine`                     | TEXT_FULL_LINE                     |

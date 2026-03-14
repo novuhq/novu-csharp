@@ -2,6 +2,14 @@
 
 Type of the step
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = StepTypeEnum.InApp;
+```
+
 
 ## Values
 

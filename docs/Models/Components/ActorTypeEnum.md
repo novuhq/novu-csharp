@@ -2,6 +2,14 @@
 
 The type of the actor, indicating the role in the notification process.
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ActorTypeEnum.None;
+```
+
 
 ## Values
 

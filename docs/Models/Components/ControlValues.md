@@ -1,10 +1,18 @@
 # ControlValues
 
-Control values for the layout
+Control values for the In-App step.
 
 
-## Fields
+## Supported Types
 
-| Field                                                           | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `Email`                                                         | [EmailControlsDto](../../Models/Components/EmailControlsDto.md) | :heavy_minus_sign:                                              | Email layout controls                                           |
+### InAppControlDto
+
+```csharp
+ControlValues.CreateInAppControlDto(/* values here */);
+```
+
+### MapOfAny
+
+```csharp
+ControlValues.CreateMapOfAny(/* values here */);
+```
