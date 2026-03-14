@@ -2,6 +2,14 @@
 
 Resource type
 
+## Example Usage
+
+```csharp
+using Novu.Models.Requests;
+
+var value = TranslationControllerDeleteTranslationGroupEndpointPathParamResourceType.Workflow;
+```
+
 
 ## Values
 

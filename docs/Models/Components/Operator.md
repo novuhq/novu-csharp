@@ -1,5 +1,13 @@
 # Operator
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = Operator.Larger;
+```
+
 
 ## Values
 

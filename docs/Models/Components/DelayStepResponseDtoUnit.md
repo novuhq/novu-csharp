@@ -2,6 +2,14 @@
 
 Unit of time for the delay amount.
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = DelayStepResponseDtoUnit.Seconds;
+```
+
 
 ## Values
 

@@ -2,6 +2,14 @@
 
 The source of overrides
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = PreferenceOverrideSourceEnum.Subscriber;
+```
+
 
 ## Values
 
