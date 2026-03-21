@@ -38,6 +38,8 @@ namespace Novu.Models.Components
         Skip,
         [JsonProperty("LAYOUT")]
         Layout,
+        [JsonProperty("HTTP_REQUEST")]
+        HttpRequest,
     }
 
     public static class UiSchemaGroupEnumExtension

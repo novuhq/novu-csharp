@@ -87,5 +87,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("issues")]
         public StepIssuesDto? Issues { get; set; }
+
+        /// <summary>
+        /// Hash identifying the deployed Cloudflare Worker for this step.
+        /// </summary>
+        [JsonProperty("stepResolverHash")]
+        public string? StepResolverHash { get; set; }
     }
 }

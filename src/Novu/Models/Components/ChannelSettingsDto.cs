@@ -25,7 +25,7 @@ namespace Novu.Models.Components
         /// The integration identifier.
         /// </summary>
         [JsonProperty("integrationIdentifier")]
-        public string? IntegrationIdentifier { get; set; }
+        public string IntegrationIdentifier { get; set; } = default!;
 
         /// <summary>
         /// Credentials payload for the specified provider.

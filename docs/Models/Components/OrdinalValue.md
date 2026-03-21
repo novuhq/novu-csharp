@@ -1,5 +1,13 @@
 # OrdinalValue
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = OrdinalValue.Day;
+```
+
 
 ## Values
 

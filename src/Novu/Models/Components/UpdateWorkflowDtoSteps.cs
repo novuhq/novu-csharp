@@ -40,6 +40,8 @@ namespace Novu.Models.Components
 
         public static UpdateWorkflowDtoStepsType Custom { get { return new UpdateWorkflowDtoStepsType("custom"); } }
 
+        public static UpdateWorkflowDtoStepsType HttpRequest { get { return new UpdateWorkflowDtoStepsType("http_request"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(UpdateWorkflowDtoStepsType v) { return v.Value; }
         public static UpdateWorkflowDtoStepsType FromString(string v) {
@@ -52,6 +54,7 @@ namespace Novu.Models.Components
                 case "delay": return Delay;
                 case "digest": return Digest;
                 case "custom": return Custom;
+                case "http_request": return HttpRequest;
                 default: throw new ArgumentException("Invalid value for UpdateWorkflowDtoStepsType");
             }
         }
@@ -101,6 +104,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public CustomStepUpsertDto? CustomStepUpsertDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public HttpRequestStepUpsertDto? HttpRequestStepUpsertDto { get; set; }
 
         public UpdateWorkflowDtoStepsType Type { get; set; }
 
@@ -184,6 +190,16 @@ namespace Novu.Models.Components
             return res;
         }
 
+        public static UpdateWorkflowDtoSteps CreateHttpRequest(HttpRequestStepUpsertDto httpRequest)
+        {
+            UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.HttpRequest;
+            string typStr = UpdateWorkflowDtoStepsType.HttpRequest.ToString();
+            httpRequest.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.HttpRequest.ToString());
+            UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
+            res.HttpRequestStepUpsertDto = httpRequest;
+            return res;
+        }
+
         public class UpdateWorkflowDtoStepsConverter : JsonConverter
         {
             public override bool CanConvert(System.Type objectType) => objectType == typeof(UpdateWorkflowDtoSteps);
@@ -238,6 +254,11 @@ namespace Novu.Models.Components
                 {
                     CustomStepUpsertDto customStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepUpsertDto>(jo.ToString());
                     return CreateCustom(customStepUpsertDto);
+                }
+                if (discriminator == UpdateWorkflowDtoStepsType.HttpRequest.ToString())
+                {
+                    HttpRequestStepUpsertDto httpRequestStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<HttpRequestStepUpsertDto>(jo.ToString());
+                    return CreateHttpRequest(httpRequestStepUpsertDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -297,6 +318,12 @@ namespace Novu.Models.Components
                 if (res.CustomStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CustomStepUpsertDto));
+                    return;
+                }
+
+                if (res.HttpRequestStepUpsertDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.HttpRequestStepUpsertDto));
                     return;
                 }
             }

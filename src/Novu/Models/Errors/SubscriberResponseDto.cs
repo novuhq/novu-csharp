@@ -27,14 +27,14 @@ namespace Novu.Models.Errors
         /// <summary>
         /// The first name of the subscriber.
         /// </summary>
-        [JsonProperty("firstName")]
-        public string? FirstName { get; set; }
+        [JsonProperty("firstName", NullValueHandling = NullValueHandling.Include)]
+        public string? FirstName { get; set; } = default!;
 
         /// <summary>
         /// The last name of the subscriber.
         /// </summary>
-        [JsonProperty("lastName")]
-        public string? LastName { get; set; }
+        [JsonProperty("lastName", NullValueHandling = NullValueHandling.Include)]
+        public string? LastName { get; set; } = default!;
 
         /// <summary>
         /// The email address of the subscriber.
@@ -76,14 +76,14 @@ namespace Novu.Models.Errors
         /// <summary>
         /// Indicates whether the subscriber is currently online.
         /// </summary>
-        [JsonProperty("isOnline")]
-        public bool? IsOnline { get; set; }
+        [JsonProperty("isOnline", NullValueHandling = NullValueHandling.Include)]
+        public bool? IsOnline { get; set; } = default!;
 
         /// <summary>
         /// The timestamp indicating when the subscriber was last online, in ISO 8601 format.
         /// </summary>
-        [JsonProperty("lastOnlineAt")]
-        public string? LastOnlineAt { get; set; }
+        [JsonProperty("lastOnlineAt", NullValueHandling = NullValueHandling.Include)]
+        public string? LastOnlineAt { get; set; } = default!;
 
         /// <summary>
         /// The version of the subscriber document.
@@ -151,10 +151,10 @@ namespace Novu.Models.Errors
         public string? Id { get; set; }
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use SubscriberResponseDto.Payload.FirstName instead.")]
-        public string? FirstName { get; set; }
+        public string? FirstName { get; set; } = default!;
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use SubscriberResponseDto.Payload.LastName instead.")]
-        public string? LastName { get; set; }
+        public string? LastName { get; set; } = default!;
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use SubscriberResponseDto.Payload.Email instead.")]
         public string? Email { get; set; }
@@ -175,10 +175,10 @@ namespace Novu.Models.Errors
         public List<string>? Topics { get; set; }
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use SubscriberResponseDto.Payload.IsOnline instead.")]
-        public bool? IsOnline { get; set; }
+        public bool? IsOnline { get; set; } = default!;
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use SubscriberResponseDto.Payload.LastOnlineAt instead.")]
-        public string? LastOnlineAt { get; set; }
+        public string? LastOnlineAt { get; set; } = default!;
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use SubscriberResponseDto.Payload.V instead.")]
         public double? V { get; set; }
