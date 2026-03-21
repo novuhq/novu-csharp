@@ -31,6 +31,6 @@ namespace Novu.Models.Components
         /// Control values for the layout.
         /// </summary>
         [JsonProperty("controlValues")]
-        public ControlValues? ControlValues { get; set; } = null;
+        public LayoutControlValuesDto ControlValues { get; set; } = default!;
     }
 }

@@ -2,6 +2,14 @@
 
 Filter by channel type (email, sms, push, chat, etc.).
 
+## Example Usage
+
+```csharp
+using Novu.Models.Requests;
+
+var value = Channel.InApp;
+```
+
 
 ## Values
 

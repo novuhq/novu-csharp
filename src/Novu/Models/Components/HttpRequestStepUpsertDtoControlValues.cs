@@ -18,23 +18,23 @@ namespace Novu.Models.Components
     using System.Numerics;
     using System.Reflection;
 
-    public class InAppStepUpsertDtoControlValuesType
+    public class HttpRequestStepUpsertDtoControlValuesType
     {
-        private InAppStepUpsertDtoControlValuesType(string value) { Value = value; }
+        private HttpRequestStepUpsertDtoControlValuesType(string value) { Value = value; }
 
         public string Value { get; private set; }
 
-        public static InAppStepUpsertDtoControlValuesType InAppControlDto { get { return new InAppStepUpsertDtoControlValuesType("InAppControlDto"); } }
+        public static HttpRequestStepUpsertDtoControlValuesType HttpRequestControlDto { get { return new HttpRequestStepUpsertDtoControlValuesType("HttpRequestControlDto"); } }
 
-        public static InAppStepUpsertDtoControlValuesType MapOfAny { get { return new InAppStepUpsertDtoControlValuesType("mapOfAny"); } }
+        public static HttpRequestStepUpsertDtoControlValuesType MapOfAny { get { return new HttpRequestStepUpsertDtoControlValuesType("mapOfAny"); } }
 
         public override string ToString() { return Value; }
-        public static implicit operator String(InAppStepUpsertDtoControlValuesType v) { return v.Value; }
-        public static InAppStepUpsertDtoControlValuesType FromString(string v) {
+        public static implicit operator String(HttpRequestStepUpsertDtoControlValuesType v) { return v.Value; }
+        public static HttpRequestStepUpsertDtoControlValuesType FromString(string v) {
             switch(v) {
-                case "InAppControlDto": return InAppControlDto;
+                case "HttpRequestControlDto": return HttpRequestControlDto;
                 case "mapOfAny": return MapOfAny;
-                default: throw new ArgumentException("Invalid value for InAppStepUpsertDtoControlValuesType");
+                default: throw new ArgumentException("Invalid value for HttpRequestStepUpsertDtoControlValuesType");
             }
         }
         public override bool Equals(object? obj)
@@ -43,7 +43,7 @@ namespace Novu.Models.Components
             {
                 return false;
             }
-            return Value.Equals(((InAppStepUpsertDtoControlValuesType)obj).Value);
+            return Value.Equals(((HttpRequestStepUpsertDtoControlValuesType)obj).Value);
         }
 
         public override int GetHashCode()
@@ -53,43 +53,43 @@ namespace Novu.Models.Components
     }
 
     /// <summary>
-    /// Control values for the In-App step.
+    /// Control values for the HTTP Request step.
     /// </summary>
-    [JsonConverter(typeof(InAppStepUpsertDtoControlValues.InAppStepUpsertDtoControlValuesConverter))]
-    public class InAppStepUpsertDtoControlValues
+    [JsonConverter(typeof(HttpRequestStepUpsertDtoControlValues.HttpRequestStepUpsertDtoControlValuesConverter))]
+    public class HttpRequestStepUpsertDtoControlValues
     {
-        public InAppStepUpsertDtoControlValues(InAppStepUpsertDtoControlValuesType type)
+        public HttpRequestStepUpsertDtoControlValues(HttpRequestStepUpsertDtoControlValuesType type)
         {
             Type = type;
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public InAppControlDto? InAppControlDto { get; set; }
+        public HttpRequestControlDto? HttpRequestControlDto { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public Dictionary<string, object>? MapOfAny { get; set; }
 
-        public InAppStepUpsertDtoControlValuesType Type { get; set; }
-        public static InAppStepUpsertDtoControlValues CreateInAppControlDto(InAppControlDto inAppControlDto)
+        public HttpRequestStepUpsertDtoControlValuesType Type { get; set; }
+        public static HttpRequestStepUpsertDtoControlValues CreateHttpRequestControlDto(HttpRequestControlDto httpRequestControlDto)
         {
-            InAppStepUpsertDtoControlValuesType typ = InAppStepUpsertDtoControlValuesType.InAppControlDto;
+            HttpRequestStepUpsertDtoControlValuesType typ = HttpRequestStepUpsertDtoControlValuesType.HttpRequestControlDto;
 
-            InAppStepUpsertDtoControlValues res = new InAppStepUpsertDtoControlValues(typ);
-            res.InAppControlDto = inAppControlDto;
+            HttpRequestStepUpsertDtoControlValues res = new HttpRequestStepUpsertDtoControlValues(typ);
+            res.HttpRequestControlDto = httpRequestControlDto;
             return res;
         }
-        public static InAppStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        public static HttpRequestStepUpsertDtoControlValues CreateMapOfAny(Dictionary<string, object> mapOfAny)
         {
-            InAppStepUpsertDtoControlValuesType typ = InAppStepUpsertDtoControlValuesType.MapOfAny;
+            HttpRequestStepUpsertDtoControlValuesType typ = HttpRequestStepUpsertDtoControlValuesType.MapOfAny;
 
-            InAppStepUpsertDtoControlValues res = new InAppStepUpsertDtoControlValues(typ);
+            HttpRequestStepUpsertDtoControlValues res = new HttpRequestStepUpsertDtoControlValues(typ);
             res.MapOfAny = mapOfAny;
             return res;
         }
 
-        public class InAppStepUpsertDtoControlValuesConverter : JsonConverter
+        public class HttpRequestStepUpsertDtoControlValuesConverter : JsonConverter
         {
-            public override bool CanConvert(System.Type objectType) => objectType == typeof(InAppStepUpsertDtoControlValues);
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(HttpRequestStepUpsertDtoControlValues);
 
             public override bool CanRead => true;
 
@@ -105,14 +105,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new InAppStepUpsertDtoControlValues(InAppStepUpsertDtoControlValuesType.InAppControlDto)
+                    return new HttpRequestStepUpsertDtoControlValues(HttpRequestStepUpsertDtoControlValuesType.HttpRequestControlDto)
                     {
-                        InAppControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<InAppControlDto>(json)
+                        HttpRequestControlDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<HttpRequestControlDto>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(InAppControlDto), new InAppStepUpsertDtoControlValues(InAppStepUpsertDtoControlValuesType.InAppControlDto), "InAppControlDto"));
+                    fallbackCandidates.Add((typeof(HttpRequestControlDto), new HttpRequestStepUpsertDtoControlValues(HttpRequestStepUpsertDtoControlValuesType.HttpRequestControlDto), "HttpRequestControlDto"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -125,14 +125,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new InAppStepUpsertDtoControlValues(InAppStepUpsertDtoControlValuesType.MapOfAny)
+                    return new HttpRequestStepUpsertDtoControlValues(HttpRequestStepUpsertDtoControlValuesType.MapOfAny)
                     {
                         MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new InAppStepUpsertDtoControlValues(InAppStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new HttpRequestStepUpsertDtoControlValues(HttpRequestStepUpsertDtoControlValuesType.MapOfAny), "MapOfAny"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -173,11 +173,11 @@ namespace Novu.Models.Components
                     throw new InvalidOperationException("Unexpected null JSON value.");
                 }
 
-                InAppStepUpsertDtoControlValues res = (InAppStepUpsertDtoControlValues)value;
+                HttpRequestStepUpsertDtoControlValues res = (HttpRequestStepUpsertDtoControlValues)value;
 
-                if (res.InAppControlDto != null)
+                if (res.HttpRequestControlDto != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.InAppControlDto));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.HttpRequestControlDto));
                     return;
                 }
 

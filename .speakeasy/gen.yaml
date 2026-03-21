@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 3.14.0
+  version: 3.15.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -38,6 +38,7 @@ csharp:
   disableNamespacePascalCasingApr2024: true
   dotnetVersion: net8.0
   enableCancellationToken: false
+  enableFormatting: false
   enableSourceLink: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first

@@ -2,6 +2,14 @@
 
 Unit of the digest
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = DigestMetadataDtoUnit.Seconds;
+```
+
 
 ## Values
 

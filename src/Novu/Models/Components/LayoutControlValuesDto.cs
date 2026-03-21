@@ -19,6 +19,6 @@ namespace Novu.Models.Components
         /// Email layout controls.
         /// </summary>
         [JsonProperty("email")]
-        public EmailControlsDto? Email { get; set; }
+        public EmailControlsDto Email { get; set; } = default!;
     }
 }

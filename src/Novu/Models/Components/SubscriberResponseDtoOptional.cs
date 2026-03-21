@@ -26,14 +26,14 @@ namespace Novu.Models.Components
         /// <summary>
         /// The first name of the subscriber.
         /// </summary>
-        [JsonProperty("firstName")]
-        public string? FirstName { get; set; } = null;
+        [JsonProperty("firstName", NullValueHandling = NullValueHandling.Include)]
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// The last name of the subscriber.
         /// </summary>
-        [JsonProperty("lastName")]
-        public string? LastName { get; set; } = null;
+        [JsonProperty("lastName", NullValueHandling = NullValueHandling.Include)]
+        public string? LastName { get; set; }
 
         /// <summary>
         /// The email address of the subscriber.
@@ -75,14 +75,14 @@ namespace Novu.Models.Components
         /// <summary>
         /// Indicates whether the subscriber is currently online.
         /// </summary>
-        [JsonProperty("isOnline")]
-        public bool? IsOnline { get; set; } = null;
+        [JsonProperty("isOnline", NullValueHandling = NullValueHandling.Include)]
+        public bool? IsOnline { get; set; }
 
         /// <summary>
         /// The timestamp indicating when the subscriber was last online, in ISO 8601 format.
         /// </summary>
-        [JsonProperty("lastOnlineAt")]
-        public string? LastOnlineAt { get; set; } = null;
+        [JsonProperty("lastOnlineAt", NullValueHandling = NullValueHandling.Include)]
+        public string? LastOnlineAt { get; set; }
 
         /// <summary>
         /// The version of the subscriber document.

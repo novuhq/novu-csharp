@@ -312,6 +312,7 @@ var res = await sdk.Subscribers.UpdateCredentialsAsync(
     subscriberId: "<id>",
     updateSubscriberChannelRequestDto: new UpdateSubscriberChannelRequestDto() {
         ProviderId = ChatOrPushProviderEnum.Slack,
+        IntegrationIdentifier = "<value>",
         Credentials = new ChannelCredentials() {
             WebhookUrl = "https://example.com/webhook",
             Channel = "general",
@@ -373,6 +374,7 @@ var res = await sdk.Subscribers.AppendCredentialsAsync(
     subscriberId: "<id>",
     updateSubscriberChannelRequestDto: new UpdateSubscriberChannelRequestDto() {
         ProviderId = ChatOrPushProviderEnum.OneSignal,
+        IntegrationIdentifier = "<value>",
         Credentials = new ChannelCredentials() {
             WebhookUrl = "https://example.com/webhook",
             Channel = "general",

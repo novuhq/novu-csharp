@@ -2,6 +2,14 @@
 
 The provider identifier for the credentials
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ChatOrPushProviderEnum.Slack;
+```
+
 
 ## Values
 
