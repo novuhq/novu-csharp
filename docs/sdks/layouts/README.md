@@ -119,6 +119,12 @@ var res = await sdk.Layouts.UpdateAsync(
     layoutId: "<id>",
     updateLayoutDto: new UpdateLayoutDto() {
         Name = "<value>",
+        ControlValues = new LayoutControlValuesDto() {
+            Email = new EmailControlsDto() {
+                Body = "<value>",
+                EditorType = EditorType.Html,
+            },
+        },
     }
 );
 
@@ -289,9 +295,12 @@ var res = await sdk.Layouts.GeneratePreviewAsync(
     layoutPreviewRequestDto: new LayoutPreviewRequestDto() {
         PreviewPayload = new LayoutPreviewPayloadDto() {
             Subscriber = new SubscriberResponseDtoOptional() {
+                FirstName = "Marion",
+                LastName = "Kirlin",
                 Channels = new List<ChannelSettingsDto>() {
                     new ChannelSettingsDto() {
                         ProviderId = ChatOrPushProviderEnum.Mattermost,
+                        IntegrationIdentifier = "<value>",
                         Credentials = new ChannelCredentials() {
                             WebhookUrl = "https://example.com/webhook",
                             Channel = "general",
@@ -309,6 +318,8 @@ var res = await sdk.Layouts.GeneratePreviewAsync(
                         IntegrationId = "<id>",
                     },
                 },
+                IsOnline = false,
+                LastOnlineAt = "<value>",
             },
         },
     }

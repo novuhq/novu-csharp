@@ -1,0 +1,10 @@
+# Result2
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                  | [GeneratePreviewResponseDtoResultType](../../Models/Components/GeneratePreviewResponseDtoResultType.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `Preview`                                                                                               | [EmailRenderOutput](../../Models/Components/EmailRenderOutput.md)                                       | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `Error`                                                                                                 | [PreviewErrorDto](../../Models/Components/PreviewErrorDto.md)                                           | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |

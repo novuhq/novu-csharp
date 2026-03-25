@@ -38,6 +38,8 @@ namespace Novu.Models.Components
         Bridge,
         [JsonProperty("dashboard")]
         Dashboard,
+        [JsonProperty("ai")]
+        Ai,
     }
 
     public static class WorkflowCreationSourceEnumExtension

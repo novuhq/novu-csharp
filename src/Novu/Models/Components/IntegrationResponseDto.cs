@@ -53,7 +53,7 @@ namespace Novu.Models.Components
         public string ProviderId { get; set; } = default!;
 
         /// <summary>
-        /// The channel type for the integration, which defines how the integration communicates (e.g., email, SMS).
+        /// The channel type for the integration, which defines how it communicates (e.g., email, SMS).
         /// </summary>
         [JsonProperty("channel")]
         public IntegrationResponseDtoChannel Channel { get; set; } = default!;
@@ -68,7 +68,7 @@ namespace Novu.Models.Components
         /// The configurations required for enabling the additional configurations of the integration.
         /// </summary>
         [JsonProperty("configurations")]
-        public ConfigurationsDto? Configurations { get; set; }
+        public ConfigurationsDto Configurations { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether the integration is currently active. An active integration will process events and messages.
