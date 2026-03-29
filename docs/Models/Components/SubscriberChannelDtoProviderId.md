@@ -2,6 +2,14 @@
 
 The ID of the chat or push provider.
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = SubscriberChannelDtoProviderId.Slack;
+```
+
 
 ## Values
 

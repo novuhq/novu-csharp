@@ -56,3 +56,9 @@ Steps.CreateThrottle(/* values here */);
 ```csharp
 Steps.CreateCustom(/* values here */);
 ```
+
+### HttpRequest
+
+```csharp
+Steps.CreateHttpRequest(/* values here */);
+```

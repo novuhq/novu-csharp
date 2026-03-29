@@ -42,6 +42,8 @@ namespace Novu.Models.Components
 
         public static StepsType Custom { get { return new StepsType("custom"); } }
 
+        public static StepsType HttpRequest { get { return new StepsType("http_request"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(StepsType v) { return v.Value; }
         public static StepsType FromString(string v) {
@@ -55,6 +57,7 @@ namespace Novu.Models.Components
                 case "digest": return Digest;
                 case "throttle": return Throttle;
                 case "custom": return Custom;
+                case "http_request": return HttpRequest;
                 default: throw new ArgumentException("Invalid value for StepsType");
             }
         }
@@ -107,6 +110,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public CustomStepUpsertDto? CustomStepUpsertDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public HttpRequestStepUpsertDto? HttpRequestStepUpsertDto { get; set; }
 
         public StepsType Type { get; set; }
 
@@ -200,6 +206,16 @@ namespace Novu.Models.Components
             return res;
         }
 
+        public static Steps CreateHttpRequest(HttpRequestStepUpsertDto httpRequest)
+        {
+            StepsType typ = StepsType.HttpRequest;
+            string typStr = StepsType.HttpRequest.ToString();
+            httpRequest.Type = StepTypeEnumExtension.ToEnum(StepsType.HttpRequest.ToString());
+            Steps res = new Steps(typ);
+            res.HttpRequestStepUpsertDto = httpRequest;
+            return res;
+        }
+
         public class StepsConverter : JsonConverter
         {
             public override bool CanConvert(System.Type objectType) => objectType == typeof(Steps);
@@ -259,6 +275,11 @@ namespace Novu.Models.Components
                 {
                     CustomStepUpsertDto customStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepUpsertDto>(jo.ToString());
                     return CreateCustom(customStepUpsertDto);
+                }
+                if (discriminator == StepsType.HttpRequest.ToString())
+                {
+                    HttpRequestStepUpsertDto httpRequestStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<HttpRequestStepUpsertDto>(jo.ToString());
+                    return CreateHttpRequest(httpRequestStepUpsertDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -324,6 +345,12 @@ namespace Novu.Models.Components
                 if (res.CustomStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CustomStepUpsertDto));
+                    return;
+                }
+
+                if (res.HttpRequestStepUpsertDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.HttpRequestStepUpsertDto));
                     return;
                 }
             }

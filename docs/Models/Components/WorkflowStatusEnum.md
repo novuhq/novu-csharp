@@ -2,6 +2,14 @@
 
 Status of the workflow
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = WorkflowStatusEnum.Active;
+```
+
 
 ## Values
 

@@ -1,5 +1,13 @@
 # DigestRegularMetadataUnit
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = DigestRegularMetadataUnit.Seconds;
+```
+
 
 ## Values
 
