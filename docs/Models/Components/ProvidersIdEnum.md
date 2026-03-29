@@ -2,6 +2,14 @@
 
 Provider ID of the job
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ProvidersIdEnum.Emailjs;
+```
+
 
 ## Values
 

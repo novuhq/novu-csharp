@@ -2,6 +2,14 @@
 
 Resource type
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = TranslationResponseDtoResourceType.Workflow;
+```
+
 
 ## Values
 

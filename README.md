@@ -295,9 +295,20 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [Retrieve](docs/sdks/contexts/README.md#retrieve) - Retrieve a context
 * [Delete](docs/sdks/contexts/README.md#delete) - Delete a context
 
+### [EnvironmentVariables](docs/sdks/environmentvariables/README.md)
+
+* [List](docs/sdks/environmentvariables/README.md#list) - List environment variables
+* [Create](docs/sdks/environmentvariables/README.md#create) - Create environment variable
+* [Retrieve](docs/sdks/environmentvariables/README.md#retrieve) - Get environment variable
+* [Update](docs/sdks/environmentvariables/README.md#update) - Update environment variable
+* [Delete](docs/sdks/environmentvariables/README.md#delete) - Delete environment variable
+* [Usage](docs/sdks/environmentvariables/README.md#usage) - Get environment variable usage
+
 ### [Environments](docs/sdks/environments/README.md)
 
 * [GetTags](docs/sdks/environments/README.md#gettags) - List environment tags
+* [Diff](docs/sdks/environments/README.md#diff) - Compare resources between environments
+* [Publish](docs/sdks/environments/README.md#publish) - Publish resources to target environment
 * [Create](docs/sdks/environments/README.md#create) - Create an environment
 * [List](docs/sdks/environments/README.md#list) - List all environments
 * [Update](docs/sdks/environments/README.md#update) - Update an environment
@@ -423,6 +434,7 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 #### [Workflows.Steps](docs/sdks/steps/README.md)
 
+* [GeneratePreview](docs/sdks/steps/README.md#generatepreview) - Generate step preview
 * [Retrieve](docs/sdks/steps/README.md#retrieve) - Retrieve workflow step
 
 </details>
@@ -617,9 +629,9 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 93 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 93 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 93 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 102 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 102 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 102 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

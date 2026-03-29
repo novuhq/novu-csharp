@@ -53,7 +53,7 @@ namespace Novu.Models.Components
         public string ProviderId { get; set; } = default!;
 
         /// <summary>
-        /// The channel type for the integration, which defines how the integration communicates (e.g., email, SMS).
+        /// The channel type for the integration, which defines how it communicates (e.g., email, SMS).
         /// </summary>
         [JsonProperty("channel")]
         public IntegrationResponseDtoChannel Channel { get; set; } = default!;

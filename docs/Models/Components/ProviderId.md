@@ -2,6 +2,14 @@
 
 The provider identifier (e.g., sendgrid, twilio, slack, etc.).
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ProviderId.Emailjs;
+```
+
 
 ## Values
 

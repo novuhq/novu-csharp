@@ -40,6 +40,12 @@ namespace Novu.Models.Components
         [JsonProperty("transactionId")]
         public string? TransactionId { get; set; }
 
+        /// <summary>
+        /// Link to the activity feed for this trigger event.
+        /// </summary>
+        [JsonProperty("activityFeedLink")]
+        public string? ActivityFeedLink { get; set; }
+
         [JsonProperty("jobData")]
         public JobData? JobData { get; set; }
     }

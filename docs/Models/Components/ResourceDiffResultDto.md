@@ -1,0 +1,13 @@
+# ResourceDiffResultDto
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `ResourceType`                                                                  | [ResourceTypeEnum](../../Models/Components/ResourceTypeEnum.md)                 | :heavy_check_mark:                                                              | Type of the layout                                                              |
+| `SourceResource`                                                                | [SourceResource](../../Models/Components/SourceResource.md)                     | :heavy_minus_sign:                                                              | Source resource information                                                     |
+| `TargetResource`                                                                | [TargetResource](../../Models/Components/TargetResource.md)                     | :heavy_minus_sign:                                                              | Target resource information                                                     |
+| `Changes`                                                                       | List<[ResourceDiffDto](../../Models/Components/ResourceDiffDto.md)>             | :heavy_check_mark:                                                              | List of specific changes for this resource                                      |
+| `Summary`                                                                       | [DiffSummaryDto](../../Models/Components/DiffSummaryDto.md)                     | :heavy_check_mark:                                                              | Summary of changes for this resource                                            |
+| `Dependencies`                                                                  | List<[ResourceDependencyDto](../../Models/Components/ResourceDependencyDto.md)> | :heavy_minus_sign:                                                              | Dependencies that affect this resource                                          |
