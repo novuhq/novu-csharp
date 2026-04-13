@@ -1,0 +1,10 @@
+# SubscribersControllerDeleteAllNotificationsRequest
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `SubscriberId`                                                                                        | *string*                                                                                              | :heavy_check_mark:                                                                                    | The identifier of the subscriber                                                                      |
+| `IdempotencyKey`                                                                                      | *string*                                                                                              | :heavy_minus_sign:                                                                                    | A header for idempotency purposes                                                                     |
+| `UpdateAllSubscriberNotificationsDto`                                                                 | [UpdateAllSubscriberNotificationsDto](../../Models/Components/UpdateAllSubscriberNotificationsDto.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |

@@ -2,6 +2,14 @@
 
 Status of the event
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = Status.Opened;
+```
+
 
 ## Values
 

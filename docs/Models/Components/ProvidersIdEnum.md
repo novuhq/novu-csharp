@@ -2,6 +2,14 @@
 
 Provider ID of the job
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ProvidersIdEnum.Emailjs;
+```
+
 
 ## Values
 
@@ -64,6 +72,7 @@ Provider ID of the job
 | `Imedia`           | imedia             |
 | `Sinch`            | sinch              |
 | `IsendproSms`      | isendpro-sms       |
+| `CmTelecom`        | cm-telecom         |
 | `Fcm`              | fcm                |
 | `Apns`             | apns               |
 | `Expo`             | expo               |

@@ -2,6 +2,14 @@
 
 Status of the trigger
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = TriggerEventResponseDtoStatus.Error;
+```
+
 
 ## Values
 

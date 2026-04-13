@@ -25,7 +25,7 @@ namespace Novu
     public interface IActivity
     {
         /// <summary>
-        /// Track activity and engagement events.
+        /// Track provider activity and engagement events.
         /// </summary>
         /// <remarks>
         /// Track activity and engagement events for a specific delivery provider.
@@ -63,7 +63,7 @@ namespace Novu
         }
 
         /// <summary>
-        /// Track activity and engagement events.
+        /// Track provider activity and engagement events.
         /// </summary>
         /// <remarks>
         /// Track activity and engagement events for a specific delivery provider.
@@ -104,6 +104,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
             if (serializedBody != null)

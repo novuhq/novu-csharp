@@ -1,5 +1,13 @@
 # Criticality
 
+## Example Usage
+
+```csharp
+using Novu.Models.Requests;
+
+var value = Criticality.Critical;
+```
+
 
 ## Values
 

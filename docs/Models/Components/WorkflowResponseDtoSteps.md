@@ -56,3 +56,9 @@ WorkflowResponseDtoSteps.CreateCustom(/* values here */);
 ```csharp
 WorkflowResponseDtoSteps.CreateThrottle(/* values here */);
 ```
+
+### HttpRequest
+
+```csharp
+WorkflowResponseDtoSteps.CreateHttpRequest(/* values here */);
+```

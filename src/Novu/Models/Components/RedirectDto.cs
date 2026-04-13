@@ -16,15 +16,15 @@ namespace Novu.Models.Components
     public class RedirectDto
     {
         /// <summary>
-        /// URL for redirection. Must be a valid URL or start with / or {{ variable }}.
+        /// URL to redirect to.
         /// </summary>
         [JsonProperty("url")]
-        public string? Url { get; set; }
+        public string Url { get; set; } = default!;
 
         /// <summary>
-        /// Target window for the redirection.
+        /// Target attribute for the redirect link.
         /// </summary>
         [JsonProperty("target")]
-        public Target? Target { get; set; } = Novu.Models.Components.Target.Self;
+        public Target? Target { get; set; }
     }
 }

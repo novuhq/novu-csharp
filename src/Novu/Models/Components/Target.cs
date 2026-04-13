@@ -14,7 +14,7 @@ namespace Novu.Models.Components
     using System;
 
     /// <summary>
-    /// Target window for the redirection.
+    /// Target attribute for the redirect link.
     /// </summary>
     public enum Target
     {

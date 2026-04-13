@@ -28,7 +28,8 @@ namespace Novu
         /// List all channel endpoints.
         /// </summary>
         /// <remarks>
-        /// List all channel endpoints for a resource based on query filters.
+        /// List all channel endpoints for a resource based on query filters.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="request">A <see cref="ChannelEndpointsControllerListChannelEndpointsRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -47,7 +48,8 @@ namespace Novu
         /// Create a channel endpoint.
         /// </summary>
         /// <remarks>
-        /// Create a new channel endpoint for a resource.
+        /// Create a new channel endpoint for a resource.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="requestBody">Channel endpoint creation request. The structure varies based on the type field.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -69,7 +71,8 @@ namespace Novu
         /// Retrieve a channel endpoint.
         /// </summary>
         /// <remarks>
-        /// Retrieve a specific channel endpoint by its unique identifier.
+        /// Retrieve a specific channel endpoint by its unique identifier.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="identifier">The unique identifier of the channel endpoint.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -91,7 +94,8 @@ namespace Novu
         /// Update a channel endpoint.
         /// </summary>
         /// <remarks>
-        /// Update an existing channel endpoint by its unique identifier.
+        /// Update an existing channel endpoint by its unique identifier.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="identifier">The unique identifier of the channel endpoint.</param>
         /// <param name="updateChannelEndpointRequestDto">A <see cref="UpdateChannelEndpointRequestDto"/> parameter.</param>
@@ -115,7 +119,8 @@ namespace Novu
         /// Delete a channel endpoint.
         /// </summary>
         /// <remarks>
-        /// Delete a specific channel endpoint by its unique identifier.
+        /// Delete a specific channel endpoint by its unique identifier.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="identifier">The unique identifier of the channel endpoint.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -151,7 +156,8 @@ namespace Novu
         /// List all channel endpoints.
         /// </summary>
         /// <remarks>
-        /// List all channel endpoints for a resource based on query filters.
+        /// List all channel endpoints for a resource based on query filters.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="request">A <see cref="ChannelEndpointsControllerListChannelEndpointsRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -173,9 +179,14 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "ChannelEndpointsController_listChannelEndpoints", null, SDKConfiguration.SecuritySource);
@@ -385,7 +396,8 @@ namespace Novu
         /// Create a channel endpoint.
         /// </summary>
         /// <remarks>
-        /// Create a new channel endpoint for a resource.
+        /// Create a new channel endpoint for a resource.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="requestBody">Channel endpoint creation request. The structure varies based on the type field.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -418,6 +430,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
             if (serializedBody != null)
             {
@@ -426,7 +443,7 @@ namespace Novu
 
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "ChannelEndpointsController_createChannelEndpoint", null, SDKConfiguration.SecuritySource);
@@ -636,7 +653,8 @@ namespace Novu
         /// Retrieve a channel endpoint.
         /// </summary>
         /// <remarks>
-        /// Retrieve a specific channel endpoint by its unique identifier.
+        /// Retrieve a specific channel endpoint by its unique identifier.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="identifier">The unique identifier of the channel endpoint.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -669,9 +687,14 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "ChannelEndpointsController_getChannelEndpoint", null, SDKConfiguration.SecuritySource);
@@ -881,7 +904,8 @@ namespace Novu
         /// Update a channel endpoint.
         /// </summary>
         /// <remarks>
-        /// Update an existing channel endpoint by its unique identifier.
+        /// Update an existing channel endpoint by its unique identifier.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="identifier">The unique identifier of the channel endpoint.</param>
         /// <param name="updateChannelEndpointRequestDto">A <see cref="UpdateChannelEndpointRequestDto"/> parameter.</param>
@@ -918,6 +942,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "UpdateChannelEndpointRequestDto", "json", false, false);
             if (serializedBody != null)
             {
@@ -926,7 +955,7 @@ namespace Novu
 
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "ChannelEndpointsController_updateChannelEndpoint", null, SDKConfiguration.SecuritySource);
@@ -1136,7 +1165,8 @@ namespace Novu
         /// Delete a channel endpoint.
         /// </summary>
         /// <remarks>
-        /// Delete a specific channel endpoint by its unique identifier.
+        /// Delete a specific channel endpoint by its unique identifier.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="identifier">The unique identifier of the channel endpoint.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -1169,9 +1199,14 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "ChannelEndpointsController_deleteChannelEndpoint", null, SDKConfiguration.SecuritySource);

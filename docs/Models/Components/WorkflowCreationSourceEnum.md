@@ -2,6 +2,14 @@
 
 Source of workflow creation
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = WorkflowCreationSourceEnum.TemplateStore;
+```
+
 
 ## Values
 
@@ -17,3 +25,4 @@ Source of workflow creation
 | `OnboardingGetStarted`  | onboarding_get_started  |
 | `Bridge`                | bridge                  |
 | `Dashboard`             | dashboard               |
+| `Ai`                    | ai                      |
