@@ -9,19 +9,9 @@
 #nullable enable
 namespace Novu.Models.Components
 {
-    using Newtonsoft.Json;
-    using Novu.Models.Components;
     using Novu.Utils;
 
     public class RuntimeIssueDto
     {
-        [JsonProperty("issueType")]
-        public IssueType IssueType { get; set; } = default!;
-
-        [JsonProperty("variableName")]
-        public string? VariableName { get; set; }
-
-        [JsonProperty("message")]
-        public string Message { get; set; } = default!;
     }
 }

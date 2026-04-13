@@ -2,6 +2,14 @@
 
 Ordinal position for the digest
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = OrdinalEnum.One;
+```
+
 
 ## Values
 

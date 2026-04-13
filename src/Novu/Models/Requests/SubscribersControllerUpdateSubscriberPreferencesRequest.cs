@@ -14,6 +14,9 @@ namespace Novu.Models.Requests
 
     public class SubscribersControllerUpdateSubscriberPreferencesRequest
     {
+        /// <summary>
+        /// The identifier of the subscriber.
+        /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriberId")]
         public string SubscriberId { get; set; } = default!;
 

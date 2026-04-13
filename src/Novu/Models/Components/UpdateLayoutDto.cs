@@ -28,7 +28,7 @@ namespace Novu.Models.Components
         public bool? IsTranslationEnabled { get; set; } = false;
 
         /// <summary>
-        /// Control values for the layout.
+        /// Control values for the layout. Omit to leave unchanged, or set to null to clear stored control values.
         /// </summary>
         [JsonProperty("controlValues")]
         public ControlValues? ControlValues { get; set; } = null;

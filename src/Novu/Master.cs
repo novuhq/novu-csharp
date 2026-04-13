@@ -28,7 +28,8 @@ namespace Novu
         /// Retrieve master translations JSON.
         /// </summary>
         /// <remarks>
-        /// Retrieve all translations for a locale in master JSON format organized by resourceId (workflowId).
+        /// Retrieve all translations for a locale in master JSON format organized by resourceId (workflowId)<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="locale">Locale to export. If not provided, exports organization default locale.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -47,7 +48,8 @@ namespace Novu
         /// Import master translations JSON.
         /// </summary>
         /// <remarks>
-        /// Import translations for multiple workflows from master JSON format for a specific locale.
+        /// Import translations for multiple workflows from master JSON format for a specific locale<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="importMasterJsonRequestDto">A <see cref="ImportMasterJsonRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -67,7 +69,8 @@ namespace Novu
         /// Upload master translations JSON file.
         /// </summary>
         /// <remarks>
-        /// Upload a master JSON file containing translations for multiple workflows. Locale is automatically detected from filename (e.g., en_US.json).
+        /// Upload a master JSON file containing translations for multiple workflows. Locale is automatically detected from filename (e.g., en_US.json)<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="requestBody">A <see cref="TranslationControllerUploadMasterJsonEndpointRequestBody"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -101,7 +104,8 @@ namespace Novu
         /// Retrieve master translations JSON.
         /// </summary>
         /// <remarks>
-        /// Retrieve all translations for a locale in master JSON format organized by resourceId (workflowId).
+        /// Retrieve all translations for a locale in master JSON format organized by resourceId (workflowId)<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="locale">Locale to export. If not provided, exports organization default locale.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -129,9 +133,14 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_getMasterJsonEndpoint", null, SDKConfiguration.SecuritySource);
@@ -252,7 +261,8 @@ namespace Novu
         /// Import master translations JSON.
         /// </summary>
         /// <remarks>
-        /// Import translations for multiple workflows from master JSON format for a specific locale.
+        /// Import translations for multiple workflows from master JSON format for a specific locale<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="importMasterJsonRequestDto">A <see cref="ImportMasterJsonRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -283,6 +293,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "ImportMasterJsonRequestDto", "json", false, false);
             if (serializedBody != null)
             {
@@ -291,7 +306,7 @@ namespace Novu
 
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_importMasterJsonEndpoint", null, SDKConfiguration.SecuritySource);
@@ -412,7 +427,8 @@ namespace Novu
         /// Upload master translations JSON file.
         /// </summary>
         /// <remarks>
-        /// Upload a master JSON file containing translations for multiple workflows. Locale is automatically detected from filename (e.g., en_US.json).
+        /// Upload a master JSON file containing translations for multiple workflows. Locale is automatically detected from filename (e.g., en_US.json)<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="requestBody">A <see cref="TranslationControllerUploadMasterJsonEndpointRequestBody"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -443,6 +459,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "multipart", false, false);
             if (serializedBody != null)
             {
@@ -451,7 +472,7 @@ namespace Novu
 
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_uploadMasterJsonEndpoint", null, SDKConfiguration.SecuritySource);

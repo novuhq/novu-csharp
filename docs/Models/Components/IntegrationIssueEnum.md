@@ -2,6 +2,14 @@
 
 Type of integration issue
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = IntegrationIssueEnum.MissingIntegration;
+```
+
 
 ## Values
 

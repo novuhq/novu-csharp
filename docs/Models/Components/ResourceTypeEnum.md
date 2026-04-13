@@ -2,6 +2,14 @@
 
 Type of the layout
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ResourceTypeEnum.Regular;
+```
+
 
 ## Values
 

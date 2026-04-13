@@ -2,6 +2,14 @@
 
 Origin of the layout
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ResourceOriginEnum.NovuCloud;
+```
+
 
 ## Values
 

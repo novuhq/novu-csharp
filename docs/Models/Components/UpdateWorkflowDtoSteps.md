@@ -50,3 +50,9 @@ UpdateWorkflowDtoSteps.CreateDigest(/* values here */);
 ```csharp
 UpdateWorkflowDtoSteps.CreateCustom(/* values here */);
 ```
+
+### HttpRequest
+
+```csharp
+UpdateWorkflowDtoSteps.CreateHttpRequest(/* values here */);
+```

@@ -2,6 +2,14 @@
 
 The provider identifier (e.g., sendgrid, twilio, slack, etc.).
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = GetChannelEndpointResponseDtoProviderId.Emailjs;
+```
+
 
 ## Values
 
@@ -64,6 +72,7 @@ The provider identifier (e.g., sendgrid, twilio, slack, etc.).
 | `Imedia`           | imedia             |
 | `Sinch`            | sinch              |
 | `IsendproSms`      | isendpro-sms       |
+| `CmTelecom`        | cm-telecom         |
 | `Fcm`              | fcm                |
 | `Apns`             | apns               |
 | `Expo`             | expo               |

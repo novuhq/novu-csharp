@@ -24,7 +24,7 @@ namespace Novu
 
     /// <summary>
     /// Used to localize your notifications to different languages.<br/>
-    /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
+    /// <see href="https://docs.novu.co/platform/workflow/advanced-features/translations">https://docs.novu.co/platform/workflow/advanced-features/translations</see>
     /// </summary>
     public interface ITranslations
     {
@@ -35,7 +35,8 @@ namespace Novu
         /// Create a translation.
         /// </summary>
         /// <remarks>
-        /// Create a translation for a specific workflow and locale, if the translation already exists, it will be updated.
+        /// Create a translation for a specific workflow and locale, if the translation already exists, it will be updated<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="createTranslationRequestDto">A <see cref="CreateTranslationRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -55,7 +56,8 @@ namespace Novu
         /// Retrieve a translation.
         /// </summary>
         /// <remarks>
-        /// Retrieve a specific translation by resource type, resource ID and locale.
+        /// Retrieve a specific translation by resource type, resource ID and locale<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="resourceType">Resource type.</param>
         /// <param name="resourceId">Resource ID.</param>
@@ -79,7 +81,8 @@ namespace Novu
         /// Delete a translation.
         /// </summary>
         /// <remarks>
-        /// Delete a specific translation by resource type, resource ID and locale.
+        /// Delete a specific translation by resource type, resource ID and locale<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="resourceType">Resource type.</param>
         /// <param name="resourceId">Resource ID.</param>
@@ -102,7 +105,8 @@ namespace Novu
         /// Upload translation files.
         /// </summary>
         /// <remarks>
-        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json. Supports both "files" and "files[]" field names for backwards compatibility.
+        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json. Supports both "files" and "files[]" field names for backwards compatibility.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="requestBody">A <see cref="TranslationControllerUploadTranslationFilesRequestBody"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -121,7 +125,7 @@ namespace Novu
 
     /// <summary>
     /// Used to localize your notifications to different languages.<br/>
-    /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
+    /// <see href="https://docs.novu.co/platform/workflow/advanced-features/translations">https://docs.novu.co/platform/workflow/advanced-features/translations</see>
     /// </summary>
     public class Translations: ITranslations
     {
@@ -154,7 +158,8 @@ namespace Novu
         /// Create a translation.
         /// </summary>
         /// <remarks>
-        /// Create a translation for a specific workflow and locale, if the translation already exists, it will be updated.
+        /// Create a translation for a specific workflow and locale, if the translation already exists, it will be updated<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="createTranslationRequestDto">A <see cref="CreateTranslationRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -185,6 +190,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "CreateTranslationRequestDto", "json", false, false);
             if (serializedBody != null)
             {
@@ -193,7 +203,7 @@ namespace Novu
 
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_createTranslationEndpoint", null, SDKConfiguration.SecuritySource);
@@ -314,7 +324,8 @@ namespace Novu
         /// Retrieve a translation.
         /// </summary>
         /// <remarks>
-        /// Retrieve a specific translation by resource type, resource ID and locale.
+        /// Retrieve a specific translation by resource type, resource ID and locale<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="resourceType">Resource type.</param>
         /// <param name="resourceId">Resource ID.</param>
@@ -352,9 +363,14 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_getSingleTranslation", null, SDKConfiguration.SecuritySource);
@@ -475,7 +491,8 @@ namespace Novu
         /// Delete a translation.
         /// </summary>
         /// <remarks>
-        /// Delete a specific translation by resource type, resource ID and locale.
+        /// Delete a specific translation by resource type, resource ID and locale<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="resourceType">Resource type.</param>
         /// <param name="resourceId">Resource ID.</param>
@@ -512,9 +529,14 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "*/*");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_deleteTranslationEndpoint", null, SDKConfiguration.SecuritySource);
@@ -617,7 +639,8 @@ namespace Novu
         /// Upload translation files.
         /// </summary>
         /// <remarks>
-        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json. Supports both "files" and "files[]" field names for backwards compatibility.
+        /// Upload one or more JSON translation files for a specific workflow. Files name must match the locale, e.g. en_US.json. Supports both "files" and "files[]" field names for backwards compatibility.<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="requestBody">A <see cref="TranslationControllerUploadTranslationFilesRequestBody"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -648,6 +671,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "multipart", false, false);
             if (serializedBody != null)
             {
@@ -656,7 +684,7 @@ namespace Novu
 
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_uploadTranslationFiles", null, SDKConfiguration.SecuritySource);

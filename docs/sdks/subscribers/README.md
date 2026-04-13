@@ -136,7 +136,7 @@ var res = await sdk.Subscribers.RetrieveAsync(subscriberId: "<id>");
 
 | Parameter                         | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `SubscriberId`                    | *string*                          | :heavy_check_mark:                | N/A                               |
+| `SubscriberId`                    | *string*                          | :heavy_check_mark:                | The identifier of the subscriber  |
 | `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
 
 ### Response
@@ -187,7 +187,7 @@ var res = await sdk.Subscribers.PatchAsync(
 
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `SubscriberId`                                                                    | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               |
+| `SubscriberId`                                                                    | *string*                                                                          | :heavy_check_mark:                                                                | The identifier of the subscriber                                                  |
 | `PatchSubscriberRequestDto`                                                       | [PatchSubscriberRequestDto](../../Models/Components/PatchSubscriberRequestDto.md) | :heavy_check_mark:                                                                | N/A                                                                               |
 | `IdempotencyKey`                                                                  | *string*                                                                          | :heavy_minus_sign:                                                                | A header for idempotency purposes                                                 |
 
@@ -228,7 +228,7 @@ var res = await sdk.Subscribers.DeleteAsync(subscriberId: "<id>");
 
 | Parameter                         | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `SubscriberId`                    | *string*                          | :heavy_check_mark:                | N/A                               |
+| `SubscriberId`                    | *string*                          | :heavy_check_mark:                | The identifier of the subscriber  |
 | `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
 
 ### Response

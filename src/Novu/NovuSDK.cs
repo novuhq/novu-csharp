@@ -59,7 +59,7 @@ namespace Novu
 
         /// <summary>
         /// Used to localize your notifications to different languages.<br/>
-        /// <see href="https://docs.novu.co/platform/workflow/translations">https://docs.novu.co/platform/workflow/translations</see>
+        /// <see href="https://docs.novu.co/platform/workflow/advanced-features/translations">https://docs.novu.co/platform/workflow/advanced-features/translations</see>
         /// </summary>
         public ITranslations Translations { get; }
 
@@ -72,6 +72,8 @@ namespace Novu
         public IChannelConnections ChannelConnections { get; }
 
         public IChannelEndpoints ChannelEndpoints { get; }
+
+        public IEnvironmentVariables EnvironmentVariables { get; }
 
         /// <summary>
         /// With the help of the Integration Store, you can easily integrate your favorite delivery provider. During the runtime of the API, the Integrations Store is responsible for storing the configurations of all the providers.<br/>
@@ -246,6 +248,10 @@ namespace Novu
         /// </summary>
         public IChannelEndpoints ChannelEndpoints { get; private set; }
         /// <summary>
+        /// The EnvironmentVariables sub-SDK.
+        /// </summary>
+        public IEnvironmentVariables EnvironmentVariables { get; private set; }
+        /// <summary>
         /// The Integrations sub-SDK.
         /// </summary>
         public IIntegrations Integrations { get; private set; }
@@ -300,6 +306,8 @@ namespace Novu
             ChannelConnections = new ChannelConnections(SDKConfiguration);
 
             ChannelEndpoints = new ChannelEndpoints(SDKConfiguration);
+
+            EnvironmentVariables = new EnvironmentVariables(SDKConfiguration);
 
             Integrations = new Integrations(SDKConfiguration);
 
@@ -398,6 +406,8 @@ namespace Novu
 
             ChannelEndpoints = new ChannelEndpoints(SDKConfiguration);
 
+            EnvironmentVariables = new EnvironmentVariables(SDKConfiguration);
+
             Integrations = new Integrations(SDKConfiguration);
 
             Messages = new Messages(SDKConfiguration);
@@ -462,6 +472,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "TriggerEventRequestDto", "json", false, false);
             if (serializedBody != null)
@@ -735,6 +750,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
@@ -983,6 +1003,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "TriggerEventToAllRequestDto", "json", false, false);
             if (serializedBody != null)
@@ -1256,6 +1281,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "BulkTriggerEventDto", "json", false, false);
             if (serializedBody != null)

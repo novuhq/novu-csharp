@@ -8,6 +8,8 @@ Environments allow you to manage different stages of your application developmen
 ### Available Operations
 
 * [GetTags](#gettags) - List environment tags
+* [Diff](#diff) - Compare resources between environments
+* [Publish](#publish) - Publish resources to target environment
 * [Create](#create) - Create an environment
 * [List](#list) - List all environments
 * [Update](#update) - Update an environment
@@ -41,6 +43,103 @@ var res = await sdk.Environments.GetTagsAsync(environmentId: "6615943e7ace93b054
 ### Response
 
 **[EnvironmentsControllerGetEnvironmentTagsResponse](../../Models/Requests/EnvironmentsControllerGetEnvironmentTagsResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
+## Diff
+
+Compares workflows and other resources between the source and target environments, returning detailed diff information including additions, modifications, and deletions.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="EnvironmentsController_diffEnvironment" method="post" path="/v2/environments/{targetEnvironmentId}/diff" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Environments.DiffAsync(
+    targetEnvironmentId: "6615943e7ace93b0540ae377",
+    diffEnvironmentRequestDto: new DiffEnvironmentRequestDto() {
+        SourceEnvironmentId = "507f1f77bcf86cd799439011",
+    }
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `TargetEnvironmentId`                                                             | *string*                                                                          | :heavy_check_mark:                                                                | Target environment ID (MongoDB ObjectId) to compare against                       | 6615943e7ace93b0540ae377                                                          |
+| `DiffEnvironmentRequestDto`                                                       | [DiffEnvironmentRequestDto](../../Models/Components/DiffEnvironmentRequestDto.md) | :heavy_check_mark:                                                                | Diff request configuration                                                        |                                                                                   |
+| `IdempotencyKey`                                                                  | *string*                                                                          | :heavy_minus_sign:                                                                | A header for idempotency purposes                                                 |                                                                                   |
+
+### Response
+
+**[EnvironmentsControllerDiffEnvironmentResponse](../../Models/Requests/EnvironmentsControllerDiffEnvironmentResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
+## Publish
+
+Publishes all workflows and resources from the source environment to the target environment. Optionally specify specific resources to publish or use dryRun mode to preview changes.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="EnvironmentsController_publishEnvironment" method="post" path="/v2/environments/{targetEnvironmentId}/publish" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Environments.PublishAsync(
+    targetEnvironmentId: "6615943e7ace93b0540ae377",
+    publishEnvironmentRequestDto: new PublishEnvironmentRequestDto() {
+        SourceEnvironmentId = "507f1f77bcf86cd799439011",
+        Resources = new List<ResourceToPublishDto>() {
+            new ResourceToPublishDto() {
+                ResourceType = ResourceTypeEnum.Regular,
+                ResourceId = "workflow-id-1",
+            },
+        },
+    }
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `TargetEnvironmentId`                                                                   | *string*                                                                                | :heavy_check_mark:                                                                      | Target environment ID (MongoDB ObjectId) to publish resources to                        | 6615943e7ace93b0540ae377                                                                |
+| `PublishEnvironmentRequestDto`                                                          | [PublishEnvironmentRequestDto](../../Models/Components/PublishEnvironmentRequestDto.md) | :heavy_check_mark:                                                                      | Publish request configuration                                                           |                                                                                         |
+| `IdempotencyKey`                                                                        | *string*                                                                                | :heavy_minus_sign:                                                                      | A header for idempotency purposes                                                       |                                                                                         |
+
+### Response
+
+**[EnvironmentsControllerPublishEnvironmentResponse](../../Models/Requests/EnvironmentsControllerPublishEnvironmentResponse.md)**
 
 ### Errors
 

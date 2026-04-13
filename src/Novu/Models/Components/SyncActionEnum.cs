@@ -13,30 +13,31 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
 
-    public enum IssueType
+    /// <summary>
+    /// Sync action performed.
+    /// </summary>
+    public enum SyncActionEnum
     {
-        [JsonProperty("MISSING_VALUE")]
-        MissingValue,
-        [JsonProperty("MAX_LENGTH_ACCESSED")]
-        MaxLengthAccessed,
-        [JsonProperty("WORKFLOW_ID_ALREADY_EXISTS")]
-        WorkflowIdAlreadyExists,
-        [JsonProperty("DUPLICATED_VALUE")]
-        DuplicatedValue,
-        [JsonProperty("LIMIT_REACHED")]
-        LimitReached,
+        [JsonProperty("created")]
+        Created,
+        [JsonProperty("updated")]
+        Updated,
+        [JsonProperty("skipped")]
+        Skipped,
+        [JsonProperty("deleted")]
+        Deleted,
     }
 
-    public static class IssueTypeExtension
+    public static class SyncActionEnumExtension
     {
-        public static string Value(this IssueType value)
+        public static string Value(this SyncActionEnum value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static IssueType ToEnum(this string value)
+        public static SyncActionEnum ToEnum(this string value)
         {
-            foreach(var field in typeof(IssueType).GetFields())
+            foreach(var field in typeof(SyncActionEnum).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -49,14 +50,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is IssueType)
+                    if (enumVal is SyncActionEnum)
                     {
-                        return (IssueType)enumVal;
+                        return (SyncActionEnum)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum IssueType");
+            throw new Exception($"Unknown value {value} for enum SyncActionEnum");
         }
     }
 }

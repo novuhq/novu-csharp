@@ -1,5 +1,13 @@
 # DirectionEnum
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = DirectionEnum.Asc;
+```
+
 
 ## Values
 

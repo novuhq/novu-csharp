@@ -1,0 +1,11 @@
+# DiffEnvironmentResponseDto
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `SourceEnvironmentId`                                                             | *string*                                                                          | :heavy_check_mark:                                                                | Source environment ID                                                             |
+| `TargetEnvironmentId`                                                             | *string*                                                                          | :heavy_check_mark:                                                                | Target environment ID                                                             |
+| `Resources`                                                                       | List<[ResourceDiffResultDto](../../Models/Components/ResourceDiffResultDto.md)>   | :heavy_check_mark:                                                                | Diff resources by resource type                                                   |
+| `Summary`                                                                         | [EnvironmentDiffSummaryDto](../../Models/Components/EnvironmentDiffSummaryDto.md) | :heavy_check_mark:                                                                | Overall summary                                                                   |

@@ -132,6 +132,8 @@ namespace Novu.Models.Components
         Sinch,
         [JsonProperty("isendpro-sms")]
         IsendproSms,
+        [JsonProperty("cm-telecom")]
+        CmTelecom,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]

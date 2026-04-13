@@ -2,6 +2,14 @@
 
 The channel of the message to be deleted
 
+## Example Usage
+
+```csharp
+using Novu.Models.Requests;
+
+var value = MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel.InApp;
+```
+
 
 ## Values
 

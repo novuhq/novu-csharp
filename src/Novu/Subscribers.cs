@@ -28,6 +28,8 @@ namespace Novu
     /// </summary>
     public interface ISubscribers
     {
+        public INovuNotifications Notifications { get; }
+
         public IPreferences Preferences { get; }
 
         public INovuTopics Topics { get; }
@@ -84,7 +86,7 @@ namespace Novu
         /// Retrieve a subscriber by its unique key identifier **subscriberId**. <br/>
         ///     **subscriberId** field is required.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="SubscribersControllerGetSubscriberResponse"/> response envelope when completed.</returns>
@@ -107,7 +109,7 @@ namespace Novu
         /// Update a subscriber by its unique key identifier **subscriberId**. <br/>
         ///     **subscriberId** is a required field, rest other fields are optional.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="patchSubscriberRequestDto">A <see cref="PatchSubscriberRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -132,7 +134,7 @@ namespace Novu
         /// Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions. <br/>
         ///       **subscriberId** is a required field.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="SubscribersControllerRemoveSubscriberResponse"/> response envelope when completed.</returns>
@@ -283,6 +285,12 @@ namespace Novu
         public SDKConfig SDKConfiguration { get; private set; }
 
         /// <summary>
+        /// Notifications SubSDK.
+        /// <see cref="INovuNotifications"/>
+        /// </summary>
+        public INovuNotifications Notifications { get; private set; }
+
+        /// <summary>
         /// Preferences SubSDK.
         /// <see cref="IPreferences"/>
         /// </summary>
@@ -297,6 +305,7 @@ namespace Novu
         public Subscribers(SDKConfig config)
         {
             SDKConfiguration = config;
+            Notifications = new NovuNotifications(SDKConfiguration);
             Preferences = new Preferences(SDKConfiguration);
             Topics = new NovuTopics(SDKConfiguration);
         }
@@ -327,6 +336,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -578,6 +592,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "CreateSubscriberRequestDto", "json", false, false);
             if (serializedBody != null)
             {
@@ -819,7 +838,7 @@ namespace Novu
         /// Retrieve a subscriber by its unique key identifier **subscriberId**. <br/>
         ///     **subscriberId** field is required.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="SubscribersControllerGetSubscriberResponse"/> response envelope when completed.</returns>
@@ -849,6 +868,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1065,7 +1089,7 @@ namespace Novu
         /// Update a subscriber by its unique key identifier **subscriberId**. <br/>
         ///     **subscriberId** is a required field, rest other fields are optional.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="patchSubscriberRequestDto">A <see cref="PatchSubscriberRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -1099,6 +1123,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "PatchSubscriberRequestDto", "json", false, false);
             if (serializedBody != null)
@@ -1321,7 +1350,7 @@ namespace Novu
         /// Deletes a subscriber entity from the Novu platform along with associated messages, preferences, and topic subscriptions. <br/>
         ///       **subscriberId** is a required field.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="SubscribersControllerRemoveSubscriberResponse"/> response envelope when completed.</returns>
@@ -1351,6 +1380,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1596,6 +1630,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "BulkSubscriberCreateDto", "json", false, false);
             if (serializedBody != null)
@@ -1853,6 +1892,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "UpdateSubscriberChannelRequestDto", "json", false, false);
             if (serializedBody != null)
             {
@@ -2108,6 +2152,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "UpdateSubscriberChannelRequestDto", "json", false, false);
             if (serializedBody != null)
@@ -2365,6 +2414,11 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
@@ -2595,6 +2649,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "UpdateSubscriberOnlineFlagRequestDto", "json", false, false);
             if (serializedBody != null)

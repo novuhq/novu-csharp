@@ -1,0 +1,10 @@
+# EnvironmentsControllerDiffEnvironmentRequest
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `TargetEnvironmentId`                                                             | *string*                                                                          | :heavy_check_mark:                                                                | Target environment ID (MongoDB ObjectId) to compare against                       | 6615943e7ace93b0540ae377                                                          |
+| `IdempotencyKey`                                                                  | *string*                                                                          | :heavy_minus_sign:                                                                | A header for idempotency purposes                                                 |                                                                                   |
+| `DiffEnvironmentRequestDto`                                                       | [DiffEnvironmentRequestDto](../../Models/Components/DiffEnvironmentRequestDto.md) | :heavy_check_mark:                                                                | Diff request configuration                                                        |                                                                                   |

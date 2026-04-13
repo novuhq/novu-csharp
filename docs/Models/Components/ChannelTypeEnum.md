@@ -2,6 +2,14 @@
 
 Channel type through which the message is sent
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = ChannelTypeEnum.InApp;
+```
+
 
 ## Values
 

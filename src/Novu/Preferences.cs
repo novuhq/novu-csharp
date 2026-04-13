@@ -31,7 +31,7 @@ namespace Novu
         /// Bulk update subscriber preferences by its unique key identifier **subscriberId**. <br/>
         ///     This API allows updating multiple workflow preferences in a single request.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="bulkUpdateSubscriberPreferencesDto">A <see cref="BulkUpdateSubscriberPreferencesDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -70,7 +70,7 @@ namespace Novu
         /// Bulk update subscriber preferences by its unique key identifier **subscriberId**. <br/>
         ///     This API allows updating multiple workflow preferences in a single request.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="bulkUpdateSubscriberPreferencesDto">A <see cref="BulkUpdateSubscriberPreferencesDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -104,6 +104,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "BulkUpdateSubscriberPreferencesDto", "json", false, false);
             if (serializedBody != null)

@@ -42,6 +42,8 @@ namespace Novu.Models.Components
 
         public static WorkflowResponseDtoStepsType Throttle { get { return new WorkflowResponseDtoStepsType("throttle"); } }
 
+        public static WorkflowResponseDtoStepsType HttpRequest { get { return new WorkflowResponseDtoStepsType("http_request"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(WorkflowResponseDtoStepsType v) { return v.Value; }
         public static WorkflowResponseDtoStepsType FromString(string v) {
@@ -55,6 +57,7 @@ namespace Novu.Models.Components
                 case "digest": return Digest;
                 case "custom": return Custom;
                 case "throttle": return Throttle;
+                case "http_request": return HttpRequest;
                 default: throw new ArgumentException("Invalid value for WorkflowResponseDtoStepsType");
             }
         }
@@ -107,6 +110,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public ThrottleStepResponseDto? ThrottleStepResponseDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public HttpRequestStepResponseDto? HttpRequestStepResponseDto { get; set; }
 
         public WorkflowResponseDtoStepsType Type { get; set; }
 
@@ -200,6 +206,16 @@ namespace Novu.Models.Components
             return res;
         }
 
+        public static WorkflowResponseDtoSteps CreateHttpRequest(HttpRequestStepResponseDto httpRequest)
+        {
+            WorkflowResponseDtoStepsType typ = WorkflowResponseDtoStepsType.HttpRequest;
+            string typStr = WorkflowResponseDtoStepsType.HttpRequest.ToString();
+            httpRequest.Type = StepTypeEnumExtension.ToEnum(WorkflowResponseDtoStepsType.HttpRequest.ToString());
+            WorkflowResponseDtoSteps res = new WorkflowResponseDtoSteps(typ);
+            res.HttpRequestStepResponseDto = httpRequest;
+            return res;
+        }
+
         public class WorkflowResponseDtoStepsConverter : JsonConverter
         {
             public override bool CanConvert(System.Type objectType) => objectType == typeof(WorkflowResponseDtoSteps);
@@ -259,6 +275,11 @@ namespace Novu.Models.Components
                 {
                     ThrottleStepResponseDto throttleStepResponseDto = ResponseBodyDeserializer.DeserializeNotNull<ThrottleStepResponseDto>(jo.ToString());
                     return CreateThrottle(throttleStepResponseDto);
+                }
+                if (discriminator == WorkflowResponseDtoStepsType.HttpRequest.ToString())
+                {
+                    HttpRequestStepResponseDto httpRequestStepResponseDto = ResponseBodyDeserializer.DeserializeNotNull<HttpRequestStepResponseDto>(jo.ToString());
+                    return CreateHttpRequest(httpRequestStepResponseDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -324,6 +345,12 @@ namespace Novu.Models.Components
                 if (res.ThrottleStepResponseDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ThrottleStepResponseDto));
+                    return;
+                }
+
+                if (res.HttpRequestStepResponseDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.HttpRequestStepResponseDto));
                     return;
                 }
             }

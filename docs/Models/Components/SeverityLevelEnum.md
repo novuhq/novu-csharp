@@ -2,6 +2,14 @@
 
 Severity of the workflow
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = SeverityLevelEnum.High;
+```
+
 
 ## Values
 

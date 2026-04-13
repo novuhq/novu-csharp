@@ -38,6 +38,8 @@ namespace Novu.Models.Components
         Throttle,
         [JsonProperty("custom")]
         Custom,
+        [JsonProperty("http_request")]
+        HttpRequest,
     }
 
     public static class StepTypeEnumExtension

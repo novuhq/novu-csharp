@@ -2,6 +2,14 @@
 
 Regular digest: Unit for backoff
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = DigestUnitEnum.Seconds;
+```
+
 
 ## Values
 

@@ -11,6 +11,7 @@ namespace Novu.Utils
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Reflection;
     using System.Text;
@@ -22,9 +23,9 @@ namespace Novu.Utils
         private Dictionary<string, string> headerParams { get; } = new Dictionary<string, string>();
         private Dictionary<string, string> queryParams { get; } = new Dictionary<string, string>();
 
-        public SecurityMetadata(Func<object> securitySource)
+        public SecurityMetadata(Func<object> securitySource, string[]? allowedFields = null)
         {
-            ParseSecuritySource(securitySource);
+            ParseSecuritySource(securitySource, allowedFields);
         }
 
         public HttpRequestMessage Apply(HttpRequestMessage request)
@@ -49,7 +50,7 @@ namespace Novu.Utils
             return request;
         }
 
-        private void ParseSecuritySource(Func<object> securitySource)
+        private void ParseSecuritySource(Func<object> securitySource, string[]? allowedFields)
         {
             if (securitySource == null)
             {
@@ -62,7 +63,16 @@ namespace Novu.Utils
                 return;
             }
 
-            foreach (var prop in security.GetType().GetProperties())
+            var allProps = security.GetType().GetProperties();
+            PropertyInfo[] props = allowedFields != null
+                ? allowedFields
+                    .Select(name => allProps.FirstOrDefault(p => p.Name == name))
+                    .Where(p => p != null)
+                    .Cast<PropertyInfo>()
+                    .ToArray()
+                : allProps;
+
+            foreach (var prop in props)
             {
                 var value = prop.GetValue(security, null);
                 if (value == null)
@@ -79,6 +89,7 @@ namespace Novu.Utils
                 if (secMetadata.Option)
                 {
                     ParseOption(value);
+                    return;
                 }
                 else if (secMetadata.Scheme)
                 {
@@ -91,6 +102,11 @@ namespace Novu.Utils
                     {
                         ParseScheme(secMetadata, value);
                     }
+
+                    if (!secMetadata.Composite)
+                    {
+                        return;
+                    }
                 }
             }
 
@@ -99,6 +115,10 @@ namespace Novu.Utils
 
         private void ParseOption(object option)
         {
+            // Check if the option itself IS a basic auth scheme (e.g. UserPassAuth where
+            // fields directly contain username/password with full basic auth metadata).
+            // This is distinct from an option that CONTAINS a basic auth scheme as a
+            // nested class (e.g. SchemeBasicAuth) - that case is handled by ParseScheme.
             foreach (var prop in option.GetType().GetProperties())
             {
                 var value = prop.GetValue(option, null);
@@ -111,6 +131,12 @@ namespace Novu.Utils
                 if (secMetadata == null || !secMetadata.Scheme)
                 {
                     continue;
+                }
+
+                if (secMetadata.Type == "http" && secMetadata.SubType == "basic" && !Utilities.IsClass(value))
+                {
+                    ParseBasicAuthScheme(option);
+                    return;
                 }
 
                 ParseScheme(secMetadata, value);

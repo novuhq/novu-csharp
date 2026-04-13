@@ -22,6 +22,8 @@ namespace Novu.Models.Components
         IllegalVariableInControlValue,
         [JsonProperty("INVALID_FILTER_ARG_IN_VARIABLE")]
         InvalidFilterArgInVariable,
+        [JsonProperty("INVALID_URL")]
+        InvalidUrl,
         [JsonProperty("MISSING_VALUE")]
         MissingValue,
         [JsonProperty("TIER_LIMIT_EXCEEDED")]

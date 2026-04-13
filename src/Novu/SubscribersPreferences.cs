@@ -31,7 +31,7 @@ namespace Novu
         /// Retrieve subscriber channel preferences by its unique key identifier **subscriberId**. <br/>
         ///     This API returns all five channels preferences for all workflows and global preferences.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="criticality">A <see cref="Criticality"/> parameter.</param>
         /// <param name="contextKeys">Context keys for filtering preferences (e.g., ["tenant:acme"]).</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -59,7 +59,7 @@ namespace Novu
         ///     **workflowId** is optional field, if provided, this API will update that workflow preference, <br/>
         ///     otherwise it will update global preferences.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="patchSubscriberPreferencesDto">A <see cref="PatchSubscriberPreferencesDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -98,7 +98,7 @@ namespace Novu
         /// Retrieve subscriber channel preferences by its unique key identifier **subscriberId**. <br/>
         ///     This API returns all five channels preferences for all workflows and global preferences.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="criticality">A <see cref="Criticality"/> parameter.</param>
         /// <param name="contextKeys">Context keys for filtering preferences (e.g., ["tenant:acme"]).</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -134,6 +134,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -351,7 +356,7 @@ namespace Novu
         ///     **workflowId** is optional field, if provided, this API will update that workflow preference, <br/>
         ///     otherwise it will update global preferences.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
+        /// <param name="subscriberId">The identifier of the subscriber.</param>
         /// <param name="patchSubscriberPreferencesDto">A <see cref="PatchSubscriberPreferencesDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -385,6 +390,11 @@ namespace Novu
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "PatchSubscriberPreferencesDto", "json", false, false);
             if (serializedBody != null)

@@ -2,6 +2,14 @@
 
 The channel type for the integration
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = CreateIntegrationRequestDtoChannel.InApp;
+```
+
 
 ## Values
 

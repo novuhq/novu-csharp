@@ -2,6 +2,14 @@
 
 Unit of time for the look-back window.
 
+## Example Usage
+
+```csharp
+using Novu.Models.Components;
+
+var value = LookBackWindowDtoUnit.Seconds;
+```
+
 
 ## Values
 

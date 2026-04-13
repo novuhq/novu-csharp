@@ -28,7 +28,8 @@ namespace Novu
         /// Delete a translation group.
         /// </summary>
         /// <remarks>
-        /// Delete an entire translation group and all its translations.
+        /// Delete an entire translation group and all its translations<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="resourceType">Resource type.</param>
         /// <param name="resourceId">Resource ID.</param>
@@ -49,7 +50,8 @@ namespace Novu
         /// Retrieve a translation group.
         /// </summary>
         /// <remarks>
-        /// Retrieves a single translation group by resource type (workflow, layout) and resource ID (workflowId, layoutId).
+        /// Retrieves a single translation group by resource type (workflow, layout) and resource ID (workflowId, layoutId)<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="resourceType">Resource type.</param>
         /// <param name="resourceId">Resource ID.</param>
@@ -85,7 +87,8 @@ namespace Novu
         /// Delete a translation group.
         /// </summary>
         /// <remarks>
-        /// Delete an entire translation group and all its translations.
+        /// Delete an entire translation group and all its translations<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="resourceType">Resource type.</param>
         /// <param name="resourceId">Resource ID.</param>
@@ -118,9 +121,14 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "*/*");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_deleteTranslationGroupEndpoint", null, SDKConfiguration.SecuritySource);
@@ -223,7 +231,8 @@ namespace Novu
         /// Retrieve a translation group.
         /// </summary>
         /// <remarks>
-        /// Retrieves a single translation group by resource type (workflow, layout) and resource ID (workflowId, layoutId).
+        /// Retrieves a single translation group by resource type (workflow, layout) and resource ID (workflowId, layoutId)<br/>
+        /// <para>This operation requires either <see cref="Novu.Models.Components.Security.SecretKey"/> or <see cref="Novu.Models.Components.Security.SecretKey"/> to be set in the security parameter when initializing the SDK.</para>
         /// </remarks>
         /// <param name="resourceType">Resource type.</param>
         /// <param name="resourceId">Resource ID.</param>
@@ -257,9 +266,14 @@ namespace Novu
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource, new string[] { "SecretKey", "SecretKey" }).Apply(httpRequest);
             }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "TranslationController_getTranslationGroupEndpoint", null, SDKConfiguration.SecuritySource);
