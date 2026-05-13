@@ -14,7 +14,7 @@ namespace Novu.Models.Components
     using System;
 
     /// <summary>
-    /// The channel type for the integration.
+    /// The channel type for the integration. Not required for agent-kind integrations.
     /// </summary>
     public enum CreateIntegrationRequestDtoChannel
     {

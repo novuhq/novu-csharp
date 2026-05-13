@@ -53,16 +53,22 @@ namespace Novu.Models.Components
         public string ProviderId { get; set; } = default!;
 
         /// <summary>
-        /// The channel type for the integration, which defines how it communicates (e.g., email, SMS).
+        /// The channel type for the integration, which defines how it communicates (e.g., email, SMS). Not set for agent-kind integrations.
         /// </summary>
         [JsonProperty("channel")]
-        public IntegrationResponseDtoChannel Channel { get; set; } = default!;
+        public IntegrationResponseDtoChannel? Channel { get; set; }
 
         /// <summary>
-        /// The credentials required for the integration to function, including API keys and other sensitive information.
+        /// Distinguishes delivery integrations from agent-runtime integrations. Defaults to "delivery". Agent integrations do not have a channel.
+        /// </summary>
+        [JsonProperty("kind")]
+        public Kind? Kind { get; set; }
+
+        /// <summary>
+        /// The decrypted credentials required for the integration to function (e.g. provider API keys, signing secrets). Only returned to dashboard/session-token callers; API-key authenticated callers receive the integration metadata without this field to avoid amplifying API-key leaks into provider-credential leaks.
         /// </summary>
         [JsonProperty("credentials")]
-        public CredentialsDto Credentials { get; set; } = default!;
+        public CredentialsDto? Credentials { get; set; }
 
         /// <summary>
         /// The configurations required for enabling the additional configurations of the integration.

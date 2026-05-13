@@ -60,6 +60,8 @@ namespace Novu.Models.Components
         EmailWebhook,
         [JsonProperty("braze")]
         Braze,
+        [JsonProperty("novu-email-agent")]
+        NovuEmailAgent,
         [JsonProperty("nexmo")]
         Nexmo,
         [JsonProperty("plivo")]
@@ -176,6 +178,8 @@ namespace Novu.Models.Components
         ChatWebhook,
         [JsonProperty("novu-slack")]
         NovuSlack,
+        [JsonProperty("anthropic")]
+        Anthropic,
     }
 
     public static class ProvidersIdEnumExtension

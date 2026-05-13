@@ -64,7 +64,7 @@ namespace Novu.Models.Requests
         /// Filter by severity levels.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=severity")]
-        public List<Severity>? Severity { get; set; }
+        public List<Models.Requests.Severity>? Severity { get; set; }
 
         /// <summary>
         /// Filter notifications created on or after this timestamp (Unix timestamp in milliseconds).

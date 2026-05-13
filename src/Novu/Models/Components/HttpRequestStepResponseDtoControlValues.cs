@@ -38,10 +38,10 @@ namespace Novu.Models.Components
         public List<HttpRequestKeyValuePairDto>? Headers { get; set; }
 
         /// <summary>
-        /// Request body as key-value pairs.
+        /// Request body as a raw JSON string. Key-value arrays are supported for legacy workflows.
         /// </summary>
-        [JsonProperty("body")]
-        public List<HttpRequestKeyValuePairDto>? Body { get; set; }
+        [JsonProperty("body", NullValueHandling = NullValueHandling.Include)]
+        public HttpRequestStepResponseDtoBody? Body { get; set; }
 
         /// <summary>
         /// JSON schema to validate response body against.

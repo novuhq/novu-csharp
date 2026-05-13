@@ -51,3 +51,7 @@
 | `SenderId`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
 | `TenantId`                                          | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
 | `AppIOBaseUrl`                                      | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `SigningSecret`                                     | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `OutboundIntegrationId`                             | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `UseFromAddressOverride`                            | *bool*                                              | :heavy_minus_sign:                                  | N/A                                                 |
+| `FromAddressOverride`                               | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |

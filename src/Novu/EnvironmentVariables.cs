@@ -58,7 +58,7 @@ namespace Novu
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="createEnvironmentVariableRequestDto"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ErrorDto">A submitted value equals the public secret mask placeholder, which is reserved. Thrown when the API returns a 400, 401, 403, 404, 405, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public  Task<EnvironmentVariablesControllerCreateEnvironmentVariableResponse> CreateAsync(
@@ -93,7 +93,7 @@ namespace Novu
         /// Update a variable.
         /// </summary>
         /// <remarks>
-        /// Updates an existing environment variable. Providing values replaces all existing per-environment values.
+        /// Updates an existing environment variable. Providing `values` merges them into the existing per-environment values by `_environmentId`; envs not present in the request keep their stored value. Submitting the masked secret placeholder (the value returned by read endpoints for secret variables) as a real value is rejected.
         /// </remarks>
         /// <param name="variableKey">The unique key of the environment variable (e.g. BASE_URL).</param>
         /// <param name="updateEnvironmentVariableRequestDto">A <see cref="UpdateEnvironmentVariableRequestDto"/> parameter.</param>
@@ -103,7 +103,7 @@ namespace Novu
         /// <exception cref="ArgumentNullException">One of <paramref name="variableKey"/> or <paramref name="updateEnvironmentVariableRequestDto"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ErrorDto">A submitted value equals the public secret mask placeholder, or no fields were provided to update. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public  Task<EnvironmentVariablesControllerUpdateEnvironmentVariableResponse> UpdateAsync(
@@ -431,7 +431,7 @@ namespace Novu
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="createEnvironmentVariableRequestDto"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ErrorDto">A submitted value equals the public secret mask placeholder, which is reserved. Thrown when the API returns a 400, 401, 403, 404, 405, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public async  Task<EnvironmentVariablesControllerCreateEnvironmentVariableResponse> CreateAsync(
@@ -928,7 +928,7 @@ namespace Novu
         /// Update a variable.
         /// </summary>
         /// <remarks>
-        /// Updates an existing environment variable. Providing values replaces all existing per-environment values.
+        /// Updates an existing environment variable. Providing `values` merges them into the existing per-environment values by `_environmentId`; envs not present in the request keep their stored value. Submitting the masked secret placeholder (the value returned by read endpoints for secret variables) as a real value is rejected.
         /// </remarks>
         /// <param name="variableKey">The unique key of the environment variable (e.g. BASE_URL).</param>
         /// <param name="updateEnvironmentVariableRequestDto">A <see cref="UpdateEnvironmentVariableRequestDto"/> parameter.</param>
@@ -938,7 +938,7 @@ namespace Novu
         /// <exception cref="ArgumentNullException">One of <paramref name="variableKey"/> or <paramref name="updateEnvironmentVariableRequestDto"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ErrorDto">A submitted value equals the public secret mask placeholder, or no fields were provided to update. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public async  Task<EnvironmentVariablesControllerUpdateEnvironmentVariableResponse> UpdateAsync(

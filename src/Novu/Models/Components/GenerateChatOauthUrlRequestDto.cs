@@ -42,5 +42,29 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("scope")]
         public List<string>? Scope { get; set; }
+
+        /// <summary>
+        /// **Slack only, link_user mode**: User-level OAuth scopes to request during authorization. Used when mode is "link_user" to identify the Slack user via "Sign in with Slack". If not specified, defaults to: identity.basic.
+        /// </summary>
+        [JsonProperty("userScope")]
+        public List<string>? UserScope { get; set; }
+
+        /// <summary>
+        /// OAuth flow mode. Use "connect" (default) to create a workspace channel connection, or "link_user" to identify the subscriber's Slack user ID without creating a connection.
+        /// </summary>
+        [JsonProperty("mode")]
+        public Mode? Mode { get; set; }
+
+        /// <summary>
+        /// Connection mode that determines how the channel connection is scoped. Use "subscriber" (default) to associate the connection with a specific subscriber. Use "shared" to associate the connection with a context instead of a subscriber — subscriberId will not be stored on the connection.
+        /// </summary>
+        [JsonProperty("connectionMode")]
+        public GenerateChatOauthUrlRequestDtoConnectionMode? ConnectionMode { get; set; }
+
+        /// <summary>
+        /// When true, after the workspace/tenant connection is created the OAuth flow also links the subscriber who clicked "Connect" as a personal endpoint. For Slack, this uses the authed_user.id already returned by oauth.v2.access — no extra redirect. For MS Teams, this triggers a second OAuth redirect for delegated user-identity consent. Defaults to false when omitted; the SlackConnectButton and MsTeamsConnectButton SDK components default this to true.
+        /// </summary>
+        [JsonProperty("autoLinkUser")]
+        public bool? AutoLinkUser { get; set; }
     }
 }

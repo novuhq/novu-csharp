@@ -132,7 +132,7 @@ var res = await sdk.EnvironmentVariables.RetrieveAsync(variableKey: "BASE_URL");
 
 ## Update
 
-Updates an existing environment variable. Providing values replaces all existing per-environment values.
+Updates an existing environment variable. Providing `values` merges them into the existing per-environment values by `_environmentId`; envs not present in the request keep their stored value. Submitting the masked secret placeholder (the value returned by read endpoints for secret variables) as a real value is rejected.
 
 ### Example Usage
 

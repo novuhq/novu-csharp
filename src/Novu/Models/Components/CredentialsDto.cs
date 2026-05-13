@@ -152,5 +152,17 @@ namespace Novu.Models.Components
 
         [JsonProperty("AppIOBaseUrl")]
         public string? AppIOBaseUrl { get; set; }
+
+        [JsonProperty("signingSecret")]
+        public string? SigningSecret { get; set; }
+
+        [JsonProperty("outboundIntegrationId")]
+        public string? OutboundIntegrationId { get; set; }
+
+        [JsonProperty("useFromAddressOverride")]
+        public bool? UseFromAddressOverride { get; set; }
+
+        [JsonProperty("fromAddressOverride")]
+        public string? FromAddressOverride { get; set; }
     }
 }

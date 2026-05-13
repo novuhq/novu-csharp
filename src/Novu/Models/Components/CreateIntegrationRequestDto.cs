@@ -38,13 +38,19 @@ namespace Novu.Models.Components
         /// The provider ID for the integration.
         /// </summary>
         [JsonProperty("providerId")]
-        public string ProviderId { get; set; } = default!;
+        public string? ProviderId { get; set; }
 
         /// <summary>
-        /// The channel type for the integration.
+        /// The channel type for the integration. Not required for agent-kind integrations.
         /// </summary>
         [JsonProperty("channel")]
-        public CreateIntegrationRequestDtoChannel Channel { get; set; } = default!;
+        public CreateIntegrationRequestDtoChannel? Channel { get; set; }
+
+        /// <summary>
+        /// Distinguishes delivery integrations from agent-runtime integrations. Defaults to "delivery". Agent integrations do not require a channel.
+        /// </summary>
+        [JsonProperty("kind")]
+        public CreateIntegrationRequestDtoKind? Kind { get; set; }
 
         /// <summary>
         /// The credentials for the integration.

@@ -84,6 +84,7 @@ var res = await sdk.ChannelConnections.CreateAsync(createChannelConnectionReques
             "org-acme"
         ) },
     },
+    ConnectionMode = ConnectionMode.Shared,
     IntegrationIdentifier = "slack-prod",
     Workspace = new WorkspaceDto() {
         Id = "T123456",

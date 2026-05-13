@@ -295,6 +295,30 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [Retrieve](docs/sdks/contexts/README.md#retrieve) - Retrieve a context
 * [Delete](docs/sdks/contexts/README.md#delete) - Delete a context
 
+### [Domains](docs/sdks/domains/README.md)
+
+* [List](docs/sdks/domains/README.md#list) - List domains for an environment
+* [Create](docs/sdks/domains/README.md#create) - Create a domain
+* [Retrieve](docs/sdks/domains/README.md#retrieve) - Retrieve a domain by name
+* [Update](docs/sdks/domains/README.md#update) - Update a domain
+* [Delete](docs/sdks/domains/README.md#delete) - Delete a domain
+* [Diagnose](docs/sdks/domains/README.md#diagnose) - Diagnose inbound DNS for a domain
+* [Verify](docs/sdks/domains/README.md#verify) - Verify a domain
+
+#### [Domains.AutoConfigure](docs/sdks/autoconfigure/README.md)
+
+* [Retrieve](docs/sdks/autoconfigure/README.md#retrieve) - Retrieve auto-configuration availability
+* [Start](docs/sdks/autoconfigure/README.md#start) - Start DNS auto-configuration
+
+#### [Domains.Routes](docs/sdks/routes/README.md)
+
+* [List](docs/sdks/routes/README.md#list) - List routes for a domain
+* [Create](docs/sdks/routes/README.md#create) - Create a route
+* [Retrieve](docs/sdks/routes/README.md#retrieve) - Retrieve a route by address
+* [Update](docs/sdks/routes/README.md#update) - Update a route
+* [Delete](docs/sdks/routes/README.md#delete) - Delete a route
+* [Test](docs/sdks/routes/README.md#test) - Test an inbound route
+
 ### [EnvironmentVariables](docs/sdks/environmentvariables/README.md)
 
 * [List](docs/sdks/environmentvariables/README.md#list) - List all variables
@@ -323,7 +347,9 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [IntegrationsControllerAutoConfigureIntegration](docs/sdks/integrations/README.md#integrationscontrollerautoconfigureintegration) - Auto-configure an integration for inbound webhooks
 * [SetPrimary](docs/sdks/integrations/README.md#setprimary) - Update integration as primary
 * [ListActive](docs/sdks/integrations/README.md#listactive) - List active integrations
-* [GenerateChatOAuthUrl](docs/sdks/integrations/README.md#generatechatoauthurl) - Generate chat OAuth URL
+* [GenerateConnectOAuthUrl](docs/sdks/integrations/README.md#generateconnectoauthurl) - Generate OAuth URL for a workspace/tenant connection
+* [GenerateLinkUserOAuthUrl](docs/sdks/integrations/README.md#generatelinkuseroauthurl) - Generate OAuth URL to link a subscriber user identity
+* [~~GenerateChatOAuthUrl~~](docs/sdks/integrations/README.md#generatechatoauthurl) - Generate chat OAuth URL :warning: **Deprecated**
 
 ### [Layouts](docs/sdks/layouts/README.md)
 
@@ -648,9 +674,9 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 118 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 118 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 118 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 135 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 135 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 135 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

@@ -36,6 +36,7 @@ var value = GetChannelEndpointResponseDtoProviderId.Emailjs;
 | `Sparkpost`        | sparkpost          |
 | `EmailWebhook`     | email-webhook      |
 | `Braze`            | braze              |
+| `NovuEmailAgent`   | novu-email-agent   |
 | `Nexmo`            | nexmo              |
 | `Plivo`            | plivo              |
 | `Sms77`            | sms77              |
@@ -94,3 +95,4 @@ var value = GetChannelEndpointResponseDtoProviderId.Emailjs;
 | `WhatsappBusiness` | whatsapp-business  |
 | `ChatWebhook`      | chat-webhook       |
 | `NovuSlack`        | novu-slack         |
+| `Anthropic`        | anthropic          |
