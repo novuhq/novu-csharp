@@ -14,7 +14,9 @@ With the help of the Integration Store, you can easily integrate your favorite d
 * [IntegrationsControllerAutoConfigureIntegration](#integrationscontrollerautoconfigureintegration) - Auto-configure an integration for inbound webhooks
 * [SetPrimary](#setprimary) - Update integration as primary
 * [ListActive](#listactive) - List active integrations
-* [GenerateChatOAuthUrl](#generatechatoauthurl) - Generate chat OAuth URL
+* [GenerateConnectOAuthUrl](#generateconnectoauthurl) - Generate OAuth URL for a workspace/tenant connection
+* [GenerateLinkUserOAuthUrl](#generatelinkuseroauthurl) - Generate OAuth URL to link a subscriber user identity
+* [~~GenerateChatOAuthUrl~~](#generatechatoauthurl) - Generate chat OAuth URL :warning: **Deprecated**
 
 ## GetAll
 
@@ -68,10 +70,7 @@ using Novu.Models.Components;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Integrations.CreateAsync(createIntegrationRequestDto: new CreateIntegrationRequestDto() {
-    ProviderId = "<id>",
-    Channel = CreateIntegrationRequestDtoChannel.Email,
-});
+var res = await sdk.Integrations.CreateAsync(createIntegrationRequestDto: new CreateIntegrationRequestDto() {});
 
 // handle response
 ```
@@ -300,11 +299,124 @@ var res = await sdk.Integrations.ListActiveAsync();
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
 
-## GenerateChatOAuthUrl
+## GenerateConnectOAuthUrl
 
-Generate an OAuth URL for chat integrations like Slack and MS Teams. 
+Generate an OAuth URL that creates a workspace or tenant-level channel connection (Slack workspace install or MS Teams admin consent). 
+    The generated URL expires after 5 minutes.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_generateConnectOAuthUrl" method="post" path="/v1/integrations/channel-connections/oauth" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Integrations.GenerateConnectOAuthUrlAsync(generateConnectOauthUrlRequestDto: new GenerateConnectOauthUrlRequestDto() {
+    SubscriberId = "subscriber-123",
+    IntegrationIdentifier = "<value>",
+    ConnectionIdentifier = "slack-connection-abc123",
+    Context = new Dictionary<string, GenerateConnectOauthUrlRequestDtoContext>() {
+        { "key", GenerateConnectOauthUrlRequestDtoContext.CreateStr(
+            "org-acme"
+        ) },
+    },
+    Scope = new List<string>() {
+        "chat:write",
+        "chat:write.public",
+        "channels:read",
+    },
+    ConnectionMode = GenerateConnectOauthUrlRequestDtoConnectionMode.Shared,
+    AutoLinkUser = true,
+});
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `GenerateConnectOauthUrlRequestDto`                                                               | [GenerateConnectOauthUrlRequestDto](../../Models/Components/GenerateConnectOauthUrlRequestDto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `IdempotencyKey`                                                                                  | *string*                                                                                          | :heavy_minus_sign:                                                                                | A header for idempotency purposes                                                                 |
+
+### Response
+
+**[IntegrationsControllerGenerateConnectOAuthUrlResponse](../../Models/Requests/IntegrationsControllerGenerateConnectOAuthUrlResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
+## GenerateLinkUserOAuthUrl
+
+Generate an OAuth URL that links a specific subscriber to their chat identity (Slack user ID or MS Teams user OID). 
+    The generated URL expires after 5 minutes.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_generateLinkUserOAuthUrl" method="post" path="/v1/integrations/channel-endpoints/oauth" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Integrations.GenerateLinkUserOAuthUrlAsync(generateLinkUserOauthUrlRequestDto: new GenerateLinkUserOauthUrlRequestDto() {
+    SubscriberId = "subscriber-123",
+    IntegrationIdentifier = "<value>",
+    ConnectionIdentifier = "slack-connection-abc123",
+    Context = new Dictionary<string, GenerateLinkUserOauthUrlRequestDtoContext>() {
+        { "key", GenerateLinkUserOauthUrlRequestDtoContext.CreateStr(
+            "org-acme"
+        ) },
+    },
+    UserScope = new List<string>() {
+        "identity.basic",
+    },
+});
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `GenerateLinkUserOauthUrlRequestDto`                                                                | [GenerateLinkUserOauthUrlRequestDto](../../Models/Components/GenerateLinkUserOauthUrlRequestDto.md) | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `IdempotencyKey`                                                                                    | *string*                                                                                            | :heavy_minus_sign:                                                                                  | A header for idempotency purposes                                                                   |
+
+### Response
+
+**[IntegrationsControllerGenerateLinkUserOAuthUrlResponse](../../Models/Requests/IntegrationsControllerGenerateLinkUserOAuthUrlResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
+## ~~GenerateChatOAuthUrl~~
+
+**Deprecated** — use `POST /integrations/channel-connections/oauth` (connect) or `POST /integrations/channel-endpoints/oauth` (link_user) instead.
+    Generate an OAuth URL for chat integrations like Slack and MS Teams. 
     This URL allows subscribers to authorize the integration, enabling the system to send messages 
     through their chat workspace. The generated URL expires after 5 minutes.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -334,6 +446,12 @@ var res = await sdk.Integrations.GenerateChatOAuthUrlAsync(generateChatOauthUrlR
         "users:read.email",
         "incoming-webhook",
     },
+    UserScope = new List<string>() {
+        "identity.basic",
+    },
+    Mode = Mode.LinkUser,
+    ConnectionMode = GenerateChatOauthUrlRequestDtoConnectionMode.Shared,
+    AutoLinkUser = true,
 });
 
 // handle response

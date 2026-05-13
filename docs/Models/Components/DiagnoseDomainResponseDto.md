@@ -1,0 +1,11 @@
+# DiagnoseDomainResponseDto
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `Ok`                                                                                  | *bool*                                                                                | :heavy_check_mark:                                                                    | True when there are no error-severity issues                                          |
+| `RunAt`                                                                               | *string*                                                                              | :heavy_check_mark:                                                                    | ISO timestamp when the diagnostic run finished                                        |
+| `Checks`                                                                              | List<[DomainDiagnosticCheckDto](../../Models/Components/DomainDiagnosticCheckDto.md)> | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `Issues`                                                                              | List<[DomainDiagnosticIssueDto](../../Models/Components/DomainDiagnosticIssueDto.md)> | :heavy_check_mark:                                                                    | N/A                                                                                   |

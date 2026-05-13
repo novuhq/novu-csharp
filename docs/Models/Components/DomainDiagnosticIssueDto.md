@@ -1,0 +1,11 @@
+# DomainDiagnosticIssueDto
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `Code`                                                                                  | [DomainDiagnosticIssueDtoCode](../../Models/Components/DomainDiagnosticIssueDtoCode.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `Severity`                                                                              | [Models.Components.Severity](../../Models/Components/Severity.md)                       | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `Message`                                                                               | *string*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `Fix`                                                                                   | *string*                                                                                | :heavy_check_mark:                                                                      | Plain-language remediation guidance                                                     |

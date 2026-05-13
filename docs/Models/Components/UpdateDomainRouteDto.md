@@ -1,0 +1,10 @@
+# UpdateDomainRouteDto
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `AgentId`                                                                                  | *string*                                                                                   | :heavy_minus_sign:                                                                         | Agent identifier; required when type is agent, ignored when type is webhook.               |
+| `Type`                                                                                     | [UpdateDomainRouteDtoType](../../Models/Components/UpdateDomainRouteDtoType.md)            | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `Data`                                                                                     | Dictionary<String, *string*>                                                               | :heavy_minus_sign:                                                                         | Replaces route metadata when provided (max 10 keys, 500 characters total for keys+values). |

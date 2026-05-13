@@ -73,6 +73,12 @@ namespace Novu
 
         public IChannelEndpoints ChannelEndpoints { get; }
 
+        /// <summary>
+        /// Used to manage your inbound email domains.<br/>
+        /// <see href="https://docs.novu.co/platform/domains">https://docs.novu.co/platform/domains</see>
+        /// </summary>
+        public IDomains Domains { get; }
+
         public IEnvironmentVariables EnvironmentVariables { get; }
 
         /// <summary>
@@ -248,6 +254,10 @@ namespace Novu
         /// </summary>
         public IChannelEndpoints ChannelEndpoints { get; private set; }
         /// <summary>
+        /// The Domains sub-SDK.
+        /// </summary>
+        public IDomains Domains { get; private set; }
+        /// <summary>
         /// The EnvironmentVariables sub-SDK.
         /// </summary>
         public IEnvironmentVariables EnvironmentVariables { get; private set; }
@@ -306,6 +316,8 @@ namespace Novu
             ChannelConnections = new ChannelConnections(SDKConfiguration);
 
             ChannelEndpoints = new ChannelEndpoints(SDKConfiguration);
+
+            Domains = new Domains(SDKConfiguration);
 
             EnvironmentVariables = new EnvironmentVariables(SDKConfiguration);
 
@@ -405,6 +417,8 @@ namespace Novu
             ChannelConnections = new ChannelConnections(SDKConfiguration);
 
             ChannelEndpoints = new ChannelEndpoints(SDKConfiguration);
+
+            Domains = new Domains(SDKConfiguration);
 
             EnvironmentVariables = new EnvironmentVariables(SDKConfiguration);
 

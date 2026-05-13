@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 61e876ba-f1ab-4e7f-bfcc-4f8231d25d15
 management:
-  docChecksum: 2a21bffd50d729765fe62c54254f410c
+  docChecksum: f7b3083a03c0ab2d5b9299a9cbf1a1b8
   docVersion: 3.15.0
-  speakeasyVersion: 1.761.3
-  generationVersion: 2.879.11
-  releaseVersion: 3.15.0
-  configChecksum: 89863838e5f56192c9a5d8220e806636
+  speakeasyVersion: 1.763.0
+  generationVersion: 2.884.0
+  releaseVersion: 3.16.0
+  configChecksum: b9f4d3044197446ba8ac608c9e97a476
   repoURL: https://github.com/novuhq/novu-csharp.git
   installationURL: https://github.com/novuhq/novu-csharp
   published: true
 persistentEdits:
-  generation_id: 522faae7-7eeb-4d12-a13a-2e3e7327128c
-  pristine_commit_hash: a63820aef9edec024d75dfb65de65299fedcb876
-  pristine_tree_hash: c55da09c78134b5b0c1690819ffbcd881956d189
+  generation_id: ad461a29-78f3-45a1-9f5b-7d0613fa6c15
+  pristine_commit_hash: b70d55231eef3b2a1e943de9d8977f155fcf31c7
+  pristine_tree_hash: 423b5e91984515c81fe37014007989789e367467
 features:
   csharp:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.0.3
-    core: 3.15.20
+    core: 3.15.21
     deprecations: 2.81.2
     examples: 2.81.7
     flattening: 2.81.3
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c094dba670119a1a5414e11c713a4ea3218147cd
   NUGET.md:
     id: f4c8a442a6e5
-    last_write_checksum: sha1:ed0cdbe6924fe51085174d01be09659f19bdb7af
-    pristine_git_object: 76d8a9d6aaf65596346ef0ab9c4179e69d2f05f6
+    last_write_checksum: sha1:b414aeed9b59eebffb579a05b214056a0212b400
+    pristine_git_object: 5307addb854254c30107bfa722c8015332d68e6f
   Novu.sln:
     id: 120cdb0a01ba
     last_write_checksum: sha1:1bdd1b2c71249da5460f212657844ce96cb1648b
@@ -114,6 +114,10 @@ trackedFiles:
     id: 075268719fb8
     last_write_checksum: sha1:c3b52320c1f1b1f9d49fc91f6af66e2026efd9ad
     pristine_git_object: f63f75e5a8cd83b541c464bcabfd50d4a6f76bb2
+  docs/Models/Components/AgentReply.md:
+    id: 5446ca6ae2ac
+    last_write_checksum: sha1:117ba7f10d78404349891d3bbe21dba82ba17884
+    pristine_git_object: 1baf90d6fabb6b88a8c52a23f1e6017585860358
   docs/Models/Components/All.md:
     id: bf7353d351e4
     last_write_checksum: sha1:fe1d8ab1072e06c8025d8956acb59df194b4c3d0
@@ -134,6 +138,10 @@ trackedFiles:
     id: c31c4cf2359a
     last_write_checksum: sha1:da4808f535b5213568d3d8dc96fe2a6ef04ef421
     pristine_git_object: da45b379115fb36dc4f3d64fe64c66d99dbd4f6d
+  docs/Models/Components/Body.md:
+    id: b767f59bcaf2
+    last_write_checksum: sha1:7f4521dcac7e1134aa3a36b2d72eb2dd9d38776a
+    pristine_git_object: 3d59571eb39a4d149eba5cb890a8217badf7a811
   docs/Models/Components/BridgeConfigurationDto.md:
     id: 407440250f67
     last_write_checksum: sha1:0ba2ca6b67ff3cd885bba5a3b07868a73faeaffa
@@ -234,6 +242,10 @@ trackedFiles:
     id: 2be4648b4ba7
     last_write_checksum: sha1:a5482971b02ac777458a04fac5197bc3c902965b
     pristine_git_object: 8e6cb7dade9c1b36d0b6c9c1184cd230f50a1bc8
+  docs/Models/Components/Code.md:
+    id: 40e6ed62d8c8
+    last_write_checksum: sha1:0f80926abf4dde75cc40bef4a66da21213054f55
+    pristine_git_object: 850fea6a5df7d532f8d9c051d8d6b27200e14b9f
   docs/Models/Components/Condition.md:
     id: c417ada41f2e
     last_write_checksum: sha1:2726e0b8018d7d30eaf53b37cc44d32b998bc3ec
@@ -246,6 +258,10 @@ trackedFiles:
     id: 29a1375dcb35
     last_write_checksum: sha1:68b48278dc1a9f45c989ac4e719f3f9016cce15c
     pristine_git_object: 4370a81ee931ebf76efce774607ef5e15c6d0152
+  docs/Models/Components/ConnectionMode.md:
+    id: 8b249d988a28
+    last_write_checksum: sha1:d0af6e4563c303ab6714fb1b9fc5a0cc4ae7fa0a
+    pristine_git_object: 72b3d742164862a4a593bc783125da449dd3e7d2
   docs/Models/Components/ConstraintValidation.md:
     id: 132a20561cce
     last_write_checksum: sha1:3b406a280c9b6f893cc4bdb2334688e91ee94fed
@@ -280,8 +296,8 @@ trackedFiles:
     pristine_git_object: 4ce985eb28731be84d4bf56ca4a9d33571dcd72f
   docs/Models/Components/CreateChannelConnectionRequestDto.md:
     id: f1b756c69088
-    last_write_checksum: sha1:79626661708ea519d587a127db3b87ed3a9947e7
-    pristine_git_object: 248f209d1a4888839407a41067c7b59e2fbe015d
+    last_write_checksum: sha1:567c68612589a46f030412a9993969d03e74d8b2
+    pristine_git_object: cfa755b18533aea4a392571a50f434a044a29aa0
   docs/Models/Components/CreateChannelConnectionRequestDtoContext.md:
     id: deb236cf6ba8
     last_write_checksum: sha1:243f18229946290f305adf2c4bf4ef1d4f0af481
@@ -294,6 +310,14 @@ trackedFiles:
     id: 30a1f84a3f94
     last_write_checksum: sha1:8c33adf3d48090554d68a4976f8fbc6fc6d9d655
     pristine_git_object: 108b33593a7f19d861ad0361d21475e38953dc6b
+  docs/Models/Components/CreateDomainConnectApplyUrlDto.md:
+    id: 75c3a5f8511c
+    last_write_checksum: sha1:a7502e3438507c826efbd22f7c368dc513f87170
+    pristine_git_object: 8fa2aa05800a61325239b762455bb741c5c32ba1
+  docs/Models/Components/CreateDomainDto.md:
+    id: 8858d4149640
+    last_write_checksum: sha1:ebc89ef5869d61473cf7ba3b907115cf966f8ced
+    pristine_git_object: 3ba36e9b4f3668e50f669170dab0b9548bbbc3bf
   docs/Models/Components/CreateEnvironmentRequestDto.md:
     id: 9d554d68d861
     last_write_checksum: sha1:8cf17f1b811252a4cdbce2ada45fb483ed7f0a32
@@ -308,12 +332,16 @@ trackedFiles:
     pristine_git_object: 4c333956fcaa7aca09b2137e46bdb2f86e579d43
   docs/Models/Components/CreateIntegrationRequestDto.md:
     id: a5690092a736
-    last_write_checksum: sha1:ac6400a1903c0343bff8eaea29993cb8f60fc84c
-    pristine_git_object: 793c0f4919b506241900db7f1a7f227d736bb75c
+    last_write_checksum: sha1:823a15149427177a5805c89be4f45292f30abeec
+    pristine_git_object: 30072912a2232e35cd42d958ba384efcfbbe1c39
   docs/Models/Components/CreateIntegrationRequestDtoChannel.md:
     id: 7cb186d3e649
-    last_write_checksum: sha1:75aefff48ce739f10bb8a47e0c43a621f2af2f7b
-    pristine_git_object: 8157f04c1de08be52bc362f256732ff7aee51bc6
+    last_write_checksum: sha1:5bbce71f75ef511a71fa2860d5117cd8d9ac842c
+    pristine_git_object: 32b98d1e7a02df1ffba4a94a4d2368f842311c54
+  docs/Models/Components/CreateIntegrationRequestDtoKind.md:
+    id: ca9bc0a90564
+    last_write_checksum: sha1:6ae5c0af52d18f32fbf32872567e2eeed5539bc0
+    pristine_git_object: bb46673a7fedf29842e60b88a5c51b3d3dc059ed
   docs/Models/Components/CreateLayoutDto.md:
     id: f333bc9cacf1
     last_write_checksum: sha1:c540716217b21876f86ebababcf682dbee52a856
@@ -452,8 +480,8 @@ trackedFiles:
     pristine_git_object: 58376e70716e6473d7f3fefe295934ecd23fb832
   docs/Models/Components/CredentialsDto.md:
     id: acd8ee29ffdc
-    last_write_checksum: sha1:8a377b80172ca7f8a8002bcc953c80621a0ae4d0
-    pristine_git_object: 95f512f7b0459e3c3a1f0e42b835a11994460b5e
+    last_write_checksum: sha1:3af0e213271d575829a6ac464597552bad1e2eb7
+    pristine_git_object: 2287a2c7c75cbf6f4edf1e483c0556cc97400fde
   docs/Models/Components/CustomControlDto.md:
     id: 1e26c2452a1c
     last_write_checksum: sha1:c1484c9a1602697d0a1f814eac8b62a336d9d274
@@ -566,6 +594,10 @@ trackedFiles:
     id: c566c5b8b8ce
     last_write_checksum: sha1:c7e81d3b52f9ddee6dd48ca28e151f77f6858031
     pristine_git_object: e85b3a1fbcb213b29a093e7b6ef6a6a9b6d5665d
+  docs/Models/Components/DiagnoseDomainResponseDto.md:
+    id: b49037424061
+    last_write_checksum: sha1:891daaadfa34dc990123d38d5ec7ea1510b7f188
+    pristine_git_object: 1ee6453983fcf997d22c6bfaba3be51491fa96f8
   docs/Models/Components/DiffActionEnum.md:
     id: 1b21bc44c7df
     last_write_checksum: sha1:a354fbbf47f1b73eb0ed6da499cef4d866cb1a82
@@ -682,10 +714,62 @@ trackedFiles:
     id: 5e59a084b990
     last_write_checksum: sha1:905bba871d122c4b8c409e352c6de2151398e6a0
     pristine_git_object: c0b1669971196e165d15a8fc6942c1690218293b
+  docs/Models/Components/DomainConnectApplyUrlResponseDto.md:
+    id: 3d1b6c4cf7c0
+    last_write_checksum: sha1:f64077d0dc123a479b36f632962f0b4cfce88375
+    pristine_git_object: ee0b4bdadaf653d63ce5307a0c7826233c72615e
+  docs/Models/Components/DomainConnectStatusResponseDto.md:
+    id: 4529e4e3e6ad
+    last_write_checksum: sha1:eb8eb356607a755bb54c2c53abd26b7aff9f43a3
+    pristine_git_object: ed9e4cac4c134c4354200f2a8c144407d73439c9
+  docs/Models/Components/DomainDiagnosticCheckDto.md:
+    id: a5867e44094d
+    last_write_checksum: sha1:00936de972e0c27062f66e090ec546deb067e26e
+    pristine_git_object: 2dd7f66d30c21343d0f0208bb0a2bd8298cacb44
+  docs/Models/Components/DomainDiagnosticCheckDtoStatus.md:
+    id: 33610f5a6ebb
+    last_write_checksum: sha1:761126c8f7ef34a70d693072361d9de23c5819e9
+    pristine_git_object: f370fc0ad1d44d72d293b9556e11741113a5159c
+  docs/Models/Components/DomainDiagnosticIssueDto.md:
+    id: 407d45786ff0
+    last_write_checksum: sha1:67ec867145fbe4008a87d23f428bc983c651d5d1
+    pristine_git_object: a9557632bcb19aae62487230d9725566897e0f80
+  docs/Models/Components/DomainDiagnosticIssueDtoCode.md:
+    id: 75ae9aa7f522
+    last_write_checksum: sha1:6999eed7b108aeb9b3532eb178bdb45ffc42401d
+    pristine_git_object: 385fa5f9b4cf213395b3f2bc7af290a824bc7669
+  docs/Models/Components/DomainResponseDto.md:
+    id: ff34f943b1b9
+    last_write_checksum: sha1:5a161d63745695eb2574c4819912af7aa3f7e214
+    pristine_git_object: cfa03ae1326637fa2ceecace83a6b8cdd91e7583
+  docs/Models/Components/DomainResponseDtoStatus.md:
+    id: 2a18f4bf4292
+    last_write_checksum: sha1:8da65f71605096a6cdec092b201892edb669537e
+    pristine_git_object: ebc83007cee522ce6d719ad1c56b16f741e1fedd
+  docs/Models/Components/DomainRouteDto.md:
+    id: 0394bbc376ab
+    last_write_checksum: sha1:a463b85922e1c256b5670654d25162c5fbf54045
+    pristine_git_object: 89a32769b81573bdb77ce76407bd129a19612f8e
+  docs/Models/Components/DomainRouteDtoType.md:
+    id: 81efca50d000
+    last_write_checksum: sha1:cb3fafdc577db61890e6b3eb79ab4dfb29bf9f56
+    pristine_git_object: c813e50cebaa500e267156622b6617c3a35887a8
+  docs/Models/Components/DomainRouteResponseDto.md:
+    id: 3c628bc3c4ca
+    last_write_checksum: sha1:f21ff550895600e7abffa411aa7b6ea19a03cfd9
+    pristine_git_object: bff78c9cc11a14111df981df630bebb585c50e59
+  docs/Models/Components/DomainRouteResponseDtoType.md:
+    id: "5592471036e8"
+    last_write_checksum: sha1:030fa018f2c391228edaf15abea10d4c4aa14317
+    pristine_git_object: e5b3f786a4bc463511a42cc1cd4c089d75058d85
+  docs/Models/Components/DomainStatus.md:
+    id: 91df24b32b82
+    last_write_checksum: sha1:27975133562a156cee6a90158e471f6cc9cfc341
+    pristine_git_object: abdb061228920dadfa4e7d22968f3fb4cdbf6d85
   docs/Models/Components/DuplicateLayoutDto.md:
     id: b2e1437e93b5
-    last_write_checksum: sha1:88fa8f54c6c6393b6afa0b1432bd6120d25ebb84
-    pristine_git_object: 7c674b084a7271e8a5fa58bed5e2c1a4eef2c915
+    last_write_checksum: sha1:15b4ba84d38f3e749871a66a521e7371228ab37b
+    pristine_git_object: 5b9726dcaae15de32a78c01f18f964a95a3153de
   docs/Models/Components/EditorType.md:
     id: 4a4926244146
     last_write_checksum: sha1:12dfb5c4b7ec1abda0e9d8b9c63981bcfaaf9f70
@@ -802,6 +886,10 @@ trackedFiles:
     id: 4775b0599d30
     last_write_checksum: sha1:4729a9e652f9787d17e9ebe84eaee369665863ce
     pristine_git_object: 23790a7d062fe7b6c4f24aa1c841c89b4264ca28
+  docs/Models/Components/ExpectedDnsRecordDto.md:
+    id: f14ed34d65d8
+    last_write_checksum: sha1:e6736cc538a833964b018e195e936af5ff39eb88
+    pristine_git_object: 90b9636abf06e37d78fc9569add182ad8c1d9826
   docs/Models/Components/FailedOperationDto.md:
     id: dfc986ae3d11
     last_write_checksum: sha1:b425f9784be0446ac0257ec5c8eac1a6b804eb37
@@ -844,8 +932,12 @@ trackedFiles:
     pristine_git_object: c6911c923b52997cb0df0b40eba65e8ad324e948
   docs/Models/Components/GenerateChatOauthUrlRequestDto.md:
     id: 17906ecbae7c
-    last_write_checksum: sha1:3fe2cb35e2d97de6587acd94990defb4d4e2d731
-    pristine_git_object: 5ffc8fa77cd66433a721356cfc29f3b2accd8e35
+    last_write_checksum: sha1:8ed06b431490157f519bc4ec337d3f5e35b63404
+    pristine_git_object: dfc77de1dae7868fb59ccd9526ed3d4ec08fdc07
+  docs/Models/Components/GenerateChatOauthUrlRequestDtoConnectionMode.md:
+    id: 619b82598072
+    last_write_checksum: sha1:6588468b6fb6818e69f31523aae23fbf431d76b1
+    pristine_git_object: c9a1194983ef5dee3cec207e3f11d9a2dcd73ff5
   docs/Models/Components/GenerateChatOauthUrlRequestDtoContext.md:
     id: e537c240997c
     last_write_checksum: sha1:1e755c1f061eb9ebf3c52dc118f4e37b3c327b61
@@ -854,10 +946,38 @@ trackedFiles:
     id: cc857ba4b814
     last_write_checksum: sha1:839cedd3c1d1673bf2302b2dafbfc47b18ca52a7
     pristine_git_object: 60de8b429baa684cb4da2a9513cfe4988fc9db7d
+  docs/Models/Components/GenerateConnectOauthUrlRequestDto.md:
+    id: 9d4f98200cb3
+    last_write_checksum: sha1:51ccb8e3840f5a095da76170890156df2fa8f3f0
+    pristine_git_object: 5ec54f374d6de7599a5bfa623a9c8bf540659683
+  docs/Models/Components/GenerateConnectOauthUrlRequestDtoConnectionMode.md:
+    id: a35f673311f8
+    last_write_checksum: sha1:bee52d54e76961fa30d6ea0a911d816dfb7786ca
+    pristine_git_object: 1dd619e8a03acd4b46afbc57bfd581c51029a350
+  docs/Models/Components/GenerateConnectOauthUrlRequestDtoContext.md:
+    id: 7615ffe892b8
+    last_write_checksum: sha1:588438fcbadb895ea1cdfadd02604932e91d6347
+    pristine_git_object: 52711db687485f920686afc6678a5d7696c3c655
+  docs/Models/Components/GenerateConnectOauthUrlRequestDtoContext2.md:
+    id: c44e83408b8a
+    last_write_checksum: sha1:0340801e6305022825f8679ec862f862ebdb81b9
+    pristine_git_object: 21c80e76cf36d22029bbd484ec0b6af66a638f03
   docs/Models/Components/GenerateLayoutPreviewResponseDto.md:
     id: 5e27398faf1f
     last_write_checksum: sha1:a0d75e7564b75e04944c5054ef7bb6abb5eee132
     pristine_git_object: cd463aa7dc9043c6f58640580ce406e434a85586
+  docs/Models/Components/GenerateLinkUserOauthUrlRequestDto.md:
+    id: 3ce313350998
+    last_write_checksum: sha1:450c46860318150a9f928db6a50a258bb6f5dd79
+    pristine_git_object: fb4e70ab86aa512db4a527a49a15fc8c78ff302b
+  docs/Models/Components/GenerateLinkUserOauthUrlRequestDtoContext.md:
+    id: 923315a1058b
+    last_write_checksum: sha1:8624650b8eaddcfb1ca4e0c0398d7b8c5946bdb2
+    pristine_git_object: 016220dc36cf6f8656e64d6495884081e9ec9e29
+  docs/Models/Components/GenerateLinkUserOauthUrlRequestDtoContext2.md:
+    id: db7cdac341ec
+    last_write_checksum: sha1:b604fd56189403e354f62c483d8896c8aa930f7f
+    pristine_git_object: 4d9d2b5c712d30ea67bdacb13db5b9ffde7e01ad
   docs/Models/Components/GeneratePreviewRequestDto.md:
     id: 68b35d53d591
     last_write_checksum: sha1:a42d24599142605ef4de92dd283ef9cc0ff5239f
@@ -916,8 +1036,8 @@ trackedFiles:
     pristine_git_object: e2f563f87552c79decb46646fee302db75bd39a0
   docs/Models/Components/GetChannelEndpointResponseDtoProviderId.md:
     id: 9e7e0df6a923
-    last_write_checksum: sha1:7ef414a2df0c6c26d557976e80ae8e7c7fa70107
-    pristine_git_object: 2f9c5a0e8ee66d1f24b7fef325d112cd6cccdecf
+    last_write_checksum: sha1:b910367f5812e7d0d66335fbaa6622181ca1f36e
+    pristine_git_object: d2c6270dfefef43e7882b053505ee80c234f1346
   docs/Models/Components/GetChannelEndpointResponseDtoType.md:
     id: f21a3f04279c
     last_write_checksum: sha1:2748f37e48729e759f193343c925be352ad3373d
@@ -980,8 +1100,8 @@ trackedFiles:
     pristine_git_object: 61ab0b6e8bcdaa1261b9e79d8fd937b667a91a8e
   docs/Models/Components/HttpRequestControlDto.md:
     id: 29d1e4e492dd
-    last_write_checksum: sha1:0c2c6ab63f5edb5f391b2b20167f2574c58f6341
-    pristine_git_object: f286735ee2fe91ca29fbdcd5cd8b5fa75c48bc1e
+    last_write_checksum: sha1:582879d3c6648cbf420be0bcff605a4691b6ccb5
+    pristine_git_object: dafb890c578cef349953d58f90ab0287bb66abb4
   docs/Models/Components/HttpRequestControlsMetadataResponseDto.md:
     id: eaf5c34b7e14
     last_write_checksum: sha1:56936d7372bc03bb83d9e318404fc97af7a0fc12
@@ -994,10 +1114,14 @@ trackedFiles:
     id: 4a2616b4cd38
     last_write_checksum: sha1:c1b7b16b7963f627352cace6ec5f21693aef841b
     pristine_git_object: 340e82e57319da92b098ad5602d23b21fd710150
+  docs/Models/Components/HttpRequestStepResponseDtoBody.md:
+    id: f40522810eec
+    last_write_checksum: sha1:d066b301d171cad79ffc016f546d4c1b2ceccec5
+    pristine_git_object: 01dfca709898f58ec119eade2c092521411dd79f
   docs/Models/Components/HttpRequestStepResponseDtoControlValues.md:
     id: a71d4f1b3a88
-    last_write_checksum: sha1:cd2272c1207346bc180d8ae879be0061c6fbc92b
-    pristine_git_object: 5a1687737f9e112243f4f19450da9ae42d3e33c9
+    last_write_checksum: sha1:0b49be6704dac5721a788353a850c9055d7c5c07
+    pristine_git_object: ba013850f3f81f5d3a1a802bb8481161b24612ec
   docs/Models/Components/HttpRequestStepUpsertDto.md:
     id: ee8178b699fc
     last_write_checksum: sha1:2fd1ac4c9f06600ff78d13cc0564fb569082c4cc
@@ -1068,12 +1192,12 @@ trackedFiles:
     pristine_git_object: 0be83857b760651473e923d7bff3bf995490c624
   docs/Models/Components/IntegrationResponseDto.md:
     id: bfa704ecb23a
-    last_write_checksum: sha1:cdd75924d1f675217af963ae6c52cb86691e4725
-    pristine_git_object: f92ff1dcd787727bcd9aac8f9a990d84d6f70446
+    last_write_checksum: sha1:9cbdb8e3a706059d20f231d547a928453dc9ec88
+    pristine_git_object: 1e3d1156e16b4a69b3bec7745bfe382484053506
   docs/Models/Components/IntegrationResponseDtoChannel.md:
     id: 8d2a42b0cd14
-    last_write_checksum: sha1:7770167c93dca3018074d45add2d18b47b175ee5
-    pristine_git_object: 8c163b16746dfe4006382424fe9a59f1d21f8570
+    last_write_checksum: sha1:79a809636766c1b17990facb3e7c786d1bee057f
+    pristine_git_object: b2c76edebde01a939f3165facd50fa7b3c364700
   docs/Models/Components/Issues.md:
     id: 97806ba75be0
     last_write_checksum: sha1:923b707ed29ee23268c0fef17bdc859f04e798b5
@@ -1082,6 +1206,10 @@ trackedFiles:
     id: acd16154639f
     last_write_checksum: sha1:12148956a9396e461654253e1ccf59d8e6c1e232
     pristine_git_object: 035c9b580f92ac9a91e6c7d731c5bdd2696e04a4
+  docs/Models/Components/Kind.md:
+    id: d7f536b0f2b3
+    last_write_checksum: sha1:533459b37a58301be5988f51168c884854b4707a
+    pristine_git_object: 21f197834dc0de67cf5aa11a20d98219dd4828a9
   docs/Models/Components/LastPublishedBy.md:
     id: 57b4b9027e0d
     last_write_checksum: sha1:bd4c83629b2d34672a36a7f2588f0460456e4328
@@ -1126,6 +1254,14 @@ trackedFiles:
     id: 2175c16f694f
     last_write_checksum: sha1:780f8c8b467fb54d0a296a2eb0c28fc49b67d6a6
     pristine_git_object: bbaf5363f77278abeecf543b011bd89c8bc61be4
+  docs/Models/Components/ListDomainRoutesResponseDto.md:
+    id: 3da2d3819a3c
+    last_write_checksum: sha1:5b6d575f871a5c8f0c3965214c7159e5fdd18b91
+    pristine_git_object: ad07b55d921d3962fb98ca191476f592539c4666
+  docs/Models/Components/ListDomainsResponseDto.md:
+    id: e0a24c5c09ad
+    last_write_checksum: sha1:c6bb175b6f923cc052fed4c1b94104d355cbf723
+    pristine_git_object: 815272101a3bd4d5751926269cc4c62c961ab414
   docs/Models/Components/ListLayoutResponseDto.md:
     id: 19842a638d61
     last_write_checksum: sha1:54f927ccb5ddfa7f01b2f72d100955367ade0ec4
@@ -1250,6 +1386,10 @@ trackedFiles:
     id: 5b37a8eb1a69
     last_write_checksum: sha1:089567282e155de516eb02e7a6b00f70b14d2291
     pristine_git_object: ee8a816cd15c7544b3173dc1fc9d68bf367b7e20
+  docs/Models/Components/Mode.md:
+    id: 5799fab3f7eb
+    last_write_checksum: sha1:82f714af0c331648a3d0de85020e7e1bd2c3ef28
+    pristine_git_object: 89e5437303df6fc7b782bc9896153e1a1c914f77
   docs/Models/Components/Monday.md:
     id: 7b6fe171e270
     last_write_checksum: sha1:16bd735579f806c8c9f96949083cdcdc3634af5a
@@ -1436,12 +1576,12 @@ trackedFiles:
     pristine_git_object: 8ffb83c7148417489cca4ae5b92408f69fde8ea6
   docs/Models/Components/ProviderId.md:
     id: 361b14554a90
-    last_write_checksum: sha1:41ae525dbcf36aa1875a8c984242fed6b522b61e
-    pristine_git_object: 153d022cc6582e96e8de58ab337833fa89976455
+    last_write_checksum: sha1:0ecc1e0587ec140e65810f87b11dd1e243717de3
+    pristine_git_object: 5d405bb5bc4824a509157601b56f5ef64f12a27e
   docs/Models/Components/ProvidersIdEnum.md:
     id: c91ad58326a2
-    last_write_checksum: sha1:2f5555b25bdaa8f720f1dc2d42a60d2c4fbdeb4b
-    pristine_git_object: 1f662bfd94d99c2b69167b92f29342a00c3e285a
+    last_write_checksum: sha1:ff9f0a28d33066a4d00ee90e16e21899b044eddf
+    pristine_git_object: e86b19dab23debb3532a3bd8203b6beabd97c3e6
   docs/Models/Components/PublishEnvironmentRequestDto.md:
     id: 0033d29bfc48
     last_write_checksum: sha1:1fa0f3762227bd0a0b75824600b6e1771e49a1d6
@@ -1482,6 +1622,10 @@ trackedFiles:
     id: 22b7672bc1da
     last_write_checksum: sha1:0088fb91f5cfa7d4bc0bf1ee220e4c5da4e38bd7
     pristine_git_object: c18ab7cc8efe45d316733e61c9a90b25c6e8a00b
+  docs/Models/Components/ReasonCode.md:
+    id: 4b5ca853d8ad
+    last_write_checksum: sha1:5ddac9096c93d613f475d66e5f5dcd817f96aa9a
+    pristine_git_object: f2488262921caf7c0aeacda5695f6ccedf7050e6
   docs/Models/Components/RedirectDto.md:
     id: 562d6e59e6cd
     last_write_checksum: sha1:e3b83557dc09060bb53bd319c19b52c67104779a
@@ -1586,6 +1730,10 @@ trackedFiles:
     id: 13bf11c70823
     last_write_checksum: sha1:3c50f9460400913857a0576a76d659ad01001ec7
     pristine_git_object: 5e763eadf93359d589b4b017d2754e79b184117e
+  docs/Models/Components/Severity.md:
+    id: db1c3cfabd1b
+    last_write_checksum: sha1:ef7154ecf145574caa950dff265f50924434f55f
+    pristine_git_object: daa3c535606524c2362a0c2b74a97ab753d92be8
   docs/Models/Components/SeverityLevelEnum.md:
     id: 6307aa5948f3
     last_write_checksum: sha1:5235c7e8bf71734d87d5098fd45b8d8c9f73c950
@@ -1818,6 +1966,30 @@ trackedFiles:
     id: e27fe103327a
     last_write_checksum: sha1:8379ec386902264c2703fbf0a1960f8e8fa10b60
     pristine_git_object: a106212ccc0fb9a54de5215b64765b3dc9c50678
+  docs/Models/Components/TestDomainRouteAgentResultDto.md:
+    id: 515b5360ef09
+    last_write_checksum: sha1:16bd96755716058d6df1dc04853b36c8efa425fc
+    pristine_git_object: 3adf03d2c4df4c96355517ff76047d7fd3b295f7
+  docs/Models/Components/TestDomainRouteDto.md:
+    id: 6f695e1b342e
+    last_write_checksum: sha1:8a9e7e8a71ccd7fc4645de867006cb51f2ddf80a
+    pristine_git_object: 5b144d1c38cd743969d1b0c1f2617a25bc7247c2
+  docs/Models/Components/TestDomainRouteFromDto.md:
+    id: ff194bece7af
+    last_write_checksum: sha1:17922ba8588342ab0d9294c9e9e687ada4ba8b23
+    pristine_git_object: 2090ccfcffe16dbfcef9dd9ca2ddbe7e74d6d082
+  docs/Models/Components/TestDomainRouteResponseDto.md:
+    id: c9d2fe4bf546
+    last_write_checksum: sha1:70bd71a202c41ab2e3bf2865963dbf3cf369d755
+    pristine_git_object: fffb9b73cc5394bbaaa0def1e45d921076b18733
+  docs/Models/Components/TestDomainRouteResponseDtoType.md:
+    id: 76323c13d96c
+    last_write_checksum: sha1:5ce0725e636fb0ca52f01cdbb6dd745cf5b844b6
+    pristine_git_object: ccbe84c6c6b0142f7e3076f31ae6d71f5a21e90a
+  docs/Models/Components/TestDomainRouteWebhookResultDto.md:
+    id: f1fd3fed3fdb
+    last_write_checksum: sha1:f7eb7e6dabc89e5453f22e851755049499be9997
+    pristine_git_object: b208128fcc1dd951cdbec871acb63e914da6b0ee
   docs/Models/Components/TextAlignEnum.md:
     id: f5bc61f33147
     last_write_checksum: sha1:248ee6e36143491f4cd5cf8e770c1efa9449538b
@@ -2042,6 +2214,18 @@ trackedFiles:
     id: f0fd9d700ef6
     last_write_checksum: sha1:fbce7802c4e70d7eba4bd9f976651b5fe959b654
     pristine_git_object: bc1fd01e59dfef0b0bce7e0c7227b77743fc1261
+  docs/Models/Components/UpdateDomainDto.md:
+    id: d4079c948c43
+    last_write_checksum: sha1:88e5db3281c875462d1fc477c20520aa0da8c343
+    pristine_git_object: 36fc4446f5927c58376e045d3e21efd9fedf61e7
+  docs/Models/Components/UpdateDomainRouteDto.md:
+    id: f27f7c34633b
+    last_write_checksum: sha1:c1cfb3bb96f7b731b3b47ee14257ebd3b721fc20
+    pristine_git_object: f022c72d36fa04bdd69a8ca19f375adb70f0049e
+  docs/Models/Components/UpdateDomainRouteDtoType.md:
+    id: 49765b96d13f
+    last_write_checksum: sha1:de2266bb036def523b337338f10cd8289299464f
+    pristine_git_object: 5a7d0fbcce0eb9814b3a8e46a02854c24774503f
   docs/Models/Components/UpdateEnvironmentRequestDto.md:
     id: 8e505de92270
     last_write_checksum: sha1:b1039396114a64048a19d5505d5f6981313a2b15
@@ -2414,6 +2598,134 @@ trackedFiles:
     id: af0af3c88078
     last_write_checksum: sha1:526a693613c7cc8da490336a9bc5de272b45de0d
     pristine_git_object: 81c0378eab531686816c6be61c969b4dfc4e52ae
+  docs/Models/Requests/DomainsControllerCreateDomainRequest.md:
+    id: 92308cbaff09
+    last_write_checksum: sha1:7a1e5f474c7b8bcc265202ee4b187998ae448b39
+    pristine_git_object: f7dde701fdf1cb5abba9d3a79d996c2ca6237fde
+  docs/Models/Requests/DomainsControllerCreateDomainResponse.md:
+    id: 3b85afa20c01
+    last_write_checksum: sha1:25784bcdef81f52384d0ba09f455ac2766024f8f
+    pristine_git_object: a1b1c55ca41786a1d16dd21e6420e73a7680ce15
+  docs/Models/Requests/DomainsControllerCreateDomainRouteRequest.md:
+    id: 6617f2cf711c
+    last_write_checksum: sha1:f5113ac1ae0b31af801b4677e7f82ea5dceaa30b
+    pristine_git_object: 54c495e38cd8a99f722bcaaee894c3a6690d7832
+  docs/Models/Requests/DomainsControllerCreateDomainRouteResponse.md:
+    id: 20a110b63cdc
+    last_write_checksum: sha1:7e49cc45aaa335fa2e2280277549cae3575eb75c
+    pristine_git_object: 1052a3e1471b355c9e921bce9632441dcf5ce19d
+  docs/Models/Requests/DomainsControllerDeleteDomainRequest.md:
+    id: 9fea3803d131
+    last_write_checksum: sha1:4eb7174ff8b264797a9e1a5de1f7aa3d99038852
+    pristine_git_object: 13c9aef8cd7ea0c52428a0e9c22fafd335f16b81
+  docs/Models/Requests/DomainsControllerDeleteDomainResponse.md:
+    id: 514c4745ed52
+    last_write_checksum: sha1:1c2ca7e3c7f9fb76350aede21843f42527da3e79
+    pristine_git_object: 33c504649cebd685d0d1dd1abbcf4d59314234d3
+  docs/Models/Requests/DomainsControllerDeleteDomainRouteRequest.md:
+    id: e275ca79d95d
+    last_write_checksum: sha1:c4e29a259ff03761044f26d6c7e23abe45e3bb44
+    pristine_git_object: 9010ac09a3269a62b88d6f66a383c30c11d8df7d
+  docs/Models/Requests/DomainsControllerDeleteDomainRouteResponse.md:
+    id: c6aff8e5fb37
+    last_write_checksum: sha1:6efd306f20971a2e5451294a42081092279a9e4f
+    pristine_git_object: 44f2802ae03449fde4d4f3b0b585d70db5cc94b0
+  docs/Models/Requests/DomainsControllerDiagnoseDomainRequest.md:
+    id: b85d595c1e5a
+    last_write_checksum: sha1:a4f0469c844b8fea9d412dbaeaeff9f8279626bf
+    pristine_git_object: 72519aba688294723166713a1c3e76a971da8fc7
+  docs/Models/Requests/DomainsControllerDiagnoseDomainResponse.md:
+    id: de93d1dd8d67
+    last_write_checksum: sha1:d6cb3bb7a7216f5e2a6e5bb4a7bf1cd112178e51
+    pristine_git_object: 867ad6dbee9688fd75e73e39593732a5e95ef810
+  docs/Models/Requests/DomainsControllerGetDomainAutoConfigureRequest.md:
+    id: 60eaa26e1fae
+    last_write_checksum: sha1:efbd8bd3de0d35578acbfa2b2361c163dccd8042
+    pristine_git_object: b605140f3ded4b19d4485e99f13412551476dfe0
+  docs/Models/Requests/DomainsControllerGetDomainAutoConfigureResponse.md:
+    id: 79334b246076
+    last_write_checksum: sha1:499e91e60c7c77133d748420f42c781a85ea335a
+    pristine_git_object: e9989ad0b0124ce333eee1d2e3316ee794328459
+  docs/Models/Requests/DomainsControllerGetDomainRequest.md:
+    id: bf984324eaac
+    last_write_checksum: sha1:b8b0c590c7cdfe6fd6a7840b192dcd236fc2c2df
+    pristine_git_object: 8c5b63d5480bdf53d3cf11b48e1a32f449a61d32
+  docs/Models/Requests/DomainsControllerGetDomainResponse.md:
+    id: 2695fb99e7e9
+    last_write_checksum: sha1:28fe595a29c1918b71dc2a69f56c8a8a3953af0a
+    pristine_git_object: 3934bcfb2010c2ffa6a61522506e83ff48019036
+  docs/Models/Requests/DomainsControllerGetDomainRouteRequest.md:
+    id: b516c21dd97b
+    last_write_checksum: sha1:67c8f3ff1b6ce7142d380759eb9d56c6b45bebc3
+    pristine_git_object: ca1c21ad40102873de3bdee68ed902d0fb48a8fc
+  docs/Models/Requests/DomainsControllerGetDomainRouteResponse.md:
+    id: cc26b5d714bf
+    last_write_checksum: sha1:6718db8bf94c132bf31d889b6840ee3e553f3173
+    pristine_git_object: 8c99327e284e0d352c907693e2c3fee06e40369b
+  docs/Models/Requests/DomainsControllerListDomainRoutesQueryParamOrderDirection.md:
+    id: 8089aba4b53c
+    last_write_checksum: sha1:c9ca12b98530e0222dbfafbe0f4fa2a8db468e3f
+    pristine_git_object: 419599d43863681b130b42fd3dff08defabd9c10
+  docs/Models/Requests/DomainsControllerListDomainRoutesRequest.md:
+    id: e33589610c38
+    last_write_checksum: sha1:5bde9a0ea1c14b3626d596e4e174af67337c92ed
+    pristine_git_object: f3081f355a5d02e132b277431956c27556f7a6a6
+  docs/Models/Requests/DomainsControllerListDomainRoutesResponse.md:
+    id: c8d0b1b51121
+    last_write_checksum: sha1:d6c55d4fc6c05eedac89cdf82a0e6eca04cfc857
+    pristine_git_object: 21e2690abb597fe34ec3ed3c709ad47bc4096f61
+  docs/Models/Requests/DomainsControllerListDomainsQueryParamOrderDirection.md:
+    id: d53e5ba1f16f
+    last_write_checksum: sha1:a35c278ac0f25a9bb5a073b296ac605935f8841a
+    pristine_git_object: 51599680f13d5d8b1c9651e5ba94d3e48b9d1f45
+  docs/Models/Requests/DomainsControllerListDomainsRequest.md:
+    id: 83e65b27f599
+    last_write_checksum: sha1:dd9938f78ae6a227b3c393f58d8964c4341e2be9
+    pristine_git_object: ba4d16367656a9eb767594ed6820b866e2cb178c
+  docs/Models/Requests/DomainsControllerListDomainsResponse.md:
+    id: 148d84324244
+    last_write_checksum: sha1:e62c0d0f416292f3a93c253987091d94003fcad3
+    pristine_git_object: 5d6add15e7c3bb1334ac96625dfe65942ce5a5ad
+  docs/Models/Requests/DomainsControllerStartDomainAutoConfigureRequest.md:
+    id: 87e9984c51af
+    last_write_checksum: sha1:49af2cf0fb01afa3412b965a6fdb3dbda996d978
+    pristine_git_object: f88227bdfb552fca6051bc312f7980baf73f32c6
+  docs/Models/Requests/DomainsControllerStartDomainAutoConfigureResponse.md:
+    id: 9ce2b60856da
+    last_write_checksum: sha1:fe0421ec8d3434a3cab1a85856acc646a843c70b
+    pristine_git_object: e4c5fd97d271cf5971478560ef662716adea5b92
+  docs/Models/Requests/DomainsControllerTestDomainRouteRequest.md:
+    id: f6fa4c4782f8
+    last_write_checksum: sha1:6ceea0ca3a852dff677f2621fb02b4ecdb9f59dc
+    pristine_git_object: 2f66f0cfcc7e4689de3a72246d63efdd40324f82
+  docs/Models/Requests/DomainsControllerTestDomainRouteResponse.md:
+    id: 0932154f22b8
+    last_write_checksum: sha1:1117370bd6440abf8cf66d2acd3d29bca35238cf
+    pristine_git_object: aded50ea5b795e7cca56b2d95c258acb7e055f9c
+  docs/Models/Requests/DomainsControllerUpdateDomainRequest.md:
+    id: bbfbaf194c42
+    last_write_checksum: sha1:53f545411088942554535c268c5b80d2b0f84f04
+    pristine_git_object: 7ff88853ee4c3b6834df2edb48838dbc73791616
+  docs/Models/Requests/DomainsControllerUpdateDomainResponse.md:
+    id: c908a05cf76f
+    last_write_checksum: sha1:6c2c4cb96002b968b244405618baa4aeed0254a6
+    pristine_git_object: 5b7270478727257a2ae994645ce2c8b48564ea40
+  docs/Models/Requests/DomainsControllerUpdateDomainRouteRequest.md:
+    id: a375ac05de30
+    last_write_checksum: sha1:3a8d79dcd69ad66dc43fca41d5a80e47547633dc
+    pristine_git_object: 86ed940f6cd31db421a58403ba2a6fa922c4aefe
+  docs/Models/Requests/DomainsControllerUpdateDomainRouteResponse.md:
+    id: b4e5c05edd80
+    last_write_checksum: sha1:b9abfb0ccd6cd12387542dbb3eddefb83e87110c
+    pristine_git_object: adc5ea1c73f594037ed0025064984174970b855e
+  docs/Models/Requests/DomainsControllerVerifyDomainRequest.md:
+    id: dd643e48fe6a
+    last_write_checksum: sha1:ddb18ad159c624d6e52508e22e36af2e1c171064
+    pristine_git_object: 9b8d72227fbb5c56e01c6c28fcc24d3b7c0722a8
+  docs/Models/Requests/DomainsControllerVerifyDomainResponse.md:
+    id: 7d1fd2e22cd5
+    last_write_checksum: sha1:495e528fcd4b8d3f9b7eb6134cc1f092ffa73437
+    pristine_git_object: 0c18acbc97d6c6aa10d34d038e9bb427f7adbd36
   docs/Models/Requests/EnvironmentVariablesControllerCreateEnvironmentVariableRequest.md:
     id: 2cf7393c29cb
     last_write_checksum: sha1:c3b960d68126a614c1e033448f320662f2c30f26
@@ -2582,6 +2894,22 @@ trackedFiles:
     id: 99d927755d72
     last_write_checksum: sha1:b2836514c210d8f268505f1d50c4084656ac8f7a
     pristine_git_object: d3c03ca87ebf0fe11d4998ce62b376e55bf7d116
+  docs/Models/Requests/IntegrationsControllerGenerateConnectOAuthUrlRequest.md:
+    id: 5ba3426f17e9
+    last_write_checksum: sha1:287b30ce9d75fcb21d3313286595c2af786fb5e5
+    pristine_git_object: 3ee620338457014249ab58ebd5f754296d0d0eef
+  docs/Models/Requests/IntegrationsControllerGenerateConnectOAuthUrlResponse.md:
+    id: 3575c3ea689b
+    last_write_checksum: sha1:7a6907c252ffd54a9a2301284fa689b6694cfe0c
+    pristine_git_object: 4ed0f0ca41318b5545d1473b425d27e8e10c32cc
+  docs/Models/Requests/IntegrationsControllerGenerateLinkUserOAuthUrlRequest.md:
+    id: 955d99378536
+    last_write_checksum: sha1:cda306247535517a7d8a752b6cd82cd076d6fc8c
+    pristine_git_object: f7f697c21540484226605e1a8bcd349f5492541d
+  docs/Models/Requests/IntegrationsControllerGenerateLinkUserOAuthUrlResponse.md:
+    id: 98db534558af
+    last_write_checksum: sha1:458a9e3a4f74d59ed29ae25a59fe53c5e1c36ee0
+    pristine_git_object: 50ad1f38570db9dff2ad60ffe69a1ef41411818e
   docs/Models/Requests/IntegrationsControllerGetActiveIntegrationsRequest.md:
     id: 021faf2ed677
     last_write_checksum: sha1:cb444eebd96c6cced92e5b33668ef00d59fb11e1
@@ -2840,8 +3168,8 @@ trackedFiles:
     pristine_git_object: 2840b34855ff945349818872790381bc9d2cb366
   docs/Models/Requests/SubscribersControllerGetSubscriberNotificationsRequest.md:
     id: 4e2ad3ef27bc
-    last_write_checksum: sha1:d2027881bdc5425cc09fa5481992dc5429023d53
-    pristine_git_object: ee94661caa419df5adc6dd4f80dc9c3d6d65e924
+    last_write_checksum: sha1:200b63792cc5230446d37ffcb71f4c1acde64003
+    pristine_git_object: 6fe9dfb60070f4cbfa47f7189cbc29e20eaa17c9
   docs/Models/Requests/SubscribersControllerGetSubscriberNotificationsResponse.md:
     id: 985640b99a53
     last_write_checksum: sha1:9904451f34bef3a1c6005b7dabe64480a6d0e28b
@@ -3314,10 +3642,14 @@ trackedFiles:
     id: f6e8241fca80
     last_write_checksum: sha1:d87afad2cf2602278e06c48e49c36132d9bd4d4d
     pristine_git_object: 62af29d73da4360c9b6b01a70c2866886f12c992
+  docs/sdks/autoconfigure/README.md:
+    id: 83a76b13f0e3
+    last_write_checksum: sha1:9119555ecb90a0dd36b5871a786c4831cfc8930f
+    pristine_git_object: b792ffb8861306966e7d5ffffa751af29442253b
   docs/sdks/channelconnections/README.md:
     id: b38f46c2a1f7
-    last_write_checksum: sha1:d9e28a6a56cf17330f0a6e723d4f0fb298c387bb
-    pristine_git_object: 071e6fcd41eb4f153f1fedadaf60b8cae72df9f0
+    last_write_checksum: sha1:df8af03c82510073f9bd06091b3aaf89108ca0f5
+    pristine_git_object: 474ae6d998b1a0a63385af9ff3cc3caaf670813d
   docs/sdks/channelendpoints/README.md:
     id: 597f23f5fd73
     last_write_checksum: sha1:7f4e9b36bdde3f7057ab13c1542722cdf6add16e
@@ -3326,22 +3658,26 @@ trackedFiles:
     id: d8fd381b7d65
     last_write_checksum: sha1:d02db35a526fb23b88e6638d7ff05363081e51d5
     pristine_git_object: 38a6e9a3b7521b2d3b4ebf9221872e95a9ae88e9
+  docs/sdks/domains/README.md:
+    id: 06e9beb4063b
+    last_write_checksum: sha1:a8342f2ad5ba93c1dadd9feda47681bffb9e783f
+    pristine_git_object: 9df23728e5ea3fa9b0783d9ed290c8c28b281c0a
   docs/sdks/environments/README.md:
     id: d15fc95481b6
     last_write_checksum: sha1:3fec7606123392515ed6383d3039224c8fac37ea
     pristine_git_object: 7cd64353079b205608f5e675daed241f0ed9371e
   docs/sdks/environmentvariables/README.md:
     id: 2a863cad4ffa
-    last_write_checksum: sha1:11ca4304d134050cf87356c2b86724829510d631
-    pristine_git_object: 591eff300a2d01f9f03fc67b8150698c63fbaa38
+    last_write_checksum: sha1:63f74c17c47775ad06167ff0e0547ec28ad247e6
+    pristine_git_object: 01ac25efc78b261baf9ffb99e2da79445d8e869b
   docs/sdks/groups/README.md:
     id: 3336939a71e4
     last_write_checksum: sha1:7b4fd3f3304a049b7f2dd48c0b701ffe879ff0a9
     pristine_git_object: e01e1b262009db0bac0f07c15f8f5d9de6ebe488
   docs/sdks/integrations/README.md:
     id: 7b29664808c0
-    last_write_checksum: sha1:425c09d47a25444645ead4a5743a54001c3e0547
-    pristine_git_object: ba418e03da7bafe6849bff373c47d903820a7d5d
+    last_write_checksum: sha1:6548f016c9ec20de64bf1d5ae4d87ec5a1201587
+    pristine_git_object: dad5205a2796d1a99d3c1c6f1e43603968df860a
   docs/sdks/layouts/README.md:
     id: 9cae4f89dc39
     last_write_checksum: sha1:72c0715cd26abd5f01742671561e4a3f487e6e80
@@ -3374,6 +3710,10 @@ trackedFiles:
     id: 6a64506aa707
     last_write_checksum: sha1:0fe630b013ae01e5b93b80dcb205d64de5ed2e68
     pristine_git_object: 8209de9738ef19b6fa4d62bc747707767d157b93
+  docs/sdks/routes/README.md:
+    id: 8eceb878c9af
+    last_write_checksum: sha1:0bf4d46570eb464cf853fd1562a7709f26331dfe
+    pristine_git_object: ed5f54888a805f7abf87caa1d8b3773db56d8187
   docs/sdks/steps/README.md:
     id: 39cb94746ff0
     last_write_checksum: sha1:c1e8df163c81b2933316669ac13bb4951faf980c
@@ -3422,6 +3762,10 @@ trackedFiles:
     id: 237580ee69cc
     last_write_checksum: sha1:f9cbeecc83805e50e0eae6f0ef68b361b34be033
     pristine_git_object: 24892d1581a089103a199db1812114447b0ffe2a
+  src/Novu/AutoConfigure.cs:
+    id: 3afe7c51be69
+    last_write_checksum: sha1:8dde5c4075f35e1a0bd74e85a555b9191fc0c2a3
+    pristine_git_object: a88de853eb91fab10c8744406eeb6be56b9e2d6a
   src/Novu/ChannelConnections.cs:
     id: 1e9f562d8b58
     last_write_checksum: sha1:88c3990d869559924a26951e1422ee591ab51960
@@ -3434,10 +3778,14 @@ trackedFiles:
     id: 799d901ecdf5
     last_write_checksum: sha1:4b3c7f15a0cde76f22646fadf2c8e8fccefc2384
     pristine_git_object: 65a78635ac2b6c0376413a46519bd67a8c1c7c8b
+  src/Novu/Domains.cs:
+    id: b1d9b472d542
+    last_write_checksum: sha1:471ce79de175248533ee60078d8b745715169cba
+    pristine_git_object: 78f75498467e8519b7490b230ff1aeb0fb159a15
   src/Novu/EnvironmentVariables.cs:
     id: 166f577787d6
-    last_write_checksum: sha1:2be3478cb28a05413899e91a4337b8b0cbe435bf
-    pristine_git_object: 6c1e25b6d6fba89fc7e9049d25c3991c2601dc8c
+    last_write_checksum: sha1:22a5355528f29910f4c556c01e3f1ca34d06dc8e
+    pristine_git_object: 113528ef10cb2309a6e40ab145ae08f5de0e07d3
   src/Novu/Environments.cs:
     id: 75454a42ec30
     last_write_checksum: sha1:474c30de263b9db446809c9a9045626832026865
@@ -3456,8 +3804,8 @@ trackedFiles:
     pristine_git_object: 1a63afc0a6a37d72b7ceaa56469e48a1ffe69402
   src/Novu/Integrations.cs:
     id: 5abd394c909f
-    last_write_checksum: sha1:33b04b0220a4e88b773e82651833fdcc5e22f9f0
-    pristine_git_object: a6ab2efe4926102fe474e716dc6bed04b28303a0
+    last_write_checksum: sha1:f727f9fa3751de49393dc174a9d4814ab70adf9a
+    pristine_git_object: 97446adb3054452c2b71058ee7f8e912963699d2
   src/Novu/Layouts.cs:
     id: 83eb43c824b2
     last_write_checksum: sha1:40f9588d050b7d1b79947a2f43ac7eb75158886c
@@ -3530,6 +3878,10 @@ trackedFiles:
     id: ab47d29327bf
     last_write_checksum: sha1:c398ac262f5ce391ebae4d7bdd73f8439d07a2fa
     pristine_git_object: 003ff69e336a0cba763e528267be2d60ccb060ab
+  src/Novu/Models/Components/AgentReply.cs:
+    id: ee2bbfcda00e
+    last_write_checksum: sha1:b745284d6598aa2a79c06b0625148ca5662f40a0
+    pristine_git_object: 5c9026723c7fb9cec5e8373b05b1a356594687d5
   src/Novu/Models/Components/All.cs:
     id: 064d3ce39939
     last_write_checksum: sha1:cc10b253a1cae7cf5b566ce049bd81978075e40f
@@ -3550,6 +3902,10 @@ trackedFiles:
     id: 5a30d96ad69e
     last_write_checksum: sha1:d21d39ed39eef22b07e502c9e87ecde8b663ec4b
     pristine_git_object: c9e71817307864c0ff01a373e17ad8190b44afe1
+  src/Novu/Models/Components/Body.cs:
+    id: 07af541669e8
+    last_write_checksum: sha1:1509aaf0bd3f28fffb27de813cce2dfed49af9a1
+    pristine_git_object: 6f56edec00e7dd6b278cfed2beaa118f86195d10
   src/Novu/Models/Components/BridgeConfigurationDto.cs:
     id: 67203a824483
     last_write_checksum: sha1:6e762827104f18744f9e318f0a252d8e20a6adee
@@ -3650,6 +4006,10 @@ trackedFiles:
     id: e84488ff6ab0
     last_write_checksum: sha1:4899db74da8341824d7dd9cbb62d7c3850cd4585
     pristine_git_object: 4eeb8fe2acfb7a0b0e6eae7ed991fe41846da17d
+  src/Novu/Models/Components/Code.cs:
+    id: 9ca5e5f0cd99
+    last_write_checksum: sha1:85c25f970d9782d4abcc8a06f30cc6603f20f3f9
+    pristine_git_object: 0e79001180b1763bf1244a2de5f0c804ff9d8b02
   src/Novu/Models/Components/Condition.cs:
     id: 4eb54a7ef650
     last_write_checksum: sha1:e3b8b9cb14d5f5183a8141c7f239d4c59524836b
@@ -3662,6 +4022,10 @@ trackedFiles:
     id: ed5abedc9f8f
     last_write_checksum: sha1:06dae8735f5518b0e9dcab1e563facf4bc162564
     pristine_git_object: 3ec3d65b8bc2f8db3dca01cd03d271846001d6b5
+  src/Novu/Models/Components/ConnectionMode.cs:
+    id: 152dc5643f31
+    last_write_checksum: sha1:c4d384ff473c30763ca49913586557279ad2da5d
+    pristine_git_object: 884669984861b8af619df01857153cf14f524000
   src/Novu/Models/Components/ConstraintValidation.cs:
     id: c439192d2725
     last_write_checksum: sha1:79cfa094f3f8312a0fc6a76a0a194728f21a4dd2
@@ -3696,8 +4060,8 @@ trackedFiles:
     pristine_git_object: 310956bedb5dcb131da344b57e519eeb92218519
   src/Novu/Models/Components/CreateChannelConnectionRequestDto.cs:
     id: 1adbd4502e81
-    last_write_checksum: sha1:f734fb6e24e99983a676d8351582f3feef0a7c1e
-    pristine_git_object: 096d5c40f1e3fba82b612c63b57e98cdfee90457
+    last_write_checksum: sha1:191c6aaaa4a2b092c9ac542e7429b40f6205d56a
+    pristine_git_object: e53777838db13fceb4610ff7e55c19a6e148819e
   src/Novu/Models/Components/CreateChannelConnectionRequestDtoContext.cs:
     id: e573a9a6819d
     last_write_checksum: sha1:faf694d5948660200b00ebf7f345e6ad9b90a262
@@ -3710,6 +4074,14 @@ trackedFiles:
     id: 45d348ebdfde
     last_write_checksum: sha1:9b9b17546439ab143057417f22ea8af33f9be170
     pristine_git_object: bd03e50c4519261d899b61edd4b574086502dfe6
+  src/Novu/Models/Components/CreateDomainConnectApplyUrlDto.cs:
+    id: 2c2714615044
+    last_write_checksum: sha1:e504c8198683a2f875f9367364e127b8c60e1abc
+    pristine_git_object: 8286dc31f2244b7a2f590fd6e4aec5323e035e65
+  src/Novu/Models/Components/CreateDomainDto.cs:
+    id: ff0d6b9dd5d4
+    last_write_checksum: sha1:30211d0b7ed559fd8173e3ec5ad6fe95dceccc36
+    pristine_git_object: 7983d88a485d5790677ddaae0cb6c2b5297b27bd
   src/Novu/Models/Components/CreateEnvironmentRequestDto.cs:
     id: cc407edc2495
     last_write_checksum: sha1:6ad7e4dad9b08ca96627856c56583d8b5525b294
@@ -3724,12 +4096,16 @@ trackedFiles:
     pristine_git_object: 4f1b65ca6f2f5f697685bee38c8673147ba5ec18
   src/Novu/Models/Components/CreateIntegrationRequestDto.cs:
     id: d1cd483d6078
-    last_write_checksum: sha1:b25f642a472de5defb5df898dc6f1caa0f69120d
-    pristine_git_object: ae92286ee4e431ea686f60592fa7dc6110145507
+    last_write_checksum: sha1:cf530eee9252871db57844a47ae02247f00add35
+    pristine_git_object: 1456f42757859770c5e8c962067631831f280703
   src/Novu/Models/Components/CreateIntegrationRequestDtoChannel.cs:
     id: 7f17b22a6ea6
-    last_write_checksum: sha1:b4fd10a7e87623e8620becd8a3c8f23b5ef4f13f
-    pristine_git_object: ed7635080bf7ef5c53a8965a5f3242ced6caa466
+    last_write_checksum: sha1:ce52dc65633bb27888b0218b5bb942fc80253ca1
+    pristine_git_object: ae7cb540f07d313edc2fe45c98b8363f584b88a8
+  src/Novu/Models/Components/CreateIntegrationRequestDtoKind.cs:
+    id: 7f73173e35de
+    last_write_checksum: sha1:75fdc0f4d1580a4f5189f31899ae5504e8d7d5b1
+    pristine_git_object: d9c4f0caaae8a11dcdcca70ed31da090885030b2
   src/Novu/Models/Components/CreateLayoutDto.cs:
     id: c2b15d0bd3fa
     last_write_checksum: sha1:cc4ee9bf299c166046afe9fd5817ce9277a9574f
@@ -3868,8 +4244,8 @@ trackedFiles:
     pristine_git_object: 9e968382c937c05e458fbb0580513daff172184d
   src/Novu/Models/Components/CredentialsDto.cs:
     id: 3e8fc9dc2b8b
-    last_write_checksum: sha1:fb019635e0dc5067dbc29a405b6c22d790b1a820
-    pristine_git_object: 40ab0142fc9b9f9aaec27a3e7468535b15a886d4
+    last_write_checksum: sha1:33ed548ccc9bfbe94760982a1be3b1b8907ff78f
+    pristine_git_object: 314730a2007569926c28825c8764ced1be70dc41
   src/Novu/Models/Components/CustomControlDto.cs:
     id: 3962b314f33b
     last_write_checksum: sha1:64847117474546bc0b82c8d0228570739ca3ade4
@@ -3982,6 +4358,10 @@ trackedFiles:
     id: a588f9177539
     last_write_checksum: sha1:7fbf0bd126f04a1eead3707642256bba904b7e34
     pristine_git_object: d608718495638c4f4b4fe7266763684d93362247
+  src/Novu/Models/Components/DiagnoseDomainResponseDto.cs:
+    id: c22bf2610206
+    last_write_checksum: sha1:fe3082b88556f14a590fb00353c0cf1e329737ed
+    pristine_git_object: 4c238748a2179efbf1ca48e3f5fd7f27172b6512
   src/Novu/Models/Components/DiffActionEnum.cs:
     id: 1cbd63e99018
     last_write_checksum: sha1:46fd1af12fb87df91cb2ed04a9654d36dd1eaaa3
@@ -4098,10 +4478,62 @@ trackedFiles:
     id: dcda80ab0e1d
     last_write_checksum: sha1:b67209efbc8e4a6f6a35987947a6999916c0bf26
     pristine_git_object: b32394e9734837403269d06bc25842fad2f050fb
+  src/Novu/Models/Components/DomainConnectApplyUrlResponseDto.cs:
+    id: 22fc9afc4423
+    last_write_checksum: sha1:f1ef229d29f31e479c4027e347812ec5d1bb04f2
+    pristine_git_object: 0267c7ccf3f6f2b8aa708328b174f2ab2736114a
+  src/Novu/Models/Components/DomainConnectStatusResponseDto.cs:
+    id: f63971c98a2e
+    last_write_checksum: sha1:202d3814eda01d9c9e6b70850f4c89918a562eeb
+    pristine_git_object: c2413677571efb0d426c63f74ab71bc4406398c2
+  src/Novu/Models/Components/DomainDiagnosticCheckDto.cs:
+    id: 5440d7e11861
+    last_write_checksum: sha1:9273c4d92a549255ddd8be7f1c5de29f4a690e2e
+    pristine_git_object: 2fbebb8bf54d3662784648bcfae24578e4c6fc4a
+  src/Novu/Models/Components/DomainDiagnosticCheckDtoStatus.cs:
+    id: d31909768814
+    last_write_checksum: sha1:60f80b07ea0a530387ed1ea464ec2f0d8697639a
+    pristine_git_object: af79d41d1b3cc5183e884b958feb705b9527987f
+  src/Novu/Models/Components/DomainDiagnosticIssueDto.cs:
+    id: 48d64e824c91
+    last_write_checksum: sha1:138781defa91b556e73627823fd9ba3f066a0f7d
+    pristine_git_object: 7f3b6421d77e815ae67303142503ea76e22af302
+  src/Novu/Models/Components/DomainDiagnosticIssueDtoCode.cs:
+    id: c114e34cd96f
+    last_write_checksum: sha1:b816cf13824f4bb6fe2cb0651ff6f1fde891b769
+    pristine_git_object: ef9929e0a2769f8ef1ced1332a56a51faa357ca2
+  src/Novu/Models/Components/DomainResponseDto.cs:
+    id: 32831eef8eeb
+    last_write_checksum: sha1:1cf89cb7c08114dbfd28556f4dc1a4f126c4ffa9
+    pristine_git_object: 2efcbc07a924d5ef66ef6262ef7d854ac7f8b2e9
+  src/Novu/Models/Components/DomainResponseDtoStatus.cs:
+    id: 33e03a422a4d
+    last_write_checksum: sha1:241b9716bb852b2d40951e95129367b41f1bc9d3
+    pristine_git_object: fe99b4ec44415c520ef3eac66796331bf406c281
+  src/Novu/Models/Components/DomainRouteDto.cs:
+    id: fdd2d91760df
+    last_write_checksum: sha1:e3922f035459a073b4fc2d8103aba4d85e9046a1
+    pristine_git_object: 6d3b83664a8ff25aaae768f78f873bc9aedf3790
+  src/Novu/Models/Components/DomainRouteDtoType.cs:
+    id: 17d29f4d785b
+    last_write_checksum: sha1:92633b9b5a2af35b838a4b2d250a628420d7b52c
+    pristine_git_object: 0805b941b51c10c987580d9e234a3b6f415079bd
+  src/Novu/Models/Components/DomainRouteResponseDto.cs:
+    id: b91614561338
+    last_write_checksum: sha1:0a4cc2678bb08c99a5d950f232534b0b0a3c1b8e
+    pristine_git_object: 89bcd9b67714dbdad9d111ecb99a2bcda161d2c3
+  src/Novu/Models/Components/DomainRouteResponseDtoType.cs:
+    id: bd7f010fac8a
+    last_write_checksum: sha1:685711c838364bd2f99095d81da6baf93fdf0eb9
+    pristine_git_object: 9b1dc3f89cea6d4c401071f5a93c5967156213f7
+  src/Novu/Models/Components/DomainStatus.cs:
+    id: ad36f8172a55
+    last_write_checksum: sha1:9cfd2eac4f2f22ff4955b3627e9a49e735f9d12a
+    pristine_git_object: 6314e11789f81761d584df8b3067f09dba9929c7
   src/Novu/Models/Components/DuplicateLayoutDto.cs:
     id: 16ce0e0bd51a
-    last_write_checksum: sha1:3a8890d0cdb7354d88fd56f42222a0d107acf6d1
-    pristine_git_object: 2e5d4f2831d5ce069e7543277a7fcc3d419f17a0
+    last_write_checksum: sha1:ab0b44fc847bd70388a04a4f67c78e6010d5e9e8
+    pristine_git_object: ec89651aded204e59f8fd06039e35b8fd3db402e
   src/Novu/Models/Components/EditorType.cs:
     id: f7cdb1bc26a4
     last_write_checksum: sha1:f7a5046343e1a8edb747501419336a007c00192c
@@ -4218,6 +4650,10 @@ trackedFiles:
     id: 0b54380df536
     last_write_checksum: sha1:75e7ae67c0cdf8ac439c54675995299f5a1e488f
     pristine_git_object: 6ad5abd8af3b161dc5988c1dd317af6166d4927b
+  src/Novu/Models/Components/ExpectedDnsRecordDto.cs:
+    id: 71a68cf3af2e
+    last_write_checksum: sha1:f0df844d3eebd81a67cd11902a8fc28fafb2f747
+    pristine_git_object: 6c893b4daafefb667b9df1fa30d3af329ebe415d
   src/Novu/Models/Components/FailedOperationDto.cs:
     id: a4e4aaba5409
     last_write_checksum: sha1:70321f5d65601f8ba1931daec5d28f5de70b8904
@@ -4260,8 +4696,12 @@ trackedFiles:
     pristine_git_object: 6fd9e24f100afdc010e54236f8d41c1ea919bfd8
   src/Novu/Models/Components/GenerateChatOauthUrlRequestDto.cs:
     id: b01721e08af2
-    last_write_checksum: sha1:72204bc990da375b29258e7d06d282214fd0d953
-    pristine_git_object: 6215b49b124053e76830b98e562881249e665733
+    last_write_checksum: sha1:1ec3c0506ae7a1a2bcc120447a2c6ecb9bd6c791
+    pristine_git_object: 9e2f6e7207947a477d47e620a78c0fbae91a992d
+  src/Novu/Models/Components/GenerateChatOauthUrlRequestDtoConnectionMode.cs:
+    id: d3fe162f2327
+    last_write_checksum: sha1:2058ec9932e92b641dbbd21c4a89193759d7f19e
+    pristine_git_object: 13ed1a605c877c7cace95c68443923358bdcd2a2
   src/Novu/Models/Components/GenerateChatOauthUrlRequestDtoContext.cs:
     id: 178a4ffbc085
     last_write_checksum: sha1:95f8de9e3de03a69abe2e613517005640c79bd51
@@ -4270,10 +4710,38 @@ trackedFiles:
     id: a7949624fd1f
     last_write_checksum: sha1:5989a846432dd2f6357e80f918646d0f7e11ff49
     pristine_git_object: a7de3629d7e686fccb6f4558a4908253b4974272
+  src/Novu/Models/Components/GenerateConnectOauthUrlRequestDto.cs:
+    id: 81796d0fc115
+    last_write_checksum: sha1:bf807e4fff0318e62c70d82d9242405b373e193a
+    pristine_git_object: 7391d9e5ea6f8cdeb28be8a61b2575db3da4e49d
+  src/Novu/Models/Components/GenerateConnectOauthUrlRequestDtoConnectionMode.cs:
+    id: 2581d83a5a18
+    last_write_checksum: sha1:0917dea90d98fa14ab9b8588550b7b7230958c08
+    pristine_git_object: ddfab1df46f305029f66617adb4e11189b1bdf7b
+  src/Novu/Models/Components/GenerateConnectOauthUrlRequestDtoContext.cs:
+    id: a80aa078a4d5
+    last_write_checksum: sha1:611a7e8167ce640ebdb13e4f3a20c65939944551
+    pristine_git_object: 5658101245167272c8e583e8ae8a4b76484ec1da
+  src/Novu/Models/Components/GenerateConnectOauthUrlRequestDtoContext2.cs:
+    id: e6e8aa1441b0
+    last_write_checksum: sha1:f9ce35aac5da4f26ee21b2c4d53d168c2178308e
+    pristine_git_object: d7ef87ce0ac502ca23e6df646304e7ab7c6a1f20
   src/Novu/Models/Components/GenerateLayoutPreviewResponseDto.cs:
     id: 9e5ba98239cc
     last_write_checksum: sha1:30dd7f99237def4c557d0e90205a5edc1f58103f
     pristine_git_object: 4b7e8fb5cdd27fa14dd95df363ec3b26011c6c94
+  src/Novu/Models/Components/GenerateLinkUserOauthUrlRequestDto.cs:
+    id: 76c72ac80727
+    last_write_checksum: sha1:db0618db33c9c8e345cb21b7ceafc7f882e5c8d6
+    pristine_git_object: 73e8657b11f2ef72503e3f597fdba494646278c9
+  src/Novu/Models/Components/GenerateLinkUserOauthUrlRequestDtoContext.cs:
+    id: 0c622007fde9
+    last_write_checksum: sha1:dde269300ad9bb85391125eccaac15ef773e5215
+    pristine_git_object: 636ba270a2c56f1b48d5a6e3abeda6707dee34c0
+  src/Novu/Models/Components/GenerateLinkUserOauthUrlRequestDtoContext2.cs:
+    id: ad09c4fc38b2
+    last_write_checksum: sha1:a8e10b5b7eaeb2cc2684af705633084d3d31fa35
+    pristine_git_object: a9e5a70f1f31221f2485fd006c9dd8dc5a1c0167
   src/Novu/Models/Components/GeneratePreviewRequestDto.cs:
     id: 518497b48a49
     last_write_checksum: sha1:18e281ed06fe99aed52b60e9224bb189a3e66953
@@ -4332,8 +4800,8 @@ trackedFiles:
     pristine_git_object: baaff9e1546e5f8dd7c10ab8cd4c5578cfae5ede
   src/Novu/Models/Components/GetChannelEndpointResponseDtoProviderId.cs:
     id: fb876403ca2b
-    last_write_checksum: sha1:91b4b0bf0721b7d5b6daaa5ee8fd5b47a70e9811
-    pristine_git_object: 49d3deca15945dd117e7f6cb531f8dc8cd0d14ef
+    last_write_checksum: sha1:8c28b2490173aedd0d7ec5bb8b6ca01168fad03a
+    pristine_git_object: 77f2b60f60a3e2034276ebb1661d42889819de5a
   src/Novu/Models/Components/GetChannelEndpointResponseDtoType.cs:
     id: f35252ffdd2d
     last_write_checksum: sha1:c2fb86f628c45db5d66cc6868521a508c1b41a77
@@ -4396,8 +4864,8 @@ trackedFiles:
     pristine_git_object: 2468a1cdbe971264443056959e786ef16d1dac6e
   src/Novu/Models/Components/HttpRequestControlDto.cs:
     id: 2c4028806170
-    last_write_checksum: sha1:359517e439793e5d9faa0aa7dabc152e39185d3a
-    pristine_git_object: 9c24ad610708889337eb1c2b2bcf8f7272da3609
+    last_write_checksum: sha1:7df9f007221020c33e8805f7d4f1cc28ebdd928a
+    pristine_git_object: bae2d88050c86d540335a237c35c6e97c14e54f3
   src/Novu/Models/Components/HttpRequestControlsMetadataResponseDto.cs:
     id: 647b504bad9e
     last_write_checksum: sha1:2a8dde7b0684a70cb45ce5c19e536e0f3f2e6228
@@ -4410,10 +4878,14 @@ trackedFiles:
     id: 494135b3c265
     last_write_checksum: sha1:4f2d5b585f14f288a52ced47820be69742cff322
     pristine_git_object: 3e37f114fea85091c7deef8a01b52118efb34108
+  src/Novu/Models/Components/HttpRequestStepResponseDtoBody.cs:
+    id: 9d2c0de79060
+    last_write_checksum: sha1:5408307b78f67290eebd947eaa500f6200544386
+    pristine_git_object: 3f0f83c40c7c5a3e64dd6a4c12323840658b84de
   src/Novu/Models/Components/HttpRequestStepResponseDtoControlValues.cs:
     id: 11c80b876b0c
-    last_write_checksum: sha1:78f60ff80159d228060e6d61bc97a0b9b2e9ce6f
-    pristine_git_object: 8f5adc43a8b42995f08b92145fee4f3790c9ba33
+    last_write_checksum: sha1:ed6cbb015918c8e2bbf12e99562709e19d916c3d
+    pristine_git_object: aef80d7b3819f81de5ec6fdb45244e58fa2ef9ba
   src/Novu/Models/Components/HttpRequestStepUpsertDto.cs:
     id: 317fef30a432
     last_write_checksum: sha1:ee39c0ecbca20c84931d3167757f28ceced0c632
@@ -4484,12 +4956,12 @@ trackedFiles:
     pristine_git_object: 1d42afc7fd38cfe06480e8659813b4368023d364
   src/Novu/Models/Components/IntegrationResponseDto.cs:
     id: aeee8fe38e23
-    last_write_checksum: sha1:3fb24dd746a5909e2135700877fac74661dcb999
-    pristine_git_object: f59def69c71f3e9a28be877c1dd9ae7d07fb18ec
+    last_write_checksum: sha1:d74ded716f22f45db52183d0733351839c38789a
+    pristine_git_object: ced9bccaacce2026595f026217d0a10ff5e19157
   src/Novu/Models/Components/IntegrationResponseDtoChannel.cs:
     id: f7f060e4932e
-    last_write_checksum: sha1:c5164e7d55f95b1fb8a0fc30073d78cf4a4df909
-    pristine_git_object: 6fca81acbe60b3c2950d4f8a33ddc3821157d559
+    last_write_checksum: sha1:48f1abdd9d39ce4c921d6ec8064e306904692c66
+    pristine_git_object: 456971dee3b515f3ce6a1224456f6fc5b1dfbd5d
   src/Novu/Models/Components/Issues.cs:
     id: 136e0997ac33
     last_write_checksum: sha1:2a6eea185ab44f355e12799f3940a5816277399b
@@ -4498,6 +4970,10 @@ trackedFiles:
     id: 59496e86269c
     last_write_checksum: sha1:d0047b1d051334ed53601dc5dacced8335e99c91
     pristine_git_object: f55212c0d5c2d0817d875e25bca98e7e7efd1175
+  src/Novu/Models/Components/Kind.cs:
+    id: 284a24ae4fdd
+    last_write_checksum: sha1:6d057bd97e05f371ac0ce30a70ded0cea2607596
+    pristine_git_object: 80cbb20ef8a8a29deae5ae56efc92358470a2f51
   src/Novu/Models/Components/LastPublishedBy.cs:
     id: 7d95e1942a9d
     last_write_checksum: sha1:1b738057bddccbc3b1c6125b0a74f6098883cb48
@@ -4542,6 +5018,14 @@ trackedFiles:
     id: 2705de07d218
     last_write_checksum: sha1:15a05c55a9b28e67089243f8d967ecd9e61651df
     pristine_git_object: ba1ae7bab3c9c3da6c3b224c1e4ec867a6e9d595
+  src/Novu/Models/Components/ListDomainRoutesResponseDto.cs:
+    id: ad5177632ad3
+    last_write_checksum: sha1:6f9cc2dea6c42f2cbd5dfd51fc3ab714aca5be44
+    pristine_git_object: 50acc3a22f33ddf8436ed1c7d56f6db59d9f9aa4
+  src/Novu/Models/Components/ListDomainsResponseDto.cs:
+    id: dd91550c2ef8
+    last_write_checksum: sha1:50b36ccb2c8a5af1e04101a616dbd97a37fbbfc6
+    pristine_git_object: 4b88e682e7e4be930030ac90185df897d2b5c2a6
   src/Novu/Models/Components/ListLayoutResponseDto.cs:
     id: 9c79b6d597f3
     last_write_checksum: sha1:572b506f6e24f9ce6271102bb546b5a4f2dd2829
@@ -4666,6 +5150,10 @@ trackedFiles:
     id: d984f71d4349
     last_write_checksum: sha1:ffc7fcfbb59e07940ed0cf97394c9e01933654e1
     pristine_git_object: 3ac5249ee4c616f36bdb62bf162330d6034e8b60
+  src/Novu/Models/Components/Mode.cs:
+    id: 5c56eb55abe3
+    last_write_checksum: sha1:4b4de43db5d488917d058eed21bb8be6142c2eca
+    pristine_git_object: ff29d0268c2acfe730c90fa2c615d3a6be0e6408
   src/Novu/Models/Components/Monday.cs:
     id: af14a4359c91
     last_write_checksum: sha1:047b0c7ecdc0063af0b10e5fa6deb70a87b08bc8
@@ -4852,12 +5340,12 @@ trackedFiles:
     pristine_git_object: 24252fdd904c1c938cd656846500d871e56d1cab
   src/Novu/Models/Components/ProviderId.cs:
     id: 50d68fbd006e
-    last_write_checksum: sha1:d5ad4ccfb2e316ba2b3823bc8ba49de105087a3b
-    pristine_git_object: c3cf30a9435a024390cf7c30edf9f95b2fd462ae
+    last_write_checksum: sha1:0fba54f328a69e73de21e6c0ce23c041c4ba67a2
+    pristine_git_object: c245807a2c797a9ba8ef377034ee0c4ba057bfb2
   src/Novu/Models/Components/ProvidersIdEnum.cs:
     id: 26dfffe533bd
-    last_write_checksum: sha1:5ea3be94a799ad61140aa8922e4112e729ae9077
-    pristine_git_object: 028dc18b387925901706b5f6300e24c92d3066a0
+    last_write_checksum: sha1:6f8a7d04bcb85d3ea892b257d77549b2c65b7222
+    pristine_git_object: ea029785992060c4736631c6bf03f827d8a21ab7
   src/Novu/Models/Components/PublishEnvironmentRequestDto.cs:
     id: ea2a793059e8
     last_write_checksum: sha1:52381428db5be8acef59eb64d3ac1d1f45e563c5
@@ -4898,6 +5386,10 @@ trackedFiles:
     id: 3bf13f09b448
     last_write_checksum: sha1:aac85c88d5831671869cb29f695d1f2fcb5cd1e5
     pristine_git_object: d2142646d0250f15016f1e96b9212d8f4b88d657
+  src/Novu/Models/Components/ReasonCode.cs:
+    id: 95379340c23c
+    last_write_checksum: sha1:6b8dcf1a6eae6d00453055c1fc1ff73694dbf5c9
+    pristine_git_object: 075cc86946d3b994d34de0ee4dfeac9b75360272
   src/Novu/Models/Components/RedirectDto.cs:
     id: 0e2d818493cf
     last_write_checksum: sha1:be45a826b4a17e21cb7ca9f5bb0c552e9809ae53
@@ -5002,6 +5494,10 @@ trackedFiles:
     id: 62f50bc72665
     last_write_checksum: sha1:7fb60394173d2a1fb11a7cd31c601067529f4121
     pristine_git_object: d98ece2db4d2b27971593206b079e777e9606bdc
+  src/Novu/Models/Components/Severity.cs:
+    id: 96dcf622a904
+    last_write_checksum: sha1:c781e164e10a4e20a2c37a75fbee083f3aa401cf
+    pristine_git_object: d4490e535cc5fb7b9430ea2db94dfc029ac2d2bb
   src/Novu/Models/Components/SeverityLevelEnum.cs:
     id: b138cbd326e0
     last_write_checksum: sha1:58f641290165f66b974edcee8746164b8c7bc612
@@ -5234,6 +5730,30 @@ trackedFiles:
     id: f0f5fba59b48
     last_write_checksum: sha1:b9818ad36246685fa171e353801e2fd18523f80e
     pristine_git_object: fb9565369558508ef7d38450498f49541919cdb2
+  src/Novu/Models/Components/TestDomainRouteAgentResultDto.cs:
+    id: db0b2705287f
+    last_write_checksum: sha1:77b930b1000adaa4ec916aa03156d4eaa85fb52d
+    pristine_git_object: 2459701717a68bb131f5405394fab01054062915
+  src/Novu/Models/Components/TestDomainRouteDto.cs:
+    id: 5d928fad7bd9
+    last_write_checksum: sha1:eedb782c430cafc403eb6ff28ef66f5c4a287c1e
+    pristine_git_object: 14b4b5ea0a376e40a0e13a7b873246e081326074
+  src/Novu/Models/Components/TestDomainRouteFromDto.cs:
+    id: 02d470be2426
+    last_write_checksum: sha1:e4c37e982becd7d6934685a1904e5a4c95e41a7f
+    pristine_git_object: 4ec8e5708f7783a78a29f065ae87e1d5da43401c
+  src/Novu/Models/Components/TestDomainRouteResponseDto.cs:
+    id: d203f1a34246
+    last_write_checksum: sha1:d37cb38c2a99aeda39976672363dde0f35f3dc16
+    pristine_git_object: 66b33cd59b3edda014657298e221e603bdd17f3a
+  src/Novu/Models/Components/TestDomainRouteResponseDtoType.cs:
+    id: 5ee82d8d0a07
+    last_write_checksum: sha1:ad4b2c20cfe0263ca4adc98b9d9207159e94bf2d
+    pristine_git_object: 27ec3b298cc6b228149f0e3145e3f8eb65c048b1
+  src/Novu/Models/Components/TestDomainRouteWebhookResultDto.cs:
+    id: 37f5948e2b15
+    last_write_checksum: sha1:ac991c9eec3b1775aad0145a1dcb835f09bb2e47
+    pristine_git_object: f87c744be7f7ee646a99c580f0d8275b22ddc780
   src/Novu/Models/Components/TextAlignEnum.cs:
     id: 6c476bc17fe9
     last_write_checksum: sha1:afb76896a741a332a9e16968aa1c4731df3cfbcf
@@ -5458,6 +5978,18 @@ trackedFiles:
     id: e3695dde3264
     last_write_checksum: sha1:18d48835a82def9821217b8340679e9235f7fca1
     pristine_git_object: 28196997b91f50825424a6b1a621efa67ad79aac
+  src/Novu/Models/Components/UpdateDomainDto.cs:
+    id: dacd60508576
+    last_write_checksum: sha1:52f4de6d05b0e6d643db41a27f3978985ecb71d7
+    pristine_git_object: 93183daa7214cade7bcc481cbf1e639e46e5d3aa
+  src/Novu/Models/Components/UpdateDomainRouteDto.cs:
+    id: f6dbfd57a6ab
+    last_write_checksum: sha1:11aad686e335886251f7c624c779e143729ab5a3
+    pristine_git_object: a8e0fc4a5d22e3d26a6c3fca1637d25a00b76c20
+  src/Novu/Models/Components/UpdateDomainRouteDtoType.cs:
+    id: 0ead04b841fd
+    last_write_checksum: sha1:7f8b549d15a079bc9db761ce47bebfd00bbd884d
+    pristine_git_object: a42b6fe95d8c6177a3a48daa5e9bfc1253f5786d
   src/Novu/Models/Components/UpdateEnvironmentRequestDto.cs:
     id: dfb075c55e4e
     last_write_checksum: sha1:2d22efe020e447e89a8ba33e27149ac8c047787e
@@ -5842,6 +6374,134 @@ trackedFiles:
     id: b1f6dba9faa6
     last_write_checksum: sha1:684f6e98db4b4d6251bca0e4c1afe5ad2bfa1c2e
     pristine_git_object: 2ebd86c65b030349c7d08a2b3a89a9de1c7a18cc
+  src/Novu/Models/Requests/DomainsControllerCreateDomainRequest.cs:
+    id: ff130b154fc1
+    last_write_checksum: sha1:f3d366a963a20921c3da0ca9434dab0f30d59af8
+    pristine_git_object: 45dcf5675de9c6c5cabc35dc7dc408d79f21be7b
+  src/Novu/Models/Requests/DomainsControllerCreateDomainResponse.cs:
+    id: 6d37c25e2a6d
+    last_write_checksum: sha1:b0dc7ca6af4e5c82ea4e3f1681ec523f70e3ac80
+    pristine_git_object: 7ce55cc16e03f6c93b37b6eed36ed775acb46065
+  src/Novu/Models/Requests/DomainsControllerCreateDomainRouteRequest.cs:
+    id: 4d36ac49e803
+    last_write_checksum: sha1:ee13079ba2d5b0c21099af449d3fa8589ea71e27
+    pristine_git_object: 1e721f5b62b5c6ea96cd2f1dd95ee3343561e01f
+  src/Novu/Models/Requests/DomainsControllerCreateDomainRouteResponse.cs:
+    id: faec9f3df6c9
+    last_write_checksum: sha1:b7ae01d1b68894ec1b2945e30aa95660f04fb636
+    pristine_git_object: 4be24d53ace47b0fe7938b902c179f5771920ff3
+  src/Novu/Models/Requests/DomainsControllerDeleteDomainRequest.cs:
+    id: 41f561cc5d48
+    last_write_checksum: sha1:9f626070c60ea88b25d555ab3c7c7f8a821567db
+    pristine_git_object: 0e50ad0a84711957cab6217f60637112abb017a8
+  src/Novu/Models/Requests/DomainsControllerDeleteDomainResponse.cs:
+    id: 37e1881c8541
+    last_write_checksum: sha1:1440234433433993c774d263a6708fa6b3f15314
+    pristine_git_object: a02335009b24486f6cb66bda301de7a571d4a50b
+  src/Novu/Models/Requests/DomainsControllerDeleteDomainRouteRequest.cs:
+    id: 077bf5fb4225
+    last_write_checksum: sha1:e8283ab35f29a0fca258397f0c28a6dd42a5acee
+    pristine_git_object: 386221663c831a5fe2437772284c96afb19d5f53
+  src/Novu/Models/Requests/DomainsControllerDeleteDomainRouteResponse.cs:
+    id: 7a2fa153f916
+    last_write_checksum: sha1:9f6fe236063b6be8671167cf15514bbe79a27cc6
+    pristine_git_object: d8fa0f49a78d06dbbebb54eb9e622f2627ca898b
+  src/Novu/Models/Requests/DomainsControllerDiagnoseDomainRequest.cs:
+    id: cff52d2e971a
+    last_write_checksum: sha1:41258ea282730c6349413de45fbae45233abe688
+    pristine_git_object: ef535ece39740dc3ea4df9ac7c133003a4152bc8
+  src/Novu/Models/Requests/DomainsControllerDiagnoseDomainResponse.cs:
+    id: 54d49cb29aae
+    last_write_checksum: sha1:0113b9ce5c5a578f9a76741c07dadf10157d21c9
+    pristine_git_object: 6d7c5e2835379761029e7892856f37b289fdf9cd
+  src/Novu/Models/Requests/DomainsControllerGetDomainAutoConfigureRequest.cs:
+    id: 0b3d9a0e3c8d
+    last_write_checksum: sha1:efd11eabae3a282511fc556b21f1bc069f5f4840
+    pristine_git_object: 6737b972b61fd4d4faf40de98cc233f7a731a14a
+  src/Novu/Models/Requests/DomainsControllerGetDomainAutoConfigureResponse.cs:
+    id: 8cd2ff34ffde
+    last_write_checksum: sha1:3906b472437ce99ba5e89781ef8392af93797fdb
+    pristine_git_object: 9456f6a96462849f1d8371f1e3cacba2496f89c8
+  src/Novu/Models/Requests/DomainsControllerGetDomainRequest.cs:
+    id: 54c8e01aaa7c
+    last_write_checksum: sha1:2e1c5ffa1592be8050967ebcb15a64430ce3b467
+    pristine_git_object: e6564bbdea824d4fb07a020a3fd790a2cc412d4d
+  src/Novu/Models/Requests/DomainsControllerGetDomainResponse.cs:
+    id: d3acb05a912d
+    last_write_checksum: sha1:2f14780979d912a6be5437d729a1ffa2767cef67
+    pristine_git_object: be13ce4d40ab5c9022ef74379d55a990eaeb13ca
+  src/Novu/Models/Requests/DomainsControllerGetDomainRouteRequest.cs:
+    id: 1fa3c3a413cc
+    last_write_checksum: sha1:f6477115cf91e5e192ae0aba89190e95886cb38b
+    pristine_git_object: 0484f751ba29c676eae8199eebe3a2b7c307dc9d
+  src/Novu/Models/Requests/DomainsControllerGetDomainRouteResponse.cs:
+    id: 24b892f9f0a4
+    last_write_checksum: sha1:72ab90496e7957ba4e0e39de079510011e4858d2
+    pristine_git_object: 5df46b5d02f2199d6c382becf5eee4616e18a223
+  src/Novu/Models/Requests/DomainsControllerListDomainRoutesQueryParamOrderDirection.cs:
+    id: 733d5ff59633
+    last_write_checksum: sha1:2a2dd985c59445ececd862cbc38d9e0921f82681
+    pristine_git_object: d8281ee6c41e310e4c97497f379a4d0c18fe55ee
+  src/Novu/Models/Requests/DomainsControllerListDomainRoutesRequest.cs:
+    id: df46b5621fba
+    last_write_checksum: sha1:cf1bd95c572e0573b938b276407f881ba28ac2c3
+    pristine_git_object: 9ed8935641a11612e859276741fc70405e5da2ef
+  src/Novu/Models/Requests/DomainsControllerListDomainRoutesResponse.cs:
+    id: acc614032523
+    last_write_checksum: sha1:d6ec073738c163610d5b037d53dbbbeea0d96422
+    pristine_git_object: 554d130e40e55f332f0968ae9b0741b0ac7921d1
+  src/Novu/Models/Requests/DomainsControllerListDomainsQueryParamOrderDirection.cs:
+    id: 475c7a1d4f19
+    last_write_checksum: sha1:13104f898fccddddfa4b9253d1b321ea09de90d7
+    pristine_git_object: 995ae6d6913abb008ec170f9c9e3ff3436bb57b0
+  src/Novu/Models/Requests/DomainsControllerListDomainsRequest.cs:
+    id: 5e5844d95a42
+    last_write_checksum: sha1:4ea5bf81a3cdd27518c0c8aeb17a455cbbc9d9af
+    pristine_git_object: 7638fc4e28fb21b934187672db176b04cccf3f90
+  src/Novu/Models/Requests/DomainsControllerListDomainsResponse.cs:
+    id: c14d9308b2a1
+    last_write_checksum: sha1:6124d59d469d6ff2e7ea6004b1b0bbfaec352294
+    pristine_git_object: 08fbc0d5ee2b1d6a39caa31d3d7fd5e860f4cf0e
+  src/Novu/Models/Requests/DomainsControllerStartDomainAutoConfigureRequest.cs:
+    id: 60da33927a58
+    last_write_checksum: sha1:01ab6d167dfa53e47407380e7764e4ae60c1cdae
+    pristine_git_object: 12c5b74554bc6a3d02e729c101e8334122fd76d7
+  src/Novu/Models/Requests/DomainsControllerStartDomainAutoConfigureResponse.cs:
+    id: 171b196388d3
+    last_write_checksum: sha1:22eabc70ac490bdbcc456e538e2b367c3eadafc7
+    pristine_git_object: d129947f187b827b3a4102920475d82e9a83aa4d
+  src/Novu/Models/Requests/DomainsControllerTestDomainRouteRequest.cs:
+    id: 06d57a460dbd
+    last_write_checksum: sha1:afaf8507ff4421d38cb27da28c1363ea49c9a9fe
+    pristine_git_object: 67de561f9b01ec169f70ebb9464ea5638660fe7d
+  src/Novu/Models/Requests/DomainsControllerTestDomainRouteResponse.cs:
+    id: e68472af8f70
+    last_write_checksum: sha1:b53f67cbe9e0584016e03bbb853613b6a9408c62
+    pristine_git_object: 9b62c9738394be673c39912e8df1a822df1022c0
+  src/Novu/Models/Requests/DomainsControllerUpdateDomainRequest.cs:
+    id: 11e4ba060c6f
+    last_write_checksum: sha1:2612c45ccedc428ca4828d7f62e041691a8fe24d
+    pristine_git_object: 6335d1e4ddac22fe79889ebc2ab29e30632555bd
+  src/Novu/Models/Requests/DomainsControllerUpdateDomainResponse.cs:
+    id: 81d580300c61
+    last_write_checksum: sha1:2c870acd185c6f6fd88895c7ba4b2a79a3d2baa4
+    pristine_git_object: f75518e00cf56375dd5e1c475d2dc65a91611468
+  src/Novu/Models/Requests/DomainsControllerUpdateDomainRouteRequest.cs:
+    id: 17bc7f292296
+    last_write_checksum: sha1:af047b37850a17ebc6dc7bc6dde7cfb9e0369cf2
+    pristine_git_object: 63127fc2db751059170a1a61a4d6a29cac26f6b8
+  src/Novu/Models/Requests/DomainsControllerUpdateDomainRouteResponse.cs:
+    id: f01cc1b06218
+    last_write_checksum: sha1:942ad1482770c8f68fd27f3cf2f6ebc4106c36e1
+    pristine_git_object: ca8afb306277d587cceb1209d41a6040bf1f4d8b
+  src/Novu/Models/Requests/DomainsControllerVerifyDomainRequest.cs:
+    id: d22020b6c5a8
+    last_write_checksum: sha1:deecefa6b5dacbcb0feb4cf96a99ab8c1037fcd0
+    pristine_git_object: e3537c241290cdd6a56fae230ef36976840f8c9a
+  src/Novu/Models/Requests/DomainsControllerVerifyDomainResponse.cs:
+    id: ba84bbdfa353
+    last_write_checksum: sha1:139a8356eebe24e21d905feab70dbd1579650710
+    pristine_git_object: f07888de09bc59c1f9e893f207c7ea114e4de584
   src/Novu/Models/Requests/EnvironmentVariablesControllerCreateEnvironmentVariableRequest.cs:
     id: 3629ed429f20
     last_write_checksum: sha1:7b543ae4feeb21b0f6d3c11f975f214a137f2cfa
@@ -6010,6 +6670,22 @@ trackedFiles:
     id: 41cfae65020a
     last_write_checksum: sha1:ebca6eb4593456f17c9b6577621ed95c75a3b9e2
     pristine_git_object: 708398ebbbf88b3769b15e56782dc77e96dc8748
+  src/Novu/Models/Requests/IntegrationsControllerGenerateConnectOAuthUrlRequest.cs:
+    id: ce6b692a6153
+    last_write_checksum: sha1:434f7e52cb2b994c5ee1fb260e920c35483b1850
+    pristine_git_object: e57a30a10aaf5e8198ba8a2621c3a7065fbdae03
+  src/Novu/Models/Requests/IntegrationsControllerGenerateConnectOAuthUrlResponse.cs:
+    id: f046a18f57ca
+    last_write_checksum: sha1:057ce0fd19a716978d4a37c62f4c6bef974995f9
+    pristine_git_object: 7d1a3a265f8cf08c3f775bc3767815a1513a2cd5
+  src/Novu/Models/Requests/IntegrationsControllerGenerateLinkUserOAuthUrlRequest.cs:
+    id: 92c980f123e5
+    last_write_checksum: sha1:28cdb9c1fedad0cb7cef177a2ea05184cf04bf01
+    pristine_git_object: d74e5a164aaac634f7c0d22b8d67e173937af898
+  src/Novu/Models/Requests/IntegrationsControllerGenerateLinkUserOAuthUrlResponse.cs:
+    id: 14251835fa83
+    last_write_checksum: sha1:cb39a5de15813d9d1562b0f8c36efc2134baa7f1
+    pristine_git_object: 0b99abb4790be8ca3d4c91a87de67726ab00146d
   src/Novu/Models/Requests/IntegrationsControllerGetActiveIntegrationsRequest.cs:
     id: 26df3cf3b962
     last_write_checksum: sha1:7c1ab1dcc31d96d986a7fb61e0cc5ed86a1ee17a
@@ -6268,8 +6944,8 @@ trackedFiles:
     pristine_git_object: 793aab0ac7c0291afa2c28ddcccf75d1c71b5887
   src/Novu/Models/Requests/SubscribersControllerGetSubscriberNotificationsRequest.cs:
     id: 1837cbf23699
-    last_write_checksum: sha1:e84d968c7ec43e70d5e1812efd914c845c89cba5
-    pristine_git_object: 71f6f8afbdf81557ab0853452556a7972554239e
+    last_write_checksum: sha1:c6bee253174bb6ed53c804566c670ee7029347bd
+    pristine_git_object: b255ad94dec0bd1f8c3d795459b3e4ca1dfedfa3
   src/Novu/Models/Requests/SubscribersControllerGetSubscriberNotificationsResponse.cs:
     id: c9c698af454a
     last_write_checksum: sha1:5b6b31fe31965a1182e61dc21d19dd84240020f4
@@ -6744,16 +7420,16 @@ trackedFiles:
     pristine_git_object: 1dc893afdc347828f792d4e1c8430a94eb8f7fb0
   src/Novu/Novu.csproj:
     id: d1fe7f089c20
-    last_write_checksum: sha1:4317c0e574c70b6e1da725c53f62e4d9ce607a5c
-    pristine_git_object: 2f1126c3b0eff7b65961f6366e92cb8da8dd4a81
+    last_write_checksum: sha1:169ec97080f5a9c472a393ca8d42143e8f7dfafb
+    pristine_git_object: 45acc3728607c61b53ae83799af598c2b2efd72b
   src/Novu/NovuNotifications.cs:
     id: 1ac888357d41
     last_write_checksum: sha1:ed613ca1a9565354bdaedb280225cbab07be730e
     pristine_git_object: 408f93fa371e1f142ffaac3e7f844576caf7d1eb
   src/Novu/NovuSDK.cs:
     id: 4ea74ce26f49
-    last_write_checksum: sha1:68411ae11b7bfe4c783f2603525245344e8a486b
-    pristine_git_object: 58e047ccf07c20ba529f7cbaf3c69d71e7226509
+    last_write_checksum: sha1:d76f0421ad7c319c9d5c71362b958dce33ec43a6
+    pristine_git_object: 8fc63dc0949ef5fea8278ce101a464ea5f2593d0
   src/Novu/NovuTopics.cs:
     id: fba564bc282a
     last_write_checksum: sha1:c9ec5505f3e09b94fca99e0e0d30e9821426c526
@@ -6762,10 +7438,14 @@ trackedFiles:
     id: 40137ccca752
     last_write_checksum: sha1:ce4143707f3c9d16d8f6785042ef178fbb589001
     pristine_git_object: 432e5231fbb780e4632f4940dd08b7165a0ab7a0
+  src/Novu/Routes.cs:
+    id: 64c3fadc5076
+    last_write_checksum: sha1:d3d4816e781e7b81a7e7cdafc826c496edb71377
+    pristine_git_object: 235f93173aeff21698497791dbd0c7f70b1646fb
   src/Novu/SDKConfig.cs:
     id: 228eb68fa757
-    last_write_checksum: sha1:a9a5cf56036e2c5fbcf8419bb43b85251ec0234f
-    pristine_git_object: 1ff3150592848d0fcff1d40a6564c11bb2c2e187
+    last_write_checksum: sha1:38ffc878575f13c113aa7ed0054c461735099411
+    pristine_git_object: 0d99879f6849701abd33fcc8dc24d4cecce9b0c9
   src/Novu/Steps.cs:
     id: 5b24d842ca7a
     last_write_checksum: sha1:4cc3d5ccfd5186be128973d04e6517b19ca21153
@@ -6812,8 +7492,8 @@ trackedFiles:
     pristine_git_object: 9c9aae9055f608027cf99f2fded32e149f0b6f36
   src/Novu/Utils/Constants.cs:
     id: 47b034209815
-    last_write_checksum: sha1:c6554266f7156fc0342716f567984968c6941313
-    pristine_git_object: 379501c9970790b0c60efd3a024da3e1a52c80b4
+    last_write_checksum: sha1:65b5223865ec01c0b33d0e7e283179a8b12515b1
+    pristine_git_object: 03167a12951930af0da41fb7a033d5b4be95aed6
   src/Novu/Utils/DecimalStrConverter.cs:
     id: c5c1dbe2ffcb
     last_write_checksum: sha1:e9b291cdfe54d763cfec70c8b9b83e59e0de7a5b
@@ -7327,10 +8007,10 @@ examples:
   IntegrationsController_createIntegration:
     speakeasy-default-integrations-controller-create-integration:
       requestBody:
-        application/json: {"providerId": "<id>", "channel": "email"}
+        application/json: {}
       responses:
         "201":
-          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": false, "deleted": false, "primary": true}
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "active": false, "deleted": false, "primary": true}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -7348,7 +8028,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "push", "credentials": {}, "active": false, "deleted": false, "primary": true}
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "active": false, "deleted": false, "primary": true}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -7380,7 +8060,7 @@ examples:
           integrationId: "<id>"
       responses:
         "200":
-          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "in_app", "credentials": {}, "active": false, "deleted": false, "primary": false}
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "active": false, "deleted": false, "primary": false}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -8239,7 +8919,7 @@ examples:
   ChannelConnectionsController_createChannelConnection:
     speakeasy-default-channel-connections-controller-create-channel-connection:
       requestBody:
-        application/json: {"identifier": "slack-prod-user123-abc4", "subscriberId": "subscriber-123", "context": {"key": "org-acme"}, "integrationIdentifier": "slack-prod", "workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}}
+        application/json: {"identifier": "slack-prod-user123-abc4", "subscriberId": "subscriber-123", "context": {"key": "org-acme"}, "connectionMode": "shared", "integrationIdentifier": "slack-prod", "workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}}
       responses:
         "201":
           application/json: {"identifier": "<value>", "channel": "sms", "providerId": "slack", "integrationIdentifier": "slack-prod", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}, "createdAt": "1719812430207", "updatedAt": "1735628544115"}
@@ -8386,7 +9066,7 @@ examples:
   IntegrationsController_getChatOAuthUrl:
     speakeasy-default-integrations-controller-get-chat-O-auth-url:
       requestBody:
-        application/json: {"subscriberId": "subscriber-123", "integrationIdentifier": "<value>", "connectionIdentifier": "slack-connection-abc123", "context": {"key": "org-acme"}, "scope": ["chat:write", "chat:write.public", "channels:read", "groups:read", "users:read", "users:read.email", "incoming-webhook"]}
+        application/json: {"subscriberId": "subscriber-123", "integrationIdentifier": "<value>", "connectionIdentifier": "slack-connection-abc123", "context": {"key": "org-acme"}, "scope": ["chat:write", "chat:write.public", "channels:read", "groups:read", "users:read", "users:read.email", "incoming-webhook"], "userScope": ["identity.basic"], "mode": "link_user", "connectionMode": "shared", "autoLinkUser": true}
       responses:
         "201":
           application/json: {"url": "https://slack.com/oauth/v2/authorize?state=..."}
@@ -8623,7 +9303,7 @@ examples:
         "400":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "422":
-          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": []}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
         "500":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
   SubscribersController_getSubscriberNotificationsCount:
@@ -8641,7 +9321,7 @@ examples:
         "400":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "422":
-          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": []}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
         "500":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
   SubscribersController_deleteAllNotifications:
@@ -8752,7 +9432,7 @@ examples:
         "400":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "422":
-          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": []}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
         "500":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
   EnvironmentVariablesController_getEnvironmentVariable:
@@ -8819,9 +9499,290 @@ examples:
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
         "500":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_listDomains:
+    speakeasy-default-domains-controller-list-domains:
+      parameters:
+        query:
+          limit: 10
+      responses:
+        "200":
+          application/json: {"data": [{"_id": "<id>", "name": "<value>", "status": "verified", "mxRecordConfigured": true, "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1709983742886", "updatedAt": "1735606707171", "expectedDnsRecords": [{"type": "MX", "name": "inbound", "content": "inbound-smtp.us-east-1.amazonaws.com", "ttl": "Auto", "priority": 10}]}], "next": "<value>", "previous": "<value>", "totalCount": 3816.97, "totalCountCapped": false}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_createDomain:
+    speakeasy-default-domains-controller-create-domain:
+      requestBody:
+        application/json: {"name": "<value>"}
+      responses:
+        "201":
+          application/json: {"_id": "<id>", "name": "<value>", "status": "verified", "mxRecordConfigured": false, "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1716949744625", "updatedAt": "1735624573515", "expectedDnsRecords": [{"type": "MX", "name": "inbound", "content": "inbound-smtp.us-east-1.amazonaws.com", "ttl": "Auto", "priority": 10}]}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": false}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_getDomain:
+    speakeasy-default-domains-controller-get-domain:
+      parameters:
+        path:
+          domain: "foolish-requirement.org"
+      responses:
+        "200":
+          application/json: {"_id": "<id>", "name": "<value>", "status": "pending", "mxRecordConfigured": true, "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1712440954138", "updatedAt": "1735628784965", "expectedDnsRecords": [{"type": "MX", "name": "inbound", "content": "inbound-smtp.us-east-1.amazonaws.com", "ttl": "Auto", "priority": 10}]}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_updateDomain:
+    speakeasy-default-domains-controller-update-domain:
+      parameters:
+        path:
+          domain: "ordinary-eternity.org"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"_id": "<id>", "name": "<value>", "status": "verified", "mxRecordConfigured": false, "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1711208292067", "updatedAt": "1735669961330", "expectedDnsRecords": [{"type": "MX", "name": "inbound", "content": "inbound-smtp.us-east-1.amazonaws.com", "ttl": "Auto", "priority": 10}]}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": 9284.53}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_deleteDomain:
+    speakeasy-default-domains-controller-delete-domain:
+      parameters:
+        path:
+          domain: "complicated-finer.org"
+      responses:
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": []}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_diagnoseDomain:
+    speakeasy-default-domains-controller-diagnose-domain:
+      parameters:
+        path:
+          domain: "alive-publication.biz"
+      responses:
+        "200":
+          application/json: {"ok": true, "runAt": "<value>", "checks": [{"code": "apex_cname_collision", "status": "skipped", "latencyMs": 2745.11}], "issues": []}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": [4727.34]}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_verifyDomain:
+    speakeasy-default-domains-controller-verify-domain:
+      parameters:
+        path:
+          domain: "formal-fork.com"
+      responses:
+        "200":
+          application/json: {"_id": "<id>", "name": "<value>", "status": "verified", "mxRecordConfigured": true, "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1709440889064", "updatedAt": "1735651545144", "expectedDnsRecords": [{"type": "MX", "name": "inbound", "content": "inbound-smtp.us-east-1.amazonaws.com", "ttl": "Auto", "priority": 10}]}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_getDomainAutoConfigure:
+    speakeasy-default-domains-controller-get-domain-auto-configure:
+      parameters:
+        path:
+          domain: "hidden-subsidy.info"
+      responses:
+        "200":
+          application/json: {"available": false, "manualRecords": [{"type": "MX", "name": "inbound", "content": "inbound-smtp.us-east-1.amazonaws.com", "ttl": "Auto", "priority": 10}]}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": 7883.94}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_startDomainAutoConfigure:
+    speakeasy-default-domains-controller-start-domain-auto-configure:
+      parameters:
+        path:
+          domain: "criminal-other.name"
+      requestBody:
+        application/json: {}
+      responses:
+        "201":
+          application/json: {"applyUrl": "https://reckless-antelope.biz", "providerName": "<value>", "redirectUri": "https://shameless-roadway.info"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_listDomainRoutes:
+    speakeasy-default-domains-controller-list-domain-routes:
+      parameters:
+        path:
+          domain: "fearless-fishery.com"
+        query:
+          limit: 10
+      responses:
+        "200":
+          application/json: {"data": [{"_id": "<id>", "_domainId": "<id>", "address": "1647 N 8th Street", "type": "webhook", "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1720291119048", "updatedAt": "1735661570949"}], "next": "<value>", "previous": "<value>", "totalCount": 3751.99, "totalCountCapped": false}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_createDomainRoute:
+    speakeasy-default-domains-controller-create-domain-route:
+      parameters:
+        path:
+          domain: "radiant-solvency.net"
+      requestBody:
+        application/json: {"address": "6581 Birch Road", "type": "webhook"}
+      responses:
+        "201":
+          application/json: {"_id": "<id>", "_domainId": "<id>", "address": "9570 Ferry Parks", "type": "agent", "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1725211289760", "updatedAt": "1735636554635"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_getDomainRoute:
+    speakeasy-default-domains-controller-get-domain-route:
+      parameters:
+        path:
+          domain: "adolescent-petal.net"
+          address: "42531 Green Lane"
+      responses:
+        "200":
+          application/json: {"_id": "<id>", "_domainId": "<id>", "address": "90726 E 10th Street", "type": "agent", "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1708129772047", "updatedAt": "1735652473494"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": 9757.52}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_updateDomainRoute:
+    speakeasy-default-domains-controller-update-domain-route:
+      parameters:
+        path:
+          domain: "cavernous-cycle.com"
+          address: "70213 Gerlach Rue"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"_id": "<id>", "_domainId": "<id>", "address": "274 Kutch Fords", "type": "agent", "_environmentId": "<id>", "_organizationId": "<id>", "createdAt": "1720122687512", "updatedAt": "1735647797594"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_deleteDomainRoute:
+    speakeasy-default-domains-controller-delete-domain-route:
+      parameters:
+        path:
+          domain: "corrupt-avalanche.biz"
+          address: "753 W 4th Avenue"
+      responses:
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": 3301.74}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  DomainsController_testDomainRoute:
+    speakeasy-default-domains-controller-test-domain-route:
+      parameters:
+        path:
+          domain: "exalted-bonfire.com"
+          address: "90499 Rowan Close"
+      requestBody:
+        application/json: {"from": {"address": "58851 Konopelski Overpass"}, "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {"matched": true, "dryRun": true}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": true}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_generateConnectOAuthUrl:
+    speakeasy-default-integrations-controller-generate-connect-O-auth-url:
+      requestBody:
+        application/json: {"subscriberId": "subscriber-123", "integrationIdentifier": "<value>", "connectionIdentifier": "slack-connection-abc123", "context": {"key": "org-acme"}, "scope": ["chat:write", "chat:write.public", "channels:read"], "connectionMode": "shared", "autoLinkUser": true}
+      responses:
+        "201":
+          application/json: {"url": "https://slack.com/oauth/v2/authorize?state=..."}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": "xx xx xx "}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+  IntegrationsController_generateLinkUserOAuthUrl:
+    speakeasy-default-integrations-controller-generate-link-user-O-auth-url:
+      requestBody:
+        application/json: {"subscriberId": "subscriber-123", "integrationIdentifier": "<value>", "connectionIdentifier": "slack-connection-abc123", "context": {"key": "org-acme"}, "userScope": ["identity.basic"]}
+      responses:
+        "201":
+          application/json: {"url": "https://slack.com/oauth/v2/authorize?state=..."}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": false}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Novu.Layouts.Create()`:  `response.controls.UiSchema` **Changed** (Breaking ⚠️)\n* `Novu.Notifications.Retrieve()`:  `response` **Changed** (Breaking ⚠️)\n* `Novu.Notifications.Get()`:  `response.data[]` **Changed** (Breaking ⚠️)\n* `Novu.ChannelEndpoints.Update()`:  `response.providerId.Enum(cmTelecom)` **Added** (Breaking ⚠️)\n* `Novu.ChannelEndpoints.Retrieve()`:  `response.providerId.Enum(cmTelecom)` **Added** (Breaking ⚠️)\n* `Novu.ChannelEndpoints.Create()`:  `response.providerId.Enum(cmTelecom)` **Added** (Breaking ⚠️)\n* `Novu.ChannelEndpoints.List()`: \n  *  `request.ProviderId` **Changed**\n  *  `response.data[].ProviderId.Enum(cmTelecom)` **Added** (Breaking ⚠️)\n* `Novu.ChannelConnections.Update()`:  `response.providerId.Enum(cmTelecom)` **Added** (Breaking ⚠️)\n* `Novu.ChannelConnections.Retrieve()`:  `response.providerId.Enum(cmTelecom)` **Added** (Breaking ⚠️)\n* `Novu.ChannelConnections.Create()`:  `response.providerId.Enum(cmTelecom)` **Added** (Breaking ⚠️)\n* `Novu.ChannelConnections.List()`: \n  *  `request.ProviderId` **Changed**\n  *  `response.data[].ProviderId.Enum(cmTelecom)` **Added** (Breaking ⚠️)\n* `Novu.Workflows.Steps.Retrieve()`:  `response` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Sync()`:  `response` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Patch()`:  `response` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Get()`:  `response` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Update()`: \n  *  `request.updateWorkflowDto.Steps[]` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.List()`:  `response.workflows[]` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Create()`: \n  *  `request.createWorkflowDto` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.Duplicate()`:  `response.controls.UiSchema` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.Retrieve()`:  `response.controls.UiSchema` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.Update()`:  `response.controls.UiSchema` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.List()`:  `response.layouts[].Controls.UiSchema` **Changed** (Breaking ⚠️)\n* `Novu.Subscribers.Notifications.ArchiveAll()`: **Added**\n* `Novu.Subscribers.Notifications.MarkAllAsRead()`: **Added**\n* `Novu.EnvironmentVariables.Usage()`: **Added**\n* `Novu.Trigger()`:  `response.activityFeedLink` **Added**\n* `Novu.Broadcast()`:  `response.activityFeedLink` **Added**\n* `Novu.TriggerBulk()`:  `response.[].ActivityFeedLink` **Added**\n* `Novu.EnvironmentVariables.Update()`: **Added**\n* `Novu.EnvironmentVariables.Retrieve()`: **Added**\n* `Novu.EnvironmentVariables.Create()`: **Added**\n* `Novu.EnvironmentVariables.List()`: **Added**\n* `Novu.Workflows.Steps.GeneratePreview()`: **Added**\n* `Novu.Subscribers.Notifications.MarkAsSeen()`: **Added**\n* `Novu.Subscribers.Notifications.ArchiveAllRead()`: **Added**\n* `Novu.EnvironmentVariables.Delete()`: **Added**\n* `Novu.Subscribers.Notifications.DeleteAll()`: **Added**\n* `Novu.Subscribers.Notifications.Count()`: **Added**\n* `Novu.Environments.Diff()`: **Added**\n* `Novu.Subscribers.Notifications.Unsnooze()`: **Added**\n* `Novu.Subscribers.Notifications.MarkAsUnread()`: **Added**\n* `Novu.Subscribers.Notifications.Unarchive()`: **Added**\n* `Novu.Subscribers.Notifications.Snooze()`: **Added**\n* `Novu.Subscribers.Notifications.MarkAsRead()`: **Added**\n* `Novu.Subscribers.Notifications.Archive()`: **Added**\n* `Novu.Subscribers.Notifications.RevertAction()`: **Added**\n* `Novu.Subscribers.Notifications.CompleteAction()`: **Added**\n* `Novu.Subscribers.Notifications.Delete()`: **Added**\n* `Novu.Subscribers.Notifications.List()`: **Added**\n* `Novu.Environments.Publish()`: **Added**\n"
+releaseNotes: "## Csharp SDK Changes:\n* `Novu.ChannelEndpoints.Update()`:  `response.providerId` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Create()`: \n  *  `request.createWorkflowDto.Steps[].union(http_request).ControlValues.union(HttpRequestControlDto).Body` **Changed** (Breaking ⚠️)\n  *  `response.steps[].union(http_request)` **Changed** (Breaking ⚠️)\n* `Novu.Notifications.Retrieve()`:  `response.jobs[].ExecutionDetails[].ProviderId` **Changed** (Breaking ⚠️)\n* `Novu.Notifications.Get()`:  `response.data[].Jobs[].ExecutionDetails[].ProviderId` **Changed** (Breaking ⚠️)\n* `Novu.ChannelEndpoints.Retrieve()`:  `response.providerId` **Changed** (Breaking ⚠️)\n* `Novu.ChannelEndpoints.Create()`:  `response.providerId` **Changed** (Breaking ⚠️)\n* `Novu.ChannelEndpoints.List()`: \n  *  `request.ProviderId` **Changed**\n  *  `response.data[].ProviderId` **Changed** (Breaking ⚠️)\n* `Novu.ChannelConnections.Update()`:  `response.providerId` **Changed** (Breaking ⚠️)\n* `Novu.ChannelConnections.Retrieve()`:  `response.providerId` **Changed** (Breaking ⚠️)\n* `Novu.ChannelConnections.Create()`: \n  *  `request.createChannelConnectionRequestDto.ConnectionMode` **Added**\n  *  `response.providerId` **Changed** (Breaking ⚠️)\n* `Novu.ChannelConnections.List()`: \n  *  `request.ProviderId` **Changed**\n  *  `response.data[].ProviderId` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Sync()`:  `response.steps[].union(http_request)` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Get()`:  `response.steps[].union(http_request)` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Patch()`:  `response.steps[].union(http_request)` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Update()`: \n  *  `request.updateWorkflowDto.Steps[].union(http_request).ControlValues.union(HttpRequestControlDto).Body` **Changed** (Breaking ⚠️)\n  *  `response.steps[].union(http_request)` **Changed** (Breaking ⚠️)\n* `Novu.Domains.Routes.Retrieve()`: **Added**\n* `Novu.Domains.Diagnose()`: **Added**\n* `Novu.Layouts.Duplicate()`: \n  *  `request.duplicateLayoutDto.LayoutId` **Added**\n* `Novu.Integrations.GenerateConnectOAuthUrl()`: **Added**\n* `Novu.Domains.Routes.Test()`: **Added**\n* `Novu.Domains.Create()`: **Added**\n* `Novu.Domains.Routes.Delete()`: **Added**\n* `Novu.Domains.Routes.Update()`: **Added**\n* `Novu.Domains.Routes.Create()`: **Added**\n* `Novu.Domains.Routes.List()`: **Added**\n* `Novu.Domains.AutoConfigure.Start()`: **Added**\n* `Novu.Domains.AutoConfigure.Retrieve()`: **Added**\n* `Novu.Domains.Verify()`: **Added**\n* `Novu.Integrations.GenerateLinkUserOAuthUrl()`: **Added**\n* `Novu.Domains.Delete()`: **Added**\n* `Novu.Domains.List()`: **Added**\n* `Novu.Integrations.GetAll()`:  `response.[]` **Changed**\n* `Novu.Integrations.Create()`: \n  *  `request.createIntegrationRequestDto` **Changed**\n  *  `response` **Changed**\n* `Novu.Integrations.Update()`: \n  *  `request.updateIntegrationRequestDto.Credentials` **Changed**\n  *  `response` **Changed**\n* `Novu.Integrations.Delete()`:  `response.[]` **Changed**\n* `Novu.Integrations.SetPrimary()`:  `response` **Changed**\n* `Novu.Integrations.ListActive()`:  `response.[]` **Changed**\n* `Novu.Integrations.GenerateChatOAuthUrl()`: **Deprecated**\n* `Novu.Integrations.GenerateChatOAuthUrl()`:  `request.generateChatOauthUrlRequestDto` **Changed**\n* `Novu.Domains.Update()`: **Added**\n* `Novu.Domains.Retrieve()`: **Added**\n"
 generatedFiles:
   - .gitattributes
   - NUGET.md

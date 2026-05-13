@@ -1,0 +1,11 @@
+# DomainRouteDto
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `Address`                                                                               | *string*                                                                                | :heavy_check_mark:                                                                      | Inbox address local part (e.g. "support", "*")                                          |
+| `AgentId`                                                                               | *string*                                                                                | :heavy_minus_sign:                                                                      | Agent identifier; required when type is agent, unused for webhook                       |
+| `Type`                                                                                  | [DomainRouteDtoType](../../Models/Components/DomainRouteDtoType.md)                     | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `Data`                                                                                  | Dictionary<String, *string*>                                                            | :heavy_minus_sign:                                                                      | Optional string key-value metadata (max 10 keys, 500 characters total for keys+values). |

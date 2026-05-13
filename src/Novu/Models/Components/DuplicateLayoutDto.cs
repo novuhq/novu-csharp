@@ -21,6 +21,12 @@ namespace Novu.Models.Components
         public string Name { get; set; } = default!;
 
         /// <summary>
+        /// Identifier for the duplicated layout. When omitted, it is derived from the name.
+        /// </summary>
+        [JsonProperty("layoutId")]
+        public string? LayoutId { get; set; }
+
+        /// <summary>
         /// Enable or disable translations for this layout.
         /// </summary>
         [JsonProperty("isTranslationEnabled")]
