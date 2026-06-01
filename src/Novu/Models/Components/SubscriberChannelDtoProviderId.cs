@@ -42,6 +42,8 @@ namespace Novu.Models.Components
         ChatWebhook,
         [JsonProperty("novu-slack")]
         NovuSlack,
+        [JsonProperty("telegram")]
+        Telegram,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]

@@ -56,5 +56,10 @@ namespace Novu.Models.Requests
         {
             return RequestBody.CreateMsTeamsUserEndpointDto;
         }
+
+        public CreateTelegramChatEndpointDto? GetRequestBodyTelegramChat()
+        {
+            return RequestBody.CreateTelegramChatEndpointDto;
+        }
     }
 }

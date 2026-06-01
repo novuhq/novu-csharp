@@ -32,6 +32,12 @@ namespace Novu.Models.Components
 
         public static EndpointType PhoneEndpointDto { get { return new EndpointType("PhoneEndpointDto"); } }
 
+        public static EndpointType MsTeamsChannelEndpointDto { get { return new EndpointType("MsTeamsChannelEndpointDto"); } }
+
+        public static EndpointType MsTeamsUserEndpointDto { get { return new EndpointType("MsTeamsUserEndpointDto"); } }
+
+        public static EndpointType TelegramChatEndpointDto { get { return new EndpointType("TelegramChatEndpointDto"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(EndpointType v) { return v.Value; }
         public static EndpointType FromString(string v) {
@@ -40,6 +46,9 @@ namespace Novu.Models.Components
                 case "SlackUserEndpointDto": return SlackUserEndpointDto;
                 case "WebhookEndpointDto": return WebhookEndpointDto;
                 case "PhoneEndpointDto": return PhoneEndpointDto;
+                case "MsTeamsChannelEndpointDto": return MsTeamsChannelEndpointDto;
+                case "MsTeamsUserEndpointDto": return MsTeamsUserEndpointDto;
+                case "TelegramChatEndpointDto": return TelegramChatEndpointDto;
                 default: throw new ArgumentException("Invalid value for EndpointType");
             }
         }
@@ -81,6 +90,15 @@ namespace Novu.Models.Components
         [SpeakeasyMetadata("form:explode=true")]
         public PhoneEndpointDto? PhoneEndpointDto { get; set; }
 
+        [SpeakeasyMetadata("form:explode=true")]
+        public MsTeamsChannelEndpointDto? MsTeamsChannelEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public MsTeamsUserEndpointDto? MsTeamsUserEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public TelegramChatEndpointDto? TelegramChatEndpointDto { get; set; }
+
         public EndpointType Type { get; set; }
         public static Endpoint CreateSlackChannelEndpointDto(SlackChannelEndpointDto slackChannelEndpointDto)
         {
@@ -112,6 +130,30 @@ namespace Novu.Models.Components
 
             Endpoint res = new Endpoint(typ);
             res.PhoneEndpointDto = phoneEndpointDto;
+            return res;
+        }
+        public static Endpoint CreateMsTeamsChannelEndpointDto(MsTeamsChannelEndpointDto msTeamsChannelEndpointDto)
+        {
+            EndpointType typ = EndpointType.MsTeamsChannelEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.MsTeamsChannelEndpointDto = msTeamsChannelEndpointDto;
+            return res;
+        }
+        public static Endpoint CreateMsTeamsUserEndpointDto(MsTeamsUserEndpointDto msTeamsUserEndpointDto)
+        {
+            EndpointType typ = EndpointType.MsTeamsUserEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.MsTeamsUserEndpointDto = msTeamsUserEndpointDto;
+            return res;
+        }
+        public static Endpoint CreateTelegramChatEndpointDto(TelegramChatEndpointDto telegramChatEndpointDto)
+        {
+            EndpointType typ = EndpointType.TelegramChatEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.TelegramChatEndpointDto = telegramChatEndpointDto;
             return res;
         }
 
@@ -193,6 +235,46 @@ namespace Novu.Models.Components
 
                 try
                 {
+                    return new Endpoint(EndpointType.MsTeamsUserEndpointDto)
+                    {
+                        MsTeamsUserEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<MsTeamsUserEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(MsTeamsUserEndpointDto), new Endpoint(EndpointType.MsTeamsUserEndpointDto), "MsTeamsUserEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Endpoint(EndpointType.TelegramChatEndpointDto)
+                    {
+                        TelegramChatEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TelegramChatEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(TelegramChatEndpointDto), new Endpoint(EndpointType.TelegramChatEndpointDto), "TelegramChatEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
                     return new Endpoint(EndpointType.WebhookEndpointDto)
                     {
                         WebhookEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<WebhookEndpointDto>(json)
@@ -201,6 +283,26 @@ namespace Novu.Models.Components
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(WebhookEndpointDto), new Endpoint(EndpointType.WebhookEndpointDto), "WebhookEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Endpoint(EndpointType.MsTeamsChannelEndpointDto)
+                    {
+                        MsTeamsChannelEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<MsTeamsChannelEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(MsTeamsChannelEndpointDto), new Endpoint(EndpointType.MsTeamsChannelEndpointDto), "MsTeamsChannelEndpointDto"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -264,6 +366,24 @@ namespace Novu.Models.Components
                 if (res.PhoneEndpointDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PhoneEndpointDto));
+                    return;
+                }
+
+                if (res.MsTeamsChannelEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MsTeamsChannelEndpointDto));
+                    return;
+                }
+
+                if (res.MsTeamsUserEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MsTeamsUserEndpointDto));
+                    return;
+                }
+
+                if (res.TelegramChatEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.TelegramChatEndpointDto));
                     return;
                 }
             }
