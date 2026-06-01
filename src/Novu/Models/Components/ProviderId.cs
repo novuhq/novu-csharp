@@ -178,8 +178,14 @@ namespace Novu.Models.Components
         ChatWebhook,
         [JsonProperty("novu-slack")]
         NovuSlack,
+        [JsonProperty("telegram")]
+        Telegram,
         [JsonProperty("anthropic")]
         Anthropic,
+        [JsonProperty("novu-anthropic")]
+        NovuAnthropic,
+        [JsonProperty("anthropic-aws")]
+        AnthropicAws,
     }
 
     public static class ProviderIdExtension

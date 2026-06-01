@@ -40,3 +40,9 @@ ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateMsTeamsChannel(
 ```csharp
 ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateMsTeamsUser(/* values here */);
 ```
+
+### TelegramChat
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateTelegramChat(/* values here */);
+```

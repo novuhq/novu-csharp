@@ -36,6 +36,8 @@ namespace Novu.Models.Requests
 
         public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType MsTeamsUser { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("ms_teams_user"); } }
 
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType TelegramChat { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("telegram_chat"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType v) { return v.Value; }
         public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType FromString(string v) {
@@ -46,6 +48,7 @@ namespace Novu.Models.Requests
                 case "phone": return Phone;
                 case "ms_teams_channel": return MsTeamsChannel;
                 case "ms_teams_user": return MsTeamsUser;
+                case "telegram_chat": return TelegramChat;
                 default: throw new ArgumentException("Invalid value for ChannelEndpointsControllerCreateChannelEndpointRequestBodyType");
             }
         }
@@ -92,6 +95,9 @@ namespace Novu.Models.Requests
 
         [SpeakeasyMetadata("form:explode=true")]
         public CreateMsTeamsUserEndpointDto? CreateMsTeamsUserEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateTelegramChatEndpointDto? CreateTelegramChatEndpointDto { get; set; }
 
         public ChannelEndpointsControllerCreateChannelEndpointRequestBodyType Type { get; set; }
 
@@ -155,6 +161,16 @@ namespace Novu.Models.Requests
             return res;
         }
 
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateTelegramChat(CreateTelegramChatEndpointDto telegramChat)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.TelegramChat;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.TelegramChat.ToString();
+            telegramChat.Type = CreateTelegramChatEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.TelegramChat.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateTelegramChatEndpointDto = telegramChat;
+            return res;
+        }
+
         public class ChannelEndpointsControllerCreateChannelEndpointRequestBodyConverter : JsonConverter
         {
             public override bool CanConvert(System.Type objectType) => objectType == typeof(ChannelEndpointsControllerCreateChannelEndpointRequestBody);
@@ -199,6 +215,11 @@ namespace Novu.Models.Requests
                 {
                     CreateMsTeamsUserEndpointDto createMsTeamsUserEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateMsTeamsUserEndpointDto>(jo.ToString());
                     return CreateMsTeamsUser(createMsTeamsUserEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.TelegramChat.ToString())
+                {
+                    CreateTelegramChatEndpointDto createTelegramChatEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateTelegramChatEndpointDto>(jo.ToString());
+                    return CreateTelegramChat(createTelegramChatEndpointDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -246,6 +267,12 @@ namespace Novu.Models.Requests
                 if (res.CreateMsTeamsUserEndpointDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CreateMsTeamsUserEndpointDto));
+                    return;
+                }
+
+                if (res.CreateTelegramChatEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateTelegramChatEndpointDto));
                     return;
                 }
             }

@@ -164,5 +164,29 @@ namespace Novu.Models.Components
 
         [JsonProperty("fromAddressOverride")]
         public string? FromAddressOverride { get; set; }
+
+        /// <summary>
+        /// Agent default shared inbox slug prefix used in `{emailSlugPrefix}-{agentId}@&lt;shared-domain&gt;`. Only meaningful on the NovuAgent email integration.
+        /// </summary>
+        [JsonProperty("emailSlugPrefix")]
+        public string? EmailSlugPrefix { get; set; }
+
+        /// <summary>
+        /// Claude Managed Agents: ID of the Anthropic environment tied to this integration. Hydrated by the API at integration provisioning time.
+        /// </summary>
+        [JsonProperty("externalEnvironmentId")]
+        public string? ExternalEnvironmentId { get; set; }
+
+        /// <summary>
+        /// Claude Managed Agents: ID of the Anthropic vault (`vlt_…`) tied to this integration. Hydrated by the API at integration provisioning time and used to push OAuth-completed MCP credentials to the per-vault credentials API.
+        /// </summary>
+        [JsonProperty("externalVaultId")]
+        public string? ExternalVaultId { get; set; }
+
+        /// <summary>
+        /// Claude Managed Agents: id of the Anthropic workspace used in console deep links. Defaults to `'default'` (the Default Workspace). Set this when the API key is scoped to a custom workspace (e.g. `wrkspc_…`).
+        /// </summary>
+        [JsonProperty("externalWorkspaceId")]
+        public string? ExternalWorkspaceId { get; set; }
     }
 }

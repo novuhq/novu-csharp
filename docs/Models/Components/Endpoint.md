@@ -28,3 +28,21 @@ Endpoint.CreateWebhookEndpointDto(/* values here */);
 ```csharp
 Endpoint.CreatePhoneEndpointDto(/* values here */);
 ```
+
+### MsTeamsChannelEndpointDto
+
+```csharp
+Endpoint.CreateMsTeamsChannelEndpointDto(/* values here */);
+```
+
+### MsTeamsUserEndpointDto
+
+```csharp
+Endpoint.CreateMsTeamsUserEndpointDto(/* values here */);
+```
+
+### TelegramChatEndpointDto
+
+```csharp
+Endpoint.CreateTelegramChatEndpointDto(/* values here */);
+```

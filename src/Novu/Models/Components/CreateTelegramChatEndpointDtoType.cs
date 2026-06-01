@@ -16,34 +16,22 @@ namespace Novu.Models.Components
     /// <summary>
     /// Type of channel endpoint.
     /// </summary>
-    public enum GetChannelEndpointResponseDtoType
+    public enum CreateTelegramChatEndpointDtoType
     {
-        [JsonProperty("slack_channel")]
-        SlackChannel,
-        [JsonProperty("slack_user")]
-        SlackUser,
-        [JsonProperty("webhook")]
-        Webhook,
-        [JsonProperty("phone")]
-        Phone,
-        [JsonProperty("ms_teams_channel")]
-        MsTeamsChannel,
-        [JsonProperty("ms_teams_user")]
-        MsTeamsUser,
         [JsonProperty("telegram_chat")]
         TelegramChat,
     }
 
-    public static class GetChannelEndpointResponseDtoTypeExtension
+    public static class CreateTelegramChatEndpointDtoTypeExtension
     {
-        public static string Value(this GetChannelEndpointResponseDtoType value)
+        public static string Value(this CreateTelegramChatEndpointDtoType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static GetChannelEndpointResponseDtoType ToEnum(this string value)
+        public static CreateTelegramChatEndpointDtoType ToEnum(this string value)
         {
-            foreach(var field in typeof(GetChannelEndpointResponseDtoType).GetFields())
+            foreach(var field in typeof(CreateTelegramChatEndpointDtoType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -56,14 +44,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is GetChannelEndpointResponseDtoType)
+                    if (enumVal is CreateTelegramChatEndpointDtoType)
                     {
-                        return (GetChannelEndpointResponseDtoType)enumVal;
+                        return (CreateTelegramChatEndpointDtoType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum GetChannelEndpointResponseDtoType");
+            throw new Exception($"Unknown value {value} for enum CreateTelegramChatEndpointDtoType");
         }
     }
 }
