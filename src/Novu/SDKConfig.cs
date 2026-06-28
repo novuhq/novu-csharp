@@ -46,7 +46,7 @@ namespace Novu
             Client = client ?? new SpeakeasyHttpClient();
             ServerUrl = "";
             ServerIndex = 0;
-            UserAgent = "speakeasy-sdk/csharp 3.17.0 2.892.1 3.15.0 Novu";
+            UserAgent = "speakeasy-sdk/csharp 3.18.0 2.913.3 3.17.1 Novu";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

@@ -413,16 +413,16 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 * [List](docs/sdks/novutopics/README.md#list) - Retrieve subscriber subscriptions
 
-### [SubscribersMessages](docs/sdks/subscribersmessages/README.md)
+### [~~SubscribersMessages~~](docs/sdks/subscribersmessages/README.md)
 
-* [UpdateAction](docs/sdks/subscribersmessages/README.md#updateaction) - Update notification action status
-* [MarkAll](docs/sdks/subscribersmessages/README.md#markall) - Update all notifications state
-* [MarkAllAs](docs/sdks/subscribersmessages/README.md#markallas) - Update notifications state
+* [~~UpdateAction~~](docs/sdks/subscribersmessages/README.md#updateaction) - Update notification action status :warning: **Deprecated**
+* [~~MarkAll~~](docs/sdks/subscribersmessages/README.md#markall) - Update all notifications state :warning: **Deprecated**
+* [~~MarkAllAs~~](docs/sdks/subscribersmessages/README.md#markallas) - Update notifications state :warning: **Deprecated**
 
-### [SubscribersNotifications](docs/sdks/subscribersnotifications/README.md)
+### [~~SubscribersNotifications~~](docs/sdks/subscribersnotifications/README.md)
 
-* [Feed](docs/sdks/subscribersnotifications/README.md#feed) - Retrieve subscriber notifications
-* [UnseenCount](docs/sdks/subscribersnotifications/README.md#unseencount) - Retrieve unseen notifications count
+* [~~Feed~~](docs/sdks/subscribersnotifications/README.md#feed) - Retrieve subscriber notifications :warning: **Deprecated**
+* [~~UnseenCount~~](docs/sdks/subscribersnotifications/README.md#unseencount) - Retrieve unseen notifications count :warning: **Deprecated**
 
 ### [SubscribersPreferences](docs/sdks/subscriberspreferences/README.md)
 

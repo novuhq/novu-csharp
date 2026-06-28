@@ -28,7 +28,7 @@ namespace Novu
         /// Update notification action status.
         /// </summary>
         /// <remarks>
-        /// Update in-app (inbox) notification's action status by its unique key identifier **messageId** and type field **type**. <br/>
+        /// This API is deprecated, use v2 API instead. Update in-app notification's action status by its unique key identifier **messageId** and type field **type**. <br/>
         ///       **type** field can be **primary** or **secondary**
         /// </remarks>
         /// <param name="request">A <see cref="SubscribersV1ControllerMarkActionAsSeenRequest"/> parameter.</param>
@@ -40,6 +40,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public  Task<SubscribersV1ControllerMarkActionAsSeenResponse> UpdateActionAsync(
             SubscribersV1ControllerMarkActionAsSeenRequest request,
             RetryConfig? retryConfig = null
@@ -49,7 +50,7 @@ namespace Novu
         /// Update all notifications state.
         /// </summary>
         /// <remarks>
-        /// Update all subscriber in-app (inbox) notifications state such as read, unread, seen or unseen by **subscriberId**.
+        /// This API is deprecated, use v2 API instead. Update all subscriber in-app notifications state such as read, unread, seen or unseen by **subscriberId**.
         /// </remarks>
         /// <param name="subscriberId">Description not available.</param>
         /// <param name="markAllMessageAsRequestDto">A <see cref="MarkAllMessageAsRequestDto"/> parameter.</param>
@@ -62,6 +63,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public  Task<SubscribersV1ControllerMarkAllUnreadAsReadResponse> MarkAllAsync(
             string subscriberId,
             MarkAllMessageAsRequestDto markAllMessageAsRequestDto,
@@ -73,7 +75,7 @@ namespace Novu
         /// Update notifications state.
         /// </summary>
         /// <remarks>
-        /// Update subscriber's multiple in-app (inbox) notifications state such as seen, read, unseen or unread by **subscriberId**. <br/>
+        /// This API is deprecated, use v2 API instead. Update subscriber's multiple in-app notifications state such as seen, read, unseen or unread by **subscriberId**. <br/>
         ///       **messageId** is of type mongodbId of notifications.
         /// </remarks>
         /// <param name="subscriberId">Description not available.</param>
@@ -87,6 +89,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public  Task<SubscribersV1ControllerMarkMessagesAsResponse> MarkAllAsAsync(
             string subscriberId,
             MessageMarkAsRequestDto messageMarkAsRequestDto,
@@ -112,7 +115,7 @@ namespace Novu
         /// Update notification action status.
         /// </summary>
         /// <remarks>
-        /// Update in-app (inbox) notification's action status by its unique key identifier **messageId** and type field **type**. <br/>
+        /// This API is deprecated, use v2 API instead. Update in-app notification's action status by its unique key identifier **messageId** and type field **type**. <br/>
         ///       **type** field can be **primary** or **secondary**
         /// </remarks>
         /// <param name="request">A <see cref="SubscribersV1ControllerMarkActionAsSeenRequest"/> parameter.</param>
@@ -124,6 +127,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public async  Task<SubscribersV1ControllerMarkActionAsSeenResponse> UpdateActionAsync(
             SubscribersV1ControllerMarkActionAsSeenRequest request,
             RetryConfig? retryConfig = null
@@ -361,7 +365,7 @@ namespace Novu
         /// Update all notifications state.
         /// </summary>
         /// <remarks>
-        /// Update all subscriber in-app (inbox) notifications state such as read, unread, seen or unseen by **subscriberId**.
+        /// This API is deprecated, use v2 API instead. Update all subscriber in-app notifications state such as read, unread, seen or unseen by **subscriberId**.
         /// </remarks>
         /// <param name="subscriberId">Description not available.</param>
         /// <param name="markAllMessageAsRequestDto">A <see cref="MarkAllMessageAsRequestDto"/> parameter.</param>
@@ -374,6 +378,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public async  Task<SubscribersV1ControllerMarkAllUnreadAsReadResponse> MarkAllAsync(
             string subscriberId,
             MarkAllMessageAsRequestDto markAllMessageAsRequestDto,
@@ -621,7 +626,7 @@ namespace Novu
         /// Update notifications state.
         /// </summary>
         /// <remarks>
-        /// Update subscriber's multiple in-app (inbox) notifications state such as seen, read, unseen or unread by **subscriberId**. <br/>
+        /// This API is deprecated, use v2 API instead. Update subscriber's multiple in-app notifications state such as seen, read, unseen or unread by **subscriberId**. <br/>
         ///       **messageId** is of type mongodbId of notifications.
         /// </remarks>
         /// <param name="subscriberId">Description not available.</param>
@@ -635,6 +640,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public async  Task<SubscribersV1ControllerMarkMessagesAsResponse> MarkAllAsAsync(
             string subscriberId,
             MessageMarkAsRequestDto messageMarkAsRequestDto,

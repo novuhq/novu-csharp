@@ -32,7 +32,7 @@ namespace Novu
         /// List all integrations.
         /// </summary>
         /// <remarks>
-        /// List all the channels integrations created in the organization.
+        /// List all the channels integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -52,7 +52,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Create an integration for the current environment the user is based on the API key provided. <br/>
-        ///     Each provider supports different credentials, check the provider documentation for more details.
+        ///     Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="createIntegrationRequestDto">A <see cref="CreateIntegrationRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -75,7 +75,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Update an integration by its unique key identifier **integrationId**. <br/>
-        ///     Each provider supports different credentials, check the provider documentation for more details.
+        ///     Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="updateIntegrationRequestDto">A <see cref="UpdateIntegrationRequestDto"/> parameter.</param>
@@ -100,7 +100,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Delete an integration by its unique key identifier **integrationId**. <br/>
-        ///     This action is irreversible.
+        ///     This action is irreversible. Only integration metadata is returned, credentials field is returned as empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -123,7 +123,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Auto-configure an integration by its unique key identifier **integrationId** for inbound webhook support. <br/>
-        ///     This will automatically generate required webhook signing keys and configure webhook endpoints.
+        ///     This will automatically generate required webhook signing keys and configure webhook endpoints. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -147,7 +147,8 @@ namespace Novu
         /// <remarks>
         /// Update an integration as **primary** by its unique key identifier **integrationId**. <br/>
         ///     This API will set the integration as primary for that channel in the current environment. <br/>
-        ///     Primary integration is used to deliver notification for sms and email channels in the workflow.
+        ///     Primary integration is used to deliver notification for sms and email channels in the workflow. <br/>
+        ///     Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -169,7 +170,7 @@ namespace Novu
         /// List active integrations.
         /// </summary>
         /// <remarks>
-        /// List all the active integrations created in the organization.
+        /// List all the active integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -278,7 +279,7 @@ namespace Novu
         /// List all integrations.
         /// </summary>
         /// <remarks>
-        /// List all the channels integrations created in the organization.
+        /// List all the channels integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -523,7 +524,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Create an integration for the current environment the user is based on the API key provided. <br/>
-        ///     Each provider supports different credentials, check the provider documentation for more details.
+        ///     Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="createIntegrationRequestDto">A <see cref="CreateIntegrationRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -780,7 +781,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Update an integration by its unique key identifier **integrationId**. <br/>
-        ///     Each provider supports different credentials, check the provider documentation for more details.
+        ///     Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="updateIntegrationRequestDto">A <see cref="UpdateIntegrationRequestDto"/> parameter.</param>
@@ -1041,7 +1042,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Delete an integration by its unique key identifier **integrationId**. <br/>
-        ///     This action is irreversible.
+        ///     This action is irreversible. Only integration metadata is returned, credentials field is returned as empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -1292,7 +1293,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Auto-configure an integration by its unique key identifier **integrationId** for inbound webhook support. <br/>
-        ///     This will automatically generate required webhook signing keys and configure webhook endpoints.
+        ///     This will automatically generate required webhook signing keys and configure webhook endpoints. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -1544,7 +1545,8 @@ namespace Novu
         /// <remarks>
         /// Update an integration as **primary** by its unique key identifier **integrationId**. <br/>
         ///     This API will set the integration as primary for that channel in the current environment. <br/>
-        ///     Primary integration is used to deliver notification for sms and email channels in the workflow.
+        ///     Primary integration is used to deliver notification for sms and email channels in the workflow. <br/>
+        ///     Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -1794,7 +1796,7 @@ namespace Novu
         /// List active integrations.
         /// </summary>
         /// <remarks>
-        /// List all the active integrations created in the organization.
+        /// List all the active integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>

@@ -275,6 +275,10 @@ namespace Novu.Models.Requests
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CreateTelegramChatEndpointDto));
                     return;
                 }
+
+                throw new InvalidOperationException(
+                    "Could not serialize union to JSON: no variant value was set. " +
+                    "Construct this union using one of the Create* factory methods.");
             }
 
         }
