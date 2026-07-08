@@ -159,6 +159,9 @@ namespace Novu.Models.Components
         [JsonProperty("outboundIntegrationId")]
         public string? OutboundIntegrationId { get; set; }
 
+        [JsonProperty("outboundConnectedAt")]
+        public string? OutboundConnectedAt { get; set; }
+
         [JsonProperty("useFromAddressOverride")]
         public bool? UseFromAddressOverride { get; set; }
 

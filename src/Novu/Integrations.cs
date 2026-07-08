@@ -32,7 +32,7 @@ namespace Novu
         /// List all integrations.
         /// </summary>
         /// <remarks>
-        /// List all the channels integrations created in the organization.
+        /// List all the channels integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -52,7 +52,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Create an integration for the current environment the user is based on the API key provided. <br/>
-        ///     Each provider supports different credentials, check the provider documentation for more details.
+        ///     Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="createIntegrationRequestDto">A <see cref="CreateIntegrationRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -75,7 +75,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Update an integration by its unique key identifier **integrationId**. <br/>
-        ///     Each provider supports different credentials, check the provider documentation for more details.
+        ///     Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="updateIntegrationRequestDto">A <see cref="UpdateIntegrationRequestDto"/> parameter.</param>
@@ -100,7 +100,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Delete an integration by its unique key identifier **integrationId**. <br/>
-        ///     This action is irreversible.
+        ///     This action is irreversible. Only integration metadata is returned, credentials field is returned as empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -123,7 +123,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Auto-configure an integration by its unique key identifier **integrationId** for inbound webhook support. <br/>
-        ///     This will automatically generate required webhook signing keys and configure webhook endpoints.
+        ///     This will automatically generate required webhook signing keys and configure webhook endpoints. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -147,7 +147,8 @@ namespace Novu
         /// <remarks>
         /// Update an integration as **primary** by its unique key identifier **integrationId**. <br/>
         ///     This API will set the integration as primary for that channel in the current environment. <br/>
-        ///     Primary integration is used to deliver notification for sms and email channels in the workflow.
+        ///     Primary integration is used to deliver notification for sms and email channels in the workflow. <br/>
+        ///     Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -166,10 +167,56 @@ namespace Novu
         );
 
         /// <summary>
+        /// Issue a short-lived mobile setup link for an existing integration.
+        /// </summary>
+        /// <remarks>
+        /// Returns an opaque, single-use setup token plus a mobile URL for configuring an existing chat integration. Telegram is the only supported provider initially.
+        /// </remarks>
+        /// <param name="integrationIdentifier">Description not available.</param>
+        /// <param name="issueIntegrationMobileLinkRequestDto">A <see cref="IssueIntegrationMobileLinkRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerCreateIntegrationMobileLinkResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="integrationIdentifier"/> or <paramref name="issueIntegrationMobileLinkRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerCreateIntegrationMobileLinkResponse> CreateMobileLinkAsync(
+            string integrationIdentifier,
+            IssueIntegrationMobileLinkRequestDto issueIntegrationMobileLinkRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
+
+        /// <summary>
+        /// Configure a chat integration webhook.
+        /// </summary>
+        /// <remarks>
+        /// Registers the Novu webhook URL with the chat provider for the specified integration. Telegram is the only supported provider initially.
+        /// </remarks>
+        /// <param name="integrationIdentifier">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerConfigureIntegrationWebhookResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="integrationIdentifier"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerConfigureIntegrationWebhookResponse> IntegrationsControllerConfigureIntegrationWebhookAsync(
+            string integrationIdentifier,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
+
+        /// <summary>
         /// List active integrations.
         /// </summary>
         /// <remarks>
-        /// List all the active integrations created in the organization.
+        /// List all the active integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -203,6 +250,28 @@ namespace Novu
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public  Task<IntegrationsControllerGenerateConnectOAuthUrlResponse> GenerateConnectOAuthUrlAsync(
             GenerateConnectOauthUrlRequestDto generateConnectOauthUrlRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        );
+
+        /// <summary>
+        /// Issue a URL to link a subscriber chat identity.
+        /// </summary>
+        /// <remarks>
+        /// Returns a provider-specific URL the subscriber opens to link their chat identity. The integration provider is resolved from integrationIdentifier; Telegram returns a deep link.
+        /// </remarks>
+        /// <param name="linkChannelEndpointRequestDto">A <see cref="LinkChannelEndpointRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerLinkChannelEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="linkChannelEndpointRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<IntegrationsControllerLinkChannelEndpointResponse> LinkChannelEndpointAsync(
+            LinkChannelEndpointRequestDto linkChannelEndpointRequestDto,
             string? idempotencyKey = null,
             RetryConfig? retryConfig = null
         );
@@ -278,7 +347,7 @@ namespace Novu
         /// List all integrations.
         /// </summary>
         /// <remarks>
-        /// List all the channels integrations created in the organization.
+        /// List all the channels integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -523,7 +592,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Create an integration for the current environment the user is based on the API key provided. <br/>
-        ///     Each provider supports different credentials, check the provider documentation for more details.
+        ///     Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="createIntegrationRequestDto">A <see cref="CreateIntegrationRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -780,7 +849,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Update an integration by its unique key identifier **integrationId**. <br/>
-        ///     Each provider supports different credentials, check the provider documentation for more details.
+        ///     Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="updateIntegrationRequestDto">A <see cref="UpdateIntegrationRequestDto"/> parameter.</param>
@@ -1041,7 +1110,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Delete an integration by its unique key identifier **integrationId**. <br/>
-        ///     This action is irreversible.
+        ///     This action is irreversible. Only integration metadata is returned, credentials field is returned as empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -1292,7 +1361,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// Auto-configure an integration by its unique key identifier **integrationId** for inbound webhook support. <br/>
-        ///     This will automatically generate required webhook signing keys and configure webhook endpoints.
+        ///     This will automatically generate required webhook signing keys and configure webhook endpoints. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -1544,7 +1613,8 @@ namespace Novu
         /// <remarks>
         /// Update an integration as **primary** by its unique key identifier **integrationId**. <br/>
         ///     This API will set the integration as primary for that channel in the current environment. <br/>
-        ///     Primary integration is used to deliver notification for sms and email channels in the workflow.
+        ///     Primary integration is used to deliver notification for sms and email channels in the workflow. <br/>
+        ///     Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="integrationId">Description not available.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
@@ -1791,10 +1861,520 @@ namespace Novu
 
 
         /// <summary>
+        /// Issue a short-lived mobile setup link for an existing integration.
+        /// </summary>
+        /// <remarks>
+        /// Returns an opaque, single-use setup token plus a mobile URL for configuring an existing chat integration. Telegram is the only supported provider initially.
+        /// </remarks>
+        /// <param name="integrationIdentifier">Description not available.</param>
+        /// <param name="issueIntegrationMobileLinkRequestDto">A <see cref="IssueIntegrationMobileLinkRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerCreateIntegrationMobileLinkResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="integrationIdentifier"/> or <paramref name="issueIntegrationMobileLinkRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerCreateIntegrationMobileLinkResponse> CreateMobileLinkAsync(
+            string integrationIdentifier,
+            IssueIntegrationMobileLinkRequestDto issueIntegrationMobileLinkRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
+        {
+            if (integrationIdentifier == null) throw new ArgumentNullException(nameof(integrationIdentifier));
+            if (issueIntegrationMobileLinkRequestDto == null) throw new ArgumentNullException(nameof(issueIntegrationMobileLinkRequestDto));
+
+            var request = new IntegrationsControllerCreateIntegrationMobileLinkRequest()
+            {
+                IntegrationIdentifier = integrationIdentifier,
+                IssueIntegrationMobileLinkRequestDto = issueIntegrationMobileLinkRequestDto,
+                IdempotencyKey = idempotencyKey,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/integrations/{integrationIdentifier}/mobile-link", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "IssueIntegrationMobileLinkRequestDto", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "IntegrationsController_createIntegrationMobileLink", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 1000L,
+                        maxIntervalMs: 30000L,
+                        maxElapsedTimeMs: 3600000L,
+                        exponent: 1.5
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "408",
+                "409",
+                "429",
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
+            };
+            var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await retries.Run();
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    IssueTelegramMobileLinkResponseDto obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<IssueTelegramMobileLinkResponseDto>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into IssueTelegramMobileLinkResponseDto.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    var response = new IntegrationsControllerCreateIntegrationMobileLinkResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
+                    };
+                    response.IssueTelegramMobileLinkResponseDto = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 414)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ValidationErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ValidationErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ValidationErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ValidationErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 429)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 503)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
+        /// Configure a chat integration webhook.
+        /// </summary>
+        /// <remarks>
+        /// Registers the Novu webhook URL with the chat provider for the specified integration. Telegram is the only supported provider initially.
+        /// </remarks>
+        /// <param name="integrationIdentifier">Description not available.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerConfigureIntegrationWebhookResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="integrationIdentifier"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerConfigureIntegrationWebhookResponse> IntegrationsControllerConfigureIntegrationWebhookAsync(
+            string integrationIdentifier,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
+        {
+            if (integrationIdentifier == null) throw new ArgumentNullException(nameof(integrationIdentifier));
+
+            var request = new IntegrationsControllerConfigureIntegrationWebhookRequest()
+            {
+                IntegrationIdentifier = integrationIdentifier,
+                IdempotencyKey = idempotencyKey,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/integrations/{integrationIdentifier}/webhook/configure", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "IntegrationsController_configureIntegrationWebhook", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 1000L,
+                        maxIntervalMs: 30000L,
+                        maxElapsedTimeMs: 3600000L,
+                        exponent: 1.5
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "408",
+                "409",
+                "429",
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
+            };
+            var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await retries.Run();
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ConfigureTelegramWebhookResponseDto obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<ConfigureTelegramWebhookResponseDto>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ConfigureTelegramWebhookResponseDto.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    var response = new IntegrationsControllerConfigureIntegrationWebhookResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
+                    };
+                    response.ConfigureTelegramWebhookResponseDto = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 414)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ValidationErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ValidationErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ValidationErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ValidationErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 429)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 503)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
         /// List active integrations.
         /// </summary>
         /// <remarks>
-        /// List all the active integrations created in the organization.
+        /// List all the active integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
         /// </remarks>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -2185,6 +2765,262 @@ namespace Novu
                         Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GenerateChatOAuthUrlResponseDto = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 414)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(new List<int>{400, 401, 403, 404, 405, 409, 413, 415}.Contains(responseStatusCode))
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ValidationErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ValidationErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ValidationErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ValidationErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 429)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorDtoPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorDtoPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorDtoPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new ErrorDto(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 503)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
+        /// Issue a URL to link a subscriber chat identity.
+        /// </summary>
+        /// <remarks>
+        /// Returns a provider-specific URL the subscriber opens to link their chat identity. The integration provider is resolved from integrationIdentifier; Telegram returns a deep link.
+        /// </remarks>
+        /// <param name="linkChannelEndpointRequestDto">A <see cref="LinkChannelEndpointRequestDto"/> parameter.</param>
+        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="IntegrationsControllerLinkChannelEndpointResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="linkChannelEndpointRequestDto"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
+        /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<IntegrationsControllerLinkChannelEndpointResponse> LinkChannelEndpointAsync(
+            LinkChannelEndpointRequestDto linkChannelEndpointRequestDto,
+            string? idempotencyKey = null,
+            RetryConfig? retryConfig = null
+        )
+        {
+            if (linkChannelEndpointRequestDto == null) throw new ArgumentNullException(nameof(linkChannelEndpointRequestDto));
+
+            var request = new IntegrationsControllerLinkChannelEndpointRequest()
+            {
+                LinkChannelEndpointRequestDto = linkChannelEndpointRequestDto,
+                IdempotencyKey = idempotencyKey,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = baseUrl + "/v1/integrations/channel-endpoints/link";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "LinkChannelEndpointRequestDto", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "IntegrationsController_linkChannelEndpoint", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 1000L,
+                        maxIntervalMs: 30000L,
+                        maxElapsedTimeMs: 3600000L,
+                        exponent: 1.5
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "408",
+                "409",
+                "429",
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
+            };
+            var retries = new Novu.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await retries.Run();
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    LinkChannelEndpointResponseDto obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<LinkChannelEndpointResponseDto>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into LinkChannelEndpointResponseDto.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    var response = new IntegrationsControllerLinkChannelEndpointResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
+                    };
+                    response.LinkChannelEndpointResponseDto = obj;
                     return response;
                 }
 

@@ -23,6 +23,12 @@ namespace Novu.Models.Components
         public SubscriberResponseDtoOptional? Subscriber { get; set; }
 
         /// <summary>
+        /// Partial actor information.
+        /// </summary>
+        [JsonProperty("actor")]
+        public SubscriberResponseDtoOptional? Actor { get; set; }
+
+        /// <summary>
         /// Payload data.
         /// </summary>
         [JsonProperty("payload")]

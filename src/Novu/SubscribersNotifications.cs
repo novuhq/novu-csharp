@@ -28,7 +28,7 @@ namespace Novu
         /// Retrieve subscriber notifications.
         /// </summary>
         /// <remarks>
-        /// Retrieve subscriber in-app (inbox) notifications by its unique key identifier **subscriberId**.
+        /// This API is deprecated, use v2 API instead. Retrieve subscriber in-app notifications by its unique key identifier **subscriberId**.
         /// </remarks>
         /// <param name="request">A <see cref="SubscribersV1ControllerGetNotificationsFeedRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -39,6 +39,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public  Task<SubscribersV1ControllerGetNotificationsFeedResponse> FeedAsync(
             SubscribersV1ControllerGetNotificationsFeedRequest request,
             RetryConfig? retryConfig = null
@@ -48,7 +49,7 @@ namespace Novu
         /// Retrieve unseen notifications count.
         /// </summary>
         /// <remarks>
-        /// Retrieve unseen in-app (inbox) notifications count for a subscriber by its unique key identifier **subscriberId**.
+        /// This API is deprecated, use v2 API instead. Retrieve unseen in-app notifications count for a subscriber by its unique key identifier **subscriberId**.
         /// </remarks>
         /// <param name="subscriberId">Description not available.</param>
         /// <param name="seen">Indicates whether to count seen notifications.</param>
@@ -62,6 +63,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public  Task<SubscribersV1ControllerGetUnseenCountResponse> UnseenCountAsync(
             string subscriberId,
             bool? seen = false,
@@ -88,7 +90,7 @@ namespace Novu
         /// Retrieve subscriber notifications.
         /// </summary>
         /// <remarks>
-        /// Retrieve subscriber in-app (inbox) notifications by its unique key identifier **subscriberId**.
+        /// This API is deprecated, use v2 API instead. Retrieve subscriber in-app notifications by its unique key identifier **subscriberId**.
         /// </remarks>
         /// <param name="request">A <see cref="SubscribersV1ControllerGetNotificationsFeedRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -99,6 +101,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public async  Task<SubscribersV1ControllerGetNotificationsFeedResponse> FeedAsync(
             SubscribersV1ControllerGetNotificationsFeedRequest request,
             RetryConfig? retryConfig = null
@@ -330,7 +333,7 @@ namespace Novu
         /// Retrieve unseen notifications count.
         /// </summary>
         /// <remarks>
-        /// Retrieve unseen in-app (inbox) notifications count for a subscriber by its unique key identifier **subscriberId**.
+        /// This API is deprecated, use v2 API instead. Retrieve unseen in-app notifications count for a subscriber by its unique key identifier **subscriberId**.
         /// </remarks>
         /// <param name="subscriberId">Description not available.</param>
         /// <param name="seen">Indicates whether to count seen notifications.</param>
@@ -344,6 +347,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public async  Task<SubscribersV1ControllerGetUnseenCountResponse> UnseenCountAsync(
             string subscriberId,
             bool? seen = false,

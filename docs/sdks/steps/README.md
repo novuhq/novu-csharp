@@ -48,6 +48,28 @@ var res = await sdk.Workflows.Steps.GeneratePreviewAsync(
                     },
                 },
             },
+            Actor = new SubscriberResponseDtoOptional() {
+                Channels = new List<ChannelSettingsDto>() {
+                    new ChannelSettingsDto() {
+                        ProviderId = ChatOrPushProviderEnum.Telegram,
+                        Credentials = new ChannelCredentials() {
+                            WebhookUrl = "https://example.com/webhook",
+                            Channel = "general",
+                            DeviceTokens = new List<string>() {
+                                "token1",
+                                "token2",
+                                "token3",
+                            },
+                            AlertUid = "12345-abcde",
+                            Title = "Critical Alert",
+                            ImageUrl = "https://example.com/image.png",
+                            State = "resolved",
+                            ExternalUrl = "https://example.com/details",
+                        },
+                        IntegrationId = "<id>",
+                    },
+                },
+            },
             Context = new Dictionary<string, PreviewPayloadDtoContext>() {
                 { "key", PreviewPayloadDtoContext.CreateStr(
                     "org-acme"

@@ -346,8 +346,11 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 * [Delete](docs/sdks/integrations/README.md#delete) - Delete an integration
 * [IntegrationsControllerAutoConfigureIntegration](docs/sdks/integrations/README.md#integrationscontrollerautoconfigureintegration) - Auto-configure an integration for inbound webhooks
 * [SetPrimary](docs/sdks/integrations/README.md#setprimary) - Update integration as primary
+* [CreateMobileLink](docs/sdks/integrations/README.md#createmobilelink) - Issue a short-lived mobile setup link for an existing integration
+* [IntegrationsControllerConfigureIntegrationWebhook](docs/sdks/integrations/README.md#integrationscontrollerconfigureintegrationwebhook) - Configure a chat integration webhook
 * [ListActive](docs/sdks/integrations/README.md#listactive) - List active integrations
 * [GenerateConnectOAuthUrl](docs/sdks/integrations/README.md#generateconnectoauthurl) - Generate OAuth URL for a workspace/tenant connection
+* [LinkChannelEndpoint](docs/sdks/integrations/README.md#linkchannelendpoint) - Issue a URL to link a subscriber chat identity
 * [GenerateLinkUserOAuthUrl](docs/sdks/integrations/README.md#generatelinkuseroauthurl) - Generate OAuth URL to link a subscriber user identity
 * [~~GenerateChatOAuthUrl~~](docs/sdks/integrations/README.md#generatechatoauthurl) - Generate chat OAuth URL :warning: **Deprecated**
 
@@ -413,16 +416,16 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 * [List](docs/sdks/novutopics/README.md#list) - Retrieve subscriber subscriptions
 
-### [SubscribersMessages](docs/sdks/subscribersmessages/README.md)
+### [~~SubscribersMessages~~](docs/sdks/subscribersmessages/README.md)
 
-* [UpdateAction](docs/sdks/subscribersmessages/README.md#updateaction) - Update notification action status
-* [MarkAll](docs/sdks/subscribersmessages/README.md#markall) - Update all notifications state
-* [MarkAllAs](docs/sdks/subscribersmessages/README.md#markallas) - Update notifications state
+* [~~UpdateAction~~](docs/sdks/subscribersmessages/README.md#updateaction) - Update notification action status :warning: **Deprecated**
+* [~~MarkAll~~](docs/sdks/subscribersmessages/README.md#markall) - Update all notifications state :warning: **Deprecated**
+* [~~MarkAllAs~~](docs/sdks/subscribersmessages/README.md#markallas) - Update notifications state :warning: **Deprecated**
 
-### [SubscribersNotifications](docs/sdks/subscribersnotifications/README.md)
+### [~~SubscribersNotifications~~](docs/sdks/subscribersnotifications/README.md)
 
-* [Feed](docs/sdks/subscribersnotifications/README.md#feed) - Retrieve subscriber notifications
-* [UnseenCount](docs/sdks/subscribersnotifications/README.md#unseencount) - Retrieve unseen notifications count
+* [~~Feed~~](docs/sdks/subscribersnotifications/README.md#feed) - Retrieve subscriber notifications :warning: **Deprecated**
+* [~~UnseenCount~~](docs/sdks/subscribersnotifications/README.md#unseencount) - Retrieve unseen notifications count :warning: **Deprecated**
 
 ### [SubscribersPreferences](docs/sdks/subscriberspreferences/README.md)
 
@@ -674,9 +677,9 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 135 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 135 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 135 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 138 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 138 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 138 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
