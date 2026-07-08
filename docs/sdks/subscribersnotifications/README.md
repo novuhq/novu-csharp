@@ -1,15 +1,20 @@
-# SubscribersNotifications
+# ~~SubscribersNotifications~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [Feed](#feed) - Retrieve subscriber notifications
-* [UnseenCount](#unseencount) - Retrieve unseen notifications count
+* [~~Feed~~](#feed) - Retrieve subscriber notifications :warning: **Deprecated**
+* [~~UnseenCount~~](#unseencount) - Retrieve unseen notifications count :warning: **Deprecated**
 
-## Feed
+## ~~Feed~~
 
-Retrieve subscriber in-app (inbox) notifications by its unique key identifier **subscriberId**.
+This API is deprecated, use v2 API instead. Retrieve subscriber in-app notifications by its unique key identifier **subscriberId**.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -52,9 +57,11 @@ var res = await sdk.SubscribersNotifications.FeedAsync(req);
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
 
-## UnseenCount
+## ~~UnseenCount~~
 
-Retrieve unseen in-app (inbox) notifications count for a subscriber by its unique key identifier **subscriberId**.
+This API is deprecated, use v2 API instead. Retrieve unseen in-app notifications count for a subscriber by its unique key identifier **subscriberId**.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

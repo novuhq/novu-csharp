@@ -38,6 +38,8 @@ namespace Novu.Models.Components
 
         public static UpdateWorkflowDtoStepsType Digest { get { return new UpdateWorkflowDtoStepsType("digest"); } }
 
+        public static UpdateWorkflowDtoStepsType Throttle { get { return new UpdateWorkflowDtoStepsType("throttle"); } }
+
         public static UpdateWorkflowDtoStepsType Custom { get { return new UpdateWorkflowDtoStepsType("custom"); } }
 
         public static UpdateWorkflowDtoStepsType HttpRequest { get { return new UpdateWorkflowDtoStepsType("http_request"); } }
@@ -53,6 +55,7 @@ namespace Novu.Models.Components
                 case "chat": return Chat;
                 case "delay": return Delay;
                 case "digest": return Digest;
+                case "throttle": return Throttle;
                 case "custom": return Custom;
                 case "http_request": return HttpRequest;
                 default: throw new ArgumentException("Invalid value for UpdateWorkflowDtoStepsType");
@@ -101,6 +104,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public DigestStepUpsertDto? DigestStepUpsertDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ThrottleStepUpsertDto? ThrottleStepUpsertDto { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public CustomStepUpsertDto? CustomStepUpsertDto { get; set; }
@@ -180,6 +186,16 @@ namespace Novu.Models.Components
             return res;
         }
 
+        public static UpdateWorkflowDtoSteps CreateThrottle(ThrottleStepUpsertDto throttle)
+        {
+            UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Throttle;
+            string typStr = UpdateWorkflowDtoStepsType.Throttle.ToString();
+            throttle.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Throttle.ToString());
+            UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
+            res.ThrottleStepUpsertDto = throttle;
+            return res;
+        }
+
         public static UpdateWorkflowDtoSteps CreateCustom(CustomStepUpsertDto custom)
         {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Custom;
@@ -250,6 +266,11 @@ namespace Novu.Models.Components
                     DigestStepUpsertDto digestStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<DigestStepUpsertDto>(jo.ToString());
                     return CreateDigest(digestStepUpsertDto);
                 }
+                if (discriminator == UpdateWorkflowDtoStepsType.Throttle.ToString())
+                {
+                    ThrottleStepUpsertDto throttleStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<ThrottleStepUpsertDto>(jo.ToString());
+                    return CreateThrottle(throttleStepUpsertDto);
+                }
                 if (discriminator == UpdateWorkflowDtoStepsType.Custom.ToString())
                 {
                     CustomStepUpsertDto customStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepUpsertDto>(jo.ToString());
@@ -315,6 +336,12 @@ namespace Novu.Models.Components
                     return;
                 }
 
+                if (res.ThrottleStepUpsertDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ThrottleStepUpsertDto));
+                    return;
+                }
+
                 if (res.CustomStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CustomStepUpsertDto));
@@ -326,6 +353,10 @@ namespace Novu.Models.Components
                     writer.WriteRawValue(Utilities.SerializeJSON(res.HttpRequestStepUpsertDto));
                     return;
                 }
+
+                throw new InvalidOperationException(
+                    "Could not serialize union to JSON: no variant value was set. " +
+                    "Construct this union using one of the Create* factory methods.");
             }
 
         }

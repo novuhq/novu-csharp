@@ -13,14 +13,17 @@ With the help of the Integration Store, you can easily integrate your favorite d
 * [Delete](#delete) - Delete an integration
 * [IntegrationsControllerAutoConfigureIntegration](#integrationscontrollerautoconfigureintegration) - Auto-configure an integration for inbound webhooks
 * [SetPrimary](#setprimary) - Update integration as primary
+* [CreateMobileLink](#createmobilelink) - Issue a short-lived mobile setup link for an existing integration
+* [IntegrationsControllerConfigureIntegrationWebhook](#integrationscontrollerconfigureintegrationwebhook) - Configure a chat integration webhook
 * [ListActive](#listactive) - List active integrations
 * [GenerateConnectOAuthUrl](#generateconnectoauthurl) - Generate OAuth URL for a workspace/tenant connection
+* [LinkChannelEndpoint](#linkchannelendpoint) - Issue a URL to link a subscriber chat identity
 * [GenerateLinkUserOAuthUrl](#generatelinkuseroauthurl) - Generate OAuth URL to link a subscriber user identity
 * [~~GenerateChatOAuthUrl~~](#generatechatoauthurl) - Generate chat OAuth URL :warning: **Deprecated**
 
 ## GetAll
 
-List all the channels integrations created in the organization
+List all the channels integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
 
 ### Example Usage
 
@@ -59,7 +62,7 @@ var res = await sdk.Integrations.GetAllAsync();
 ## Create
 
 Create an integration for the current environment the user is based on the API key provided. 
-    Each provider supports different credentials, check the provider documentation for more details.
+    Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
 
 ### Example Usage
 
@@ -99,7 +102,7 @@ var res = await sdk.Integrations.CreateAsync(createIntegrationRequestDto: new Cr
 ## Update
 
 Update an integration by its unique key identifier **integrationId**. 
-    Each provider supports different credentials, check the provider documentation for more details.
+    Each provider supports different credentials, check the provider documentation for more details. Only integration metadata is returned, credentials field is returned as an empty object.
 
 ### Example Usage
 
@@ -143,7 +146,7 @@ var res = await sdk.Integrations.UpdateAsync(
 ## Delete
 
 Delete an integration by its unique key identifier **integrationId**. 
-    This action is irreversible.
+    This action is irreversible. Only integration metadata is returned, credentials field is returned as empty object.
 
 ### Example Usage
 
@@ -183,7 +186,7 @@ var res = await sdk.Integrations.DeleteAsync(integrationId: "<id>");
 ## IntegrationsControllerAutoConfigureIntegration
 
 Auto-configure an integration by its unique key identifier **integrationId** for inbound webhook support. 
-    This will automatically generate required webhook signing keys and configure webhook endpoints.
+    This will automatically generate required webhook signing keys and configure webhook endpoints. Only integration metadata is returned, credentials field is returned as an empty object.
 
 ### Example Usage
 
@@ -224,7 +227,8 @@ var res = await sdk.Integrations.IntegrationsControllerAutoConfigureIntegrationA
 
 Update an integration as **primary** by its unique key identifier **integrationId**. 
     This API will set the integration as primary for that channel in the current environment. 
-    Primary integration is used to deliver notification for sms and email channels in the workflow.
+    Primary integration is used to deliver notification for sms and email channels in the workflow. 
+    Only integration metadata is returned, credentials field is returned as an empty object.
 
 ### Example Usage
 
@@ -261,9 +265,93 @@ var res = await sdk.Integrations.SetPrimaryAsync(integrationId: "<id>");
 | Novu.Models.Errors.ErrorDto           | 500                                   | application/json                      |
 | Novu.Models.Errors.APIException       | 4XX, 5XX                              | \*/\*                                 |
 
+## CreateMobileLink
+
+Returns an opaque, single-use setup token plus a mobile URL for configuring an existing chat integration. Telegram is the only supported provider initially.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_createIntegrationMobileLink" method="post" path="/v1/integrations/{integrationIdentifier}/mobile-link" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Integrations.CreateMobileLinkAsync(
+    integrationIdentifier: "<value>",
+    issueIntegrationMobileLinkRequestDto: new IssueIntegrationMobileLinkRequestDto() {
+        SubscriberId = "subscriber-123",
+    }
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `IntegrationIdentifier`                                                                                 | *string*                                                                                                | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `IssueIntegrationMobileLinkRequestDto`                                                                  | [IssueIntegrationMobileLinkRequestDto](../../Models/Components/IssueIntegrationMobileLinkRequestDto.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `IdempotencyKey`                                                                                        | *string*                                                                                                | :heavy_minus_sign:                                                                                      | A header for idempotency purposes                                                                       |
+
+### Response
+
+**[IntegrationsControllerCreateIntegrationMobileLinkResponse](../../Models/Requests/IntegrationsControllerCreateIntegrationMobileLinkResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
+## IntegrationsControllerConfigureIntegrationWebhook
+
+Registers the Novu webhook URL with the chat provider for the specified integration. Telegram is the only supported provider initially.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_configureIntegrationWebhook" method="post" path="/v1/integrations/{integrationIdentifier}/webhook/configure" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Integrations.IntegrationsControllerConfigureIntegrationWebhookAsync(integrationIdentifier: "<value>");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                         | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `IntegrationIdentifier`           | *string*                          | :heavy_check_mark:                | N/A                               |
+| `IdempotencyKey`                  | *string*                          | :heavy_minus_sign:                | A header for idempotency purposes |
+
+### Response
+
+**[IntegrationsControllerConfigureIntegrationWebhookResponse](../../Models/Requests/IntegrationsControllerConfigureIntegrationWebhookResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
 ## ListActive
 
-List all the active integrations created in the organization
+List all the active integrations created in the organization. Only integration metadata is returned, credentials field is returned as an empty object.
 
 ### Example Usage
 
@@ -345,6 +433,48 @@ var res = await sdk.Integrations.GenerateConnectOAuthUrlAsync(generateConnectOau
 ### Response
 
 **[IntegrationsControllerGenerateConnectOAuthUrlResponse](../../Models/Requests/IntegrationsControllerGenerateConnectOAuthUrlResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Novu.Models.Errors.ErrorDto            | 414                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 400, 401, 403, 404, 405, 409, 413, 415 | application/json                       |
+| Novu.Models.Errors.ValidationErrorDto  | 422                                    | application/json                       |
+| Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
+| Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
+
+## LinkChannelEndpoint
+
+Returns a provider-specific URL the subscriber opens to link their chat identity. The integration provider is resolved from integrationIdentifier; Telegram returns a deep link.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="IntegrationsController_linkChannelEndpoint" method="post" path="/v1/integrations/channel-endpoints/link" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Integrations.LinkChannelEndpointAsync(linkChannelEndpointRequestDto: new LinkChannelEndpointRequestDto() {
+    IntegrationIdentifier = "telegram-bot",
+    SubscriberId = "subscriber-123",
+});
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `LinkChannelEndpointRequestDto`                                                           | [LinkChannelEndpointRequestDto](../../Models/Components/LinkChannelEndpointRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `IdempotencyKey`                                                                          | *string*                                                                                  | :heavy_minus_sign:                                                                        | A header for idempotency purposes                                                         |
+
+### Response
+
+**[IntegrationsControllerLinkChannelEndpointResponse](../../Models/Requests/IntegrationsControllerLinkChannelEndpointResponse.md)**
 
 ### Errors
 
