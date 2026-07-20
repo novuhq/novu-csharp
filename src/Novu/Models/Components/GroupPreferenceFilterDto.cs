@@ -23,7 +23,7 @@ namespace Novu.Models.Components
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Optional condition using JSON Logic rules.
+        /// Optional JSON Logic condition evaluated at fan-out time against trigger payload, subscriber profile, actor, and context (for example, `{ "var": "payload.tier" }`, `{ "var": "subscriber.data.plan" }`, or `{ "var": "actor.data.role" }`).
         /// </summary>
         [JsonProperty("condition")]
         public Dictionary<string, object>? Condition { get; set; }

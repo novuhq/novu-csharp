@@ -38,6 +38,12 @@ namespace Novu.Models.Requests
 
         public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType TelegramChat { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("telegram_chat"); } }
 
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType WebexRoom { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("webex_room"); } }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType WebexPerson { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("webex_person"); } }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType LineUser { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("line_user"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType v) { return v.Value; }
         public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType FromString(string v) {
@@ -49,6 +55,9 @@ namespace Novu.Models.Requests
                 case "ms_teams_channel": return MsTeamsChannel;
                 case "ms_teams_user": return MsTeamsUser;
                 case "telegram_chat": return TelegramChat;
+                case "webex_room": return WebexRoom;
+                case "webex_person": return WebexPerson;
+                case "line_user": return LineUser;
                 default: throw new ArgumentException("Invalid value for ChannelEndpointsControllerCreateChannelEndpointRequestBodyType");
             }
         }
@@ -98,6 +107,15 @@ namespace Novu.Models.Requests
 
         [SpeakeasyMetadata("form:explode=true")]
         public CreateTelegramChatEndpointDto? CreateTelegramChatEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateWebexRoomEndpointDto? CreateWebexRoomEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateWebexPersonEndpointDto? CreateWebexPersonEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateLineUserEndpointDto? CreateLineUserEndpointDto { get; set; }
 
         public ChannelEndpointsControllerCreateChannelEndpointRequestBodyType Type { get; set; }
 
@@ -171,6 +189,36 @@ namespace Novu.Models.Requests
             return res;
         }
 
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateWebexRoom(CreateWebexRoomEndpointDto webexRoom)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexRoom;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexRoom.ToString();
+            webexRoom.Type = CreateWebexRoomEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexRoom.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateWebexRoomEndpointDto = webexRoom;
+            return res;
+        }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateWebexPerson(CreateWebexPersonEndpointDto webexPerson)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexPerson;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexPerson.ToString();
+            webexPerson.Type = CreateWebexPersonEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexPerson.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateWebexPersonEndpointDto = webexPerson;
+            return res;
+        }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateLineUser(CreateLineUserEndpointDto lineUser)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.LineUser;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.LineUser.ToString();
+            lineUser.Type = CreateLineUserEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.LineUser.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateLineUserEndpointDto = lineUser;
+            return res;
+        }
+
         public class ChannelEndpointsControllerCreateChannelEndpointRequestBodyConverter : JsonConverter
         {
             public override bool CanConvert(System.Type objectType) => objectType == typeof(ChannelEndpointsControllerCreateChannelEndpointRequestBody);
@@ -220,6 +268,21 @@ namespace Novu.Models.Requests
                 {
                     CreateTelegramChatEndpointDto createTelegramChatEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateTelegramChatEndpointDto>(jo.ToString());
                     return CreateTelegramChat(createTelegramChatEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexRoom.ToString())
+                {
+                    CreateWebexRoomEndpointDto createWebexRoomEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateWebexRoomEndpointDto>(jo.ToString());
+                    return CreateWebexRoom(createWebexRoomEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexPerson.ToString())
+                {
+                    CreateWebexPersonEndpointDto createWebexPersonEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateWebexPersonEndpointDto>(jo.ToString());
+                    return CreateWebexPerson(createWebexPersonEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.LineUser.ToString())
+                {
+                    CreateLineUserEndpointDto createLineUserEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateLineUserEndpointDto>(jo.ToString());
+                    return CreateLineUser(createLineUserEndpointDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -273,6 +336,24 @@ namespace Novu.Models.Requests
                 if (res.CreateTelegramChatEndpointDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CreateTelegramChatEndpointDto));
+                    return;
+                }
+
+                if (res.CreateWebexRoomEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateWebexRoomEndpointDto));
+                    return;
+                }
+
+                if (res.CreateWebexPersonEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateWebexPersonEndpointDto));
+                    return;
+                }
+
+                if (res.CreateLineUserEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateLineUserEndpointDto));
                     return;
                 }
 

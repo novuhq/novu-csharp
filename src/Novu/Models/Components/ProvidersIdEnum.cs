@@ -18,6 +18,8 @@ namespace Novu.Models.Components
     /// </summary>
     public enum ProvidersIdEnum
     {
+        [JsonProperty("anypost")]
+        Anypost,
         [JsonProperty("emailjs")]
         Emailjs,
         [JsonProperty("mailgun")]
@@ -160,6 +162,8 @@ namespace Novu.Models.Components
         Discord,
         [JsonProperty("msteams")]
         Msteams,
+        [JsonProperty("webex-messaging")]
+        WebexMessaging,
         [JsonProperty("mattermost")]
         Mattermost,
         [JsonProperty("ryver")]
@@ -174,12 +178,16 @@ namespace Novu.Models.Components
         RocketChat,
         [JsonProperty("whatsapp-business")]
         WhatsappBusiness,
+        [JsonProperty("line")]
+        Line,
         [JsonProperty("chat-webhook")]
         ChatWebhook,
         [JsonProperty("novu-slack")]
         NovuSlack,
         [JsonProperty("telegram")]
         Telegram,
+        [JsonProperty("sendblue")]
+        Sendblue,
         [JsonProperty("anthropic")]
         Anthropic,
         [JsonProperty("novu-anthropic")]

@@ -46,3 +46,21 @@ ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateMsTeamsUser(/* 
 ```csharp
 ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateTelegramChat(/* values here */);
 ```
+
+### WebexRoom
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateWebexRoom(/* values here */);
+```
+
+### WebexPerson
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateWebexPerson(/* values here */);
+```
+
+### LineUser
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateLineUser(/* values here */);
+```

@@ -37,8 +37,9 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
             { "text", "string" },
         } },
     },
+    BridgeUrl = "https://your-tunnel.novu.co/api/novu",
     Overrides = new Overrides() {},
-    To = To.CreateStr(
+    To = TriggerEventRequestDtoTo.CreateStr(
         "SUBSCRIBER_ID"
     ),
     Actor = Actor.CreateStr(
@@ -224,7 +225,7 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },
@@ -237,7 +238,7 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },
@@ -250,7 +251,7 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },

@@ -7,7 +7,7 @@ Provider ID of the job
 ```csharp
 using Novu.Models.Components;
 
-var value = ProvidersIdEnum.Emailjs;
+var value = ProvidersIdEnum.Anypost;
 ```
 
 
@@ -15,6 +15,7 @@ var value = ProvidersIdEnum.Emailjs;
 
 | Name               | Value              |
 | ------------------ | ------------------ |
+| `Anypost`          | anypost            |
 | `Emailjs`          | emailjs            |
 | `Mailgun`          | mailgun            |
 | `Mailjet`          | mailjet            |
@@ -86,6 +87,7 @@ var value = ProvidersIdEnum.Emailjs;
 | `Slack`            | slack              |
 | `Discord`          | discord            |
 | `Msteams`          | msteams            |
+| `WebexMessaging`   | webex-messaging    |
 | `Mattermost`       | mattermost         |
 | `Ryver`            | ryver              |
 | `Zulip`            | zulip              |
@@ -93,9 +95,11 @@ var value = ProvidersIdEnum.Emailjs;
 | `Getstream`        | getstream          |
 | `RocketChat`       | rocket-chat        |
 | `WhatsappBusiness` | whatsapp-business  |
+| `Line`             | line               |
 | `ChatWebhook`      | chat-webhook       |
 | `NovuSlack`        | novu-slack         |
 | `Telegram`         | telegram           |
+| `Sendblue`         | sendblue           |
 | `Anthropic`        | anthropic          |
 | `NovuAnthropic`    | novu-anthropic     |
 | `AnthropicAws`     | anthropic-aws      |

@@ -32,7 +32,7 @@ namespace Novu.Models.Components
         /// The provider identifier (e.g., sendgrid, twilio, slack, etc.).
         /// </summary>
         [JsonProperty("providerId", NullValueHandling = NullValueHandling.Include)]
-        public ProviderId? ProviderId { get; set; }
+        public GetChannelConnectionResponseDtoProviderId? ProviderId { get; set; }
 
         /// <summary>
         /// The identifier of the integration to use for this channel endpoint.

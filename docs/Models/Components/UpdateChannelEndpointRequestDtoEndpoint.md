@@ -28,3 +28,15 @@ UpdateChannelEndpointRequestDtoEndpoint.CreateWebhookEndpointDto(/* values here 
 ```csharp
 UpdateChannelEndpointRequestDtoEndpoint.CreatePhoneEndpointDto(/* values here */);
 ```
+
+### WebexRoomEndpointDto
+
+```csharp
+UpdateChannelEndpointRequestDtoEndpoint.CreateWebexRoomEndpointDto(/* values here */);
+```
+
+### WebexPersonEndpointDto
+
+```csharp
+UpdateChannelEndpointRequestDtoEndpoint.CreateWebexPersonEndpointDto(/* values here */);
+```

@@ -74,8 +74,9 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
             { "text", "string" },
         } },
     },
+    BridgeUrl = "https://your-tunnel.novu.co/api/novu",
     Overrides = new Overrides() {},
-    To = To.CreateStr(
+    To = TriggerEventRequestDtoTo.CreateStr(
         "SUBSCRIBER_ID"
     ),
     Actor = Actor.CreateStr(
@@ -172,7 +173,7 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },
@@ -185,7 +186,7 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },
@@ -198,12 +199,36 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },
     },
 });
+
+// handle response
+```
+
+### Send an agent reply
+
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Agents.SendReplyAsync(
+    agentId: "support-agent",
+    agentReplyPayloadDto: new AgentReplyPayloadDto() {
+        ConversationId = "64f5a1c2e8b7a3d9f0c1b2a3",
+        IntegrationIdentifier = "slack-support",
+        Reply = Reply.CreateMarkdownReplyContentDto(
+            new MarkdownReplyContentDto() {
+                Markdown = "**Report ready.** Your weekly summary is attached.",
+            }
+        ),
+    }
+);
 
 // handle response
 ```
@@ -236,8 +261,9 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
             { "text", "string" },
         } },
     },
+    BridgeUrl = "https://your-tunnel.novu.co/api/novu",
     Overrides = new Overrides() {},
-    To = To.CreateStr(
+    To = TriggerEventRequestDtoTo.CreateStr(
         "SUBSCRIBER_ID"
     ),
     Actor = Actor.CreateStr(
@@ -270,6 +296,23 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 ### [Activity](docs/sdks/activity/README.md)
 
 * [Track](docs/sdks/activity/README.md#track) - Track provider activity and engagement events
+
+### [Agents](docs/sdks/agents/README.md)
+
+* [Create](docs/sdks/agents/README.md#create) - Create an agent
+* [List](docs/sdks/agents/README.md#list) - List all agents
+* [SendReply](docs/sdks/agents/README.md#sendreply) - Send an agent reply
+* [Retrieve](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
+* [Update](docs/sdks/agents/README.md#update) - Update an agent
+* [Delete](docs/sdks/agents/README.md#delete) - Delete an agent
+* [UpdateBridge](docs/sdks/agents/README.md#updatebridge) - Update an agent bridge
+
+#### [Agents.Integrations](docs/sdks/novuintegrations/README.md)
+
+* [Create](docs/sdks/novuintegrations/README.md#create) - Create an agent integration
+* [List](docs/sdks/novuintegrations/README.md#list) - List agent integrations
+* [Update](docs/sdks/novuintegrations/README.md#update) - Update an agent integration
+* [Delete](docs/sdks/novuintegrations/README.md#delete) - Delete an agent integration
 
 ### [ChannelConnections](docs/sdks/channelconnections/README.md)
 
@@ -520,8 +563,9 @@ var res = await sdk.TriggerAsync(
                 { "text", "string" },
             } },
         },
+        BridgeUrl = "https://your-tunnel.novu.co/api/novu",
         Overrides = new Overrides() {},
-        To = To.CreateStr(
+        To = TriggerEventRequestDtoTo.CreateStr(
             "SUBSCRIBER_ID"
         ),
         Actor = Actor.CreateStr(
@@ -566,8 +610,9 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
             { "text", "string" },
         } },
     },
+    BridgeUrl = "https://your-tunnel.novu.co/api/novu",
     Overrides = new Overrides() {},
-    To = To.CreateStr(
+    To = TriggerEventRequestDtoTo.CreateStr(
         "SUBSCRIBER_ID"
     ),
     Actor = Actor.CreateStr(
@@ -617,8 +662,9 @@ try
                 { "text", "string" },
             } },
         },
+        BridgeUrl = "https://your-tunnel.novu.co/api/novu",
         Overrides = new Overrides() {},
-        To = To.CreateStr(
+        To = TriggerEventRequestDtoTo.CreateStr(
             "SUBSCRIBER_ID"
         ),
         Actor = Actor.CreateStr(
@@ -677,9 +723,9 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 138 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 138 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 138 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 149 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 149 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 149 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
@@ -718,8 +764,9 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
             { "text", "string" },
         } },
     },
+    BridgeUrl = "https://your-tunnel.novu.co/api/novu",
     Overrides = new Overrides() {},
-    To = To.CreateStr(
+    To = TriggerEventRequestDtoTo.CreateStr(
         "SUBSCRIBER_ID"
     ),
     Actor = Actor.CreateStr(
@@ -756,8 +803,9 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
             { "text", "string" },
         } },
     },
+    BridgeUrl = "https://your-tunnel.novu.co/api/novu",
     Overrides = new Overrides() {},
-    To = To.CreateStr(
+    To = TriggerEventRequestDtoTo.CreateStr(
         "SUBSCRIBER_ID"
     ),
     Actor = Actor.CreateStr(

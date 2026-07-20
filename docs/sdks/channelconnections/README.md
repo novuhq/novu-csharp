@@ -92,6 +92,9 @@ var res = await sdk.ChannelConnections.CreateAsync(createChannelConnectionReques
     },
     Auth = new AuthDto() {
         AccessToken = "Workspace access token",
+        RefreshToken = "Workspace refresh token",
+        ExpiresAt = "2026-06-15T12:00:00.000Z",
+        RefreshTokenExpiresAt = "2026-09-15T12:00:00.000Z",
     },
 });
 
@@ -180,6 +183,9 @@ var res = await sdk.ChannelConnections.UpdateAsync(
         },
         Auth = new AuthDto() {
             AccessToken = "Workspace access token",
+            RefreshToken = "Workspace refresh token",
+            ExpiresAt = "2026-06-15T12:00:00.000Z",
+            RefreshTokenExpiresAt = "2026-09-15T12:00:00.000Z",
         },
     }
 );

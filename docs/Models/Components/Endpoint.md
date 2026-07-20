@@ -46,3 +46,21 @@ Endpoint.CreateMsTeamsUserEndpointDto(/* values here */);
 ```csharp
 Endpoint.CreateTelegramChatEndpointDto(/* values here */);
 ```
+
+### WebexRoomEndpointDto
+
+```csharp
+Endpoint.CreateWebexRoomEndpointDto(/* values here */);
+```
+
+### WebexPersonEndpointDto
+
+```csharp
+Endpoint.CreateWebexPersonEndpointDto(/* values here */);
+```
+
+### LineUserEndpointDto
+
+```csharp
+Endpoint.CreateLineUserEndpointDto(/* values here */);
+```

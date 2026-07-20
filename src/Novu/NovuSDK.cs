@@ -69,6 +69,12 @@ namespace Novu
         /// </summary>
         public IWorkflows Workflows { get; }
 
+        /// <summary>
+        /// Agents are conversational assistants that receive inbound messages from connected channels and respond through a custom code bridge or a managed runtime provider.<br/>
+        /// <see href="https://docs.novu.co/agents">https://docs.novu.co/agents</see>
+        /// </summary>
+        public IAgents Agents { get; }
+
         public IChannelConnections ChannelConnections { get; }
 
         public IChannelEndpoints ChannelEndpoints { get; }
@@ -246,6 +252,10 @@ namespace Novu
         /// </summary>
         public IWorkflows Workflows { get; private set; }
         /// <summary>
+        /// The Agents sub-SDK.
+        /// </summary>
+        public IAgents Agents { get; private set; }
+        /// <summary>
         /// The ChannelConnections sub-SDK.
         /// </summary>
         public IChannelConnections ChannelConnections { get; private set; }
@@ -312,6 +322,8 @@ namespace Novu
             Translations = new Translations(SDKConfiguration);
 
             Workflows = new Workflows(SDKConfiguration);
+
+            Agents = new Agents(SDKConfiguration);
 
             ChannelConnections = new ChannelConnections(SDKConfiguration);
 
@@ -413,6 +425,8 @@ namespace Novu
             Translations = new Translations(SDKConfiguration);
 
             Workflows = new Workflows(SDKConfiguration);
+
+            Agents = new Agents(SDKConfiguration);
 
             ChannelConnections = new ChannelConnections(SDKConfiguration);
 

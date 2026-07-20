@@ -162,6 +162,12 @@ namespace Novu.Models.Components
         [JsonProperty("outboundConnectedAt")]
         public string? OutboundConnectedAt { get; set; }
 
+        /// <summary>
+        /// ISO timestamp marking Layer-2 What's next completion (Connected badge + guide hide). WhatsApp Business: stamped on post-connect Access Token rotation or manual confirm.
+        /// </summary>
+        [JsonProperty("whatsNextCompletedAt")]
+        public string? WhatsNextCompletedAt { get; set; }
+
         [JsonProperty("useFromAddressOverride")]
         public bool? UseFromAddressOverride { get; set; }
 

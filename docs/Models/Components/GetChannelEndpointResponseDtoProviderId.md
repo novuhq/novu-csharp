@@ -7,7 +7,7 @@ The provider identifier (e.g., sendgrid, twilio, slack, etc.).
 ```csharp
 using Novu.Models.Components;
 
-var value = GetChannelEndpointResponseDtoProviderId.Emailjs;
+var value = GetChannelEndpointResponseDtoProviderId.Anypost;
 ```
 
 
@@ -15,6 +15,7 @@ var value = GetChannelEndpointResponseDtoProviderId.Emailjs;
 
 | Name               | Value              |
 | ------------------ | ------------------ |
+| `Anypost`          | anypost            |
 | `Emailjs`          | emailjs            |
 | `Mailgun`          | mailgun            |
 | `Mailjet`          | mailjet            |
@@ -86,6 +87,7 @@ var value = GetChannelEndpointResponseDtoProviderId.Emailjs;
 | `Slack`            | slack              |
 | `Discord`          | discord            |
 | `Msteams`          | msteams            |
+| `WebexMessaging`   | webex-messaging    |
 | `Mattermost`       | mattermost         |
 | `Ryver`            | ryver              |
 | `Zulip`            | zulip              |
@@ -93,9 +95,11 @@ var value = GetChannelEndpointResponseDtoProviderId.Emailjs;
 | `Getstream`        | getstream          |
 | `RocketChat`       | rocket-chat        |
 | `WhatsappBusiness` | whatsapp-business  |
+| `Line`             | line               |
 | `ChatWebhook`      | chat-webhook       |
 | `NovuSlack`        | novu-slack         |
 | `Telegram`         | telegram           |
+| `Sendblue`         | sendblue           |
 | `Anthropic`        | anthropic          |
 | `NovuAnthropic`    | novu-anthropic     |
 | `AnthropicAws`     | anthropic-aws      |

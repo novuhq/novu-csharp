@@ -235,7 +235,9 @@ namespace Novu
         /// Generate OAuth URL for a workspace/tenant connection.
         /// </summary>
         /// <remarks>
-        /// Generate an OAuth URL that creates a workspace or tenant-level channel connection (Slack workspace install or MS Teams admin consent). <br/>
+        /// Generate an OAuth URL that creates a workspace or tenant-level channel connection (Slack workspace install, MS Teams admin consent, or Webex integration authorization).<br/>
+        /// <br/>
+        /// <br/>
         ///     The generated URL expires after 5 minutes.
         /// </remarks>
         /// <param name="generateConnectOauthUrlRequestDto">A <see cref="GenerateConnectOauthUrlRequestDto"/> parameter.</param>
@@ -280,7 +282,9 @@ namespace Novu
         /// Generate OAuth URL to link a subscriber user identity.
         /// </summary>
         /// <remarks>
-        /// Generate an OAuth URL that links a specific subscriber to their chat identity (Slack user ID or MS Teams user OID). <br/>
+        /// Generate an OAuth URL that links a specific subscriber to their chat identity (Slack user ID, MS Teams user OID, or Webex person).<br/>
+        /// <br/>
+        /// <br/>
         ///     The generated URL expires after 5 minutes.
         /// </remarks>
         /// <param name="generateLinkUserOauthUrlRequestDto">A <see cref="GenerateLinkUserOauthUrlRequestDto"/> parameter.</param>
@@ -304,7 +308,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// **Deprecated** — use `POST /integrations/channel-connections/oauth` (connect) or `POST /integrations/channel-endpoints/oauth` (link_user) instead.<br/>
-        ///     Generate an OAuth URL for chat integrations like Slack and MS Teams. <br/>
+        ///     Generate an OAuth URL for chat integrations like Slack, MS Teams, and Webex.<br/>
         ///     This URL allows subscribers to authorize the integration, enabling the system to send messages <br/>
         ///     through their chat workspace. The generated URL expires after 5 minutes.
         /// </remarks>
@@ -2618,7 +2622,9 @@ namespace Novu
         /// Generate OAuth URL for a workspace/tenant connection.
         /// </summary>
         /// <remarks>
-        /// Generate an OAuth URL that creates a workspace or tenant-level channel connection (Slack workspace install or MS Teams admin consent). <br/>
+        /// Generate an OAuth URL that creates a workspace or tenant-level channel connection (Slack workspace install, MS Teams admin consent, or Webex integration authorization).<br/>
+        /// <br/>
+        /// <br/>
         ///     The generated URL expires after 5 minutes.
         /// </remarks>
         /// <param name="generateConnectOauthUrlRequestDto">A <see cref="GenerateConnectOauthUrlRequestDto"/> parameter.</param>
@@ -3131,7 +3137,9 @@ namespace Novu
         /// Generate OAuth URL to link a subscriber user identity.
         /// </summary>
         /// <remarks>
-        /// Generate an OAuth URL that links a specific subscriber to their chat identity (Slack user ID or MS Teams user OID). <br/>
+        /// Generate an OAuth URL that links a specific subscriber to their chat identity (Slack user ID, MS Teams user OID, or Webex person).<br/>
+        /// <br/>
+        /// <br/>
         ///     The generated URL expires after 5 minutes.
         /// </remarks>
         /// <param name="generateLinkUserOauthUrlRequestDto">A <see cref="GenerateLinkUserOauthUrlRequestDto"/> parameter.</param>
@@ -3389,7 +3397,7 @@ namespace Novu
         /// </summary>
         /// <remarks>
         /// **Deprecated** — use `POST /integrations/channel-connections/oauth` (connect) or `POST /integrations/channel-endpoints/oauth` (link_user) instead.<br/>
-        ///     Generate an OAuth URL for chat integrations like Slack and MS Teams. <br/>
+        ///     Generate an OAuth URL for chat integrations like Slack, MS Teams, and Webex.<br/>
         ///     This URL allows subscribers to authorize the integration, enabling the system to send messages <br/>
         ///     through their chat workspace. The generated URL expires after 5 minutes.
         /// </remarks>

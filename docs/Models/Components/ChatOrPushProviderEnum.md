@@ -18,6 +18,7 @@ var value = ChatOrPushProviderEnum.Slack;
 | `Slack`            | slack              |
 | `Discord`          | discord            |
 | `Msteams`          | msteams            |
+| `WebexMessaging`   | webex-messaging    |
 | `Mattermost`       | mattermost         |
 | `Ryver`            | ryver              |
 | `Zulip`            | zulip              |
@@ -25,9 +26,11 @@ var value = ChatOrPushProviderEnum.Slack;
 | `Getstream`        | getstream          |
 | `RocketChat`       | rocket-chat        |
 | `WhatsappBusiness` | whatsapp-business  |
+| `Line`             | line               |
 | `ChatWebhook`      | chat-webhook       |
 | `NovuSlack`        | novu-slack         |
 | `Telegram`         | telegram           |
+| `Sendblue`         | sendblue           |
 | `Fcm`              | fcm                |
 | `Apns`             | apns               |
 | `Expo`             | expo               |

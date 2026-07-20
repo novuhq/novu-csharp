@@ -22,3 +22,6 @@ var value = GetChannelEndpointResponseDtoType.SlackChannel;
 | `MsTeamsChannel` | ms_teams_channel |
 | `MsTeamsUser`    | ms_teams_user    |
 | `TelegramChat`   | telegram_chat    |
+| `WebexRoom`      | webex_room       |
+| `WebexPerson`    | webex_person     |
+| `LineUser`       | line_user        |
