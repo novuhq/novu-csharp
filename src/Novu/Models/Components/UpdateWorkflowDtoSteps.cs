@@ -40,6 +40,8 @@ namespace Novu.Models.Components
 
         public static UpdateWorkflowDtoStepsType Throttle { get { return new UpdateWorkflowDtoStepsType("throttle"); } }
 
+        public static UpdateWorkflowDtoStepsType Tool { get { return new UpdateWorkflowDtoStepsType("tool"); } }
+
         public static UpdateWorkflowDtoStepsType Custom { get { return new UpdateWorkflowDtoStepsType("custom"); } }
 
         public static UpdateWorkflowDtoStepsType HttpRequest { get { return new UpdateWorkflowDtoStepsType("http_request"); } }
@@ -56,6 +58,7 @@ namespace Novu.Models.Components
                 case "delay": return Delay;
                 case "digest": return Digest;
                 case "throttle": return Throttle;
+                case "tool": return Tool;
                 case "custom": return Custom;
                 case "http_request": return HttpRequest;
                 default: throw new ArgumentException("Invalid value for UpdateWorkflowDtoStepsType");
@@ -107,6 +110,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public ThrottleStepUpsertDto? ThrottleStepUpsertDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ToolStepUpsertDto? ToolStepUpsertDto { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public CustomStepUpsertDto? CustomStepUpsertDto { get; set; }
@@ -196,6 +202,16 @@ namespace Novu.Models.Components
             return res;
         }
 
+        public static UpdateWorkflowDtoSteps CreateTool(ToolStepUpsertDto tool)
+        {
+            UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Tool;
+            string typStr = UpdateWorkflowDtoStepsType.Tool.ToString();
+            tool.Type = StepTypeEnumExtension.ToEnum(UpdateWorkflowDtoStepsType.Tool.ToString());
+            UpdateWorkflowDtoSteps res = new UpdateWorkflowDtoSteps(typ);
+            res.ToolStepUpsertDto = tool;
+            return res;
+        }
+
         public static UpdateWorkflowDtoSteps CreateCustom(CustomStepUpsertDto custom)
         {
             UpdateWorkflowDtoStepsType typ = UpdateWorkflowDtoStepsType.Custom;
@@ -271,6 +287,11 @@ namespace Novu.Models.Components
                     ThrottleStepUpsertDto throttleStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<ThrottleStepUpsertDto>(jo.ToString());
                     return CreateThrottle(throttleStepUpsertDto);
                 }
+                if (discriminator == UpdateWorkflowDtoStepsType.Tool.ToString())
+                {
+                    ToolStepUpsertDto toolStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<ToolStepUpsertDto>(jo.ToString());
+                    return CreateTool(toolStepUpsertDto);
+                }
                 if (discriminator == UpdateWorkflowDtoStepsType.Custom.ToString())
                 {
                     CustomStepUpsertDto customStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepUpsertDto>(jo.ToString());
@@ -339,6 +360,12 @@ namespace Novu.Models.Components
                 if (res.ThrottleStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ThrottleStepUpsertDto));
+                    return;
+                }
+
+                if (res.ToolStepUpsertDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ToolStepUpsertDto));
                     return;
                 }
 

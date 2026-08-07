@@ -34,6 +34,8 @@ namespace Novu.Models.Components
         Chat,
         [JsonProperty("PUSH")]
         Push,
+        [JsonProperty("TOOL")]
+        Tool,
         [JsonProperty("SKIP")]
         Skip,
         [JsonProperty("LAYOUT")]

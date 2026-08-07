@@ -20,3 +20,4 @@ var value = GetChannelEndpointResponseDtoChannel.InApp;
 | `Sms`   | sms     |
 | `Chat`  | chat    |
 | `Push`  | push    |
+| `Tool`  | tool    |

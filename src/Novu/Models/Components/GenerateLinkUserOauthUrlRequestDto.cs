@@ -29,7 +29,7 @@ namespace Novu.Models.Components
         public string IntegrationIdentifier { get; set; } = default!;
 
         /// <summary>
-        /// Identifier of the existing channel connection to associate this user endpoint with. Generated automatically if not provided.
+        /// Identifier of the existing channel connection to associate this user endpoint with. Generated automatically if not provided for providers that support standalone user linking. Required for Webex.
         /// </summary>
         [JsonProperty("connectionIdentifier")]
         public string? ConnectionIdentifier { get; set; }
@@ -38,7 +38,13 @@ namespace Novu.Models.Components
         public Dictionary<string, GenerateLinkUserOauthUrlRequestDtoContext>? Context { get; set; }
 
         /// <summary>
-        /// **Slack only**: User-level OAuth scopes for "Sign in with Slack". Defaults to: identity.basic. **MS Teams**: ignored — uses delegated OpenID scopes (openid, profile, User.Read).
+        /// HMAC-SHA256 of the canonicalized `context`, signed with the tenant environment secret key (the same "Inbox with context" signing scheme). Required when the integration has HMAC validation enabled and the session did not already HMAC-verify the context, so the per-user link carries a trustworthy subscriber/tenant binding.
+        /// </summary>
+        [JsonProperty("contextHash")]
+        public string? ContextHash { get; set; }
+
+        /// <summary>
+        /// **Slack only**: User-level OAuth scopes for "Sign in with Slack". Defaults to: identity.basic. **Webex**: Optional Webex scopes for people/me; defaults to spark:people_read. **MS Teams**: ignored — uses delegated OpenID scopes (openid, profile, User.Read).
         /// </summary>
         [JsonProperty("userScope")]
         public List<string>? UserScope { get; set; }

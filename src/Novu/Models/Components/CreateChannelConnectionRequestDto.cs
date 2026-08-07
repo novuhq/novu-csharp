@@ -35,7 +35,7 @@ namespace Novu.Models.Components
         /// Connection mode that determines how the channel connection is scoped. Use "subscriber" (default) to associate the connection with a specific subscriber. Use "shared" to associate the connection with a context instead of a subscriber — subscriberId will not be stored on the connection.
         /// </summary>
         [JsonProperty("connectionMode")]
-        public ConnectionMode? ConnectionMode { get; set; }
+        public Models.Components.ConnectionMode? ConnectionMode { get; set; }
 
         /// <summary>
         /// The identifier of the integration to use for this channel connection.

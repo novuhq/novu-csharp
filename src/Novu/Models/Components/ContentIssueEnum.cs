@@ -28,6 +28,8 @@ namespace Novu.Models.Components
         MissingValue,
         [JsonProperty("TIER_LIMIT_EXCEEDED")]
         TierLimitExceeded,
+        [JsonProperty("UNSUPPORTED_PROPERTY")]
+        UnsupportedProperty,
     }
 
     public static class ContentIssueEnumExtension

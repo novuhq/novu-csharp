@@ -11,13 +11,20 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class ChatRenderOutput
     {
         /// <summary>
-        /// Body of the chat message.
+        /// Body of the chat message. Mutually exclusive with `card`.
         /// </summary>
         [JsonProperty("body")]
-        public string Body { get; set; } = default!;
+        public string? Body { get; set; }
+
+        /// <summary>
+        /// Rich Chat: compiled provider-agnostic card DSL. Mutually exclusive with `body`.
+        /// </summary>
+        [JsonProperty("card")]
+        public Dictionary<string, object>? Card { get; set; }
     }
 }

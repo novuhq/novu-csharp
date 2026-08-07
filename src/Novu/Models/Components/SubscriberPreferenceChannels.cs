@@ -43,5 +43,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("push")]
         public bool? Push { get; set; }
+
+        /// <summary>
+        /// Tool channel preference.
+        /// </summary>
+        [JsonProperty("tool")]
+        public bool? Tool { get; set; }
     }
 }

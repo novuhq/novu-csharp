@@ -51,5 +51,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("contextKeys")]
         public List<string>? ContextKeys { get; set; }
+
+        /// <summary>
+        /// The preferences for workflows in this subscription.
+        /// </summary>
+        [JsonProperty("preferences")]
+        public List<SubscriptionPreferenceDto>? Preferences { get; set; }
     }
 }

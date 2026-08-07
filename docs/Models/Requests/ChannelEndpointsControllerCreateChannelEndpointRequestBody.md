@@ -46,3 +46,45 @@ ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateMsTeamsUser(/* 
 ```csharp
 ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateTelegramChat(/* values here */);
 ```
+
+### WebexRoom
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateWebexRoom(/* values here */);
+```
+
+### WebexPerson
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateWebexPerson(/* values here */);
+```
+
+### LineUser
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateLineUser(/* values here */);
+```
+
+### PagerdutyService
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreatePagerdutyService(/* values here */);
+```
+
+### OpsgenieIntegration
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateOpsgenieIntegration(/* values here */);
+```
+
+### GrafanaOncallIntegration
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateGrafanaOncallIntegration(/* values here */);
+```
+
+### ToolWebhook
+
+```csharp
+ChannelEndpointsControllerCreateChannelEndpointRequestBody.CreateToolWebhook(/* values here */);
+```

@@ -20,3 +20,4 @@ var value = ContentIssueEnum.IllegalVariableInControlValue;
 | `InvalidUrl`                      | INVALID_URL                       |
 | `MissingValue`                    | MISSING_VALUE                     |
 | `TierLimitExceeded`               | TIER_LIMIT_EXCEEDED               |
+| `UnsupportedProperty`             | UNSUPPORTED_PROPERTY              |

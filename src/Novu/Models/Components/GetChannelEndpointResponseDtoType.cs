@@ -32,6 +32,20 @@ namespace Novu.Models.Components
         MsTeamsUser,
         [JsonProperty("telegram_chat")]
         TelegramChat,
+        [JsonProperty("webex_room")]
+        WebexRoom,
+        [JsonProperty("webex_person")]
+        WebexPerson,
+        [JsonProperty("line_user")]
+        LineUser,
+        [JsonProperty("pagerduty_service")]
+        PagerdutyService,
+        [JsonProperty("opsgenie_integration")]
+        OpsgenieIntegration,
+        [JsonProperty("grafana_oncall_integration")]
+        GrafanaOncallIntegration,
+        [JsonProperty("tool_webhook")]
+        ToolWebhook,
     }
 
     public static class GetChannelEndpointResponseDtoTypeExtension

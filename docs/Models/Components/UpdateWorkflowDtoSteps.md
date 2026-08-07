@@ -51,6 +51,12 @@ UpdateWorkflowDtoSteps.CreateDigest(/* values here */);
 UpdateWorkflowDtoSteps.CreateThrottle(/* values here */);
 ```
 
+### Tool
+
+```csharp
+UpdateWorkflowDtoSteps.CreateTool(/* values here */);
+```
+
 ### Custom
 
 ```csharp

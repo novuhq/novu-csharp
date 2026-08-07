@@ -19,5 +19,11 @@ namespace Novu.Models.Components
 
         [JsonProperty("inboundWebhookSigningKey")]
         public string? InboundWebhookSigningKey { get; set; }
+
+        /// <summary>
+        /// JSON Schema describing the payload accepted by this integration.
+        /// </summary>
+        [JsonProperty("payloadSchema")]
+        public string? PayloadSchema { get; set; }
     }
 }

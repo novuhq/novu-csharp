@@ -10,7 +10,9 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class LinkChannelEndpointRequestDto
     {
@@ -25,5 +27,14 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("subscriberId")]
         public string SubscriberId { get; set; } = default!;
+
+        [JsonProperty("context")]
+        public Dictionary<string, LinkChannelEndpointRequestDtoContext>? Context { get; set; }
+
+        /// <summary>
+        /// HMAC-SHA256 of the canonicalized `context`, signed with the tenant environment secret key (the same "Inbox with context" signing scheme). Required when the integration has HMAC validation enabled.
+        /// </summary>
+        [JsonProperty("contextHash")]
+        public string? ContextHash { get; set; }
     }
 }

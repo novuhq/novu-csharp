@@ -51,6 +51,12 @@ Steps.CreateDigest(/* values here */);
 Steps.CreateThrottle(/* values here */);
 ```
 
+### Tool
+
+```csharp
+Steps.CreateTool(/* values here */);
+```
+
 ### Custom
 
 ```csharp

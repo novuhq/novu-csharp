@@ -24,6 +24,8 @@ namespace Novu.Models.Components
         Discord,
         [JsonProperty("msteams")]
         Msteams,
+        [JsonProperty("webex-messaging")]
+        WebexMessaging,
         [JsonProperty("mattermost")]
         Mattermost,
         [JsonProperty("ryver")]
@@ -38,12 +40,18 @@ namespace Novu.Models.Components
         RocketChat,
         [JsonProperty("whatsapp-business")]
         WhatsappBusiness,
+        [JsonProperty("line")]
+        Line,
         [JsonProperty("chat-webhook")]
         ChatWebhook,
         [JsonProperty("novu-slack")]
         NovuSlack,
         [JsonProperty("telegram")]
         Telegram,
+        [JsonProperty("sendblue")]
+        Sendblue,
+        [JsonProperty("novu-web-chat")]
+        NovuWebChat,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]

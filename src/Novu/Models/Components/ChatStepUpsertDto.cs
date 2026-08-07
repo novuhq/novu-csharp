@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class ChatStepUpsertDto
     {
@@ -44,5 +45,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("controlValues", NullValueHandling = NullValueHandling.Include)]
         public ChatStepUpsertDtoControlValues? ControlValues { get; set; }
+
+        /// <summary>
+        /// Per-provider content overrides keyed by providerId. Stored separately from controlValues and merged over the default body at send time. Keys are ChatProviderIdEnum / ToolProviderIdEnum values (e.g. `slack`, `whatsapp-business`, `pagerduty`). Omit to leave unchanged; pass null to delete all provider overrides; pass an object to replace the full set.
+        /// </summary>
+        [JsonProperty("providerOverrides")]
+        public Dictionary<string, Dictionary<string, object>>? ProviderOverrides { get; set; } = null;
     }
 }

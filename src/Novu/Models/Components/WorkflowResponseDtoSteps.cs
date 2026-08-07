@@ -44,6 +44,8 @@ namespace Novu.Models.Components
 
         public static WorkflowResponseDtoStepsType HttpRequest { get { return new WorkflowResponseDtoStepsType("http_request"); } }
 
+        public static WorkflowResponseDtoStepsType Tool { get { return new WorkflowResponseDtoStepsType("tool"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(WorkflowResponseDtoStepsType v) { return v.Value; }
         public static WorkflowResponseDtoStepsType FromString(string v) {
@@ -58,6 +60,7 @@ namespace Novu.Models.Components
                 case "custom": return Custom;
                 case "throttle": return Throttle;
                 case "http_request": return HttpRequest;
+                case "tool": return Tool;
                 default: throw new ArgumentException("Invalid value for WorkflowResponseDtoStepsType");
             }
         }
@@ -113,6 +116,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public HttpRequestStepResponseDto? HttpRequestStepResponseDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ToolStepResponseDto? ToolStepResponseDto { get; set; }
 
         public WorkflowResponseDtoStepsType Type { get; set; }
 
@@ -216,6 +222,16 @@ namespace Novu.Models.Components
             return res;
         }
 
+        public static WorkflowResponseDtoSteps CreateTool(ToolStepResponseDto tool)
+        {
+            WorkflowResponseDtoStepsType typ = WorkflowResponseDtoStepsType.Tool;
+            string typStr = WorkflowResponseDtoStepsType.Tool.ToString();
+            tool.Type = StepTypeEnumExtension.ToEnum(WorkflowResponseDtoStepsType.Tool.ToString());
+            WorkflowResponseDtoSteps res = new WorkflowResponseDtoSteps(typ);
+            res.ToolStepResponseDto = tool;
+            return res;
+        }
+
         public class WorkflowResponseDtoStepsConverter : JsonConverter
         {
             public override bool CanConvert(System.Type objectType) => objectType == typeof(WorkflowResponseDtoSteps);
@@ -280,6 +296,11 @@ namespace Novu.Models.Components
                 {
                     HttpRequestStepResponseDto httpRequestStepResponseDto = ResponseBodyDeserializer.DeserializeNotNull<HttpRequestStepResponseDto>(jo.ToString());
                     return CreateHttpRequest(httpRequestStepResponseDto);
+                }
+                if (discriminator == WorkflowResponseDtoStepsType.Tool.ToString())
+                {
+                    ToolStepResponseDto toolStepResponseDto = ResponseBodyDeserializer.DeserializeNotNull<ToolStepResponseDto>(jo.ToString());
+                    return CreateTool(toolStepResponseDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -351,6 +372,12 @@ namespace Novu.Models.Components
                 if (res.HttpRequestStepResponseDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.HttpRequestStepResponseDto));
+                    return;
+                }
+
+                if (res.ToolStepResponseDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ToolStepResponseDto));
                     return;
                 }
 

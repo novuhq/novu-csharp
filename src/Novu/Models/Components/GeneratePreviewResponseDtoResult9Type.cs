@@ -15,8 +15,8 @@ namespace Novu.Models.Components
 
     public enum GeneratePreviewResponseDtoResult9Type
     {
-        [JsonProperty("digest")]
-        Digest,
+        [JsonProperty("delay")]
+        Delay,
     }
 
     public static class GeneratePreviewResponseDtoResult9TypeExtension

@@ -38,6 +38,20 @@ namespace Novu.Models.Components
 
         public static EndpointType TelegramChatEndpointDto { get { return new EndpointType("TelegramChatEndpointDto"); } }
 
+        public static EndpointType WebexRoomEndpointDto { get { return new EndpointType("WebexRoomEndpointDto"); } }
+
+        public static EndpointType WebexPersonEndpointDto { get { return new EndpointType("WebexPersonEndpointDto"); } }
+
+        public static EndpointType LineUserEndpointDto { get { return new EndpointType("LineUserEndpointDto"); } }
+
+        public static EndpointType PagerDutyServiceEndpointDto { get { return new EndpointType("PagerDutyServiceEndpointDto"); } }
+
+        public static EndpointType OpsgenieIntegrationEndpointDto { get { return new EndpointType("OpsgenieIntegrationEndpointDto"); } }
+
+        public static EndpointType GrafanaOnCallIntegrationEndpointDto { get { return new EndpointType("GrafanaOnCallIntegrationEndpointDto"); } }
+
+        public static EndpointType ToolWebhookEndpointDto { get { return new EndpointType("ToolWebhookEndpointDto"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(EndpointType v) { return v.Value; }
         public static EndpointType FromString(string v) {
@@ -49,6 +63,13 @@ namespace Novu.Models.Components
                 case "MsTeamsChannelEndpointDto": return MsTeamsChannelEndpointDto;
                 case "MsTeamsUserEndpointDto": return MsTeamsUserEndpointDto;
                 case "TelegramChatEndpointDto": return TelegramChatEndpointDto;
+                case "WebexRoomEndpointDto": return WebexRoomEndpointDto;
+                case "WebexPersonEndpointDto": return WebexPersonEndpointDto;
+                case "LineUserEndpointDto": return LineUserEndpointDto;
+                case "PagerDutyServiceEndpointDto": return PagerDutyServiceEndpointDto;
+                case "OpsgenieIntegrationEndpointDto": return OpsgenieIntegrationEndpointDto;
+                case "GrafanaOnCallIntegrationEndpointDto": return GrafanaOnCallIntegrationEndpointDto;
+                case "ToolWebhookEndpointDto": return ToolWebhookEndpointDto;
                 default: throw new ArgumentException("Invalid value for EndpointType");
             }
         }
@@ -98,6 +119,27 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public TelegramChatEndpointDto? TelegramChatEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public WebexRoomEndpointDto? WebexRoomEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public WebexPersonEndpointDto? WebexPersonEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public LineUserEndpointDto? LineUserEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public PagerDutyServiceEndpointDto? PagerDutyServiceEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public OpsgenieIntegrationEndpointDto? OpsgenieIntegrationEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public GrafanaOnCallIntegrationEndpointDto? GrafanaOnCallIntegrationEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ToolWebhookEndpointDto? ToolWebhookEndpointDto { get; set; }
 
         public EndpointType Type { get; set; }
         public static Endpoint CreateSlackChannelEndpointDto(SlackChannelEndpointDto slackChannelEndpointDto)
@@ -156,6 +198,62 @@ namespace Novu.Models.Components
             res.TelegramChatEndpointDto = telegramChatEndpointDto;
             return res;
         }
+        public static Endpoint CreateWebexRoomEndpointDto(WebexRoomEndpointDto webexRoomEndpointDto)
+        {
+            EndpointType typ = EndpointType.WebexRoomEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.WebexRoomEndpointDto = webexRoomEndpointDto;
+            return res;
+        }
+        public static Endpoint CreateWebexPersonEndpointDto(WebexPersonEndpointDto webexPersonEndpointDto)
+        {
+            EndpointType typ = EndpointType.WebexPersonEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.WebexPersonEndpointDto = webexPersonEndpointDto;
+            return res;
+        }
+        public static Endpoint CreateLineUserEndpointDto(LineUserEndpointDto lineUserEndpointDto)
+        {
+            EndpointType typ = EndpointType.LineUserEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.LineUserEndpointDto = lineUserEndpointDto;
+            return res;
+        }
+        public static Endpoint CreatePagerDutyServiceEndpointDto(PagerDutyServiceEndpointDto pagerDutyServiceEndpointDto)
+        {
+            EndpointType typ = EndpointType.PagerDutyServiceEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.PagerDutyServiceEndpointDto = pagerDutyServiceEndpointDto;
+            return res;
+        }
+        public static Endpoint CreateOpsgenieIntegrationEndpointDto(OpsgenieIntegrationEndpointDto opsgenieIntegrationEndpointDto)
+        {
+            EndpointType typ = EndpointType.OpsgenieIntegrationEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.OpsgenieIntegrationEndpointDto = opsgenieIntegrationEndpointDto;
+            return res;
+        }
+        public static Endpoint CreateGrafanaOnCallIntegrationEndpointDto(GrafanaOnCallIntegrationEndpointDto grafanaOnCallIntegrationEndpointDto)
+        {
+            EndpointType typ = EndpointType.GrafanaOnCallIntegrationEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.GrafanaOnCallIntegrationEndpointDto = grafanaOnCallIntegrationEndpointDto;
+            return res;
+        }
+        public static Endpoint CreateToolWebhookEndpointDto(ToolWebhookEndpointDto toolWebhookEndpointDto)
+        {
+            EndpointType typ = EndpointType.ToolWebhookEndpointDto;
+
+            Endpoint res = new Endpoint(typ);
+            res.ToolWebhookEndpointDto = toolWebhookEndpointDto;
+            return res;
+        }
 
         public class EndpointConverter : JsonConverter
         {
@@ -172,6 +270,26 @@ namespace Novu.Models.Components
 
                 var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new Endpoint(EndpointType.TelegramChatEndpointDto)
+                    {
+                        TelegramChatEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TelegramChatEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(TelegramChatEndpointDto), new Endpoint(EndpointType.TelegramChatEndpointDto), "TelegramChatEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
 
                 try
                 {
@@ -195,14 +313,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new Endpoint(EndpointType.SlackUserEndpointDto)
+                    return new Endpoint(EndpointType.LineUserEndpointDto)
                     {
-                        SlackUserEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<SlackUserEndpointDto>(json)
+                        LineUserEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<LineUserEndpointDto>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(SlackUserEndpointDto), new Endpoint(EndpointType.SlackUserEndpointDto), "SlackUserEndpointDto"));
+                    fallbackCandidates.Add((typeof(LineUserEndpointDto), new Endpoint(EndpointType.LineUserEndpointDto), "LineUserEndpointDto"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -235,6 +353,26 @@ namespace Novu.Models.Components
 
                 try
                 {
+                    return new Endpoint(EndpointType.SlackUserEndpointDto)
+                    {
+                        SlackUserEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<SlackUserEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(SlackUserEndpointDto), new Endpoint(EndpointType.SlackUserEndpointDto), "SlackUserEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
                     return new Endpoint(EndpointType.MsTeamsUserEndpointDto)
                     {
                         MsTeamsUserEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<MsTeamsUserEndpointDto>(json)
@@ -255,14 +393,54 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new Endpoint(EndpointType.TelegramChatEndpointDto)
+                    return new Endpoint(EndpointType.GrafanaOnCallIntegrationEndpointDto)
                     {
-                        TelegramChatEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TelegramChatEndpointDto>(json)
+                        GrafanaOnCallIntegrationEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<GrafanaOnCallIntegrationEndpointDto>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(TelegramChatEndpointDto), new Endpoint(EndpointType.TelegramChatEndpointDto), "TelegramChatEndpointDto"));
+                    fallbackCandidates.Add((typeof(GrafanaOnCallIntegrationEndpointDto), new Endpoint(EndpointType.GrafanaOnCallIntegrationEndpointDto), "GrafanaOnCallIntegrationEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Endpoint(EndpointType.WebexPersonEndpointDto)
+                    {
+                        WebexPersonEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<WebexPersonEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(WebexPersonEndpointDto), new Endpoint(EndpointType.WebexPersonEndpointDto), "WebexPersonEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Endpoint(EndpointType.MsTeamsChannelEndpointDto)
+                    {
+                        MsTeamsChannelEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<MsTeamsChannelEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(MsTeamsChannelEndpointDto), new Endpoint(EndpointType.MsTeamsChannelEndpointDto), "MsTeamsChannelEndpointDto"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -295,14 +473,74 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new Endpoint(EndpointType.MsTeamsChannelEndpointDto)
+                    return new Endpoint(EndpointType.PagerDutyServiceEndpointDto)
                     {
-                        MsTeamsChannelEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<MsTeamsChannelEndpointDto>(json)
+                        PagerDutyServiceEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PagerDutyServiceEndpointDto>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(MsTeamsChannelEndpointDto), new Endpoint(EndpointType.MsTeamsChannelEndpointDto), "MsTeamsChannelEndpointDto"));
+                    fallbackCandidates.Add((typeof(PagerDutyServiceEndpointDto), new Endpoint(EndpointType.PagerDutyServiceEndpointDto), "PagerDutyServiceEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Endpoint(EndpointType.OpsgenieIntegrationEndpointDto)
+                    {
+                        OpsgenieIntegrationEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<OpsgenieIntegrationEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(OpsgenieIntegrationEndpointDto), new Endpoint(EndpointType.OpsgenieIntegrationEndpointDto), "OpsgenieIntegrationEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Endpoint(EndpointType.WebexRoomEndpointDto)
+                    {
+                        WebexRoomEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<WebexRoomEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(WebexRoomEndpointDto), new Endpoint(EndpointType.WebexRoomEndpointDto), "WebexRoomEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Endpoint(EndpointType.ToolWebhookEndpointDto)
+                    {
+                        ToolWebhookEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<ToolWebhookEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(ToolWebhookEndpointDto), new Endpoint(EndpointType.ToolWebhookEndpointDto), "ToolWebhookEndpointDto"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -384,6 +622,48 @@ namespace Novu.Models.Components
                 if (res.TelegramChatEndpointDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TelegramChatEndpointDto));
+                    return;
+                }
+
+                if (res.WebexRoomEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.WebexRoomEndpointDto));
+                    return;
+                }
+
+                if (res.WebexPersonEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.WebexPersonEndpointDto));
+                    return;
+                }
+
+                if (res.LineUserEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.LineUserEndpointDto));
+                    return;
+                }
+
+                if (res.PagerDutyServiceEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.PagerDutyServiceEndpointDto));
+                    return;
+                }
+
+                if (res.OpsgenieIntegrationEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.OpsgenieIntegrationEndpointDto));
+                    return;
+                }
+
+                if (res.GrafanaOnCallIntegrationEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.GrafanaOnCallIntegrationEndpointDto));
+                    return;
+                }
+
+                if (res.ToolWebhookEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ToolWebhookEndpointDto));
                     return;
                 }
 

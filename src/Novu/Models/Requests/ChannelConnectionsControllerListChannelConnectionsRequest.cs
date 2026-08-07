@@ -59,6 +59,12 @@ namespace Novu.Models.Requests
         public string? SubscriberId { get; set; }
 
         /// <summary>
+        /// Scope results relative to the subscriber. `subscriber` returns only the subscriber-owned connections, `shared` returns only shared (workspace-level) connections. Omit to return both.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=connectionMode")]
+        public Models.Requests.ConnectionMode? ConnectionMode { get; set; }
+
+        /// <summary>
         /// Filter by channel type (email, sms, push, chat, etc.).
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=channel")]

@@ -22,6 +22,10 @@ namespace Novu.Models.Components
         LayoutRequiredForWorkflow,
         [JsonProperty("LAYOUT_EXISTS_IN_TARGET")]
         LayoutExistsInTarget,
+        [JsonProperty("AGENT_REQUIRED_FOR_WORKFLOW")]
+        AgentRequiredForWorkflow,
+        [JsonProperty("AGENT_EXISTS_IN_TARGET")]
+        AgentExistsInTarget,
     }
 
     public static class DependencyReasonEnumExtension

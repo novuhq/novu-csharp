@@ -38,6 +38,20 @@ namespace Novu.Models.Requests
 
         public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType TelegramChat { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("telegram_chat"); } }
 
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType WebexRoom { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("webex_room"); } }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType WebexPerson { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("webex_person"); } }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType LineUser { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("line_user"); } }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType PagerdutyService { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("pagerduty_service"); } }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType OpsgenieIntegration { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("opsgenie_integration"); } }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType GrafanaOncallIntegration { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("grafana_oncall_integration"); } }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType ToolWebhook { get { return new ChannelEndpointsControllerCreateChannelEndpointRequestBodyType("tool_webhook"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType v) { return v.Value; }
         public static ChannelEndpointsControllerCreateChannelEndpointRequestBodyType FromString(string v) {
@@ -49,6 +63,13 @@ namespace Novu.Models.Requests
                 case "ms_teams_channel": return MsTeamsChannel;
                 case "ms_teams_user": return MsTeamsUser;
                 case "telegram_chat": return TelegramChat;
+                case "webex_room": return WebexRoom;
+                case "webex_person": return WebexPerson;
+                case "line_user": return LineUser;
+                case "pagerduty_service": return PagerdutyService;
+                case "opsgenie_integration": return OpsgenieIntegration;
+                case "grafana_oncall_integration": return GrafanaOncallIntegration;
+                case "tool_webhook": return ToolWebhook;
                 default: throw new ArgumentException("Invalid value for ChannelEndpointsControllerCreateChannelEndpointRequestBodyType");
             }
         }
@@ -98,6 +119,27 @@ namespace Novu.Models.Requests
 
         [SpeakeasyMetadata("form:explode=true")]
         public CreateTelegramChatEndpointDto? CreateTelegramChatEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateWebexRoomEndpointDto? CreateWebexRoomEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateWebexPersonEndpointDto? CreateWebexPersonEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateLineUserEndpointDto? CreateLineUserEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreatePagerDutyServiceEndpointDto? CreatePagerDutyServiceEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateOpsgenieIntegrationEndpointDto? CreateOpsgenieIntegrationEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateGrafanaOnCallIntegrationEndpointDto? CreateGrafanaOnCallIntegrationEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public CreateToolWebhookEndpointDto? CreateToolWebhookEndpointDto { get; set; }
 
         public ChannelEndpointsControllerCreateChannelEndpointRequestBodyType Type { get; set; }
 
@@ -171,6 +213,76 @@ namespace Novu.Models.Requests
             return res;
         }
 
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateWebexRoom(CreateWebexRoomEndpointDto webexRoom)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexRoom;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexRoom.ToString();
+            webexRoom.Type = CreateWebexRoomEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexRoom.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateWebexRoomEndpointDto = webexRoom;
+            return res;
+        }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateWebexPerson(CreateWebexPersonEndpointDto webexPerson)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexPerson;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexPerson.ToString();
+            webexPerson.Type = CreateWebexPersonEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexPerson.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateWebexPersonEndpointDto = webexPerson;
+            return res;
+        }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateLineUser(CreateLineUserEndpointDto lineUser)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.LineUser;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.LineUser.ToString();
+            lineUser.Type = CreateLineUserEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.LineUser.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateLineUserEndpointDto = lineUser;
+            return res;
+        }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreatePagerdutyService(CreatePagerDutyServiceEndpointDto pagerdutyService)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.PagerdutyService;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.PagerdutyService.ToString();
+            pagerdutyService.Type = CreatePagerDutyServiceEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.PagerdutyService.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreatePagerDutyServiceEndpointDto = pagerdutyService;
+            return res;
+        }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateOpsgenieIntegration(CreateOpsgenieIntegrationEndpointDto opsgenieIntegration)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.OpsgenieIntegration;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.OpsgenieIntegration.ToString();
+            opsgenieIntegration.Type = CreateOpsgenieIntegrationEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.OpsgenieIntegration.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateOpsgenieIntegrationEndpointDto = opsgenieIntegration;
+            return res;
+        }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateGrafanaOncallIntegration(CreateGrafanaOnCallIntegrationEndpointDto grafanaOncallIntegration)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.GrafanaOncallIntegration;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.GrafanaOncallIntegration.ToString();
+            grafanaOncallIntegration.Type = CreateGrafanaOnCallIntegrationEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.GrafanaOncallIntegration.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateGrafanaOnCallIntegrationEndpointDto = grafanaOncallIntegration;
+            return res;
+        }
+
+        public static ChannelEndpointsControllerCreateChannelEndpointRequestBody CreateToolWebhook(CreateToolWebhookEndpointDto toolWebhook)
+        {
+            ChannelEndpointsControllerCreateChannelEndpointRequestBodyType typ = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.ToolWebhook;
+            string typStr = ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.ToolWebhook.ToString();
+            toolWebhook.Type = CreateToolWebhookEndpointDtoTypeExtension.ToEnum(ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.ToolWebhook.ToString());
+            ChannelEndpointsControllerCreateChannelEndpointRequestBody res = new ChannelEndpointsControllerCreateChannelEndpointRequestBody(typ);
+            res.CreateToolWebhookEndpointDto = toolWebhook;
+            return res;
+        }
+
         public class ChannelEndpointsControllerCreateChannelEndpointRequestBodyConverter : JsonConverter
         {
             public override bool CanConvert(System.Type objectType) => objectType == typeof(ChannelEndpointsControllerCreateChannelEndpointRequestBody);
@@ -220,6 +332,41 @@ namespace Novu.Models.Requests
                 {
                     CreateTelegramChatEndpointDto createTelegramChatEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateTelegramChatEndpointDto>(jo.ToString());
                     return CreateTelegramChat(createTelegramChatEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexRoom.ToString())
+                {
+                    CreateWebexRoomEndpointDto createWebexRoomEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateWebexRoomEndpointDto>(jo.ToString());
+                    return CreateWebexRoom(createWebexRoomEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.WebexPerson.ToString())
+                {
+                    CreateWebexPersonEndpointDto createWebexPersonEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateWebexPersonEndpointDto>(jo.ToString());
+                    return CreateWebexPerson(createWebexPersonEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.LineUser.ToString())
+                {
+                    CreateLineUserEndpointDto createLineUserEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateLineUserEndpointDto>(jo.ToString());
+                    return CreateLineUser(createLineUserEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.PagerdutyService.ToString())
+                {
+                    CreatePagerDutyServiceEndpointDto createPagerDutyServiceEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreatePagerDutyServiceEndpointDto>(jo.ToString());
+                    return CreatePagerdutyService(createPagerDutyServiceEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.OpsgenieIntegration.ToString())
+                {
+                    CreateOpsgenieIntegrationEndpointDto createOpsgenieIntegrationEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateOpsgenieIntegrationEndpointDto>(jo.ToString());
+                    return CreateOpsgenieIntegration(createOpsgenieIntegrationEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.GrafanaOncallIntegration.ToString())
+                {
+                    CreateGrafanaOnCallIntegrationEndpointDto createGrafanaOnCallIntegrationEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateGrafanaOnCallIntegrationEndpointDto>(jo.ToString());
+                    return CreateGrafanaOncallIntegration(createGrafanaOnCallIntegrationEndpointDto);
+                }
+                if (discriminator == ChannelEndpointsControllerCreateChannelEndpointRequestBodyType.ToolWebhook.ToString())
+                {
+                    CreateToolWebhookEndpointDto createToolWebhookEndpointDto = ResponseBodyDeserializer.DeserializeNotNull<CreateToolWebhookEndpointDto>(jo.ToString());
+                    return CreateToolWebhook(createToolWebhookEndpointDto);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -273,6 +420,48 @@ namespace Novu.Models.Requests
                 if (res.CreateTelegramChatEndpointDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CreateTelegramChatEndpointDto));
+                    return;
+                }
+
+                if (res.CreateWebexRoomEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateWebexRoomEndpointDto));
+                    return;
+                }
+
+                if (res.CreateWebexPersonEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateWebexPersonEndpointDto));
+                    return;
+                }
+
+                if (res.CreateLineUserEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateLineUserEndpointDto));
+                    return;
+                }
+
+                if (res.CreatePagerDutyServiceEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreatePagerDutyServiceEndpointDto));
+                    return;
+                }
+
+                if (res.CreateOpsgenieIntegrationEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateOpsgenieIntegrationEndpointDto));
+                    return;
+                }
+
+                if (res.CreateGrafanaOnCallIntegrationEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateGrafanaOnCallIntegrationEndpointDto));
+                    return;
+                }
+
+                if (res.CreateToolWebhookEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CreateToolWebhookEndpointDto));
                     return;
                 }
 

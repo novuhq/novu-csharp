@@ -20,3 +20,4 @@ var value = ChannelTypeEnum.InApp;
 | `Sms`   | sms     |
 | `Chat`  | chat    |
 | `Push`  | push    |
+| `Tool`  | tool    |

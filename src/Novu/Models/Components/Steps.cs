@@ -40,6 +40,8 @@ namespace Novu.Models.Components
 
         public static StepsType Throttle { get { return new StepsType("throttle"); } }
 
+        public static StepsType Tool { get { return new StepsType("tool"); } }
+
         public static StepsType Custom { get { return new StepsType("custom"); } }
 
         public static StepsType HttpRequest { get { return new StepsType("http_request"); } }
@@ -56,6 +58,7 @@ namespace Novu.Models.Components
                 case "delay": return Delay;
                 case "digest": return Digest;
                 case "throttle": return Throttle;
+                case "tool": return Tool;
                 case "custom": return Custom;
                 case "http_request": return HttpRequest;
                 default: throw new ArgumentException("Invalid value for StepsType");
@@ -107,6 +110,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public ThrottleStepUpsertDto? ThrottleStepUpsertDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ToolStepUpsertDto? ToolStepUpsertDto { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public CustomStepUpsertDto? CustomStepUpsertDto { get; set; }
@@ -196,6 +202,16 @@ namespace Novu.Models.Components
             return res;
         }
 
+        public static Steps CreateTool(ToolStepUpsertDto tool)
+        {
+            StepsType typ = StepsType.Tool;
+            string typStr = StepsType.Tool.ToString();
+            tool.Type = StepTypeEnumExtension.ToEnum(StepsType.Tool.ToString());
+            Steps res = new Steps(typ);
+            res.ToolStepUpsertDto = tool;
+            return res;
+        }
+
         public static Steps CreateCustom(CustomStepUpsertDto custom)
         {
             StepsType typ = StepsType.Custom;
@@ -271,6 +287,11 @@ namespace Novu.Models.Components
                     ThrottleStepUpsertDto throttleStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<ThrottleStepUpsertDto>(jo.ToString());
                     return CreateThrottle(throttleStepUpsertDto);
                 }
+                if (discriminator == StepsType.Tool.ToString())
+                {
+                    ToolStepUpsertDto toolStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<ToolStepUpsertDto>(jo.ToString());
+                    return CreateTool(toolStepUpsertDto);
+                }
                 if (discriminator == StepsType.Custom.ToString())
                 {
                     CustomStepUpsertDto customStepUpsertDto = ResponseBodyDeserializer.DeserializeNotNull<CustomStepUpsertDto>(jo.ToString());
@@ -339,6 +360,12 @@ namespace Novu.Models.Components
                 if (res.ThrottleStepUpsertDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ThrottleStepUpsertDto));
+                    return;
+                }
+
+                if (res.ToolStepUpsertDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ToolStepUpsertDto));
                     return;
                 }
 

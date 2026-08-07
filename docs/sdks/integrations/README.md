@@ -389,7 +389,9 @@ var res = await sdk.Integrations.ListActiveAsync();
 
 ## GenerateConnectOAuthUrl
 
-Generate an OAuth URL that creates a workspace or tenant-level channel connection (Slack workspace install or MS Teams admin consent). 
+Generate an OAuth URL that creates a workspace or tenant-level channel connection (Slack workspace install, MS Teams admin consent, or Webex integration authorization).
+
+
     The generated URL expires after 5 minutes.
 
 ### Example Usage
@@ -411,6 +413,7 @@ var res = await sdk.Integrations.GenerateConnectOAuthUrlAsync(generateConnectOau
             "org-acme"
         ) },
     },
+    ContextHash = "a1b2c3d4e5f6...",
     Scope = new List<string>() {
         "chat:write",
         "chat:write.public",
@@ -454,12 +457,19 @@ Returns a provider-specific URL the subscriber opens to link their chat identity
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Integrations.LinkChannelEndpointAsync(linkChannelEndpointRequestDto: new LinkChannelEndpointRequestDto() {
     IntegrationIdentifier = "telegram-bot",
     SubscriberId = "subscriber-123",
+    Context = new Dictionary<string, LinkChannelEndpointRequestDtoContext>() {
+        { "key", LinkChannelEndpointRequestDtoContext.CreateStr(
+            "org-acme"
+        ) },
+    },
+    ContextHash = "a1b2c3d4e5f6...",
 });
 
 // handle response
@@ -488,7 +498,9 @@ var res = await sdk.Integrations.LinkChannelEndpointAsync(linkChannelEndpointReq
 
 ## GenerateLinkUserOAuthUrl
 
-Generate an OAuth URL that links a specific subscriber to their chat identity (Slack user ID or MS Teams user OID). 
+Generate an OAuth URL that links a specific subscriber to their chat identity (Slack user ID, MS Teams user OID, or Webex person).
+
+
     The generated URL expires after 5 minutes.
 
 ### Example Usage
@@ -510,6 +522,7 @@ var res = await sdk.Integrations.GenerateLinkUserOAuthUrlAsync(generateLinkUserO
             "org-acme"
         ) },
     },
+    ContextHash = "a1b2c3d4e5f6...",
     UserScope = new List<string>() {
         "identity.basic",
     },
@@ -542,7 +555,7 @@ var res = await sdk.Integrations.GenerateLinkUserOAuthUrlAsync(generateLinkUserO
 ## ~~GenerateChatOAuthUrl~~
 
 **Deprecated** — use `POST /integrations/channel-connections/oauth` (connect) or `POST /integrations/channel-endpoints/oauth` (link_user) instead.
-    Generate an OAuth URL for chat integrations like Slack and MS Teams. 
+    Generate an OAuth URL for chat integrations like Slack, MS Teams, and Webex.
     This URL allows subscribers to authorize the integration, enabling the system to send messages 
     through their chat workspace. The generated URL expires after 5 minutes.
 

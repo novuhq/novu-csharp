@@ -55,6 +55,30 @@ namespace Novu.Models.Components
         [JsonProperty("layoutId")]
         public string? LayoutId { get; set; } = null;
 
+        /// <summary>
+        /// Sender name and email overrides for this step.
+        /// </summary>
+        [JsonProperty("from")]
+        public EmailFromControlDto? From { get; set; }
+
+        /// <summary>
+        /// When true, sender name/email use the primary email integration defaults and skip workflow agent defaults.
+        /// </summary>
+        [JsonProperty("useProviderDefaults")]
+        public bool? UseProviderDefaults { get; set; }
+
+        /// <summary>
+        /// Step-level Reply-To override. When unset, inherits the workflow agent reply-to.
+        /// </summary>
+        [JsonProperty("replyTo")]
+        public string? ReplyTo { get; set; }
+
+        /// <summary>
+        /// One-line inbox preview text shown next to the subject.
+        /// </summary>
+        [JsonProperty("preheader")]
+        public string? Preheader { get; set; }
+
         [JsonProperty("additionalProperties")]
         public Dictionary<string, object>? AdditionalProperties { get; set; }
     }

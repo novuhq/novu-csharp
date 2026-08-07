@@ -28,6 +28,8 @@ namespace Novu.Models.Components
         Chat,
         [JsonProperty("push")]
         Push,
+        [JsonProperty("tool")]
+        Tool,
         [JsonProperty("digest")]
         Digest,
         [JsonProperty("trigger")]

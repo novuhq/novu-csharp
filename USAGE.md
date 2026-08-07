@@ -16,8 +16,10 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
             { "text", "string" },
         } },
     },
+    BridgeUrl = "https://your-tunnel.novu.co/api/novu",
     Overrides = new Overrides() {},
-    To = To.CreateStr(
+    AgentId = "support-agent",
+    To = TriggerEventRequestDtoTo.CreateStr(
         "SUBSCRIBER_ID"
     ),
     Actor = Actor.CreateStr(
@@ -72,6 +74,7 @@ var res = await sdk.BroadcastAsync(triggerEventToAllRequestDto: new TriggerEvent
             } },
         },
     },
+    AgentId = "support-agent",
     Actor = TriggerEventToAllRequestDtoActor.CreateSubscriberPayloadDto(
         new SubscriberPayloadDto() {
             FirstName = "John",
@@ -114,7 +117,7 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },
@@ -127,7 +130,7 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },
@@ -140,12 +143,36 @@ var res = await sdk.TriggerBulkAsync(bulkTriggerEventDto: new BulkTriggerEventDt
                 } },
             },
             Overrides = new Overrides() {},
-            To = To.CreateStr(
+            To = TriggerEventRequestDtoTo.CreateStr(
                 "SUBSCRIBER_ID"
             ),
         },
     },
 });
+
+// handle response
+```
+
+### Send an agent reply
+
+```csharp
+using Novu;
+using Novu.Models.Components;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Agents.SendReplyAsync(
+    agentId: "support-agent",
+    agentReplyPayloadDto: new AgentReplyPayloadDto() {
+        ConversationId = "64f5a1c2e8b7a3d9f0c1b2a3",
+        IntegrationIdentifier = "slack-support",
+        Reply = Reply.CreateMarkdownReplyContentDto(
+            new MarkdownReplyContentDto() {
+                Markdown = "**Report ready.** Your weekly summary is attached.",
+            }
+        ),
+    }
+);
 
 // handle response
 ```

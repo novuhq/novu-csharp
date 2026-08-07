@@ -59,6 +59,12 @@ namespace Novu.Models.Components
         public bool? IsTranslationEnabled { get; set; } = false;
 
         /// <summary>
+        /// Optional agent assignment used to route this workflow through an agent's connected channels. Null when unassigned.
+        /// </summary>
+        [JsonProperty("agent")]
+        public WorkflowResponseDtoAgent? Agent { get; set; } = null;
+
+        /// <summary>
         /// Database identifier of the workflow.
         /// </summary>
         [JsonProperty("_id")]

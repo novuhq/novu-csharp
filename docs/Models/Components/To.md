@@ -1,15 +1,9 @@
 # To
 
-The recipients list of people who will receive the notification. Maximum number of recipients can be 100.
+Recipient(s). Accepts a subscriberId string, subscriber object, topic object, or an array of those. When omitted, Novu falls back to the conversation subscriber.
 
 
 ## Supported Types
-
-### ArrayOfTo1
-
-```csharp
-To.CreateArrayOfTo1(/* values here */);
-```
 
 ### Str
 
@@ -17,14 +11,14 @@ To.CreateArrayOfTo1(/* values here */);
 To.CreateStr(/* values here */);
 ```
 
-### SubscriberPayloadDto
+### MapOfAny
 
 ```csharp
-To.CreateSubscriberPayloadDto(/* values here */);
+To.CreateMapOfAny(/* values here */);
 ```
 
-### TopicPayloadDto
+### ArrayOfTo3
 
 ```csharp
-To.CreateTopicPayloadDto(/* values here */);
+To.CreateArrayOfTo3(/* values here */);
 ```

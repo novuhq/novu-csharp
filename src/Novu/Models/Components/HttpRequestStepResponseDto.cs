@@ -29,6 +29,12 @@ namespace Novu.Models.Components
         public HttpRequestStepResponseDtoControlValues? ControlValues { get; set; }
 
         /// <summary>
+        /// Per-provider content overrides keyed by providerId. Stored separately from controlValues and merged over the default body at send time. Keys are ChatProviderIdEnum / ToolProviderIdEnum values (e.g. `slack`, `whatsapp-business`, `pagerduty`).
+        /// </summary>
+        [JsonProperty("providerOverrides")]
+        public Dictionary<string, Dictionary<string, object>>? ProviderOverrides { get; set; } = null;
+
+        /// <summary>
         /// JSON Schema for variables, follows the JSON Schema standard.
         /// </summary>
         [JsonProperty("variables")]

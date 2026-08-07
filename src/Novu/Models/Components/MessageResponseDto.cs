@@ -104,7 +104,7 @@ namespace Novu.Models.Components
         /// Content of the message, can be an email block or a string.
         /// </summary>
         [JsonProperty("content", NullValueHandling = NullValueHandling.Include)]
-        public Content? Content { get; set; } = null;
+        public MessageResponseDtoContent? Content { get; set; } = null;
 
         /// <summary>
         /// Transaction ID associated with the message.

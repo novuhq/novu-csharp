@@ -58,3 +58,9 @@ GeneratePreviewResponseDtoResult.CreateEight(/* values here */);
 ```csharp
 GeneratePreviewResponseDtoResult.CreateNine(/* values here */);
 ```
+
+### Ten
+
+```csharp
+GeneratePreviewResponseDtoResult.CreateTen(/* values here */);
+```

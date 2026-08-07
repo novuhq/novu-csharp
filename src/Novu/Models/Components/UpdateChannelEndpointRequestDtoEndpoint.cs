@@ -32,6 +32,12 @@ namespace Novu.Models.Components
 
         public static UpdateChannelEndpointRequestDtoEndpointType PhoneEndpointDto { get { return new UpdateChannelEndpointRequestDtoEndpointType("PhoneEndpointDto"); } }
 
+        public static UpdateChannelEndpointRequestDtoEndpointType WebexRoomEndpointDto { get { return new UpdateChannelEndpointRequestDtoEndpointType("WebexRoomEndpointDto"); } }
+
+        public static UpdateChannelEndpointRequestDtoEndpointType WebexPersonEndpointDto { get { return new UpdateChannelEndpointRequestDtoEndpointType("WebexPersonEndpointDto"); } }
+
+        public static UpdateChannelEndpointRequestDtoEndpointType ToolWebhookEndpointDto { get { return new UpdateChannelEndpointRequestDtoEndpointType("ToolWebhookEndpointDto"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(UpdateChannelEndpointRequestDtoEndpointType v) { return v.Value; }
         public static UpdateChannelEndpointRequestDtoEndpointType FromString(string v) {
@@ -40,6 +46,9 @@ namespace Novu.Models.Components
                 case "SlackUserEndpointDto": return SlackUserEndpointDto;
                 case "WebhookEndpointDto": return WebhookEndpointDto;
                 case "PhoneEndpointDto": return PhoneEndpointDto;
+                case "WebexRoomEndpointDto": return WebexRoomEndpointDto;
+                case "WebexPersonEndpointDto": return WebexPersonEndpointDto;
+                case "ToolWebhookEndpointDto": return ToolWebhookEndpointDto;
                 default: throw new ArgumentException("Invalid value for UpdateChannelEndpointRequestDtoEndpointType");
             }
         }
@@ -81,6 +90,15 @@ namespace Novu.Models.Components
         [SpeakeasyMetadata("form:explode=true")]
         public PhoneEndpointDto? PhoneEndpointDto { get; set; }
 
+        [SpeakeasyMetadata("form:explode=true")]
+        public WebexRoomEndpointDto? WebexRoomEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public WebexPersonEndpointDto? WebexPersonEndpointDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ToolWebhookEndpointDto? ToolWebhookEndpointDto { get; set; }
+
         public UpdateChannelEndpointRequestDtoEndpointType Type { get; set; }
         public static UpdateChannelEndpointRequestDtoEndpoint CreateSlackChannelEndpointDto(SlackChannelEndpointDto slackChannelEndpointDto)
         {
@@ -112,6 +130,30 @@ namespace Novu.Models.Components
 
             UpdateChannelEndpointRequestDtoEndpoint res = new UpdateChannelEndpointRequestDtoEndpoint(typ);
             res.PhoneEndpointDto = phoneEndpointDto;
+            return res;
+        }
+        public static UpdateChannelEndpointRequestDtoEndpoint CreateWebexRoomEndpointDto(WebexRoomEndpointDto webexRoomEndpointDto)
+        {
+            UpdateChannelEndpointRequestDtoEndpointType typ = UpdateChannelEndpointRequestDtoEndpointType.WebexRoomEndpointDto;
+
+            UpdateChannelEndpointRequestDtoEndpoint res = new UpdateChannelEndpointRequestDtoEndpoint(typ);
+            res.WebexRoomEndpointDto = webexRoomEndpointDto;
+            return res;
+        }
+        public static UpdateChannelEndpointRequestDtoEndpoint CreateWebexPersonEndpointDto(WebexPersonEndpointDto webexPersonEndpointDto)
+        {
+            UpdateChannelEndpointRequestDtoEndpointType typ = UpdateChannelEndpointRequestDtoEndpointType.WebexPersonEndpointDto;
+
+            UpdateChannelEndpointRequestDtoEndpoint res = new UpdateChannelEndpointRequestDtoEndpoint(typ);
+            res.WebexPersonEndpointDto = webexPersonEndpointDto;
+            return res;
+        }
+        public static UpdateChannelEndpointRequestDtoEndpoint CreateToolWebhookEndpointDto(ToolWebhookEndpointDto toolWebhookEndpointDto)
+        {
+            UpdateChannelEndpointRequestDtoEndpointType typ = UpdateChannelEndpointRequestDtoEndpointType.ToolWebhookEndpointDto;
+
+            UpdateChannelEndpointRequestDtoEndpoint res = new UpdateChannelEndpointRequestDtoEndpoint(typ);
+            res.ToolWebhookEndpointDto = toolWebhookEndpointDto;
             return res;
         }
 
@@ -211,6 +253,66 @@ namespace Novu.Models.Components
                     throw;
                 }
 
+                try
+                {
+                    return new UpdateChannelEndpointRequestDtoEndpoint(UpdateChannelEndpointRequestDtoEndpointType.WebexRoomEndpointDto)
+                    {
+                        WebexRoomEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<WebexRoomEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(WebexRoomEndpointDto), new UpdateChannelEndpointRequestDtoEndpoint(UpdateChannelEndpointRequestDtoEndpointType.WebexRoomEndpointDto), "WebexRoomEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new UpdateChannelEndpointRequestDtoEndpoint(UpdateChannelEndpointRequestDtoEndpointType.WebexPersonEndpointDto)
+                    {
+                        WebexPersonEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<WebexPersonEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(WebexPersonEndpointDto), new UpdateChannelEndpointRequestDtoEndpoint(UpdateChannelEndpointRequestDtoEndpointType.WebexPersonEndpointDto), "WebexPersonEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new UpdateChannelEndpointRequestDtoEndpoint(UpdateChannelEndpointRequestDtoEndpointType.ToolWebhookEndpointDto)
+                    {
+                        ToolWebhookEndpointDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<ToolWebhookEndpointDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(ToolWebhookEndpointDto), new UpdateChannelEndpointRequestDtoEndpoint(UpdateChannelEndpointRequestDtoEndpointType.ToolWebhookEndpointDto), "ToolWebhookEndpointDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
                 if (fallbackCandidates.Count > 0)
                 {
                     fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
@@ -264,6 +366,24 @@ namespace Novu.Models.Components
                 if (res.PhoneEndpointDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PhoneEndpointDto));
+                    return;
+                }
+
+                if (res.WebexRoomEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.WebexRoomEndpointDto));
+                    return;
+                }
+
+                if (res.WebexPersonEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.WebexPersonEndpointDto));
+                    return;
+                }
+
+                if (res.ToolWebhookEndpointDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ToolWebhookEndpointDto));
                     return;
                 }
 

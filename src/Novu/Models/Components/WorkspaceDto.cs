@@ -19,5 +19,8 @@ namespace Novu.Models.Components
 
         [JsonProperty("name")]
         public string? Name { get; set; }
+
+        [JsonProperty("botUserId")]
+        public string? BotUserId { get; set; }
     }
 }
