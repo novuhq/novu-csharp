@@ -28,6 +28,8 @@ namespace Novu.Models.Requests
         Chat,
         [JsonProperty("push")]
         Push,
+        [JsonProperty("tool")]
+        Tool,
     }
 
     public static class QueryParamChannelExtension

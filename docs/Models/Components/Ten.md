@@ -1,0 +1,9 @@
+# Ten
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                      | [GeneratePreviewResponseDtoResult10Type](../../Models/Components/GeneratePreviewResponseDtoResult10Type.md) | :heavy_minus_sign:                                                                                          | N/A                                                                                                         |
+| `Preview`                                                                                                   | [DigestRegularOutput](../../Models/Components/DigestRegularOutput.md)                                       | :heavy_minus_sign:                                                                                          | N/A                                                                                                         |

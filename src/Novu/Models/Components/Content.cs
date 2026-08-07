@@ -24,19 +24,19 @@ namespace Novu.Models.Components
 
         public string Value { get; private set; }
 
-        public static ContentType ArrayOfEmailBlock { get { return new ContentType("arrayOfEmailBlock"); } }
+        public static ContentType MarkdownReplyContentDto { get { return new ContentType("MarkdownReplyContentDto"); } }
 
-        public static ContentType Str { get { return new ContentType("str"); } }
+        public static ContentType CardReplyContentDto { get { return new ContentType("CardReplyContentDto"); } }
 
-        public static ContentType Null { get { return new ContentType("null"); } }
+        public static ContentType ToolApprovalCardReplyContentDto { get { return new ContentType("ToolApprovalCardReplyContentDto"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(ContentType v) { return v.Value; }
         public static ContentType FromString(string v) {
             switch(v) {
-                case "arrayOfEmailBlock": return ArrayOfEmailBlock;
-                case "str": return Str;
-                case "null": return Null;
+                case "MarkdownReplyContentDto": return MarkdownReplyContentDto;
+                case "CardReplyContentDto": return CardReplyContentDto;
+                case "ToolApprovalCardReplyContentDto": return ToolApprovalCardReplyContentDto;
                 default: throw new ArgumentException("Invalid value for ContentType");
             }
         }
@@ -56,7 +56,7 @@ namespace Novu.Models.Components
     }
 
     /// <summary>
-    /// Content of the message, can be an email block or a string.
+    /// Replacement content. Exactly one of markdown, card, or toolApprovalCard.
     /// </summary>
     [JsonConverter(typeof(Content.ContentConverter))]
     public class Content
@@ -67,33 +67,38 @@ namespace Novu.Models.Components
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<EmailBlock>? ArrayOfEmailBlock { get; set; }
+        public MarkdownReplyContentDto? MarkdownReplyContentDto { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public string? Str { get; set; }
+        public CardReplyContentDto? CardReplyContentDto { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public ToolApprovalCardReplyContentDto? ToolApprovalCardReplyContentDto { get; set; }
 
         public ContentType Type { get; set; }
-        public static Content CreateArrayOfEmailBlock(List<EmailBlock> arrayOfEmailBlock)
+        public static Content CreateMarkdownReplyContentDto(MarkdownReplyContentDto markdownReplyContentDto)
         {
-            ContentType typ = ContentType.ArrayOfEmailBlock;
+            ContentType typ = ContentType.MarkdownReplyContentDto;
 
             Content res = new Content(typ);
-            res.ArrayOfEmailBlock = arrayOfEmailBlock;
+            res.MarkdownReplyContentDto = markdownReplyContentDto;
             return res;
         }
-        public static Content CreateStr(string str)
+        public static Content CreateCardReplyContentDto(CardReplyContentDto cardReplyContentDto)
         {
-            ContentType typ = ContentType.Str;
+            ContentType typ = ContentType.CardReplyContentDto;
 
             Content res = new Content(typ);
-            res.Str = str;
+            res.CardReplyContentDto = cardReplyContentDto;
             return res;
         }
-
-        public static Content CreateNull()
+        public static Content CreateToolApprovalCardReplyContentDto(ToolApprovalCardReplyContentDto toolApprovalCardReplyContentDto)
         {
-            ContentType typ = ContentType.Null;
-            return new Content(typ);
+            ContentType typ = ContentType.ToolApprovalCardReplyContentDto;
+
+            Content res = new Content(typ);
+            res.ToolApprovalCardReplyContentDto = toolApprovalCardReplyContentDto;
+            return res;
         }
 
         public class ContentConverter : JsonConverter
@@ -106,7 +111,7 @@ namespace Novu.Models.Components
             {
                 if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
                 var json = JRaw.Create(reader).ToString();
@@ -114,14 +119,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new Content(ContentType.ArrayOfEmailBlock)
+                    return new Content(ContentType.MarkdownReplyContentDto)
                     {
-                        ArrayOfEmailBlock = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<EmailBlock>>(json)
+                        MarkdownReplyContentDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<MarkdownReplyContentDto>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<EmailBlock>), new Content(ContentType.ArrayOfEmailBlock), "ArrayOfEmailBlock"));
+                    fallbackCandidates.Add((typeof(MarkdownReplyContentDto), new Content(ContentType.MarkdownReplyContentDto), "MarkdownReplyContentDto"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -132,11 +137,44 @@ namespace Novu.Models.Components
                     throw;
                 }
 
-                if (json[0] == '"' && json[^1] == '"'){
-                    return new Content(ContentType.Str)
+                try
+                {
+                    return new Content(ContentType.CardReplyContentDto)
                     {
-                        Str = json[1..^1]
+                        CardReplyContentDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CardReplyContentDto>(json)
                     };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(CardReplyContentDto), new Content(ContentType.CardReplyContentDto), "CardReplyContentDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Content(ContentType.ToolApprovalCardReplyContentDto)
+                    {
+                        ToolApprovalCardReplyContentDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<ToolApprovalCardReplyContentDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(ToolApprovalCardReplyContentDto), new Content(ContentType.ToolApprovalCardReplyContentDto), "ToolApprovalCardReplyContentDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
 
                 if (fallbackCandidates.Count > 0)
@@ -166,26 +204,26 @@ namespace Novu.Models.Components
             {
                 if (value == null)
                 {
-                    writer.WriteRawValue("null");
-                    return;
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                 }
 
                 Content res = (Content)value;
-                if (ContentType.FromString(res.Type).Equals(ContentType.Null))
+
+                if (res.MarkdownReplyContentDto != null)
                 {
-                    writer.WriteRawValue("null");
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MarkdownReplyContentDto));
                     return;
                 }
 
-                if (res.ArrayOfEmailBlock != null)
+                if (res.CardReplyContentDto != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfEmailBlock));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CardReplyContentDto));
                     return;
                 }
 
-                if (res.Str != null)
+                if (res.ToolApprovalCardReplyContentDto != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ToolApprovalCardReplyContentDto));
                     return;
                 }
 

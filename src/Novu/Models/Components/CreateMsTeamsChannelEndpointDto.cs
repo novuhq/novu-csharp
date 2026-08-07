@@ -28,6 +28,12 @@ namespace Novu.Models.Components
         [JsonProperty("subscriberId")]
         public string SubscriberId { get; set; } = default!;
 
+        /// <summary>
+        /// When true, the subscriber is created if it does not exist yet (existing subscribers are never modified). When false or omitted, an unknown subscriberId returns 404.
+        /// </summary>
+        [JsonProperty("createSubscriberIfMissing")]
+        public bool? CreateSubscriberIfMissing { get; set; } = false;
+
         [JsonProperty("context")]
         public Dictionary<string, CreateMsTeamsChannelEndpointDtoContext>? Context { get; set; }
 

@@ -59,6 +59,12 @@ namespace Novu.Models.Components
         public bool? IsTranslationEnabled { get; set; } = false;
 
         /// <summary>
+        /// Optional agent assignment used to route this workflow through an agent's connected channels. Pass null to clear.
+        /// </summary>
+        [JsonProperty("agent")]
+        public UpdateWorkflowDtoAgent? Agent { get; set; } = null;
+
+        /// <summary>
         /// Workflow ID (allowed only for code-first workflows).
         /// </summary>
         [JsonProperty("workflowId")]
@@ -80,7 +86,7 @@ namespace Novu.Models.Components
         /// Origin of the layout.
         /// </summary>
         [JsonProperty("origin")]
-        public ResourceOriginEnum Origin { get; set; } = default!;
+        public ResourceOriginEnum? Origin { get; set; }
 
         /// <summary>
         /// Severity of the workflow.

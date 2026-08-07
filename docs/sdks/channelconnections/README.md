@@ -28,6 +28,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 ChannelConnectionsControllerListChannelConnectionsRequest req = new ChannelConnectionsControllerListChannelConnectionsRequest() {
     Limit = 10D,
     SubscriberId = "subscriber-123",
+    ConnectionMode = Novu.Models.Requests.ConnectionMode.Shared,
     Channel = Novu.Models.Requests.Channel.Chat,
     ProviderId = ProvidersIdEnum.Slack,
     IntegrationIdentifier = "slack-prod",
@@ -84,14 +85,18 @@ var res = await sdk.ChannelConnections.CreateAsync(createChannelConnectionReques
             "org-acme"
         ) },
     },
-    ConnectionMode = ConnectionMode.Shared,
+    ConnectionMode = Novu.Models.Components.ConnectionMode.Shared,
     IntegrationIdentifier = "slack-prod",
     Workspace = new WorkspaceDto() {
         Id = "T123456",
         Name = "Acme HQ",
+        BotUserId = "U0123456789",
     },
     Auth = new AuthDto() {
         AccessToken = "Workspace access token",
+        RefreshToken = "Workspace refresh token",
+        ExpiresAt = "2026-06-15T12:00:00.000Z",
+        RefreshTokenExpiresAt = "2026-09-15T12:00:00.000Z",
     },
 });
 
@@ -177,9 +182,13 @@ var res = await sdk.ChannelConnections.UpdateAsync(
         Workspace = new WorkspaceDto() {
             Id = "T123456",
             Name = "Acme HQ",
+            BotUserId = "U0123456789",
         },
         Auth = new AuthDto() {
             AccessToken = "Workspace access token",
+            RefreshToken = "Workspace refresh token",
+            ExpiresAt = "2026-06-15T12:00:00.000Z",
+            RefreshTokenExpiresAt = "2026-09-15T12:00:00.000Z",
         },
     }
 );

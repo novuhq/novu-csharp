@@ -35,7 +35,7 @@ namespace Novu.Models.Components
         public bool Enabled { get; set; } = default!;
 
         /// <summary>
-        /// Optional condition using JSON Logic rules.
+        /// Optional JSON Logic condition evaluated against the trigger payload at fan-out time (for example, `{ "var": "payload.tier" }`).
         /// </summary>
         [JsonProperty("condition")]
         public Dictionary<string, object>? Condition { get; set; }

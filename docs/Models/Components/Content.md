@@ -1,18 +1,24 @@
 # Content
 
-Content of the message, can be an email block or a string
+Replacement content. Exactly one of markdown, card, or toolApprovalCard.
 
 
 ## Supported Types
 
-### ArrayOfEmailBlock
+### MarkdownReplyContentDto
 
 ```csharp
-Content.CreateArrayOfEmailBlock(/* values here */);
+Content.CreateMarkdownReplyContentDto(/* values here */);
 ```
 
-### Str
+### CardReplyContentDto
 
 ```csharp
-Content.CreateStr(/* values here */);
+Content.CreateCardReplyContentDto(/* values here */);
+```
+
+### ToolApprovalCardReplyContentDto
+
+```csharp
+Content.CreateToolApprovalCardReplyContentDto(/* values here */);
 ```

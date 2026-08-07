@@ -43,5 +43,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("chat")]
         public bool? Chat { get; set; }
+
+        /// <summary>
+        /// Tool channel preference.
+        /// </summary>
+        [JsonProperty("tool")]
+        public bool? Tool { get; set; }
     }
 }

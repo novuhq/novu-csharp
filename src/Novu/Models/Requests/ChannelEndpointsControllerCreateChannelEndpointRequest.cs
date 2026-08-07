@@ -61,5 +61,40 @@ namespace Novu.Models.Requests
         {
             return RequestBody.CreateTelegramChatEndpointDto;
         }
+
+        public CreateWebexRoomEndpointDto? GetRequestBodyWebexRoom()
+        {
+            return RequestBody.CreateWebexRoomEndpointDto;
+        }
+
+        public CreateWebexPersonEndpointDto? GetRequestBodyWebexPerson()
+        {
+            return RequestBody.CreateWebexPersonEndpointDto;
+        }
+
+        public CreateLineUserEndpointDto? GetRequestBodyLineUser()
+        {
+            return RequestBody.CreateLineUserEndpointDto;
+        }
+
+        public CreatePagerDutyServiceEndpointDto? GetRequestBodyPagerdutyService()
+        {
+            return RequestBody.CreatePagerDutyServiceEndpointDto;
+        }
+
+        public CreateOpsgenieIntegrationEndpointDto? GetRequestBodyOpsgenieIntegration()
+        {
+            return RequestBody.CreateOpsgenieIntegrationEndpointDto;
+        }
+
+        public CreateGrafanaOnCallIntegrationEndpointDto? GetRequestBodyGrafanaOncallIntegration()
+        {
+            return RequestBody.CreateGrafanaOnCallIntegrationEndpointDto;
+        }
+
+        public CreateToolWebhookEndpointDto? GetRequestBodyToolWebhook()
+        {
+            return RequestBody.CreateToolWebhookEndpointDto;
+        }
     }
 }

@@ -55,6 +55,7 @@ namespace Novu.Models.Components
         public static readonly UiComponentEnum SmsBody = new UiComponentEnum("SMS_BODY");
         public static readonly UiComponentEnum ChatBody = new UiComponentEnum("CHAT_BODY");
         public static readonly UiComponentEnum PushBody = new UiComponentEnum("PUSH_BODY");
+        public static readonly UiComponentEnum ToolBody = new UiComponentEnum("TOOL_BODY");
         public static readonly UiComponentEnum PushSubject = new UiComponentEnum("PUSH_SUBJECT");
         public static readonly UiComponentEnum QueryEditor = new UiComponentEnum("QUERY_EDITOR");
         public static readonly UiComponentEnum Data = new UiComponentEnum("DATA");
@@ -104,6 +105,7 @@ namespace Novu.Models.Components
                 ["SMS_BODY"] = SmsBody,
                 ["CHAT_BODY"] = ChatBody,
                 ["PUSH_BODY"] = PushBody,
+                ["TOOL_BODY"] = ToolBody,
                 ["PUSH_SUBJECT"] = PushSubject,
                 ["QUERY_EDITOR"] = QueryEditor,
                 ["DATA"] = Data,

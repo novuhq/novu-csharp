@@ -28,6 +28,8 @@ namespace Novu.Models.Components
         Chat,
         [JsonProperty("push")]
         Push,
+        [JsonProperty("tool")]
+        Tool,
     }
 
     public static class ChannelTypeEnumExtension

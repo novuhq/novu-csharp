@@ -20,3 +20,4 @@ var value = MessagesControllerDeleteMessagesByTransactionIdQueryParamChannel.InA
 | `Sms`   | sms     |
 | `Chat`  | chat    |
 | `Push`  | push    |
+| `Tool`  | tool    |

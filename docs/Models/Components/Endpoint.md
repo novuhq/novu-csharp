@@ -46,3 +46,45 @@ Endpoint.CreateMsTeamsUserEndpointDto(/* values here */);
 ```csharp
 Endpoint.CreateTelegramChatEndpointDto(/* values here */);
 ```
+
+### WebexRoomEndpointDto
+
+```csharp
+Endpoint.CreateWebexRoomEndpointDto(/* values here */);
+```
+
+### WebexPersonEndpointDto
+
+```csharp
+Endpoint.CreateWebexPersonEndpointDto(/* values here */);
+```
+
+### LineUserEndpointDto
+
+```csharp
+Endpoint.CreateLineUserEndpointDto(/* values here */);
+```
+
+### PagerDutyServiceEndpointDto
+
+```csharp
+Endpoint.CreatePagerDutyServiceEndpointDto(/* values here */);
+```
+
+### OpsgenieIntegrationEndpointDto
+
+```csharp
+Endpoint.CreateOpsgenieIntegrationEndpointDto(/* values here */);
+```
+
+### GrafanaOnCallIntegrationEndpointDto
+
+```csharp
+Endpoint.CreateGrafanaOnCallIntegrationEndpointDto(/* values here */);
+```
+
+### ToolWebhookEndpointDto
+
+```csharp
+Endpoint.CreateToolWebhookEndpointDto(/* values here */);
+```

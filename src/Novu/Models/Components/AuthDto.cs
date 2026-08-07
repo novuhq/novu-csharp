@@ -16,5 +16,14 @@ namespace Novu.Models.Components
     {
         [JsonProperty("accessToken")]
         public string AccessToken { get; set; } = default!;
+
+        [JsonProperty("refreshToken")]
+        public string? RefreshToken { get; set; }
+
+        [JsonProperty("expiresAt")]
+        public string? ExpiresAt { get; set; }
+
+        [JsonProperty("refreshTokenExpiresAt")]
+        public string? RefreshTokenExpiresAt { get; set; }
     }
 }

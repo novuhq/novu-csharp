@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class Eight
     {
@@ -19,6 +20,9 @@ namespace Novu.Models.Components
         public GeneratePreviewResponseDtoResult8Type? Type { get; set; }
 
         [JsonProperty("preview")]
-        public DigestRegularOutput? Preview { get; set; }
+        public Dictionary<string, object>? Preview { get; set; }
+
+        [JsonProperty("error")]
+        public PreviewErrorDto? Error { get; set; }
     }
 }

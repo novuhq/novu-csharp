@@ -37,6 +37,12 @@ namespace Novu.Models.Components
         public TriggerEventToAllRequestDtoOverrides? Overrides { get; set; }
 
         /// <summary>
+        /// Override the workflow-assigned agent for this trigger using the public agent identifier. Omit to use the workflow default; pass null to disable agent routing for this execution.
+        /// </summary>
+        [JsonProperty("agentId")]
+        public string? AgentId { get; set; } = null;
+
+        /// <summary>
         /// A unique identifier for this transaction, we will generated a UUID if not provided.
         /// </summary>
         [JsonProperty("transactionId")]

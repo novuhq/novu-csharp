@@ -31,16 +31,28 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
+        /// Optional Bridge Endpoint URL used to route this trigger to a specific Bridge application. Useful during local development when multiple engineers share an organization: set this to your personal tunnel URL from `npx novu@latest dev` (for example via NOVU_BRIDGE_URL) so app-fired triggers hit your machine instead of the environment's synced Bridge URL. Must be a publicly reachable https URL — private or localhost addresses are rejected.
+        /// </summary>
+        [JsonProperty("bridgeUrl")]
+        public string? BridgeUrl { get; set; }
+
+        /// <summary>
         /// This could be used to override provider specific configurations.
         /// </summary>
         [JsonProperty("overrides")]
         public Overrides? Overrides { get; set; }
 
         /// <summary>
+        /// Override the workflow-assigned agent for this trigger using the public agent identifier. Omit to use the workflow default; pass null to disable agent routing for this execution.
+        /// </summary>
+        [JsonProperty("agentId")]
+        public string? AgentId { get; set; } = null;
+
+        /// <summary>
         /// The recipients list of people who will receive the notification. Maximum number of recipients can be 100.
         /// </summary>
         [JsonProperty("to", NullValueHandling = NullValueHandling.Include)]
-        public To To { get; set; } = default!;
+        public TriggerEventRequestDtoTo To { get; set; } = default!;
 
         /// <summary>
         /// A unique identifier for deduplication. If the same **transactionId** is sent again, <br/>

@@ -20,3 +20,4 @@ var value = CreateIntegrationRequestDtoChannel.InApp;
 | `Sms`   | sms     |
 | `Chat`  | chat    |
 | `Push`  | push    |
+| `Tool`  | tool    |

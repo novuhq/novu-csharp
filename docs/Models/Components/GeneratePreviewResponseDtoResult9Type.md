@@ -5,12 +5,12 @@
 ```csharp
 using Novu.Models.Components;
 
-var value = GeneratePreviewResponseDtoResult9Type.Digest;
+var value = GeneratePreviewResponseDtoResult9Type.Delay;
 ```
 
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Digest` | digest   |
+| Name    | Value   |
+| ------- | ------- |
+| `Delay` | delay   |

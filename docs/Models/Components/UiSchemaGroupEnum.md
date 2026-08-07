@@ -23,6 +23,7 @@ var value = UiSchemaGroupEnum.InApp;
 | `Sms`         | SMS           |
 | `Chat`        | CHAT          |
 | `Push`        | PUSH          |
+| `Tool`        | TOOL          |
 | `Skip`        | SKIP          |
 | `Layout`      | LAYOUT        |
 | `HttpRequest` | HTTP_REQUEST  |

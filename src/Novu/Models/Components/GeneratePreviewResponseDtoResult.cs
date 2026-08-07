@@ -42,6 +42,8 @@ namespace Novu.Models.Components
 
         public static GeneratePreviewResponseDtoResultUnionType Nine { get { return new GeneratePreviewResponseDtoResultUnionType("9"); } }
 
+        public static GeneratePreviewResponseDtoResultUnionType Ten { get { return new GeneratePreviewResponseDtoResultUnionType("10"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(GeneratePreviewResponseDtoResultUnionType v) { return v.Value; }
         public static GeneratePreviewResponseDtoResultUnionType FromString(string v) {
@@ -55,6 +57,7 @@ namespace Novu.Models.Components
                 case "7": return Seven;
                 case "8": return Eight;
                 case "9": return Nine;
+                case "10": return Ten;
                 default: throw new ArgumentException("Invalid value for GeneratePreviewResponseDtoResultUnionType");
             }
         }
@@ -110,6 +113,9 @@ namespace Novu.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public Nine? Nine { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public Ten? Ten { get; set; }
 
         public GeneratePreviewResponseDtoResultUnionType Type { get; set; }
         public static GeneratePreviewResponseDtoResult CreateMapOfAny(Dictionary<string, object> mapOfAny)
@@ -184,6 +190,14 @@ namespace Novu.Models.Components
             res.Nine = nine;
             return res;
         }
+        public static GeneratePreviewResponseDtoResult CreateTen(Ten ten)
+        {
+            GeneratePreviewResponseDtoResultUnionType typ = GeneratePreviewResponseDtoResultUnionType.Ten;
+
+            GeneratePreviewResponseDtoResult res = new GeneratePreviewResponseDtoResult(typ);
+            res.Ten = ten;
+            return res;
+        }
 
         public class GeneratePreviewResponseDtoResultConverter : JsonConverter
         {
@@ -203,14 +217,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Eight)
+                    return new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Nine)
                     {
-                        Eight = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Eight>(json)
+                        Nine = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Nine>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Eight), new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Eight), "Eight"));
+                    fallbackCandidates.Add((typeof(Nine), new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Nine), "Nine"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -223,14 +237,14 @@ namespace Novu.Models.Components
 
                 try
                 {
-                    return new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Nine)
+                    return new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Ten)
                     {
-                        Nine = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Nine>(json)
+                        Ten = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Ten>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Nine), new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Nine), "Nine"));
+                    fallbackCandidates.Add((typeof(Ten), new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Ten), "Ten"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -363,6 +377,26 @@ namespace Novu.Models.Components
 
                 try
                 {
+                    return new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Eight)
+                    {
+                        Eight = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Eight>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Eight), new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.Eight), "Eight"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
                     return new GeneratePreviewResponseDtoResult(GeneratePreviewResponseDtoResultUnionType.MapOfAny)
                     {
                         MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
@@ -464,6 +498,12 @@ namespace Novu.Models.Components
                 if (res.Nine != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Nine));
+                    return;
+                }
+
+                if (res.Ten != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Ten));
                     return;
                 }
 

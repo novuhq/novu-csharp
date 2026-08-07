@@ -18,6 +18,8 @@ namespace Novu.Models.Components
     /// </summary>
     public enum GetChannelEndpointResponseDtoProviderId
     {
+        [JsonProperty("anypost")]
+        Anypost,
         [JsonProperty("emailjs")]
         Emailjs,
         [JsonProperty("mailgun")]
@@ -136,6 +138,8 @@ namespace Novu.Models.Components
         IsendproSms,
         [JsonProperty("cm-telecom")]
         CmTelecom,
+        [JsonProperty("ruach-sms")]
+        RuachSms,
         [JsonProperty("fcm")]
         Fcm,
         [JsonProperty("apns")]
@@ -160,6 +164,8 @@ namespace Novu.Models.Components
         Discord,
         [JsonProperty("msteams")]
         Msteams,
+        [JsonProperty("webex-messaging")]
+        WebexMessaging,
         [JsonProperty("mattermost")]
         Mattermost,
         [JsonProperty("ryver")]
@@ -174,18 +180,32 @@ namespace Novu.Models.Components
         RocketChat,
         [JsonProperty("whatsapp-business")]
         WhatsappBusiness,
+        [JsonProperty("line")]
+        Line,
         [JsonProperty("chat-webhook")]
         ChatWebhook,
         [JsonProperty("novu-slack")]
         NovuSlack,
         [JsonProperty("telegram")]
         Telegram,
+        [JsonProperty("sendblue")]
+        Sendblue,
+        [JsonProperty("novu-web-chat")]
+        NovuWebChat,
         [JsonProperty("anthropic")]
         Anthropic,
         [JsonProperty("novu-anthropic")]
         NovuAnthropic,
         [JsonProperty("anthropic-aws")]
         AnthropicAws,
+        [JsonProperty("pagerduty")]
+        Pagerduty,
+        [JsonProperty("opsgenie")]
+        Opsgenie,
+        [JsonProperty("grafana")]
+        Grafana,
+        [JsonProperty("tool-webhook")]
+        ToolWebhook,
     }
 
     public static class GetChannelEndpointResponseDtoProviderIdExtension
