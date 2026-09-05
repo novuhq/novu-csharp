@@ -20,9 +20,10 @@ namespace Novu.Models.Components
     /// Component type for the UI Schema Property.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class UiComponentEnum : IEquatable<UiComponentEnum>
+    public class UiComponentEnum : IEquatable<UiComponentEnum>, IOpenEnum<string>
     {
         public static readonly UiComponentEnum EmailEditorSelect = new UiComponentEnum("EMAIL_EDITOR_SELECT");
+        public static readonly UiComponentEnum ChatEditorSelect = new UiComponentEnum("CHAT_EDITOR_SELECT");
         public static readonly UiComponentEnum LayoutSelect = new UiComponentEnum("LAYOUT_SELECT");
         public static readonly UiComponentEnum BlockEditor = new UiComponentEnum("BLOCK_EDITOR");
         public static readonly UiComponentEnum EmailBody = new UiComponentEnum("EMAIL_BODY");
@@ -73,6 +74,7 @@ namespace Novu.Models.Components
             new Dictionary <string, UiComponentEnum> ()
             {
                 ["EMAIL_EDITOR_SELECT"] = EmailEditorSelect,
+                ["CHAT_EDITOR_SELECT"] = ChatEditorSelect,
                 ["LAYOUT_SELECT"] = LayoutSelect,
                 ["BLOCK_EDITOR"] = BlockEditor,
                 ["EMAIL_BODY"] = EmailBody,
@@ -144,7 +146,7 @@ namespace Novu.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

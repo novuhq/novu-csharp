@@ -248,6 +248,36 @@ var res = await sdk.Agents.SendReplyAsync(
 
 // handle response
 ```
+### Example Usage: humanApprove
+
+<!-- UsageSnippet language="csharp" operationID="AgentReplyController_handleAgentReplyHandler" method="post" path="/v1/agents/{agentId}/reply" example="humanApprove" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Agents.SendReplyAsync(
+    agentId: "support-agent",
+    agentReplyPayloadDto: new AgentReplyPayloadDto() {
+        ConversationId = "64f5a1c2e8b7a3d9f0c1b2a3",
+        IntegrationIdentifier = "slack-support",
+        Signals = new List<Signals>() {
+            Signals.CreateHumanSignalDto(
+                new HumanSignalDto() {
+                    Type = HumanSignalDtoType.Human,
+                    Kind = Kind.Approve,
+                    Prompt = "Deploy v2.4.1 to production?",
+                    RequestId = "hr_7c2e1a3b-4d5f-6789-abcd-ef0123456789",
+                }
+            ),
+        },
+    }
+);
+
+// handle response
+```
 ### Example Usage: markdownReply
 
 <!-- UsageSnippet language="csharp" operationID="AgentReplyController_handleAgentReplyHandler" method="post" path="/v1/agents/{agentId}/reply" example="markdownReply" -->

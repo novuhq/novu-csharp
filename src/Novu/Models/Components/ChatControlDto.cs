@@ -10,6 +10,7 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
 
@@ -26,5 +27,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("body")]
         public string? Body { get; set; }
+
+        /// <summary>
+        /// Type of editor to use for the body. When omitted, inferred from the body: Maily JSON is "block", otherwise "text".
+        /// </summary>
+        [JsonProperty("editorType")]
+        public ChatControlDtoEditorType? EditorType { get; set; }
     }
 }

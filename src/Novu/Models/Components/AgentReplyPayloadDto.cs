@@ -53,7 +53,7 @@ namespace Novu.Models.Components
         public ResolveDto? Resolve { get; set; }
 
         /// <summary>
-        /// Side-effect signals executed during this turn: conversation metadata mutations or Novu workflow triggers.
+        /// Side-effect signals executed during this turn: conversation metadata mutations, Novu workflow triggers, or human-in-the-loop interactions.
         /// </summary>
         [JsonProperty("signals")]
         public List<Signals>? Signals { get; set; }
