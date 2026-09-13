@@ -38,5 +38,23 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("input")]
         public Dictionary<string, object>? Input { get; set; }
+
+        /// <summary>
+        /// Server-minted approve action id. When omitted, self-hosted tool-approval:* is minted at persist.
+        /// </summary>
+        [JsonProperty("approveActionId")]
+        public string? ApproveActionId { get; set; }
+
+        /// <summary>
+        /// Server-minted deny action id. When omitted, self-hosted tool-approval:* is minted at persist.
+        /// </summary>
+        [JsonProperty("denyActionId")]
+        public string? DenyActionId { get; set; }
+
+        /// <summary>
+        /// MCP server name when the gated tool is from an MCP server (for UI labels).
+        /// </summary>
+        [JsonProperty("mcpServerName")]
+        public string? McpServerName { get; set; }
     }
 }
