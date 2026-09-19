@@ -12,6 +12,7 @@ namespace Novu.Models.Errors
     using Newtonsoft.Json;
     using Novu.Utils;
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
 
     public class TopicResponseDtoPayload
@@ -33,6 +34,12 @@ namespace Novu.Models.Errors
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Additional custom data associated with the topic.
+        /// </summary>
+        [JsonProperty("data")]
+        public Dictionary<string, object>? Data { get; set; }
 
         /// <summary>
         /// The date the topic was created.

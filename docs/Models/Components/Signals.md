@@ -26,3 +26,9 @@ Signals.CreateMetadataClearSignalDto(/* values here */);
 ```csharp
 Signals.CreateTriggerSignalDto(/* values here */);
 ```
+
+### HumanSignalDto
+
+```csharp
+Signals.CreateHumanSignalDto(/* values here */);
+```

@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
 
     public class UpdateIntegrationRequestDto
@@ -37,8 +38,18 @@ namespace Novu.Models.Components
         [JsonProperty("check")]
         public bool? Check { get; set; }
 
+        /// <summary>
+        /// Legacy StepFilter conditions. Ignored when `rules` is also set.
+        /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("conditions")]
         public List<StepFilterDto>? Conditions { get; set; }
+
+        /// <summary>
+        /// JSONLogic used at send time to select this integration. Takes precedence over `conditions`.
+        /// </summary>
+        [JsonProperty("rules")]
+        public Dictionary<string, object>? Rules { get; set; } = null;
 
         /// <summary>
         /// Configurations for the integration.
