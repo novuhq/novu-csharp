@@ -10,6 +10,7 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
+    using Novu.Models.Components;
     using Novu.Utils;
     using System.Collections.Generic;
 
@@ -38,5 +39,41 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("input")]
         public Dictionary<string, object>? Input { get; set; }
+
+        /// <summary>
+        /// Server-minted approve action id. When omitted, self-hosted tool-approval:* is minted at persist.
+        /// </summary>
+        [JsonProperty("approveActionId")]
+        public string? ApproveActionId { get; set; }
+
+        /// <summary>
+        /// Server-minted deny action id. When omitted, self-hosted tool-approval:* is minted at persist.
+        /// </summary>
+        [JsonProperty("denyActionId")]
+        public string? DenyActionId { get; set; }
+
+        /// <summary>
+        /// MCP server name when the gated tool is from an MCP server (for UI labels).
+        /// </summary>
+        [JsonProperty("mcpServerName")]
+        public string? McpServerName { get; set; }
+
+        /// <summary>
+        /// Novu subscriberId(s) allowed to settle this tool gate when HITL is enabled.
+        /// </summary>
+        [JsonProperty("to")]
+        public To? To { get; set; }
+
+        /// <summary>
+        /// Attribution label shown on the HITL card.
+        /// </summary>
+        [JsonProperty("from")]
+        public string? From { get; set; }
+
+        /// <summary>
+        /// Seconds until the HITL tool-gate expires.
+        /// </summary>
+        [JsonProperty("ttlSeconds")]
+        public double? TtlSeconds { get; set; }
     }
 }

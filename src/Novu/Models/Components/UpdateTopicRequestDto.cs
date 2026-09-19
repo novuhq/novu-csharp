@@ -11,6 +11,7 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class UpdateTopicRequestDto
     {
@@ -18,6 +19,12 @@ namespace Novu.Models.Components
         /// The display name for the topic.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; } = default!;
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Additional custom data associated with the topic. Flat key-value pairs of scalars (string, number, boolean, string[]). Maximum size: 64KB. Pass null to clear.
+        /// </summary>
+        [JsonProperty("data")]
+        public Dictionary<string, object>? Data { get; set; } = null;
     }
 }

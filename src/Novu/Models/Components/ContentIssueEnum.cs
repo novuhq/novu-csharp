@@ -30,6 +30,10 @@ namespace Novu.Models.Components
         TierLimitExceeded,
         [JsonProperty("UNSUPPORTED_PROPERTY")]
         UnsupportedProperty,
+        [JsonProperty("CHAT_CARD_LIMIT_EXCEEDED")]
+        ChatCardLimitExceeded,
+        [JsonProperty("CHAT_CARD_INVALID_BUTTON")]
+        ChatCardInvalidButton,
     }
 
     public static class ContentIssueEnumExtension
