@@ -1,24 +1,9 @@
 # To
 
-Recipient(s). Accepts a subscriberId string, subscriber object, topic object, or an array of those. When omitted, Novu falls back to the conversation subscriber.
+Novu subscriberId(s) allowed to settle this tool gate when HITL is enabled.
 
 
-## Supported Types
+## Fields
 
-### Str
-
-```csharp
-To.CreateStr(/* values here */);
-```
-
-### MapOfAny
-
-```csharp
-To.CreateMapOfAny(/* values here */);
-```
-
-### ArrayOfTo3
-
-```csharp
-To.CreateArrayOfTo3(/* values here */);
-```
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

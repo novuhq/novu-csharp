@@ -32,5 +32,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = default!;
+
+        /// <summary>
+        /// Blocking severity of the issue. `error` (default when omitted) blocks save; `warning` is a non-blocking notice.
+        /// </summary>
+        [JsonProperty("severity")]
+        public StepIssueSeverityEnum? Severity { get; set; }
     }
 }
