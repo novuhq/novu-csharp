@@ -9,7 +9,7 @@ Agents are conversational assistants that receive inbound messages from connecte
 
 * [Create](#create) - Create an agent
 * [List](#list) - List all agents
-* [SendReply](#sendreply) - Send an agent reply
+* [~~SendReply~~](#sendreply) - Send an agent reply :warning: **Deprecated**
 * [Retrieve](#retrieve) - Retrieve an agent
 * [Update](#update) - Update an agent
 * [Delete](#delete) - Delete an agent
@@ -104,12 +104,11 @@ var res = await sdk.Agents.ListAsync(req);
 | Novu.Models.Errors.ErrorDto            | 500                                    | application/json                       |
 | Novu.Models.Errors.APIException        | 4XX, 5XX                               | \*/\*                                  |
 
-## SendReply
+## ~~SendReply~~
 
-Send a message or side-effect into an existing agent conversation from your backend.
-
-Use this endpoint when you are not using `@novu/framework` (for example Python, Go, PHP, .NET, or Java SDKs),
-or when a server process outside the bridge needs to post into a live conversation.
+**Deprecated** — use `POST /v1/agents/events/ingest` (AgentEvent protocol).
+This route stays live for old `@novu/framework` and existing OpenAPI `sendReply` clients.
+Do not use it for new integrations.
 
 **Message actions**
 - `reply` — markdown, interactive card, or tool-approval card (optional `files`)
@@ -129,6 +128,8 @@ or when a server process outside the bridge needs to post into a live conversati
 
 Returns `{ data: { messageId, platformThreadId } }` when a reply or edit is delivered;
 otherwise `{ data: null }`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage: addReaction
 
@@ -248,6 +249,38 @@ var res = await sdk.Agents.SendReplyAsync(
 
 // handle response
 ```
+### Example Usage: humanApprove
+
+<!-- UsageSnippet language="csharp" operationID="AgentReplyController_handleAgentReplyHandler" method="post" path="/v1/agents/{agentId}/reply" example="humanApprove" -->
+```csharp
+using Novu;
+using Novu.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
+
+var res = await sdk.Agents.SendReplyAsync(
+    agentId: "support-agent",
+    agentReplyPayloadDto: new AgentReplyPayloadDto() {
+        ConversationId = "64f5a1c2e8b7a3d9f0c1b2a3",
+        IntegrationIdentifier = "slack-support",
+        Signals = new List<Signals>() {
+            Signals.CreateHumanSignalDto(
+                new HumanSignalDto() {
+                    Type = HumanSignalDtoType.Human,
+                    Kind = Kind.Approve,
+                    Card = new Dictionary<string, object>() {
+                        { "title", "Deploy v2.4.1 to production?" },
+                    },
+                    RequestId = "hr_7c2e1a3b-4d5f-6789-abcd-ef0123456789",
+                }
+            ),
+        },
+    }
+);
+
+// handle response
+```
 ### Example Usage: markdownReply
 
 <!-- UsageSnippet language="csharp" operationID="AgentReplyController_handleAgentReplyHandler" method="post" path="/v1/agents/{agentId}/reply" example="markdownReply" -->
@@ -292,7 +325,7 @@ var res = await sdk.Agents.SendReplyAsync(
                 new TriggerSignalDto() {
                     Type = TriggerSignalDtoType.Trigger,
                     WorkflowId = "order-shipped",
-                    To = To.CreateStr(
+                    To = TriggerSignalDtoTo.CreateStr(
                         "subscriber-123"
                     ),
                     Payload = new Dictionary<string, object>() {
@@ -458,7 +491,7 @@ var res = await sdk.Agents.SendReplyAsync(
                 new TriggerSignalDto() {
                     Type = TriggerSignalDtoType.Trigger,
                     WorkflowId = "order-shipped",
-                    To = To.CreateStr(
+                    To = TriggerSignalDtoTo.CreateStr(
                         "subscriber-123"
                     ),
                     Payload = new Dictionary<string, object>() {

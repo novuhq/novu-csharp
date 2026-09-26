@@ -76,10 +76,9 @@ namespace Novu
         /// Send an agent reply.
         /// </summary>
         /// <remarks>
-        /// Send a message or side-effect into an existing agent conversation from your backend.<br/>
-        /// <br/>
-        /// Use this endpoint when you are not using `@novu/framework` (for example Python, Go, PHP, .NET, or Java SDKs),<br/>
-        /// or when a server process outside the bridge needs to post into a live conversation.<br/>
+        /// **Deprecated** — use `POST /v1/agents/events/ingest` (AgentEvent protocol).<br/>
+        /// This route stays live for old `@novu/framework` and existing OpenAPI `sendReply` clients.<br/>
+        /// Do not use it for new integrations.<br/>
         /// <br/>
         /// **Message actions**<br/>
         /// - `reply` — markdown, interactive card, or tool-approval card (optional `files`)<br/>
@@ -111,6 +110,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public  Task<AgentReplyControllerHandleAgentReplyHandlerResponse> SendReplyAsync(
             string agentId,
             AgentReplyPayloadDto agentReplyPayloadDto,
@@ -740,10 +740,9 @@ namespace Novu
         /// Send an agent reply.
         /// </summary>
         /// <remarks>
-        /// Send a message or side-effect into an existing agent conversation from your backend.<br/>
-        /// <br/>
-        /// Use this endpoint when you are not using `@novu/framework` (for example Python, Go, PHP, .NET, or Java SDKs),<br/>
-        /// or when a server process outside the bridge needs to post into a live conversation.<br/>
+        /// **Deprecated** — use `POST /v1/agents/events/ingest` (AgentEvent protocol).<br/>
+        /// This route stays live for old `@novu/framework` and existing OpenAPI `sendReply` clients.<br/>
+        /// Do not use it for new integrations.<br/>
         /// <br/>
         /// **Message actions**<br/>
         /// - `reply` — markdown, interactive card, or tool-approval card (optional `files`)<br/>
@@ -775,6 +774,7 @@ namespace Novu
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
         /// <exception cref="ValidationErrorDto">Unprocessable Entity. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public async  Task<AgentReplyControllerHandleAgentReplyHandlerResponse> SendReplyAsync(
             string agentId,
             AgentReplyPayloadDto agentReplyPayloadDto,

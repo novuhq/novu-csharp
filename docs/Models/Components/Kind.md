@@ -1,19 +1,21 @@
 # Kind
 
-Distinguishes delivery integrations from agent-runtime integrations. Defaults to "delivery". Agent integrations do not have a channel.
+Interaction verb queued by `ctx.ask` / `ctx.approve` / `ctx.choose` / `ctx.tell`.
 
 ## Example Usage
 
 ```csharp
 using Novu.Models.Components;
 
-var value = Kind.Delivery;
+var value = Kind.Ask;
 ```
 
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `Delivery` | delivery   |
-| `Agent`    | agent      |
+| Name      | Value     |
+| --------- | --------- |
+| `Ask`     | ask       |
+| `Approve` | approve   |
+| `Choose`  | choose    |
+| `Tell`    | tell      |

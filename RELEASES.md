@@ -169,3 +169,13 @@ Based on:
 - [csharp v3.19.0] .
 ### Releases
 - [NuGet v3.19.0] https://www.nuget.org/packages/Novu/3.19.0 - .
+
+## 2026-09-26 00:14:59
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.799.0 (2.941.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v3.20.0] .
+### Releases
+- [NuGet v3.20.0] https://www.nuget.org/packages/Novu/3.20.0 - .

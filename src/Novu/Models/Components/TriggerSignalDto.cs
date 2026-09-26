@@ -29,7 +29,7 @@ namespace Novu.Models.Components
         /// Recipient(s). Accepts a subscriberId string, subscriber object, topic object, or an array of those. When omitted, Novu falls back to the conversation subscriber.
         /// </summary>
         [JsonProperty("to", NullValueHandling = NullValueHandling.Include)]
-        public To? To { get; set; }
+        public TriggerSignalDtoTo? To { get; set; }
 
         /// <summary>
         /// Arbitrary payload forwarded to the workflow.
