@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System;
     using System.Collections.Generic;
 
     public class IntegrationResponseDto
@@ -62,7 +63,7 @@ namespace Novu.Models.Components
         /// Distinguishes delivery integrations from agent-runtime integrations. Defaults to "delivery". Agent integrations do not have a channel.
         /// </summary>
         [JsonProperty("kind")]
-        public Kind? Kind { get; set; }
+        public IntegrationResponseDtoKind? Kind { get; set; }
 
         /// <summary>
         /// The decrypted credentials required for the integration to function (e.g. provider API keys, signing secrets). Only returned to dashboard/session-token callers; API-key authenticated callers receive the integration metadata without this field to avoid amplifying API-key leaks into provider-credential leaks.
@@ -107,9 +108,16 @@ namespace Novu.Models.Components
         public bool Primary { get; set; } = default!;
 
         /// <summary>
-        /// An array of conditions associated with the integration that may influence its behavior or processing logic.
+        /// Legacy StepFilter conditions. Ignored when `rules` is also set.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("conditions")]
         public List<StepFilterDto>? Conditions { get; set; }
+
+        /// <summary>
+        /// JSONLogic used at send time to select this integration. Takes precedence over `conditions`.
+        /// </summary>
+        [JsonProperty("rules")]
+        public Dictionary<string, object>? Rules { get; set; } = null;
     }
 }

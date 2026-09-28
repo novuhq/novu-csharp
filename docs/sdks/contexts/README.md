@@ -37,6 +37,7 @@ var res = await sdk.Contexts.CreateAsync(createContextRequestDto: new CreateCont
             { "theme", "dark" },
         } },
     },
+    BridgeUrl = "https://tenant-acme.example.com/api/novu",
 });
 
 // handle response
@@ -140,6 +141,7 @@ var res = await sdk.Contexts.UpdateAsync(
                 { "theme", "dark" },
             } },
         },
+        BridgeUrl = "https://tenant-acme.example.com/api/novu",
     }
 );
 

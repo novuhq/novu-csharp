@@ -101,7 +101,7 @@ namespace Novu
         /// Update a topic.
         /// </summary>
         /// <remarks>
-        /// Update a topic name by its unique key identifier **topicKey**
+        /// Update a topic name or data by its unique key identifier **topicKey**
         /// </remarks>
         /// <param name="topicKey">The key identifier of the topic.</param>
         /// <param name="updateTopicRequestDto">A <see cref="UpdateTopicRequestDto"/> parameter.</param>
@@ -944,7 +944,7 @@ namespace Novu
         /// Update a topic.
         /// </summary>
         /// <remarks>
-        /// Update a topic name by its unique key identifier **topicKey**
+        /// Update a topic name or data by its unique key identifier **topicKey**
         /// </remarks>
         /// <param name="topicKey">The key identifier of the topic.</param>
         /// <param name="updateTopicRequestDto">A <see cref="UpdateTopicRequestDto"/> parameter.</param>

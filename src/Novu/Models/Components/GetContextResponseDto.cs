@@ -34,6 +34,12 @@ namespace Novu.Models.Components
         public Dictionary<string, object> Data { get; set; } = default!;
 
         /// <summary>
+        /// Bridge URL override for agent connect, if configured on this context.
+        /// </summary>
+        [JsonProperty("bridgeUrl")]
+        public string? BridgeUrl { get; set; }
+
+        /// <summary>
         /// Creation timestamp.
         /// </summary>
         [JsonProperty("createdAt")]

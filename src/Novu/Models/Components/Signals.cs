@@ -32,6 +32,8 @@ namespace Novu.Models.Components
 
         public static SignalsType TriggerSignalDto { get { return new SignalsType("TriggerSignalDto"); } }
 
+        public static SignalsType HumanSignalDto { get { return new SignalsType("HumanSignalDto"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(SignalsType v) { return v.Value; }
         public static SignalsType FromString(string v) {
@@ -40,6 +42,7 @@ namespace Novu.Models.Components
                 case "MetadataDeleteSignalDto": return MetadataDeleteSignalDto;
                 case "MetadataClearSignalDto": return MetadataClearSignalDto;
                 case "TriggerSignalDto": return TriggerSignalDto;
+                case "HumanSignalDto": return HumanSignalDto;
                 default: throw new ArgumentException("Invalid value for SignalsType");
             }
         }
@@ -78,6 +81,9 @@ namespace Novu.Models.Components
         [SpeakeasyMetadata("form:explode=true")]
         public TriggerSignalDto? TriggerSignalDto { get; set; }
 
+        [SpeakeasyMetadata("form:explode=true")]
+        public HumanSignalDto? HumanSignalDto { get; set; }
+
         public SignalsType Type { get; set; }
         public static Signals CreateMetadataSetSignalDto(MetadataSetSignalDto metadataSetSignalDto)
         {
@@ -109,6 +115,14 @@ namespace Novu.Models.Components
 
             Signals res = new Signals(typ);
             res.TriggerSignalDto = triggerSignalDto;
+            return res;
+        }
+        public static Signals CreateHumanSignalDto(HumanSignalDto humanSignalDto)
+        {
+            SignalsType typ = SignalsType.HumanSignalDto;
+
+            Signals res = new Signals(typ);
+            res.HumanSignalDto = humanSignalDto;
             return res;
         }
 
@@ -208,6 +222,26 @@ namespace Novu.Models.Components
                     throw;
                 }
 
+                try
+                {
+                    return new Signals(SignalsType.HumanSignalDto)
+                    {
+                        HumanSignalDto = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<HumanSignalDto>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(HumanSignalDto), new Signals(SignalsType.HumanSignalDto), "HumanSignalDto"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
                 if (fallbackCandidates.Count > 0)
                 {
                     fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
@@ -261,6 +295,12 @@ namespace Novu.Models.Components
                 if (res.TriggerSignalDto != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TriggerSignalDto));
+                    return;
+                }
+
+                if (res.HumanSignalDto != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.HumanSignalDto));
                     return;
                 }
 
