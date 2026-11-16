@@ -37,6 +37,7 @@ var res = await sdk.Contexts.CreateAsync(createContextRequestDto: new CreateCont
             { "theme", "dark" },
         } },
     },
+    BridgeUrl = "https://tenant-acme.example.com/api/novu",
 });
 
 // handle response
@@ -84,6 +85,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 ContextsControllerListContextsRequest req = new ContextsControllerListContextsRequest() {
     Limit = 10D,
+    Type = "tenant",
     Id = "tenant-prod-123",
     Search = "tenant",
 };
@@ -140,6 +142,7 @@ var res = await sdk.Contexts.UpdateAsync(
                 { "theme", "dark" },
             } },
         },
+        BridgeUrl = "https://tenant-acme.example.com/api/novu",
     }
 );
 

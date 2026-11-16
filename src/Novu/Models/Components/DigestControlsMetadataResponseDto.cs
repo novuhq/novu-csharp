@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to Digest.
         /// </summary>
         [JsonProperty("values")]
-        public DigestControlDto Values { get; set; } = default!;
+        public DigestControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

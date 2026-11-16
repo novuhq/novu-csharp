@@ -10,6 +10,7 @@
 namespace Novu.Models.Requests
 {
     using Novu.Models.Components;
+    using Novu.Models.Requests;
     using Novu.Utils;
 
     public class SubscribersV1ControllerMarkActionAsSeenRequest
@@ -18,7 +19,7 @@ namespace Novu.Models.Requests
         public string MessageId { get; set; } = default!;
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=type")]
-        public object Type { get; set; } = default!;
+        public Models.Requests.Type Type { get; set; } = default!;
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriberId")]
         public string SubscriberId { get; set; } = default!;

@@ -3,7 +3,34 @@
 JSON-serializable value to store.
 
 
-## Fields
+## Supported Types
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+### Str
+
+```csharp
+MetadataSetSignalDtoValue.CreateStr(/* values here */);
+```
+
+### Number
+
+```csharp
+MetadataSetSignalDtoValue.CreateNumber(/* values here */);
+```
+
+### Boolean
+
+```csharp
+MetadataSetSignalDtoValue.CreateBoolean(/* values here */);
+```
+
+### MapOfAny
+
+```csharp
+MetadataSetSignalDtoValue.CreateMapOfAny(/* values here */);
+```
+
+### ArrayOfAny
+
+```csharp
+MetadataSetSignalDtoValue.CreateArrayOfAny(/* values here */);
+```

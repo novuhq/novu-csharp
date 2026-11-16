@@ -27,5 +27,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("uiSchema")]
         public UiSchema? UiSchema { get; set; }
+
+        /// <summary>
+        /// Resolved control values for the step.
+        /// </summary>
+        [JsonProperty("values")]
+        public Dictionary<string, object>? Values { get; set; }
     }
 }

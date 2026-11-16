@@ -14,7 +14,7 @@ namespace Novu.Models.Components
     using System;
 
     /// <summary>
-    /// Origin of the layout.
+    /// Origin of the workflow.
     /// </summary>
     public enum ResourceOriginEnum
     {

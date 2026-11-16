@@ -52,7 +52,7 @@ namespace Novu.Models.Components
         public bool IsTest { get; set; } = default!;
 
         /// <summary>
-        /// Provider ID of the job.
+        /// Provider ID of the execution.
         /// </summary>
         [JsonProperty("providerId")]
         public ProvidersIdEnum? ProviderId { get; set; }

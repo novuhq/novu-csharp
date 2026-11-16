@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to Push.
         /// </summary>
         [JsonProperty("values")]
-        public PushControlDto Values { get; set; } = default!;
+        public PushControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

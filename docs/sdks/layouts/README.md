@@ -192,7 +192,7 @@ Removes a specific layout by its unique identifier **layoutId**
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="LayoutsController__delete" method="delete" path="/v2/layouts/{layoutId}" -->
+<!-- UsageSnippet language="csharp" operationID="LayoutsController_delete" method="delete" path="/v2/layouts/{layoutId}" -->
 ```csharp
 using Novu;
 using Novu.Models.Components;

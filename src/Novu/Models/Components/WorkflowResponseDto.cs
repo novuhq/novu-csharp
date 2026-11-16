@@ -119,7 +119,7 @@ namespace Novu.Models.Components
         public List<WorkflowResponseDtoSteps> Steps { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout.
+        /// Origin of the workflow.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum Origin { get; set; } = default!;
@@ -140,7 +140,7 @@ namespace Novu.Models.Components
         /// Runtime issues for workflow creation and update.
         /// </summary>
         [JsonProperty("issues")]
-        public Dictionary<string, RuntimeIssueDto>? Issues { get; set; }
+        public Dictionary<string, List<RuntimeIssueDto>>? Issues { get; set; }
 
         /// <summary>
         /// Timestamp of the last workflow trigger.
@@ -155,7 +155,7 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? PayloadExample { get; set; } = null;
 
         /// <summary>
-        /// Severity of the workflow.
+        /// Override the severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum Severity { get; set; } = default!;

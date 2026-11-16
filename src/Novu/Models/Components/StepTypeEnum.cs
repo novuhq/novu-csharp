@@ -14,7 +14,7 @@ namespace Novu.Models.Components
     using System;
 
     /// <summary>
-    /// Type of the step.
+    /// Channels of the notification.
     /// </summary>
     public enum StepTypeEnum
     {

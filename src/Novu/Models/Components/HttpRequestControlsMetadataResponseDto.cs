@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to HTTP Request step.
         /// </summary>
         [JsonProperty("values")]
-        public HttpRequestControlDto Values { get; set; } = default!;
+        public HttpRequestControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

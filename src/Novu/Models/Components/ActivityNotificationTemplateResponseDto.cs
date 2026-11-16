@@ -29,7 +29,7 @@ namespace Novu.Models.Components
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout.
+        /// Origin of the workflow.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum? Origin { get; set; }

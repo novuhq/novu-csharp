@@ -9,12 +9,282 @@
 #nullable enable
 namespace Novu.Models.Components
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using Novu.Utils;
+    using System;
+    using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
+
+    public class MetadataSetSignalDtoValueType
+    {
+        private MetadataSetSignalDtoValueType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+
+        public static MetadataSetSignalDtoValueType Str { get { return new MetadataSetSignalDtoValueType("str"); } }
+
+        public static MetadataSetSignalDtoValueType Number { get { return new MetadataSetSignalDtoValueType("number"); } }
+
+        public static MetadataSetSignalDtoValueType Boolean { get { return new MetadataSetSignalDtoValueType("boolean"); } }
+
+        public static MetadataSetSignalDtoValueType MapOfAny { get { return new MetadataSetSignalDtoValueType("mapOfAny"); } }
+
+        public static MetadataSetSignalDtoValueType ArrayOfAny { get { return new MetadataSetSignalDtoValueType("arrayOfAny"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(MetadataSetSignalDtoValueType v) { return v.Value; }
+        public static MetadataSetSignalDtoValueType FromString(string v) {
+            switch(v) {
+                case "str": return Str;
+                case "number": return Number;
+                case "boolean": return Boolean;
+                case "mapOfAny": return MapOfAny;
+                case "arrayOfAny": return ArrayOfAny;
+                default: throw new ArgumentException("Invalid value for MetadataSetSignalDtoValueType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((MetadataSetSignalDtoValueType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
 
     /// <summary>
     /// JSON-serializable value to store.
     /// </summary>
+    [JsonConverter(typeof(MetadataSetSignalDtoValue.MetadataSetSignalDtoValueConverter))]
     public class MetadataSetSignalDtoValue
     {
+        public MetadataSetSignalDtoValue(MetadataSetSignalDtoValueType type)
+        {
+            Type = type;
+        }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public string? Str { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public double? Number { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public bool? Boolean { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public Dictionary<string, object>? MapOfAny { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public List<object>? ArrayOfAny { get; set; }
+
+        public MetadataSetSignalDtoValueType Type { get; set; }
+        public static MetadataSetSignalDtoValue CreateStr(string str)
+        {
+            MetadataSetSignalDtoValueType typ = MetadataSetSignalDtoValueType.Str;
+
+            MetadataSetSignalDtoValue res = new MetadataSetSignalDtoValue(typ);
+            res.Str = str;
+            return res;
+        }
+        public static MetadataSetSignalDtoValue CreateNumber(double number)
+        {
+            MetadataSetSignalDtoValueType typ = MetadataSetSignalDtoValueType.Number;
+
+            MetadataSetSignalDtoValue res = new MetadataSetSignalDtoValue(typ);
+            res.Number = number;
+            return res;
+        }
+        public static MetadataSetSignalDtoValue CreateBoolean(bool boolean)
+        {
+            MetadataSetSignalDtoValueType typ = MetadataSetSignalDtoValueType.Boolean;
+
+            MetadataSetSignalDtoValue res = new MetadataSetSignalDtoValue(typ);
+            res.Boolean = boolean;
+            return res;
+        }
+        public static MetadataSetSignalDtoValue CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
+            MetadataSetSignalDtoValueType typ = MetadataSetSignalDtoValueType.MapOfAny;
+
+            MetadataSetSignalDtoValue res = new MetadataSetSignalDtoValue(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+        public static MetadataSetSignalDtoValue CreateArrayOfAny(List<object> arrayOfAny)
+        {
+            MetadataSetSignalDtoValueType typ = MetadataSetSignalDtoValueType.ArrayOfAny;
+
+            MetadataSetSignalDtoValue res = new MetadataSetSignalDtoValue(typ);
+            res.ArrayOfAny = arrayOfAny;
+            return res;
+        }
+
+        public class MetadataSetSignalDtoValueConverter : JsonConverter
+        {
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(MetadataSetSignalDtoValue);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    throw new InvalidOperationException("Received unexpected null JSON value");
+                }
+
+                var json = JRaw.Create(reader).ToString();
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                if (json[0] == '"' && json[^1] == '"'){
+                    return new MetadataSetSignalDtoValue(MetadataSetSignalDtoValueType.Str)
+                    {
+                        Str = json[1..^1]
+                    };
+                }
+
+                try
+                {
+                    var converted = Convert.ToDouble(json);
+                    return new MetadataSetSignalDtoValue(MetadataSetSignalDtoValueType.Number)
+                    {
+                        Number = converted
+                    };
+                }
+                catch (System.FormatException)
+                {
+                    // try next option
+                }
+
+                try
+                {
+                    var converted = Convert.ToBoolean(json);
+                    return new MetadataSetSignalDtoValue(MetadataSetSignalDtoValueType.Boolean)
+                    {
+                        Boolean = converted
+                    };
+                }
+                catch (System.FormatException)
+                {
+                    // try next option
+                }
+
+                try
+                {
+                    return new MetadataSetSignalDtoValue(MetadataSetSignalDtoValueType.MapOfAny)
+                    {
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new MetadataSetSignalDtoValue(MetadataSetSignalDtoValueType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new MetadataSetSignalDtoValue(MetadataSetSignalDtoValueType.ArrayOfAny)
+                    {
+                        ArrayOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<object>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(List<object>), new MetadataSetSignalDtoValue(MetadataSetSignalDtoValueType.ArrayOfAny), "ArrayOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
+                }
+
+                MetadataSetSignalDtoValue res = (MetadataSetSignalDtoValue)value;
+
+                if (res.Str != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
+                    return;
+                }
+
+                if (res.Number != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
+                    return;
+                }
+
+                if (res.Boolean != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
+                    return;
+                }
+
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    return;
+                }
+
+                if (res.ArrayOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfAny));
+                    return;
+                }
+
+                throw new InvalidOperationException(
+                    "Could not serialize union to JSON: no variant value was set. " +
+                    "Construct this union using one of the Create* factory methods.");
+            }
+
+        }
+
     }
 }

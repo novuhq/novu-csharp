@@ -70,10 +70,20 @@ Create an integration for the current environment the user is based on the API k
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.Integrations.CreateAsync(createIntegrationRequestDto: new CreateIntegrationRequestDto() {});
+var res = await sdk.Integrations.CreateAsync(createIntegrationRequestDto: new CreateIntegrationRequestDto() {
+    Rules = new Dictionary<string, object>() {
+        { "==", new List<object>() {
+            new Dictionary<string, object>() {
+                { "var", "context.tenant.id" },
+            },
+            "acme",
+        } },
+    },
+});
 
 // handle response
 ```
@@ -110,12 +120,22 @@ Update an integration by its unique key identifier **integrationId**.
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Integrations.UpdateAsync(
     integrationId: "<id>",
-    updateIntegrationRequestDto: new UpdateIntegrationRequestDto() {}
+    updateIntegrationRequestDto: new UpdateIntegrationRequestDto() {
+        Rules = new Dictionary<string, object>() {
+            { "==", new List<object>() {
+                new Dictionary<string, object>() {
+                    { "var", "context.tenant.id" },
+                },
+                "acme",
+            } },
+        },
+    }
 );
 
 // handle response

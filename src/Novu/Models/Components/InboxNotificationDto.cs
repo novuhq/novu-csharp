@@ -124,9 +124,6 @@ namespace Novu.Models.Components
         [JsonProperty("secondaryAction")]
         public InboxActionDto? SecondaryAction { get; set; }
 
-        /// <summary>
-        /// Channel type through which the message is sent.
-        /// </summary>
         [JsonProperty("channelType")]
         public ChannelTypeEnum ChannelType { get; set; } = default!;
 
@@ -155,7 +152,7 @@ namespace Novu.Models.Components
         public NotificationWorkflowDto? Workflow { get; set; }
 
         /// <summary>
-        /// Severity of the workflow.
+        /// Override the severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum Severity { get; set; } = default!;

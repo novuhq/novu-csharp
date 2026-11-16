@@ -53,10 +53,10 @@ namespace Novu.Models.Components
         /// Custom data associated with the workflow.
         /// </summary>
         [JsonProperty("data")]
-        public GetPreferencesResponseDtoData? Data { get; set; }
+        public Dictionary<string, object>? Data { get; set; }
 
         /// <summary>
-        /// Severity of the workflow.
+        /// Override the severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum Severity { get; set; } = default!;

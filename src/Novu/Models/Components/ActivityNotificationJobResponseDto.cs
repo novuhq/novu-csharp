@@ -56,10 +56,10 @@ namespace Novu.Models.Components
         /// Optional payload for the job.
         /// </summary>
         [JsonProperty("payload")]
-        public Payload? Payload { get; set; }
+        public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
-        /// Provider ID of the job.
+        /// Provider ID of the execution.
         /// </summary>
         [JsonProperty("providerId")]
         public ProvidersIdEnum ProviderId { get; set; } = default!;

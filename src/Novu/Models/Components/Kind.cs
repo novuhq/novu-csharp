@@ -14,14 +14,18 @@ namespace Novu.Models.Components
     using System;
 
     /// <summary>
-    /// Distinguishes delivery integrations from agent-runtime integrations. Defaults to "delivery". Agent integrations do not have a channel.
+    /// Interaction verb queued by `ctx.ask` / `ctx.approve` / `ctx.choose` / `ctx.tell`.
     /// </summary>
     public enum Kind
     {
-        [JsonProperty("delivery")]
-        Delivery,
-        [JsonProperty("agent")]
-        Agent,
+        [JsonProperty("ask")]
+        Ask,
+        [JsonProperty("approve")]
+        Approve,
+        [JsonProperty("choose")]
+        Choose,
+        [JsonProperty("tell")]
+        Tell,
     }
 
     public static class KindExtension

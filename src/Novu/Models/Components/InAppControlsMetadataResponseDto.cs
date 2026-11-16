@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to In-App.
         /// </summary>
         [JsonProperty("values")]
-        public InAppControlDto Values { get; set; } = default!;
+        public Values? Values { get; set; }
     }
 }

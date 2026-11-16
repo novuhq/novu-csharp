@@ -33,7 +33,7 @@ namespace Novu.Models.Components
         /// <summary>
         /// JSON-serializable value to store.
         /// </summary>
-        [JsonProperty("value")]
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
         public MetadataSetSignalDtoValue Value { get; set; } = default!;
     }
 }

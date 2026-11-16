@@ -16,7 +16,7 @@ namespace Novu.Models.Components
     public class MessageButton
     {
         /// <summary>
-        /// Type of button for the action result.
+        /// Type of the button.
         /// </summary>
         [JsonProperty("type")]
         public ButtonTypeEnum Type { get; set; } = default!;

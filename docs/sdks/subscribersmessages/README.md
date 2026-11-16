@@ -30,7 +30,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 SubscribersV1ControllerMarkActionAsSeenRequest req = new SubscribersV1ControllerMarkActionAsSeenRequest() {
     MessageId = "<id>",
-    Type = "<value>",
+    Type = Novu.Models.Requests.Type.Primary,
     SubscriberId = "<id>",
     MarkMessageActionAsSeenDto = new MarkMessageActionAsSeenDto() {
         Status = MarkMessageActionAsSeenDtoStatus.Pending,

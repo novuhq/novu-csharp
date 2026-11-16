@@ -74,7 +74,7 @@ namespace Novu.Models.Components
         public NotificationGroup? NotificationGroup { get; set; }
 
         [JsonProperty("data")]
-        public WorkflowResponseData? Data { get; set; }
+        public Dictionary<string, object>? Data { get; set; }
 
         [JsonProperty("workflowIntegrationStatus")]
         public WorkflowIntegrationStatus? WorkflowIntegrationStatus { get; set; }

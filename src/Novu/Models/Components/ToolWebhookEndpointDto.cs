@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class ToolWebhookEndpointDto
     {
@@ -25,7 +26,7 @@ namespace Novu.Models.Components
         /// Optional headers (e.g. auth tokens) sent with every request to this webhook. Header values are encrypted at rest on the channel endpoint (`endpoint` field).
         /// </summary>
         [JsonProperty("headers")]
-        public Headers? Headers { get; set; }
+        public Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// Optional HTTP method override for this webhook. Defaults to the integration-level method.

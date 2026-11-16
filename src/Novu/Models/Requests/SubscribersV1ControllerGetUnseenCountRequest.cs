@@ -10,11 +10,18 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class SubscribersV1ControllerGetUnseenCountRequest
     {
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriberId")]
         public string SubscriberId { get; set; } = default!;
+
+        /// <summary>
+        /// Identifier for the feed. Can be a single string or an array of strings.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=feedId")]
+        public List<string>? FeedId { get; set; }
 
         /// <summary>
         /// Indicates whether to count seen notifications.

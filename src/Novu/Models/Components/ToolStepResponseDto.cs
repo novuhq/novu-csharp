@@ -35,6 +35,12 @@ namespace Novu.Models.Components
         public Dictionary<string, Dictionary<string, object>>? ProviderOverrides { get; set; } = null;
 
         /// <summary>
+        /// Per-integration content overrides keyed by providerId, then by integration identifier. Each entry is merged over the matching providerOverrides entry, only for sends through that integration. Trigger-time overrides still take precedence. Entries whose integration does not exist in the environment are kept but not applied.
+        /// </summary>
+        [JsonProperty("integrationOverrides")]
+        public Dictionary<string, Dictionary<string, Dictionary<string, object>>>? IntegrationOverrides { get; set; } = null;
+
+        /// <summary>
         /// JSON Schema for variables, follows the JSON Schema standard.
         /// </summary>
         [JsonProperty("variables")]
@@ -65,13 +71,13 @@ namespace Novu.Models.Components
         public string Slug { get; set; } = default!;
 
         /// <summary>
-        /// Type of the step.
+        /// Channels of the notification.
         /// </summary>
         [JsonProperty("type")]
         public StepTypeEnum Type { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout.
+        /// Origin of the workflow.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum Origin { get; set; } = default!;

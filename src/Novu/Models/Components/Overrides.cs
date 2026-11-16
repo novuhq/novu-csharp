@@ -74,7 +74,7 @@ namespace Novu.Models.Components
         public string? LayoutIdentifier { get; set; }
 
         /// <summary>
-        /// Severity of the workflow.
+        /// Override the severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum? Severity { get; set; }

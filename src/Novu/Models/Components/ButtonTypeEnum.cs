@@ -14,7 +14,7 @@ namespace Novu.Models.Components
     using System;
 
     /// <summary>
-    /// Type of button for the action result.
+    /// Type of the button.
     /// </summary>
     public enum ButtonTypeEnum
     {

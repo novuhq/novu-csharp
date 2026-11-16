@@ -18,7 +18,7 @@ namespace Novu.Models.Components
         /// First name of the subscriber.
         /// </summary>
         [JsonProperty("firstName")]
-        public string? FirstName { get; set; }
+        public string? FirstName { get; set; } = null;
 
         /// <summary>
         /// External unique identifier of the subscriber.
@@ -36,18 +36,18 @@ namespace Novu.Models.Components
         /// Last name of the subscriber.
         /// </summary>
         [JsonProperty("lastName")]
-        public string? LastName { get; set; }
+        public string? LastName { get; set; } = null;
 
         /// <summary>
         /// Email address of the subscriber.
         /// </summary>
         [JsonProperty("email")]
-        public string? Email { get; set; }
+        public string? Email { get; set; } = null;
 
         /// <summary>
         /// Phone number of the subscriber.
         /// </summary>
         [JsonProperty("phone")]
-        public string? Phone { get; set; }
+        public string? Phone { get; set; } = null;
     }
 }

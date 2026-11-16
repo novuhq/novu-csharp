@@ -83,13 +83,13 @@ namespace Novu.Models.Components
         public PreferencesRequestDto Preferences { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout.
+        /// Origin of the workflow.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum? Origin { get; set; }
 
         /// <summary>
-        /// Severity of the workflow.
+        /// Override the severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum? Severity { get; set; }

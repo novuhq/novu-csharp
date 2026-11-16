@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to Delay.
         /// </summary>
         [JsonProperty("values")]
-        public DelayControlDto Values { get; set; } = default!;
+        public DelayControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

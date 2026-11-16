@@ -12,6 +12,7 @@ namespace Novu.Models.Components
     using Newtonsoft.Json;
     using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class MarkMessageActionAsSeenDto
     {
@@ -25,6 +26,6 @@ namespace Novu.Models.Components
         /// Message action payload.
         /// </summary>
         [JsonProperty("payload")]
-        public MarkMessageActionAsSeenDtoPayload? Payload { get; set; }
+        public Dictionary<string, object>? Payload { get; set; }
     }
 }

@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to Chat.
         /// </summary>
         [JsonProperty("values")]
-        public ChatControlDto Values { get; set; } = default!;
+        public ChatControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

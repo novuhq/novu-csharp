@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to Throttle.
         /// </summary>
         [JsonProperty("values")]
-        public ThrottleControlDto Values { get; set; } = default!;
+        public ThrottleControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

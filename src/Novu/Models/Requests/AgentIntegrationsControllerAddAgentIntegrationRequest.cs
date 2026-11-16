@@ -17,6 +17,9 @@ namespace Novu.Models.Requests
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=identifier")]
         public string Identifier { get; set; } = default!;
 
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=Novu-Analytics-Source")]
+        public string NovuAnalyticsSource { get; set; } = default!;
+
         /// <summary>
         /// A header for idempotency purposes.
         /// </summary>

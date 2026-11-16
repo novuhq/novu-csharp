@@ -38,7 +38,7 @@ namespace Novu.Models.Components
         /// Control variables.
         /// </summary>
         [JsonProperty("controlVariables")]
-        public ControlVariables? ControlVariables { get; set; }
+        public Dictionary<string, object>? ControlVariables { get; set; }
 
         /// <summary>
         /// Metadata for the workflow step.

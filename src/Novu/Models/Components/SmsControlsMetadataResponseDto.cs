@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to SMS.
         /// </summary>
         [JsonProperty("values")]
-        public SmsControlDto Values { get; set; } = default!;
+        public SmsControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

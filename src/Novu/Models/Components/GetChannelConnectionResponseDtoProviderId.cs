@@ -64,6 +64,8 @@ namespace Novu.Models.Components
         Braze,
         [JsonProperty("novu-email-agent")]
         NovuEmailAgent,
+        [JsonProperty("agent-email-inbox")]
+        AgentEmailInbox,
         [JsonProperty("nexmo")]
         Nexmo,
         [JsonProperty("plivo")]
@@ -162,6 +164,8 @@ namespace Novu.Models.Components
         Slack,
         [JsonProperty("discord")]
         Discord,
+        [JsonProperty("google-chat")]
+        GoogleChat,
         [JsonProperty("msteams")]
         Msteams,
         [JsonProperty("webex-messaging")]
@@ -190,6 +194,8 @@ namespace Novu.Models.Components
         Telegram,
         [JsonProperty("sendblue")]
         Sendblue,
+        [JsonProperty("photon-imessage")]
+        PhotonImessage,
         [JsonProperty("novu-web-chat")]
         NovuWebChat,
         [JsonProperty("anthropic")]

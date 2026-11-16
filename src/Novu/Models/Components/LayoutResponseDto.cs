@@ -71,7 +71,7 @@ namespace Novu.Models.Components
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Origin of the layout.
+        /// Origin of the workflow.
         /// </summary>
         [JsonProperty("origin")]
         public ResourceOriginEnum Origin { get; set; } = default!;
