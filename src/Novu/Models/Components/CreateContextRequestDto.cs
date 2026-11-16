@@ -32,5 +32,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("data")]
         public Dictionary<string, object>? Data { get; set; }
+
+        /// <summary>
+        /// Optional bridge URL override for agent connect. When an inbound agent turn resolves this context, its bridge call is routed here instead of the agent default bridge URL. Must be a publicly reachable URL.
+        /// </summary>
+        [JsonProperty("bridgeUrl")]
+        public string? BridgeUrl { get; set; }
     }
 }

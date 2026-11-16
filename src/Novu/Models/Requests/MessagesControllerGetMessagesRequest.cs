@@ -15,9 +15,6 @@ namespace Novu.Models.Requests
 
     public class MessagesControllerGetMessagesRequest
     {
-        /// <summary>
-        /// Channel type through which the message is sent.
-        /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=channel")]
         public ChannelTypeEnum? Channel { get; set; }
 

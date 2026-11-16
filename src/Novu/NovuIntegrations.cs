@@ -31,11 +31,12 @@ namespace Novu
         /// Create a link between an agent (by identifier) and an integration (by integration **identifier**, not the internal _id).
         /// </remarks>
         /// <param name="identifier">Description not available.</param>
+        /// <param name="novuAnalyticsSource">Description not available.</param>
         /// <param name="addAgentIntegrationRequestDto">A <see cref="AddAgentIntegrationRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="AgentIntegrationsControllerAddAgentIntegrationResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">One of <paramref name="identifier"/> or <paramref name="addAgentIntegrationRequestDto"/> is null.</exception>
+        /// <exception cref="ArgumentNullException">One of <paramref name="identifier"/>, <paramref name="novuAnalyticsSource"/> or <paramref name="addAgentIntegrationRequestDto"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
@@ -43,6 +44,7 @@ namespace Novu
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public  Task<AgentIntegrationsControllerAddAgentIntegrationResponse> CreateAsync(
             string identifier,
+            string novuAnalyticsSource,
             AddAgentIntegrationRequestDto addAgentIntegrationRequestDto,
             string? idempotencyKey = null,
             RetryConfig? retryConfig = null
@@ -139,11 +141,12 @@ namespace Novu
         /// Create a link between an agent (by identifier) and an integration (by integration **identifier**, not the internal _id).
         /// </remarks>
         /// <param name="identifier">Description not available.</param>
+        /// <param name="novuAnalyticsSource">Description not available.</param>
         /// <param name="addAgentIntegrationRequestDto">A <see cref="AddAgentIntegrationRequestDto"/> parameter.</param>
         /// <param name="idempotencyKey">A header for idempotency purposes.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="AgentIntegrationsControllerAddAgentIntegrationResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">One of <paramref name="identifier"/> or <paramref name="addAgentIntegrationRequestDto"/> is null.</exception>
+        /// <exception cref="ArgumentNullException">One of <paramref name="identifier"/>, <paramref name="novuAnalyticsSource"/> or <paramref name="addAgentIntegrationRequestDto"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 405, 409, 413, 414, 415 or 500 response.</exception>
@@ -151,17 +154,20 @@ namespace Novu
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public async  Task<AgentIntegrationsControllerAddAgentIntegrationResponse> CreateAsync(
             string identifier,
+            string novuAnalyticsSource,
             AddAgentIntegrationRequestDto addAgentIntegrationRequestDto,
             string? idempotencyKey = null,
             RetryConfig? retryConfig = null
         )
         {
             if (identifier == null) throw new ArgumentNullException(nameof(identifier));
+            if (novuAnalyticsSource == null) throw new ArgumentNullException(nameof(novuAnalyticsSource));
             if (addAgentIntegrationRequestDto == null) throw new ArgumentNullException(nameof(addAgentIntegrationRequestDto));
 
             var request = new AgentIntegrationsControllerAddAgentIntegrationRequest()
             {
                 Identifier = identifier,
+                NovuAnalyticsSource = novuAnalyticsSource,
                 AddAgentIntegrationRequestDto = addAgentIntegrationRequestDto,
                 IdempotencyKey = idempotencyKey,
             };

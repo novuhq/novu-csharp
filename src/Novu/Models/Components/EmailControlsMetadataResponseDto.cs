@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to Email.
         /// </summary>
         [JsonProperty("values")]
-        public EmailControlDto Values { get; set; } = default!;
+        public EmailControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

@@ -25,12 +25,18 @@ namespace Novu.Models.Components
         /// Cross-platform emoji name for resolved conversations (e.g. "check", "star"). Set to null to disable. Default: "check"
         /// </summary>
         [JsonProperty("reactionOnResolved")]
-        public ReactionOnResolved? ReactionOnResolved { get; set; } = null;
+        public string? ReactionOnResolved { get; set; } = "check";
 
         /// <summary>
         /// Controls whether the agent accepts inbound messages from senders not yet linked to a subscriber, across all channels. "open" on managed agents auto-creates a lightweight subscriber so the agent can reply; on custom-code / self-hosted agents, the turn is forwarded to the bridge with a null subscriber. "restricted" rejects unknown senders with a managed denial reply (any runtime). Optional on update (partial PATCH). Persisted agents always have a value — managed create defaults to "open"; self-hosted create defaults to "restricted".
         /// </summary>
         [JsonProperty("subscriberAccess")]
         public SubscriberAccess? SubscriberAccess { get; set; }
+
+        /// <summary>
+        /// How the agent replies in shared rooms. "mention_only" requires an @mention in every shared room. "auto_reply" replies to unmentioned follow-ups in a nested Slack or Teams thread after the agent has joined. "smart" behaves like auto_reply while one person is talking to the agent in a thread, then requires an @mention there once someone else or another agent joins, or the incumbent @mentions another teammate. Create persists "smart". An omitted field on existing agents still means "auto_reply". DMs always reply without a mention. Optional on update (partial PATCH).
+        /// </summary>
+        [JsonProperty("replyPolicy")]
+        public ReplyPolicy? ReplyPolicy { get; set; } = Novu.Models.Components.ReplyPolicy.AutoReply;
     }
 }

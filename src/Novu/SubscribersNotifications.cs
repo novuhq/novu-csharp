@@ -51,13 +51,10 @@ namespace Novu
         /// <remarks>
         /// This API is deprecated, use v2 API instead. Retrieve unseen in-app notifications count for a subscriber by its unique key identifier **subscriberId**.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
-        /// <param name="seen">Indicates whether to count seen notifications.</param>
-        /// <param name="limit">The maximum number of notifications to return.</param>
-        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="request">A <see cref="SubscribersV1ControllerGetUnseenCountRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerGetUnseenCountResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="subscriberId"/> is null.</exception>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
@@ -65,10 +62,7 @@ namespace Novu
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public  Task<SubscribersV1ControllerGetUnseenCountResponse> UnseenCountAsync(
-            string subscriberId,
-            bool? seen = false,
-            double? limit = 100D,
-            string? idempotencyKey = null,
+            SubscribersV1ControllerGetUnseenCountRequest request,
             RetryConfig? retryConfig = null
         );
     }
@@ -335,13 +329,10 @@ namespace Novu
         /// <remarks>
         /// This API is deprecated, use v2 API instead. Retrieve unseen in-app notifications count for a subscriber by its unique key identifier **subscriberId**.
         /// </remarks>
-        /// <param name="subscriberId">Description not available.</param>
-        /// <param name="seen">Indicates whether to count seen notifications.</param>
-        /// <param name="limit">The maximum number of notifications to return.</param>
-        /// <param name="idempotencyKey">A header for idempotency purposes.</param>
+        /// <param name="request">A <see cref="SubscribersV1ControllerGetUnseenCountRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="SubscribersV1ControllerGetUnseenCountResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="subscriberId"/> is null.</exception>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="ErrorDto">Bad Request. Thrown when the API returns a 400, 401, 403, 404, 405, 409, 413, 414, 415 or 500 response.</exception>
@@ -349,22 +340,11 @@ namespace Novu
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         [Obsolete("This method will be removed in a future release, please migrate away from it as soon as possible")]
         public async  Task<SubscribersV1ControllerGetUnseenCountResponse> UnseenCountAsync(
-            string subscriberId,
-            bool? seen = false,
-            double? limit = 100D,
-            string? idempotencyKey = null,
+            SubscribersV1ControllerGetUnseenCountRequest request,
             RetryConfig? retryConfig = null
         )
         {
-            if (subscriberId == null) throw new ArgumentNullException(nameof(subscriberId));
-
-            var request = new SubscribersV1ControllerGetUnseenCountRequest()
-            {
-                SubscriberId = subscriberId,
-                Seen = seen,
-                Limit = limit,
-                IdempotencyKey = idempotencyKey,
-            };
+            if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/subscribers/{subscriberId}/notifications/unseen", request, null);

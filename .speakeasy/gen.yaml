@@ -15,6 +15,7 @@ generation:
     sharedErrorComponentsApr2025: false
     sharedNestedComponentsJan2026: false
     nameOverrideFeb2026: false
+    openSingleValueEnumsOct2026: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
@@ -29,10 +30,11 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 3.19.0
+  version: 3.20.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
+  bodyVariantOverloads: false
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
   disableNamespacePascalCasingApr2024: true
@@ -42,6 +44,8 @@ csharp:
   enableSourceLink: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: false
   httpClientPrefix: Speakeasy
   imports:
     option: openapi
@@ -60,10 +64,13 @@ csharp:
   outputModelSuffix: output
   packageName: Novu
   packageTags: ""
+  partialTypes: false
   presenceAwareJsonSerialization: false
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
+  schemaValidation: strict
   sourceDirectory: src
   targetFramework: dotnetVersion
+  unionImplicitConversions: false
   unionStrategy: left-to-right
   useNodatime: true

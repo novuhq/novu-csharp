@@ -11,6 +11,7 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class WorkflowPreferenceDto
     {
@@ -25,5 +26,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("readOnly")]
         public bool? ReadOnly { get; set; } = false;
+
+        /// <summary>
+        /// JsonLogic condition controlling whether this preference applies.
+        /// </summary>
+        [JsonProperty("condition")]
+        public Dictionary<string, object>? Condition { get; set; }
     }
 }

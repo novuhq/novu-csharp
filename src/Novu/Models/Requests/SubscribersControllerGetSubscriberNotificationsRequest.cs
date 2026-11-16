@@ -31,6 +31,12 @@ namespace Novu.Models.Requests
         public double? Offset { get; set; }
 
         /// <summary>
+        /// Filter by workflow tags. Returns notifications that have any of the given tags.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=tags")]
+        public List<string>? Tags { get; set; }
+
+        /// <summary>
         /// Filter by read/unread state.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=read")]

@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to Custom step.
         /// </summary>
         [JsonProperty("values")]
-        public CustomControlDto Values { get; set; } = default!;
+        public CustomControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

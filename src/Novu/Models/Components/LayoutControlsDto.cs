@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Email layout controls.
         /// </summary>
         [JsonProperty("values")]
-        public LayoutControlValuesDto Values { get; set; } = default!;
+        public Dictionary<string, object>? Values { get; set; }
     }
 }

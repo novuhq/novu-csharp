@@ -15,7 +15,7 @@ namespace Novu.Models.Components
     public class DiffEnvironmentRequestDto
     {
         /// <summary>
-        /// Source environment ID to compare from. Defaults to the Development environment if not provided.
+        /// Source environment ID. Only the Development environment is currently supported; defaults to Development if omitted.
         /// </summary>
         [JsonProperty("sourceEnvironmentId")]
         public string? SourceEnvironmentId { get; set; }

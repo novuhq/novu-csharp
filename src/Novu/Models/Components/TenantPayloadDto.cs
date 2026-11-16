@@ -10,8 +10,8 @@
 namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
-    using Novu.Models.Components;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class TenantPayloadDto
     {
@@ -22,6 +22,6 @@ namespace Novu.Models.Components
         public string? Name { get; set; }
 
         [JsonProperty("data")]
-        public Data? Data { get; set; }
+        public Dictionary<string, object>? Data { get; set; }
     }
 }

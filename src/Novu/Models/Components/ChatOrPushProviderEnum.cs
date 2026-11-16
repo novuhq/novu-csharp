@@ -22,6 +22,8 @@ namespace Novu.Models.Components
         Slack,
         [JsonProperty("discord")]
         Discord,
+        [JsonProperty("google-chat")]
+        GoogleChat,
         [JsonProperty("msteams")]
         Msteams,
         [JsonProperty("webex-messaging")]
@@ -50,6 +52,8 @@ namespace Novu.Models.Components
         Telegram,
         [JsonProperty("sendblue")]
         Sendblue,
+        [JsonProperty("photon-imessage")]
+        PhotonImessage,
         [JsonProperty("novu-web-chat")]
         NovuWebChat,
         [JsonProperty("fcm")]

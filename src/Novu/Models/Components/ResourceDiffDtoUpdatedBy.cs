@@ -40,5 +40,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("externalId")]
         public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// User email, used when the user has no name.
+        /// </summary>
+        [JsonProperty("email")]
+        public string? Email { get; set; } = null;
     }
 }

@@ -50,5 +50,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("exceedsPlanLimit")]
         public bool? ExceedsPlanLimit { get; set; }
+
+        /// <summary>
+        /// `true` when at least one person has linked their chat on this integration (it has a channel endpoint), so the agent has someone to reach there. Only returned by the list, and only when true. Email has no channel endpoints, so it never carries the flag.
+        /// </summary>
+        [JsonProperty("hasChannelEndpoints")]
+        public bool? HasChannelEndpoints { get; set; }
     }
 }

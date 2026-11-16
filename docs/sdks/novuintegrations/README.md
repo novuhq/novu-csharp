@@ -24,6 +24,7 @@ var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Agents.Integrations.CreateAsync(
     identifier: "<value>",
+    novuAnalyticsSource: "<value>",
     addAgentIntegrationRequestDto: new AddAgentIntegrationRequestDto() {}
 );
 
@@ -35,6 +36,7 @@ var res = await sdk.Agents.Integrations.CreateAsync(
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `Identifier`                                                                              | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `NovuAnalyticsSource`                                                                     | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
 | `AddAgentIntegrationRequestDto`                                                           | [AddAgentIntegrationRequestDto](../../Models/Components/AddAgentIntegrationRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
 | `IdempotencyKey`                                                                          | *string*                                                                                  | :heavy_minus_sign:                                                                        | A header for idempotency purposes                                                         |
 

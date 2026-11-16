@@ -68,12 +68,17 @@ Creates a new topic if it does not exist, or updates an existing topic if it alr
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Topics.CreateAsync(createUpdateTopicRequestDto: new CreateUpdateTopicRequestDto() {
     Key = "task:12345",
     Name = "Task Title",
+    Data = new Dictionary<string, object>() {
+        { "category", "product" },
+        { "priority", 1 },
+    },
 });
 
 // handle response
@@ -143,7 +148,7 @@ var res = await sdk.Topics.GetAsync(topicKey: "<value>");
 
 ## Update
 
-Update a topic name by its unique key identifier **topicKey**
+Update a topic name or data by its unique key identifier **topicKey**
 
 ### Example Usage
 
@@ -151,6 +156,7 @@ Update a topic name by its unique key identifier **topicKey**
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
@@ -158,6 +164,10 @@ var res = await sdk.Topics.UpdateAsync(
     topicKey: "<value>",
     updateTopicRequestDto: new UpdateTopicRequestDto() {
         Name = "Updated Topic Name",
+        Data = new Dictionary<string, object>() {
+            { "category", "product" },
+            { "priority", 1 },
+        },
     }
 );
 

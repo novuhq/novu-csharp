@@ -51,7 +51,7 @@ namespace Novu.Models.Requests
         public bool? IncludeCursor { get; set; }
 
         /// <summary>
-        /// Email address of the subscriber to filter results.
+        /// Exact email address of the subscriber. The value must match the stored email field.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=email")]
         public string? Email { get; set; }
@@ -63,7 +63,7 @@ namespace Novu.Models.Requests
         public string? Name { get; set; }
 
         /// <summary>
-        /// Phone number of the subscriber to filter results.
+        /// Exact phone number of the subscriber. The value must match the stored phone field.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=phone")]
         public string? Phone { get; set; }

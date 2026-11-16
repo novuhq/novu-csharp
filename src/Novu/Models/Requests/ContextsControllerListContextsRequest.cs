@@ -51,6 +51,12 @@ namespace Novu.Models.Requests
         public bool? IncludeCursor { get; set; }
 
         /// <summary>
+        /// Filter contexts by type.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
+        public string? Type { get; set; }
+
+        /// <summary>
         /// Filter contexts by id.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=id")]

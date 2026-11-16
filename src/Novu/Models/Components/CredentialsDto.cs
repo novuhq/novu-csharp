@@ -24,6 +24,18 @@ namespace Novu.Models.Components
         [JsonProperty("secretKey")]
         public string? SecretKey { get; set; }
 
+        /// <summary>
+        /// Email webhook: how `secretKey` is interpreted when signing webhook calls. `text` signs with the raw UTF-8 bytes; `base64`/`hex` decode it to binary first (e.g. for AWS KMS).
+        /// </summary>
+        [JsonProperty("hmacSecretKeyEncoding")]
+        public HmacSecretKeyEncoding? HmacSecretKeyEncoding { get; set; }
+
+        /// <summary>
+        /// Twilio: `apiKey` authenticates with `apiKey` (API Key SID) and `secretKey` (API Key Secret) on behalf of `accountSid`. When omitted, `token` (Auth Token) is used.
+        /// </summary>
+        [JsonProperty("authMethod")]
+        public AuthMethod? AuthMethod { get; set; }
+
         [JsonProperty("domain")]
         public string? Domain { get; set; }
 
@@ -92,6 +104,9 @@ namespace Novu.Models.Components
 
         [JsonProperty("ipPoolName")]
         public string? IpPoolName { get; set; }
+
+        [JsonProperty("configurationSetName")]
+        public string? ConfigurationSetName { get; set; }
 
         [JsonProperty("apiKeyRequestHeader")]
         public string? ApiKeyRequestHeader { get; set; }

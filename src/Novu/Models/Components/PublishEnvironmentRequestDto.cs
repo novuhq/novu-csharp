@@ -17,7 +17,7 @@ namespace Novu.Models.Components
     public class PublishEnvironmentRequestDto
     {
         /// <summary>
-        /// Source environment ID to sync from. Defaults to the Development environment if not provided.
+        /// Source environment ID. Only the Development environment is currently supported; defaults to Development if omitted.
         /// </summary>
         [JsonProperty("sourceEnvironmentId")]
         public string? SourceEnvironmentId { get; set; }

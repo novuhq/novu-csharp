@@ -13,9 +13,6 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
 
-    /// <summary>
-    /// Channel type through which the message is sent.
-    /// </summary>
     public enum ChannelTypeEnum
     {
         [JsonProperty("in_app")]

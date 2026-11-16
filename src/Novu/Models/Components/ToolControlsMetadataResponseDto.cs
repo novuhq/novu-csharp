@@ -32,6 +32,6 @@ namespace Novu.Models.Components
         /// Control values specific to Tool.
         /// </summary>
         [JsonProperty("values")]
-        public ToolControlDto Values { get; set; } = default!;
+        public ToolControlsMetadataResponseDtoValues? Values { get; set; }
     }
 }

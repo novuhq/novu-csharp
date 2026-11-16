@@ -15,9 +15,6 @@ namespace Novu.Models.Components
 
     public class SubscriberPreferenceOverrideDto
     {
-        /// <summary>
-        /// Channel type through which the message is sent.
-        /// </summary>
         [JsonProperty("channel")]
         public ChannelTypeEnum Channel { get; set; } = default!;
 

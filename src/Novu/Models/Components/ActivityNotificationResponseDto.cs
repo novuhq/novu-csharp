@@ -70,6 +70,9 @@ namespace Novu.Models.Components
         [JsonProperty("updatedAt")]
         public string? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Channels of the notification.
+        /// </summary>
         [JsonProperty("channels")]
         public List<StepTypeEnum>? Channels { get; set; }
 
@@ -122,7 +125,7 @@ namespace Novu.Models.Components
         public List<ActivityTopicDto>? Topics { get; set; }
 
         /// <summary>
-        /// Severity of the workflow.
+        /// Override the severity of the workflow.
         /// </summary>
         [JsonProperty("severity")]
         public SeverityLevelEnum? Severity { get; set; }

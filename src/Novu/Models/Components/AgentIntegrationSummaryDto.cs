@@ -30,9 +30,6 @@ namespace Novu.Models.Components
         [JsonProperty("identifier")]
         public string Identifier { get; set; } = default!;
 
-        /// <summary>
-        /// Channel type through which the message is sent.
-        /// </summary>
         [JsonProperty("channel")]
         public ChannelTypeEnum? Channel { get; set; }
 

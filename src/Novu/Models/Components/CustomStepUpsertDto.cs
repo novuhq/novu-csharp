@@ -34,7 +34,7 @@ namespace Novu.Models.Components
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Type of the step.
+        /// Channels of the notification.
         /// </summary>
         [JsonProperty("type")]
         public StepTypeEnum Type { get; set; } = default!;

@@ -11,6 +11,7 @@ namespace Novu.Models.Components
 {
     using Newtonsoft.Json;
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class TopicDto
     {
@@ -31,5 +32,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Additional custom data associated with the topic.
+        /// </summary>
+        [JsonProperty("data")]
+        public Dictionary<string, object>? Data { get; set; }
     }
 }

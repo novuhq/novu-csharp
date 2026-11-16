@@ -23,7 +23,7 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
-        /// Type of button for the action result.
+        /// Type of the button.
         /// </summary>
         [JsonProperty("type")]
         public ButtonTypeEnum? Type { get; set; }

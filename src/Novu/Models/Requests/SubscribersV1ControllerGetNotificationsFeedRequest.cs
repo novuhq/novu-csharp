@@ -10,6 +10,7 @@
 namespace Novu.Models.Requests
 {
     using Novu.Utils;
+    using System.Collections.Generic;
 
     public class SubscribersV1ControllerGetNotificationsFeedRequest
     {
@@ -21,6 +22,9 @@ namespace Novu.Models.Requests
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public double? Limit { get; set; } = 10D;
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=feedIdentifier")]
+        public List<string>? FeedIdentifier { get; set; }
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=read")]
         public bool? Read { get; set; }

@@ -1,6 +1,6 @@
 # ProvidersIdEnum
 
-Provider ID of the job
+Provider ID of the execution
 
 ## Example Usage
 
@@ -38,6 +38,7 @@ var value = ProvidersIdEnum.Anypost;
 | `EmailWebhook`     | email-webhook      |
 | `Braze`            | braze              |
 | `NovuEmailAgent`   | novu-email-agent   |
+| `AgentEmailInbox`  | agent-email-inbox  |
 | `Nexmo`            | nexmo              |
 | `Plivo`            | plivo              |
 | `Sms77`            | sms77              |
@@ -87,6 +88,7 @@ var value = ProvidersIdEnum.Anypost;
 | `Novu`             | novu               |
 | `Slack`            | slack              |
 | `Discord`          | discord            |
+| `GoogleChat`       | google-chat        |
 | `Msteams`          | msteams            |
 | `WebexMessaging`   | webex-messaging    |
 | `Mattermost`       | mattermost         |
@@ -101,6 +103,7 @@ var value = ProvidersIdEnum.Anypost;
 | `NovuSlack`        | novu-slack         |
 | `Telegram`         | telegram           |
 | `Sendblue`         | sendblue           |
+| `PhotonImessage`   | photon-imessage    |
 | `NovuWebChat`      | novu-web-chat      |
 | `Anthropic`        | anthropic          |
 | `NovuAnthropic`    | novu-anthropic     |

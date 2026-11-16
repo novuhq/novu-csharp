@@ -69,26 +69,24 @@ This API is deprecated, use v2 API instead. Retrieve unseen in-app notifications
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using Novu.Models.Requests;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
-var res = await sdk.SubscribersNotifications.UnseenCountAsync(
-    subscriberId: "<id>",
-    seen: false,
-    limit: 100D
-);
+SubscribersV1ControllerGetUnseenCountRequest req = new SubscribersV1ControllerGetUnseenCountRequest() {
+    SubscriberId = "<id>",
+};
+
+var res = await sdk.SubscribersNotifications.UnseenCountAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                      | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `SubscriberId`                                 | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `Seen`                                         | *bool*                                         | :heavy_minus_sign:                             | Indicates whether to count seen notifications. |
-| `Limit`                                        | *double*                                       | :heavy_minus_sign:                             | The maximum number of notifications to return. |
-| `IdempotencyKey`                               | *string*                                       | :heavy_minus_sign:                             | A header for idempotency purposes              |
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                             | [SubscribersV1ControllerGetUnseenCountRequest](../../Models/Requests/SubscribersV1ControllerGetUnseenCountRequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 
 ### Response
 

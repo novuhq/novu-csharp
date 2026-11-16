@@ -118,9 +118,6 @@ namespace Novu.Models.Components
         [JsonProperty("subject")]
         public string? Subject { get; set; }
 
-        /// <summary>
-        /// Channel type through which the message is sent.
-        /// </summary>
         [JsonProperty("channel")]
         public ChannelTypeEnum Channel { get; set; } = default!;
 
