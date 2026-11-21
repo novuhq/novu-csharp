@@ -101,6 +101,12 @@ namespace Novu.Models.Components
         public Dictionary<string, object>? Payload { get; set; }
 
         /// <summary>
+        /// Trigger overrides of the notification, as passed to the original workflow trigger.
+        /// </summary>
+        [JsonProperty("overrides")]
+        public Dictionary<string, object>? Overrides { get; set; }
+
+        /// <summary>
         /// Tags associated with the notification.
         /// </summary>
         [JsonProperty("tags")]
