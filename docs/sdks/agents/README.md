@@ -640,12 +640,27 @@ Update an agent by its external identifier.
 ```csharp
 using Novu;
 using Novu.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new NovuSDK(secretKey: "YOUR_SECRET_KEY_HERE");
 
 var res = await sdk.Agents.UpdateAsync(
     identifier: "<value>",
-    updateAgentRequestDto: new UpdateAgentRequestDto() {}
+    updateAgentRequestDto: new UpdateAgentRequestDto() {
+        Behavior = new AgentBehaviorDto() {
+            AccessRule = new Dictionary<string, object>() {
+                { "in", new List<object>() {
+                    new Dictionary<string, object>() {
+                        { "var", "context.tenant.data.plan" },
+                    },
+                    new List<object>() {
+                        "pro",
+                        "enterprise",
+                    },
+                } },
+            },
+        },
+    }
 );
 
 // handle response
