@@ -458,6 +458,10 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 * [BulkUpdate](docs/sdks/preferences/README.md#bulkupdate) - Bulk update subscriber preferences
 
+#### [Subscribers.Tokens](docs/sdks/tokens/README.md)
+
+* [Create](docs/sdks/tokens/README.md#create) - Create a subscriber login token
+
 #### [Subscribers.Topics](docs/sdks/novutopics/README.md)
 
 * [List](docs/sdks/novutopics/README.md#list) - Retrieve subscriber subscriptions
@@ -729,9 +733,9 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 149 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 149 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 149 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 150 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 150 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 150 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

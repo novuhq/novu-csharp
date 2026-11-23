@@ -33,6 +33,8 @@ namespace Novu
         public IPreferences Preferences { get; }
 
         public INovuTopics Topics { get; }
+
+        public ITokens Tokens { get; }
         /// <summary>
         /// Search subscribers.
         /// </summary>
@@ -302,12 +304,19 @@ namespace Novu
         /// </summary>
         public INovuTopics Topics { get; private set; }
 
+        /// <summary>
+        /// Tokens SubSDK.
+        /// <see cref="ITokens"/>
+        /// </summary>
+        public ITokens Tokens { get; private set; }
+
         public Subscribers(SDKConfig config)
         {
             SDKConfiguration = config;
             Notifications = new NovuNotifications(SDKConfiguration);
             Preferences = new Preferences(SDKConfiguration);
             Topics = new NovuTopics(SDKConfiguration);
+            Tokens = new Tokens(SDKConfiguration);
         }
 
         /// <summary>
