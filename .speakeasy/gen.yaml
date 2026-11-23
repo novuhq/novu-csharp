@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 3.20.0
+  version: 3.21.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -61,6 +61,7 @@ csharp:
   maxMethodParams: 4
   methodArguments: infer-optional-args
   multipartArrayFormat: legacy
+  optionalNullableScope: all
   outputModelSuffix: output
   packageName: Novu
   packageTags: ""
