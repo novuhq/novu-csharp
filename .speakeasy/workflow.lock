@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:5f0428ab103a5d70f03a852ae8672682d5e26520ef1e2cb8fda9556d620792da
         sourceBlobDigest: sha256:9f981bc2d3d8ad189a53c0ebcd12b04847a48c40ebda76851b9342db5e0266a8
         codeSamplesNamespace: novu-api-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:577bd576eaeeed8b58ce1c2d67311a0ad5c54132f91f088eeb3009238bdcaa13
+        codeSamplesRevisionDigest: sha256:837fa02a8763a96f867e26248c808efa14f344832fc6ec3322d374eea0207bca
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

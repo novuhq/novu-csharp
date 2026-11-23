@@ -5,15 +5,15 @@ management:
   docVersion: 3.20.0
   speakeasyVersion: 1.811.0
   generationVersion: 2.968.1
-  releaseVersion: 3.21.0
-  configChecksum: 2aaf47f8c1c86c65357517a39161819d
+  releaseVersion: 3.21.1
+  configChecksum: 47ba2c60b30ec09cbe16287868868047
   repoURL: https://github.com/novuhq/novu-csharp.git
   installationURL: https://github.com/novuhq/novu-csharp
   published: true
 persistentEdits:
-  generation_id: bc345544-78ef-47f6-896a-a86f2a75aff8
-  pristine_commit_hash: fc9be2611098cac2a39dd64f7c8203a6e06ca763
-  pristine_tree_hash: 6dc25fccba7cb9da5120bcb6bd4d43efacdf03a4
+  generation_id: b118fa01-139c-4815-81a4-aac9dd8c9e20
+  pristine_commit_hash: 81691d1ec274be958c4c5a6bae4ac550040d10cd
+  pristine_tree_hash: 41b54656e2c005a9917e1e1e3e8279a1bd60a316
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -8948,8 +8948,8 @@ trackedFiles:
     pristine_git_object: 1dc893afdc347828f792d4e1c8430a94eb8f7fb0
   src/Novu/Novu.csproj:
     id: d1fe7f089c20
-    last_write_checksum: sha1:126934d14c039417c0abfc8bf6d8e74500007ce8
-    pristine_git_object: 0cf39f831fe848696532a72df9b63c13a41da4e6
+    last_write_checksum: sha1:82a071c5a84a9a0568be54722a785e05fed9f29f
+    pristine_git_object: 2db4e8e112c1da0affcd74b07a57bfa13b0905e4
   src/Novu/NovuIntegrations.cs:
     id: 998cbe569494
     last_write_checksum: sha1:afcfa509b247318c2054836c6c8f02f61ba13a61
@@ -8976,8 +8976,8 @@ trackedFiles:
     pristine_git_object: 235f93173aeff21698497791dbd0c7f70b1646fb
   src/Novu/SDKConfig.cs:
     id: 228eb68fa757
-    last_write_checksum: sha1:04ea0689f5f8016ffa00d7597d227d75cad39146
-    pristine_git_object: b1af215b931bd2a3eeb5a576e5c38abf2fce8d85
+    last_write_checksum: sha1:b8dae50ad1f5fd16fa77f6867e26a9cf34d2a959
+    pristine_git_object: e61b7b21db1b171b4e4649c1baaa5bbb39401f5d
   src/Novu/Steps.cs:
     id: 5b24d842ca7a
     last_write_checksum: sha1:4cc3d5ccfd5186be128973d04e6517b19ca21153
@@ -9028,8 +9028,8 @@ trackedFiles:
     pristine_git_object: 9c9aae9055f608027cf99f2fded32e149f0b6f36
   src/Novu/Utils/Constants.cs:
     id: 47b034209815
-    last_write_checksum: sha1:5332fd3141b6cb21aaf99a69ccf49da5138c738d
-    pristine_git_object: 9ca8236413e739fe25c6ab4a6fd4cfda8e809ea8
+    last_write_checksum: sha1:505c1ceb8b45fb9c3e8036e8f4889b98b43ad650
+    pristine_git_object: 43211edf2ff0576f3e3ed941b53652ff6b15fdf0
   src/Novu/Utils/DecimalStrConverter.cs:
     id: c5c1dbe2ffcb
     last_write_checksum: sha1:e9b291cdfe54d763cfec70c8b9b83e59e0de7a5b
@@ -11852,7 +11852,6 @@ examples:
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Novu.Agents.Create()`:  `response.behavior` **Changed** (Breaking ⚠️)\n* `Novu.Agents.List()`:  `response.data[].Behavior` **Changed** (Breaking ⚠️)\n* `Novu.Agents.Retrieve()`:  `response.behavior` **Changed** (Breaking ⚠️)\n* `Novu.Agents.Update()`: \n  *  `request.updateAgentRequestDto.Behavior` **Changed**\n  *  `response.behavior` **Changed** (Breaking ⚠️)\n* `Novu.Agents.UpdateBridge()`:  `response.behavior` **Changed** (Breaking ⚠️)\n* `Novu.Subscribers.Tokens.Create()`: **Added**\n* `Novu.Notifications.Get()`:  `response.data[].Overrides` **Added**\n* `Novu.Notifications.Retrieve()`:  `response.overrides` **Added**\n"
 generatedFiles:
   - .gitattributes
   - NUGET.md
