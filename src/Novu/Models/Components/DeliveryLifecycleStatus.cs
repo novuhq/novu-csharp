@@ -13,34 +13,39 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
 
-    public enum DigestTimedConfigDtoWeekDays
+    /// <summary>
+    /// Workflow run delivery lifecycle status.
+    /// </summary>
+    public enum DeliveryLifecycleStatus
     {
-        [JsonProperty("monday")]
-        Monday,
-        [JsonProperty("tuesday")]
-        Tuesday,
-        [JsonProperty("wednesday")]
-        Wednesday,
-        [JsonProperty("thursday")]
-        Thursday,
-        [JsonProperty("friday")]
-        Friday,
-        [JsonProperty("saturday")]
-        Saturday,
-        [JsonProperty("sunday")]
-        Sunday,
+        [JsonProperty("pending")]
+        Pending,
+        [JsonProperty("sent")]
+        Sent,
+        [JsonProperty("errored")]
+        Errored,
+        [JsonProperty("skipped")]
+        Skipped,
+        [JsonProperty("canceled")]
+        Canceled,
+        [JsonProperty("merged")]
+        Merged,
+        [JsonProperty("delivered")]
+        Delivered,
+        [JsonProperty("interacted")]
+        Interacted,
     }
 
-    public static class DigestTimedConfigDtoWeekDaysExtension
+    public static class DeliveryLifecycleStatusExtension
     {
-        public static string Value(this DigestTimedConfigDtoWeekDays value)
+        public static string Value(this DeliveryLifecycleStatus value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static DigestTimedConfigDtoWeekDays ToEnum(this string value)
+        public static DeliveryLifecycleStatus ToEnum(this string value)
         {
-            foreach(var field in typeof(DigestTimedConfigDtoWeekDays).GetFields())
+            foreach(var field in typeof(DeliveryLifecycleStatus).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -53,14 +58,14 @@ namespace Novu.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is DigestTimedConfigDtoWeekDays)
+                    if (enumVal is DeliveryLifecycleStatus)
                     {
-                        return (DigestTimedConfigDtoWeekDays)enumVal;
+                        return (DeliveryLifecycleStatus)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum DigestTimedConfigDtoWeekDays");
+            throw new Exception($"Unknown value {value} for enum DeliveryLifecycleStatus");
         }
     }
 }

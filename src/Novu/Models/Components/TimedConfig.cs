@@ -20,7 +20,7 @@ namespace Novu.Models.Components
         public string? AtTime { get; set; }
 
         [JsonProperty("weekDays")]
-        public List<WeekDays>? WeekDays { get; set; }
+        public List<TimedConfigWeekDays>? WeekDays { get; set; }
 
         [JsonProperty("monthDays")]
         public List<string>? MonthDays { get; set; }

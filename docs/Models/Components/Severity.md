@@ -1,17 +1,21 @@
 # Severity
 
+Severity
+
 ## Example Usage
 
 ```csharp
 using Novu.Models.Components;
 
-var value = Severity.Warn;
+var value = Severity.High;
 ```
 
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `Warn`  | warn    |
-| `Error` | error   |
+| Name     | Value    |
+| -------- | -------- |
+| `High`   | high     |
+| `Medium` | medium   |
+| `Low`    | low      |
+| `None`   | none     |

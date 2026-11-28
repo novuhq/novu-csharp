@@ -32,5 +32,11 @@ namespace Novu.Models.Components
         /// </summary>
         [JsonProperty("integration")]
         public Integration? Integration { get; set; }
+
+        /// <summary>
+        /// The URL the provider sends delivery events to. Set it in the provider yourself when auto-configuration fails.
+        /// </summary>
+        [JsonProperty("webhookUrl")]
+        public string? WebhookUrl { get; set; }
     }
 }

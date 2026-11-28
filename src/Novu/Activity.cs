@@ -24,6 +24,9 @@ namespace Novu
 
     public interface IActivity
     {
+        public IRequests Requests { get; }
+
+        public IWorkflowRuns WorkflowRuns { get; }
         /// <summary>
         /// Track provider activity and engagement events.
         /// </summary>
@@ -57,9 +60,23 @@ namespace Novu
         /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
+        /// <summary>
+        /// Requests SubSDK.
+        /// <see cref="IRequests"/>
+        /// </summary>
+        public IRequests Requests { get; private set; }
+
+        /// <summary>
+        /// WorkflowRuns SubSDK.
+        /// <see cref="IWorkflowRuns"/>
+        /// </summary>
+        public IWorkflowRuns WorkflowRuns { get; private set; }
+
         public Activity(SDKConfig config)
         {
             SDKConfiguration = config;
+            Requests = new Requests(SDKConfiguration);
+            WorkflowRuns = new WorkflowRuns(SDKConfiguration);
         }
 
         /// <summary>
