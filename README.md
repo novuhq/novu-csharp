@@ -300,6 +300,16 @@ var res = await sdk.TriggerAsync(triggerEventRequestDto: new TriggerEventRequest
 
 * [Track](docs/sdks/activity/README.md#track) - Track provider activity and engagement events
 
+#### [Activity.Requests](docs/sdks/requests/README.md)
+
+* [List](docs/sdks/requests/README.md#list) - List activity requests
+* [Retrieve](docs/sdks/requests/README.md#retrieve) - Retrieve activity request
+
+#### [Activity.WorkflowRuns](docs/sdks/workflowruns/README.md)
+
+* [List](docs/sdks/workflowruns/README.md#list) - List workflow runs
+* [Retrieve](docs/sdks/workflowruns/README.md#retrieve) - Retrieve workflow run
+
 ### [Agents](docs/sdks/agents/README.md)
 
 * [Create](docs/sdks/agents/README.md#create) - Create an agent
@@ -733,9 +743,9 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Novu/Models/Errors/BaseException.cs):
-  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 150 methods.*
-  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 150 methods.*
-  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 150 methods.*
+  * [`PayloadValidationExceptionDto`](./src/Novu/Models/Errors/PayloadValidationExceptionDto.cs): Status code `400`. Applicable to 3 of 154 methods.*
+  * [`SubscriberResponseDto`](./src/Novu/Models/Errors/SubscriberResponseDto.cs): Created. Status code `409`. Applicable to 1 of 154 methods.*
+  * [`TopicResponseDto`](./src/Novu/Models/Errors/TopicResponseDto.cs): OK. Status code `409`. Applicable to 1 of 154 methods.*
   * [`ResponseValidationError`](./src/Novu/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

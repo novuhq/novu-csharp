@@ -41,7 +41,7 @@ namespace Novu.Models.Errors
         /// Value that failed validation.
         /// </summary>
         [JsonProperty("message", NullValueHandling = NullValueHandling.Include)]
-        public Message? Message { get; set; }
+        public Models.Errors.Message? Message { get; set; }
 
         /// <summary>
         /// Optional context object for additional error details.
@@ -92,7 +92,7 @@ namespace Novu.Models.Errors
         public string Path { get; set; } = default!;
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use PayloadValidationExceptionDto.Payload.Message instead.")]
-        public Message? MessageP { get; set; }
+        public Models.Errors.Message? MessageP { get; set; }
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use PayloadValidationExceptionDto.Payload.Ctx instead.")]
         public Dictionary<string, object>? Ctx { get; set; }

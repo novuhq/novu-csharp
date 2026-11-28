@@ -26,7 +26,7 @@ namespace Novu.Models.Components
         /// Days of the week for the digest.
         /// </summary>
         [JsonProperty("weekDays")]
-        public List<DigestTimedConfigDtoWeekDays>? WeekDays { get; set; }
+        public List<WeekDays>? WeekDays { get; set; }
 
         /// <summary>
         /// Specific days of the month for the digest.

@@ -13,12 +13,19 @@ namespace Novu.Models.Components
     using Novu.Utils;
     using System;
 
+    /// <summary>
+    /// Severity.
+    /// </summary>
     public enum Severity
     {
-        [JsonProperty("warn")]
-        Warn,
-        [JsonProperty("error")]
-        Error,
+        [JsonProperty("high")]
+        High,
+        [JsonProperty("medium")]
+        Medium,
+        [JsonProperty("low")]
+        Low,
+        [JsonProperty("none")]
+        None,
     }
 
     public static class SeverityExtension

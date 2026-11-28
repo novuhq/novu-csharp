@@ -19,7 +19,7 @@ namespace Novu.Models.Components
         public DomainDiagnosticIssueDtoCode Code { get; set; } = default!;
 
         [JsonProperty("severity")]
-        public Models.Components.Severity Severity { get; set; } = default!;
+        public DomainDiagnosticIssueDtoSeverity Severity { get; set; } = default!;
 
         [JsonProperty("message")]
         public string Message { get; set; } = default!;
